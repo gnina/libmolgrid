@@ -8,6 +8,7 @@ include_directories (${Boost_INCLUDE_DIRS})
 set( TEST_SRCS
  test_grid.cpp
  test_grid.cu
+ test_mgrid.cpp
 )
 
 #Run through each source

@@ -35,9 +35,9 @@ BOOST_AUTO_TEST_CASE( constructors )
   Grid2dCUDA g2d(d,64,2);
   Grid4dCUDA g4d(d,2,2,2,16);
 
-  BOOST_CHECK_EQUAL(g1f.data,g6f.data);
-  BOOST_CHECK_EQUAL(g2d.data,g4d.data);
-  BOOST_CHECK_NE((void*)g4f.data,(void*)g4d.data);
+  BOOST_CHECK_EQUAL(g1f.data(),g6f.data());
+  BOOST_CHECK_EQUAL(g2d.data(),g4d.data());
+  BOOST_CHECK_NE((void*)g4f.data(),(void*)g4d.data());
 
   cudaFree(f);
   cudaFree(d);
@@ -124,7 +124,7 @@ BOOST_AUTO_TEST_CASE( indirect_indexing )
   }
 
   Grid1fCUDA F1 = F[3][5];
-  cudaMemset(F1.data, 0, F1.dimensions()[0]*sizeof(float));
+  cudaMemset(F1.data(), 0, F1.dimensions()[0]*sizeof(float));
 
   Grid1dCUDA D1 = D[0][0];
 

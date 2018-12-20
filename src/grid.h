@@ -20,19 +20,18 @@ namespace libmolgrid {
  * If isCUDA is true, data should only be accessed in kernels.
  */
 template<typename Dtype, std::size_t NumDims, bool isCUDA = false>
-struct Grid {
-  public:
-    Dtype *const data; /// raw pointer to data
-
-  private:
+class Grid {
+  protected:
     //these should be read only, but I need to set them in the constructor
     //outside an initializer list, so hide them
+    Dtype *const buffer; /// raw pointer to data
     size_t dims[NumDims];
     size_t offset[NumDims];
   public:
 
     CUDA_CALLABLE_MEMBER inline const size_t * dimensions() const { return dims; } /// dimensions along each axis
     CUDA_CALLABLE_MEMBER inline const size_t * offsets() const { return offset; } // offset for each dimension, all indexing calculations use this
+    CUDA_CALLABLE_MEMBER inline Dtype * data() const { return buffer; }
 
     /** \brief Grid constructor
      *
@@ -40,7 +39,7 @@ struct Grid {
     */
     template<typename... I>
     Grid(Dtype *const d, I... sizes):
-      data(d), dims{  static_cast<size_t>(sizes)...} {
+      buffer(d), dims{  static_cast<size_t>(sizes)...} {
       static_assert(NumDims == sizeof...(sizes),"Incorrect number of grid dimensions");
       offset[NumDims-1] = 1;
       #pragma unroll
@@ -77,12 +76,12 @@ struct Grid {
       for(unsigned i = 0; i < NumDims; i++) { //surely the compiler will unroll this...
         pos += idx[i]*offset[i];
       }
-      return data[pos];
+      return buffer[pos];
     }
 
     // constructor used by operator[]
     CUDA_CALLABLE_MEMBER
-    explicit Grid(const Grid<Dtype,NumDims+1,isCUDA>& G, size_t i): data(&G.data[i*G.offsets()[0]]) {
+    explicit Grid(const Grid<Dtype,NumDims+1,isCUDA>& G, size_t i): buffer(&G.data()[i*G.offsets()[0]]) {
       //slice off first dimension
       for(size_t i = 0; i < NumDims; i++) {
         dims[i] = G.dimensions()[i+1];
@@ -94,32 +93,31 @@ struct Grid {
 
 // class specialization of grid to make final operator[] return scalar
 template<typename Dtype, bool isCUDA >
-struct Grid<Dtype,1,isCUDA> {
-
-    Dtype *const data;
-
-  private:
+class Grid<Dtype,1,isCUDA> {
+  protected:
+    Dtype *const buffer;
     size_t dims[1]; /// length of array
 
   public:
     CUDA_CALLABLE_MEMBER inline const size_t * dimensions() const { return dims; } /// dimensions along each axis
+    CUDA_CALLABLE_MEMBER inline Dtype * data() const { return buffer; }
 
     Grid(Dtype* const d, size_t sz):
-      data(d), dims{sz} { }
+      buffer(d), dims{sz} { }
 
     CUDA_CALLABLE_MEMBER inline Dtype& operator[](size_t i) {
       assert(i < dims[0]);
-      return data[i];
+      return buffer[i];
     }
 
     CUDA_CALLABLE_MEMBER inline Dtype& operator()(size_t a) {
-      return data[a];
+      return buffer[a];
     }
 
     //only called from regular Grid
     CUDA_CALLABLE_MEMBER
     explicit Grid<Dtype,1,isCUDA>(const Grid<Dtype,2,isCUDA>& G, size_t i):
-      data(&G.data[i*G.offsets()[0]]), dims{G.dimensions()[1]} {}
+      buffer(&G.data()[i*G.offsets()[0]]), dims{G.dimensions()[1]} {}
 
 };
 

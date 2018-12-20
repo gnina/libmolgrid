@@ -5,6 +5,8 @@ set( LIBMOLGRID_SOURCES
 
 set( LIBMOLGRID_HEADERS
  libmolgrid.h
+ grid.h
+ managed_grid.h
 )
 
 add_library(libmolgrid_shared SHARED ${LIBMOLGRID_HEADERS} ${LIBMOLGRID_SOURCES})
