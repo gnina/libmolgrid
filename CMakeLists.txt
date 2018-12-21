@@ -40,6 +40,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
 endif()
 
+set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -Werror cross-execution-space-call,reorder,deprecated-declarations")
 
 # add the binary tree to the search path for include files
 # so that we will find libmolgrid_config.h

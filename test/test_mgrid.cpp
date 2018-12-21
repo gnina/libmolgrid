@@ -7,6 +7,8 @@
 
 #define BOOST_TEST_MODULE grid_test
 #include <boost/test/unit_test.hpp>
+#include <thrust/reduce.h>
+#include <thrust/execution_policy.h>
 
 #include "managed_grid.h"
 
@@ -53,4 +55,60 @@ BOOST_AUTO_TEST_CASE( direct_indexing )
   for(unsigned i = 0; i < 256; i++) {
     BOOST_CHECK_EQUAL(g.data()[i],i);
   }
+}
+
+BOOST_AUTO_TEST_CASE( indirect_indexing )
+{
+  MGrid4f g(2,4,8,4);
+  for(unsigned i = 0; i < 256; i++) {
+    g.data()[i] = i;
+  }
+  BOOST_CHECK_EQUAL(g[0][0][0][0], 0);
+  BOOST_CHECK_EQUAL(g[1][1][1][1], 165);
+  BOOST_CHECK_EQUAL(g[1][3][7][3],255);
+
+  //should be able to slice whole subarray as views
+
+  MGrid3f h = g[1];
+  BOOST_CHECK_EQUAL(h[0][0][0], 128);
+  BOOST_CHECK_EQUAL(h[3][7][0],252);
+
+  MGrid2f g2 = h[3];
+  BOOST_CHECK_EQUAL(g2[6][2], 250);
+
+  g2[7][3] = 314;
+  BOOST_CHECK_EQUAL(g[1][3][7][3],314);
+
+  MGrid1f g1 = h[0][0];
+  BOOST_CHECK_EQUAL(g1[0],128);
+
+  MGrid4f gg = g;
+  BOOST_CHECK_EQUAL(gg.data(),g.data());
+
+}
+
+BOOST_AUTO_TEST_CASE( grid_conversion )
+{
+  MGrid3f g3(7,13,11);
+  MGrid1f g1(100);
+
+  for(unsigned i = 0; i < 7; i++)
+    for(unsigned j = 0; j < 13; j++)
+      for(unsigned k = 0; k < 11; k++) {
+        g3[i][j][k] = i+j+k;
+      }
+
+  for(unsigned i = 0; i < 100; i++) {
+    g1(i) = i;
+  }
+
+  Grid3f cpu3(g3);
+  Grid1f cpu1(g1);
+
+  float sum3 = thrust::reduce(thrust::host, cpu3.data(), cpu3.data()+cpu3.size());
+  BOOST_CHECK_EQUAL(sum3,14014);
+
+  float sum1 = thrust::reduce(thrust::host, cpu1.data(), cpu1.data()+cpu1.size());
+  BOOST_CHECK_EQUAL(sum1,4950);
+
 }

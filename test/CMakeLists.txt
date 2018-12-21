@@ -9,6 +9,7 @@ set( TEST_SRCS
  test_grid.cpp
  test_grid.cu
  test_mgrid.cpp
+ test_mgrid.cu
 )
 
 #Run through each source
