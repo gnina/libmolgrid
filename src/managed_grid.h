@@ -12,15 +12,19 @@
 
 #include<memory>
 #include <grid.h>
-#include <cuda_runtime_api.h>
-#include <cuda.h>
+
 
 namespace libmolgrid {
 
 /** \brief A dense grid whose memory is managed by the class.
  *
  * Memory is allocated as unified memory so it can be safely accessed
- * from either the CPU or GPU.
+ * from either the CPU or GPU.  Note that while the memory is accessible
+ * on the GPU, ManagedGrid objects should only be used directly on the host.
+ * Device code should use a Grid view of the ManagedGrid.
+ *
+ * If CUDA fails to allocate unified memory (presumably due to lack of GPUs),
+ * host-only memory will be used instead.
  */
 template<typename Dtype, std::size_t NumDims>
 class ManagedGrid : public Grid<Dtype, NumDims, true> {
@@ -31,13 +35,11 @@ class ManagedGrid : public Grid<Dtype, NumDims, true> {
     template<typename... I>
     ManagedGrid(I... sizes): Grid<Dtype, NumDims, true>(nullptr, sizes...) {
       //allocate buffer
-      size_t sz = this->size();
-      cudaMallocManaged((void**)&this->buffer,sz*sizeof(Dtype));
-      memset(this->buffer, 0, sz*sizeof(Dtype));
-      ptr = std::shared_ptr<Dtype>(this->buffer,cudaFree);
+      ptr = create_unified_shared_ptr<Dtype>(this->size());
+      this->buffer = ptr.get();
     }
 
-    CUDA_CALLABLE_MEMBER const std::shared_ptr<Dtype> pointer() const { return ptr; }
+    const std::shared_ptr<Dtype> pointer() const { return ptr; }
 
     /** \brief Bracket indexing.
      *
@@ -45,13 +47,12 @@ class ManagedGrid : public Grid<Dtype, NumDims, true> {
      *  but not maximally efficient (unless the compiler is really good).
      *  Use operator() for fastest (but unchecked) access or access data directly.
      */
-    CUDA_CALLABLE_MEMBER ManagedGrid<Dtype,NumDims-1> operator[](size_t i) {
+    ManagedGrid<Dtype,NumDims-1> operator[](size_t i) {
       assert(i < this->dims[0]);
       return ManagedGrid<Dtype,NumDims-1>(*this, i);
     }
 
     // constructor used by operator[]
-    CUDA_CALLABLE_MEMBER
     explicit ManagedGrid(const ManagedGrid<Dtype,NumDims+1>& G, size_t i):
       Grid<Dtype, NumDims, true>(G, i), ptr(G.pointer()) {}
 
@@ -66,13 +67,11 @@ class ManagedGrid<Dtype, 1> : public Grid<Dtype, 1, true> {
   public:
 
     ManagedGrid(size_t sz): Grid<Dtype, 1, true>(nullptr, sz) {
-      cudaMallocManaged((void**)&this->buffer,sz*sizeof(Dtype));
-      memset(this->buffer, 0, sz*sizeof(Dtype));
-      ptr = std::shared_ptr<Dtype>(this->buffer,cudaFree);
+      ptr = create_unified_shared_ptr<Dtype>(this->size());
+      this->buffer = ptr.get();
     }
 
     //only called from regular Grid
-    CUDA_CALLABLE_MEMBER
     explicit ManagedGrid<Dtype,1>(const ManagedGrid<Dtype,2>& G, size_t i):
       Grid<Dtype, 1, true>(G, i), ptr(G.pointer()) {}
 
