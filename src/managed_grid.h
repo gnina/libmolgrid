@@ -95,6 +95,8 @@ Grid<Dtype, NumDims, isCUDA>::Grid(const ManagedGrid<Dtype, NumDims>& mg):
     device = cudaCpuDeviceId;
   }
   cudaMemPrefetchAsync(this->data(),this->size(),device, NULL);
+  //not all GPUs support prefetch, so absorb any errors here
+  cudaGetLastError();
   //should I synchronize here?
 }
 
@@ -111,7 +113,8 @@ Grid<Dtype, 1, isCUDA>::Grid(const ManagedGrid<Dtype, 1>& mg):
     device = cudaCpuDeviceId;
   }
   cudaMemPrefetchAsync(this->data(),this->size(),device, NULL);
-  //should I synchronize here?
+  //not all GPUs support prefetch, so absorb any errors here
+  cudaGetLastError();
 }
 
 #define EXPAND_MGRID_DEFINITIONS(SIZE) \

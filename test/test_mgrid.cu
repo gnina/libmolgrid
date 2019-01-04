@@ -34,7 +34,7 @@ BOOST_AUTO_TEST_CASE( unifiedmem )
 
 BOOST_AUTO_TEST_CASE( grid_conversion )
 {
-  //check conversoin to cuda grid -- this should be faster, but don't know how to check that
+  //check conversion to cuda grid -- this should be faster, but don't know how to check that
   MGrid3f g3(7,13,11);
   MGrid1f g1(100);
 
