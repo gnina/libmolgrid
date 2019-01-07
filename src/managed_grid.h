@@ -1,5 +1,4 @@
-/*
- * managed_grid.h
+/** \file managed_grid.h
  *
  * A grid that manages its own memory using a shared pointer.
  * Any libmolgrid routines that create a grid option (e.g. readers)

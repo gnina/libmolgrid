@@ -10,6 +10,7 @@ set( TEST_SRCS
  test_grid.cu
  test_mgrid.cpp
  test_mgrid.cu
+ test_quaternion.cpp
 )
 
 #Run through each source
@@ -24,7 +25,7 @@ foreach(testSrc ${TEST_SRCS})
 		target_compile_definitions(${testName} PRIVATE "BOOST_TEST_DYN_LINK=1")
 
         #link to Boost libraries AND your targets and dependencies
-        target_link_libraries(${testName} ${Boost_LIBRARIES} ${CUDA_LIBRARIES})
+        target_link_libraries(${testName} libmolgrid_static ${Boost_LIBRARIES} ${CUDA_LIBRARIES})
 
         #Finally add it to test execution - 
 
