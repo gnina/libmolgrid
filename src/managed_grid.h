@@ -55,6 +55,13 @@ class ManagedGrid : public Grid<Dtype, NumDims, true> {
     explicit ManagedGrid(const ManagedGrid<Dtype,NumDims+1>& G, size_t i):
       Grid<Dtype, NumDims, true>(G, i), ptr(G.pointer()) {}
 
+    /** \brief Synchronize gpu memory
+     *  If operated on as device memory, must call synchronize before accessing on host.
+     */
+    void sync() const {
+      cudaDeviceSynchronize();
+    }
+
 };
 
 // class specialization of managed grid to make final operator[] return scalar
@@ -96,7 +103,8 @@ Grid<Dtype, NumDims, isCUDA>::Grid(const ManagedGrid<Dtype, NumDims>& mg):
   cudaMemPrefetchAsync(this->data(),this->size(),device, NULL);
   //not all GPUs support prefetch, so absorb any errors here
   cudaGetLastError();
-  //should I synchronize here?
+  //make sure mem is synced
+  cudaDeviceSynchronize();
 }
 
 template<typename Dtype, bool isCUDA>

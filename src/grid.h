@@ -30,6 +30,19 @@ class Grid {
     size_t dims[NumDims];
     size_t offs[NumDims];
 
+    template<typename... I>
+    CUDA_CALLABLE_MEMBER inline size_t getPos(I... indices) const {
+      static_assert(NumDims == sizeof...(indices),"Incorrect number of grid indices");
+
+      size_t idx[NumDims] = { static_cast<size_t>(indices)...};
+      size_t pos = 0;
+      #pragma unroll
+      for(unsigned i = 0; i < NumDims; i++) { //surely the compiler will unroll this...
+        pos += idx[i]*offs[i];
+      }
+      return pos;
+    }
+
   public:
     /// dimensions along each axis
     CUDA_CALLABLE_MEMBER inline const size_t * dimensions() const { return dims; }
@@ -85,7 +98,7 @@ class Grid {
      *  but not maximally efficient (unless the compiler is really good).
      *  Use operator() for fastest (but unchecked) access or access data directly.
      */
-    CUDA_CALLABLE_MEMBER Grid<Dtype,NumDims-1,isCUDA> operator[](size_t i) {
+    CUDA_CALLABLE_MEMBER Grid<Dtype,NumDims-1,isCUDA> operator[](size_t i) const {
       assert(i < dims[0]);
       return Grid<Dtype,NumDims-1,isCUDA>(*this, i);
     }
@@ -95,15 +108,12 @@ class Grid {
      */
     template<typename... I>
     CUDA_CALLABLE_MEMBER inline Dtype& operator()(I... indices) {
-      static_assert(NumDims == sizeof...(indices),"Incorrect number of grid indices");
+      return buffer[getPos(indices...)];
+    }
 
-      size_t idx[NumDims] = { static_cast<size_t>(indices)...};
-      size_t pos = 0;
-      #pragma unroll
-      for(unsigned i = 0; i < NumDims; i++) { //surely the compiler will unroll this...
-        pos += idx[i]*offs[i];
-      }
-      return buffer[pos];
+    template<typename... I>
+    CUDA_CALLABLE_MEMBER inline Dtype operator()(I... indices) const {
+      return buffer[getPos(indices...)];
     }
 
     // constructor used by operator[]
@@ -150,7 +160,16 @@ class Grid<Dtype,1,isCUDA> {
       return buffer[i];
     }
 
+    CUDA_CALLABLE_MEMBER inline Dtype operator[](size_t i) const {
+      assert(i < dims[0]);
+      return buffer[i];
+    }
+
     CUDA_CALLABLE_MEMBER inline Dtype& operator()(size_t a) {
+      return buffer[a];
+    }
+
+    CUDA_CALLABLE_MEMBER inline Dtype operator()(size_t a) const {
       return buffer[a];
     }
 

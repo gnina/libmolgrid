@@ -25,7 +25,7 @@ class Quaternion {
 
   public:
     __host__ __device__ Quaternion()
-        : a(0), b(0), c(0), d(0) {
+        : a(1), b(0), c(0), d(0) {
     }
 
     /// Construct quaternion with real then unreal components
@@ -143,7 +143,7 @@ class Quaternion {
     }
 
     /// Rotate around the provided center and translate
-    __host__ __device__ float3 transform(fl x, fl y, fl z, float3 center, float3 translate) const {
+    __host__ __device__ inline float3 transform(fl x, fl y, fl z, float3 center, float3 translate) const {
       float3 pt = rotate(x - center.x, y - center.y, z - center.z);
       x = pt.x + center.x + translate.x;
       y = pt.y + center.y + translate.y;
@@ -151,6 +151,7 @@ class Quaternion {
 
       return make_float3(x,y,z);
     }
+
 
     /// Return inverse
     __host__ __device__ Quaternion inverse() const {

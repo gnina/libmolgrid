@@ -4,8 +4,16 @@
  *  data into dense grids for use in deep learning workflows.
  */
  
-#include "config.h"
+#ifndef LIBMOLGRID_H_
+#define LIBMOLGRID_H_
+
+#include <random>
 
 namespace libmolgrid {
     extern int debug_level;
+    ///random engine used in libmolgrid
+    extern std::default_random_engine random_engine;
+
 }
+
+#endif

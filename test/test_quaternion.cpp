@@ -25,9 +25,8 @@ static void eqQ(Q1 a, Q2 b)
   BOOST_CHECK_EQUAL(a.R_component_4(), b.R_component_4());
 
   BOOST_CHECK_EQUAL(a.real(), b.real());
-
-
 }
+
 BOOST_AUTO_TEST_CASE( quaternion_operatons )
 {
   // should get same results as boost quaternion

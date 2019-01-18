@@ -1,6 +1,8 @@
 
 set( LIBMOLGRID_SOURCES
  libmolgrid.cpp
+ transform.cpp
+ transform.cu
 )
 
 set( LIBMOLGRID_HEADERS
@@ -8,6 +10,8 @@ set( LIBMOLGRID_HEADERS
  grid.h
  managed_grid.h
  quaternion.h
+ transform.h
+ cartesian.h
 )
 
 add_library(libmolgrid_shared SHARED ${LIBMOLGRID_HEADERS} ${LIBMOLGRID_SOURCES})
