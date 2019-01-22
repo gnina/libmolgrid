@@ -31,6 +31,8 @@ class ManagedGrid : public Grid<Dtype, NumDims, true> {
     std::shared_ptr<Dtype> ptr; //shared pointer lets us not worry about copying the grid
 
   public:
+    using base_t = Grid<Dtype, NumDims, true>; ///base class type
+
     template<typename... I>
     ManagedGrid(I... sizes): Grid<Dtype, NumDims, true>(nullptr, sizes...) {
       //allocate buffer
@@ -71,7 +73,7 @@ class ManagedGrid<Dtype, 1> : public Grid<Dtype, 1, true> {
     std::shared_ptr<Dtype> ptr;
 
   public:
-
+    using base_t = Grid<Dtype, 1, true>; ///base class type
     ManagedGrid(size_t sz): Grid<Dtype, 1, true>(nullptr, sz) {
       ptr = create_unified_shared_ptr<Dtype>(this->size());
       this->buffer = ptr.get();

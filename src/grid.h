@@ -43,11 +43,22 @@ class Grid {
       return pos;
     }
 
+    CUDA_CALLABLE_MEMBER void check_index(size_t i, size_t dim) const {
+#ifndef __CUDA_ARCH__
+      if(i >= dim) throw std::invalid_argument("Incorrect index for grid dimension.");
+#else
+      assert(i < dim);
+#endif
+    }
   public:
+    using type = Dtype;
+    using subgrid_t = Grid<Dtype,NumDims-1,isCUDA>;
+    static constexpr size_t N = NumDims;
+
     /// dimensions along each axis
     CUDA_CALLABLE_MEMBER inline const size_t * dimensions() const { return dims; }
     /// dimensions along specified axis
-    CUDA_CALLABLE_MEMBER inline size_t dimension(size_t i) const { assert(i<NumDims); return dims[i]; }
+    CUDA_CALLABLE_MEMBER inline size_t dimension(size_t i) const { check_index(i,NumDims); return dims[i]; }
 
     /// offset for each dimension, all indexing calculations use this
     CUDA_CALLABLE_MEMBER inline const size_t * offsets() const { return offs; }
@@ -81,6 +92,7 @@ class Grid {
       }
     }
 
+    using managed_t = ManagedGrid<Dtype, NumDims>; ///corresponding managed type
     /** \brief Construct Grid from ManagedGrid
      *
      * The managed grid retains responsibility for the memory.
@@ -98,8 +110,8 @@ class Grid {
      *  but not maximally efficient (unless the compiler is really good).
      *  Use operator() for fastest (but unchecked) access or access data directly.
      */
-    CUDA_CALLABLE_MEMBER Grid<Dtype,NumDims-1,isCUDA> operator[](size_t i) const {
-      assert(i < dims[0]);
+    CUDA_CALLABLE_MEMBER subgrid_t operator[](size_t i) const {
+      check_index(i, dims[0]);
       return Grid<Dtype,NumDims-1,isCUDA>(*this, i);
     }
 
@@ -137,11 +149,21 @@ class Grid<Dtype,1,isCUDA> {
     Dtype * buffer;
     size_t dims[1]; /// length of array
 
+    CUDA_CALLABLE_MEMBER void check_index(size_t i, size_t dim) const {
+#ifndef __CUDA_ARCH__
+      if(i >= dim) throw std::invalid_argument("Incorrect index for grid dimension.");
+#else
+      assert(i < dim);
+#endif
+    }
   public:
+    using type = Dtype;
+    using subgrid_t = Dtype;
+    static constexpr size_t N = 1;
     /// dimensions along each axis
     CUDA_CALLABLE_MEMBER inline const size_t * dimensions() const { return dims; }
     /// dimensions along specified axis
-    CUDA_CALLABLE_MEMBER inline size_t dimension(size_t i) const { assert(i<1); return dims[i]; }
+    CUDA_CALLABLE_MEMBER inline size_t dimension(size_t i) const { check_index(i, 1); return dims[i]; }
 
     /// number of elements in grid
     CUDA_CALLABLE_MEMBER inline size_t size() const { return dims[0]; }
@@ -152,16 +174,17 @@ class Grid<Dtype,1,isCUDA> {
     Grid(Dtype* const d, size_t sz):
       buffer(d), dims{sz} { }
 
-    Grid(const ManagedGrid<Dtype, 1>& mg); //implementation is in managed_grid.h
+    using managed_t = ManagedGrid<Dtype, 1>; ///corresponding managed type
+    Grid(const managed_t& mg); //implementation is in managed_grid.h
 
 
     CUDA_CALLABLE_MEMBER inline Dtype& operator[](size_t i) {
-      assert(i < dims[0]);
+      check_index(i,dims[0]);
       return buffer[i];
     }
 
     CUDA_CALLABLE_MEMBER inline Dtype operator[](size_t i) const {
-      assert(i < dims[0]);
+      check_index(i,dims[0]);
       return buffer[i];
     }
 
