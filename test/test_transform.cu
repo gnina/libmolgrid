@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE(apply_transform)
   MGrid2f coords2(8, 3);
 
   //does nr perform as expected?
-  nr.forward(coords,coords2);
+  nr.forward(coords.gpu(),coords2.gpu());
   float3 expected = make_float3(2,1,-2);
   eqPt(coords2[6],expected); //at center
 
@@ -63,7 +63,7 @@ BOOST_AUTO_TEST_CASE(apply_transform)
   eqPt(coords[7],expected);
 
   //does random work both ways
-  r.forward(coords,coords2);
+  r.forward(coords.gpu(),coords2.gpu());
   for(unsigned i = 0; i < 8; i++) {
     neqPt(coords[i],coords2[i]);
   }
@@ -76,7 +76,7 @@ BOOST_AUTO_TEST_CASE(apply_transform)
     eqPt(cpucoords2[i],coords2[i]);
   }
 
-  r.backward(coords2,coords2);
+  r.backward(coords2.gpu(),coords2.gpu());
   coords2.sync(); //not pleased that we have to do this..
 
   for(unsigned i = 0; i < 8; i++) {

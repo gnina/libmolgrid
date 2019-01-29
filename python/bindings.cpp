@@ -51,8 +51,7 @@ template<class GridType, typename ... Types>
 void define_grid(const char* name) {
 
   class_<GridType> C(name, init<typename GridType::type*, Types...>());
-  C.def(init<typename GridType::managed_t>())
-      .def("size", &GridType::size)
+  C.def("size", &GridType::size)
       .def("dimension", &GridType::dimension)
       .add_property("shape",
       make_function(
@@ -76,14 +75,34 @@ void define_grid(const char* name) {
 template<class GridType, typename ... Types>
 void define_mgrid(const char* name) {
 
-  class_<GridType, bases<typename GridType::base_t> >(name,
-      init<Types...>());
+    class_<GridType> C(name, init<Types...>());
+    C.def("size", &GridType::size)
+        .def("dimension", &GridType::dimension)
+        .add_property("shape",
+        make_function(
+            +[](const GridType& g)->tuple {
+              return tuple(std::vector<size_t>(g.dimensions(),g.dimensions()+GridType::N)); //hopefully tuple gets move constructed
+            }))
+        .def("__len__",
+        +[](const GridType& g)->size_t {return g.dimension(0);}) //length of first dimension only
+        .def("__getitem__",
+            +[](const GridType& g, size_t i)-> typename GridType::subgrid_t {return g[i];})
+        .def("__getitem__",
+            +[](GridType& g, tuple t) -> typename GridType::type {return grid_get(g, t, std::make_index_sequence<GridType::N>());})
+        .def("__setitem__",
+            +[](GridType& g, tuple t, typename GridType::type val) {grid_get(g, t, std::make_index_sequence<GridType::N>()) = val;});
+
+    //setters only for one dimension grids
+    add_one_dim(C); //SFINAE!
 }
+
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(Transform_forward_overloads, Transform::forward, 2, 3)
 
 BOOST_PYTHON_MODULE(molgrid)
 {
   Py_Initialize();
 
+  def("set_random_seed",+[](long s) {random_engine.seed(s);}); //set random seed
   // Grids
 
 //Grid bindings
@@ -110,6 +129,55 @@ DEFINE_MGRID(N,d)
   //vector utility types
   class_<std::vector<size_t> >("SizeVec")
       .def(vector_indexing_suite<std::vector<size_t> >());
+
+  class_<float3>("float3",no_init)
+      .def("__init__",make_constructor(+[](float x, float y, float z) {return std::make_shared<float3>(make_float3(x,y,z));} ))
+      .def_readwrite("x",&float3::x)
+      .def_readwrite("y",&float3::y)
+      .def_readwrite("z",&float3::z);
+
+  // Quaternion - I lament the need for a custom quaternion class, yet here we are
+  class_<Quaternion>("Quaternion")
+      .def(init<float,float,float,float>())
+      .def("R_component_1",&Quaternion::R_component_1)
+      .def("R_component_2",&Quaternion::R_component_2)
+      .def("R_component_3",&Quaternion::R_component_3)
+      .def("R_component_4",&Quaternion::R_component_4)
+      .def("real",&Quaternion::real)
+      .def("conj",&Quaternion::conj)
+      .def("norm",&Quaternion::norm)
+      .def("rotate",&Quaternion::rotate)
+      .def("transform",&Quaternion::transform)
+      .def("inverse",&Quaternion::inverse)
+      .def(self * self)
+      .def(self *= self)
+      .def(self / self)
+      .def(self /= self);
+
+  // Transform
+
+  class_<Transform>("Transform")
+      .def(init<Quaternion>())
+      .def(init<Quaternion,float3>())
+      .def(init<Quaternion, float3, float3>())
+      .def(init<float3>()) //center
+      .def(init<float3, float>()) //center, translate
+      .def(init<float3, float, bool>()) //center, translate, rotate
+      .def("quaternion", &Transform::quaternion, return_value_policy<copy_const_reference>())
+      .def("rotation_center",&Transform::rotation_center)
+      .def("translation", &Transform::translation)
+      .def("forward",
+          static_cast<void (Transform::*)(const Grid<float, 2, false>&, Grid<float, 2, false>&, bool) const>(&Transform::forward<float>),
+          Transform_forward_overloads(
+              (arg("in"), arg("out"), arg("dotranslate")=true)))
+      .def("forward",
+          static_cast<void (Transform::*)(const Grid<float, 2, true>&, Grid<float, 2, true>&, bool) const>(&Transform::forward<float>),
+          Transform_forward_overloads(
+              (arg("in"), arg("out"), arg("dotranslate")=true)))
+      .def("backward",
+          static_cast<void (Transform::*)(const Grid<float, 2, false>&, Grid<float, 2, false>&, bool) const>(&Transform::backward<float>))
+      .def("backward",
+          static_cast<void (Transform::*)(const Grid<float, 2, true>&, Grid<float, 2, true>&, bool) const>(&Transform::backward<float>));
 
 }
 

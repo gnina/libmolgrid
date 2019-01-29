@@ -49,15 +49,13 @@ BOOST_AUTO_TEST_CASE( grid_conversion )
   }
 
   Grid3fCUDA gpu3(g3);
-  Grid1fCUDA gpu1(g1);
+  Grid1fCUDA gpu1 = g1.gpu();
 
   float sum3 = thrust::reduce(thrust::device, gpu3.data(), gpu3.data()+gpu3.size());
   BOOST_CHECK_EQUAL(sum3,14014);
 
   float sum1 = thrust::reduce(thrust::device, gpu1.data(), gpu1.data()+gpu1.size());
   BOOST_CHECK_EQUAL(sum1,4950);
-
-
 
   cudaError_t error = cudaGetLastError();
   BOOST_CHECK_EQUAL(error,cudaSuccess);

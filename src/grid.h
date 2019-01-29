@@ -12,8 +12,6 @@
 #include <iostream>
 namespace libmolgrid {
 
-template<typename Dt, std::size_t ND> class ManagedGrid; //predeclare for constructor
-
 /**
  * \class Grid
  * A dense array of memory stored on the CPU.  The memory is owned
@@ -77,6 +75,9 @@ class Grid {
     /// pointer to underlying data
     CUDA_CALLABLE_MEMBER inline Dtype * data() const { return buffer; }
 
+    /// set the underlying memory buffer - use with caution!
+    CUDA_CALLABLE_MEMBER inline void set_buffer(Dtype *ptr) { buffer = ptr; }
+
     /** \brief Grid constructor
      *
      * Provide pointer and dimensions specified as arguments
@@ -91,15 +92,6 @@ class Grid {
         offs[i-1] = dims[i]*offs[i];
       }
     }
-
-    using managed_t = ManagedGrid<Dtype, NumDims>; ///corresponding managed type
-    /** \brief Construct Grid from ManagedGrid
-     *
-     * The managed grid retains responsibility for the memory.
-     * This constructor ensures that unified memory is prefetched
-     * to correct device/host.
-     */
-    Grid(const ManagedGrid<Dtype, NumDims>& mg); //implementation is in managed_grid.h
 
     Grid(const Grid&) = default;
     ~Grid() = default;
@@ -171,12 +163,11 @@ class Grid<Dtype,1,isCUDA> {
     /// pointer to underlying data
     CUDA_CALLABLE_MEMBER inline Dtype * data() const { return buffer; }
 
+    /// set the underlying memory buffer - use with caution!
+    CUDA_CALLABLE_MEMBER inline void set_buffer(Dtype *ptr) { buffer = ptr; }
+
     Grid(Dtype* const d, size_t sz):
       buffer(d), dims{sz} { }
-
-    using managed_t = ManagedGrid<Dtype, 1>; ///corresponding managed type
-    Grid(const managed_t& mg); //implementation is in managed_grid.h
-
 
     CUDA_CALLABLE_MEMBER inline Dtype& operator[](size_t i) {
       check_index(i,dims[0]);

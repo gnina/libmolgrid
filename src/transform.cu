@@ -68,9 +68,9 @@ template <typename Dtype>
   checkGrids(in,out);
   unsigned N = in.dimension(0);
   if(dotranslate)
-    transform_forward_kernel<Dtype, true><<<LMG_GET_BLOCKS(N), LMG_CUDA_NUM_THREADS>>>(N, Q, center, translate, in, out);
+    transform_forward_kernel<float, true><<<LMG_GET_BLOCKS(N), LMG_CUDA_NUM_THREADS>>>(N, Q, center, translate, in, out);
   else
-    transform_forward_kernel<Dtype, false><<<LMG_GET_BLOCKS(N), LMG_CUDA_NUM_THREADS>>>(N, Q, center, translate, in, out);
+    transform_forward_kernel<float, false><<<LMG_GET_BLOCKS(N), LMG_CUDA_NUM_THREADS>>>(N, Q, center, translate, in, out);
 }
 
 template __host__ void Transform::forward(const Grid<float, 2, true>&, Grid<float, 2, true>&, bool) const;
