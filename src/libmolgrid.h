@@ -10,7 +10,6 @@
 #include <random>
 
 namespace libmolgrid {
-    extern int debug_level;
     ///random engine used in libmolgrid
     extern std::default_random_engine random_engine;
 

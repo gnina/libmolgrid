@@ -105,10 +105,10 @@ class ManagedGridBase {
       cudaDeviceSynchronize();
     }
 
-    operator cpu_grid_t() { return cpu(); }
+    operator cpu_grid_t() const { return cpu(); }
     operator cpu_grid_t&() {return cpu(); }
 
-    operator gpu_grid_t() { return gpu(); }
+    operator gpu_grid_t() const { return gpu(); }
     operator gpu_grid_t&() {return gpu(); }
 
   protected:

@@ -8,7 +8,6 @@
 #include "transform.h"
 
 namespace libmolgrid {
-    int debug_level = 0;
     std::default_random_engine random_engine;
 
 

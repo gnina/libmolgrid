@@ -1,6 +1,8 @@
 import pytest
 import molgrid
 
+from pytest import approx
+
 def eqQ(q1, q2):
     assert q1.R_component_1() == q2.R_component_1()
     assert q1.R_component_2() == q2.R_component_2()
@@ -93,7 +95,7 @@ def test_apply_transform():
     assert tup(coords2[5]) == (2,2,-2)
 
     #make sure input unchanged
-    assert tup(coords[7]) == (0.333,.75,-9)
+    assert tup(coords[7]) == approx((0.333,.75,-9),abs=1e-5)
 
     # does random work both ways
     r.forward(coords,coords2);
@@ -102,4 +104,4 @@ def test_apply_transform():
         
     r.backward(coords2,coords2);
     for i in range(8):
-        assert tup(coords[i]) == tup(coords2[i])
+        assert tup(coords[i]) == approx(tup(coords2[i]),abs=1e-5)

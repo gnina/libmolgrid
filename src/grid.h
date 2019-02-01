@@ -12,6 +12,8 @@
 #include <iostream>
 namespace libmolgrid {
 
+template<typename Dt, std::size_t ND> class ManagedGrid; //predeclare
+
 /**
  * \class Grid
  * A dense array of memory stored on the CPU.  The memory is owned
@@ -51,7 +53,10 @@ class Grid {
   public:
     using type = Dtype;
     using subgrid_t = Grid<Dtype,NumDims-1,isCUDA>;
+    using managed_t = ManagedGrid<Dtype,NumDims>;
+
     static constexpr size_t N = NumDims;
+    static constexpr bool GPU = isCUDA;
 
     /// dimensions along each axis
     CUDA_CALLABLE_MEMBER inline const size_t * dimensions() const { return dims; }
@@ -151,7 +156,11 @@ class Grid<Dtype,1,isCUDA> {
   public:
     using type = Dtype;
     using subgrid_t = Dtype;
+    using managed_t = ManagedGrid<Dtype,1>;
+
     static constexpr size_t N = 1;
+    static constexpr bool GPU = isCUDA;
+
     /// dimensions along each axis
     CUDA_CALLABLE_MEMBER inline const size_t * dimensions() const { return dims; }
     /// dimensions along specified axis
