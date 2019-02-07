@@ -4,7 +4,7 @@ import molgrid
 def test_grid():
     g = molgrid.MGrid2f(10,2)
     assert g.size() == 20
-    g2 = molgrid.Grid2f(g)
+    g2 = molgrid.Grid2f(g.cpu())
     g2[5][1] = 3.0
     assert g[5,1] == g2[5,1]
     g1 = g2[5]

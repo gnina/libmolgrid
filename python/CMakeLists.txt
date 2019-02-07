@@ -1,17 +1,23 @@
 
 
 find_package(PythonLibs)
+find_package(PythonInterp)
 if (NOT PYTHONLIBS_FOUND)
   message(STATUS "Python libraries NOT found")
 endif()
     
-find_package( Boost COMPONENTS system python REQUIRED )
-
+find_package( Boost COMPONENTS system python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR} REQUIRED )
+find_package( NumPy )
 
 include_directories(${PROJECT_SOURCE_DIR}/src)
 include_directories(${PYTHON_INCLUDE_DIRS})
 include_directories(${Boost_INCLUDE_DIRS})
+include_directories(${PYTHON_NUMPY_INCLUDE_DIR})
 
+if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
+#numpy header has unused function
+    set(CMAKE_CXX_FLAGS         "${CMAKE_CXX_FLAGS} -Wno-unused-function")
+endif()
 
 set( PYMOLGRID_SOURCES
  bindings.cpp

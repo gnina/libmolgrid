@@ -6,6 +6,7 @@ set (VERSION_MAJOR 0)
 set (VERSION_MINOR 1)
 set (VERSION_PATCH 0)
 
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Modules)
 # get git hash
 include(cmake/git_revision.cmake)
 

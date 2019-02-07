@@ -12,6 +12,10 @@
 #include <boost/python/tuple.hpp>
 #include <boost/preprocessor/repetition.hpp>
 #include <boost/preprocessor/punctuation/comma_if.hpp>
+
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include <numpy/arrayobject.h>
+
 #include "grid.h"
 #include "managed_grid.h"
 #include "quaternion.h"
@@ -27,6 +31,9 @@ using namespace libmolgrid;
 static bool python_gpu_enabled = true;
 
 //given a python object, convert to appropriate grid type if possible
+//conversions will never copy the underlying grid memory - just retain
+//a pointer to it.  The API should not hold onto this pointer since
+//its lifetime is managed by python.
 template<class Grid_t>
 struct Grid_from_python {
 
@@ -88,7 +95,8 @@ typename GridType::type& grid_get(GridType& g, tuple t,
 //add common grid methods
 template<typename GridType>
 void add_grid_members(class_<GridType>& C) {
-  C.def("size", &GridType::size)
+  C.def(init<GridType>())
+      .def("size", &GridType::size)
       .def("dimension", &GridType::dimension)
       .add_property("shape",
           make_function(
@@ -122,6 +130,8 @@ void define_mgrid(const char* name) {
 
   class_<GridType> C(name, init<Types...>());
   add_grid_members(C);
+  C.def("cpu",static_cast<const typename GridType::cpu_grid_t& (GridType::*)() const>(&GridType::cpu), return_value_policy<copy_const_reference>())
+      .def("gpu",static_cast<const typename GridType::gpu_grid_t& (GridType::*)() const>(&GridType::gpu), return_value_policy<copy_const_reference>());
   //setters only for one dimension grids
   add_one_dim(C); //SFINAE!
 }
@@ -215,5 +225,5 @@ DEFINE_MGRID(N,d)
   .def("backward",+[](Transform& self, const Grid2fCUDA& in, Grid2fCUDA out, bool dotranslate) {self.backward(in,out,dotranslate);},
        Transform_backward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)));
 
-    }
+}
 
