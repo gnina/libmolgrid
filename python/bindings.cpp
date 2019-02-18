@@ -30,11 +30,18 @@ using namespace libmolgrid;
 /// indicate how MGrid shoudl be automatically converted in python bindings
 static bool python_gpu_enabled = true;
 
+
+//create a grid given the data ptr and dimensions
+template<typename GridType, std::size_t ... I>
+GridType grid_create(typename GridType::type *data, std::size_t *dims, std::index_sequence<I...>) {
+  return GridType(data, dims[I]...);
+}
+
 //given a python object, convert to appropriate grid type if possible
 //conversions will never copy the underlying grid memory - just retain
 //a pointer to it.  The API should not hold onto this pointer since
 //its lifetime is managed by python.
-template<class Grid_t>
+template<class Grid_t, bool HasNumpy>
 struct Grid_from_python {
 
     Grid_from_python() {
@@ -49,6 +56,21 @@ struct Grid_from_python {
       extract<typename Grid_t::managed_t> mgrid(obj_ptr);
       if (mgrid.check() && Grid_t::GPU == python_gpu_enabled) {
         return obj_ptr;
+      }
+      else if(HasNumpy && !Grid_t::GPU && PyArray_Check(obj_ptr)) {
+        //numpy array
+        auto array = (PyArrayObject*)obj_ptr;
+        int ndim = PyArray_NDIM(array);
+        if(Grid_t::N == ndim && PyArray_CHKFLAGS(array, NPY_ARRAY_CARRAY)) {
+          //check stride? I think CARRAY has stride 1
+          //right number of dimensions, check element type
+          auto typ = PyArray_TYPE(array);
+          if(typ == NPY_FLOAT && std::is_same<typename Grid_t::type,float>::value) {
+            return obj_ptr; //should be fine
+          } else if(typ == NPY_DOUBLE && std::is_same<typename Grid_t::type,double>::value) {
+            return obj_ptr;
+          }
+        }
       }
       return nullptr;
     }
@@ -65,6 +87,29 @@ struct Grid_from_python {
         void* storage = reinterpret_cast<storage_type*>(data)->storage.bytes;
         data->convertible = new (storage) Grid_t(g);
       }
+      else if(HasNumpy  && !Grid_t::GPU && PyArray_Check(obj_ptr)) {
+        //numpy array
+        auto array = (PyArrayObject*)obj_ptr;
+        int ndim = PyArray_NDIM(array);
+        if(Grid_t::N == ndim && PyArray_CHKFLAGS(array, NPY_ARRAY_CARRAY)) {
+          //check stride
+          //right number of dimensions, check element type
+          auto typ = PyArray_TYPE(array);
+          if( (typ == NPY_FLOAT && std::is_same<typename Grid_t::type,float>::value) ||
+              (typ == NPY_DOUBLE && std::is_same<typename Grid_t::type,double>::value)) {
+            size_t dims[ndim];
+            auto npdims = PyArray_DIMS(array);
+            for(int i = 0; i < ndim; i++) {
+              dims[i] = npdims[i];
+            }
+            typedef converter::rvalue_from_python_storage<Grid_t> storage_type;
+            void* storage = reinterpret_cast<storage_type*>(data)->storage.bytes;
+            data->convertible = new (storage) Grid_t( grid_create<Grid_t>((typename Grid_t::type*)PyArray_DATA(array),
+                (size_t*)dims,  std::make_index_sequence<Grid_t::N>()));
+          }
+        }
+      }
+
     }
 };
 
@@ -115,14 +160,18 @@ void add_grid_members(class_<GridType>& C) {
 
 //register definition for specified grid type
 template<class GridType, typename ... Types>
-void define_grid(const char* name) {
+void define_grid(const char* name, bool numpysupport) {
 
   class_<GridType> C(name, init<typename GridType::type*, Types...>());
   add_grid_members(C);
   //setters only for one dimension grids
   add_one_dim(C); //SFINAE!
 
-  Grid_from_python<GridType> convert; //register
+  if(numpysupport)
+    Grid_from_python<GridType, true> convert; //register
+  else
+    Grid_from_python<GridType, false> convert; //register
+
 }
 
 template<class GridType, typename ... Types>
@@ -139,10 +188,18 @@ void define_mgrid(const char* name) {
 BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(Transform_forward_overloads, Transform::forward, 2, 3)
 BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(Transform_backward_overloads, Transform::backward, 2, 3)
 
+//wrap import array since it includes are return
+bool init_numpy()
+{
+  import_array2("Could not import numpy", false);
+  return true;
+}
+
 
 BOOST_PYTHON_MODULE(molgrid)
 {
   Py_Initialize();
+  bool numpy_supported = init_numpy();
 
   def("set_random_seed", +[](long s) {random_engine.seed(s);}); //set random seed
   def("get_gpu_enabled", +[]()->bool {return python_gpu_enabled;},
@@ -153,7 +210,7 @@ BOOST_PYTHON_MODULE(molgrid)
 // Grids
 
 //Grid bindings
-#define DEFINE_GRID_TN(N, TYPE, NAME) define_grid<TYPE,NTYPES(N,unsigned)>(NAME);
+#define DEFINE_GRID_TN(N, TYPE, NAME) define_grid<TYPE,NTYPES(N,unsigned)>(NAME, numpy_supported);
 #define DEFINE_GRID(N, CUDA, T) \
 DEFINE_GRID_TN(N,Grid##N##T##CUDA, "Grid" #N #T #CUDA)
 

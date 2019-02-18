@@ -98,6 +98,21 @@ class Grid {
       }
     }
 
+    /** \brief Grid constructor
+     *
+     * Provide pointer and dimensions array specified as arguments. sizes must contain NumDims values.
+    */
+    Grid(Dtype *const d, size_t *sizes):
+      buffer(d) {
+      offs[NumDims-1] = 1;
+      #pragma unroll
+      for(int i = NumDims-1; i > 0; i--) {
+        dims[i] = sizes[i];
+        offs[i-1] = dims[i]*offs[i];
+      }
+      dims[0] = sizes[0];
+    }
+
     Grid(const Grid&) = default;
     ~Grid() = default;
 

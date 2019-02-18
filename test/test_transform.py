@@ -61,10 +61,12 @@ def test_random_transform():
   assert tup(c1) == tup(t.rotation_center())
   assert tup(c1) == tup(t.translation())
 
+
 def test_apply_transform():
     '''non-random transform'''
     from molgrid import Transform, Quaternion, float3, MGrid2f, Grid2f
     from math import sqrt
+    
     q = Quaternion(sqrt(0.5),0,0,sqrt(0.5)) # //z 90
     nr = Transform(q, float3(0,1,1), float3(2,0,-3))
 
@@ -82,7 +84,7 @@ def test_apply_transform():
   
     coords = MGrid2f(8,3)
     coords2 = MGrid2f(8,3)
-    
+
     for i in range(8):
         for j in range(3):
             coords[i][j] = coord_data[i][j]
@@ -105,3 +107,46 @@ def test_apply_transform():
     r.backward(coords2,coords2);
     for i in range(8):
         assert tup(coords[i]) == approx(tup(coords2[i]),abs=1e-5)
+        
+def test_numpy_apply_transform():
+    '''non-random transform'''
+    from molgrid import Transform, Quaternion, float3, MGrid2f, Grid2f
+    from math import sqrt
+    import numpy as np
+    
+    q = Quaternion(sqrt(0.5),0,0,sqrt(0.5)) # //z 90
+    nr = Transform(q, float3(0,1,1), float3(2,0,-3))
+
+    #random
+    r = Transform(float3(0,1,1), 10.0, True)
+
+    coord_data = [ [0,0,0],
+                   [1,0,0],
+                   [0,1,0],
+                   [0,0,1],
+                   [-1,.5,3],
+                   [1,1,1],
+                   [0,1,1],
+                   [.333,.75,-9] ]
+  
+    coords = np.array(coord_data,np.float32)
+    coords2 = np.zeros((8,3),np.float32)
+
+    #does nr perform as expected?
+    nr.forward(coords,coords2)
+
+    assert tup(coords2[6]) == (2,1,-2) #at center
+    assert tup(coords2[2]) == (2,1,-3) #on z-axis
+    assert tup(coords2[5]) == (2,2,-2)
+
+    #make sure input unchanged
+    assert tup(coords[7]) == approx((0.333,.75,-9),abs=1e-5)
+
+    # does random work both ways
+    r.forward(coords,coords2);
+    for i in range(8):
+        assert tup(coords[i]) != tup(coords2[i])
+        
+    r.backward(coords2,coords2);
+    for i in range(8):
+        assert tup(coords[i]) == approx(tup(coords2[i]),abs=1e-5)        

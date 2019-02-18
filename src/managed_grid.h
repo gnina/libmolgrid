@@ -75,6 +75,20 @@ class ManagedGridBase {
       return cpu_grid(indices...);
     }
 
+    /** \brief Copy data into dest.  Should be same size */
+    void copyTo(cpu_grid_t& dest) const {
+      tocpu();
+      size_t sz = std::min(size(), dest.size());
+      memcpy(dest.data(),cpu_grid.data(),sz*sizeof(Dtype));
+    }
+
+    /** \brief Copy data into dest.  Should be same size */
+    void copyTo(gpu_grid_t& dest) const {
+      togpu();
+      size_t sz = std::min(size(), dest.size());
+      cudaMemcpy(dest.data(),gpu_grid.data(),sz*sizeof(Dtype));
+    }
+
     /** \brief Return GPU Grid view.  Host code should not access the grid
      * until the GPU code is complete.
      */
