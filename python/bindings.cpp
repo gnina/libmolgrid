@@ -180,7 +180,12 @@ void define_mgrid(const char* name) {
   class_<GridType> C(name, init<Types...>());
   add_grid_members(C);
   C.def("cpu",static_cast<const typename GridType::cpu_grid_t& (GridType::*)() const>(&GridType::cpu), return_value_policy<copy_const_reference>())
-      .def("gpu",static_cast<const typename GridType::gpu_grid_t& (GridType::*)() const>(&GridType::gpu), return_value_policy<copy_const_reference>());
+      .def("gpu",static_cast<const typename GridType::gpu_grid_t& (GridType::*)() const>(&GridType::gpu), return_value_policy<copy_const_reference>())
+      .def("copyTo", static_cast<void (GridType::*)(typename GridType::cpu_grid_t&) const>(&GridType::copyTo))
+      .def("copyTo", static_cast<void (GridType::*)(typename GridType::gpu_grid_t&) const>(&GridType::copyTo))
+      .def("copyFrom", static_cast<void (GridType::*)(const typename GridType::cpu_grid_t&)>(&GridType::copyFrom))
+      .def("copyFrom", static_cast<void (GridType::*)(const typename GridType::gpu_grid_t&)>(&GridType::copyFrom))
+      ; //.def("copyFrom",&GridType::copyFrom);
   //setters only for one dimension grids
   add_one_dim(C); //SFINAE!
 }
