@@ -14,6 +14,20 @@ namespace libmolgrid {
 
 template<typename Dt, std::size_t ND> class ManagedGrid; //predeclare
 
+inline cudaMemcpyKind copyKind(bool srcCUDA, bool destCUDA) {
+  if (srcCUDA) {
+    if (destCUDA)
+      return cudaMemcpyDeviceToDevice;
+    else
+      return cudaMemcpyDeviceToHost;
+  } else { //source host
+    if (destCUDA)
+      return cudaMemcpyHostToDevice;
+    else
+      return cudaMemcpyHostToHost;
+  }
+}
+
 /**
  * \class Grid
  * A dense array of memory stored on the CPU.  The memory is owned
@@ -50,10 +64,13 @@ class Grid {
       assert(i < dim);
 #endif
     }
+
   public:
     using type = Dtype;
     using subgrid_t = Grid<Dtype,NumDims-1,isCUDA>;
     using managed_t = ManagedGrid<Dtype,NumDims>;
+    using cpu_grid_t = Grid<Dtype,NumDims,false>;
+    using gpu_grid_t = Grid<Dtype,NumDims,true>;
 
     static constexpr size_t N = NumDims;
     static constexpr bool GPU = isCUDA;
@@ -140,6 +157,28 @@ class Grid {
       return buffer[getPos(indices...)];
     }
 
+    /** \brief copy contents to dest
+     *
+     *  Sizes should be the same, but will narrow as necessary.  Will copy across device/host.
+     */
+    template<bool destCUDA>
+    void copyTo(Grid<Dtype,NumDims,destCUDA>& dest) const {
+      size_t sz = std::min(size(), dest.size());
+      cudaMemcpyKind kind = copyKind(isCUDA,destCUDA);
+      cudaMemcpy(dest.data(),data(),sz*sizeof(Dtype),kind);
+    }
+
+    /** \brief copy contents from src
+     *
+     *  Sizes should be the same, but will narrow as necessary.  Will copy across device/host.
+     */
+    template<bool srcCUDA>
+    void copyFrom(const Grid<Dtype,NumDims,srcCUDA>& src) {
+      size_t sz = std::min(size(), src.size());
+      cudaMemcpyKind kind = copyKind(srcCUDA,isCUDA);
+      cudaMemcpy(data(),src.data(),sz*sizeof(Dtype),kind);
+    }
+
     // constructor used by operator[]
     CUDA_CALLABLE_MEMBER
     explicit Grid(const Grid<Dtype,NumDims+1,isCUDA>& G, size_t i): buffer(&G.data()[i*G.offset(0)]) {
@@ -172,6 +211,8 @@ class Grid<Dtype,1,isCUDA> {
     using type = Dtype;
     using subgrid_t = Dtype;
     using managed_t = ManagedGrid<Dtype,1>;
+    using cpu_grid_t = Grid<Dtype,1,false>;
+    using gpu_grid_t = Grid<Dtype,1,true>;
 
     static constexpr size_t N = 1;
     static constexpr bool GPU = isCUDA;
@@ -216,6 +257,21 @@ class Grid<Dtype,1,isCUDA> {
     explicit Grid<Dtype,1,isCUDA>(const Grid<Dtype,2,isCUDA>& G, size_t i):
       buffer(&G.data()[i*G.offset(0)]), dims{G.dimension(1)} {}
 
+
+    template<bool destCUDA>
+    void copyTo(Grid<Dtype,1,destCUDA>& dest) const {
+      size_t sz = std::min(size(), dest.size());
+      cudaMemcpyKind kind = copyKind(isCUDA,destCUDA);
+      cudaMemcpy(dest.data(),data(),sz*sizeof(Dtype),kind);
+    }
+
+    template<bool srcCUDA>
+    void copyFrom(const Grid<Dtype,1,srcCUDA>& src) {
+      size_t sz = std::min(size(), src.size());
+      cudaMemcpyKind kind = copyKind(srcCUDA,isCUDA);
+      cudaMemcpy(data(),src.data(),sz*sizeof(Dtype),kind);
+    }
+
 };
 
 #define EXPAND_GRID_DEFINITIONS(SIZE) \
@@ -231,6 +287,8 @@ EXPAND_GRID_DEFINITIONS(3)
 EXPAND_GRID_DEFINITIONS(4)
 EXPAND_GRID_DEFINITIONS(5)
 EXPAND_GRID_DEFINITIONS(6)
+EXPAND_GRID_DEFINITIONS(7)
+EXPAND_GRID_DEFINITIONS(8)
 
 }
 

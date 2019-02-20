@@ -165,7 +165,15 @@ void add_grid_members(class_<GridType>& C) {
       .def("__getitem__",
           +[](GridType& g, tuple t) -> typename GridType::type {return grid_get(g, t, std::make_index_sequence<GridType::N>());})
       .def("__setitem__",
-          +[](GridType& g, tuple t, typename GridType::type val) {grid_get(g, t, std::make_index_sequence<GridType::N>()) = val;});
+          +[](GridType& g, tuple t, typename GridType::type val) {grid_get(g, t, std::make_index_sequence<GridType::N>()) = val;})
+       // if arguments passed by non-const reference, have to pass grid by value to get bindings to work
+      .def("copyTo", +[](const GridType& self, typename GridType::cpu_grid_t dest) { self.copyTo(dest);})
+      .def("copyTo", +[](const GridType& self, typename GridType::gpu_grid_t dest) { self.copyTo(dest);})
+      .def("copyFrom", static_cast<void (GridType::*)(const typename GridType::cpu_grid_t&)>(&GridType::copyFrom))
+      .def("copyFrom", static_cast<void (GridType::*)(const typename GridType::gpu_grid_t&)>(&GridType::copyFrom))
+      .def("type", +[](const GridType& g){
+              return std::is_same<typename GridType::type,float>::value ? "float32" : std::is_same<typename GridType::type,double>::value  ? "float64" : "unknown";});
+
 }
 
 //register definition for specified grid type
@@ -191,11 +199,7 @@ void define_mgrid(const char* name) {
   add_grid_members(C);
   C.def("cpu",static_cast<const typename GridType::cpu_grid_t& (GridType::*)() const>(&GridType::cpu), return_value_policy<copy_const_reference>())
       .def("gpu",static_cast<const typename GridType::gpu_grid_t& (GridType::*)() const>(&GridType::gpu), return_value_policy<copy_const_reference>())
-      .def("copyTo", static_cast<void (GridType::*)(typename GridType::cpu_grid_t&) const>(&GridType::copyTo))
-      .def("copyTo", static_cast<void (GridType::*)(typename GridType::gpu_grid_t&) const>(&GridType::copyTo))
-      .def("copyFrom", static_cast<void (GridType::*)(const typename GridType::cpu_grid_t&)>(&GridType::copyFrom))
-      .def("copyFrom", static_cast<void (GridType::*)(const typename GridType::gpu_grid_t&)>(&GridType::copyFrom))
-      ; //.def("copyFrom",&GridType::copyFrom);
+      ;
   //setters only for one dimension grids
   add_one_dim(C); //SFINAE!
 }
@@ -246,7 +250,7 @@ DEFINE_GRID(N, ,d) \
 DEFINE_MGRID(N,f) \
 DEFINE_MGRID(N,d)
 
-  BOOST_PP_REPEAT_FROM_TO(1,7, DEFINE_GRIDS, 0);
+  BOOST_PP_REPEAT_FROM_TO(1,9, DEFINE_GRIDS, 0);
 
 //vector utility types
   class_<std::vector<size_t> >("SizeVec")

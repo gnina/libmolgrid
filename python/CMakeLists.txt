@@ -25,7 +25,7 @@ set( PYMOLGRID_SOURCES
 
 set( PYMOLGRID_PY
  __init__.py
- torch.py
+ torch_bindings.py
 )
 
 # create the lib
@@ -40,7 +40,10 @@ set_target_properties(molgrid PROPERTIES
 target_link_libraries(molgrid ${Boost_LIBRARIES} ${CUDA_LIBRARIES} libmolgrid_shared)
 
 # copy module code
-file(COPY ${PYMOLGRID_PY} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/molgrid/)
+foreach(file ${PYMOLGRID_PY})
+ configure_file(${file}  ${CMAKE_CURRENT_BINARY_DIR}/molgrid/)
+endforeach()
+
 # Copy the __init__.py file
 configure_file(setup.py ${CMAKE_CURRENT_BINARY_DIR}/setup.py)
 
