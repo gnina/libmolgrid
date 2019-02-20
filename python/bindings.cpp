@@ -113,6 +113,16 @@ struct Grid_from_python {
     }
 };
 
+//wrapper for float* since it isn't a native python type
+template <typename T>
+struct Pointer {
+    T *ptr;
+
+    Pointer(T *p): ptr(p) {}
+
+    operator T*() const { return ptr; }
+};
+
 
 template<typename GridType,
     typename std::enable_if<
@@ -162,7 +172,7 @@ void add_grid_members(class_<GridType>& C) {
 template<class GridType, typename ... Types>
 void define_grid(const char* name, bool numpysupport) {
 
-  class_<GridType> C(name, init<typename GridType::type*, Types...>());
+  class_<GridType> C(name, init< Pointer<typename GridType::type>, Types...>());
   add_grid_members(C);
   //setters only for one dimension grids
   add_one_dim(C); //SFINAE!
@@ -201,6 +211,7 @@ bool init_numpy()
 }
 
 
+
 BOOST_PYTHON_MODULE(molgrid)
 {
   Py_Initialize();
@@ -211,6 +222,8 @@ BOOST_PYTHON_MODULE(molgrid)
       "Get if generated grids are on GPU by default.");
   def("set_gpu_enabled", +[](bool val) {python_gpu_enabled = val;},
       "Set if generated grids should be on GPU by default.");
+  def("tofloatptr", +[](long val) { return Pointer<float>((float*)val);}, "Return integer as float *");
+  def("todoubleptr", +[](long val) { return Pointer<double>((double*)val);}, "Return integer as double *");
 
 // Grids
 
@@ -238,6 +251,9 @@ DEFINE_MGRID(N,d)
 //vector utility types
   class_<std::vector<size_t> >("SizeVec")
       .def(vector_indexing_suite<std::vector<size_t> >());
+
+  class_<Pointer<float> >("FloatPtr", no_init);
+  class_<Pointer<double> >("DoublePtr", no_init);
 
   class_<float3>("float3", no_init)
       .def("__init__",

@@ -23,6 +23,11 @@ set( PYMOLGRID_SOURCES
  bindings.cpp
 )
 
+set( PYMOLGRID_PY
+ __init__.py
+ torch.py
+)
+
 # create the lib
 add_library(molgrid SHARED ${PYMOLGRID_SOURCES})
 
@@ -34,9 +39,10 @@ set_target_properties(molgrid PROPERTIES
 # link
 target_link_libraries(molgrid ${Boost_LIBRARIES} ${CUDA_LIBRARIES} libmolgrid_shared)
 
+# copy module code
+file(COPY ${PYMOLGRID_PY} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/molgrid/)
 # Copy the __init__.py file
-configure_file(__init__.py ${CMAKE_CURRENT_BINARY_DIR}/molgrid/__init__.py)
-configure_file(setup.py ${CMAKE_CURRENT_BINARY_DIR}/molgrid/setup.py)
+configure_file(setup.py ${CMAKE_CURRENT_BINARY_DIR}/setup.py)
 
 #TODO: figure out reasonable install, also how to build both python2 and python3
-#install(TARGETS molgrid __init__.py DESTINATION "${PYTHON_INSTALL_PATH}")
+install(CODE "execute_process(COMMAND ${PYTHON_EXECUTABLE} ${SETUP_PY} install)")
