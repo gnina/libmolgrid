@@ -52,12 +52,69 @@ struct Grid_from_python {
           type_id<Grid_t>());
     }
 
+    static bool hasattr(object o, const char* name) {
+            return PyObject_HasAttrString(o.ptr(), name);
+    }
+
+    struct pytorch_info {
+        //store information extracted from pytorch tensor
+        void *dataptr;
+        vector<size_t> shape;
+        bool isdouble;
+        bool isGPU;
+
+        pytorch_info(): dataptr(nullptr), isdouble(false), isGPU(false) {}
+    };
+    //return non-NULL pointer to data and fill out metadata if obj_ptr is torch tensor
+    static void* is_torch_tensor(PyObject *obj_ptr, std::vector<size_t>& shape, bool& isdouble, bool& isGPU) {
+      handle<> handle(borrowed(obj_ptr));
+      object t(handle);
+      //basically duck typing
+      if(hasattr(t,"data_ptr") && hasattr(t,"shape") && hasattr(t,"type")) {
+        long ptrval = extract<long>(t.attr("data_ptr")());
+        std::string typ = extract<std::string>(t.attr("type")());
+        auto s = tuple(t.attr("shape"));
+        unsigned ndim = len(s);
+        shape.clear(); shape.reserve(ndim);
+        for(unsigned i = 0; i < ndim; i++) {
+          shape.push_back(extract<size_t>(s[i]));
+        }
+
+        if(typ == "torch.FloatTensor") {
+          isGPU = false;
+          isdouble = false;
+        } else if(typ == "torch.DoubleTensor") {
+          isGPU = false;
+          isdouble = true;
+        } else if(typ == "torch.cuda.FloatTensor") {
+          isGPU = true;
+          isdouble = false;
+        } else if(typ == "torch.cuda.DoubleTensor") {
+          isGPU = true;
+          isdouble = true;
+        } else {
+          return nullptr; //don't recognize
+        }
+        return (void*)ptrval;
+      }
+      return nullptr;
+    }
     static void* convertible(PyObject *obj_ptr) {
+      std::vector<size_t> shape;
+      bool isdouble = false, isGPU = false;
+
       extract<typename Grid_t::managed_t> mgrid(obj_ptr);
       if (mgrid.check() && Grid_t::GPU == python_gpu_enabled) {
         return obj_ptr;
       }
-      else if(HasNumpy && !Grid_t::GPU && PyArray_Check(obj_ptr)) {
+      else if(is_torch_tensor(obj_ptr, shape, isdouble, isGPU)) {
+        //check correct types
+        if(Grid_t::N == shape.size() && Grid_t::GPU == isGPU &&
+            std::is_same<typename Grid_t::type,double>::value == isdouble) {
+          //todo: save unpacked info
+          return obj_ptr;
+        }
+      } else if(HasNumpy && !Grid_t::GPU && PyArray_Check(obj_ptr)) {
         //numpy array
         auto array = (PyArrayObject*)obj_ptr;
         int ndim = PyArray_NDIM(array);
@@ -78,6 +135,10 @@ struct Grid_from_python {
     static void construct(PyObject* obj_ptr,
         boost::python::converter::rvalue_from_python_stage1_data* data) {
 
+      std::vector<size_t> shape;
+      bool isdouble = false, isGPU = false;
+      void *dataptr = nullptr;
+
       extract<typename Grid_t::managed_t> mgrid(obj_ptr);
       if (mgrid.check()) {
         // Obtain a handle to the memory block that the converter has allocated
@@ -86,8 +147,16 @@ struct Grid_from_python {
         typedef converter::rvalue_from_python_storage<Grid_t> storage_type;
         void* storage = reinterpret_cast<storage_type*>(data)->storage.bytes;
         data->convertible = new (storage) Grid_t(g);
-      }
-      else if(HasNumpy  && !Grid_t::GPU && PyArray_Check(obj_ptr)) {
+      } else if((dataptr = is_torch_tensor(obj_ptr, shape, isdouble, isGPU))) {
+        if(Grid_t::N == shape.size() && Grid_t::GPU == isGPU &&
+            std::is_same<typename Grid_t::type,double>::value == isdouble) {
+          //create grid from tensor data
+          typedef converter::rvalue_from_python_storage<Grid_t> storage_type;
+          void* storage = reinterpret_cast<storage_type*>(data)->storage.bytes;
+          data->convertible = new (storage) Grid_t( grid_create<Grid_t>((typename Grid_t::type*)dataptr,
+              &shape[0],  std::make_index_sequence<Grid_t::N>()));
+        }
+      } else if(HasNumpy  && !Grid_t::GPU && PyArray_Check(obj_ptr)) {
         //numpy array
         auto array = (PyArrayObject*)obj_ptr;
         int ndim = PyArray_NDIM(array);
