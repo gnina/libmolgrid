@@ -7,9 +7,13 @@
 #define GRID_H_
 
 #include <boost/multi_array.hpp>
+#include <boost/preprocessor/repetition.hpp>
 #include <cassert>
 #include "common.h"
 #include <iostream>
+
+#include "libmolgrid.h"
+
 namespace libmolgrid {
 
 template<typename Dt, std::size_t ND> class ManagedGrid; //predeclare
@@ -274,21 +278,13 @@ class Grid<Dtype,1,isCUDA> {
 
 };
 
-#define EXPAND_GRID_DEFINITIONS(SIZE) \
+#define EXPAND_GRID_DEFINITIONS(Z,SIZE,_) \
 typedef Grid<float, SIZE, false> Grid##SIZE##f; \
 typedef Grid<double, SIZE, false> Grid##SIZE##d; \
 typedef Grid<float, SIZE, true> Grid##SIZE##fCUDA; \
 typedef Grid<double, SIZE, true> Grid##SIZE##dCUDA;
 
-
-EXPAND_GRID_DEFINITIONS(1)
-EXPAND_GRID_DEFINITIONS(2)
-EXPAND_GRID_DEFINITIONS(3)
-EXPAND_GRID_DEFINITIONS(4)
-EXPAND_GRID_DEFINITIONS(5)
-EXPAND_GRID_DEFINITIONS(6)
-EXPAND_GRID_DEFINITIONS(7)
-EXPAND_GRID_DEFINITIONS(8)
+BOOST_PP_REPEAT_FROM_TO(1,LIBMOLGRID_MAX_GRID_DIM, EXPAND_GRID_DEFINITIONS, 0);
 
 }
 

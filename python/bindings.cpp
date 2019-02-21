@@ -56,76 +56,96 @@ struct Grid_from_python {
             return PyObject_HasAttrString(o.ptr(), name);
     }
 
-    struct pytorch_info {
-        //store information extracted from pytorch tensor
+    struct tensor_info {
+        //store information extracted from passed type
         void *dataptr;
-        vector<size_t> shape;
+        size_t shape[LIBMOLGRID_MAX_GRID_DIM];
+        size_t ndim;
         bool isdouble;
         bool isGPU;
 
-        pytorch_info(): dataptr(nullptr), isdouble(false), isGPU(false) {}
+        tensor_info(): dataptr(nullptr), shape{0,}, ndim(0), isdouble(false), isGPU(false) {}
     };
     //return non-NULL pointer to data and fill out metadata if obj_ptr is torch tensor
-    static void* is_torch_tensor(PyObject *obj_ptr, std::vector<size_t>& shape, bool& isdouble, bool& isGPU) {
+    static bool is_torch_tensor(PyObject *obj_ptr, tensor_info& info) {
       handle<> handle(borrowed(obj_ptr));
       object t(handle);
       //basically duck typing
       if(hasattr(t,"data_ptr") && hasattr(t,"shape") && hasattr(t,"type")) {
         long ptrval = extract<long>(t.attr("data_ptr")());
+        info.dataptr = (void*)ptrval;
         std::string typ = extract<std::string>(t.attr("type")());
         auto s = tuple(t.attr("shape"));
-        unsigned ndim = len(s);
-        shape.clear(); shape.reserve(ndim);
-        for(unsigned i = 0; i < ndim; i++) {
-          shape.push_back(extract<size_t>(s[i]));
+        info.ndim = len(s);
+        for(unsigned i = 0; i < info.ndim; i++) {
+          info.shape[i] = extract<size_t>(s[i]);
         }
 
         if(typ == "torch.FloatTensor") {
-          isGPU = false;
-          isdouble = false;
+          info.isGPU = false;
+          info.isdouble = false;
         } else if(typ == "torch.DoubleTensor") {
-          isGPU = false;
-          isdouble = true;
+          info.isGPU = false;
+          info.isdouble = true;
         } else if(typ == "torch.cuda.FloatTensor") {
-          isGPU = true;
-          isdouble = false;
+          info.isGPU = true;
+          info.isdouble = false;
         } else if(typ == "torch.cuda.DoubleTensor") {
-          isGPU = true;
-          isdouble = true;
+          info.isGPU = true;
+          info.isdouble = true;
         } else {
-          return nullptr; //don't recognize
+          return false; //don't recognize
         }
-        return (void*)ptrval;
+        return true;
       }
-      return nullptr;
+      return false;
     }
+
+    //return heap allocated tensor_info struct if can convert with all the info
     static void* convertible(PyObject *obj_ptr) {
-      std::vector<size_t> shape;
-      bool isdouble = false, isGPU = false;
+      tensor_info info;
 
       extract<typename Grid_t::managed_t> mgrid(obj_ptr);
       if (mgrid.check() && Grid_t::GPU == python_gpu_enabled) {
-        return obj_ptr;
+        Grid_t g = mgrid();
+        info.dataptr = g.data();
+        info.ndim = Grid_t::N;
+        info.isdouble = std::is_same<typename Grid_t::type,double>::value;
+        info.isGPU = Grid_t::GPU;
+
+        for(unsigned i = 0; i < info.ndim; i++) {
+          info.shape[i] = g.dimension(i);
+        }
+        return new tensor_info(info);
       }
-      else if(is_torch_tensor(obj_ptr, shape, isdouble, isGPU)) {
+      else if(is_torch_tensor(obj_ptr, info)) {
         //check correct types
-        if(Grid_t::N == shape.size() && Grid_t::GPU == isGPU &&
-            std::is_same<typename Grid_t::type,double>::value == isdouble) {
-          //todo: save unpacked info
-          return obj_ptr;
+        if(Grid_t::N == info.ndim && Grid_t::GPU == info.isGPU &&
+            std::is_same<typename Grid_t::type,double>::value == info.isdouble) {
+          return new tensor_info(info);
         }
       } else if(HasNumpy && !Grid_t::GPU && PyArray_Check(obj_ptr)) {
         //numpy array
         auto array = (PyArrayObject*)obj_ptr;
-        int ndim = PyArray_NDIM(array);
-        if(Grid_t::N == ndim && PyArray_CHKFLAGS(array, NPY_ARRAY_CARRAY)) {
+        info.ndim = PyArray_NDIM(array);
+        if(Grid_t::N == info.ndim && PyArray_CHKFLAGS(array, NPY_ARRAY_CARRAY)) {
           //check stride? I think CARRAY has stride 1
           //right number of dimensions, check element type
           auto typ = PyArray_TYPE(array);
+
+          info.dataptr = PyArray_DATA(array);
+          info.isdouble = (typ == NPY_DOUBLE);
+          info.isGPU = false; //numpy always cpu
+
+          auto npdims = PyArray_DIMS(array);
+          for(unsigned i = 0; i < info.ndim; i++) {
+            info.shape[i] = npdims[i];
+          }
+
           if(typ == NPY_FLOAT && std::is_same<typename Grid_t::type,float>::value) {
-            return obj_ptr; //should be fine
+            return new tensor_info(info); //should be fine
           } else if(typ == NPY_DOUBLE && std::is_same<typename Grid_t::type,double>::value) {
-            return obj_ptr;
+            return new tensor_info(info);
           }
         }
       }
@@ -135,50 +155,19 @@ struct Grid_from_python {
     static void construct(PyObject* obj_ptr,
         boost::python::converter::rvalue_from_python_stage1_data* data) {
 
-      std::vector<size_t> shape;
-      bool isdouble = false, isGPU = false;
-      void *dataptr = nullptr;
+      tensor_info info;
 
-      extract<typename Grid_t::managed_t> mgrid(obj_ptr);
-      if (mgrid.check()) {
-        // Obtain a handle to the memory block that the converter has allocated
-        // for the C++ type.
-        Grid_t g = mgrid();
+      if(data->convertible) { //set to the return vale of convertible
+        tensor_info *infop = (tensor_info*)data->convertible;
+
+        //create grid from tensor data
         typedef converter::rvalue_from_python_storage<Grid_t> storage_type;
         void* storage = reinterpret_cast<storage_type*>(data)->storage.bytes;
-        data->convertible = new (storage) Grid_t(g);
-      } else if((dataptr = is_torch_tensor(obj_ptr, shape, isdouble, isGPU))) {
-        if(Grid_t::N == shape.size() && Grid_t::GPU == isGPU &&
-            std::is_same<typename Grid_t::type,double>::value == isdouble) {
-          //create grid from tensor data
-          typedef converter::rvalue_from_python_storage<Grid_t> storage_type;
-          void* storage = reinterpret_cast<storage_type*>(data)->storage.bytes;
-          data->convertible = new (storage) Grid_t( grid_create<Grid_t>((typename Grid_t::type*)dataptr,
-              &shape[0],  std::make_index_sequence<Grid_t::N>()));
-        }
-      } else if(HasNumpy  && !Grid_t::GPU && PyArray_Check(obj_ptr)) {
-        //numpy array
-        auto array = (PyArrayObject*)obj_ptr;
-        int ndim = PyArray_NDIM(array);
-        if(Grid_t::N == ndim && PyArray_CHKFLAGS(array, NPY_ARRAY_CARRAY)) {
-          //check stride
-          //right number of dimensions, check element type
-          auto typ = PyArray_TYPE(array);
-          if( (typ == NPY_FLOAT && std::is_same<typename Grid_t::type,float>::value) ||
-              (typ == NPY_DOUBLE && std::is_same<typename Grid_t::type,double>::value)) {
-            size_t dims[ndim];
-            auto npdims = PyArray_DIMS(array);
-            for(int i = 0; i < ndim; i++) {
-              dims[i] = npdims[i];
-            }
-            typedef converter::rvalue_from_python_storage<Grid_t> storage_type;
-            void* storage = reinterpret_cast<storage_type*>(data)->storage.bytes;
-            data->convertible = new (storage) Grid_t( grid_create<Grid_t>((typename Grid_t::type*)PyArray_DATA(array),
-                (size_t*)dims,  std::make_index_sequence<Grid_t::N>()));
-          }
-        }
-      }
+        data->convertible = new (storage) Grid_t( grid_create<Grid_t>((typename Grid_t::type*)infop->dataptr,
+            &infop->shape[0],  std::make_index_sequence<Grid_t::N>()));
 
+        delete infop;
+      }
     }
 };
 
@@ -319,7 +308,7 @@ DEFINE_GRID(N, ,d) \
 DEFINE_MGRID(N,f) \
 DEFINE_MGRID(N,d)
 
-  BOOST_PP_REPEAT_FROM_TO(1,9, DEFINE_GRIDS, 0);
+  BOOST_PP_REPEAT_FROM_TO(1,LIBMOLGRID_MAX_GRID_DIM, DEFINE_GRIDS, 0);
 
 //vector utility types
   class_<std::vector<size_t> >("SizeVec")
