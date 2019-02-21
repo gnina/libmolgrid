@@ -18,8 +18,8 @@ def test_mgrid_copyto_tensor():
     t2 = torch.FloatTensor(3,4)
     t3 = torch.DoubleTensor(3,4,2)
     
-    mg2.copyTo(tensor_as_grid(t2))
-    mg3.copyTo(tensor_as_grid(t3))
+    mg2.copyTo(t2)
+    mg3.copyTo(t3)
 
     for i in range(3):
         for j in range(4):
@@ -40,8 +40,8 @@ def test_mgrid_copyto_tensor_cuda():
     t2 = torch.cuda.FloatTensor(3,4)
     t3 = torch.cuda.DoubleTensor(3,4,2)
     
-    mg2.copyTo(tensor_as_grid(t2))
-    mg3.copyTo(tensor_as_grid(t3))
+    mg2.copyTo(t2)
+    mg3.copyTo(t3)
 
     for i in range(3):
         for j in range(4):
@@ -63,8 +63,8 @@ def test_mgrid_copyfrom_tensor():
                 
 
     
-    mg2.copyFrom(tensor_as_grid(t2))
-    mg3.copyFrom(tensor_as_grid(t3))
+    mg2.copyFrom(t2)
+    mg3.copyFrom(t3)
 
     for i in range(3):
         for j in range(4):
@@ -85,8 +85,8 @@ def test_mgrid_copyfrom_tensor_cuda():
             for k in range(2):
                 t3[i,j,k] = i*j+1+k            
     
-    mg2.copyFrom(tensor_as_grid(t2))
-    mg3.copyFrom(tensor_as_grid(t3))
+    mg2.copyFrom(t2)
+    mg3.copyFrom(t3)
 
     for i in range(3):
         for j in range(4):
