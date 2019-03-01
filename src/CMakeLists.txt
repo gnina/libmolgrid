@@ -1,6 +1,7 @@
 
 set( LIBMOLGRID_SOURCES
  libmolgrid.cpp
+ atom_typer.cpp
  transform.cpp
  transform.cu
 )
@@ -12,7 +13,12 @@ set( LIBMOLGRID_HEADERS
  quaternion.h
  transform.h
  cartesian.h
+ atom_typer.h
 )
+
+find_package(OpenBabel2 REQUIRED)
+include_directories(${OpenBabel2_INCLUDE_DIRS})
+include_directories("FOFOFOFOFO")
 
 add_library(libmolgrid_shared SHARED ${LIBMOLGRID_HEADERS} ${LIBMOLGRID_SOURCES})
 SET_TARGET_PROPERTIES(libmolgrid_shared PROPERTIES OUTPUT_NAME molgrid CUDA_SEPARABLE_COMPILATION ON)
@@ -20,6 +26,8 @@ SET_TARGET_PROPERTIES(libmolgrid_shared PROPERTIES OUTPUT_NAME molgrid CUDA_SEPA
 add_library(libmolgrid_static STATIC ${LIBMOLGRID_HEADERS} ${LIBMOLGRID_SOURCES})
 SET_TARGET_PROPERTIES(libmolgrid_static PROPERTIES OUTPUT_NAME molgrid CUDA_SEPARABLE_COMPILATION ON)
 
+target_link_libraries(libmolgrid_shared ${OPENBABEL2_LIBRARIES})
+target_link_libraries(libmolgrid_static ${OPENBABEL2_LIBRARIES})
 
 #install libs
 install(TARGETS libmolgrid_shared DESTINATION lib)
