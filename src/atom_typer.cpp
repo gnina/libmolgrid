@@ -9,6 +9,7 @@
 
 #include <atom_typer.h>
 #include <openbabel/obiter.h>
+#include <boost/algorithm/string.hpp>
 
 using namespace OpenBabel;
 using namespace std;
@@ -17,187 +18,390 @@ namespace libmolgrid {
 
 /**************  GninaIndexTyper  ********************/
 
+const GninaIndexTyper::info GninaIndexTyper::default_data[GninaIndexTyper::NumTypes] = { //el, ad, xs
+    { Hydrogen,"Hydrogen", "H", 1, 1.000000, 0.020000, 0.000510, 0.000000, 0.370000, 0.37, false, false, false, false},
+    { PolarHydrogen, "PolarHydrogen", "HD", 1, 1.000000, 0.020000, 0.000510, 0.000000, 0.370000, 0.370000, false, false, false, false},
+    //note we typically use the xs_radius, which assumes a heavy atom-only model
+    { AliphaticCarbonXSHydrophobe, "AliphaticCarbonXSHydrophobe", "C", 6, 2.000000, 0.150000, -0.001430, 33.510300, 0.770000, 1.900000, true, false, false, false},
+    { AliphaticCarbonXSNonHydrophobe, "AliphaticCarbonXSNonHydrophobe", "C", 6, 2.000000, 0.150000, -0.001430, 33.510300, 0.770000, 1.900000, false, false, false, false},
+    { AromaticCarbonXSHydrophobe, "AromaticCarbonXSHydrophobe", "A", 6, 2.000000, 0.150000, -0.000520, 33.510300, 0.770000, 1.900000, true, false, false, false},
+    { AromaticCarbonXSNonHydrophobe, "AromaticCarbonXSNonHydrophobe", "A", 6, 2.000000, 0.150000, -0.000520, 33.510300, 0.770000, 1.900000, false, false, false, false},
+    { Nitrogen, "Nitrogen", "N", 7, 1.750000, 0.160000, -0.001620, 22.449300, 0.750000, 1.800000, false, false, false, true},
+    { NitrogenXSDonor, "NitrogenXSDonor", "N", 7, 1.750000, 0.160000, -0.001620, 22.449300, 0.750000, 1.800000, false, true, false, true},
+    { NitrogenXSDonorAcceptor, "NitrogenXSDonorAcceptor", "NA", 7, 1.750000, 0.160000, -0.001620, 22.449300, 0.750000, 1.800000, false, true, true, true},
+    { NitrogenXSAcceptor, "NitrogenXSAcceptor", "NA", 7, 1.750000, 0.160000, -0.001620, 22.449300, 0.750000, 1.800000, false, false, true, true},
+    { Oxygen, "Oxygen", "O", 8, 1.600000, 0.200000, -0.002510, 17.157300, 0.730000, 1.700000, false, false, false, true},
+    { OxygenXSDonor, "OxygenXSDonor", "O", 8, 1.600000, 0.200000, -0.002510, 17.157300, 0.730000, 1.700000, false, true, false, true},
+    { OxygenXSDonorAcceptor, "OxygenXSDonorAcceptor", "OA", 8, 1.600000, 0.200000, -0.002510, 17.157300, 0.730000, 1.700000, false, true, true, true},
+    { OxygenXSAcceptor, "OxygenXSAcceptor", "OA", 8, 1.600000, 0.200000, -0.002510, 17.157300, 0.730000, 1.700000, false, false, true, true},
+    { Sulfur, "Sulfur", "S", 16, 2.000000, 0.200000, -0.002140, 33.510300, 1.020000, 2.000000, false, false, false, true},
+    { SulfurAcceptor, "SulfurAcceptor", "SA", 16, 2.000000, 0.200000, -0.002140, 33.510300, 1.020000, 2.000000, false, false, false, true},
+    { Phosphorus, "Phosphorus", "P", 15, 2.100000, 0.200000, -0.001100, 38.792400, 1.060000, 2.100000, false, false, false, true},
+    { Fluorine, "Fluorine", "F", 9, 1.545000, 0.080000, -0.001100, 15.448000, 0.710000, 1.500000, true, false, false, true},
+    { Chlorine, "Chlorine", "Cl", 17, 2.045000, 0.276000, -0.001100, 35.823500, 0.990000, 1.800000, true, false, false, true},
+    { Bromine, "Bromine", "Br", 35, 2.165000, 0.389000, -0.001100, 42.566100, 1.140000, 2.000000, true, false, false, true},
+    { Iodine, "Iodine", "I", 53, 2.360000, 0.550000, -0.001100, 55.058500, 1.330000, 2.200000, true, false, false, true},
+    { Magnesium, "Magnesium", "Mg", 12, 0.650000, 0.875000, -0.001100, 1.560000, 1.300000, 1.200000, false, true, false, true},
+    { Manganese, "Manganese", "Mn", 25, 0.650000, 0.875000, -0.001100, 2.140000, 1.390000, 1.200000, false, true, false, true},
+    { Zinc, "Zinc", "Zn", 30, 0.740000, 0.550000, -0.001100, 1.700000, 1.310000, 1.200000, false, true, false, true},
+    { Calcium, "Calcium", "Ca", 20, 0.990000, 0.550000, -0.001100, 2.770000, 1.740000, 1.200000, false, true, false, true},
+    { Iron, "Iron", "Fe", 26, 0.650000, 0.010000, -0.001100, 1.840000, 1.250000, 1.200000, false, true, false, true},
+    { GenericMetal, "GenericMetal", "M", 0, 1.200000, 0.000000, -0.001100, 22.449300, 1.750000, 1.200000, false, true, false, true},
+    //note AD4 doesn't have boron, so copying from carbon
+    { Boron, "Boron", "B", 5, 2.04, 0.180000, -0.0011, 12.052, 0.90, 1.920000, true, false, false, false}
+};
+
 /// return number of types
 unsigned GninaIndexTyper::num_types() const {
   return NumTypes;
 }
 
-///return type index of a
+
+///return type index and radius of a
 std::pair<int,float> GninaIndexTyper::get_type(OpenBabel::OBAtom& a) const {
 
-  bool hbonded = false;
+  //this function is more convoluted than it needs to be for historical reasons
+  //and a general fear of breaking backwards compatibility
+  bool Hbonded = false;
   bool heteroBonded = false;
 
 
   FOR_NBORS_OF_ATOM(neigh, a){
     if (neigh->GetAtomicNum() == 1)
-      hbonded = true;
+      Hbonded = true;
     else if (neigh->GetAtomicNum() != 6)
       heteroBonded = true; //hetero anything that is not hydrogen and not carbon
   }
 
-  int ret = -1;
-  switch (a.GetAtomicNum()) {
-  case 1: //H
-    ret = a.IsPolarHydrogen() ? PolarHydrogen : Hydrogen;
+  const char *element_name = OpenBabel::OBElements::GetSymbol(a.GetAtomicNum());
+  std::string ename(element_name);
+
+  //massage the element name in some cases
+  switch(a.GetAtomicNum()) {
+  case 1:
+    ename =  a.IsPolarHydrogen() ? "HD" : "H";
     break;
-  case 5: //B(oron)
-    ret = Boron;
+  case 6:
+    if(a.IsAromatic()) ename = "A";
     break;
-  case 6: //C
-    if (a.IsAromatic()) {
-      ret =
-          heteroBonded ?
-                         AromaticCarbonXSNonHydrophobe :
-                         AromaticCarbonXSHydrophobe;
-    } else { //aliphatic
-      ret =
-          heteroBonded ?
-                         AliphaticCarbonXSNonHydrophobe :
-                         AliphaticCarbonXSHydrophobe;
-    }
+  case 7:
+    if(a.IsHbondAcceptor()) ename = "NA";
     break;
-  case 7: //N
-    if (a.IsHbondAcceptor()) {
-      ret = hbonded ? NitrogenXSDonorAcceptor : NitrogenXSAcceptor;
-    } else {
-      ret = hbonded ? NitrogenXSDonor : Nitrogen;
-    }
+  case 8:
+    ename = "OA";
     break;
-  case 8: //O
-    if (a.IsHbondAcceptor()) {
-      ret = hbonded ? OxygenXSDonorAcceptor : OxygenXSAcceptor;
-    } else {
-      ret = hbonded ? OxygenXSDonor : Oxygen;
-    }
+  case 16:
+    if(a.IsHbondAcceptor()) ename = "SA";
     break;
-  case 9: //F
-    ret = Fluorine;
+  case 34:
+    ename = "S"; //historically selenium is treated as sulfur  ¯\_(ツ)_/¯
     break;
-  case 12: //Mg
-    ret = Magnesium;
-    break;
-  case 15: //P
-    ret = Phosphorus;
-    break;
-  case 16: //S
-    ret = a.IsHbondAcceptor() ? SulfurAcceptor : Sulfur;
-    break;
-  case 17: //Cl
-    ret = Chlorine;
-    break;
-  case 20: // Ca
-    ret = Calcium;
-    break;
-  case 25: // Mn
-    ret = Manganese;
-    break;
-  case 26: // Fe
-    ret = Iron;
-    break;
-  case 30: // Zn
-    ret = Zinc;
-    break;
-  case 35: //Br
-    ret = Bromine;
-    break;
-  case 53: //I
-    ret = Iodine;
-    break;
-  default:
-    ret = GenericMetal;
   }
 
-  return ret;
+  //lookup type in data based on ename
+  int ret = GenericMetal; //default catchall type
+  for(int i = 0; i < NumTypes; i++) {
+    if(data[i].adname == ename) {
+      ret = i;
+      break;
+    }
+  }
+  //adjust based on bonding
+  switch (ret) {
+  case AliphaticCarbonXSHydrophobe: // C_C_C_H, //hydrophobic according to xscale
+  case AliphaticCarbonXSNonHydrophobe: //C_C_C_P,
+    ret = heteroBonded ?
+            AliphaticCarbonXSNonHydrophobe : AliphaticCarbonXSHydrophobe;
+    break;
+  case AromaticCarbonXSHydrophobe: //C_A_C_H,
+  case AromaticCarbonXSNonHydrophobe: //C_A_C_P,
+    ret = heteroBonded ?
+            AromaticCarbonXSNonHydrophobe : AromaticCarbonXSHydrophobe;
+    break;
+  case NitrogenXSDonor: //N_N_N_D,
+  case Nitrogen: //N_N_N_P, no hydrogen bonding
+    ret = Hbonded ? NitrogenXSDonor : Nitrogen;
+    break;
+  case NitrogenXSDonorAcceptor: //N_NA_N_DA, also an autodock acceptor
+  case NitrogenXSAcceptor: //N_NA_N_A, also considered an acceptor by autodock
+    ret = Hbonded ? NitrogenXSDonorAcceptor : NitrogenXSAcceptor;
+    break;
+  case OxygenXSDonor: //O_O_O_D,
+  case Oxygen: //O_O_O_P,
+    ret = Hbonded ? OxygenXSDonor : Oxygen;
+    break;
+  case OxygenXSDonorAcceptor: //O_OA_O_DA, also an autodock acceptor
+  case OxygenXSAcceptor: //O_OA_O_A, also an autodock acceptor
+    ret = Hbonded ? OxygenXSDonorAcceptor : OxygenXSAcceptor;
+    break;
+  }
+
+  if(use_covalent) {
+    return make_pair(ret, data[ret].covalent_radius);
+  } else {
+    return make_pair(ret, data[ret].xs_radius);
+  }
 
 }
 
 //return vector of string representations of types
 std::vector<std::string> GninaIndexTyper::get_type_names() const {
-
+  vector<string> ret; ret.reserve(NumTypes);
+  for(unsigned i = 0; i < NumTypes; i++) {
+    ret.push_back(data[i].smina_name);
+  }
+  return ret;
 }
 
 /************** Element IndexTyper  ********************/
 
 /// return number of types
 unsigned ElementIndexTyper::num_types() const {
+  return last_elem;
 }
 
 ///return type index of a
 std::pair<int,float> ElementIndexTyper::get_type(OpenBabel::OBAtom& a) const {
+  unsigned elem = a.GetAtomicNum();
+  float radius = OpenBabel::OBElements::GetCovalentRad(elem);
+  if(elem >= last_elem) elem = 0; //truncate
+  return make_pair((int)elem,radius);
 }
 
 //return vector of string representations of types
 std::vector<std::string> ElementIndexTyper::get_type_names() const {
+  vector<string> ret; ret.reserve(last_elem);
+  ret.push_back("GenericAtom");
+  for(unsigned i = 1; i < last_elem; i++) {
+    ret.push_back(OpenBabel::OBElements::GetName(i));
+  }
+  return ret;
 }
 
-/****************  MappedAtomIndexTyper ********************/
-template<class Mapper, class Typer>
-unsigned MappedAtomIndexTyper::num_types() const {
-}
 
-///return type index of a
-template<class Mapper, class Typer>
-std::pair<int,float> MappedAtomIndexTyper::get_type(OpenBabel::OBAtom& a) const {
-}
 
-//return vector of string representations of types
-template<class Mapper, class Typer>
-std::vector<std::string> MappedAtomIndexTyper::get_type_names() const;
-}
-;
 
 /****************** GninaVectorTyper ******************/
 
+vector<string> GninaVectorTyper::vtype_names { //this needs to match up with vtype enum
+  "Hydrogen",
+  "Carbon",
+  "Nitrogen",
+  "Oxygen",
+  "Sulfur",
+  "Phosphorus",
+  "Fluorine",
+  "Chlorine",
+  "Bromine",
+  "Iodine",
+  "Magnesium",
+  "Manganese",
+  "Zinc",
+  "Calcium",
+  "Iron",
+  "Boron",
+  "GenericAtom",
+  "AD_depth", //floating point
+  "AD_solvation", //float
+  "AD_volume", //float
+  "XS_hydrophobe", //bool
+  "XS_donor", //bool
+  "XS_acceptor", //bool
+  "AD_heteroatom",
+  "OB_partialcharge"
+};
+
 /// return number of types
 unsigned GninaVectorTyper::num_types() const {
+  //there's the supported gnina elements plus the properties
+  // ad_depth, ad_solvation, ad_volume, xs_hydrophobe, xs_donor, xs_acceptor, ad_heteroatom
+  return NumTypes;
 }
 
 ///return type index of a
 float GninaVectorTyper::get_type(OpenBabel::OBAtom& a, std::vector<float>& typ) const {
+  typ.assign(NumTypes, 0);
+  auto t_r = ityper.get_type(a);
+  int t = t_r.first;
+  float radius = t_r.second;
+
+  int elemtyp = 0;
+  switch (t) { //convert to element index
+  case GninaIndexTyper::Hydrogen:
+  case GninaIndexTyper::PolarHydrogen:
+    elemtyp = Hydrogen;
+    break;
+  case GninaIndexTyper::AliphaticCarbonXSHydrophobe:
+  case GninaIndexTyper::AliphaticCarbonXSNonHydrophobe:
+  case GninaIndexTyper::AromaticCarbonXSHydrophobe:
+  case GninaIndexTyper::AromaticCarbonXSNonHydrophobe:
+    elemtyp = Carbon;
+    break;
+
+  case GninaIndexTyper::Nitrogen:
+  case GninaIndexTyper::NitrogenXSDonor:
+  case GninaIndexTyper::NitrogenXSDonorAcceptor:
+  case GninaIndexTyper::NitrogenXSAcceptor:
+    elemtyp = Nitrogen;
+    break;
+  case GninaIndexTyper::Oxygen:
+  case GninaIndexTyper::OxygenXSDonor:
+  case GninaIndexTyper::OxygenXSDonorAcceptor:
+  case GninaIndexTyper::OxygenXSAcceptor:
+    elemtyp = Oxygen;
+    break;
+  case GninaIndexTyper::Sulfur:
+  case GninaIndexTyper::SulfurAcceptor:
+    elemtyp = Sulfur;
+    break;
+  case GninaIndexTyper::Phosphorus:
+    elemtyp = Phosphorus;
+    break;
+  case GninaIndexTyper::Fluorine:
+    elemtyp = Fluorine;
+    break;
+  case GninaIndexTyper::Chlorine:
+    elemtyp = Chlorine;
+    break;
+  case GninaIndexTyper::Bromine:
+    elemtyp = Bromine;
+    break;
+  case GninaIndexTyper::Iodine:
+    elemtyp = Iodine;
+    break;
+  case GninaIndexTyper::Magnesium:
+    elemtyp = Magnesium;
+    break;
+  case GninaIndexTyper::Manganese:
+    elemtyp = Manganese;
+    break;
+  case GninaIndexTyper::Zinc:
+    elemtyp = Zinc;
+    break;
+  case GninaIndexTyper::Calcium:
+    elemtyp = Calcium;
+    break;
+  case GninaIndexTyper::Iron:
+    elemtyp = Iron;
+    break;
+  case GninaIndexTyper::GenericMetal:
+    elemtyp = GenericAtom;
+    break;
+  case GninaIndexTyper::Boron:
+    elemtyp = Boron;
+    break;
+  default:
+    elemtyp = GenericAtom;
+  }
+
+  //set one-hot element
+  typ[elemtyp] = 1.0;
+  //set properties
+  const GninaIndexTyper::info& info = ityper.get_info(t);
+  typ[AD_depth] = info.ad_depth;
+  typ[AD_solvation] = info.ad_solvation;
+  typ[AD_volume] = info.ad_volume;
+  typ[XS_hydrophobe] = info.xs_hydrophobe;
+  typ[XS_donor] = info.xs_donor;
+  typ[XS_acceptor] = info.xs_acceptor;
+  typ[AD_heteroatom] = info.ad_heteroatom;
+  typ[OB_partialcharge] = a.GetPartialCharge();
+  return radius;
 }
 
 //return vector of string representations of types
 std::vector<std::string> GninaVectorTyper::get_type_names() const {
+  return vtype_names;
 }
 
 /*********** FileAtomMapper *****************/
 
 /// read in map
 void FileAtomMapper::setup(std::istream& in) {
+  using namespace boost::algorithm;
+  //first create reverse map from old names to old types
+  unordered_map<string, int> old_name_to_old_type;
+  for(unsigned i = 0, n = old_type_names.size(); i < n; i++) {
+    old_name_to_old_type[old_type_names[i]] = i;
+  }
+
+  old_type_to_new_type.assign(old_type_names.size(), -1);
+  new_type_names.clear();
+
+  //each non blank line is a type
+  string line;
+
+  while (getline(in, line)) {
+    vector<string> types;
+    split(types, line, is_any_of("\t \n"));
+    if(types.size() > 0) {
+      string new_type_name = join(types,"_");
+      int ntype = new_type_names.size();
+      new_type_names.push_back(new_type_name);
+
+      //setup map
+      for (unsigned i = 0, n = types.size(); i < n; i++) {
+        const string& name = types[i];
+        if(old_name_to_old_type.count(name)) {
+          int oldt = old_name_to_old_type[name];
+          old_type_to_new_type[oldt] = ntype;
+        } else if (name.size() > 0){ //ignore consecutive delimiters
+          string err("Invalid atom type ");
+          err += name;
+          throw invalid_argument(err);
+        }
+      }
+    }
+  }
 }
 
-FileAtomMapper::FileAtomMapper(std::string& fname) {
-}
-
-FileAtomMapper::FileAtomMapper(std::istream& in) {
-}
-
-/// return number of mapped types, zero if unknown (no mapping)
-unsigned FileAtomMapper::num_types() const {
+FileAtomMapper::FileAtomMapper(std::string& fname, const std::vector<std::string>& type_names): old_type_names(type_names) {
+  ifstream in(fname.c_str());
+  setup(in);
 }
 
 /// return mapped type
 int FileAtomMapper::get_type(unsigned origt) const {
+  if(origt < old_type_to_new_type.size()) return old_type_to_new_type[origt];
+  else return -1;
 }
 
 /*************** SubsetAtomMapper **********************/
 SubsetAtomMapper::SubsetAtomMapper(const std::vector<int>& map,
     bool include_catchall) {
+  for(unsigned i = 0, n = map.size(); i < n; i++) {
+    old2new[map[i]] = i;
+  }
+  num_new_types = map.size();
+  if(include_catchall) {
+    default_type = map.size();
+    num_new_types++;
+  }
+
 }
 
 ///surjective mapping
 SubsetAtomMapper::SubsetAtomMapper(const std::vector<std::vector<int> >& map,
     bool include_catchall) {
-}
+  for(unsigned i = 0, n = map.size(); i < n; i++) {
+    for(unsigned j = 0, m = map[i].size(); j < m; j++) {
+      old2new[map[i][j]] = i;
+    }
+  }
+  num_new_types = map.size();
+  if(include_catchall) {
+    default_type = map.size();
+    num_new_types++;
+  }
 
-/// return number of mapped types, zero if unknown (no mapping)
-unsigned SubsetAtomMapper::num_types() const {
 }
 
 /// return mapped type
 int SubsetAtomMapper::get_type(unsigned origt) const {
-
+  if(old2new.count(origt)) {
+    return old2new.at(origt);
+  }
+  return default_type;
 }
 
 } /* namespace libmolgrid */

@@ -66,6 +66,9 @@ class AtomIndexTypeMapper {
 
     /// return mapped type
     virtual int get_type(unsigned origt) const { return origt; }
+
+    //return vector of string representations of types
+    virtual std::vector<std::string> get_type_names() const = 0;
 };
 
 
@@ -75,8 +78,6 @@ class AtomIndexTypeMapper {
  *
  * These are variants of AutoDock4 types. */
 class GninaIndexTyper: public AtomIndexTyper {
-    bool use_covalent = false;
-
   public:
 
     enum type {
@@ -111,8 +112,34 @@ class GninaIndexTyper: public AtomIndexTyper {
       NumTypes
     };
 
+    /** Information for an atom type.  This includes many legacy fields. */
+    struct info
+    {
+      type sm;
+      const char* smina_name; //this must be more than 2 chars long
+      const char* adname;//this must be no longer than 2 chars
+      unsigned anum;
+      float ad_radius;
+      float ad_depth;
+      float ad_solvation;
+      float ad_volume;
+      float covalent_radius;
+      float xs_radius;
+      bool xs_hydrophobe;
+      bool xs_donor;
+      bool xs_acceptor;
+      bool ad_heteroatom;
+    };
+
+  private:
+    bool use_covalent = false;
+    static const info default_data[NumTypes];
+    const info *data = NULL; //data to use
+
+  public:
+
     //Create a gnina typer.  If usec is true, use the gnina determined covalent radius.
-    GninaIndexTyper(bool usec = false): use_covalent(usec) {}
+    GninaIndexTyper(bool usec = false, const info *d = default_data): use_covalent(usec), data(d) {}
     virtual ~GninaIndexTyper() {}
 
     /// return number of types
@@ -123,6 +150,9 @@ class GninaIndexTyper: public AtomIndexTyper {
 
     //return vector of string representations of types
     virtual std::vector<std::string> get_type_names() const;
+
+    ///return gnina info for a given type
+    const info& get_info(int t) const { return data[t]; }
 };
 
 /** \brief Calculate element types
@@ -130,7 +160,7 @@ class GninaIndexTyper: public AtomIndexTyper {
  * There are quite a few elements, so should probably run this through
  * an organic chem atom mapper that reduces to number of types.
  * The type id is the atomic number.  Any element with atomic number
- * greater than the specified max is assigned type zero.
+ * greater than or equal to the specified max is assigned type zero.
  *  */
 class ElementIndexTyper: public AtomIndexTyper {
     unsigned last_elem;
@@ -160,13 +190,22 @@ class MappedAtomIndexTyper: public AtomIndexTyper {
     virtual ~MappedAtomIndexTyper() {}
 
     /// return number of types
-    virtual unsigned num_types() const;
+    virtual unsigned num_types() const {
+      return mapper.num_types();
+    }
 
     ///return type index of a
-    virtual std::pair<int,float> get_type(OpenBabel::OBAtom& a) const;
+    virtual std::pair<int,float> get_type(OpenBabel::OBAtom& a) const {
+      auto res_rad = typer.get_type(a);
+      //remap the type
+      int ret = mapper.get_type(res_rad.first);
+      return make_pair(ret, res_rad.second);
+    }
 
     //return vector of string representations of types
-    virtual std::vector<std::string> get_type_names() const;
+    virtual std::vector<std::string> get_type_names() const {
+      return mapper.get_type_names();
+    }
 };
 
 
@@ -176,8 +215,39 @@ class MappedAtomIndexTyper: public AtomIndexTyper {
  *
  * These are variants of AutoDock4 types. */
 class GninaVectorTyper: public AtomVectorTyper {
+    GninaIndexTyper ityper;
+    static std::vector<std::string> vtype_names;
   public:
-    GninaVectorTyper() {}
+    enum vtype {
+      /* 0 */Hydrogen,
+      /* 1 */Carbon,
+      /* 2 */Nitrogen,
+      /* 3 */Oxygen,
+      /* 4 */Sulfur,
+      /* 5 */Phosphorus,
+      /* 6 */Fluorine,
+      /* 7 */Chlorine,
+      /* 8 */Bromine,
+      /* 9 */Iodine,
+      /* 10 */Magnesium,
+      /* 11 */Manganese,
+      /* 12 */Zinc,
+      /* 13 */Calcium,
+      /* 14 */Iron,
+      /* 15 */Boron,
+      /* 16 */GenericAtom,
+      /* 17 */AD_depth, //floating point
+      /* 18 */AD_solvation, //float
+      /* 19 */AD_volume, //float
+      /* 20 */XS_hydrophobe, //bool
+      /* 21 */XS_donor, //bool
+      /* 22 */XS_acceptor, //bool
+      /* 23 */AD_heteroatom, //bool
+      /* 24 */OB_partialcharge, //float
+      /* 25 */ NumTypes
+    };
+
+    GninaVectorTyper(const GninaIndexTyper& ityp = GninaIndexTyper()): ityper(ityp) {}
     virtual ~GninaVectorTyper() {}
 
     /// return number of types
@@ -200,29 +270,41 @@ class GninaVectorTyper: public AtomVectorTyper {
  * This class must be provided the type names properly indexed (should match get_type_names).
  */
 class FileAtomMapper : public AtomIndexTypeMapper {
-    void setup(std::istream& in, const std::vector<std::string>& type_names);
+    std::vector<std::string> old_type_names;
+    std::vector<int> old_type_to_new_type;
+    std::vector<std::string> new_type_names;
+
+    //setup map and new type names, assumes old_type_names is initialized
+    void setup(std::istream& in);
   public:
 
     ///initialize from filename
     FileAtomMapper(std::string& fname, const std::vector<std::string>& type_names);
 
     ///initialize from stream
-    FileAtomMapper(std::istream& in, const std::vector<std::string>& type_names);
+    FileAtomMapper(std::istream& in, const std::vector<std::string>& type_names): old_type_names(type_names) {
+      setup(in);
+    }
 
     virtual ~FileAtomMapper() {}
 
     /// return number of mapped types, zero if unknown (no mapping)
-    virtual unsigned num_types() const;
+    virtual unsigned num_types() const { return new_type_names.size(); }
 
     /// return mapped type
     virtual int get_type(unsigned origt) const;
+
+    //return mapped type names
+    virtual std::vector<std::string> get_type_names() const { return new_type_names; }
+
 };
 
 /** \brief Map atom types onto a provided subset.
  */
 class SubsetAtomMapper: public AtomIndexTypeMapper {
     std::unordered_map<int, int> old2new;
-    int default_type; // if not in map
+    int default_type = -1; // if not in map
+    unsigned num_new_types = 0;
   public:
     /// Indices of map are new types, values are the old types,
     /// if include_catchall is true, the last type will be the type
@@ -233,7 +315,7 @@ class SubsetAtomMapper: public AtomIndexTypeMapper {
     SubsetAtomMapper(const std::vector< std::vector<int> >& map, bool include_catchall=true);
 
     /// return number of mapped types, zero if unknown (no mapping)
-    virtual unsigned num_types() const;
+    virtual unsigned num_types() const { return num_new_types; }
 
     /// return mapped type
     virtual int get_type(unsigned origt) const;
