@@ -48,6 +48,7 @@ set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -Werror cross-execution-space-call,dep
 include_directories("${PROJECT_BINARY_DIR}")
 include_directories(${CMAKE_SOURCE_DIR}/src)
 include_directories(${CUDA_INCLUDE_DIRS})
+include_directories(${OPENBABEL2_INCLUDE_DIR})
 
 add_subdirectory(src)
 add_subdirectory(python)

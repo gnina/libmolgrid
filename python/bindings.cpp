@@ -20,6 +20,7 @@
 #include "managed_grid.h"
 #include "quaternion.h"
 #include "transform.h"
+#include "atom_typer.h"
 
 using namespace boost::python;
 using namespace libmolgrid;
@@ -272,6 +273,112 @@ bool init_numpy()
   return true;
 }
 
+/** \brief Callback to python for index type
+ */
+class PythonCallbackIndexTyper: public CallbackIndexTyper {
+
+    boost::python::object callback;
+
+  public:
+
+    /// iniitalize callbacktyper, if names are not provided, numerical names will be generated
+    PythonCallbackIndexTyper(boost::python::object c, unsigned ntypes,
+        const std::vector<std::string>& names=std::vector<std::string>()): CallbackIndexTyper(nullptr, ntypes, names), callback(c) {
+    }
+
+    ///call callback
+    virtual std::pair<int,float> get_type(OpenBabel::OBAtom& a) const {
+      return boost::python::extract< std::pair<int,float> >(callback(a));
+    }
+};
+
+/** \brief Callback to python for vector type
+ * The call back function should return a tuple ([type vector], radius) for the atom
+ */
+class PythonCallbackVectorTyper: public CallbackVectorTyper {
+
+    boost::python::object callback;
+
+  public:
+
+    /// iniitalize callbacktyper, if names are not provided, numerical names will be generated
+    PythonCallbackVectorTyper(boost::python::object c, unsigned ntypes,
+        const std::vector<std::string>& names=std::vector<std::string>()): CallbackVectorTyper(nullptr, ntypes, names), callback(c) {
+    }
+
+    ///set type vector and return radius for a, not exposed to python
+    virtual float get_type(OpenBabel::OBAtom& a, std::vector<float>& typ) const {
+      auto vec_r =  get_type_vector(a);
+      typ = vec_r.first;
+      return vec_r.second;
+    }
+
+    ///call callback - for python return vector by reference
+    virtual std::pair<std::vector<float>, float > get_type_vector(OpenBabel::OBAtom& a) const {
+      return  boost::python::extract< std::pair< std::vector<float>, float > >(callback(a));
+    }
+};
+
+template<typename T1, typename T2>
+struct PairToPythonConverter {
+    static PyObject* convert(const std::pair<T1, T2>& pair)
+    {
+        return incref(make_tuple(pair.first, pair.second).ptr());
+    }
+};
+
+template<typename T1, typename T2>
+struct PythonToPairConverter {
+    PythonToPairConverter()
+    {
+        converter::registry::push_back(&convertible, &construct, type_id<std::pair<T1, T2> >());
+    }
+    static void* convertible(PyObject* obj)
+    {
+        if (!PyTuple_CheckExact(obj)) return 0;
+        if (PyTuple_Size(obj) != 2) return 0;
+        return obj;
+    }
+    static void construct(PyObject* obj, converter::rvalue_from_python_stage1_data* data)
+    {
+        tuple tuple(borrowed(obj));
+        void* storage = ((converter::rvalue_from_python_storage<std::pair<T1, T2> >*) data)->storage.bytes;
+        new (storage) std::pair<T1, T2>(extract<T1>(tuple[0]), extract<T2>(tuple[1]));
+        data->convertible = storage;
+    }
+};
+
+template<typename T1, typename T2>
+struct py_pair {
+    to_python_converter<std::pair<T1, T2>, PairToPythonConverter<T1, T2> > toPy;
+    PythonToPairConverter<T1, T2> fromPy;
+};
+
+struct PySwigObject {
+    PyObject_HEAD
+    void * ptr;
+    const char * desc;
+};
+
+void* extract_swig_wrapped_pointer(PyObject* obj)
+{
+  std::cerr << "CAlling extract swig\n";
+    //first we need to get the this attribute from the Python Object
+    if (!PyObject_HasAttrString(obj, "this"))
+        return NULL;
+    std::cerr << "has this extract swig\n";
+
+    PyObject* thisAttr = PyObject_GetAttrString(obj, "this");
+    if (thisAttr == nullptr)
+        return nullptr;
+    std::cerr << "got this extract swig\n";
+
+    //This Python Object is a SWIG Wrapper and contains our pointer
+    void* pointer = ((PySwigObject*)thisAttr)->ptr;
+    Py_DECREF(thisAttr);
+    return pointer;
+}
+
 
 
 BOOST_PYTHON_MODULE(molgrid)
@@ -313,6 +420,8 @@ DEFINE_MGRID(N,d)
 //vector utility types
   class_<std::vector<size_t> >("SizeVec")
       .def(vector_indexing_suite<std::vector<size_t> >());
+  class_<std::vector<std::string> >("StringVec")
+      .def(vector_indexing_suite<std::vector<std::string> >());
 
   class_<Pointer<float> >("FloatPtr", no_init);
   class_<Pointer<double> >("DoublePtr", no_init);
@@ -365,5 +474,62 @@ DEFINE_MGRID(N,d)
   .def("backward",+[](Transform& self, const Grid2fCUDA& in, Grid2fCUDA out, bool dotranslate) {self.backward(in,out,dotranslate);},
        Transform_backward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)));
 
+//Atom typing
+  converter::registry::insert(&extract_swig_wrapped_pointer, type_id<OpenBabel::OBAtom>());
+  py_pair<int, float>();
+
+  class_<GninaIndexTyper>("GninaIndexTyper")
+      .def(init<bool>())
+      .def("num_types", &GninaIndexTyper::num_types)
+      .def("get_type", &GninaIndexTyper::get_type)
+      .def("get_type_names",&GninaIndexTyper::get_type_names);
+
+  class_<ElementIndexTyper>("ElementIndexTyper")
+      .def(init<int>())
+      .def("num_types", &ElementIndexTyper::num_types)
+      .def("get_type", &ElementIndexTyper::get_type)
+      .def("get_type_names",&ElementIndexTyper::get_type_names);
+
+  class_<PythonCallbackIndexTyper>("PythonCallbackIndexTyper", no_init)
+      .def(init<object, unsigned>())
+      .def(init<object, unsigned, const std::vector<std::string>&>())
+      .def("num_types", &PythonCallbackIndexTyper::num_types)
+      .def("get_type", &PythonCallbackIndexTyper::get_type)
+      .def("get_type_names",&PythonCallbackIndexTyper::get_type_names);
+
+  class_<GninaVectorTyper>("GninaVectorTyper")
+      .def("num_types", &GninaVectorTyper::num_types)
+      .def("get_type", &GninaVectorTyper::get_type)
+      .def("get_type_names",&GninaVectorTyper::get_type_names);
+
+  class_<PythonCallbackVectorTyper>("PythonCallbackVectorTyper", no_init)
+      .def(init<object, unsigned>())
+      .def(init<object, unsigned, const std::vector<std::string>&>())
+      .def("num_types", &PythonCallbackVectorTyper::num_types)
+      .def("get_type_vector", &PythonCallbackVectorTyper::get_type_vector)
+      .def("get_type_names",&PythonCallbackVectorTyper::get_type_names);
+
+  class_<FileAtomMapper>("FileAtomMapper", init<const std::string&, const std::vector<std::string> >())
+      .def("num_types", &FileAtomMapper::num_types)
+      .def("get_type", &FileAtomMapper::get_type)
+      .def("get_type_names",&FileAtomMapper::get_type_names);
+
+  class_<SubsetAtomMapper>("SubsetAtomMapper", init<const std::vector<int>&, bool>())
+      .def(init<const std::vector< std::vector<int> >&, bool>())
+      .def("num_types", &SubsetAtomMapper::num_types)
+      .def("get_type", &SubsetAtomMapper::get_type)
+      .def("get_type_names",&SubsetAtomMapper::get_type_names);
+
+  class_<MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper> >("SubsettedElementTyper",
+      init<SubsetAtomMapper, ElementIndexTyper>())
+          .def("num_types", &MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper>::num_types)
+          .def("get_type", &MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper>::get_type)
+          .def("get_type_names",&MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper>::get_type_names);
+
+  class_<MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper> >("FileMappedGninaTyper",
+      init<FileAtomMapper, GninaIndexTyper>())
+          .def("num_types", &MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper> ::num_types)
+          .def("get_type", &MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper> ::get_type)
+          .def("get_type_names",&MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper> ::get_type_names);
 }
 

@@ -10,6 +10,7 @@
 #include <atom_typer.h>
 #include <openbabel/obiter.h>
 #include <boost/algorithm/string.hpp>
+#include <boost/lexical_cast.hpp>
 
 using namespace OpenBabel;
 using namespace std;
@@ -58,7 +59,7 @@ unsigned GninaIndexTyper::num_types() const {
 
 
 ///return type index and radius of a
-std::pair<int,float> GninaIndexTyper::get_type(OpenBabel::OBAtom& a) const {
+std::pair<int,float> GninaIndexTyper::get_type(OpenBabel::OBAtom* a) const {
 
   //this function is more convoluted than it needs to be for historical reasons
   //and a general fear of breaking backwards compatibility
@@ -73,25 +74,25 @@ std::pair<int,float> GninaIndexTyper::get_type(OpenBabel::OBAtom& a) const {
       heteroBonded = true; //hetero anything that is not hydrogen and not carbon
   }
 
-  const char *element_name = OpenBabel::OBElements::GetSymbol(a.GetAtomicNum());
+  const char *element_name = OpenBabel::OBElements::GetSymbol(a->GetAtomicNum());
   std::string ename(element_name);
 
   //massage the element name in some cases
-  switch(a.GetAtomicNum()) {
+  switch(a->GetAtomicNum()) {
   case 1:
-    ename =  a.IsPolarHydrogen() ? "HD" : "H";
+    ename =  a->IsPolarHydrogen() ? "HD" : "H";
     break;
   case 6:
-    if(a.IsAromatic()) ename = "A";
+    if(a->IsAromatic()) ename = "A";
     break;
   case 7:
-    if(a.IsHbondAcceptor()) ename = "NA";
+    if(a->IsHbondAcceptor()) ename = "NA";
     break;
   case 8:
     ename = "OA";
     break;
   case 16:
-    if(a.IsHbondAcceptor()) ename = "SA";
+    if(a->IsHbondAcceptor()) ename = "SA";
     break;
   case 34:
     ename = "S"; //historically selenium is treated as sulfur  ¯\_(ツ)_/¯
@@ -161,8 +162,8 @@ unsigned ElementIndexTyper::num_types() const {
 }
 
 ///return type index of a
-std::pair<int,float> ElementIndexTyper::get_type(OpenBabel::OBAtom& a) const {
-  unsigned elem = a.GetAtomicNum();
+std::pair<int,float> ElementIndexTyper::get_type(OpenBabel::OBAtom* a) const {
+  unsigned elem = a->GetAtomicNum();
   float radius = OpenBabel::OBElements::GetCovalentRad(elem);
   if(elem >= last_elem) elem = 0; //truncate
   return make_pair((int)elem,radius);
@@ -178,6 +179,23 @@ std::vector<std::string> ElementIndexTyper::get_type_names() const {
   return ret;
 }
 
+
+//safely set type_names from names, even if some are missing (use indices in that case)
+static void set_names(unsigned ntypes, std::vector<std::string>& type_names, const std::vector<std::string>& names) {
+  type_names.clear();
+  type_names.reserve(ntypes);
+  for(unsigned i = 0; i < ntypes; i++) {
+    if(i < names.size()) {
+      type_names.push_back(names[i]);
+    } else {
+      type_names.push_back(boost::lexical_cast<string>(i));
+    }
+  }
+}
+CallbackIndexTyper::CallbackIndexTyper(AtomIndexTyperFunc f, unsigned ntypes, const std::vector<std::string>& names): callback(f) {
+  //setup names
+  set_names(ntypes, type_names, names);
+}
 
 
 
@@ -219,7 +237,7 @@ unsigned GninaVectorTyper::num_types() const {
 }
 
 ///return type index of a
-float GninaVectorTyper::get_type(OpenBabel::OBAtom& a, std::vector<float>& typ) const {
+float GninaVectorTyper::get_type(OpenBabel::OBAtom* a, std::vector<float>& typ) const {
   typ.assign(NumTypes, 0);
   auto t_r = ityper.get_type(a);
   int t = t_r.first;
@@ -305,7 +323,7 @@ float GninaVectorTyper::get_type(OpenBabel::OBAtom& a, std::vector<float>& typ) 
   typ[XS_donor] = info.xs_donor;
   typ[XS_acceptor] = info.xs_acceptor;
   typ[AD_heteroatom] = info.ad_heteroatom;
-  typ[OB_partialcharge] = a.GetPartialCharge();
+  typ[OB_partialcharge] = a->GetPartialCharge();
   return radius;
 }
 
@@ -313,6 +331,13 @@ float GninaVectorTyper::get_type(OpenBabel::OBAtom& a, std::vector<float>& typ) 
 std::vector<std::string> GninaVectorTyper::get_type_names() const {
   return vtype_names;
 }
+
+
+CallbackVectorTyper::CallbackVectorTyper(AtomVectorTyperFunc f, unsigned ntypes, const std::vector<std::string>& names): callback(f) {
+  //setup names
+  set_names(ntypes, type_names, names);
+}
+
 
 /*********** FileAtomMapper *****************/
 
@@ -355,7 +380,7 @@ void FileAtomMapper::setup(std::istream& in) {
   }
 }
 
-FileAtomMapper::FileAtomMapper(std::string& fname, const std::vector<std::string>& type_names): old_type_names(type_names) {
+FileAtomMapper::FileAtomMapper(const std::string& fname, const std::vector<std::string>& type_names): old_type_names(type_names) {
   ifstream in(fname.c_str());
   setup(in);
 }
@@ -368,30 +393,47 @@ int FileAtomMapper::get_type(unsigned origt) const {
 
 /*************** SubsetAtomMapper **********************/
 SubsetAtomMapper::SubsetAtomMapper(const std::vector<int>& map,
-    bool include_catchall) {
+    bool include_catchall, const std::vector<std::string>& old_names) {
   for(unsigned i = 0, n = map.size(); i < n; i++) {
-    old2new[map[i]] = i;
-  }
-  num_new_types = map.size();
-  if(include_catchall) {
-    default_type = map.size();
-    num_new_types++;
-  }
-
-}
-
-///surjective mapping
-SubsetAtomMapper::SubsetAtomMapper(const std::vector<std::vector<int> >& map,
-    bool include_catchall) {
-  for(unsigned i = 0, n = map.size(); i < n; i++) {
-    for(unsigned j = 0, m = map[i].size(); j < m; j++) {
-      old2new[map[i][j]] = i;
+    unsigned oldt = map[i];
+    old2new[oldt] = i;
+    if(oldt < old_names.size()) {
+      new_type_names.push_back(old_names[oldt]);
+    } else {
+      new_type_names.push_back(boost::lexical_cast<string>(oldt));
     }
   }
   num_new_types = map.size();
   if(include_catchall) {
     default_type = map.size();
     num_new_types++;
+    new_type_names.push_back("GenericAtom");
+  }
+
+}
+
+///surjective mapping
+SubsetAtomMapper::SubsetAtomMapper(const std::vector<std::vector<int> >& map,
+    bool include_catchall, const std::vector<std::string>& old_names) {
+  for(unsigned i = 0, n = map.size(); i < n; i++) {
+    vector<string> names;
+    for(unsigned j = 0, m = map[i].size(); j < m; j++) {
+      unsigned oldt = map[i][j];
+      old2new[oldt] = i;
+      if(oldt < old_names.size()) {
+        names.push_back(old_names[oldt]);
+      } else {
+        names.push_back(boost::lexical_cast<string>(oldt));
+      }
+    }
+    string new_type_name = boost::algorithm::join(names,"_");
+    new_type_names.push_back(new_type_name);
+  }
+  num_new_types = map.size();
+  if(include_catchall) {
+    default_type = map.size();
+    num_new_types++;
+    new_type_names.push_back("GenericAtom");
   }
 
 }
@@ -403,5 +445,11 @@ int SubsetAtomMapper::get_type(unsigned origt) const {
   }
   return default_type;
 }
+
+//template instantiation
+template class MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper>;
+template class MappedAtomIndexTyper<SubsetAtomMapper, GninaIndexTyper>;
+template class MappedAtomIndexTyper<FileAtomMapper, ElementIndexTyper>;
+template class MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper>;
 
 } /* namespace libmolgrid */

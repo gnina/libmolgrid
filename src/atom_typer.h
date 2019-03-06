@@ -23,14 +23,14 @@ namespace libmolgrid {
 /** \brief Base class for generating numerical types along with atomic radius */
 class AtomIndexTyper {
   public:
-    AtomIndexTyper();
-    virtual ~AtomIndexTyper();
+    AtomIndexTyper() {}
+    virtual ~AtomIndexTyper() {}
 
     /// return number of types
-    virtual unsigned num_types() const;
+    virtual unsigned num_types() const = 0;
 
     ///return type index of a along with the apprioriate index
-    virtual std::pair<int,float> get_type(OpenBabel::OBAtom& a) const = 0;
+    virtual std::pair<int,float> get_type(OpenBabel::OBAtom *a) const = 0;
 
     //return vector of string representations of types
     //this isn't expected to be particularly efficient
@@ -47,7 +47,7 @@ class AtomVectorTyper {
     virtual unsigned num_types() const = 0;
 
     ///set vector type of atom a, return radius
-    virtual float get_type(OpenBabel::OBAtom& a, std::vector<float>& typ) const = 0;
+    virtual float get_type(OpenBabel::OBAtom *a, std::vector<float>& typ) const = 0;
 
     //return vector of string representations of types
     //this isn't expected to be particularly efficient
@@ -146,7 +146,7 @@ class GninaIndexTyper: public AtomIndexTyper {
     virtual unsigned num_types() const;
 
     ///return type index of a
-    virtual std::pair<int,float> get_type(OpenBabel::OBAtom& a) const;
+    virtual std::pair<int,float> get_type(OpenBabel::OBAtom* a) const;
 
     //return vector of string representations of types
     virtual std::vector<std::string> get_type_names() const;
@@ -172,11 +172,39 @@ class ElementIndexTyper: public AtomIndexTyper {
     virtual unsigned num_types() const;
 
     ///return type index of a
-    virtual std::pair<int,float> get_type(OpenBabel::OBAtom& a) const;
+    virtual std::pair<int,float> get_type(OpenBabel::OBAtom* a) const;
 
     //return vector of string representations of types
     virtual std::vector<std::string> get_type_names() const;
 };
+
+/** \brief Use user-provided callback to do typing
+ *  Must provide the number of types and their names.
+ */
+class CallbackIndexTyper: public AtomIndexTyper {
+  public:
+    using AtomIndexTyperFunc = std::pair<int,float> (*)(OpenBabel::OBAtom* a);
+
+  private:
+    AtomIndexTyperFunc callback = nullptr;
+    std::vector<std::string> type_names;
+
+  public:
+
+    /// iniitalize callbacktyper, if names are not provided, numerical names will be generated
+    CallbackIndexTyper(AtomIndexTyperFunc f, unsigned ntypes, const std::vector<std::string>& names=std::vector<std::string>());
+
+    /// return number of types
+    virtual unsigned num_types() const { return type_names.size(); }
+
+    ///return type index of a
+    virtual std::pair<int,float> get_type(OpenBabel::OBAtom* a) const { return callback(a); }
+
+    //return vector of string representations of types
+    virtual std::vector<std::string> get_type_names() const { return type_names; }
+};
+
+
 
 /** \brief Wrap an atom typer with a mapper
  *
@@ -195,11 +223,11 @@ class MappedAtomIndexTyper: public AtomIndexTyper {
     }
 
     ///return type index of a
-    virtual std::pair<int,float> get_type(OpenBabel::OBAtom& a) const {
+    virtual std::pair<int,float> get_type(OpenBabel::OBAtom* a) const {
       auto res_rad = typer.get_type(a);
       //remap the type
       int ret = mapper.get_type(res_rad.first);
-      return make_pair(ret, res_rad.second);
+      return std::make_pair(ret, res_rad.second);
     }
 
     //return vector of string representations of types
@@ -207,7 +235,6 @@ class MappedAtomIndexTyper: public AtomIndexTyper {
       return mapper.get_type_names();
     }
 };
-
 
 /** \brief Decompose gnina types into elements and properties.  Result is boolean.
  *
@@ -254,10 +281,37 @@ class GninaVectorTyper: public AtomVectorTyper {
     virtual unsigned num_types() const;
 
     ///return type index of a
-    virtual float get_type(OpenBabel::OBAtom& a, std::vector<float>& typ) const;
+    virtual float get_type(OpenBabel::OBAtom* a, std::vector<float>& typ) const;
 
     //return vector of string representations of types
     virtual std::vector<std::string> get_type_names() const;
+};
+
+
+/** \brief Use user-provided callback to do vector typing
+ *  Must provide the number of types and their names.
+ */
+class CallbackVectorTyper: public AtomVectorTyper {
+  public:
+    using AtomVectorTyperFunc = float (*)(OpenBabel::OBAtom* a, std::vector<float>& typ);
+
+  private:
+    AtomVectorTyperFunc callback = nullptr;
+    std::vector<std::string> type_names;
+
+  public:
+
+    /// iniitalize callbacktyper, if names are not provided, numerical names will be generated
+    CallbackVectorTyper(AtomVectorTyperFunc f, unsigned ntypes, const std::vector<std::string>& names=std::vector<std::string>());
+
+    /// return number of types
+    virtual unsigned num_types() const { return type_names.size(); }
+
+    ///set type vector and return radius for a
+    virtual float get_type(OpenBabel::OBAtom* a, std::vector<float>& typ) const { return callback(a, typ); }
+
+    //return vector of string representations of types
+    virtual std::vector<std::string> get_type_names() const { return type_names; }
 };
 
 
@@ -279,7 +333,7 @@ class FileAtomMapper : public AtomIndexTypeMapper {
   public:
 
     ///initialize from filename
-    FileAtomMapper(std::string& fname, const std::vector<std::string>& type_names);
+    FileAtomMapper(const std::string& fname, const std::vector<std::string>& type_names);
 
     ///initialize from stream
     FileAtomMapper(std::istream& in, const std::vector<std::string>& type_names): old_type_names(type_names) {
@@ -303,23 +357,33 @@ class FileAtomMapper : public AtomIndexTypeMapper {
  */
 class SubsetAtomMapper: public AtomIndexTypeMapper {
     std::unordered_map<int, int> old2new;
+    std::vector<std::string> new_type_names;
     int default_type = -1; // if not in map
     unsigned num_new_types = 0;
   public:
     /// Indices of map are new types, values are the old types,
     /// if include_catchall is true, the last type will be the type
     /// returned for anything not in map (otherwise -1 is returned)
-    SubsetAtomMapper(const std::vector<int>& map, bool include_catchall=true);
+    SubsetAtomMapper(const std::vector<int>& map, bool include_catchall=true, const std::vector<std::string>& old_names = std::vector<std::string>());
 
     ///surjective mapping
-    SubsetAtomMapper(const std::vector< std::vector<int> >& map, bool include_catchall=true);
+    SubsetAtomMapper(const std::vector< std::vector<int> >& map, bool include_catchall=true, const std::vector<std::string>& old_names = std::vector<std::string>());
 
     /// return number of mapped types, zero if unknown (no mapping)
     virtual unsigned num_types() const { return num_new_types; }
 
     /// return mapped type
     virtual int get_type(unsigned origt) const;
+
+    virtual std::vector<std::string> get_type_names() const { return new_type_names; }
+
 };
+
+//pre-instantiate mapping templates
+extern template class MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper>;
+extern template class MappedAtomIndexTyper<SubsetAtomMapper, GninaIndexTyper>;
+extern template class MappedAtomIndexTyper<FileAtomMapper, ElementIndexTyper>;
+extern template class MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper>;
 
 } /* namespace libmolgrid */
 

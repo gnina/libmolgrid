@@ -16,10 +16,6 @@ set( LIBMOLGRID_HEADERS
  atom_typer.h
 )
 
-find_package(OpenBabel2 REQUIRED)
-include_directories(${OpenBabel2_INCLUDE_DIRS})
-include_directories("FOFOFOFOFO")
-
 add_library(libmolgrid_shared SHARED ${LIBMOLGRID_HEADERS} ${LIBMOLGRID_SOURCES})
 SET_TARGET_PROPERTIES(libmolgrid_shared PROPERTIES OUTPUT_NAME molgrid CUDA_SEPARABLE_COMPILATION ON)
 
