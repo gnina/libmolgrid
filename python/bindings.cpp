@@ -563,22 +563,45 @@ DEFINE_MGRID(N,d)
       .def("get_new_type", &SubsetAtomMapper::get_new_type)
       .def("get_type_names",&SubsetAtomMapper::get_type_names);
 
-  class_<MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper> >("SubsettedElementTyper",
-      init<SubsetAtomMapper, ElementIndexTyper>())
-          .def("num_types", &MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper>::num_types)
-          .def("get_atom_type", &MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper>::get_atom_type)
-          .def("get_type_names",&MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper>::get_type_names);
+  class_<SubsettedElementTyper>("SubsettedElementTyper", no_init)
+          .def("__init__",make_constructor(
+              +[](list l, bool catchall, unsigned maxe) {
+              if(list_is_vec<int>(l)) {
+                return std::make_shared<SubsettedElementTyper>(list_to_vec<int>(l),catchall,maxe);
+              } else { //assume list of lists
+                return std::make_shared<SubsettedElementTyper>(listlist_to_vecvec<int>(l),catchall,maxe);
+              }
+            }, default_call_policies(),
+            (arg("map"), arg("catchall") = true, arg("maxe") = 84U)))
+          .def("num_types", &SubsettedElementTyper::num_types)
+          .def("get_atom_type", &SubsettedElementTyper::get_atom_type)
+          .def("get_type_names",&SubsettedElementTyper::get_type_names);
 
-  class_<MappedAtomIndexTyper<SubsetAtomMapper, GninaIndexTyper> >("SubsettedGninaTyper",
-      init<SubsetAtomMapper, GninaIndexTyper>())
-          .def("num_types", &MappedAtomIndexTyper<SubsetAtomMapper, GninaIndexTyper>::num_types)
-          .def("get_atom_type", &MappedAtomIndexTyper<SubsetAtomMapper, GninaIndexTyper>::get_atom_type)
-          .def("get_type_names",&MappedAtomIndexTyper<SubsetAtomMapper, GninaIndexTyper>::get_type_names);
+  class_<SubsettedGninaTyper>("SubsettedGninaTyper", no_init)
+         .def("__init__",make_constructor(
+                  +[](list l, bool catchall, bool usec) {
+                  if(list_is_vec<int>(l)) {
+                    return std::make_shared<SubsettedGninaTyper>(list_to_vec<int>(l),catchall,usec);
+                  } else { //assume list of lists
+                    return std::make_shared<SubsettedGninaTyper>(listlist_to_vecvec<int>(l),catchall,usec);
+                  }
+                }, default_call_policies(),
+                (arg("map"), arg("catchall") = true, arg("use_covalent_radius") = false)))
+          .def("num_types", &SubsettedGninaTyper::num_types)
+          .def("get_atom_type", &SubsettedGninaTyper::get_atom_type)
+          .def("get_type_names",&SubsettedGninaTyper::get_type_names);
 
-  class_<MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper> >("FileMappedGninaTyper",
-      init<FileAtomMapper, GninaIndexTyper>())
-          .def("num_types", &MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper> ::num_types)
-          .def("get_atom_type", &MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper> ::get_atom_type)
-          .def("get_type_names",&MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper> ::get_type_names);
+  class_<FileMappedGninaTyper >("FileMappedGninaTyper",
+          init<const std::string&, bool>((arg("fname"), arg("use_covalent_radius")=false)))
+              //todo, add init for file stream inputs if we every want it
+          .def("num_types", &FileMappedGninaTyper::num_types)
+          .def("get_atom_type", &FileMappedGninaTyper::get_atom_type)
+          .def("get_type_names",&FileMappedGninaTyper::get_type_names);
+
+  class_<FileMappedElementTyper >("FileMappedElementTyper",
+          init<const std::string&, unsigned>((arg("fname"), arg("maxe")=84)))
+          .def("num_types", &FileMappedElementTyper::num_types)
+          .def("get_atom_type", &FileMappedElementTyper::get_atom_type)
+          .def("get_type_names",&FileMappedElementTyper::get_type_names);
 }
 

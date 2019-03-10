@@ -102,10 +102,7 @@ def test_subset_elementtyping():
     m = pybel.readstring('smi','c1c(Cl)cccc1CO')
     m.addh()
     subset = [1,6,7,8]
-    elemt = molgrid.ElementIndexTyper()
-    #old names are required for mapper to have nice mapped names
-    mapper = molgrid.SubsetAtomMapper(subset, old_names=elemt.get_type_names())
-    t = molgrid.SubsettedElementTyper(mapper, elemt)
+    t = molgrid.SubsettedElementTyper(subset)
     assert t.num_types() == 5
     names = list(t.get_type_names())
     assert names[4] == 'GenericAtom'
@@ -135,8 +132,7 @@ def test_subset_elementtyping():
     
     #now let's try a surjective mapping without a catchall type
     subset = [6,[7,8]]
-    mapper = molgrid.SubsetAtomMapper(subset, False, old_names=elemt.get_type_names())
-    t = molgrid.SubsettedElementTyper(mapper, elemt)
+    t = molgrid.SubsettedElementTyper(subset, catchall=False)
 
     assert t.num_types() == 2
     names = list(t.get_type_names())
@@ -160,4 +156,69 @@ def test_subset_elementtyping():
     assert nocnt == 1
     assert neg == 8
         
+def test_filemap_gninatyping():
+    datadir = os.path.dirname(__file__)+'/data'
+    m = pybel.readstring('smi','c1c(Cl)cccc1CO')
+    m.addh()
+    t = molgrid.FileMappedGninaTyper(datadir+"/recmap")
+    names = list(t.get_type_names())
+    assert len(names) == 14
+    assert names[-2] == 'Zinc'
+    typs = [t.get_atom_type(a.OBAtom) for a in m.atoms]
+    assert len(typs) == 16
+    
+    ccnt = 0
+    ocnt = 0
+    neg = 0
+    clcnt = 0
+    for t,r in typs:
+        if t < 0:
+            neg += 1
+        elif 'Carbon' in names[t]:
+            ccnt += 1
+            assert r == approx(1.9)
+        elif names[t] == 'OxygenXSDonorAcceptor_OxygenXSDonor':
+            ocnt += 1
+            assert r == approx(1.7) #aren't any nitrogen
+        elif names[t] == 'Bromine_Iodine_Chlorine_Fluorine':
+            clcnt += 1
+            assert r == approx(1.8)
+
+    assert ccnt == 7
+    assert ocnt == 1
+    assert neg == 7
+    assert clcnt == 1 
+    
+def test_filemap_elementtyping():
+    datadir = os.path.dirname(__file__)+'/data'
+    m = pybel.readstring('smi','c1c(Cl)cccc1CO')
+    m.addh()
+    t = molgrid.FileMappedElementTyper(datadir+"/emap")
+    names = list(t.get_type_names())
+    assert len(names) == 4
+    assert names[0] == 'Oxygen'
+    typs = [t.get_atom_type(a.OBAtom) for a in m.atoms]
+    assert len(typs) == 16
+    
+    ccnt = 0
+    ocnt = 0
+    neg = 0
+    hcnt = 0
+    for t,r in typs:
+        if t < 0:
+            neg += 1
+        elif 'Carbon' == names[t]:
+            ccnt += 1
+            assert r == approx(0.76)
+        elif names[t] == 'Oxygen':
+            ocnt += 1
+            assert r == approx(0.66) #aren't any nitrogen
+        elif names[t] == 'Hydrogen':
+            hcnt += 1
+            assert r == approx(.31)
+
+    assert ccnt == 7
+    assert ocnt == 1
+    assert neg == 1
+    assert hcnt == 7     
     

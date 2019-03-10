@@ -1,0 +1,14 @@
+AliphaticCarbonXSHydrophobe 
+AliphaticCarbonXSNonHydrophobe 
+AromaticCarbonXSHydrophobe 
+AromaticCarbonXSNonHydrophobe
+Bromine Iodine Chlorine Fluorine
+Nitrogen NitrogenXSAcceptor 
+NitrogenXSDonor NitrogenXSDonorAcceptor
+Oxygen OxygenXSAcceptor 
+OxygenXSDonorAcceptor OxygenXSDonor
+Sulfur SulfurAcceptor
+Phosphorus 
+Calcium
+Zinc
+GenericMetal Boron Manganese Magnesium Iron

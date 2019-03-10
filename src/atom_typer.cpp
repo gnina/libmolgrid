@@ -466,10 +466,4 @@ int SubsetAtomMapper::get_new_type(unsigned origt) const {
   return default_type;
 }
 
-//template instantiation
-template class MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper>;
-template class MappedAtomIndexTyper<SubsetAtomMapper, GninaIndexTyper>;
-template class MappedAtomIndexTyper<FileAtomMapper, ElementIndexTyper>;
-template class MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper>;
-
 } /* namespace libmolgrid */

@@ -234,6 +234,7 @@ class CallbackIndexTyper: public AtomIndexTyper {
  */
 template<class Mapper, class Typer>
 class MappedAtomIndexTyper: public AtomIndexTyper {
+  protected:
     Mapper mapper;
     Typer typer;
   public:
@@ -410,11 +411,94 @@ class SubsetAtomMapper: public AtomIndexTypeMapper {
 
 };
 
-//pre-instantiate mapping templates
-extern template class MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper>;
-extern template class MappedAtomIndexTyper<SubsetAtomMapper, GninaIndexTyper>;
-extern template class MappedAtomIndexTyper<FileAtomMapper, ElementIndexTyper>;
-extern template class MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper>;
+/// subsetting element types, derived class for convenient initialization
+class SubsettedElementTyper: public MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper> {
+  public:
+    SubsettedElementTyper(const std::vector<int>& map, bool include_catchall=true, unsigned maxe = 84):
+      SubsettedElementTyper(ElementIndexTyper(maxe), map, include_catchall) { //delegating constructor
+    }
+
+    SubsettedElementTyper(const ElementIndexTyper& etyper, const std::vector<int>& map, bool include_catchall=true):
+      MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper>(
+          SubsetAtomMapper(map,include_catchall,etyper.get_type_names()),etyper) {
+    }
+
+    SubsettedElementTyper(const std::vector< std::vector<int> >& map, bool include_catchall=true, unsigned maxe = 84):
+      SubsettedElementTyper(ElementIndexTyper(maxe), map, include_catchall) { //delegating constructor
+    }
+
+    SubsettedElementTyper(const ElementIndexTyper& etyper, const std::vector< std::vector<int> >& map, bool include_catchall=true):
+      MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper>(
+          SubsetAtomMapper(map,include_catchall,etyper.get_type_names()),etyper) {
+    }
+};
+
+/// subsetting gnina types, derived class for convenient initialization
+class SubsettedGninaTyper: public MappedAtomIndexTyper<SubsetAtomMapper, GninaIndexTyper> {
+  public:
+    SubsettedGninaTyper(const std::vector<int>& map, bool include_catchall=true, bool usec = false):
+      SubsettedGninaTyper(GninaIndexTyper(usec), map, include_catchall) { //delegating constructor to avoid multiple constructions of typer
+    }
+
+    SubsettedGninaTyper(const GninaIndexTyper& etyper, const std::vector<int>& map, bool include_catchall=true):
+      MappedAtomIndexTyper<SubsetAtomMapper, GninaIndexTyper>(
+          SubsetAtomMapper(map,include_catchall,etyper.get_type_names()),etyper) {
+    }
+
+    SubsettedGninaTyper(const std::vector< std::vector<int> >& map, bool include_catchall=true, bool usec = false):
+      SubsettedGninaTyper(GninaIndexTyper(usec), map, include_catchall) { //delegating constructor
+    }
+
+    SubsettedGninaTyper(const GninaIndexTyper& etyper, const std::vector< std::vector<int> >& map, bool include_catchall=true):
+      MappedAtomIndexTyper<SubsetAtomMapper, GninaIndexTyper>(
+          SubsetAtomMapper(map,include_catchall,etyper.get_type_names()),etyper) {
+    }
+};
+
+/// file mapping element types, derived class for convenient initialization
+class FileMappedElementTyper: public MappedAtomIndexTyper<FileAtomMapper, ElementIndexTyper> {
+  public:
+    FileMappedElementTyper(const std::string& fname, unsigned maxe = 84):
+      FileMappedElementTyper(ElementIndexTyper(maxe), fname) { //delegating constructor
+    }
+
+    FileMappedElementTyper(const ElementIndexTyper& etyper, const std::string& fname):
+      MappedAtomIndexTyper<FileAtomMapper, ElementIndexTyper>(
+          FileAtomMapper(fname,etyper.get_type_names()),etyper) {
+    }
+
+    FileMappedElementTyper(std::istream& i, unsigned maxe = 84):
+      FileMappedElementTyper(ElementIndexTyper(maxe), i) { //delegating constructor
+    }
+
+    FileMappedElementTyper(const ElementIndexTyper& etyper, std::istream& i):
+      MappedAtomIndexTyper<FileAtomMapper, ElementIndexTyper>(
+          FileAtomMapper(i,etyper.get_type_names()),etyper) {
+    }
+};
+
+/// file mapping element types, derived class for convenient initialization
+class FileMappedGninaTyper: public MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper> {
+  public:
+    FileMappedGninaTyper(const std::string& fname, bool usec = false):
+      FileMappedGninaTyper(GninaIndexTyper(usec), fname) { //delegating constructor
+    }
+
+    FileMappedGninaTyper(const GninaIndexTyper& etyper, const std::string& fname):
+      MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper>(
+          FileAtomMapper(fname,etyper.get_type_names()),etyper) {
+    }
+
+    FileMappedGninaTyper(std::istream& i, bool usec = false):
+      FileMappedGninaTyper(GninaIndexTyper(usec), i) { //delegating constructor
+    }
+
+    FileMappedGninaTyper(const GninaIndexTyper& etyper, std::istream& i):
+      MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper>(
+          FileAtomMapper(i,etyper.get_type_names()),etyper) {
+    }
+};
+
 
 } /* namespace libmolgrid */
 
