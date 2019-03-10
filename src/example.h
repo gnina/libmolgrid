@@ -32,6 +32,7 @@ struct CoordinateSet {
   ManagedGrid<Dtype, 2> coords;
   ManagedGrid<Dtype, 1> type_index; //this should be integer
   ManagedGrid<Dtype, 2> type_vector;
+  ManagedGrid<Dtype, 1> radius;
   const unsigned max_type;  //for indexed types, non-inclusive max
 
   //initialize with indexed types

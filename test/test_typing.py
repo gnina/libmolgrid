@@ -155,6 +155,28 @@ def test_subset_elementtyping():
     assert ccnt == 7
     assert nocnt == 1
     assert neg == 8
+    
+    #can we do an empty list with a catchall?
+    t = molgrid.SubsettedElementTyper([])
+    assert t.num_types() == 1
+    names = list(t.get_type_names())
+    assert names[0] == 'GenericAtom'
+    typs = [t.get_atom_type(a.OBAtom) for a in m.atoms]
+    assert len(typs) == 16
+    acnt = 0
+    neg = 0
+    rsum = 0
+    for t,r in typs:
+        if t < 0:
+            neg += 1
+        elif t == 0:
+            acnt += 1
+            rsum += r
+
+    assert acnt == 16
+    assert neg == 0
+    assert rsum == approx(9.17)
+        
         
 def test_filemap_gninatyping():
     datadir = os.path.dirname(__file__)+'/data'
