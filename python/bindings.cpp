@@ -9,7 +9,6 @@
 #include <utility>
 #include <boost/python.hpp>
 #include <boost/python/suite/indexing/vector_indexing_suite.hpp>
-#include <boost/python/tuple.hpp>
 #include <boost/preprocessor/repetition.hpp>
 #include <boost/preprocessor/punctuation/comma_if.hpp>
 
@@ -287,7 +286,7 @@ class PythonCallbackIndexTyper: public CallbackIndexTyper {
     }
 
     ///call callback
-    virtual std::pair<int,float> get_type(OpenBabel::OBAtom& a) const {
+    virtual std::pair<int,float> get_atom_type(OpenBabel::OBAtom* a) const {
       return boost::python::extract< std::pair<int,float> >(callback(a));
     }
 };
@@ -307,14 +306,14 @@ class PythonCallbackVectorTyper: public CallbackVectorTyper {
     }
 
     ///set type vector and return radius for a, not exposed to python
-    virtual float get_type(OpenBabel::OBAtom& a, std::vector<float>& typ) const {
+    virtual float get_atom_type(OpenBabel::OBAtom* a, std::vector<float>& typ) const {
       auto vec_r =  get_type_vector(a);
       typ = vec_r.first;
       return vec_r.second;
     }
 
     ///call callback - for python return vector by reference
-    virtual std::pair<std::vector<float>, float > get_type_vector(OpenBabel::OBAtom& a) const {
+    virtual std::pair<std::vector<float>, float > get_type_vector(OpenBabel::OBAtom* a) const {
       return  boost::python::extract< std::pair< std::vector<float>, float > >(callback(a));
     }
 };
@@ -362,16 +361,13 @@ struct PySwigObject {
 
 void* extract_swig_wrapped_pointer(PyObject* obj)
 {
-  std::cerr << "CAlling extract swig\n";
     //first we need to get the this attribute from the Python Object
     if (!PyObject_HasAttrString(obj, "this"))
         return NULL;
-    std::cerr << "has this extract swig\n";
 
     PyObject* thisAttr = PyObject_GetAttrString(obj, "this");
     if (thisAttr == nullptr)
         return nullptr;
-    std::cerr << "got this extract swig\n";
 
     //This Python Object is a SWIG Wrapper and contains our pointer
     void* pointer = ((PySwigObject*)thisAttr)->ptr;
@@ -379,7 +375,43 @@ void* extract_swig_wrapped_pointer(PyObject* obj)
     return pointer;
 }
 
+//return true if list is uniformly typed to T
+template<typename T>
+bool list_is_vec(list l) {
+  unsigned n = len(l);
+  for(unsigned i = 0; i < n; i++) {
+    extract<T> e(l[i]);
+    if(!e.check()) return false;
+  }
+  return true;
+}
 
+// convert a python list to a uniformly typed vector
+template<typename T>
+std::vector<T> list_to_vec(list l) {
+  unsigned n = len(l);
+  std::vector<T> ret; ret.reserve(n);
+  for(unsigned i = 0; i < n; i++) {
+    ret.push_back(extract<T>(l[i]));
+  }
+  return ret;
+}
+
+//convert a list of lists to a vector of uniformly typed vectors, sublists can be single elements
+template<typename T>
+std::vector< std::vector<T> > listlist_to_vecvec(list l) {
+  unsigned n = len(l);
+  std::vector< std::vector<T> > ret; ret.reserve(n);
+  for(unsigned i = 0; i < n; i++) {
+    extract<T> singleton(l[i]);
+    if(singleton.check()) {
+      ret.push_back(std::vector<T>(1, singleton()));
+    } else {
+      ret.push_back(list_to_vec<T>(extract<list>(l[i])));
+    }
+  }
+  return ret;
+}
 
 BOOST_PYTHON_MODULE(molgrid)
 {
@@ -444,7 +476,7 @@ DEFINE_MGRID(N,d)
       .def("real", &Quaternion::real)
       .def("conj", &Quaternion::conj)
       .def("norm", &Quaternion::norm)
-      .def("rotate", &Quaternion::rotate)
+      .def("rotate", &Quaternion::rotate, (arg("x"),"y","z"))
       .def("transform", &Quaternion::transform)
       .def("inverse", &Quaternion::inverse)
       .def(self * self)
@@ -481,25 +513,25 @@ DEFINE_MGRID(N,d)
   class_<GninaIndexTyper>("GninaIndexTyper")
       .def(init<bool>())
       .def("num_types", &GninaIndexTyper::num_types)
-      .def("get_type", &GninaIndexTyper::get_type)
+      .def("get_atom_type", &GninaIndexTyper::get_atom_type)
       .def("get_type_names",&GninaIndexTyper::get_type_names);
 
   class_<ElementIndexTyper>("ElementIndexTyper")
       .def(init<int>())
       .def("num_types", &ElementIndexTyper::num_types)
-      .def("get_type", &ElementIndexTyper::get_type)
+      .def("get_atom_type", &ElementIndexTyper::get_atom_type)
       .def("get_type_names",&ElementIndexTyper::get_type_names);
 
   class_<PythonCallbackIndexTyper>("PythonCallbackIndexTyper", no_init)
       .def(init<object, unsigned>())
       .def(init<object, unsigned, const std::vector<std::string>&>())
       .def("num_types", &PythonCallbackIndexTyper::num_types)
-      .def("get_type", &PythonCallbackIndexTyper::get_type)
+      .def("get_atom_type", &PythonCallbackIndexTyper::get_atom_type)
       .def("get_type_names",&PythonCallbackIndexTyper::get_type_names);
 
   class_<GninaVectorTyper>("GninaVectorTyper")
       .def("num_types", &GninaVectorTyper::num_types)
-      .def("get_type", &GninaVectorTyper::get_type)
+      .def("get_atom_type", &GninaVectorTyper::get_atom_type)
       .def("get_type_names",&GninaVectorTyper::get_type_names);
 
   class_<PythonCallbackVectorTyper>("PythonCallbackVectorTyper", no_init)
@@ -511,25 +543,42 @@ DEFINE_MGRID(N,d)
 
   class_<FileAtomMapper>("FileAtomMapper", init<const std::string&, const std::vector<std::string> >())
       .def("num_types", &FileAtomMapper::num_types)
-      .def("get_type", &FileAtomMapper::get_type)
+      .def("get_new_type", &FileAtomMapper::get_new_type)
       .def("get_type_names",&FileAtomMapper::get_type_names);
 
   class_<SubsetAtomMapper>("SubsetAtomMapper", init<const std::vector<int>&, bool>())
       .def(init<const std::vector< std::vector<int> >&, bool>())
+      .def(init<std::vector<int>&, bool, std::vector< std::string> >())
+      .def(init<std::vector< std::vector<int> >&, bool, const std::vector< std::string>& >())
+      .def("__init__",make_constructor(
+          +[](list l, bool catchall, const std::vector< std::string>& old_names) {
+          if(list_is_vec<int>(l)) {
+            return std::make_shared<SubsetAtomMapper>(list_to_vec<int>(l),catchall,old_names);
+          } else { //assume list of lists
+            return std::make_shared<SubsetAtomMapper>(listlist_to_vecvec<int>(l),catchall,old_names);
+          }
+        }, default_call_policies(),
+        (arg("map"), arg("catchall") = true, arg("old_names") = std::vector<std::string>())))
       .def("num_types", &SubsetAtomMapper::num_types)
-      .def("get_type", &SubsetAtomMapper::get_type)
+      .def("get_new_type", &SubsetAtomMapper::get_new_type)
       .def("get_type_names",&SubsetAtomMapper::get_type_names);
 
   class_<MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper> >("SubsettedElementTyper",
       init<SubsetAtomMapper, ElementIndexTyper>())
           .def("num_types", &MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper>::num_types)
-          .def("get_type", &MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper>::get_type)
+          .def("get_atom_type", &MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper>::get_atom_type)
           .def("get_type_names",&MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper>::get_type_names);
+
+  class_<MappedAtomIndexTyper<SubsetAtomMapper, GninaIndexTyper> >("SubsettedGninaTyper",
+      init<SubsetAtomMapper, GninaIndexTyper>())
+          .def("num_types", &MappedAtomIndexTyper<SubsetAtomMapper, GninaIndexTyper>::num_types)
+          .def("get_atom_type", &MappedAtomIndexTyper<SubsetAtomMapper, GninaIndexTyper>::get_atom_type)
+          .def("get_type_names",&MappedAtomIndexTyper<SubsetAtomMapper, GninaIndexTyper>::get_type_names);
 
   class_<MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper> >("FileMappedGninaTyper",
       init<FileAtomMapper, GninaIndexTyper>())
           .def("num_types", &MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper> ::num_types)
-          .def("get_type", &MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper> ::get_type)
+          .def("get_atom_type", &MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper> ::get_atom_type)
           .def("get_type_names",&MappedAtomIndexTyper<FileAtomMapper, GninaIndexTyper> ::get_type_names);
 }
 

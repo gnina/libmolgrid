@@ -59,7 +59,7 @@ unsigned GninaIndexTyper::num_types() const {
 
 
 ///return type index and radius of a
-std::pair<int,float> GninaIndexTyper::get_type(OpenBabel::OBAtom* a) const {
+std::pair<int,float> GninaIndexTyper::get_atom_type(OpenBabel::OBAtom* a) const {
 
   //this function is more convoluted than it needs to be for historical reasons
   //and a general fear of breaking backwards compatibility
@@ -145,6 +145,19 @@ std::pair<int,float> GninaIndexTyper::get_type(OpenBabel::OBAtom* a) const {
 
 }
 
+//look up radius for passed type
+pair<int,float> GninaIndexTyper::get_int_type(unsigned t) const {
+  int ret = GenericMetal;
+  if(t < NumTypes) {
+    ret = t;
+  }
+  if(use_covalent) {
+    return make_pair(ret, data[ret].covalent_radius);
+  } else {
+    return make_pair(ret, data[ret].xs_radius);
+  }
+}
+
 //return vector of string representations of types
 std::vector<std::string> GninaIndexTyper::get_type_names() const {
   vector<string> ret; ret.reserve(NumTypes);
@@ -162,8 +175,15 @@ unsigned ElementIndexTyper::num_types() const {
 }
 
 ///return type index of a
-std::pair<int,float> ElementIndexTyper::get_type(OpenBabel::OBAtom* a) const {
+std::pair<int,float> ElementIndexTyper::get_atom_type(OpenBabel::OBAtom* a) const {
   unsigned elem = a->GetAtomicNum();
+  float radius = OpenBabel::OBElements::GetCovalentRad(elem);
+  if(elem >= last_elem) elem = 0; //truncate
+  return make_pair((int)elem,radius);
+}
+
+//return element with radius
+std::pair<int,float> ElementIndexTyper::get_int_type(unsigned elem) const {
   float radius = OpenBabel::OBElements::GetCovalentRad(elem);
   if(elem >= last_elem) elem = 0; //truncate
   return make_pair((int)elem,radius);
@@ -237,9 +257,9 @@ unsigned GninaVectorTyper::num_types() const {
 }
 
 ///return type index of a
-float GninaVectorTyper::get_type(OpenBabel::OBAtom* a, std::vector<float>& typ) const {
+float GninaVectorTyper::get_atom_type(OpenBabel::OBAtom* a, std::vector<float>& typ) const {
   typ.assign(NumTypes, 0);
-  auto t_r = ityper.get_type(a);
+  auto t_r = ityper.get_atom_type(a);
   int t = t_r.first;
   float radius = t_r.second;
 
@@ -386,7 +406,7 @@ FileAtomMapper::FileAtomMapper(const std::string& fname, const std::vector<std::
 }
 
 /// return mapped type
-int FileAtomMapper::get_type(unsigned origt) const {
+int FileAtomMapper::get_new_type(unsigned origt) const {
   if(origt < old_type_to_new_type.size()) return old_type_to_new_type[origt];
   else return -1;
 }
@@ -439,7 +459,7 @@ SubsetAtomMapper::SubsetAtomMapper(const std::vector<std::vector<int> >& map,
 }
 
 /// return mapped type
-int SubsetAtomMapper::get_type(unsigned origt) const {
+int SubsetAtomMapper::get_new_type(unsigned origt) const {
   if(old2new.count(origt)) {
     return old2new.at(origt);
   }
