@@ -201,7 +201,7 @@ std::vector<std::string> ElementIndexTyper::get_type_names() const {
 
 
 //safely set type_names from names, even if some are missing (use indices in that case)
-static void set_names(unsigned ntypes, std::vector<std::string>& type_names, const std::vector<std::string>& names) {
+void AtomIndexTyper::set_names(unsigned ntypes, std::vector<std::string>& type_names, const std::vector<std::string>& names) {
   type_names.clear();
   type_names.reserve(ntypes);
   for(unsigned i = 0; i < ntypes; i++) {
@@ -246,6 +246,7 @@ vector<string> GninaVectorTyper::vtype_names { //this needs to match up with vty
   "XS_donor", //bool
   "XS_acceptor", //bool
   "AD_heteroatom",
+  "Aromatic", //bool
   "OB_partialcharge"
 };
 
@@ -344,6 +345,7 @@ float GninaVectorTyper::get_atom_type(OpenBabel::OBAtom* a, std::vector<float>& 
   typ[XS_acceptor] = info.xs_acceptor;
   typ[AD_heteroatom] = info.ad_heteroatom;
   typ[OB_partialcharge] = a->GetPartialCharge();
+  typ[Aromatic] = a->IsAromatic();
   return radius;
 }
 
@@ -355,7 +357,7 @@ std::vector<std::string> GninaVectorTyper::get_type_names() const {
 
 CallbackVectorTyper::CallbackVectorTyper(AtomVectorTyperFunc f, unsigned ntypes, const std::vector<std::string>& names): callback(f) {
   //setup names
-  set_names(ntypes, type_names, names);
+  AtomIndexTyper::set_names(ntypes, type_names, names);
 }
 
 

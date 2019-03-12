@@ -39,6 +39,9 @@ class AtomIndexTyper {
     //return vector of string representations of types
     //this isn't expected to be particularly efficient
     virtual std::vector<std::string> get_type_names() const = 0;
+
+    static void set_names(unsigned ntypes, std::vector<std::string>& type_names, const std::vector<std::string>& names);
+
 };
 
 /** \brief Base class for generating vector types */
@@ -194,7 +197,7 @@ class ElementIndexTyper: public AtomIndexTyper {
  */
 class CallbackIndexTyper: public AtomIndexTyper {
   public:
-    using AtomIndexTyperFunc = std::pair<int,float> (*)(OpenBabel::OBAtom* a);
+    using AtomIndexTyperFunc = std::function<std::pair<int,float>(OpenBabel::OBAtom* a)>;
 
   private:
     AtomIndexTyperFunc callback = nullptr;
@@ -303,6 +306,7 @@ class GninaVectorTyper: public AtomVectorTyper {
       /* 22 */XS_acceptor, //bool
       /* 23 */AD_heteroatom, //bool
       /* 24 */OB_partialcharge, //float
+      /* 25 */Aromatic, //bool
       /* 25 */ NumTypes
     };
 
@@ -325,7 +329,7 @@ class GninaVectorTyper: public AtomVectorTyper {
  */
 class CallbackVectorTyper: public AtomVectorTyper {
   public:
-    using AtomVectorTyperFunc = float (*)(OpenBabel::OBAtom* a, std::vector<float>& typ);
+    using AtomVectorTyperFunc = std::function<float (OpenBabel::OBAtom* a, std::vector<float>& )>;
 
   private:
     AtomVectorTyperFunc callback = nullptr;

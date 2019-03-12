@@ -272,6 +272,82 @@ bool init_numpy()
   return true;
 }
 
+struct PySwigObject {
+    PyObject_HEAD
+    void * ptr;
+    void *ty;
+    int own;
+};
+
+//convert c++ obatom pointer to python object
+object obatom_to_object(OpenBabel::OBAtom* a) {
+  //this uses a complete hack of constructing a dummy atom and then
+  //swapping out the underlying pointer
+  object ob = import("openbabel");
+  object atom = ob.attr("OBAtom")();
+
+  PyObject *obj = atom.ptr();
+  //first we need to get the this attribute from the Python Object
+  if (!PyObject_HasAttrString(obj, "this"))
+      return atom;
+
+  PyObject* thisAttr = PyObject_GetAttrString(obj, "this");
+  if (thisAttr == nullptr)
+      return atom;
+
+  //This Python Object is a SWIG Wrapper and contains our pointer
+  OpenBabel::OBAtom* oldptr = (OpenBabel::OBAtom*)((PySwigObject*)thisAttr)->ptr;
+  ((PySwigObject*)thisAttr)->ptr = a;
+  ((PySwigObject*)thisAttr)->own = 0; //the molecule owns the memory
+  delete oldptr;
+
+  PyObject_SetAttrString(obj, "this", thisAttr);
+  return atom;
+}
+
+void* extract_swig_wrapped_pointer(PyObject* obj)
+{
+    //first we need to get the this attribute from the Python Object
+    if (!PyObject_HasAttrString(obj, "this"))
+        return NULL;
+
+    PyObject* thisAttr = PyObject_GetAttrString(obj, "this");
+    if (thisAttr == nullptr)
+        return nullptr;
+
+    //This Python Object is a SWIG Wrapper and contains our pointer
+    void* pointer = ((PySwigObject*)thisAttr)->ptr;
+    Py_DECREF(thisAttr);
+    return pointer;
+}
+
+// convert a python list to a uniformly typed vector
+template<typename T>
+std::vector<T> list_to_vec(list l) {
+  unsigned n = len(l);
+  std::vector<T> ret; ret.reserve(n);
+  for(unsigned i = 0; i < n; i++) {
+    ret.push_back(extract<T>(l[i]));
+  }
+  return ret;
+}
+
+//convert a list of lists to a vector of uniformly typed vectors, sublists can be single elements
+template<typename T>
+std::vector< std::vector<T> > listlist_to_vecvec(list l) {
+  unsigned n = len(l);
+  std::vector< std::vector<T> > ret; ret.reserve(n);
+  for(unsigned i = 0; i < n; i++) {
+    extract<T> singleton(l[i]);
+    if(singleton.check()) {
+      ret.push_back(std::vector<T>(1, singleton()));
+    } else {
+      ret.push_back(list_to_vec<T>(extract<list>(l[i])));
+    }
+  }
+  return ret;
+}
+
 /** \brief Callback to python for index type
  */
 class PythonCallbackIndexTyper: public CallbackIndexTyper {
@@ -281,13 +357,20 @@ class PythonCallbackIndexTyper: public CallbackIndexTyper {
   public:
 
     /// iniitalize callbacktyper, if names are not provided, numerical names will be generated
-    PythonCallbackIndexTyper(boost::python::object c, unsigned ntypes,
-        const std::vector<std::string>& names=std::vector<std::string>()): CallbackIndexTyper(nullptr, ntypes, names), callback(c) {
+    PythonCallbackIndexTyper(boost::python::object c, unsigned ntypes, list names):
+          CallbackIndexTyper([this](OpenBabel::OBAtom* a) -> std::pair<int,float> {
+      return extract< std::pair<int,float> >(callback(obatom_to_object(a)));
+    }, ntypes, list_to_vec<std::string>(names)), callback(c) {
     }
 
     ///call callback
-    virtual std::pair<int,float> get_atom_type(OpenBabel::OBAtom* a) const {
-      return boost::python::extract< std::pair<int,float> >(callback(a));
+    // note I'm unwrapping and rewrapping the obatom in python mostly to test the code
+    std::pair<int,float> get_atom_type(object a) const {
+      OpenBabel::OBAtom *atom = (OpenBabel::OBAtom *)extract_swig_wrapped_pointer(a.ptr());
+      if(atom)
+        return CallbackIndexTyper::get_atom_type(atom);
+      else
+        throw std::invalid_argument("Need OBAtom");
     }
 };
 
@@ -301,20 +384,28 @@ class PythonCallbackVectorTyper: public CallbackVectorTyper {
   public:
 
     /// iniitalize callbacktyper, if names are not provided, numerical names will be generated
-    PythonCallbackVectorTyper(boost::python::object c, unsigned ntypes,
-        const std::vector<std::string>& names=std::vector<std::string>()): CallbackVectorTyper(nullptr, ntypes, names), callback(c) {
-    }
-
-    ///set type vector and return radius for a, not exposed to python
-    virtual float get_atom_type(OpenBabel::OBAtom* a, std::vector<float>& typ) const {
-      auto vec_r =  get_type_vector(a);
-      typ = vec_r.first;
-      return vec_r.second;
+    PythonCallbackVectorTyper(boost::python::object c, unsigned ntypes, list lnames):
+      CallbackVectorTyper([this](OpenBabel::OBAtom* a, std::vector<float>& typ) {
+          object o = callback(obatom_to_object(a));
+          tuple t(o);
+          list vec(t[0]);
+          float r = extract<float>(t[1]);
+          typ = list_to_vec<float>(vec);
+          return r;
+          },
+          ntypes, list_to_vec<std::string>(lnames)), callback(c) {
     }
 
     ///call callback - for python return vector by reference
-    virtual std::pair<std::vector<float>, float > get_type_vector(OpenBabel::OBAtom* a) const {
-      return  boost::python::extract< std::pair< std::vector<float>, float > >(callback(a));
+    virtual tuple get_atom_type_vector(object a) const {
+      OpenBabel::OBAtom *atom = (OpenBabel::OBAtom *)extract_swig_wrapped_pointer(a.ptr());
+      if(atom) {
+       std::vector<float> typ;
+       float r = get_atom_type(atom, typ);
+       return make_tuple(list(typ), r);
+      } else {
+       throw std::invalid_argument("Need OBAtom");
+      }
     }
 };
 
@@ -353,28 +444,6 @@ struct py_pair {
     PythonToPairConverter<T1, T2> fromPy;
 };
 
-struct PySwigObject {
-    PyObject_HEAD
-    void * ptr;
-    const char * desc;
-};
-
-void* extract_swig_wrapped_pointer(PyObject* obj)
-{
-    //first we need to get the this attribute from the Python Object
-    if (!PyObject_HasAttrString(obj, "this"))
-        return NULL;
-
-    PyObject* thisAttr = PyObject_GetAttrString(obj, "this");
-    if (thisAttr == nullptr)
-        return nullptr;
-
-    //This Python Object is a SWIG Wrapper and contains our pointer
-    void* pointer = ((PySwigObject*)thisAttr)->ptr;
-    Py_DECREF(thisAttr);
-    return pointer;
-}
-
 //return true if list is uniformly typed to T
 template<typename T>
 bool list_is_vec(list l) {
@@ -386,32 +455,7 @@ bool list_is_vec(list l) {
   return true;
 }
 
-// convert a python list to a uniformly typed vector
-template<typename T>
-std::vector<T> list_to_vec(list l) {
-  unsigned n = len(l);
-  std::vector<T> ret; ret.reserve(n);
-  for(unsigned i = 0; i < n; i++) {
-    ret.push_back(extract<T>(l[i]));
-  }
-  return ret;
-}
 
-//convert a list of lists to a vector of uniformly typed vectors, sublists can be single elements
-template<typename T>
-std::vector< std::vector<T> > listlist_to_vecvec(list l) {
-  unsigned n = len(l);
-  std::vector< std::vector<T> > ret; ret.reserve(n);
-  for(unsigned i = 0; i < n; i++) {
-    extract<T> singleton(l[i]);
-    if(singleton.check()) {
-      ret.push_back(std::vector<T>(1, singleton()));
-    } else {
-      ret.push_back(list_to_vec<T>(extract<list>(l[i])));
-    }
-  }
-  return ret;
-}
 
 BOOST_PYTHON_MODULE(molgrid)
 {
@@ -454,7 +498,9 @@ DEFINE_MGRID(N,d)
       .def(vector_indexing_suite<std::vector<size_t> >());
   class_<std::vector<std::string> >("StringVec")
       .def(vector_indexing_suite<std::vector<std::string> >());
-
+  class_<std::vector<float> >("FloatVec")
+      .def(vector_indexing_suite<std::vector<float> >());
+      
   class_<Pointer<float> >("FloatPtr", no_init);
   class_<Pointer<double> >("DoublePtr", no_init);
 
@@ -509,6 +555,8 @@ DEFINE_MGRID(N,d)
 //Atom typing
   converter::registry::insert(&extract_swig_wrapped_pointer, type_id<OpenBabel::OBAtom>());
   py_pair<int, float>();
+  py_pair<std::vector<float>, float>();
+  py_pair<list, float>();
 
   class_<GninaIndexTyper>("GninaIndexTyper")
       .def(init<bool>())
@@ -522,23 +570,28 @@ DEFINE_MGRID(N,d)
       .def("get_atom_type", &ElementIndexTyper::get_atom_type)
       .def("get_type_names",&ElementIndexTyper::get_type_names);
 
-  class_<PythonCallbackIndexTyper>("PythonCallbackIndexTyper", no_init)
-      .def(init<object, unsigned>())
-      .def(init<object, unsigned, const std::vector<std::string>&>())
+  class_<PythonCallbackIndexTyper>("PythonCallbackIndexTyper",
+      init<object, unsigned, list>(
+          (arg("func"), arg("num_types"), arg("names") = list() ) ))
       .def("num_types", &PythonCallbackIndexTyper::num_types)
       .def("get_atom_type", &PythonCallbackIndexTyper::get_atom_type)
       .def("get_type_names",&PythonCallbackIndexTyper::get_type_names);
 
   class_<GninaVectorTyper>("GninaVectorTyper")
       .def("num_types", &GninaVectorTyper::num_types)
-      .def("get_atom_type", &GninaVectorTyper::get_atom_type)
+      .def("get_atom_type_vector", +[](const GninaVectorTyper& typer, OpenBabel::OBAtom* a) {
+        std::vector<float> typs;
+        float r = typer.get_atom_type(a, typs);
+        auto ltyps = list(typs);
+        return std::make_pair(ltyps,r);
+        })
       .def("get_type_names",&GninaVectorTyper::get_type_names);
 
-  class_<PythonCallbackVectorTyper>("PythonCallbackVectorTyper", no_init)
-      .def(init<object, unsigned>())
-      .def(init<object, unsigned, const std::vector<std::string>&>())
+  class_<PythonCallbackVectorTyper>("PythonCallbackVectorTyper",
+      init<object, unsigned, list>(
+          (arg("func"), arg("num_types"), arg("names") = list() ) ))
       .def("num_types", &PythonCallbackVectorTyper::num_types)
-      .def("get_type_vector", &PythonCallbackVectorTyper::get_type_vector)
+      .def("get_atom_type_vector", &PythonCallbackVectorTyper::get_atom_type_vector)
       .def("get_type_names",&PythonCallbackVectorTyper::get_type_names);
 
   class_<FileAtomMapper>("FileAtomMapper", init<const std::string&, const std::vector<std::string> >())
@@ -603,5 +656,6 @@ DEFINE_MGRID(N,d)
           .def("num_types", &FileMappedElementTyper::num_types)
           .def("get_atom_type", &FileMappedElementTyper::get_atom_type)
           .def("get_type_names",&FileMappedElementTyper::get_type_names);
+
 }
 

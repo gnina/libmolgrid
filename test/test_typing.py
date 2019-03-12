@@ -2,6 +2,7 @@ import pytest
 import molgrid
 import pybel
 import os
+import numpy as np
 from pytest import approx
 
 def test_gninatyping():
@@ -244,3 +245,83 @@ def test_filemap_elementtyping():
     assert neg == 1
     assert hcnt == 7     
     
+def test_callbacktyping():
+    m = pybel.readstring('smi','c1c(Cl)cccc1CO')
+    m.addh()
+    
+    def mytyper(atom):
+        return (atom.GetAtomicNum(), 2.0)
+    
+    t = molgrid.PythonCallbackIndexTyper(mytyper, 16)
+    names = list(t.get_type_names())
+    assert len(names) == 16
+    assert names[3] == '3'  #numerical names
+    typs = [t.get_atom_type(a.OBAtom) for a in m.atoms]
+    assert len(typs) == 16
+    
+    ccnt = 0
+    ocnt = 0
+    hcnt = 0
+    other = 0
+    for t,r in typs:
+        if t < 0:
+            other += 1
+        else:
+            if names[t] == '6':
+                ccnt += 1
+                assert r == approx(2)
+            if names[t] == '8':
+                ocnt += 1
+                assert r == approx(2)
+            if names[t] == '1':
+                hcnt += 1
+            assert r == approx(2)
+
+
+    assert ccnt == 7
+    assert ocnt == 1
+    assert hcnt == 7
+    assert other == 1    
+
+
+def test_gninavector_typing():
+    m = pybel.readstring('smi','C')
+    m.addh()
+
+    t = molgrid.GninaVectorTyper()
+    typs = [t.get_atom_type_vector(a.OBAtom) for a in m.atoms]
+    names = list(t.get_type_names())
+    assert len(names) == 26
+    assert names[-1] == 'OB_partialcharge'
+    for tvec,r in typs:
+        if r < 1: #hydrogen
+            assert r == approx(0.37)
+            assert tvec[0] == 1
+            assert np.sum(tvec[:17]) == 1
+        else: #carbon
+            assert r == approx(1.9)
+            assert tvec[1] == 1
+            assert np.sum(tvec[:17]) == 1
+            assert names[20] == "XS_hydrophobe"
+            assert tvec[20] == 1
+
+
+def test_callbackvector_typing():
+    m = pybel.readstring('smi','C')
+    m.addh()
+
+    def mytyper(atom):
+        return ([atom.GetAtomicNum(),atom.GetValence()], 1.5)
+    
+    t = molgrid.PythonCallbackVectorTyper(mytyper, 2, ["anum","valence"])
+    typs = [t.get_atom_type_vector(a.OBAtom) for a in m.atoms]
+    names = list(t.get_type_names())
+    assert len(names) == 2
+    assert names[1] == 'valence'
+    for tvec,r in typs:
+        assert r == approx(1.5)
+        if tvec[0] == 6:
+            assert tvec[1] == 4
+        else: #hydrogen
+            assert tvec[0] == 1
+            assert tvec[1] == 1
