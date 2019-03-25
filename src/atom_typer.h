@@ -20,8 +20,25 @@ namespace libmolgrid {
 
 /***** Base classes **********/
 
+/** \brief Base class for all atom typers */
+class AtomTyper {
+  public:
+    AtomTyper() {}
+    virtual ~AtomTyper() {}
+
+    virtual unsigned num_types() const = 0;
+
+    virtual float get_atom_type(OpenBabel::OBAtom *a, std::vector<float>& typ) const { throw std::logic_error("Unimplemented atom typing function called"); }
+    virtual std::pair<int,float> get_atom_type(OpenBabel::OBAtom *a) const { throw std::logic_error("Unimplemented atom typing function called"); }
+    virtual std::pair<int,float> get_int_type(unsigned t) { throw std::logic_error("Unimplemented atom typing function called"); }
+
+    virtual std::vector<std::string> get_type_names() const = 0;
+
+    virtual bool is_vector_typer() const = 0;
+};
+
 /** \brief Base class for generating numerical types along with atomic radius */
-class AtomIndexTyper {
+class AtomIndexTyper: public AtomTyper {
   public:
     AtomIndexTyper() {}
     virtual ~AtomIndexTyper() {}
@@ -42,10 +59,13 @@ class AtomIndexTyper {
 
     static void set_names(unsigned ntypes, std::vector<std::string>& type_names, const std::vector<std::string>& names);
 
+    virtual bool is_vector_typer() const { return false; };
+
+
 };
 
 /** \brief Base class for generating vector types */
-class AtomVectorTyper {
+class AtomVectorTyper: public AtomTyper {
   public:
     AtomVectorTyper() {}
     virtual ~AtomVectorTyper() {}
@@ -59,6 +79,8 @@ class AtomVectorTyper {
     //return vector of string representations of types
     //this isn't expected to be particularly efficient
     virtual std::vector<std::string> get_type_names() const = 0;
+    virtual bool is_vector_typer() const { return true; };
+
 
 };
 

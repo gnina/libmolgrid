@@ -2,6 +2,9 @@
 set( LIBMOLGRID_SOURCES
  libmolgrid.cpp
  atom_typer.cpp
+ example.cpp
+ exampleref_providers.cpp
+ coordinateset.cpp
  transform.cpp
  transform.cu
 )
@@ -14,6 +17,9 @@ set( LIBMOLGRID_HEADERS
  transform.h
  cartesian.h
  atom_typer.h
+ example.h
+ coordinateset.h
+ exampleref_providers.h
 )
 
 add_library(libmolgrid_shared SHARED ${LIBMOLGRID_HEADERS} ${LIBMOLGRID_SOURCES})
