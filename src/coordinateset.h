@@ -29,7 +29,9 @@ struct CoordinateSet {
   MGrid1f type_index{0}; //this should be integer
   MGrid2f type_vector{0,0};
   MGrid1f radius{0};
-  const unsigned max_type = 0;  //for indexed types, non-inclusive max
+  unsigned max_type = 0;  //for indexed types, non-inclusive max
+
+  CoordinateSet() {}
 
   ///initialize with obmol
   CoordinateSet(OpenBabel::OBMol *mol, AtomTyper& typer);

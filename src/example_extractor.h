@@ -12,9 +12,11 @@
 
 #include <memory>
 #include <vector>
+#include <unordered_map>
 #include "example.h"
 #include "exampleref_providers.h"
 #include "atom_typer.h"
+#include "coordinateset.h"
 
 namespace libmolgrid {
 
@@ -28,10 +30,27 @@ namespace libmolgrid {
 
  */
 class ExampleExtractor {
+
+    using CoordCache = std::unordered_map<const char*, CoordinateSet>;
+
     std::vector<std::shared_ptr<AtomTyper> > typers;
+    std::vector<CoordCache> coord_caches; //different typers have duplicated caches
+
+    bool use_cache = true;
+    bool addh = true;
+
+    void set_coords(const char *fname, unsigned which, CoordinateSet& coord);
   public:
-    ExampleExtractor();
-    virtual ~ExampleExtractor();
+
+    template<typename ...Typers>
+    ExampleExtractor(const ExampleProviderSettings& settings, Typers... typrs): typers{typers} {
+      coord_caches.resize(typers.size());
+      if(typers.size() == 0) throw std::invalid_argument("Need at least one atom typer for example extractor");
+    }
+    virtual ~ExampleExtractor() {}
+
+    /// Extract ref into ex
+    virtual void extract(const ExampleRef& ref, Example& ex);
 };
 
 } /* namespace libmolgrid */

@@ -41,6 +41,25 @@ struct ExampleRef {
     ExampleRef(const std::string& line, int numlabels, bool hasgroup=false);
 };
 
+/// Description of how examples should be provided
+struct ExampleProviderSettings {
+    bool shuffle = false;
+    bool balanced = false;
+    bool stratify_receptor = false;
+    int labelpos = -1;
+    //the following are for stratifying on a numerical label
+    int stratify_pos = 1;
+    bool stratify_abs = true; //stratify based on abs value, for cases where negative has special meaning (hinge loss indicator)
+    float stratify_min = 0;
+    float stratify_max = 0;
+    float stratify_step = 0;
+
+    //for grouped examples
+    int group_batch_size = 1; // slice time series (groups) by batches
+    int max_group_size = 0;
+
+};
+
 // example provider will take a bunch of settings (with reasonable defaults)
 // will take desired atom typers
 // create the appropriate example ref provider

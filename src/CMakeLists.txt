@@ -4,6 +4,7 @@ set( LIBMOLGRID_SOURCES
  atom_typer.cpp
  example.cpp
  exampleref_providers.cpp
+ example_extractor.cpp
  coordinateset.cpp
  transform.cpp
  transform.cu
@@ -20,6 +21,7 @@ set( LIBMOLGRID_HEADERS
  example.h
  coordinateset.h
  exampleref_providers.h
+ example_extractor.h
 )
 
 add_library(libmolgrid_shared SHARED ${LIBMOLGRID_HEADERS} ${LIBMOLGRID_SOURCES})

@@ -21,24 +21,6 @@ namespace libmolgrid {
 
 using namespace std;
 
-/// Description of how examples should be provided
-struct ExampleProviderSettings {
-    bool shuffle = false;
-    bool balanced = false;
-    bool stratify_receptor = false;
-    int labelpos = -1;
-    //the following are for stratifying on a numerical label
-    int stratify_pos = 1;
-    bool stratify_abs = true; //stratify based on abs value, for cases where negative has special meaning (hinge loss indicator)
-    float stratify_min = 0;
-    float stratify_max = 0;
-    float stratify_step = 0;
-
-    //for grouped examples
-    int batch_size = 1; // slice time series (groups) by batches
-    int max_group_size = 0;
-
-};
 
 /// abstract class for storing training example references
 class ExampleRefProvider {
@@ -353,7 +335,7 @@ class GroupedExampleRefProvider : public ExampleRefProvider {
 public:
   GroupedExampleRefProvider() {     current_groups.assign(batch_size,maxgroupsize); }
   GroupedExampleRefProvider(const ExampleProviderSettings& parm): examples(parm),
-                                              batch_size(parm.batch_size),
+                                              batch_size(parm.group_batch_size),
                                               maxgroupsize(parm.max_group_size) {
     current_groups.assign(batch_size,maxgroupsize);
   }
