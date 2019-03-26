@@ -210,7 +210,7 @@ public:
       examples.push_back(Provider(param));
     }
     unsigned pos = recmap[ex.files[0]];
-    examples[pos].add(ex);
+    examples[pos].addref(ex);
   }
 
   //note there is an explicit specialization for balanced providers, k=2
@@ -242,8 +242,8 @@ public:
       if(randomize) shuffle(examples.begin(), examples.end(), random_engine);
     }
 
-    CHECK_GT(examples[currenti].size(), 0) << "No valid sub-stratified examples.";
-    examples[currenti].next(ex);
+    if(examples[currenti].size() == 0) throw logic_error("No valid sub-stratified examples.");
+    examples[currenti].nextref(ex);
     currentk++;
   }
 
@@ -309,10 +309,10 @@ public:
 
   void addref(const ExampleRef& ex)
   {
-    if(valpos >= ex.labels.size()) throw std::invalid_argument("Invalid position for value stratification label");
+    if((unsigned)valpos >= ex.labels.size()) throw std::invalid_argument("Invalid position for value stratification label");
     unsigned i = bin(ex.labels[valpos]);
     if(i >= examples.size()) throw std::invalid_argument("Error with value stratification binning");
-    examples[i].add(ex);
+    examples[i].addref(ex);
   }
 
   void setup()
@@ -336,7 +336,7 @@ public:
 
   void nextref(ExampleRef& ex)
   {
-    examples[currenti].next(ex);
+    examples[currenti].nextref(ex);
     currenti = (currenti+1)%examples.size();
   }
 
@@ -384,7 +384,7 @@ public:
     int group = ex.group;
 
     if(frame_groups.count(group) == 0)  //new group
-      examples.add(ex); //let provider manage, but we are really just using it to select the groups
+      examples.addref(ex); //let provider manage, but we are really just using it to select the groups
 
     frame_groups[group].push_back(ex);
     if(frame_groups[group].size() >= maxgroupsize)

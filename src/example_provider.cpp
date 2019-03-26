@@ -66,7 +66,82 @@ void ExampleProvider::next_batch(std::vector<Example>& ex, unsigned batch_size) 
 }
 
 
-//std::shared_ptr<ExampleRefProvider> ExampleProvider::createProvider(const ExampleProviderSettings& settings);
+std::shared_ptr<ExampleRefProvider> ExampleProvider::createProvider(const ExampleProviderSettings& settings) {
+  bool balanced  = settings.balanced;
+  bool strat_receptor  = settings.stratify_receptor;
+  bool strat_aff = settings.stratify_max != settings.stratify_min;
+  bool grouped = settings.max_group_size > 1;
+
+  //strat_aff > strat_receptor > balanced
+  if(strat_aff)
+  {
+    if(strat_receptor)
+    {
+      if(balanced) // sample 2 from each receptor
+      {
+        if(grouped)
+          return make_shared<GroupedExampleRefProvider<ValueStratifiedExampleRefProfider<ReceptorStratifiedExampleRefProvider<BalancedExampleRefProvider,2> > > >(settings);
+        else
+          return make_shared<ValueStratifiedExampleRefProfider<ReceptorStratifiedExampleRefProvider<BalancedExampleRefProvider,2> > >(settings);
+      }
+      else //sample 1 from each receptor
+      {
+        if(grouped)
+          return make_shared<GroupedExampleRefProvider<ValueStratifiedExampleRefProfider<ReceptorStratifiedExampleRefProvider<UniformExampleRefProvider> > > >(settings);
+        else
+          return make_shared<ValueStratifiedExampleRefProfider<ReceptorStratifiedExampleRefProvider<UniformExampleRefProvider> > >(settings);
+      }
+    }
+    else
+    {
+      if(balanced)
+      {
+        if(grouped)
+          return make_shared<GroupedExampleRefProvider<ValueStratifiedExampleRefProfider<BalancedExampleRefProvider> > >(settings);
+        else
+          return make_shared<ValueStratifiedExampleRefProfider<BalancedExampleRefProvider> >(settings);
+      }
+      else //sample 1 from each receptor
+      {
+        if(grouped)
+          return make_shared<GroupedExampleRefProvider<ValueStratifiedExampleRefProfider<UniformExampleRefProvider> > >(settings);
+        else
+          return make_shared<ValueStratifiedExampleRefProfider<UniformExampleRefProvider> >(settings);
+      }
+    }
+  }
+  else if(strat_receptor)
+  {
+    if(balanced) // sample 2 from each receptor
+    {
+      if(grouped)
+        return make_shared<GroupedExampleRefProvider<ReceptorStratifiedExampleRefProvider<BalancedExampleRefProvider, 2> > >(settings);
+      else
+        return make_shared<ReceptorStratifiedExampleRefProvider<BalancedExampleRefProvider, 2> >(settings);
+    }
+    else //sample 1 from each receptor
+    {
+      if(balanced)
+        return make_shared<GroupedExampleRefProvider<ReceptorStratifiedExampleRefProvider<UniformExampleRefProvider, 1> > >(settings);
+      else
+        return make_shared<ReceptorStratifiedExampleRefProvider<UniformExampleRefProvider, 1> >(settings);
+    }
+  }
+  else if(balanced)
+  {
+    if(grouped)
+      return make_shared<GroupedExampleRefProvider<BalancedExampleRefProvider> >(settings);
+    else
+      return make_shared<BalancedExampleRefProvider>(settings);
+  }
+  else
+  {
+    if(grouped)
+      return make_shared<GroupedExampleRefProvider<UniformExampleRefProvider> >(settings);
+    else
+      return make_shared<UniformExampleRefProvider>(settings);
+  }
+}
 
 
 
