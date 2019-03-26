@@ -657,5 +657,8 @@ DEFINE_MGRID(N,d)
           .def("get_atom_type", &FileMappedElementTyper::get_atom_type)
           .def("get_type_names",&FileMappedElementTyper::get_type_names);
 
+  scope().attr("defaultGninaLigandTyper") = defaultGninaLigandTyper;
+  scope().attr("defaultGninaReceptorTyper") = defaultGninaReceptorTyper;
+
 }
 

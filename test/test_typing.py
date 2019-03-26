@@ -71,6 +71,74 @@ def test_gninatyping():
     assert ocnt == 1
     assert phcnt == 1
     assert hcnt == 7    
+    
+def test_defaultgninatyping():
+    m = pybel.readstring('smi','c1ccccc1CCl')
+    m.addh()
+    t = molgrid.defaultGninaLigandTyper
+    assert t.num_types() == 14
+    names = list(t.get_type_names())
+    assert names[2] == 'AromaticCarbonXSHydrophobe'
+    typs = [t.get_atom_type(a.OBAtom) for a in m.atoms]
+    assert len(typs) == 15
+    acnt = 0
+    ccnt = 0
+    ocnt = 0
+    clcnt = 0
+    other = 0
+    for t,r in typs:
+        if t < 0:
+            other += 1
+            continue
+        if names[t] == 'AromaticCarbonXSHydrophobe':
+            acnt += 1
+            assert r == approx(1.9)
+        if names[t] == 'AliphaticCarbonXSNonHydrophobe':
+            ccnt += 1
+            assert r == approx(1.9)
+        if names[t] == 'OxygenXSDonorAcceptor':
+            ocnt += 1
+            assert r == approx(1.7)
+        if names[t] == 'Chlorine':
+            clcnt += 1
+
+    assert acnt == 6
+    assert ccnt == 1
+    assert ocnt == 0
+    assert clcnt == 1
+    assert other == 7
+    
+    #check covalent rdius
+    t = molgrid.defaultGninaReceptorTyper
+    typs = [t.get_atom_type(a.OBAtom) for a in m.atoms]
+    names = list(t.get_type_names())
+
+    assert names[-1] == 'GenericMetal_Boron_Manganese_Magnesium_Iron'
+    assert len(typs) == 15
+    acnt = 0
+    ccnt = 0
+    ocnt = 0
+    clcnt = 0
+    other = 0
+    for t,r in typs:
+        if t < 0:
+            other += 1
+        if names[t] == 'AromaticCarbonXSHydrophobe':
+            acnt += 1
+            assert r == approx(1.9)            
+        if names[t] == 'AliphaticCarbonXSNonHydrophobe':
+            ccnt += 1
+        if names[t] == 'OxygenXSDonorAcceptor':
+            ocnt += 1
+        if names[t] == 'Bromine_Iodine_Chlorine_Fluorine':
+            clcnt += 1
+        if names[t] == 'PolarHydrogen':
+            phcnt += 1
+    assert acnt == 6
+    assert ccnt == 1
+    assert ocnt == 0
+    assert clcnt == 1
+    assert other == 7    
 
 def test_elementtyping():
     m = pybel.readstring('smi','c1ccccc1CO')

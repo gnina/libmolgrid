@@ -11,7 +11,7 @@ namespace libmolgrid {
 
 ExampleProvider::ExampleProvider(const ExampleProviderSettings& settings):
     provider(createProvider(settings)),
-    extractor(settings, defaultGninaReceptorTypes, defaultGninaLigandTypes) {
+    extractor(settings, defaultGninaReceptorTyper, defaultGninaLigandTyper) {
 
 }
 

@@ -525,8 +525,8 @@ class FileMappedGninaTyper: public MappedAtomIndexTyper<FileAtomMapper, GninaInd
     }
 };
 
-extern FileMappedGninaTyper defaultGninaReceptorTypes;
-extern FileMappedGninaTyper defaultGninaLigandTypes;
+extern FileMappedGninaTyper defaultGninaReceptorTyper;
+extern FileMappedGninaTyper defaultGninaLigandTyper;
 
 } /* namespace libmolgrid */
 
