@@ -38,12 +38,14 @@ class ExampleExtractor {
 
     bool use_cache = true;
     bool addh = true;
+    bool duplicate_poses = false;
 
     void set_coords(const char *fname, unsigned which, CoordinateSet& coord);
   public:
 
     template<typename ...Typers>
-    ExampleExtractor(const ExampleProviderSettings& settings, Typers... typrs): typers{typers} {
+    ExampleExtractor(const ExampleProviderSettings& settings, Typers... typrs):
+        typers{typers}, use_cache(settings.cache_structs), addh(settings.add_hydrogens) {
       coord_caches.resize(typers.size());
       if(typers.size() == 0) throw std::invalid_argument("Need at least one atom typer for example extractor");
     }

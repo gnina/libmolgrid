@@ -75,13 +75,28 @@ void ExampleExtractor::extract(const ExampleRef& ref, Example& ex) {
 
   //for each file in ref, get a coordinate set using the matching typer
   ex.sets.clear();
-  ex.sets.resize(ref.files.size());
-  for(unsigned i = 0, n = ref.files.size(); i < n; i++) {
-    const char* fname = ref.files[i];
-    unsigned t = i;
-    if(t >= typers.size()) t = typers.size()-1; //repeat last typer if necessary
-    set_coords(fname, t, ex.sets[i]);
 
+  if(!duplicate_poses || ref.files.size() < 3) {
+    ex.sets.resize(ref.files.size());
+    for(unsigned i = 0, n = ref.files.size(); i < n; i++) {
+      const char* fname = ref.files[i];
+      unsigned t = i;
+      if(t >= typers.size()) t = typers.size()-1; //repeat last typer if necessary
+      set_coords(fname, t, ex.sets[i]);
+    }
+  } else { //duplicate first pose (receptor) to match each of the remaining poses
+    unsigned N = ref.files.size() - 1;
+    ex.sets.resize(N*2);
+    set_coords(ref.files[0], 0, ex.sets[0]);
+    for(unsigned i = 1, n = ref.files.size(); i < n; i++) {
+      const char* fname = ref.files[i];
+      unsigned t = i;
+      if(t >= typers.size()) t = typers.size()-1; //repeat last typer if necessary
+      set_coords(fname, t, ex.sets[2*(i-1)+1]);
+
+      //duplicate receptor by copying
+      if(i > 1) ex.sets[2*(i-1)] = ex.sets[0];
+    }
   }
 
 }

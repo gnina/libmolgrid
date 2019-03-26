@@ -30,7 +30,7 @@ class AtomTyper {
 
     virtual float get_atom_type(OpenBabel::OBAtom *a, std::vector<float>& typ) const { throw std::logic_error("Unimplemented atom typing function called"); }
     virtual std::pair<int,float> get_atom_type(OpenBabel::OBAtom *a) const { throw std::logic_error("Unimplemented atom typing function called"); }
-    virtual std::pair<int,float> get_int_type(unsigned t) { throw std::logic_error("Unimplemented atom typing function called"); }
+    virtual std::pair<int,float> get_int_type(unsigned t) const { throw std::logic_error("Unimplemented atom typing function called"); }
 
     virtual std::vector<std::string> get_type_names() const = 0;
 
@@ -525,6 +525,8 @@ class FileMappedGninaTyper: public MappedAtomIndexTyper<FileAtomMapper, GninaInd
     }
 };
 
+extern FileMappedGninaTyper defaultGninaReceptorTypes;
+extern FileMappedGninaTyper defaultGninaLigandTypes;
 
 } /* namespace libmolgrid */
 

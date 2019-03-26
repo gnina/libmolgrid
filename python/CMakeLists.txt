@@ -31,6 +31,7 @@ set( PYMOLGRID_PY
 # create the lib
 add_library(molgrid SHARED ${PYMOLGRID_SOURCES})
 
+file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/molgrid/")
 # Suppress prefix "lib" because Python does not allow this prefix
 set_target_properties(molgrid PROPERTIES 
 									PREFIX ""

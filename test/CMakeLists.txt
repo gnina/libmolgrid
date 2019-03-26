@@ -1,7 +1,7 @@
 
 
 #Prep ourselves for compiling boost
-find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+find_package(Boost COMPONENTS unit_test_framework system REQUIRED)
 include_directories (${Boost_INCLUDE_DIRS})
 
 #get all cpp files

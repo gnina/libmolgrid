@@ -41,4 +41,18 @@ void ReceptorStratifiedExampleRefProvider<BalancedExampleRefProvider, 2>::setup(
 
 }
 
+int ExampleRefProvider::populate(std::istream& lines, int numlabels, bool hasgroup) {
+  if(!lines) throw invalid_argument("Could not read lines");
+
+  string line;
+  while (getline(lines, line))
+  {
+    ExampleRef ref(line, numlabels, hasgroup);
+    addref(ref);
+  }
+
+  return size();
+}
+
+
 } /* namespace libmolgrid */

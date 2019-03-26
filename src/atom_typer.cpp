@@ -468,4 +468,37 @@ int SubsetAtomMapper::get_new_type(unsigned origt) const {
   return default_type;
 }
 
+static stringstream recmap(R"(AliphaticCarbonXSHydrophobe 
+AliphaticCarbonXSNonHydrophobe 
+AromaticCarbonXSHydrophobe 
+AromaticCarbonXSNonHydrophobe
+Bromine Iodine Chlorine Fluorine
+Nitrogen NitrogenXSAcceptor 
+NitrogenXSDonor NitrogenXSDonorAcceptor
+Oxygen OxygenXSAcceptor 
+OxygenXSDonorAcceptor OxygenXSDonor
+Sulfur SulfurAcceptor
+Phosphorus 
+Calcium
+Zinc
+GenericMetal Boron Manganese Magnesium Iron
+)");
+static stringstream ligmap(R"(AliphaticCarbonXSHydrophobe 
+AliphaticCarbonXSNonHydrophobe 
+AromaticCarbonXSHydrophobe 
+AromaticCarbonXSNonHydrophobe
+Bromine Iodine
+Chlorine
+Fluorine
+Nitrogen NitrogenXSAcceptor 
+NitrogenXSDonor NitrogenXSDonorAcceptor
+Oxygen OxygenXSAcceptor 
+OxygenXSDonorAcceptor OxygenXSDonor
+Sulfur SulfurAcceptor
+Phosphorus
+GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
+)");
+FileMappedGninaTyper defaultGninaReceptorTypes(recmap);
+FileMappedGninaTyper defaultGninaLigandTypes(ligmap);
+
 } /* namespace libmolgrid */

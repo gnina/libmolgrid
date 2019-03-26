@@ -32,7 +32,7 @@ class ExampleRefProvider {
     virtual unsigned size() const = 0;
     virtual ~ExampleRefProvider() {}
 
-    //read in all the example refs from lines
+    //read in all the example refs from lines, but does not setup
     virtual int populate(std::istream& lines, int numlabels, bool hasgroup);
 };
 
@@ -137,6 +137,45 @@ public:
   }
 };
 
+
+/// sample with some specified probability between two providers that should already be initialized
+template<class Provider1, class Provider2>
+class SamplingExampleRefProvider: public ExampleRefProvider
+{
+  Provider1 p1;
+  Provider2 p2;
+  double sample_rate = 0.5;
+  std::uniform_real_distribution<double> R{0.0,1};
+
+public:
+  SamplingExampleRefProvider() {}
+  SamplingExampleRefProvider(Provider1 P1, Provider2 P2, double srate): p1(P1), p2(P2), sample_rate(srate)
+  {
+  }
+
+  void addref(const ExampleRef& ex)
+  {
+      throw invalid_argument("Cannot add to SamplingExampleRefProvider");
+  }
+
+  void setup()
+  {
+    p1.setup();
+    p2.setup();
+  }
+
+  void nextref(ExampleRef& ex)
+  {
+    //alternate between actives and decoys
+    double r = R(random_engine);
+    if(r < sample_rate)
+      p1.nextref(ex);
+    else
+      p2.nextref(ex);
+  }
+
+  unsigned size() const { return p1.size()+p2.size(); }
+};
 
 
 /** \brief Partition examples by receptor and sample k times uniformly from each receptor

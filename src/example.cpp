@@ -8,29 +8,37 @@
 #include <iostream>  // NOLINT(readability/streams)
 #include <string>
 #include <unordered_set>
+#include <boost/algorithm/string.hpp>
 #include "example.h"
 
 namespace libmolgrid {
 
 using namespace std;
-//for memory efficiency, only store a given string once and use the const char*
-class StringCache {
-  unordered_set<string> strings;
-public:
-  const char* get(const string& s)
-  {
-    strings.insert(s);
-    //we assume even as the set is resized that strings never get allocated
-    return strings.find(s)->c_str();
-  }
-};
 
-static StringCache scache;
+StringCache string_cache;
+
+bool is_numeric(const string& number)
+{
+    char* end = nullptr;
+    strtod(number.c_str(), &end);  //if entire string is number, end will be set to end of string
+
+    return end != nullptr && *end == 0;  //could also check end != number.c_str() if whole string doesn't need to be numerical
+}
 
 ExampleRef::ExampleRef(const std::string& line, int numlabels, bool hasgroup) {
   stringstream stream(line);
   string tmp;
 
+  if(numlabels < 0) { //auto detect, assume no group
+    vector<string> tokens;
+    boost::algorithm::split(tokens, line,boost::is_any_of("\t "),boost::token_compress_on);
+    for(unsigned i = 0, n = tokens.size(); i < n; i++) {
+      numlabels = i;
+      if(!is_numeric(tokens[i]))
+        break;
+    }
+    if(hasgroup) numlabels--;
+  }
   //grab all labels
   double label = 0;
   labels.reserve(numlabels);
@@ -50,7 +58,7 @@ ExampleRef::ExampleRef(const std::string& line, int numlabels, bool hasgroup) {
     stream >> tmp;
     if(tmp.length() == 0 || tmp[0] == '#') //nothing left or hit comment character
       break;
-    const char* n = scache.get(tmp);
+    const char* n = string_cache.get(tmp);
     names.push_back(n);
   }
 

@@ -12,10 +12,11 @@
 
 #include <vector>
 #include <openbabel/mol.h>
-#include "atom_typer.h"
 #include "managed_grid.h"
 
 namespace libmolgrid {
+
+class AtomTyper;
 
 /** \brief A collection of typed atomic coordinates
  *

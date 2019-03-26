@@ -13,6 +13,7 @@
 #include "libmolgrid.h"
 #include "quaternion.h"
 #include "grid.h"
+#include "example.h"
 
 namespace libmolgrid {
 
