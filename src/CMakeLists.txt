@@ -6,6 +6,7 @@ set( LIBMOLGRID_SOURCES
  exampleref_providers.cpp
  example_extractor.cpp
  example_provider.cpp
+ grid_maker.cpp
  coordinateset.cpp
  transform.cpp
  transform.cu
@@ -24,6 +25,7 @@ set( LIBMOLGRID_HEADERS
  exampleref_providers.h
  example_extractor.h
  example_provider.h
+ grid_maker.h
 )
 
 add_library(libmolgrid_shared SHARED ${LIBMOLGRID_HEADERS} ${LIBMOLGRID_SOURCES})
