@@ -66,4 +66,8 @@ void ExampleProvider::next_batch(std::vector<Example>& ex, unsigned batch_size) 
 }
 
 
+std::shared_ptr<ExampleRefProvider> ExampleProvider::createProvider(const ExampleProviderSettings& settings);
+
+
+
 } /* namespace libmolgrid */

@@ -32,6 +32,27 @@ Transform::Transform(float3 c, float random_translate /*= 0.0*/, bool random_rot
       } //else Quaternion constructor is identity
 }
 
+void Transform::forward(const Example& in, Example& out, bool dotranslate) const {
+  //transform each coordset
+  if(in.sets.size() != out.sets.size()) {
+    throw std::invalid_argument("Incompatible example sizes"); //todo, resize out
+  }
+  for(unsigned i = 0, n = in.sets.size(); i < n; i++) {
+    forward(in.sets[i],out.sets[i],dotranslate);
+  }
+}
+
+void Transform::forward(const CoordinateSet& in, CoordinateSet& out, bool dotranslate) const {
+  if(in.coord.dimension(0) != out.coord.dimension(0)) {
+    throw std::invalid_argument("Incompatible coordinateset sizes"); //todo, resize out
+  }
+  if(in.coord.ongpu()) {
+    forward(in.coord.gpu(), out.coord.gpu(), dotranslate);
+  } else {
+    forward(in.coord.cpu(), out.coord.cpu(), dotranslate);
+  }
+
+}
 
 template <typename Dtype>
 void Transform::forward(const Grid<Dtype, 2, false>& in, Grid<Dtype, 2, false>& out, bool dotranslate /*=true*/) const {

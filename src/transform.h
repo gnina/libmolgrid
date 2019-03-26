@@ -58,6 +58,24 @@ class Transform {
     template <typename Dtype>
     void forward(const Grid<Dtype, 2, false>& in, Grid<Dtype, 2, false>& out, bool dotranslate=true) const;
 
+    /* \brief Apply 3D transformation to Example.   It is safe to transform in-place
+     *
+     * @param[in] input example
+     * @param[out] output example with same dimensions
+     * @param[in] dotranslate if false only a rotation around the origin is applied.
+     * (This is for vector quantities such as gradients and normals).
+     */
+    void forward(const Example& in, Example& out, bool dotranslate=true) const;
+
+    /* \brief Apply 3D transformation to CoordinateSet.   It is safe to transform in-place
+     *
+     * @param[in] input coords
+     * @param[out] output coords with same dimensions
+     * @param[in] dotranslate if false only a rotation around the origin is applied.
+     * (This is for vector quantities such as gradients and normals).
+     */
+    void forward(const CoordinateSet& in, CoordinateSet& out, bool dotranslate=true) const;
+
     /* \brief Apply 3D transformation on GPU.  Same requirements as CPU version.
      */
     template <typename Dtype>

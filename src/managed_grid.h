@@ -126,6 +126,12 @@ class ManagedGridBase {
       sent_to_gpu = false;
     }
 
+    /** \brief Return true if memory is currently on GPU */
+    bool ongpu() const { return sent_to_gpu; }
+
+    /** \brief Return true if memory is currently on CPU */
+    bool oncpu() const { return !sent_to_gpu; }
+
     /** \brief Synchronize gpu memory
      *  If operated on as device memory, must call synchronize before accessing on host.
      */
