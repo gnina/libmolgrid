@@ -19,9 +19,6 @@
 
 namespace libmolgrid {
 
-using namespace std;
-
-
 /// abstract class for storing training example references
 class ExampleRefProvider {
 
@@ -42,7 +39,7 @@ class ExampleRefProvider {
 ///single array of examples, possibly shuffled
 class UniformExampleRefProvider: public ExampleRefProvider
 {
-  vector<ExampleRef> all;
+  std::vector<ExampleRef> all;
   size_t current = 0;
   bool randomize = false;
 
@@ -61,7 +58,7 @@ public:
   {
     current = 0;
     if(randomize) shuffle(all.begin(), all.end(), random_engine);
-    if(all.size() == 0) throw invalid_argument("No valid examples found in training set.");
+    if(all.size() == 0) throw std::invalid_argument("No valid examples found in training set.");
   }
 
   void nextref(ExampleRef& ex)
@@ -102,7 +99,7 @@ public:
     else
       decoys.addref(ex);
     } else {
-      throw invalid_argument("Example has no label at position "+ boost::lexical_cast<string>(labelpos) + ".  There are only "+boost::lexical_cast<string>(ex.labels.size())+" labels");
+      throw std::invalid_argument("Example has no label at position "+ itoa(labelpos) + ".  There are only "+itoa(ex.labels.size())+" labels");
     }
   }
 
@@ -159,7 +156,7 @@ public:
 
   void addref(const ExampleRef& ex)
   {
-      throw invalid_argument("Cannot add to SamplingExampleRefProvider");
+      throw std::invalid_argument("Cannot add to SamplingExampleRefProvider");
   }
 
   void setup()
@@ -188,7 +185,7 @@ public:
 template<class Provider, int K=1>
 class ReceptorStratifiedExampleRefProvider: public ExampleRefProvider
 {
-  vector<Provider> examples;
+  std::vector<Provider> examples;
   std::unordered_map<const char*, unsigned> recmap; //map to receptor indices
   ExampleProviderSettings param; //keep copy for instantiating new providers
 
@@ -247,7 +244,7 @@ public:
       if(randomize) shuffle(examples.begin(), examples.end(), random_engine);
     }
 
-    if(examples[currenti].size() == 0) throw logic_error("No valid sub-stratified examples.");
+    if(examples[currenti].size() == 0) throw std::logic_error("No valid sub-stratified examples.");
     examples[currenti].nextref(ex);
     currentk++;
   }
@@ -395,7 +392,7 @@ public:
 
     frame_groups[group].push_back(ex);
     if(frame_groups[group].size() >= maxgroupsize)
-      throw std::invalid_argument("Frame group "+boost::lexical_cast<string>(group)+" is larger than max group size");
+      throw std::invalid_argument("Frame group "+itoa(group)+" is larger than max group size");
   }
 
   void setup() {

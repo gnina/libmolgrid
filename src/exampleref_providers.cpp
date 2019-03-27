@@ -9,6 +9,8 @@
 
 namespace libmolgrid {
 
+using namespace std;
+
 template<>
 void ReceptorStratifiedExampleRefProvider<BalancedExampleRefProvider, 2>::setup() {
   //balanced requires acive and decoys, so filter out receptors that don't have both for convenience

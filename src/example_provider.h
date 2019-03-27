@@ -29,7 +29,7 @@ class ExampleProvider {
     static std::shared_ptr<ExampleRefProvider> createProvider(const ExampleProviderSettings& settings);
 
     /// Create provider using default gnina typing
-    ExampleProvider(const ExampleProviderSettings& settings);
+    ExampleProvider(const ExampleProviderSettings& settings=ExampleProviderSettings());
 
     /// Create provider/extractor according to settings
     template<typename ...Typers>
@@ -46,9 +46,15 @@ class ExampleProvider {
 
     ///provide next example
     virtual void next(Example& ex);
+    virtual Example next() { Example ex; next(ex); return ex; }
 
     ///provide a batch of examples
     virtual void next_batch(std::vector<Example>& ex, unsigned batch_size);
+    virtual std::vector<Example> next_batch(unsigned batch_size) {
+      std::vector<Example> ex;
+      next_batch(ex, batch_size);
+      return ex;
+    }
 
     ExampleExtractor& get_extractor() { return extractor; }
     ExampleRefProvider& get_provider() { return *provider; }
