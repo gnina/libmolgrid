@@ -379,9 +379,9 @@ void FileAtomMapper::setup(std::istream& in) {
   string line;
 
   while (getline(in, line)) {
-    vector<string> types;
     trim(line);
-    split(types, line, is_any_of("\t \n"),boost::token_compress_on);
+    vector<string> types;
+    split(types, line, is_any_of("\t \n"), boost::token_compress_on);
     if(types.size() > 0) {
       string new_type_name = join(types,"_");
       int ntype = new_type_names.size();

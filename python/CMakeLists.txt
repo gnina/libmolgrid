@@ -6,7 +6,7 @@ if (NOT PYTHONLIBS_FOUND)
   message(STATUS "Python libraries NOT found")
 endif()
     
-find_package( Boost COMPONENTS system python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR} REQUIRED )
+find_package( Boost COMPONENTS system filesystem python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR} REQUIRED )
 find_package( NumPy )
 
 include_directories(${PROJECT_SOURCE_DIR}/src)

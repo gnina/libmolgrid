@@ -34,8 +34,8 @@ SET_TARGET_PROPERTIES(libmolgrid_shared PROPERTIES OUTPUT_NAME molgrid CUDA_SEPA
 add_library(libmolgrid_static STATIC ${LIBMOLGRID_HEADERS} ${LIBMOLGRID_SOURCES})
 SET_TARGET_PROPERTIES(libmolgrid_static PROPERTIES OUTPUT_NAME molgrid CUDA_SEPARABLE_COMPILATION ON)
 
-target_link_libraries(libmolgrid_shared ${OPENBABEL2_LIBRARIES})
-target_link_libraries(libmolgrid_static ${OPENBABEL2_LIBRARIES})
+target_link_libraries(libmolgrid_shared ${OPENBABEL2_LIBRARIES} ${Boost_LIBRARIES})
+target_link_libraries(libmolgrid_static ${OPENBABEL2_LIBRARIES} ${Boost_LIBRARIES})
 
 #install libs
 install(TARGETS libmolgrid_shared DESTINATION lib)

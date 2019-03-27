@@ -36,6 +36,7 @@ class ExampleExtractor {
     std::vector<std::shared_ptr<AtomTyper> > typers;
     std::vector<CoordCache> coord_caches; //different typers have duplicated caches
 
+    std::string data_root;
     bool use_cache = true;
     bool addh = true;
     bool duplicate_poses = false;
@@ -45,7 +46,7 @@ class ExampleExtractor {
 
     template<typename ...Typers>
     ExampleExtractor(const ExampleProviderSettings& settings, Typers... typrs):
-        typers{typers}, use_cache(settings.cache_structs), addh(settings.add_hydrogens) {
+        typers{typers}, data_root(settings.data_root), use_cache(settings.cache_structs), addh(settings.add_hydrogens) {
       coord_caches.resize(typers.size());
       if(typers.size() == 0) throw std::invalid_argument("Need at least one atom typer for example extractor");
     }

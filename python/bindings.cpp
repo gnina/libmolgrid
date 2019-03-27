@@ -321,6 +321,32 @@ void* extract_swig_wrapped_pointer(PyObject* obj)
     return pointer;
 }
 
+//auto-unwrap obatom from pybel atom
+void* extract_pybel_atom(PyObject *obj) {
+
+  if (!PyObject_HasAttrString(obj, "OBAtom"))
+    return nullptr;
+
+  PyObject* obatom = PyObject_GetAttrString(obj, "OBAtom");
+  if(obatom == nullptr)
+    return nullptr;
+
+  return extract_swig_wrapped_pointer(obatom);
+}
+
+//auto-unwrap obmol from pybel molecule
+void* extract_pybel_molecule(PyObject *obj) {
+
+  if (!PyObject_HasAttrString(obj, "OBMol"))
+    return nullptr;
+
+  PyObject* obatom = PyObject_GetAttrString(obj, "OBMol");
+  if(obatom == nullptr)
+    return nullptr;
+
+  return extract_swig_wrapped_pointer(obatom);
+}
+
 // convert a python list to a uniformly typed vector
 template<typename T>
 std::vector<T> list_to_vec(list l) {
@@ -444,6 +470,31 @@ struct py_pair {
     PythonToPairConverter<T1, T2> fromPy;
 };
 
+//conversion of tuple to float3
+struct PythonToFloat3Converter {
+    PythonToFloat3Converter()
+    {
+        converter::registry::push_back(&convertible, &construct, type_id<float3>());
+    }
+    static void* convertible(PyObject* obj)
+    {
+        if (!PyTuple_CheckExact(obj)) return 0;
+        if (PyTuple_Size(obj) != 3) return 0;
+        return obj;
+    }
+    static void construct(PyObject* obj, converter::rvalue_from_python_stage1_data* data)
+    {
+        tuple tuple(borrowed(obj));
+        void* storage = ((converter::rvalue_from_python_storage<float3 >*) data)->storage.bytes;
+        float x = extract<float>(tuple[0]);
+        float y = extract<float>(tuple[1]);
+        float z = extract<float>(tuple[2]);
+        new (storage) float3{x,y,z};
+        data->convertible = storage;
+    }
+};
+
+
 //return true if list is uniformly typed to T
 template<typename T>
 bool list_is_vec(list l) {
@@ -500,7 +551,9 @@ DEFINE_MGRID(N,d)
       .def(vector_indexing_suite<std::vector<std::string> >());
   class_<std::vector<float> >("FloatVec")
       .def(vector_indexing_suite<std::vector<float> >());
-      
+  class_<std::vector<CoordinateSet> >("CoordinateSetVec")
+      .def(vector_indexing_suite<std::vector<CoordinateSet> >());
+
   class_<Pointer<float> >("FloatPtr", no_init);
   class_<Pointer<double> >("DoublePtr", no_init);
 
@@ -508,6 +561,13 @@ DEFINE_MGRID(N,d)
       .def("__init__",
       make_constructor(
           +[](float x, float y, float z) {return std::make_shared<float3>(make_float3(x,y,z));}))
+      .def("__init__",
+          make_constructor(+[](tuple t) {
+          float x = extract<float>(t[0]);
+          float y = extract<float>(t[1]);
+          float z = extract<float>(t[2]);
+          return std::make_shared<float3>(make_float3(x,y,z));
+      }))
       .def_readwrite("x", &float3::x)
       .def_readwrite("y", &float3::y)
       .def_readwrite("z", &float3::z);
@@ -547,6 +607,10 @@ DEFINE_MGRID(N,d)
       Transform_forward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)))
   .def("forward",  +[](Transform& self, const Grid2fCUDA& in, Grid2fCUDA out, bool dotranslate) {self.forward(in,out,dotranslate);},
       Transform_forward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)))
+  .def("forward", static_cast<void (Transform::*)(const CoordinateSet&, CoordinateSet&, bool) const>(&Transform::forward),
+      Transform_forward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)))
+  .def("forward", static_cast<void (Transform::*)(const Example&, Example&, bool) const>(&Transform::forward),
+          Transform_forward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)))
   .def("backward", +[](Transform& self, const Grid2f& in, Grid2f out, bool dotranslate) {self.backward(in,out,dotranslate);},
       Transform_backward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)))
   .def("backward",+[](Transform& self, const Grid2fCUDA& in, Grid2fCUDA out, bool dotranslate) {self.backward(in,out,dotranslate);},
@@ -554,30 +618,37 @@ DEFINE_MGRID(N,d)
 
 //Atom typing
   converter::registry::insert(&extract_swig_wrapped_pointer, type_id<OpenBabel::OBAtom>());
+  converter::registry::insert(&extract_pybel_atom, type_id<OpenBabel::OBAtom>());
+  converter::registry::insert(&extract_swig_wrapped_pointer, type_id<OpenBabel::OBMol>());
+  converter::registry::insert(&extract_pybel_molecule, type_id<OpenBabel::OBMol>());
+
   py_pair<int, float>();
   py_pair<std::vector<float>, float>();
   py_pair<list, float>();
+  PythonToFloat3Converter();
 
-  class_<GninaIndexTyper>("GninaIndexTyper")
+  class_<AtomTyper>("AtomTyper", no_init);
+
+  class_<GninaIndexTyper, bases<AtomTyper> >("GninaIndexTyper")
       .def(init<bool>())
       .def("num_types", &GninaIndexTyper::num_types)
       .def("get_atom_type", &GninaIndexTyper::get_atom_type)
       .def("get_type_names",&GninaIndexTyper::get_type_names);
 
-  class_<ElementIndexTyper>("ElementIndexTyper")
+  class_<ElementIndexTyper, bases<AtomTyper> >("ElementIndexTyper")
       .def(init<int>())
       .def("num_types", &ElementIndexTyper::num_types)
       .def("get_atom_type", &ElementIndexTyper::get_atom_type)
       .def("get_type_names",&ElementIndexTyper::get_type_names);
 
-  class_<PythonCallbackIndexTyper>("PythonCallbackIndexTyper",
+  class_<PythonCallbackIndexTyper, bases<AtomTyper> >("PythonCallbackIndexTyper",
       init<object, unsigned, list>(
           (arg("func"), arg("num_types"), arg("names") = list() ) ))
       .def("num_types", &PythonCallbackIndexTyper::num_types)
       .def("get_atom_type", &PythonCallbackIndexTyper::get_atom_type)
       .def("get_type_names",&PythonCallbackIndexTyper::get_type_names);
 
-  class_<GninaVectorTyper>("GninaVectorTyper")
+  class_<GninaVectorTyper, bases<AtomTyper> >("GninaVectorTyper")
       .def("num_types", &GninaVectorTyper::num_types)
       .def("get_atom_type_vector", +[](const GninaVectorTyper& typer, OpenBabel::OBAtom* a) {
         std::vector<float> typs;
@@ -587,19 +658,19 @@ DEFINE_MGRID(N,d)
         })
       .def("get_type_names",&GninaVectorTyper::get_type_names);
 
-  class_<PythonCallbackVectorTyper>("PythonCallbackVectorTyper",
+  class_<PythonCallbackVectorTyper, bases<AtomTyper> >("PythonCallbackVectorTyper",
       init<object, unsigned, list>(
           (arg("func"), arg("num_types"), arg("names") = list() ) ))
       .def("num_types", &PythonCallbackVectorTyper::num_types)
       .def("get_atom_type_vector", &PythonCallbackVectorTyper::get_atom_type_vector)
       .def("get_type_names",&PythonCallbackVectorTyper::get_type_names);
 
-  class_<FileAtomMapper>("FileAtomMapper", init<const std::string&, const std::vector<std::string> >())
+  class_<FileAtomMapper, bases<AtomTyper> >("FileAtomMapper", init<const std::string&, const std::vector<std::string> >())
       .def("num_types", &FileAtomMapper::num_types)
       .def("get_new_type", &FileAtomMapper::get_new_type)
       .def("get_type_names",&FileAtomMapper::get_type_names);
 
-  class_<SubsetAtomMapper>("SubsetAtomMapper", init<const std::vector<int>&, bool>())
+  class_<SubsetAtomMapper, bases<AtomTyper> >("SubsetAtomMapper", init<const std::vector<int>&, bool>())
       .def(init<const std::vector< std::vector<int> >&, bool>())
       .def(init<std::vector<int>&, bool, std::vector< std::string> >())
       .def(init<std::vector< std::vector<int> >&, bool, const std::vector< std::string>& >())
@@ -616,7 +687,7 @@ DEFINE_MGRID(N,d)
       .def("get_new_type", &SubsetAtomMapper::get_new_type)
       .def("get_type_names",&SubsetAtomMapper::get_type_names);
 
-  class_<SubsettedElementTyper>("SubsettedElementTyper", no_init)
+  class_<SubsettedElementTyper, bases<AtomTyper> >("SubsettedElementTyper", no_init)
           .def("__init__",make_constructor(
               +[](list l, bool catchall, unsigned maxe) {
               if(list_is_vec<int>(l)) {
@@ -630,7 +701,7 @@ DEFINE_MGRID(N,d)
           .def("get_atom_type", &SubsettedElementTyper::get_atom_type)
           .def("get_type_names",&SubsettedElementTyper::get_type_names);
 
-  class_<SubsettedGninaTyper>("SubsettedGninaTyper", no_init)
+  class_<SubsettedGninaTyper, bases<AtomTyper> >("SubsettedGninaTyper", no_init)
          .def("__init__",make_constructor(
                   +[](list l, bool catchall, bool usec) {
                   if(list_is_vec<int>(l)) {
@@ -644,14 +715,14 @@ DEFINE_MGRID(N,d)
           .def("get_atom_type", &SubsettedGninaTyper::get_atom_type)
           .def("get_type_names",&SubsettedGninaTyper::get_type_names);
 
-  class_<FileMappedGninaTyper >("FileMappedGninaTyper",
+  class_<FileMappedGninaTyper, bases<AtomTyper> >("FileMappedGninaTyper",
           init<const std::string&, bool>((arg("fname"), arg("use_covalent_radius")=false)))
               //todo, add init for file stream inputs if we every want it
           .def("num_types", &FileMappedGninaTyper::num_types)
           .def("get_atom_type", &FileMappedGninaTyper::get_atom_type)
           .def("get_type_names",&FileMappedGninaTyper::get_type_names);
 
-  class_<FileMappedElementTyper >("FileMappedElementTyper",
+  class_<FileMappedElementTyper, bases<AtomTyper> >("FileMappedElementTyper",
           init<const std::string&, unsigned>((arg("fname"), arg("maxe")=84)))
           .def("num_types", &FileMappedElementTyper::num_types)
           .def("get_atom_type", &FileMappedElementTyper::get_atom_type)
@@ -660,5 +731,26 @@ DEFINE_MGRID(N,d)
   scope().attr("defaultGninaLigandTyper") = defaultGninaLigandTyper;
   scope().attr("defaultGninaReceptorTyper") = defaultGninaReceptorTyper;
 
+
+  //molecular data (example providing)
+  class_<CoordinateSet>("CoordinateSet")
+      .def(init<OpenBabel::OBMol*, const AtomTyper&>())
+      .def(init<OpenBabel::OBMol*>())
+      .def(init<const Grid2f&, const Grid1f&, const Grid1f&, unsigned>())
+      .def(init<const Grid2fCUDA&, const Grid1fCUDA&, const Grid1fCUDA&, unsigned>())
+      .def(init<const Grid2f&, const Grid2f&, const Grid1f&>())
+      .def(init<const Grid2fCUDA&, const Grid2fCUDA&, const Grid1fCUDA&>())
+      .def("has_indexed_types", &CoordinateSet::has_indexed_types)
+      .def("has_vector_types", &CoordinateSet::has_vector_types)
+      .def("make_vector_types", &CoordinateSet::make_vector_types)
+      .def_readwrite("coord", &CoordinateSet::coord)
+      .def_readwrite("type_index", &CoordinateSet::type_index)
+      .def_readwrite("type_vector", &CoordinateSet::type_vector)
+      .def_readwrite("radius", &CoordinateSet::radius)
+      .def_readwrite("max_type", &CoordinateSet::max_type);
+
+  class_<Example>("Example")
+    .def_readwrite("coord_sets",&Example::sets)
+    .def_readwrite("labels",&Example::labels);
 }
 

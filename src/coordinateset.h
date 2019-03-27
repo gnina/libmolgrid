@@ -35,13 +35,22 @@ struct CoordinateSet {
   CoordinateSet() {}
 
   ///initialize with obmol
-  CoordinateSet(OpenBabel::OBMol *mol, AtomTyper& typer);
+  CoordinateSet(OpenBabel::OBMol *mol, const AtomTyper& typer);
+  CoordinateSet(OpenBabel::OBMol *mol); //use defaultGninaLigandTypes
 
   ///initialize with indexed types
   CoordinateSet(const std::vector<float3>& c, const std::vector<unsigned>& t, const std::vector<float>& r, unsigned maxt);
 
+  ///initialize with indexed types using grids - data is copied into coordinate set
+  CoordinateSet(const Grid2f& c, const Grid1f& t, const Grid1f& r, unsigned maxt);
+  CoordinateSet(const Grid2fCUDA& c, const Grid1fCUDA& t, const Grid1fCUDA& r, unsigned maxt);
+
   ///initialize with vector types
   CoordinateSet(const std::vector<float3>& c, const std::vector<std::vector<float> >& t, const std::vector<float>& r);
+
+  ///initialize with vector types using grids - data is copied into coordinate set
+  CoordinateSet(const Grid2f& c, const Grid2f& t, const Grid1f& r);
+  CoordinateSet(const Grid2fCUDA& c, const Grid2fCUDA& t, const Grid1fCUDA& r);
 
   /// return true if index types are available
   bool has_indexed_types() const { return type_index.size() > 0; }
@@ -54,6 +63,10 @@ struct CoordinateSet {
 
   unsigned num_types() const { return max_type; }
 
+  //test for pointer equality, not particularly useful, but needed by boost::python
+  bool operator==(const CoordinateSet& rhs) const {
+    return max_type == rhs.max_type && coord == rhs.coord && type_index == rhs.type_index && type_vector == rhs.type_vector && radius == rhs.radius;
+  }
 };
 
 }

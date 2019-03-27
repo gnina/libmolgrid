@@ -60,6 +60,8 @@ struct ExampleProviderSettings {
     ///clone the first coordinate set to be paired with each of the remaining (think receptor ligand pairs)
     bool duplicate_first = false;
 
+    ///prefix for data files
+    std::string data_root;
 };
 
 

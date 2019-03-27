@@ -9,8 +9,9 @@
 #ifndef MANAGED_GRID_H_
 #define MANAGED_GRID_H_
 
-#include<memory>
+#include <memory>
 #include <grid.h>
+#include <boost/lexical_cast.hpp>
 
 
 namespace libmolgrid {
@@ -145,6 +146,10 @@ class ManagedGridBase {
     operator gpu_grid_t() const { return gpu(); }
     operator gpu_grid_t&() {return gpu(); }
 
+    //pointer equality
+    bool operator==(const ManagedGridBase<Dtype, NumDims>& rhs) const {
+      return ptr == rhs.ptr;
+    }
   protected:
     // constructor used by operator[]
     friend ManagedGridBase<Dtype,NumDims-1>;
@@ -189,7 +194,8 @@ class ManagedGrid :  public ManagedGridBase<Dtype, NumDims> {
      *  Use operator() for fastest (but unchecked) access or access data directly.
      */
     subgrid_t operator[](size_t i) const {
-      assert(i < this->cpu_grid.dimension(0));
+      if(i >= this->cpu_grid.dimension(0))
+        throw std::out_of_range("Index "+boost::lexical_cast<std::string>(i)+" out of bounds of dimension "+boost::lexical_cast<std::string>(this->cpu_grid.dimension(0)));
       return ManagedGrid<Dtype,NumDims-1>(*static_cast<const ManagedGridBase<Dtype, NumDims> *>(this), i);
     }
 
