@@ -66,7 +66,7 @@ class Grid {
     CUDA_CALLABLE_MEMBER void check_index(size_t i, size_t dim) const {
 #ifndef __CUDA_ARCH__
       if(i >= dim) {
-        throw std::out_of_range("Invalid range. "+boost::lexical_cast<std::string>(i) + " >= " + boost::lexical_cast<std::string>(dim));
+        throw std::out_of_range("Invalid range. "+itoa(i) + " >= " + itoa(dim));
       }
 #else
       assert(i < dim);
@@ -211,7 +211,7 @@ class Grid<Dtype,1,isCUDA> {
     CUDA_CALLABLE_MEMBER void check_index(size_t i, size_t dim) const {
 #ifndef __CUDA_ARCH__
       if(i >= dim) {
-        throw std::out_of_range("Invalid range. "+boost::lexical_cast<std::string>(i) + " >= " + boost::lexical_cast<std::string>(dim));
+        throw std::out_of_range("Invalid range. "+ itoa(i) + " >= " + itoa(dim));
       }
 #else
       assert(i < dim);

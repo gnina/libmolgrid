@@ -749,7 +749,13 @@ DEFINE_MGRID(N,d)
       .def_readwrite("radius", &CoordinateSet::radius)
       .def_readwrite("max_type", &CoordinateSet::max_type);
 
+
   class_<Example>("Example")
+    .def("coordinate_size", &Example::coordinate_size)
+    .def("type_size", &Example::type_size, (arg("unique_index_type")=true))
+    .def("merge_coordinates", static_cast<CoordinateSet (Example::*)(bool)>(&Example::merge_coordinates), (arg("unique_index_types") = true))
+    .def("merge_coordinates", static_cast<void (Example::*)(Grid2f&, Grid1f&, Grid1f&, bool)>(&Example::merge_coordinates), (arg("coord"), "type_index", "radius", arg("unique_index_types")=true))
+    .def("merge_coordinates", static_cast<void (Example::*)(Grid2f&, Grid2f&, Grid1f&, bool)>(&Example::merge_coordinates), (arg("coord"), "type_vector", "radius", arg("unique_index_types")=true))
     .def_readwrite("coord_sets",&Example::sets)
     .def_readwrite("labels",&Example::labels);
 }
