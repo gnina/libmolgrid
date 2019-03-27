@@ -19,19 +19,6 @@ namespace libmolgrid {
         gdata[tidx] = 0;
     }
 
-    //return squared distance between pt and (x,y,z)
-    __device__
-    float sqDistance(float coordx, float coordy, float coordz, float x, float y, float z) {
-      float ret;
-      float tmp = coordx - x;
-      ret = tmp * tmp;
-      tmp = coordy - y;
-      ret += tmp * tmp;
-      tmp = coordz - z;
-      ret += tmp * tmp;
-      return ret;
-    }
-
     //TODO: warp shuffle version
     inline __device__ uint warpScanInclusive(int threadIndex, uint idata,
         volatile uint *s_Data, uint size) {
@@ -87,7 +74,7 @@ namespace libmolgrid {
     
     //return 1 if atom potentially overlaps block, 0 otherwise
     __device__
-    unsigned GridMaker::atomOverlapsBlock(unsigned aidx, float3 grid_origin, 
+    unsigned GridMaker::atomOverlapsBlock(unsigned aidx, float3& grid_origin, 
         const Grid<float, 2, true>& coords, const Grid<float, 1, true>& type_index, 
         const Grid<float, 1, true>& radii) {
    
@@ -123,60 +110,40 @@ namespace libmolgrid {
         const Grid<float, 2, true>& coords, const Grid<float, 1, true>& type_index, 
         const Grid<float, 1, true>& radii, Grid<Dtype, 4, true>& out) {
       //figure out what grid point we are 
-      unsigned xi = threadIdx.x + blockIdx.x * blockDim.x;
-      unsigned yi = threadIdx.y + blockIdx.y * blockDim.y;
-      unsigned zi = threadIdx.z + blockIdx.z * blockDim.z;
+      uint3 grid_indices;
+      grid_indices.x = threadIdx.x + blockIdx.x * blockDim.x;
+      grid_indices.y = threadIdx.y + blockIdx.y * blockDim.y;
+      grid_indices.z = threadIdx.z + blockIdx.z * blockDim.z;
 
-      if(xi >= dim || yi >= dim || zi >= dim)
+      if(grid_indices.x >= dim || grid_indices.y >= dim || grid_indices.z >= dim)
         return;//bail if we're off-grid, this should not be common
 
       //compute x,y,z coordinate of grid point
-      float x = xi * resolution + grid_origin.x;
-      float y = yi * resolution + grid_origin.y;
-      float z = zi * resolution + grid_origin.z;
+      float3 grid_coords;
+      grid_coords.x = grid_indices.x * resolution + grid_origin.x;
+      grid_coords.y = grid_indices.y * resolution + grid_origin.y;
+      grid_coords.z = grid_indices.z * resolution + grid_origin.z;
 
-      //iterate over all atoms
+      //iterate over all possibly relevant atoms
       for(unsigned ai = 0; ai < rel_atoms; ai++) {
         unsigned i = atomIndices[ai];
-        float coordx = coords(i, 0);
-        float coordy = coords(i, 1);
-        float coordz = coords(i, 2);
-        float d = sqDistance(coordx, coordy, coordz, x, y, z);
-        float r = radii(i);
         float atype = type_index(i);
-        if (atype >= 0) {    //because of hydrogens on ligands, although 
-                             //we already excluded them from the atom list...
-          float rsq = r * r;
-
-          if(binary) {
-            if(d < rsq) {
-              //set gridpoint to 1
-              out(atype, xi, yi, zi) = 1.0;
-            }
-          }
-          else {
-            //For non-binary density we want a Gaussian where 2 std occurs at the
-            //radius, after which it becomes quadratic.  
-            //The quadratic is fit to have both the same value and first derivative
-            //at the cross over point and a value and derivative of zero at
-            //1.5*radius 
-            //FIXME wrong for radiusmultiple != 1.5
-            float dist = sqrtf(d);
-            if (dist < r * radiusmultiple) {
-              float h = 0.5 * r;
-
-              if (dist <= r) {
-                //return gaussian
-                float ex = -dist * dist / (2 * h * h);
-                out(atype, xi, yi, zi) += exp(ex);
-              }
-              else {//return quadratic
-                float eval = 1.0 / (M_E * M_E); //e^(-2)
-                float q = dist * dist * eval / (h * h) - 6.0 * eval * dist / h + 9.0 * eval;
-                out(atype, xi, yi, zi) += q;
+        if (atype >= 0) { //because of hydrogens on ligands, although 
+                          //we already excluded them from the atom list...
+          float3 acoords;
+          acoords.x = coords(i, 0);
+          acoords.y = coords(i, 1);
+          acoords.z = coords(i, 2);
+          float ar = radii(i);
+          float val = calcPoint(acoords, ar, grid_coords);
+            if(binary) {
+              if(val != 0) {
+                out(atype, grid_indices.x, grid_indices.y, grid_indices.z) = 1.0;
               }
             }
-          }
+            else {
+                out(atype, grid_indices.x, grid_indices.y, grid_indices.z) += val;
+            }
         }
       }
     }

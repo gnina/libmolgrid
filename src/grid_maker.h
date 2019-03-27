@@ -42,12 +42,11 @@ class GridMaker {
     virtual ~GridMaker() {}
 
     float3 getGridDims() const { 
-      float3 dims = make_float3(dim, dim, dim); 
-      return dims;
+      return make_float3(dim, dim, dim); 
     }
 
     /* \brief Use externally specified grid_center to determine where grid begins and
-     * end. Used before translating between cartesian coords and grids.
+     * end. Used for translating between cartesian coords and grids.
      * @param[in] grid center
      * @param[out] grid bounds
      */
@@ -67,7 +66,8 @@ class GridMaker {
      * @param[out] indices of grid points in the same dimension that could
      * possibly overlap atom density
      */
-    std::pair<size_t, size_t> getBounds_1D(const float grid_origin, float coord, float densityrad)  const {
+    std::pair<size_t, size_t> getBounds_1D(const float grid_origin, float coord, 
+        float densityrad)  const {
       std::pair<size_t, size_t> bounds(0, 0);
       float low = coord - densityrad - grid_origin;
       if (low > 0) {
@@ -88,7 +88,8 @@ class GridMaker {
      * @param[in] grid point coords
      * @param[out] atom density
      */
-    CUDA_CALLABLE_MEMBER float calcPoint(const float3& coords, double ar, const float3& grid_coords) const {
+    CUDA_CALLABLE_MEMBER float calcPoint(const float3& coords, double ar, 
+        const float3& grid_coords) const {
       float dx = grid_coords.x - coords.x;
       float dy = grid_coords.y - coords.y;
       float dz = grid_coords.z - coords.z;
@@ -107,7 +108,7 @@ class GridMaker {
         //at the cross over point and a value and derivative of zero at
         //1.5*radius 
         //FIXME wrong for radiusmultiple != 1.5
-        double dist = sqrt(rsq);
+        float dist = sqrtf(rsq);
         if (dist >= ar * radiusmultiple) {
           return 0.0;
         } else
@@ -168,40 +169,43 @@ class GridMaker {
         Grid<Dtype, 4, false>& out) const {
       float3 grid_origin = getGridOrigin(grid_center);
       size_t natoms = coords.dimension(0);
+      //iterate over all atoms
       for (size_t aidx=0; aidx<natoms; ++aidx) {
-        float x = coords(aidx, 0);
-        float y = coords(aidx, 1);
-        float z = coords(aidx, 2);
         float atype = type_index(aidx);
-        float radius = radii(aidx);
-        float densityrad = radius * radiusmultiple;
+        if (atype >= 0) {
+          float3 acoords;
+          acoords.x = coords(aidx, 0);
+          acoords.y = coords(aidx, 1);
+          acoords.z = coords(aidx, 2);
+          float radius = radii(aidx);
+          float densityrad = radius * radiusmultiple;
 
-        std::array<std::pair<size_t,size_t>,3> bounds;
-        bounds[0] = getBounds_1D(grid_origin.x, coords(aidx,0), densityrad);
-        bounds[1] = getBounds_1D(grid_origin.y, coords(aidx,1), densityrad);
-        bounds[2] = getBounds_1D(grid_origin.z, coords(aidx,2), densityrad);
+          std::array<std::pair<size_t,size_t>,3> bounds;
+          bounds[0] = getBounds_1D(grid_origin.x, coords(aidx,0), densityrad);
+          bounds[1] = getBounds_1D(grid_origin.y, coords(aidx,1), densityrad);
+          bounds[2] = getBounds_1D(grid_origin.z, coords(aidx,2), densityrad);
 
-        //for every grid point possibly overlapped by this atom
-        for (size_t i = bounds[0].first, iend = bounds[0].second; i < iend; i++) {
-          for (size_t j = bounds[1].first, jend = bounds[1].second; j < jend;
-              j++) {
-            for (size_t k = bounds[2].first, kend = bounds[2].second;
-                k < kend; k++) {
-              float3 grid_coords;
-              float3 acoords = make_float3(x, y, z);
-              grid_coords.x = grid_origin.x + i * resolution;
-              grid_coords.y = grid_origin.y + j * resolution;
-              grid_coords.z = grid_origin.z + k * resolution;
-              float val = calcPoint(acoords, radius, grid_coords);
+          //for every grid point possibly overlapped by this atom
+          for (size_t i = bounds[0].first, iend = bounds[0].second; i < iend; i++) {
+            for (size_t j = bounds[1].first, jend = bounds[1].second; j < jend;
+                j++) {
+              for (size_t k = bounds[2].first, kend = bounds[2].second;
+                  k < kend; k++) {
+                float3 grid_coords;
+                grid_coords.x = grid_origin.x + i * resolution;
+                grid_coords.y = grid_origin.y + j * resolution;
+                grid_coords.z = grid_origin.z + k * resolution;
+                float val = calcPoint(acoords, radius, grid_coords);
 
-              if (binary) {
-                if (val != 0) 
-                  out(atype, i, j, k) = 1.0;
+                if (binary) {
+                  if (val != 0) 
+                    out(atype, i, j, k) = 1.0;
+                }
+                else {
+                    out(atype, i, j, k) += val;
+                }
+
               }
-              else {
-                  out(atype, i, j, k) += val;
-              }
-
             }
           }
         }
@@ -235,7 +239,7 @@ class GridMaker {
      * @param[out] 1 if atom could overlap block, 0 if not
      */
     CUDA_DEVICE_MEMBER
-    unsigned atomOverlapsBlock(unsigned aidx, float3 grid_origin, 
+    unsigned atomOverlapsBlock(unsigned aidx, float3& grid_origin, 
         const Grid<float, 2, true>& coords, const Grid<float, 1, true>& type_index, 
         const Grid<float, 1, true>& radii);
 
