@@ -41,9 +41,9 @@ class GridMaker {
     GridMaker();
     virtual ~GridMaker() {}
 
-    std::array<size_t,3> getGridDims() const { 
-      std::array<size_t,3> arr = {dim, dim, dim}; 
-      return arr;
+    float3 getGridDims() const { 
+      float3 dims = make_float3(dim, dim, dim); 
+      return dims;
     }
 
     /* \brief Use externally specified grid_center to determine where grid begins and
@@ -51,13 +51,13 @@ class GridMaker {
      * @param[in] grid center
      * @param[out] grid bounds
      */
-    std::array<float, 3> getGridBegins(float3 grid_center) const {
+    float3 getGridOrigin(float3 grid_center) const {
       float half = dimension/2.0;
-      std::array<float, 3> grid_begins;
-      grid_begins[0] = grid_center.x - half;
-      grid_begins[1] = grid_center.y - half;
-      grid_begins[2] = grid_center.z - half;
-      return grid_begins;
+      float3 grid_origin;
+      grid_origin.x = grid_center.x - half;
+      grid_origin.y = grid_center.y - half;
+      grid_origin.z = grid_center.z - half;
+      return grid_origin;
     }
 
     /* \brief Find grid indices in one dimension that bound an atom's density. 
@@ -67,14 +67,14 @@ class GridMaker {
      * @param[out] indices of grid points in the same dimension that could
      * possibly overlap atom density
      */
-    std::pair<size_t, size_t> getBounds_1D(const float grid_begins, float coord, float densityrad)  const {
+    std::pair<size_t, size_t> getBounds_1D(const float grid_origin, float coord, float densityrad)  const {
       std::pair<size_t, size_t> bounds(0, 0);
-      float low = coord - densityrad - grid_begins;
+      float low = coord - densityrad - grid_origin;
       if (low > 0) {
         bounds.first = floor(low / resolution);
       }
 
-      float high = coord + densityrad - grid_begins;
+      float high = coord + densityrad - grid_origin;
       if (high > 0) //otherwise zero
           {
         bounds.second = std::min(dim, (size_t) ceil(high / resolution));
@@ -106,7 +106,7 @@ class GridMaker {
         //The quadratic is fit to have both the same value and first derivative
         //at the cross over point and a value and derivative of zero at
         //1.5*radius 
-        //FIXME should this be radiusmultiple*radius?
+        //FIXME wrong for radiusmultiple != 1.5
         double dist = sqrt(rsq);
         if (dist >= ar * radiusmultiple) {
           return 0.0;
@@ -166,7 +166,7 @@ class GridMaker {
     void forward(float3 grid_center, const Grid<float, 2, false>& coords,
         const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
         Grid<Dtype, 4, false>& out) const {
-      std::array<float,3> grid_begins = getGridBegins(grid_center);
+      float3 grid_origin = getGridOrigin(grid_center);
       size_t natoms = coords.dimension(0);
       for (size_t aidx=0; aidx<natoms; ++aidx) {
         float x = coords(aidx, 0);
@@ -177,9 +177,9 @@ class GridMaker {
         float densityrad = radius * radiusmultiple;
 
         std::array<std::pair<size_t,size_t>,3> bounds;
-        bounds[0] = getBounds_1D(grid_begins[0], coords(aidx,0), densityrad);
-        bounds[1] = getBounds_1D(grid_begins[1], coords(aidx,1), densityrad);
-        bounds[2] = getBounds_1D(grid_begins[2], coords(aidx,2), densityrad);
+        bounds[0] = getBounds_1D(grid_origin.x, coords(aidx,0), densityrad);
+        bounds[1] = getBounds_1D(grid_origin.y, coords(aidx,1), densityrad);
+        bounds[2] = getBounds_1D(grid_origin.z, coords(aidx,2), densityrad);
 
         //for every grid point possibly overlapped by this atom
         for (size_t i = bounds[0].first, iend = bounds[0].second; i < iend; i++) {
@@ -189,9 +189,9 @@ class GridMaker {
                 k < kend; k++) {
               float3 grid_coords;
               float3 acoords = make_float3(x, y, z);
-              grid_coords.x = grid_begins[0] + i * resolution;
-              grid_coords.y = grid_begins[1] + j * resolution;
-              grid_coords.z = grid_begins[2] + k * resolution;
+              grid_coords.x = grid_origin.x + i * resolution;
+              grid_coords.y = grid_origin.y + j * resolution;
+              grid_coords.z = grid_origin.z + k * resolution;
               float val = calcPoint(acoords, radius, grid_coords);
 
               if (binary) {
@@ -216,10 +216,41 @@ class GridMaker {
      * @param[out] a 4D grid
      */
     template <typename Dtype>
-    __host__ void forward(float3 grid_center, const Grid<float, 2, true>& coords,
+    void forward(float3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
-        Grid<Dtype, 4, false>& out) const;
+        Grid<Dtype, 4, true>& out) const;
 
+    /* \brief The GPU forward code path launches a kernel (forward_gpu) that
+     * sets the grid values in two steps: first each thread cooperates with the
+     * other threads in its block to determine which atoms could possibly
+     * overlap them. Then, working from this significantly reduced atom set,
+     * they actually check whether they are overlapped by an atom and update
+     * their density accordingly. atomOverlapsBlock is a helper for generating
+     * the reduced array of possibly relevant atoms.
+     * @param[in] atom index to check
+     * @param[in] grid origin
+     * @param[in] coordinates (Nx3)
+     * @param[in] type indices (N integers stored as floats)
+     * @param[in] radii (N)
+     * @param[out] 1 if atom could overlap block, 0 if not
+     */
+    CUDA_DEVICE_MEMBER
+    unsigned atomOverlapsBlock(unsigned aidx, float3 grid_origin, 
+        const Grid<float, 2, true>& coords, const Grid<float, 1, true>& type_index, 
+        const Grid<float, 1, true>& radii);
+
+    /* \brief The function that actually updates the voxel density values. 
+     * @param[in] number of possibly relevant atoms
+     * @param[in] grid origin
+     * @param[in] coordinates (Nx3)
+     * @param[in] type indices (N integers stored as floats)
+     * @param[in] radii (N)
+     * @param[out] a 4D grid
+     */
+    template <typename Dtype>
+    CUDA_DEVICE_MEMBER void set_atoms(unsigned natoms, float3& grid_origin, 
+        const Grid<float, 2, true>& coords, const Grid<float, 1, true>& type_index, 
+        const Grid<float, 1, true>& radii, Grid<Dtype, 4, true>& out);
 };
 
 } /* namespace libmolgrid */
