@@ -15,6 +15,7 @@
 #include <memory>
 #include <iostream>
 #include <unordered_map>
+#include <functional>
 
 namespace libmolgrid {
 
@@ -31,7 +32,7 @@ class AtomTyper {
 
     virtual float get_atom_type(OpenBabel::OBAtom *a, std::vector<float>& typ) const { throw std::logic_error("Unimplemented atom typing function called"); }
     virtual std::pair<int,float> get_atom_type(OpenBabel::OBAtom *a) const { throw std::logic_error("Unimplemented atom typing function called"); }
-    virtual std::pair<int,float> get_int_type(unsigned t) const { throw std::logic_error("Unimplemented atom typing function called"); }
+    virtual std::pair<int,float> get_int_type(int t) const { throw std::logic_error("Unimplemented atom typing function called"); }
 
     virtual std::vector<std::string> get_type_names() const { throw std::logic_error("Base class AtomTyper function called"); }
     virtual bool is_vector_typer() const { throw std::logic_error("Base class AtomTyper function called"); }
@@ -51,7 +52,7 @@ class AtomIndexTyper: public AtomTyper {
 
     /// return type and radius given a precomputed type, the meaning of which
     /// is specific to the implementation
-    virtual std::pair<int,float> get_int_type(unsigned t) const = 0;
+    virtual std::pair<int,float> get_int_type(int t) const = 0;
 
     //return vector of string representations of types
     //this isn't expected to be particularly efficient
@@ -178,7 +179,7 @@ class GninaIndexTyper: public AtomIndexTyper {
     virtual std::pair<int,float> get_atom_type(OpenBabel::OBAtom* a) const;
 
     /// basically look up the radius of the given gnina type
-    virtual std::pair<int,float> get_int_type(unsigned t) const;
+    virtual std::pair<int,float> get_int_type(int t) const;
 
     //return vector of string representations of types
     virtual std::vector<std::string> get_type_names() const;
@@ -208,7 +209,7 @@ class ElementIndexTyper: public AtomIndexTyper {
     virtual std::pair<int,float> get_atom_type(OpenBabel::OBAtom* a) const;
 
     ///look up covalent radius of element or provide default
-    virtual std::pair<int,float> get_int_type(unsigned t) const;
+    virtual std::pair<int,float> get_int_type(int t) const;
 
     //return vector of string representations of types
     virtual std::vector<std::string> get_type_names() const;
@@ -243,8 +244,8 @@ class CallbackIndexTyper: public AtomIndexTyper {
     }
 
     //callbacks are really only for obatom typing
-    virtual std::pair<int,float> get_int_type(unsigned t) const {
-      if(t >= num_types()) t = -1;
+    virtual std::pair<int,float> get_int_type(int t) const {
+      if(t >= (int)num_types()) t = -1;
       return std::make_pair(t, default_radius);
     }
 
@@ -280,7 +281,7 @@ class MappedAtomIndexTyper: public AtomIndexTyper {
     }
 
     //map the type
-    virtual std::pair<int,float> get_int_type(unsigned t) const {
+    virtual std::pair<int,float> get_int_type(int t) const {
       auto res_rad = typer.get_int_type(t);
       //remap the type
       int ret = mapper.get_new_type(res_rad.first);
