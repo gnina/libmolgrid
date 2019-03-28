@@ -108,6 +108,10 @@ struct Example {
     void merge_coordinates(Grid2f& coords, Grid2f& type_vector, Grid1f& radii, bool unique_index_types=true);
     void merge_coordinates(std::vector<float3>& coords, std::vector<std::vector<float> >& type_vector, std::vector<float>& radii, bool unique_index_types=true);
 
+    //pointer equality, implemented for python vector
+    bool operator==(const Example& rhs) const {
+      return sets == rhs.sets && labels == rhs.labels;
+    }
 };
 
 /** \brief a reference to a single example - the parsed line.  This is distinct from an

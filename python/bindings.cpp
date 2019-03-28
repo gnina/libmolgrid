@@ -5,6 +5,10 @@
  */
 
 #include "bindings.h"
+#include "quaternion.h"
+#include "transform.h"
+#include "atom_typer.h"
+#include "example_provider.h"
 
 using namespace boost::python;
 using namespace libmolgrid;
@@ -308,6 +312,74 @@ bool list_is_vec(list l) {
   return true;
 }
 
+//raw constructor for example provider, args should be typers and kwargs
+//settings in exampleprovidersettings
+std::shared_ptr<ExampleProvider> create_ex_provider(tuple args, dict kwargs) {
+  using namespace std;
+  ExampleProviderSettings settings;
+
+  // strip off self
+  object self = args[0];
+  args = boost::python::tuple(args.slice(1,_));
+
+  //extract any settings
+  boost::python::list keys = kwargs.keys();
+  for(unsigned i = 0, n = len(keys); i < n; i++) {
+    object k = keys[i];
+    string name = extract<string>(k);
+
+    //is there a better way to do this?
+    //I could define settings to be a dynamic map, but that would be sacrificing c++ efficiency for python utility
+    //and what would the type of the values be?
+    //could do something with macros..
+    if(name == "shuffle") {
+      settings.shuffle = extract<bool>(kwargs[k]);
+    } else if(name == "balanced") {
+      settings.balanced = extract<bool>(kwargs[k]);
+    } else if(name == "stratify_receptor") {
+      settings.stratify_receptor = extract<bool>(kwargs[k]);
+    } else if(name == "labelpos") {
+      settings.labelpos = extract<int>(kwargs[k]);
+    } else if(name == "stratify_pos") {
+      settings.stratify_pos = extract<int>(kwargs[k]);
+    } else if(name == "stratify_abs") {
+      settings.stratify_abs = extract<bool>(kwargs[k]);
+    } else if(name == "stratify_min") {
+      settings.stratify_min = extract<float>(kwargs[k]);
+    } else if(name == "stratify_max") {
+      settings.stratify_max = extract<float>(kwargs[k]);
+    } else if(name == "stratify_step") {
+      settings.stratify_step = extract<float>(kwargs[k]);
+    } else if(name == "group_batch_size") {
+      settings.group_batch_size = extract<int>(kwargs[k]);
+    } else if(name == "max_group_size") {
+      settings.max_group_size = extract<int>(kwargs[k]);
+    } else if(name == "cache_structs") {
+      settings.cache_structs = extract<bool>(kwargs[k]);
+    } else if(name == "add_hydrogens") {
+      settings.add_hydrogens = extract<bool>(kwargs[k]);
+    } else if(name == "duplicate_first") {
+      settings.duplicate_first = extract<bool>(kwargs[k]);
+    } else if(name == "data_root") {
+      settings.data_root = extract<string>(kwargs[k]);
+    } else {
+      throw invalid_argument("Unknown keyword argument "+name);
+    }
+  }
+
+  //hard code some number of typers since this needs to be done statically
+  int N = len(args);
+  vector<shared_ptr<AtomTyper> > typers;
+  for(int i = 0; i < N; i++) {
+    typers.push_back(extract<shared_ptr<AtomTyper> >(args[i]));
+  }
+
+  if(N == 0)
+    return std::make_shared<ExampleProvider>(settings);
+  else
+    return std::make_shared<ExampleProvider>(settings, typers);
+
+}
 
 BOOST_PYTHON_MODULE(molgrid)
 {
@@ -354,6 +426,8 @@ DEFINE_MGRID(N,d)
       .def(vector_indexing_suite<std::vector<float> >());
   class_<std::vector<CoordinateSet> >("CoordinateSetVec")
       .def(vector_indexing_suite<std::vector<CoordinateSet> >());
+  class_<std::vector<Example> >("ExampleVec")
+      .def(vector_indexing_suite<std::vector<Example> >());
 
   class_<Pointer<float> >("FloatPtr", no_init);
   class_<Pointer<double> >("DoublePtr", no_init);
@@ -561,6 +635,22 @@ DEFINE_MGRID(N,d)
     .def_readwrite("labels",&Example::labels);
 
   //there is quite a lot of functionality in the C++ api for example providers, but keep it simple in python for now
-  class_<ExampleProvider>("ExampleProvider");
+  class_<ExampleProvider>("ExampleProvider")
+      .def("__init__", raw_constructor(&create_ex_provider,0))
+      .def("populate",
+          static_cast<void (ExampleProvider::*)(const std::string&, int, bool)>(&ExampleProvider::populate),
+          (arg("file_name"), arg("num_labels")=-1, arg("has_group")=false))
+      .def("populate", +[](ExampleProvider& self, list l, int num_labels, bool has_group) {
+            if(list_is_vec<std::string>(l)) {
+                self.populate(list_to_vec<std::string>(l), num_labels, has_group);
+              } else {
+                throw std::invalid_argument("Need list of file names for ExampleProvider");
+              }
+          },
+          (arg("file_name"), arg("num_labels")=-1, arg("has_group")=false))
+      .def("next", static_cast<Example (ExampleProvider::*)()>(&ExampleProvider::next))
+      .def("next_batch", static_cast< std::vector<Example> (ExampleProvider::*)(unsigned)>(&ExampleProvider::next_batch),
+          (arg("batch_size")));
+
 }
 

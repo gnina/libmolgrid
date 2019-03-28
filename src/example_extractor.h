@@ -44,12 +44,25 @@ class ExampleExtractor {
     void set_coords(const char *fname, unsigned which, CoordinateSet& coord);
   public:
 
-    template<typename ...Typers>
-    ExampleExtractor(const ExampleProviderSettings& settings, Typers... typrs):
-        typers{typers}, data_root(settings.data_root), use_cache(settings.cache_structs), addh(settings.add_hydrogens) {
+    ExampleExtractor(const ExampleProviderSettings& settings, std::shared_ptr<AtomTyper> t):
+         data_root(settings.data_root), use_cache(settings.cache_structs), addh(settings.add_hydrogens) {
+      typers.push_back(t);
+      coord_caches.resize(typers.size());
+    }
+
+    ExampleExtractor(const ExampleProviderSettings& settings, std::shared_ptr<AtomTyper> t1, std::shared_ptr<AtomTyper> t2):
+         data_root(settings.data_root), use_cache(settings.cache_structs), addh(settings.add_hydrogens) {
+      typers.push_back(t1);
+      typers.push_back(t2);
+      coord_caches.resize(typers.size());
+    }
+
+    ExampleExtractor(const ExampleProviderSettings& settings, const std::vector<std::shared_ptr<AtomTyper> >& typrs):
+        typers(typrs), data_root(settings.data_root), use_cache(settings.cache_structs), addh(settings.add_hydrogens) {
       coord_caches.resize(typers.size());
       if(typers.size() == 0) throw std::invalid_argument("Need at least one atom typer for example extractor");
     }
+
     virtual ~ExampleExtractor() {}
 
     /// Extract ref into ex

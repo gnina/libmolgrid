@@ -31,18 +31,23 @@ class ExampleProvider {
     /// Create provider using default gnina typing
     ExampleProvider(const ExampleProviderSettings& settings=ExampleProviderSettings());
 
+    /// Create provider/extractor according to settings with single typer
+    ExampleProvider(const ExampleProviderSettings& settings, std::shared_ptr<AtomTyper> t);
+
+    /// Create provider/extractor according to settings with two typers
+    ExampleProvider(const ExampleProviderSettings& settings, std::shared_ptr<AtomTyper> t1, std::shared_ptr<AtomTyper> t2);
+
     /// Create provider/extractor according to settings
-    template<typename ...Typers>
-    ExampleProvider(const ExampleProviderSettings& settings, Typers... typrs);
+    ExampleProvider(const ExampleProviderSettings& settings, const std::vector<std::shared_ptr<AtomTyper> >& typrs);
 
     /// use provided provider
     ExampleProvider(std::shared_ptr<ExampleRefProvider> p, const ExampleExtractor& e);
     virtual ~ExampleProvider() {}
 
     ///load example file file fname and setup provider
-    virtual void populate(const std::string& fname, int numLabels=-1, bool hasGroup=false);
+    virtual void populate(const std::string& fname, int num_labels=-1, bool has_group=false);
     ///load multiple example files
-    virtual void populate(const std::vector<std::string>& fnames, int numLabels=-1, bool hasGroup=false);
+    virtual void populate(const std::vector<std::string>& fnames, int num_labels=-1, bool has_group=false);
 
     ///provide next example
     virtual void next(Example& ex);

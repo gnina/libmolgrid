@@ -24,14 +24,6 @@
 
 #include "grid.h"
 #include "managed_grid.h"
-#include "quaternion.h"
-#include "transform.h"
-#include "atom_typer.h"
-#include "example_provider.h"
-
-using namespace boost::python;
-using namespace libmolgrid;
-
 
 #define TYPEARG(Z, N, T) BOOST_PP_COMMA_IF(N) T
 #define NTYPES(N, T) BOOST_PP_REPEAT(N, TYPEARG, T)
@@ -56,12 +48,12 @@ template<class GridType, typename ... Types>
 void define_mgrid(const char* name);
 
 //Grid bindings - these are actually instantiated and defined in bindings_grids.cpp
-#define EINSTANTIATE_GRID_TN(N, TYPE, NAME) extern template void define_grid<TYPE,NTYPES(N,unsigned)>(const char*, bool);
+#define EINSTANTIATE_GRID_TN(N, TYPE, NAME) extern template void define_grid<libmolgrid::TYPE,NTYPES(N,unsigned)>(const char*, bool);
 #define EINSTANTIATE_GRID(N, CUDA, T) \
     EINSTANTIATE_GRID_TN(N,Grid##N##T##CUDA, "Grid" #N #T #CUDA)
 
 // MGrid bindings
-#define EINSTANTIATE_MGRID_TN(N, TYPE, NAME) extern template void define_mgrid<TYPE,NTYPES(N,unsigned)>(const char *);
+#define EINSTANTIATE_MGRID_TN(N, TYPE, NAME) extern template void define_mgrid<libmolgrid::TYPE,NTYPES(N,unsigned)>(const char *);
 #define EINSTANTIATE_MGRID(N, T) \
     EINSTANTIATE_MGRID_TN(N,MGrid##N##T,"MGrid" #N #T)
 
