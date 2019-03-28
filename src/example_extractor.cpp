@@ -7,6 +7,7 @@
 
 #include "example_extractor.h"
 #include <boost/algorithm/string.hpp>
+#include <boost/filesystem/path.hpp>
 #include <openbabel/obconversion.h>
 #include <cuda_runtime.h>
 
@@ -20,6 +21,11 @@ void ExampleExtractor::set_coords(const char *fname, unsigned which, CoordinateS
   if(coord_caches[which].count(fname)) {
     coord = coord_caches[which][fname];
   } else {
+    std::string fullname = fname;
+    if(data_root.length()) {
+      boost::filesystem::path p = boost::filesystem::path(data_root) / boost::filesystem::path(fname);
+      fullname = p.string();
+    }
     //check for custom gninatypes file
     if(boost::algorithm::ends_with(fname,".gninatypes"))
     {
@@ -31,8 +37,8 @@ void ExampleExtractor::set_coords(const char *fname, unsigned which, CoordinateS
         int type;
       } atom;
 
-      ifstream in(fname);
-      if(!in) throw invalid_argument("Could not read "+boost::lexical_cast<string>(fname));
+      ifstream in(fullname.c_str());
+      if(!in) throw invalid_argument("Could not read "+fullname);
 
       vector<float3> c;
       vector<float> r;
@@ -52,8 +58,8 @@ void ExampleExtractor::set_coords(const char *fname, unsigned which, CoordinateS
       //read mol from file and set mol info (atom coords and grid positions)
       OBConversion conv;
       OBMol mol;
-      if(!conv.ReadFile(&mol, fname))
-        throw invalid_argument("Could not read " + boost::lexical_cast<string>(fname));
+      if(!conv.ReadFile(&mol, fullname.c_str()))
+        throw invalid_argument("Could not read " + fullname);
 
       if(addh) {
         mol.AddHydrogens();

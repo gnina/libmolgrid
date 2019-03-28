@@ -26,6 +26,8 @@ using namespace std;
 class ExampleRefProvider {
 
   public:
+    ExampleRefProvider() {}
+    ExampleRefProvider(const ExampleProviderSettings& settings) {}
     virtual void addref(const ExampleRef& ex) = 0;
     virtual void setup() = 0; //essentially shuffle if necessary
     virtual void nextref(ExampleRef& ex) = 0;
@@ -46,7 +48,7 @@ class UniformExampleRefProvider: public ExampleRefProvider
 
 public:
   UniformExampleRefProvider() {}
-  UniformExampleRefProvider(const ExampleProviderSettings& settings): current(0), randomize(settings.shuffle)
+  UniformExampleRefProvider(const ExampleProviderSettings& settings): ExampleRefProvider(settings), current(0), randomize(settings.shuffle)
   {
   }
 
@@ -87,7 +89,8 @@ class BalancedExampleRefProvider: public ExampleRefProvider
 
 public:
   BalancedExampleRefProvider() {}
-  BalancedExampleRefProvider(const ExampleProviderSettings& settings): actives(settings), decoys(settings), current(0), labelpos(settings.labelpos)
+  BalancedExampleRefProvider(const ExampleProviderSettings& settings):
+    ExampleRefProvider(settings), actives(settings), decoys(settings), current(0), labelpos(settings.labelpos)
   {
   }
 
@@ -149,7 +152,8 @@ class SamplingExampleRefProvider: public ExampleRefProvider
 
 public:
   SamplingExampleRefProvider() {}
-  SamplingExampleRefProvider(Provider1 P1, Provider2 P2, double srate): p1(P1), p2(P2), sample_rate(srate)
+  SamplingExampleRefProvider(const ExampleProviderSettings& settings, Provider1 P1, Provider2 P2, double srate):
+    ExampleRefProvider(settings), p1(P1), p2(P2), sample_rate(srate)
   {
   }
 
@@ -194,7 +198,8 @@ class ReceptorStratifiedExampleRefProvider: public ExampleRefProvider
 
 public:
   ReceptorStratifiedExampleRefProvider(): currenti(0), currentk(0), randomize(false) {}
-  ReceptorStratifiedExampleRefProvider(const ExampleProviderSettings& settings): param(settings), currenti(0), currentk(0), randomize(settings.shuffle)
+  ReceptorStratifiedExampleRefProvider(const ExampleProviderSettings& settings):
+    ExampleRefProvider(settings), param(settings), currenti(0), currentk(0), randomize(settings.shuffle)
   {
   }
 
@@ -288,7 +293,8 @@ class ValueStratifiedExampleRefProfider: public ExampleRefProvider
   }
 public:
   ValueStratifiedExampleRefProfider() {}
-  ValueStratifiedExampleRefProfider(const ExampleProviderSettings& parm): currenti(0)
+  ValueStratifiedExampleRefProfider(const ExampleProviderSettings& parm):
+    ExampleRefProvider(parm), currenti(0)
   {
     max = parm.stratify_max;
     min = parm.stratify_min;
@@ -373,7 +379,8 @@ class GroupedExampleRefProvider : public ExampleRefProvider {
 
 public:
   GroupedExampleRefProvider() {     current_groups.assign(batch_size,maxgroupsize); }
-  GroupedExampleRefProvider(const ExampleProviderSettings& parm): examples(parm),
+  GroupedExampleRefProvider(const ExampleProviderSettings& parm):
+                                              ExampleRefProvider(parm), examples(parm),
                                               batch_size(parm.group_batch_size),
                                               maxgroupsize(parm.max_group_size) {
     current_groups.assign(batch_size,maxgroupsize);

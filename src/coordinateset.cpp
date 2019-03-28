@@ -14,8 +14,10 @@ namespace libmolgrid {
 using namespace std;
 using namespace OpenBabel;
 
+CoordinateSet::CoordinateSet(OBMol *mol): CoordinateSet(mol, defaultGninaLigandTyper) {}
+
 //initialize with obmol
-CoordinateSet::CoordinateSet(OBMol *mol, AtomTyper& typer)
+CoordinateSet::CoordinateSet(OBMol *mol, const AtomTyper& typer)
     : max_type(typer.num_types()) {
 
   vector<float3> c; c.reserve(mol->NumAtoms());
@@ -89,10 +91,27 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<uns
   }
 }
 
+///initialize with indexed types using grids - data is copied into coordinate set
+CoordinateSet::CoordinateSet(const Grid2f& c, const Grid1f& t, const Grid1f& r, unsigned maxt):
+    coord(c.dimension(0), c.dimension(1)), type_index(t.dimension(0)), radius(r.dimension(0)), max_type(maxt) {
+  coord.copyFrom(c);
+  type_index.copyFrom(t);
+  radius.copyFrom(r);
+}
+
+CoordinateSet::CoordinateSet(const Grid2fCUDA& c, const Grid1fCUDA& t, const Grid1fCUDA& r, unsigned maxt):
+    coord(c.dimension(0), c.dimension(1)), type_index(t.dimension(0)), radius(r.dimension(0)), max_type(maxt) {
+  coord.copyFrom(c);
+  type_index.copyFrom(t);
+  radius.copyFrom(r);
+}
+
+
 inline size_t typ_vec_size(const std::vector<std::vector<float> >& t) {
   if(t.size() == 0) return 0;
   return t[0].size();
 }
+
 
 //initialize with vector types
 CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<std::vector<float> >& t, const std::vector<float>& r):
@@ -112,6 +131,21 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<std
   memcpy(coord.pointer().get(), &c[0], sizeof(float3)*N);
   memcpy(type_vector.pointer().get(), &t[0], sizeof(float)*N*max_type);
 
+}
+
+//vector types in grids
+CoordinateSet::CoordinateSet(const Grid2f& c, const Grid2f& t, const Grid1f& r):
+    coord(c.dimension(0),c.dimension(1)), type_vector(t.dimension(0), t.dimension(1)), radius(r.dimension(0)), max_type(t.dimension(1)) {
+  coord.copyFrom(c);
+  type_vector.copyFrom(t);
+  radius.copyFrom(r);
+}
+
+CoordinateSet::CoordinateSet(const Grid2fCUDA& c, const Grid2fCUDA& t, const Grid1fCUDA& r):
+    coord(c.dimension(0),c.dimension(1)), type_vector(t.dimension(0), t.dimension(1)), radius(r.dimension(0)), max_type(t.dimension(1)) {
+  coord.copyFrom(c);
+  type_vector.copyFrom(t);
+  radius.copyFrom(r);
 }
 
 ///convert index types to vector types in-place

@@ -26,15 +26,15 @@ class AtomTyper {
     AtomTyper() {}
     virtual ~AtomTyper() {}
 
-    virtual unsigned num_types() const = 0;
+    //why not make these abstract you ask? python bindings
+    virtual unsigned num_types() const  { throw std::logic_error("Base class AtomTyper function called");  }
 
     virtual float get_atom_type(OpenBabel::OBAtom *a, std::vector<float>& typ) const { throw std::logic_error("Unimplemented atom typing function called"); }
     virtual std::pair<int,float> get_atom_type(OpenBabel::OBAtom *a) const { throw std::logic_error("Unimplemented atom typing function called"); }
     virtual std::pair<int,float> get_int_type(unsigned t) const { throw std::logic_error("Unimplemented atom typing function called"); }
 
-    virtual std::vector<std::string> get_type_names() const = 0;
-
-    virtual bool is_vector_typer() const = 0;
+    virtual std::vector<std::string> get_type_names() const { throw std::logic_error("Base class AtomTyper function called"); }
+    virtual bool is_vector_typer() const { throw std::logic_error("Base class AtomTyper function called"); }
 };
 
 /** \brief Base class for generating numerical types along with atomic radius */
