@@ -70,6 +70,9 @@ class GridMaker {
       return grid_origin;
     }
 
+    template <typename Dtype>
+    CUDA_DEVICE_MEMBER void zero_grid(Grid<Dtype, 4, true>& grid);
+
     /* \brief Find grid indices in one dimension that bound an atom's density. 
      * @param[in] grid min coordinate in a given dimension
      * @param[in] atom coordinate in the same dimension
@@ -178,8 +181,8 @@ class GridMaker {
     void forward(float3 grid_center, const Grid<float, 2, false>& coords,
         const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
         Grid<Dtype, 4, false>& out) const {
-      //set out to 0 to start
-      std::fill(out.data(), out.data() + out.size(), 0.0);
+      //N.B. out data assumed to be zeroed if desired - GridMaker can't zero because
+      //we might be setting grids for multiple CoordinateSets
       
       float3 grid_origin = getGridOrigin(grid_center);
       size_t natoms = coords.dimension(0);

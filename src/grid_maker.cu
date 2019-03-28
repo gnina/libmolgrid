@@ -19,6 +19,8 @@ namespace libmolgrid {
         gdata[tidx] = 0;
     }
 
+    template __device__ void zero_grid(Grid<float, 4, true> & grid);
+
     //TODO: warp shuffle version
     inline __device__ uint warpScanInclusive(int threadIndex, uint idata,
         volatile uint *s_Data, uint size) {
@@ -150,8 +152,8 @@ namespace libmolgrid {
     __global__ void forward_gpu(GridMaker gmaker, float3 grid_origin,
         const Grid<float, 2, true> coords, const Grid<float, 1, true> type_index, 
         const Grid<float, 1, true> radii, Grid<Dtype, 4, true> out) {
-      //zero out memory buffer
-      zero_grid(out);
+      //N.B. out data assumed to be zeroed if desired - GridMaker can't zero because
+      //we might be setting grids for multiple CoordinateSets
 
       //this is the thread's index within its block, used to parallelize over atoms
       size_t total_atoms = coords.dimension(0);
