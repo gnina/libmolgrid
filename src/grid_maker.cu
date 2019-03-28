@@ -105,7 +105,7 @@ namespace libmolgrid {
     }
 
     template <typename Dtype>
-    __device__ void GridMaker::set_atoms(unsigned rel_atoms, float3& grid_origin, 
+    __device__ void GridMaker::set_atoms(size_t rel_atoms, float3& grid_origin, 
         const Grid<float, 2, true>& coords, const Grid<float, 1, true>& type_index, 
         const Grid<float, 1, true>& radii, Grid<Dtype, 4, true>& out) {
       //figure out what grid point we are 
@@ -124,11 +124,10 @@ namespace libmolgrid {
       grid_coords.z = grid_indices.z * resolution + grid_origin.z;
 
       //iterate over all possibly relevant atoms
-      for(unsigned ai = 0; ai < rel_atoms; ai++) {
-        unsigned i = atomIndices[ai];
+      for(size_t ai = 0; ai < rel_atoms; ai++) {
+        size_t i = atomIndices[ai];
         float atype = type_index(i);
-        if (atype >= 0) { //because of hydrogens on ligands, although 
-                          //we already excluded them from the atom list...
+        if (atype >= 0) { //because of hydrogens on ligands
           float3 acoords;
           acoords.x = coords(i, 0);
           acoords.y = coords(i, 1);
@@ -147,11 +146,6 @@ namespace libmolgrid {
       }
     }
 
-    template
-    __device__ void GridMaker::set_atoms(unsigned rel_atoms, float3& grid_origin, 
-        const Grid<float, 2, true>& coords, const Grid<float, 1, true>& type_index, 
-        const Grid<float, 1, true>& radii, Grid<float, 4, true>& out);
-
     template <typename Dtype>
     __global__ void forward_gpu(GridMaker gmaker, float3 grid_origin,
         const Grid<float, 2, true> coords, const Grid<float, 1, true> type_index, 
@@ -160,12 +154,12 @@ namespace libmolgrid {
       zero_grid(out);
 
       //this is the thread's index within its block, used to parallelize over atoms
-      unsigned total_atoms = radii.size();
+      size_t total_atoms = coords.dimension(0);
       size_t tidx = ((threadIdx.z * blockDim.z) + threadIdx.y) * blockDim.y + threadIdx.x;
       //if there are more then LMG_CUDA_NUM_THREADS atoms, chunk them
-      for(unsigned atomoffset = 0; atomoffset < total_atoms; atomoffset += LMG_CUDA_NUM_THREADS) {
+      for(size_t atomoffset = 0; atomoffset < total_atoms; atomoffset += LMG_CUDA_NUM_THREADS) {
         //first parallelize over atoms to figure out if they might overlap this block
-        unsigned aidx = atomoffset + tidx;
+        size_t aidx = atomoffset + tidx;
         
         if(aidx < total_atoms) {
           atomMask[tidx] = gmaker.atomOverlapsBlock(aidx, grid_origin, coords,
@@ -189,7 +183,7 @@ namespace libmolgrid {
         }
         __syncthreads();
 
-        unsigned rel_atoms = scanOutput[LMG_CUDA_NUM_THREADS - 1] + atomMask[LMG_CUDA_NUM_THREADS - 1];
+        size_t rel_atoms = scanOutput[LMG_CUDA_NUM_THREADS - 1] + atomMask[LMG_CUDA_NUM_THREADS - 1];
         //atomIndex is now a list of rel_atoms possibly relevant atom indices
         gmaker.set_atoms(rel_atoms, grid_origin, coords, type_index, radii, out);
         __syncthreads();//everyone needs to finish before we muck with atomIndices again

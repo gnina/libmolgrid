@@ -8,7 +8,7 @@
 using namespace libmolgrid;
 
 BOOST_AUTO_TEST_CASE(forward_gpu) {
-  size_t natoms = 100;
+  size_t natoms = 1000;
   float resolution = 0.5; 
   float dimension = 23.5;
   float radiusmultiple = 1.5;
