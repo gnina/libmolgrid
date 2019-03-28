@@ -9,6 +9,7 @@
 
 #include <random>
 #include <iostream>
+#include <boost/lexical_cast.hpp>
 
 // dimensionalities up to but not including LIBMOLGRID_MAX_GRID_DIM are pre-instantiated
 #define LIBMOLGRID_MAX_GRID_DIM 9
@@ -21,6 +22,9 @@ namespace libmolgrid {
     inline std::ostream& LOG(LogLevel level = INFO) {
       return std::cout; //todo, implement verbosity levels
     }
+
+    inline std::string ftoa(float v) { return boost::lexical_cast<std::string>(v); }
+    inline std::string itoa(int v) { return boost::lexical_cast<std::string>(v); }
 }
 
 #endif

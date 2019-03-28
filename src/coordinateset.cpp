@@ -55,17 +55,17 @@ CoordinateSet::CoordinateSet(OBMol *mol, const AtomTyper& typer)
   unsigned N = c.size();
   coord = MGrid2f(N,3);
   assert(sizeof(float3)*N == sizeof(float)*coord.size());
-  memcpy(coord.pointer().get(), &c[0], sizeof(float3)*N);
+  memcpy(coord.data(), &c[0], sizeof(float3)*N);
 
   radius = MGrid1f(N);
-  memcpy(radius.pointer().get(), &radii[0], sizeof(float)*N);
+  memcpy(radius.data(), &radii[0], sizeof(float)*N);
 
   if(typer.is_vector_typer()) {
     type_vector = MGrid2f(N,max_type);
-    memcpy(type_vector.pointer().get(), &vector_types[0], sizeof(float)*N*max_type);
+    memcpy(type_vector.data(), &vector_types[0], sizeof(float)*N*max_type);
   } else {
     type_index = MGrid1f(N);
-    memcpy(type_index.pointer().get(), &types[0], sizeof(float)*N*max_type);
+    memcpy(type_index.data(), &types[0], sizeof(float)*N*max_type);
   }
 }
 
@@ -81,15 +81,37 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<uns
   }
 
   //copy data
-  memcpy(radius.pointer().get(), &r[0], sizeof(float)*N);
+  type_index.tocpu(); radius.tocpu(); coord.tocpu();
+  memcpy(radius.data(), &r[0], sizeof(float)*N);
   assert(sizeof(float3)*N == sizeof(float)*coord.size());
-  memcpy(coord.pointer().get(), &c[0], sizeof(float3)*N);
+  memcpy(coord.data(), &c[0], sizeof(float3)*N);
 
   //convert to float
   for(unsigned i = 0; i < N; i++) {
     type_index[i] = t[i];
   }
 }
+
+//initialize with indexed types (float)
+CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<float>& t, const std::vector<float>& r, unsigned maxt):
+  coord(c.size(),3), type_index(c.size()), radius(c.size()), max_type(maxt) {
+  unsigned N = c.size();
+  if(N != t.size()) {
+    throw std::invalid_argument("Types and coordinates are of different sizes");
+  }
+  if(N != r.size()) {
+    throw std::invalid_argument("Radii and coordinates are of different sizes");
+  }
+
+  //copy data
+  type_index.tocpu(); radius.tocpu(); coord.tocpu();
+  memcpy(type_index.data(), &t[0], sizeof(float)*N);
+  memcpy(radius.data(), &r[0], sizeof(float)*N);
+  assert(sizeof(float3)*N == sizeof(float)*coord.size());
+  memcpy(coord.data(), &c[0], sizeof(float3)*N);
+
+}
+
 
 ///initialize with indexed types using grids - data is copied into coordinate set
 CoordinateSet::CoordinateSet(const Grid2f& c, const Grid1f& t, const Grid1f& r, unsigned maxt):
@@ -126,10 +148,10 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<std
   }
 
   //copy data
-  memcpy(radius.pointer().get(), &r[0], sizeof(float)*N);
+  memcpy(radius.data(), &r[0], sizeof(float)*N);
   assert(sizeof(float3)*N == sizeof(float)*coord.size());
-  memcpy(coord.pointer().get(), &c[0], sizeof(float3)*N);
-  memcpy(type_vector.pointer().get(), &t[0], sizeof(float)*N*max_type);
+  memcpy(coord.data(), &c[0], sizeof(float3)*N);
+  memcpy(type_vector.data(), &t[0], sizeof(float)*N*max_type);
 
 }
 

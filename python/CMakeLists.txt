@@ -20,7 +20,9 @@ if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
 endif()
 
 set( PYMOLGRID_SOURCES
+ bindings.h
  bindings.cpp
+ bindings_grids.cpp
 )
 
 set( PYMOLGRID_PY

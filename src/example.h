@@ -73,6 +73,45 @@ struct Example {
     //indexed  by atom group
     std::vector<CoordinateSet> sets;
     std::vector<float> labels;
+
+    /// The total number of atom across all sets
+    size_t coordinate_size() const;
+
+    /// The maximum number of types across all sets - if unique_index_types is true, each set gets different type ids
+    size_t type_size(bool unique_index_types=true) const;
+
+    /** \brief Combine all coordinate sets into one and return it.
+     * All coordinate sets must have the same kind of typing.  Note that if there is only
+     * a single set, the returned set will reference the same memory.
+     * @param[out] c coordinateset to overwrite
+     * @param[in] unique_indexed_types if true, different coordinate sets will have unique, non-overlapping types
+     */
+    CoordinateSet merge_coordinates(bool unique_index_types=true);
+
+    /** \brief Combine all coordinate sets into one.
+     * All coordinate sets must have index typing
+     * @param[out] coords  combined coordinates
+     * @param[out] type_index combined types
+     * @param[out] radii combined radii
+     * @param[in] unique_indexed_types if true, different coordinate sets will have unique, non-overlapping types
+     */
+    void merge_coordinates(Grid2f& coords, Grid1f& type_index, Grid1f& radii, bool unique_index_types=true);
+    void merge_coordinates(std::vector<float3>& coords, std::vector<float>& type_index, std::vector<float>& radii, bool unique_index_types=true);
+
+    /** \brief Combine all coordinate sets into one.
+     * All coordinate sets must have vector typing
+     * @param[out] coords  combined coordinates
+     * @param[out] type_index combined types
+     * @param[out] radii combined radii
+     * @param[in] unique_indexed_types if true, different coordinate sets will have unique, non-overlapping types
+     */
+    void merge_coordinates(Grid2f& coords, Grid2f& type_vector, Grid1f& radii, bool unique_index_types=true);
+    void merge_coordinates(std::vector<float3>& coords, std::vector<std::vector<float> >& type_vector, std::vector<float>& radii, bool unique_index_types=true);
+
+    //pointer equality, implemented for python vector
+    bool operator==(const Example& rhs) const {
+      return sets == rhs.sets && labels == rhs.labels;
+    }
 };
 
 /** \brief a reference to a single example - the parsed line.  This is distinct from an
@@ -103,14 +142,7 @@ public:
 };
 
 extern StringCache string_cache;
-// example provider will take a bunch of settings (with reasonable defaults)
-// will take desired atom typers
-// create the appropriate example ref provider
-// can add multiple files?
-// populate it, load caches as appropriate
-// provide next example interface
 
-//need a mol2coords transformer
 
 } /* namespace libmolgrid */
 
