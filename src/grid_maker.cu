@@ -8,7 +8,7 @@ namespace libmolgrid {
     __shared__ uint atomMask[LMG_CUDA_NUM_THREADS];
 
     template <typename Dtype>
-    __device__ void zero_grid(Grid<Dtype, 4, true> grid) {
+    __device__ void zero_grid(Grid<Dtype, 4, true>& grid) {
       size_t gsize = grid.size();
       Dtype* gdata = grid.data();
       size_t bIdx = blockIdx.x + blockIdx.y * gridDim.x + gridDim.x * gridDim.y * blockIdx.z;
@@ -78,7 +78,6 @@ namespace libmolgrid {
         const Grid<float, 2, true>& coords, const Grid<float, 1, true>& type_index, 
         const Grid<float, 1, true>& radii) {
    
-      //FIXME: include hydrogens?
       if (type_index(aidx) < 0) return 0; //hydrogen
     
       unsigned xi = blockIdx.x * blockDim.x;
@@ -148,6 +147,11 @@ namespace libmolgrid {
       }
     }
 
+    template
+    __device__ void GridMaker::set_atoms(unsigned rel_atoms, float3& grid_origin, 
+        const Grid<float, 2, true>& coords, const Grid<float, 1, true>& type_index, 
+        const Grid<float, 1, true>& radii, Grid<float, 4, true>& out);
+
     template <typename Dtype>
     __global__ void forward_gpu(GridMaker gmaker, float3 grid_origin,
         const Grid<float, 2, true> coords, const Grid<float, 1, true> type_index, 
@@ -205,4 +209,9 @@ namespace libmolgrid {
       forward_gpu<Dtype><<<blocks, threads>>>(*this, grid_origin, coords, type_index, radii, out);
       LMG_CUDA_CHECK(cudaPeekAtLastError());
     }
+
+    template 
+    void GridMaker::forward(float3 grid_center, const Grid<float, 2, true>& coords,
+        const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
+        Grid<float, 4, true>& out) const;
 } /* namespace libmolgrid */

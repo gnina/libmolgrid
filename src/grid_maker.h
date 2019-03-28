@@ -30,27 +30,38 @@ namespace libmolgrid {
  */
 class GridMaker {
   protected:
-    float radiusmultiple; // at what multiple of the atomic radius does the atom density go to 0
     float resolution; // grid spacing
     float dimension; // grid side length in Angstroms
-    size_t dim; // grid width in points
+    float radiusmultiple; // at what multiple of the atomic radius does the atom density go to 0
     bool binary; // use binary occupancy instead of real-valued atom density
+    size_t dim; // grid width in points
 
   public:
 
-    GridMaker();
+    GridMaker(float res = 0, float d = 0, float rm = 1.5, bool bin = false) : 
+      resolution(res), dimension(d), radiusmultiple(rm), binary(bin) {
+        initialize(res, d, rm, bin);
+      }
+
     virtual ~GridMaker() {}
+
+    void initialize(float res, float d, float rm, bool bin = false) {
+      resolution = res;
+      dimension = d;
+      radiusmultiple = rm;
+      dim = ::round(dimension / resolution) + 1;
+    }
 
     float3 getGridDims() const { 
       return make_float3(dim, dim, dim); 
     }
 
-    /* \brief Use externally specified grid_center to determine where grid begins and
-     * end. Used for translating between cartesian coords and grids.
+    /* \brief Use externally specified grid_center to determine where grid begins.
+     * Used for translating between cartesian coords and grids.
      * @param[in] grid center
      * @param[out] grid bounds
      */
-    float3 getGridOrigin(float3 grid_center) const {
+    float3 getGridOrigin(const float3& grid_center) const {
       float half = dimension/2.0;
       float3 grid_origin;
       grid_origin.x = grid_center.x - half;
@@ -167,6 +178,9 @@ class GridMaker {
     void forward(float3 grid_center, const Grid<float, 2, false>& coords,
         const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
         Grid<Dtype, 4, false>& out) const {
+      //set out to 0 to start
+      std::fill(out.data(), out.data() + out.size(), 0.0);
+      
       float3 grid_origin = getGridOrigin(grid_center);
       size_t natoms = coords.dimension(0);
       //iterate over all atoms
