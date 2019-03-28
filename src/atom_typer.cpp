@@ -146,7 +146,7 @@ std::pair<int,float> GninaIndexTyper::get_atom_type(OpenBabel::OBAtom* a) const 
 }
 
 //look up radius for passed type
-pair<int,float> GninaIndexTyper::get_int_type(unsigned t) const {
+pair<int,float> GninaIndexTyper::get_int_type(int t) const {
   int ret = GenericMetal;
   if(t < NumTypes) {
     ret = t;
@@ -183,9 +183,9 @@ std::pair<int,float> ElementIndexTyper::get_atom_type(OpenBabel::OBAtom* a) cons
 }
 
 //return element with radius
-std::pair<int,float> ElementIndexTyper::get_int_type(unsigned elem) const {
+std::pair<int,float> ElementIndexTyper::get_int_type(int elem) const {
   float radius = OpenBabel::OBElements::GetCovalentRad(elem);
-  if(elem >= last_elem) elem = 0; //truncate
+  if(elem >= (int)last_elem) elem = 0; //truncate
   return make_pair((int)elem,radius);
 }
 
