@@ -312,60 +312,26 @@ bool list_is_vec(list l) {
   return true;
 }
 
+static void set_settings_form_kwargs(dict kwargs, ExampleProviderSettings& settings) {
+  //extract any settings
+  using namespace std;
+  boost::python::list keys = kwargs.keys();
+  for(unsigned i = 0, n = len(keys); i < n; i++) {
+    object k = keys[i];
+    string name = extract<string>(k);
+    //preprocessor macros are beautifully ugly
+#undef EXSET
+#define EXSET(TYPE, NAME, DEFAULT, DOC) if(name == #NAME) { settings.NAME = extract<TYPE>(kwargs[k]); } else
+    MAKE_SETTINGS() {throw invalid_argument("Unknown keyword argument "+name);}
+  }
+}
+
 //raw constructor for example provider, args should be typers and kwargs
 //settings in exampleprovidersettings
 std::shared_ptr<ExampleProvider> create_ex_provider(tuple args, dict kwargs) {
   using namespace std;
   ExampleProviderSettings settings;
-
-  // strip off self
-  object self = args[0];
-  args = boost::python::tuple(args.slice(1,_));
-
-  //extract any settings
-  boost::python::list keys = kwargs.keys();
-  for(unsigned i = 0, n = len(keys); i < n; i++) {
-    object k = keys[i];
-    string name = extract<string>(k);
-
-    //is there a better way to do this?
-    //I could define settings to be a dynamic map, but that would be sacrificing c++ efficiency for python utility
-    //and what would the type of the values be?
-    //could do something with macros..
-    if(name == "shuffle") {
-      settings.shuffle = extract<bool>(kwargs[k]);
-    } else if(name == "balanced") {
-      settings.balanced = extract<bool>(kwargs[k]);
-    } else if(name == "stratify_receptor") {
-      settings.stratify_receptor = extract<bool>(kwargs[k]);
-    } else if(name == "labelpos") {
-      settings.labelpos = extract<int>(kwargs[k]);
-    } else if(name == "stratify_pos") {
-      settings.stratify_pos = extract<int>(kwargs[k]);
-    } else if(name == "stratify_abs") {
-      settings.stratify_abs = extract<bool>(kwargs[k]);
-    } else if(name == "stratify_min") {
-      settings.stratify_min = extract<float>(kwargs[k]);
-    } else if(name == "stratify_max") {
-      settings.stratify_max = extract<float>(kwargs[k]);
-    } else if(name == "stratify_step") {
-      settings.stratify_step = extract<float>(kwargs[k]);
-    } else if(name == "group_batch_size") {
-      settings.group_batch_size = extract<int>(kwargs[k]);
-    } else if(name == "max_group_size") {
-      settings.max_group_size = extract<int>(kwargs[k]);
-    } else if(name == "cache_structs") {
-      settings.cache_structs = extract<bool>(kwargs[k]);
-    } else if(name == "add_hydrogens") {
-      settings.add_hydrogens = extract<bool>(kwargs[k]);
-    } else if(name == "duplicate_first") {
-      settings.duplicate_first = extract<bool>(kwargs[k]);
-    } else if(name == "data_root") {
-      settings.data_root = extract<string>(kwargs[k]);
-    } else {
-      throw invalid_argument("Unknown keyword argument "+name);
-    }
-  }
+  set_settings_form_kwargs(kwargs, settings);
 
   //hard code some number of typers since this needs to be done statically
   int N = len(args);
@@ -624,6 +590,52 @@ DEFINE_MGRID(N,d)
       .def_readwrite("radius", &CoordinateSet::radius)
       .def_readwrite("max_type", &CoordinateSet::max_type);
 
+
+  //mostly exposing this for documentation purposes
+#undef EXSET
+#define EXSET(TYPE, NAME, DEFAULT, DOC) .def_readwrite(#NAME, &ExampleProviderSettings::NAME, DOC)
+
+  class_<ExampleProviderSettings>("ExampleProviderSettings")
+      MAKE_SETTINGS();
+    /*
+     *     bool shuffle = false;
+    /// provide equal number of positive and negative examples, labelpos must be set
+    bool balanced = false;
+    /// sample uniformly across receptors (first molecule)
+    bool stratify_receptor = false;
+
+    ///position of binary label for balancing
+    int labelpos = 0;
+    //the following are for stratifying on a numerical label
+    /// position of label for numerical stratificatoin
+    int stratify_pos = 1;
+    ///stratify based on abs value, for cases where negative has special meaning (hinge loss indicator)
+    bool stratify_abs = true;
+    ///minimum range of stratificatoin
+    float stratify_min = 0;
+    ///maximum range of stratification
+    float stratify_max = 0;
+    ///step size of stratification
+    float stratify_step = 0;
+
+    //for grouped examples
+    /// slice time series (groups) by batches
+    int group_batch_size = 1;
+    /// max group size, all groups are padded out to this size
+    int max_group_size = 0;
+
+
+    //extract config
+    ///retain coordinates in memory for faster training
+    bool cache_structs = true;
+    ///protonate read in molecules with openbabel
+    bool add_hydrogens = true;
+    ///clone the first coordinate set to be paired with each of the remaining (think receptor ligand pairs)
+    bool duplicate_first = false;
+
+    ///prefix for data files
+    std::string data_root;
+    */
 
   class_<Example>("Example")
     .def("coordinate_size", &Example::coordinate_size)
