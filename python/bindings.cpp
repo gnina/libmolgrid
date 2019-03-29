@@ -194,10 +194,10 @@ class PythonCallbackIndexTyper: public CallbackIndexTyper {
 
     ///call callback
     // note I'm unwrapping and rewrapping the obatom in python mostly to test the code
-    std::pair<int,float> get_atom_type(object a) const {
+    std::pair<int,float> get_atom_type_index(object a) const {
       OpenBabel::OBAtom *atom = (OpenBabel::OBAtom *)extract_swig_wrapped_pointer(a.ptr());
       if(atom)
-        return CallbackIndexTyper::get_atom_type(atom);
+        return CallbackIndexTyper::get_atom_type_index(atom);
       else
         throw std::invalid_argument("Need OBAtom");
     }
@@ -230,7 +230,7 @@ class PythonCallbackVectorTyper: public CallbackVectorTyper {
       OpenBabel::OBAtom *atom = (OpenBabel::OBAtom *)extract_swig_wrapped_pointer(a.ptr());
       if(atom) {
        std::vector<float> typ;
-       float r = get_atom_type(atom, typ);
+       float r = CallbackVectorTyper::get_atom_type_vector(atom, typ);
        return make_tuple(list(typ), r);
       } else {
        throw std::invalid_argument("Need OBAtom");
@@ -472,27 +472,27 @@ MAKE_ALL_GRIDS()
   class_<GninaIndexTyper, bases<AtomTyper> >("GninaIndexTyper")
       .def(init<bool>())
       .def("num_types", &GninaIndexTyper::num_types)
-      .def("get_atom_type", &GninaIndexTyper::get_atom_type)
+      .def("get_atom_type_index", &GninaIndexTyper::get_atom_type_index)
       .def("get_type_names",&GninaIndexTyper::get_type_names);
 
   class_<ElementIndexTyper, bases<AtomTyper> >("ElementIndexTyper")
       .def(init<int>())
       .def("num_types", &ElementIndexTyper::num_types)
-      .def("get_atom_type", &ElementIndexTyper::get_atom_type)
+      .def("get_atom_type_index", &ElementIndexTyper::get_atom_type_index)
       .def("get_type_names",&ElementIndexTyper::get_type_names);
 
   class_<PythonCallbackIndexTyper, bases<AtomTyper> >("PythonCallbackIndexTyper",
       init<object, unsigned, list>(
           (arg("func"), arg("num_types"), arg("names") = list() ) ))
       .def("num_types", &PythonCallbackIndexTyper::num_types)
-      .def("get_atom_type", &PythonCallbackIndexTyper::get_atom_type)
+      .def("get_atom_type_index", &PythonCallbackIndexTyper::get_atom_type_index)
       .def("get_type_names",&PythonCallbackIndexTyper::get_type_names);
 
   class_<GninaVectorTyper, bases<AtomTyper> >("GninaVectorTyper")
       .def("num_types", &GninaVectorTyper::num_types)
       .def("get_atom_type_vector", +[](const GninaVectorTyper& typer, OpenBabel::OBAtom* a) {
         std::vector<float> typs;
-        float r = typer.get_atom_type(a, typs);
+        float r = typer.get_atom_type_vector(a, typs);
         auto ltyps = list(typs);
         return std::make_pair(ltyps,r);
         })
@@ -538,7 +538,7 @@ MAKE_ALL_GRIDS()
             }, default_call_policies(),
             (arg("map"), arg("catchall") = true, arg("maxe") = 84U)))
           .def("num_types", &SubsettedElementTyper::num_types)
-          .def("get_atom_type", &SubsettedElementTyper::get_atom_type)
+          .def("get_atom_type_index", &SubsettedElementTyper::get_atom_type_index)
           .def("get_type_names",&SubsettedElementTyper::get_type_names);
 
   class_<SubsettedGninaTyper, bases<AtomTyper> >("SubsettedGninaTyper", no_init)
@@ -552,20 +552,20 @@ MAKE_ALL_GRIDS()
                 }, default_call_policies(),
                 (arg("map"), arg("catchall") = true, arg("use_covalent_radius") = false)))
           .def("num_types", &SubsettedGninaTyper::num_types)
-          .def("get_atom_type", &SubsettedGninaTyper::get_atom_type)
+          .def("get_atom_type_index", &SubsettedGninaTyper::get_atom_type_index)
           .def("get_type_names",&SubsettedGninaTyper::get_type_names);
 
   class_<FileMappedGninaTyper, bases<AtomTyper> >("FileMappedGninaTyper",
           init<const std::string&, bool>((arg("fname"), arg("use_covalent_radius")=false)))
               //todo, add init for file stream inputs if we every want it
           .def("num_types", &FileMappedGninaTyper::num_types)
-          .def("get_atom_type", &FileMappedGninaTyper::get_atom_type)
+          .def("get_atom_type_index", &FileMappedGninaTyper::get_atom_type_index)
           .def("get_type_names",&FileMappedGninaTyper::get_type_names);
 
   class_<FileMappedElementTyper, bases<AtomTyper> >("FileMappedElementTyper",
           init<const std::string&, unsigned>((arg("fname"), arg("maxe")=84)))
           .def("num_types", &FileMappedElementTyper::num_types)
-          .def("get_atom_type", &FileMappedElementTyper::get_atom_type)
+          .def("get_atom_type_index", &FileMappedElementTyper::get_atom_type_index)
           .def("get_type_names",&FileMappedElementTyper::get_type_names);
 
   scope().attr("defaultGninaLigandTyper") = defaultGninaLigandTyper;

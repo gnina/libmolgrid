@@ -59,7 +59,7 @@ unsigned GninaIndexTyper::num_types() const {
 
 
 ///return type index and radius of a
-std::pair<int,float> GninaIndexTyper::get_atom_type(OpenBabel::OBAtom* a) const {
+std::pair<int,float> GninaIndexTyper::get_atom_type_index(OpenBabel::OBAtom* a) const {
 
   //this function is more convoluted than it needs to be for historical reasons
   //and a general fear of breaking backwards compatibility
@@ -175,7 +175,7 @@ unsigned ElementIndexTyper::num_types() const {
 }
 
 ///return type index of a
-std::pair<int,float> ElementIndexTyper::get_atom_type(OpenBabel::OBAtom* a) const {
+std::pair<int,float> ElementIndexTyper::get_atom_type_index(OpenBabel::OBAtom* a) const {
   unsigned elem = a->GetAtomicNum();
   float radius = OpenBabel::OBElements::GetCovalentRad(elem);
   if(elem >= last_elem) elem = 0; //truncate
@@ -258,9 +258,9 @@ unsigned GninaVectorTyper::num_types() const {
 }
 
 ///return type index of a
-float GninaVectorTyper::get_atom_type(OpenBabel::OBAtom* a, std::vector<float>& typ) const {
+float GninaVectorTyper::get_atom_type_vector(OpenBabel::OBAtom* a, std::vector<float>& typ) const {
   typ.assign(NumTypes, 0);
-  auto t_r = ityper.get_atom_type(a);
+  auto t_r = ityper.get_atom_type_index(a);
   int t = t_r.first;
   float radius = t_r.second;
 

@@ -12,7 +12,7 @@ def test_gninatyping():
     assert t.num_types() == 28
     names = list(t.get_type_names())
     assert names[2] == 'AliphaticCarbonXSHydrophobe'
-    typs = [t.get_atom_type(a.OBAtom) for a in m.atoms]
+    typs = [t.get_atom_type_index(a.OBAtom) for a in m.atoms]
     assert len(typs) == 16
     acnt = 0
     ccnt = 0
@@ -43,7 +43,7 @@ def test_gninatyping():
     
     #check covalent rdius
     t = molgrid.GninaIndexTyper(True)
-    typs = [t.get_atom_type(a.OBAtom) for a in m.atoms]
+    typs = [t.get_atom_type_index(a.OBAtom) for a in m.atoms]
     assert len(typs) == 16
     acnt = 0
     ccnt = 0
@@ -79,7 +79,7 @@ def test_defaultgninatyping():
     assert t.num_types() == 14
     names = list(t.get_type_names())
     assert names[2] == 'AromaticCarbonXSHydrophobe'
-    typs = [t.get_atom_type(a.OBAtom) for a in m.atoms]
+    typs = [t.get_atom_type_index(a.OBAtom) for a in m.atoms]
     assert len(typs) == 15
     acnt = 0
     ccnt = 0
@@ -110,7 +110,7 @@ def test_defaultgninatyping():
     
     #check covalent rdius
     t = molgrid.defaultGninaReceptorTyper
-    typs = [t.get_atom_type(a.OBAtom) for a in m.atoms]
+    typs = [t.get_atom_type_index(a.OBAtom) for a in m.atoms]
     names = list(t.get_type_names())
 
     assert names[-1] == 'GenericMetal_Boron_Manganese_Magnesium_Iron'
@@ -147,7 +147,7 @@ def test_elementtyping():
     assert t.num_types() == 17
     names = list(t.get_type_names())
     assert names[2] == 'Helium'
-    typs = [t.get_atom_type(a.OBAtom) for a in m.atoms]
+    typs = [t.get_atom_type_index(a.OBAtom) for a in m.atoms]
     assert len(typs) == 16
     ccnt = 0
     ocnt = 0
@@ -175,7 +175,7 @@ def test_subset_elementtyping():
     assert t.num_types() == 5
     names = list(t.get_type_names())
     assert names[4] == 'GenericAtom'
-    typs = [t.get_atom_type(a.OBAtom) for a in m.atoms]
+    typs = [t.get_atom_type_index(a.OBAtom) for a in m.atoms]
     assert len(typs) == 16
     ccnt = 0
     ocnt = 0
@@ -206,7 +206,7 @@ def test_subset_elementtyping():
     assert t.num_types() == 2
     names = list(t.get_type_names())
     assert names[1] == 'Nitrogen_Oxygen'
-    typs = [t.get_atom_type(a.OBAtom) for a in m.atoms]
+    typs = [t.get_atom_type_index(a.OBAtom) for a in m.atoms]
     assert len(typs) == 16
     ccnt = 0
     nocnt = 0
@@ -230,7 +230,7 @@ def test_subset_elementtyping():
     assert t.num_types() == 1
     names = list(t.get_type_names())
     assert names[0] == 'GenericAtom'
-    typs = [t.get_atom_type(a.OBAtom) for a in m.atoms]
+    typs = [t.get_atom_type_index(a.OBAtom) for a in m.atoms]
     assert len(typs) == 16
     acnt = 0
     neg = 0
@@ -255,7 +255,7 @@ def test_filemap_gninatyping():
     names = list(t.get_type_names())
     assert len(names) == 14
     assert names[-2] == 'Zinc'
-    typs = [t.get_atom_type(a.OBAtom) for a in m.atoms]
+    typs = [t.get_atom_type_index(a.OBAtom) for a in m.atoms]
     assert len(typs) == 16
     
     ccnt = 0
@@ -288,7 +288,7 @@ def test_filemap_elementtyping():
     names = list(t.get_type_names())
     assert len(names) == 4
     assert names[0] == 'Oxygen'
-    typs = [t.get_atom_type(a.OBAtom) for a in m.atoms]
+    typs = [t.get_atom_type_index(a.OBAtom) for a in m.atoms]
     assert len(typs) == 16
     
     ccnt = 0
@@ -324,7 +324,7 @@ def test_callbacktyping():
     names = list(t.get_type_names())
     assert len(names) == 16
     assert names[3] == '3'  #numerical names
-    typs = [t.get_atom_type(a.OBAtom) for a in m.atoms]
+    typs = [t.get_atom_type_index(a.OBAtom) for a in m.atoms]
     assert len(typs) == 16
     
     ccnt = 0
