@@ -16,6 +16,18 @@ for name in dir(molgrid):
         if inspect.isclass(C) and C.__module__.startswith('molgrid'):
             setattr(C,'tonumpy',tonumpy)
 
+#extend gridmaker to generate new numpy arrays
+#extend grid maker to create pytorch Tensor
+def make_grid_ndarray(gridmaker, center, c):
+    '''Create appropriately sized numpy array of grid densities. '''    
+    dims = gridmaker.grid_dimensions(c.max_type) # this should be grid_dims or get_grid_dims
+    t = np.zeros(dims, dtype=np.float32)
+    gridmaker.forward(center, c, t)
+    return t 
+
+GridMaker.make_ndarray = make_grid_ndarray
+    
+
 #define pytorch specific functionality
 try:
     import torch

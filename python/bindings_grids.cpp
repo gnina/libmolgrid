@@ -130,6 +130,7 @@ struct Grid_from_python {
 
       extract<typename Grid_t::managed_t> mgrid(obj_ptr);
       if (mgrid.check() && Grid_t::GPU == python_gpu_enabled) {
+
         Grid_t g = mgrid();
         info.dataptr = g.data();
         info.ndim = Grid_t::N;
@@ -143,12 +144,14 @@ struct Grid_from_python {
       }
       else if(is_torch_tensor(obj_ptr, info)) {
         //check correct types
+
         if(Grid_t::N == info.ndim && Grid_t::GPU == info.isGPU &&
             std::is_same<typename Grid_t::type,double>::value == info.isdouble) {
           return new tensor_info(info);
         }
       } else if(HasNumpy && !Grid_t::GPU && PyArray_Check(obj_ptr)) {
         //numpy array
+
         auto array = (PyArrayObject*)obj_ptr;
         info.ndim = PyArray_NDIM(array);
         if(Grid_t::N == info.ndim && PyArray_CHKFLAGS(array, NPY_ARRAY_CARRAY)) {

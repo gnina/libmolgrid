@@ -4,6 +4,31 @@ import numpy as np
 import os
 import torch
 
+'''
+import pytest
+import molgrid
+import numpy as np
+import os
+import torch
+
+datadir = '../../test/data'
+fname = datadir+"/small.types"
+e = molgrid.ExampleProvider(data_root=datadir+"/structs")
+e.populate(fname)
+ex = e.next()
+c = ex.coord_sets[1]
+    
+center = c.coord.tonumpy().mean(axis=0)
+center = tuple(center.astype(float))
+
+gmaker = molgrid.GridMaker()
+dims = gmaker.grid_dimensions(c.max_type)
+
+mgridout = molgrid.MGrid4f(*dims)
+npout = np.zeros(dims, dtype=np.float32)
+
+ 
+'''
                             
 from pytest import approx
 from numpy import around
@@ -21,7 +46,7 @@ def test_a_grid():
     assert np.min(c.type_index.tonumpy()) >= 0
 
     gmaker = molgrid.GridMaker()
-    dims = gmaker.grid_dims(c.max_type) # this should be grid_dims or get_grid_dims
+    dims = gmaker.grid_dimensions(c.max_type) # this should be grid_dims or get_grid_dims
     center = c.coord.tonumpy().mean(axis=0)
     center = tuple(center.astype(float))
 
@@ -35,16 +60,21 @@ def test_a_grid():
     gmaker.forward(center, c, mgridout.cpu())
     gmaker.forward(center, c, mgridgpu.gpu())
     #why aren't thse autoconverting? they shouldbe autoconverting
-    gmaker.forward(center, c, molgrid.Grid4f(npout))
-    gmaker.forward(center, c, molgrid.Grid4f(torchout))
-    gmaker.forward(center, c, molgrid.Grid4fCUDA(cudaout))
+    gmaker.forward(center, c, npout)
+    gmaker.forward(center, c, torchout)
+    gmaker.forward(center, c, cudaout)
     
+    
+    newt = gmaker.make_tensor(center, c)
+    newa = gmaker.make_ndarray(center, c)
     
     assert 1.438691 == approx(mgridout.tonumpy().max())
     assert 1.438691 == approx(mgridgpu.tonumpy().max())
     assert 1.438691 == approx(npout.max())
     assert 1.438691 == approx(torchout.numpy().max())
     assert 1.438691 == approx(cudaout.cpu().numpy().max())
+    assert 1.438691 == approx(newt.cpu().numpy().max())
+    assert 1.438691 == approx(newa.max())
 
     #should overwrite by default, yes?
     gmaker.forward(center, c, mgridout.cpu())
