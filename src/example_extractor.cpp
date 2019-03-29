@@ -56,6 +56,7 @@ void ExampleExtractor::set_coords(const char *fname, unsigned which, CoordinateS
       }
 
       coord = CoordinateSet(c, t, r, typers[which]->num_types());
+      coord.src = fname;
     }
     else if(!boost::algorithm::ends_with(fname,"none")) //reserved word
     {
@@ -70,7 +71,7 @@ void ExampleExtractor::set_coords(const char *fname, unsigned which, CoordinateS
       }
 
       coord = CoordinateSet(&mol, *typers[which]);
-
+      coord.src = fname;
     }
 
     if(use_cache) { //save coord
@@ -110,6 +111,15 @@ void ExampleExtractor::extract(const ExampleRef& ref, Example& ex) {
   }
 
 }
+
+size_t ExampleExtractor::type_size() const {
+  size_t ret = 0;
+  for(unsigned i = 0, n = typers.size(); i < n; i++) {
+    ret += typers[i]->num_types();
+  }
+  return ret;
+}
+
 
 
 } /* namespace libmolgrid */

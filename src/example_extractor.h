@@ -66,6 +66,9 @@ class ExampleExtractor {
 
     /// Extract ref into ex
     virtual void extract(const ExampleRef& ref, Example& ex);
+
+    /// return the number of types (channels) each example will have
+    virtual size_t type_size() const;
 };
 
 } /* namespace libmolgrid */

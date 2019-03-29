@@ -63,6 +63,8 @@ class ExampleProvider {
 
     ExampleExtractor& get_extractor() { return extractor; }
     ExampleRefProvider& get_provider() { return *provider; }
+
+    size_t type_size() const { return extractor.type_size(); }
 };
 
 } /* namespace libmolgrid */

@@ -585,11 +585,13 @@ MAKE_ALL_GRIDS()
       .def("make_vector_types", &CoordinateSet::make_vector_types)
       .def("size", &CoordinateSet::size)
       .def("num_types", &CoordinateSet::num_types)
+      .def("center", &CoordinateSet::center)
       .def_readwrite("coord", &CoordinateSet::coord)
       .def_readwrite("type_index", &CoordinateSet::type_index)
       .def_readwrite("type_vector", &CoordinateSet::type_vector)
       .def_readwrite("radius", &CoordinateSet::radius)
-      .def_readwrite("max_type", &CoordinateSet::max_type);
+      .def_readwrite("max_type", &CoordinateSet::max_type)
+      .def_readonly("src", &CoordinateSet::src);
 
 
   //mostly exposing this for documentation purposes
@@ -623,6 +625,7 @@ MAKE_ALL_GRIDS()
               }
           },
           (arg("file_name"), arg("num_labels")=-1, arg("has_group")=false))
+      .def("type_size", &ExampleProvider::type_size)
       .def("next", static_cast<Example (ExampleProvider::*)()>(&ExampleProvider::next))
       .def("next_batch", static_cast< std::vector<Example> (ExampleProvider::*)(unsigned)>(&ExampleProvider::next_batch),
           (arg("batch_size")));
@@ -632,7 +635,7 @@ MAKE_ALL_GRIDS()
   class_<GridMaker>("GridMaker",
       init<float, float, float, bool>((arg("resolution")=0.5, arg("dimension")=23.5, arg("radius_multiple")=1.5, arg("binary")=false)))
       .def("spatial_grid_dimensions", +[](GridMaker& self) { float3 dims = self.getGridDims(); return make_tuple(int(dims.x),int(dims.y),int(dims.z));})
-      .def("grid_dimensions", +[](GridMaker& self, int ntypes) { float3 dims = self.getGridDims(); return make_tuple(int(dims.x),int(dims.y),int(dims.z),ntypes);})
+      .def("grid_dimensions", +[](GridMaker& self, int ntypes) { float3 dims = self.getGridDims(); return make_tuple(ntypes,int(dims.x),int(dims.y),int(dims.z));})
       //grids need to be passed by value
       .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, false> g){ self.forward(center, c, g); })
       .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, true> g){ self.forward(center, c, g); });

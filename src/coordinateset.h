@@ -31,6 +31,7 @@ struct CoordinateSet {
   MGrid2f type_vector{0,0};
   MGrid1f radius{0};
   unsigned max_type = 0;  //for indexed types, non-inclusive max
+  const char *src = nullptr; //mostly for debugging, source of coordinates
 
   CoordinateSet() {}
 
@@ -66,6 +67,9 @@ struct CoordinateSet {
 
   ///number of atoms
   unsigned size() const { return coord.dimension(0); }
+
+  ///return mean of coordinates
+  float3 center() const;
 
   //test for pointer equality, not particularly useful, but needed by boost::python
   bool operator==(const CoordinateSet& rhs) const {

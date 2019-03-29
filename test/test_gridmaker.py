@@ -59,7 +59,7 @@ def test_a_grid():
     
     gmaker.forward(center, c, mgridout.cpu())
     gmaker.forward(center, c, mgridgpu.gpu())
-    #why aren't thse autoconverting? they shouldbe autoconverting
+
     gmaker.forward(center, c, npout)
     gmaker.forward(center, c, torchout)
     gmaker.forward(center, c, cudaout)

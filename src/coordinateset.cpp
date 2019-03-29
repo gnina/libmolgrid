@@ -183,4 +183,20 @@ void CoordinateSet::make_vector_types() {
 
 }
 
+float3 CoordinateSet::center() const {
+  float3 ret = make_float3(0,0,0);
+  unsigned N = coord.dimension(0);
+
+  if(N == 0) return ret;
+  for(unsigned i = 0; i < N; i++) {
+    ret.x = coord(i,0);
+    ret.y = coord(i,1);
+    ret.z = coord(i,2);
+  }
+  ret.x /= N;
+  ret.y /= N;
+  ret.z /= N;
+  return ret;
+}
+
 }
