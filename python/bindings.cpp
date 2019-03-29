@@ -9,6 +9,7 @@
 #include "transform.h"
 #include "atom_typer.h"
 #include "example_provider.h"
+#include "grid_maker.h"
 
 using namespace boost::python;
 using namespace libmolgrid;
@@ -625,6 +626,16 @@ MAKE_ALL_GRIDS()
       .def("next", static_cast<Example (ExampleProvider::*)()>(&ExampleProvider::next))
       .def("next_batch", static_cast< std::vector<Example> (ExampleProvider::*)(unsigned)>(&ExampleProvider::next_batch),
           (arg("batch_size")));
+
+
+  //grid maker
+  class_<GridMaker>("GridMaker",
+      init<float, float, float, bool>((arg("resolution")=0.5, arg("dimension")=23.5, arg("radius_multiple")=1.5, arg("binary")=false)))
+      .def("spatial_grid_dims", +[](GridMaker& self) { float3 dims = self.getGridDims(); return make_tuple(int(dims.x),int(dims.y),int(dims.z));})
+      .def("grid_dims", +[](GridMaker& self, int ntypes) { float3 dims = self.getGridDims(); return make_tuple(int(dims.x),int(dims.y),int(dims.z),ntypes);})
+      .def("forward", static_cast<void (GridMaker::*)(float3, const CoordinateSet&, Grid<float, 4, false>&) const>(&GridMaker::forward))
+      .def("forward", static_cast<void (GridMaker::*)(float3, const CoordinateSet&, Grid<float, 4, true>&) const>(&GridMaker::forward));
+
 
 }
 

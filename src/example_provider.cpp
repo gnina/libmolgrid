@@ -6,6 +6,7 @@
  */
 
 #include "example_provider.h"
+#include "atom_typer.h"
 
 namespace libmolgrid {
 

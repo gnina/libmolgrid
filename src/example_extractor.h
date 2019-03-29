@@ -15,7 +15,6 @@
 #include <unordered_map>
 #include "example.h"
 #include "exampleref_providers.h"
-#include "atom_typer.h"
 #include "coordinateset.h"
 
 namespace libmolgrid {
