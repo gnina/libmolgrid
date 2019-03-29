@@ -59,6 +59,7 @@ namespace libmolgrid {
     if(sz == 0) return ptr;
     Dtype *buffer = nullptr;
     cudaError_t err = cudaMallocManaged((void**)&buffer,sz*sizeof(Dtype));
+    cudaGetLastError();
     if(err != cudaSuccess) {
       //fallback on host memory
       buffer = (Dtype*)malloc(sz*sizeof(Dtype));
