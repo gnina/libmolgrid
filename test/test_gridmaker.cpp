@@ -48,31 +48,31 @@ BOOST_AUTO_TEST_CASE(forward_cpu) {
   }
   Grid4f ref_grid(refdat.data(), ntypes, grid_dims.x, grid_dims.y, grid_dims.z);
 
-  std::setprecision(5);
+  // std::setprecision(5);
   // compare gridmaker result to reference
   for (size_t ch=0; ch<ntypes; ++ch) {
-    std::string fname = "ref_" + std::to_string(ch) + ".dx";
-    std::string cname = "cpu_" + std::to_string(ch) + ".dx";
-    std::ofstream fout(fname.c_str());
-    std::ofstream cout(cname.c_str());
-    write_dx_header(fout, grid_dims.x, grid_origin, resolution);
-    write_dx_header(cout, grid_dims.x, grid_origin, resolution);
-    unsigned total = 0;
+    // std::string fname = "ref_" + std::to_string(ch) + ".dx";
+    // std::string cname = "cpu_" + std::to_string(ch) + ".dx";
+    // std::ofstream fout(fname.c_str());
+    // std::ofstream cout(cname.c_str());
+    // write_dx_header(fout, grid_dims.x, grid_origin, resolution);
+    // write_dx_header(cout, grid_dims.x, grid_origin, resolution);
+    // unsigned total = 0;
     for (size_t i=0; i<grid_dims.x; ++i) {
       for (size_t j=0; j<grid_dims.y; ++j) {
         for (size_t k=0; k<grid_dims.z; ++k) {
           size_t offset = ((((ch * grid_dims.x) + i) * grid_dims.y) + j) * grid_dims.z + k;
-          fout << *(ref_grid.data() + offset);
-          cout << *(cpu_grid.data() + offset);
-          total++;
-          if (total % 3 == 0) {
-            fout << "\n";
-            cout << "\n";
-          }
-          else {
-            fout << " ";
-            cout << " ";
-          }
+          // fout << *(ref_grid.data() + offset);
+          // cout << *(cpu_grid.data() + offset);
+          // total++;
+          // if (total % 3 == 0) {
+            // fout << "\n";
+            // cout << "\n";
+          // }
+          // else {
+            // fout << " ";
+            // cout << " ";
+          // }
           BOOST_CHECK_SMALL(*(cpu_grid.data()+offset) - *(ref_grid.data()+offset), TOL);
         }
       }
