@@ -32,7 +32,7 @@ BOOST_AUTO_TEST_CASE(forward_cpu) {
   float resolution = 0.5;
   double half = dimension / 2.0;
   float3 grid_center = make_float3(-16.56986 + half, 0.63044 + half, -17.51435 + half);
-  float grid_origin[3] = {-16.56986, 0.63044, -17.51435};
+  //float grid_origin[3] = {-16.56986, 0.63044, -17.51435};
   GridMaker gmaker(resolution, dimension);
   float3 grid_dims = gmaker.getGridDims();
   MGrid4f out(grid_dims.x, grid_dims.y, grid_dims.z, ntypes);

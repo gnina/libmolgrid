@@ -21,6 +21,7 @@ BOOST_AUTO_TEST_CASE( constructors )
   MGrid2f g2f(100, 1);
   MGrid4f g4f(2, 1, 2, 25);
   MGrid6f g6f(1,2,1,2,25,1);
+  MGrid2f zero(0,0); //this should not fail
 
   MGrid1d g1d(3);
   MGrid2d g2d(64,2);
