@@ -273,11 +273,14 @@ struct py_pair {
     PythonToPairConverter<T1, T2> fromPy;
 };
 
+
 //conversion of tuple to float3
 struct PythonToFloat3Converter {
+
     PythonToFloat3Converter()
     {
         converter::registry::push_back(&convertible, &construct, type_id<float3>());
+
     }
     static void* convertible(PyObject* obj)
     {
@@ -370,6 +373,12 @@ BOOST_PYTHON_MODULE(molgrid)
   def("tofloatptr", +[](long val) { return Pointer<float>((float*)val);}, "Return integer as float *");
   def("todoubleptr", +[](long val) { return Pointer<double>((double*)val);}, "Return integer as double *");
 
+  //type converters
+  py_pair<int, float>();
+  py_pair<std::vector<float>, float>();
+  py_pair<list, float>();
+  PythonToFloat3Converter();
+
 // Grids
 
 //Grid bindings
@@ -408,6 +417,13 @@ MAKE_ALL_GRIDS()
           float z = extract<float>(t[2]);
           return std::make_shared<float3>(make_float3(x,y,z));
       }))
+      .def("__getitem__",
+          +[](const float3& f, size_t i) { //enable conversion to iterable taking types like tuple
+        if(i == 0) return f.x;
+        if(i == 1) return f.y;
+        if(i == 2) return f.z;
+        throw std::out_of_range("float3");
+      })
       .def_readwrite("x", &float3::x)
       .def_readwrite("y", &float3::y)
       .def_readwrite("z", &float3::z);
@@ -461,11 +477,6 @@ MAKE_ALL_GRIDS()
   converter::registry::insert(&extract_pybel_atom, type_id<OpenBabel::OBAtom>());
   converter::registry::insert(&extract_swig_wrapped_pointer, type_id<OpenBabel::OBMol>());
   converter::registry::insert(&extract_pybel_molecule, type_id<OpenBabel::OBMol>());
-
-  py_pair<int, float>();
-  py_pair<std::vector<float>, float>();
-  py_pair<list, float>();
-  PythonToFloat3Converter();
 
   class_<AtomTyper>("AtomTyper", no_init);
 

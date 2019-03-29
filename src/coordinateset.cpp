@@ -189,9 +189,9 @@ float3 CoordinateSet::center() const {
 
   if(N == 0) return ret;
   for(unsigned i = 0; i < N; i++) {
-    ret.x = coord(i,0);
-    ret.y = coord(i,1);
-    ret.z = coord(i,2);
+    ret.x += coord(i,0);
+    ret.y += coord(i,1);
+    ret.z += coord(i,2);
   }
   ret.x /= N;
   ret.y /= N;

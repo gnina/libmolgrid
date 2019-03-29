@@ -137,7 +137,7 @@ class GridMaker {
             float eval = 1.0 / (M_E * M_E); //e^(-2)
             float q = dist * dist * eval / (h * h) - 6.0 * eval * dist / h
                 + 9.0 * eval;
-            return q;
+            return q > 0 ? q : 0; //avoid very small negative numbers
           }
       }
     }
