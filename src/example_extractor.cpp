@@ -48,9 +48,11 @@ void ExampleExtractor::set_coords(const char *fname, unsigned which, CoordinateS
       while(in.read((char*)&atom, sizeof(atom)))
       {
         auto t_r = typers[which]->get_int_type(atom.type);
-        t.push_back(t_r.first);
-        r.push_back(t_r.second);
-        c.push_back(make_float3(atom.x,atom.y,atom.z));
+        if(t_r.first >= 0) { //ignore neg
+          t.push_back(t_r.first);
+          r.push_back(t_r.second);
+          c.push_back(make_float3(atom.x,atom.y,atom.z));
+        }
       }
 
       coord = CoordinateSet(c, t, r, typers[which]->num_types());
