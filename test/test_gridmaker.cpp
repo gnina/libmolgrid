@@ -21,11 +21,9 @@ BOOST_AUTO_TEST_CASE(forward_cpu) {
   ExampleExtractor extractor(settings, rectyper, ligtyper);
   Example ex;
   extractor.extract(exref, ex);
+  CoordinateSet combined = ex.merge_coordinates();
 
-  size_t ntypes = 0;
-  size_t numsets = ex.sets.size();
-  for (size_t i=0; i<numsets; ++i) 
-    ntypes += ex.sets[i].num_types();
+  size_t ntypes = combined.num_types();
 
   // set up gridmaker and run forward
   float dimension = 23.5;
@@ -38,51 +36,51 @@ BOOST_AUTO_TEST_CASE(forward_cpu) {
   MGrid4f out(grid_dims.x, grid_dims.y, grid_dims.z, ntypes);
   Grid4f cpu_grid = out.cpu();
   std::fill(cpu_grid.data(), cpu_grid.data() + cpu_grid.size(), 0.0);
-  for (size_t i=0; i<numsets; ++i) 
-    gmaker.forward(grid_center, ex.sets[i], cpu_grid);
+  gmaker.forward(grid_center, combined, cpu_grid);
 
   // read in reference data
-  std::ifstream ref("../../test/data/RECLIG.48.35.binmap", std::ios::binary);
+  std::vector<float> refdat;
+  std::ifstream ref("../../test/data/RECLIG.48.35.binmap");
   BOOST_CHECK_EQUAL((bool)ref, true);
-  ref.seekg(0, ref.end);
-  size_t N = ref.tellg();              
-  ref.seekg(0, ref.beg);
-  std::vector<float> refdat(N / sizeof(float));
-  ref.read(reinterpret_cast<char*>(refdat.data()), refdat.size()*sizeof(float));
+  while(ref && ref.peek() != EOF) {
+    float nextval = 0;
+    ref.read((char*)&nextval, sizeof(float));
+    refdat.push_back(nextval);
+  }
   Grid4f ref_grid(refdat.data(), grid_dims.x, grid_dims.y, grid_dims.z, ntypes);
 
   std::setprecision(5);
   // compare gridmaker result to reference
   for (size_t ch=0; ch<ntypes; ++ch) {
-    // std::string fname = std::to_string(ch) + ".dx";
-    // std::ofstream fout(fname.c_str());
-    // fout.precision(5);
-    // unsigned n = grid_dims.x;
-    // fout.precision(5);
-    // fout << std::fixed;
-    // fout << "object 1 class gridpositions counts " << n << " " << n << " " << " "
-        // << n << "\n";
-    // fout << "origin";
-    // for (unsigned i = 0; i < 3; i++) {
-      // fout << " " << grid_origin[i];
-    // }
-    // fout << "\n";
-    // fout << "delta " << resolution << " 0 0\ndelta 0 " << resolution
-        // << " 0\ndelta 0 0 " << resolution << "\n";
-    // fout << "object 2 class gridconnections counts " << n << " " << n << " " << " "
-        // << n << "\n";
-    // fout << "object 3 class array type double rank 0 items [ " << n * n * n
-        // << "] data follows\n";
-    // unsigned total = 0;
+    std::string fname = "ref_" + std::to_string(ch) + ".dx";
+    std::ofstream fout(fname.c_str());
+    fout.precision(5);
+    unsigned n = grid_dims.x;
+    fout.precision(5);
+    fout << std::fixed;
+    fout << "object 1 class gridpositions counts " << n << " " << n << " " << " "
+        << n << "\n";
+    fout << "origin";
+    for (unsigned i = 0; i < 3; i++) {
+      fout << " " << grid_origin[i];
+    }
+    fout << "\n";
+    fout << "delta " << resolution << " 0 0\ndelta 0 " << resolution
+        << " 0\ndelta 0 0 " << resolution << "\n";
+    fout << "object 2 class gridconnections counts " << n << " " << n << " " << " "
+        << n << "\n";
+    fout << "object 3 class array type double rank 0 items [ " << n * n * n
+        << "] data follows\n";
+    unsigned total = 0;
     for (size_t i=0; i<grid_dims.x; ++i) {
       for (size_t j=0; j<grid_dims.y; ++j) {
         for (size_t k=0; k<grid_dims.z; ++k) {
-          // fout << cpu_grid(ch,i,j,k);
-          // total++;
-          // if (total % 3 == 0)
-            // fout << "\n";
-          // else
-            // fout << " ";
+          fout << ref_grid(ch,i,j,k);
+          total++;
+          if (total % 3 == 0)
+            fout << "\n";
+          else
+            fout << " ";
           // BOOST_CHECK_SMALL(cpu_grid(ch,i,j,k) - ref_grid(ch,i,j,k), TOL);
         }
       }
