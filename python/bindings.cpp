@@ -20,6 +20,8 @@ bool python_gpu_enabled = true;
 #include "boost/python.hpp"
 #include "boost/python/detail/api_placeholder.hpp"
 
+//#include "bindings_grids.cpp"
+
 //https://wiki.python.org/moin/boost.python/HowTo#A.22Raw.22_constructor
 namespace boost { namespace python {
 
@@ -71,12 +73,6 @@ object raw_constructor(F f, std::size_t min_args = 0)
 BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(Transform_forward_overloads, Transform::forward, 2, 3)
 BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(Transform_backward_overloads, Transform::backward, 2, 3)
 
-//wrap import array since it includes are return
-bool init_numpy()
-{
-  import_array2("Could not import numpy", false);
-  return true;
-}
 
 struct PySwigObject {
     PyObject_HEAD
@@ -312,63 +308,42 @@ bool list_is_vec(list l) {
   return true;
 }
 
+static void set_settings_form_kwargs(dict kwargs, ExampleProviderSettings& settings) {
+  //extract any settings
+  using namespace std;
+  boost::python::list keys = kwargs.keys();
+  for(unsigned i = 0, n = len(keys); i < n; i++) {
+    object k = keys[i];
+    string name = extract<string>(k);
+    //preprocessor macros are beautifully ugly
+#undef EXSET
+#define EXSET(TYPE, NAME, DEFAULT, DOC) if(name == #NAME) { settings.NAME = extract<TYPE>(kwargs[k]); } else
+    MAKE_SETTINGS() {throw invalid_argument("Unknown keyword argument "+name);}
+  }
+}
+
 //raw constructor for example provider, args should be typers and kwargs
 //settings in exampleprovidersettings
 std::shared_ptr<ExampleProvider> create_ex_provider(tuple args, dict kwargs) {
   using namespace std;
   ExampleProviderSettings settings;
 
-  // strip off self
-  object self = args[0];
-  args = boost::python::tuple(args.slice(1,_));
+  //hard code some number of typers since this needs to be done statically
+  int N = len(args);
 
-  //extract any settings
-  boost::python::list keys = kwargs.keys();
-  for(unsigned i = 0, n = len(keys); i < n; i++) {
-    object k = keys[i];
-    string name = extract<string>(k);
-
-    //is there a better way to do this?
-    //I could define settings to be a dynamic map, but that would be sacrificing c++ efficiency for python utility
-    //and what would the type of the values be?
-    //could do something with macros..
-    if(name == "shuffle") {
-      settings.shuffle = extract<bool>(kwargs[k]);
-    } else if(name == "balanced") {
-      settings.balanced = extract<bool>(kwargs[k]);
-    } else if(name == "stratify_receptor") {
-      settings.stratify_receptor = extract<bool>(kwargs[k]);
-    } else if(name == "labelpos") {
-      settings.labelpos = extract<int>(kwargs[k]);
-    } else if(name == "stratify_pos") {
-      settings.stratify_pos = extract<int>(kwargs[k]);
-    } else if(name == "stratify_abs") {
-      settings.stratify_abs = extract<bool>(kwargs[k]);
-    } else if(name == "stratify_min") {
-      settings.stratify_min = extract<float>(kwargs[k]);
-    } else if(name == "stratify_max") {
-      settings.stratify_max = extract<float>(kwargs[k]);
-    } else if(name == "stratify_step") {
-      settings.stratify_step = extract<float>(kwargs[k]);
-    } else if(name == "group_batch_size") {
-      settings.group_batch_size = extract<int>(kwargs[k]);
-    } else if(name == "max_group_size") {
-      settings.max_group_size = extract<int>(kwargs[k]);
-    } else if(name == "cache_structs") {
-      settings.cache_structs = extract<bool>(kwargs[k]);
-    } else if(name == "add_hydrogens") {
-      settings.add_hydrogens = extract<bool>(kwargs[k]);
-    } else if(name == "duplicate_first") {
-      settings.duplicate_first = extract<bool>(kwargs[k]);
-    } else if(name == "data_root") {
-      settings.data_root = extract<string>(kwargs[k]);
-    } else {
-      throw invalid_argument("Unknown keyword argument "+name);
+  //first positional argument can be a settings object
+  if(N > 0) {
+    extract<ExampleProviderSettings> maybe_settings(args[0]);
+    if (maybe_settings.check()) {
+      settings = maybe_settings();
+      args = boost::python::tuple(args.slice(1,_)); //remove
+      N--;
     }
   }
 
-  //hard code some number of typers since this needs to be done statically
-  int N = len(args);
+  //kwargs take precedence over default/object
+  set_settings_form_kwargs(kwargs, settings);
+
   vector<shared_ptr<AtomTyper> > typers;
   for(int i = 0; i < N; i++) {
     typers.push_back(extract<shared_ptr<AtomTyper> >(args[i]));
@@ -397,25 +372,14 @@ BOOST_PYTHON_MODULE(molgrid)
 // Grids
 
 //Grid bindings
-#define DEFINE_GRID_TN(N, TYPE, NAME) define_grid<TYPE,NTYPES(N,unsigned)>(NAME, numpy_supported);
-#define DEFINE_GRID(N, CUDA, T) \
-DEFINE_GRID_TN(N,Grid##N##T##CUDA, "Grid" #N #T #CUDA)
+#undef MAKE_GRID_TN
+#define MAKE_GRID_TN(N, TYPE, NAME) define_grid<TYPE,NTYPES(N,unsigned)>(NAME, numpy_supported);
 
 // MGrid bindings
-#define DEFINE_MGRID_TN(N, TYPE, NAME) define_mgrid<TYPE,NTYPES(N,unsigned)>(NAME);
-#define DEFINE_MGRID(N, T) \
-DEFINE_MGRID_TN(N,MGrid##N##T,"MGrid" #N #T)
+#undef MAKE_MGRID_TN
+#define MAKE_MGRID_TN(N, TYPE, NAME) define_mgrid<TYPE,NTYPES(N,unsigned)>(NAME);
 
-//instantiate all dimensions up to and including six
-#define DEFINE_GRIDS(Z, N, _) \
-DEFINE_GRID(N,CUDA,f) \
-DEFINE_GRID(N,CUDA,d) \
-DEFINE_GRID(N, ,f) \
-DEFINE_GRID(N, ,d) \
-DEFINE_MGRID(N,f) \
-DEFINE_MGRID(N,d)
-
-  BOOST_PP_REPEAT_FROM_TO(1,LIBMOLGRID_MAX_GRID_DIM, DEFINE_GRIDS, 0);
+MAKE_ALL_GRIDS()
 
 //vector utility types
   class_<std::vector<size_t> >("SizeVec")
@@ -618,12 +582,21 @@ DEFINE_MGRID(N,d)
       .def("has_indexed_types", &CoordinateSet::has_indexed_types)
       .def("has_vector_types", &CoordinateSet::has_vector_types)
       .def("make_vector_types", &CoordinateSet::make_vector_types)
+      .def("size", &CoordinateSet::size)
+      .def("num_types", &CoordinateSet::num_types)
       .def_readwrite("coord", &CoordinateSet::coord)
       .def_readwrite("type_index", &CoordinateSet::type_index)
       .def_readwrite("type_vector", &CoordinateSet::type_vector)
       .def_readwrite("radius", &CoordinateSet::radius)
       .def_readwrite("max_type", &CoordinateSet::max_type);
 
+
+  //mostly exposing this for documentation purposes
+#undef EXSET
+#define EXSET(TYPE, NAME, DEFAULT, DOC) .def_readwrite(#NAME, &ExampleProviderSettings::NAME, DOC)
+
+  class_<ExampleProviderSettings>("ExampleProviderSettings")
+      MAKE_SETTINGS();
 
   class_<Example>("Example")
     .def("coordinate_size", &Example::coordinate_size)
@@ -636,7 +609,8 @@ DEFINE_MGRID(N,d)
 
   //there is quite a lot of functionality in the C++ api for example providers, but keep it simple in python for now
   class_<ExampleProvider>("ExampleProvider")
-      .def("__init__", raw_constructor(&create_ex_provider,0))
+      .def("__init__", raw_constructor(&create_ex_provider,0),"Construct an ExampleProvider using an ExampleSettings object "
+          "and the desired AtomTypers for each molecule.  Alternatively, specify individual settings using keyword arguments")
       .def("populate",
           static_cast<void (ExampleProvider::*)(const std::string&, int, bool)>(&ExampleProvider::populate),
           (arg("file_name"), arg("num_labels")=-1, arg("has_group")=false))

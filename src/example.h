@@ -19,49 +19,31 @@
 namespace libmolgrid {
 
 
+
+#define MAKE_SETTINGS() \
+    EXSET(bool, shuffle, false, "randomize order of examples") \
+    EXSET(bool, balanced, false, "provide equal number of positive and negative examples as determined by label") \
+    EXSET(bool, stratify_receptor, false, "sample uniformly across receptors (first molecule)") \
+    EXSET(int, labelpos, 0, "position of binary label") \
+    EXSET(int, stratify_pos, 1, "position of label for numerical stratification") \
+    EXSET(bool, stratify_abs, true, "stratify based on absolute value, for cases where negative has special meaning (e.g., hinge loss indicator)") \
+    EXSET(float, stratify_min, 0, "minimum range for value stratification") \
+    EXSET(float, stratify_max, 0, "maximum range for value stratification") \
+    EXSET(float, stratify_step, 0, "step size for value stratification, together with min and max determines number of bins") \
+    EXSET(int, group_batch_size, 1, "slice time series (groups) by batches of this size") \
+    EXSET(int, max_group_size, 0, "maximum group size, all groups are padded out to this size") \
+    EXSET(bool, cache_structs, true, "retain coordinates in memory for faster training") \
+    EXSET(bool, add_hydrogens, true, "protonate read in molecule using openbabel") \
+    EXSET(bool, duplicate_first, false, "clone the first coordinate set to be paired with each of the remaining (receptor-ligand pairs)") \
+    EXSET(std::string, data_root, "", "prefix for data files")
+
 /** Description of how examples should be provided
  * This provides configuration to example refs, extractors, and the provider itself
  * as a declarative syntax.
  */
 struct ExampleProviderSettings {
-    ///randomize order of examples
-    bool shuffle = false;
-    /// provide equal number of positive and negative examples, labelpos must be set
-    bool balanced = false;
-    /// sample uniformly across receptors (first molecule)
-    bool stratify_receptor = false;
-
-    ///position of binary label for balancing
-    int labelpos = 0;
-    //the following are for stratifying on a numerical label
-    /// position of label for numerical stratificatoin
-    int stratify_pos = 1;
-    ///stratify based on abs value, for cases where negative has special meaning (hinge loss indicator)
-    bool stratify_abs = true;
-    ///minimum range of stratificatoin
-    float stratify_min = 0;
-    ///maximum range of stratification
-    float stratify_max = 0;
-    ///step size of stratification
-    float stratify_step = 0;
-
-    //for grouped examples
-    /// slice time series (groups) by batches
-    int group_batch_size = 1;
-    /// max group size, all groups are padded out to this size
-    int max_group_size = 0;
-
-
-    //extract config
-    ///retain coordinates in memory for faster training
-    bool cache_structs = true;
-    ///protonate read in molecules with openbabel
-    bool add_hydrogens = true;
-    ///clone the first coordinate set to be paired with each of the remaining (think receptor ligand pairs)
-    bool duplicate_first = false;
-
-    ///prefix for data files
-    std::string data_root;
+    #define EXSET(TYPE, NAME, DEFAULT, DOC) TYPE NAME = DEFAULT;
+    MAKE_SETTINGS()
 };
 
 

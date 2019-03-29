@@ -8,8 +8,24 @@
 
 #include "bindings.h"
 
+/* Holy guacamole batman - the new "improved" numpy api seems to rely on
+ * static inline functions serving as unique identifiers, which obviously
+ * they won't be if you have separate compilation units.  So major issues
+ * (mysterious segfaults) if you include arrayobject in different files.
+ * Basically, any numpy trickier has to happen in this file.
+ */
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include <numpy/arrayobject.h>
+
 using namespace boost::python;
 using namespace libmolgrid;
+
+//wrap import array since it includes are return
+bool init_numpy()
+{
+  import_array2("Could not import numpy", false);
+  return true;
+}
 
 //create a grid given the data ptr and dimensions
 template<typename GridType, std::size_t ... I>
@@ -109,6 +125,8 @@ struct Grid_from_python {
     //return heap allocated tensor_info struct if can convert with all the info
     static void* convertible(PyObject *obj_ptr) {
       tensor_info info;
+
+      if(obj_ptr == nullptr) return nullptr;
 
       extract<typename Grid_t::managed_t> mgrid(obj_ptr);
       if (mgrid.check() && Grid_t::GPU == python_gpu_enabled) {
@@ -235,23 +253,12 @@ void define_mgrid(const char* name) {
 
 
 //Grid bindings
-#define INSTANTIATE_GRID_TN(N, TYPE, NAME) template void define_grid<TYPE,NTYPES(N,unsigned)>(const char*, bool);
-#define INSTANTIATE_GRID(N, CUDA, T) \
-    INSTANTIATE_GRID_TN(N,Grid##N##T##CUDA, "Grid" #N #T #CUDA)
+#undef MAKE_GRID_TN
+#define MAKE_GRID_TN(N, TYPE, NAME) template void define_grid<TYPE,NTYPES(N,unsigned)>(const char*, bool);
 
 // MGrid bindings
-#define INSTANTIATE_MGRID_TN(N, TYPE, NAME) template void define_mgrid<TYPE,NTYPES(N,unsigned)>(const char *);
-#define INSTANTIATE_MGRID(N, T) \
-    INSTANTIATE_MGRID_TN(N,MGrid##N##T,"MGrid" #N #T)
+#undef MAKE_MGRID_TN
+#define MAKE_MGRID_TN(N, TYPE, NAME) template void define_mgrid<TYPE,NTYPES(N,unsigned)>(const char *);
 
-//instantiate all dimensions up to and including six
-#define INSTANTIATE_GRIDS(Z, N, _) \
-    INSTANTIATE_GRID(N,CUDA,f) \
-    INSTANTIATE_GRID(N,CUDA,d) \
-    INSTANTIATE_GRID(N, ,f) \
-    INSTANTIATE_GRID(N, ,d) \
-    INSTANTIATE_MGRID(N,f) \
-    INSTANTIATE_MGRID(N,d)
-
-BOOST_PP_REPEAT_FROM_TO(1,LIBMOLGRID_MAX_GRID_DIM, INSTANTIATE_GRIDS, 0);
+MAKE_ALL_GRIDS();
 

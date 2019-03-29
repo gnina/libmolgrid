@@ -56,6 +56,7 @@ namespace libmolgrid {
   template<typename Dtype>
   inline std::shared_ptr<Dtype> create_unified_shared_ptr(size_t sz) {
     std::shared_ptr<Dtype> ptr;
+    if(sz == 0) return ptr;
     Dtype *buffer = nullptr;
     cudaError_t err = cudaMallocManaged((void**)&buffer,sz*sizeof(Dtype));
     cudaGetLastError();

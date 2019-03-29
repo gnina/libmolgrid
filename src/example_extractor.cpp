@@ -6,6 +6,8 @@
  */
 
 #include "example_extractor.h"
+#include "atom_typer.h"
+
 #include <boost/algorithm/string.hpp>
 #include <boost/filesystem/path.hpp>
 #include <openbabel/obconversion.h>

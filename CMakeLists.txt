@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.8)
+cmake_minimum_required (VERSION 3.10)
 project(LibMolGrid LANGUAGES C CXX CUDA)
 
 #version number
@@ -21,7 +21,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 
 #dependencies
 find_package(CUDA REQUIRED)
-find_package(Boost REQUIRED COMPONENTS python regex unit_test_framework program_options system filesystem)
+find_package(Boost REQUIRED COMPONENTS regex unit_test_framework program_options system filesystem)
 find_package(OpenBabel2 REQUIRED)
 
 # configure a header file to pass some of the CMake settings
