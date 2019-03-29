@@ -23,7 +23,8 @@ BOOST_AUTO_TEST_CASE(forward_agreement) {
   MGrid2f coords(natoms, 3);
   MGrid1f type_indices(natoms); 
   MGrid1f radii(natoms);
-  MGrid4f cout(dim.x, dim.y, dim.z, GninaIndexTyper::NumTypes);
+  size_t ntypes = (unsigned)GninaIndexTyper::NumTypes;
+  MGrid4f cout(ntypes, dim.x, dim.y, dim.z);
   make_mol(coords.cpu(), type_indices.cpu(), radii.cpu(), natoms);
   float3 grid_center = make_float3(0,0,0); //coords generated from -25 to 25
                                            //so this should be ok
@@ -34,35 +35,27 @@ BOOST_AUTO_TEST_CASE(forward_agreement) {
   Grid2fCUDA gcoords = coords.gpu();
   Grid1fCUDA gtype_indices = type_indices.gpu();
   Grid1fCUDA gradii = radii.gpu();
-  size_t ntypes = GninaIndexTyper::NumTypes;
-  MGrid4f gout(dim.x, dim.y, dim.z, ntypes);
+  MGrid4f gout(ntypes, dim.x, dim.y, dim.z);
   gmaker.forward(grid_center, gcoords, gtype_indices, gradii, gout.gpu());
   cudaError_t error = cudaGetLastError();
   BOOST_CHECK_EQUAL(error, cudaSuccess);
   gout.tocpu();
 
-  // std::ofstream out("out");
-  // out.precision(5);
-  // std::setprecision(5);
   //check equivalence
   for (size_t ch=0; ch<GninaIndexTyper::NumTypes; ++ch) {
     for (size_t i=0; i<dim.x; ++i) {
       for (size_t j=0; j<dim.y; ++j) {
         for (size_t k=0; k<dim.z; ++k) {
           size_t offset = ((((ch * dim.x) + i) * dim.y) + j) * dim.z + k;
-            // out << cout(i,j,k,ch);
-            // out << " ";
-            // out << gout(i,j,k,ch);
-            // out << "\n";
-          // BOOST_CHECK_SMALL(*(cout.data()+offset) - *(gout.data()+offset), TOL);
+          BOOST_CHECK_SMALL(*(cout.data()+offset) - *(gout.data()+offset), TOL);
         }
       }
     }
   }
 
   //check grid wasn't empty
-  // BOOST_CHECK_EQUAL(grid_empty(cout.cpu()), false);
-  // BOOST_CHECK_EQUAL(grid_empty(gout.cpu()), false);
+  BOOST_CHECK_EQUAL(grid_empty(cout.cpu()), false);
+  BOOST_CHECK_EQUAL(grid_empty(gout.cpu()), false);
 }
 
 BOOST_AUTO_TEST_CASE(forward_gpu) {
@@ -90,10 +83,10 @@ BOOST_AUTO_TEST_CASE(forward_gpu) {
   float resolution = 0.5;
   double half = dimension / 2.0;
   float3 grid_center = make_float3(-16.56986 + half, 0.63044 + half, -17.51435 + half);
-  float grid_origin[3] = {-16.56986, 0.63044, -17.51435};
+  // float grid_origin[3] = {-16.56986, 0.63044, -17.51435};
   GridMaker gmaker(resolution, dimension);
   float3 grid_dims = gmaker.getGridDims();
-  MGrid4f out(grid_dims.x, grid_dims.y, grid_dims.z, ntypes);
+  MGrid4f out(ntypes, grid_dims.x, grid_dims.y, grid_dims.z);
   Grid4fCUDA gpu_grid = out.gpu();
   size_t gsize = grid_dims.x * grid_dims.y * grid_dims.z * ntypes;
   LMG_CUDA_CHECK(cudaMemset(gpu_grid.data(), 0, gsize * sizeof(float)));
@@ -113,39 +106,38 @@ BOOST_AUTO_TEST_CASE(forward_gpu) {
 
   std::setprecision(5);
   // compare gridmaker result to reference
-  for (size_t ch=0; ch<ntypes; ++ch) {
-    std::string fname = "gpu_" + std::to_string(ch) + ".dx";
-    std::ofstream fout(fname.c_str());
-    fout.precision(5);
-    unsigned n = grid_dims.x;
-    fout.precision(5);
-    fout << std::fixed;
-    fout << "object 1 class gridpositions counts " << n << " " << n << " " << " "
-        << n << "\n";
-    fout << "origin";
-    for (unsigned i = 0; i < 3; i++) {
-      fout << " " << grid_origin[i];
-    }
-    fout << "\n";
-    fout << "delta " << resolution << " 0 0\ndelta 0 " << resolution
-        << " 0\ndelta 0 0 " << resolution << "\n";
-    fout << "object 2 class gridconnections counts " << n << " " << n << " " << " "
-        << n << "\n";
-    fout << "object 3 class array type double rank 0 items [ " << n * n * n
-        << "] data follows\n";
-    unsigned total = 0;
+  for (size_t ch=0; ch<1; ++ch) {
+    // std::string fname = "gpu_" + std::to_string(ch) + ".dx";
+    // std::ofstream fout(fname.c_str());
+    // fout.precision(5);
+    // unsigned n = grid_dims.x;
+    // fout.precision(5);
+    // fout << std::fixed;
+    // fout << "object 1 class gridpositions counts " << n << " " << n << " " << " "
+        // << n << "\n";
+    // fout << "origin";
+    // for (unsigned i = 0; i < 3; i++) {
+      // fout << " " << grid_origin[i];
+    // }
+    // fout << "\n";
+    // fout << "delta " << resolution << " 0 0\ndelta 0 " << resolution
+        // << " 0\ndelta 0 0 " << resolution << "\n";
+    // fout << "object 2 class gridconnections counts " << n << " " << n << " " << " "
+        // << n << "\n";
+    // fout << "object 3 class array type double rank 0 items [ " << n * n * n
+        // << "] data follows\n";
+    // unsigned total = 0;
     for (size_t i=0; i<grid_dims.x; ++i) {
       for (size_t j=0; j<grid_dims.y; ++j) {
         for (size_t k=0; k<grid_dims.z; ++k) {
           size_t offset = ((((ch * grid_dims.x) + i) * grid_dims.y) + j) * grid_dims.z + k;
-          fout << *(out.data() + offset);
-          // fout << out(k, j, i, ch);
-          total++;
-          if (total % 3 == 0)
-            fout << "\n";
-          else
-            fout << " ";
-          // BOOST_CHECK_SMALL(out(ch,i,j,k) - ref_grid(ch,i,j,k), TOL);
+          // fout << *(out.data() + offset);
+          // total++;
+          // if (total % 3 == 0)
+            // fout << "\n";
+          // else
+            // fout << " ";
+          BOOST_CHECK_SMALL(*(out.data()+offset) - *(ref_grid.data()+offset), TOL);
         }
       }
     }

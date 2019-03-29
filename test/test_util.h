@@ -26,7 +26,7 @@ inline void make_mol(Grid<float, 2, false>& coords, Grid<float, 1, false>& type_
       std::nextafter(max_y, FLT_MAX));
   coords_dists[2] = std::uniform_real_distribution<float>(-max_z,
       std::nextafter(max_z, FLT_MAX));
-  std::uniform_int_distribution<int> type_dist(0, GninaIndexTyper::NumTypes);
+  std::uniform_int_distribution<int> type_dist(0, GninaIndexTyper::NumTypes-1);
   GninaIndexTyper gtyper;
 
   //set up vector of atoms as well as types
