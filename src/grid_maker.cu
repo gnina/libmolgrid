@@ -152,12 +152,12 @@ namespace libmolgrid {
     __global__ void forward_gpu(GridMaker gmaker, float3 grid_origin,
         const Grid<float, 2, true> coords, const Grid<float, 1, true> type_index, 
         const Grid<float, 1, true> radii, Grid<Dtype, 4, true> out) {
-      //N.B. out data assumed to be zeroed if desired - GridMaker can't zero because
-      //we might be setting grids for multiple CoordinateSets
+      //start by zeroing out
+      zero_grid(out);
 
       //this is the thread's index within its block, used to parallelize over atoms
       size_t total_atoms = coords.dimension(0);
-      size_t tidx = ((threadIdx.z * blockDim.z) + threadIdx.y) * blockDim.y + threadIdx.x;
+      size_t tidx = ((threadIdx.z * blockDim.y) + threadIdx.y) * blockDim.x + threadIdx.x;
       //if there are more then LMG_CUDA_NUM_THREADS atoms, chunk them
       for(size_t atomoffset = 0; atomoffset < total_atoms; atomoffset += LMG_CUDA_NUM_THREADS) {
         //first parallelize over atoms to figure out if they might overlap this block

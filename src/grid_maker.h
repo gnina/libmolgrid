@@ -181,8 +181,8 @@ class GridMaker {
     void forward(float3 grid_center, const Grid<float, 2, false>& coords,
         const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
         Grid<Dtype, 4, false>& out) const {
-      //N.B. out data assumed to be zeroed if desired - GridMaker can't zero because
-      //we might be setting grids for multiple CoordinateSets
+      //zero grid first
+      std::fill(out.data(), out.data() + out.size(), 0.0);
       
       float3 grid_origin = getGridOrigin(grid_center);
       size_t natoms = coords.dimension(0);
