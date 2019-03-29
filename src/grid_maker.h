@@ -201,6 +201,15 @@ class GridMaker {
           bounds[0] = getBounds_1D(grid_origin.x, coords(aidx,0), densityrad);
           bounds[1] = getBounds_1D(grid_origin.y, coords(aidx,1), densityrad);
           bounds[2] = getBounds_1D(grid_origin.z, coords(aidx,2), densityrad);
+          // std::cout << "coords.x " << acoords.x;
+          // std::cout << " coords.y " << acoords.y;
+          // std::cout << " coords.z " << acoords.z << "\n";
+          // std::cout << "bounds[0].first " << bounds[0].first;
+          // std::cout << " bounds[0].second " << bounds[0].second;
+          // std::cout << " bounds[1].first " << bounds[1].first;
+          // std::cout << " bounds[1].second " << bounds[1].second;
+          // std::cout << " bounds[2].first " << bounds[2].first;
+          // std::cout << " bounds[2].second " << bounds[2].second << "\n";
 
           //for every grid point possibly overlapped by this atom
           for (size_t i = bounds[0].first, iend = bounds[0].second; i < iend; i++) {
@@ -213,13 +222,15 @@ class GridMaker {
                 grid_coords.y = grid_origin.y + j * resolution;
                 grid_coords.z = grid_origin.z + k * resolution;
                 float val = calcPoint(acoords, radius, grid_coords);
+                size_t offset = ((((atype * dim) + i) * dim) + j) * dim + k;
+                // std::cout << "val " << val << "\n";
 
                 if (binary) {
                   if (val != 0) 
-                    out(atype, i, j, k) = 1.0;
+                    *(out.data() + offset) = 1.0;
                 }
                 else {
-                    out(atype, i, j, k) += val;
+                  *(out.data() + offset) += val;
                 }
 
               }
