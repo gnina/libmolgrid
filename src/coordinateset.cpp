@@ -31,7 +31,7 @@ CoordinateSet::CoordinateSet(OBMol *mol, const AtomTyper& typer)
 
     if(typer.is_vector_typer()) {
 
-      float radius = typer.get_atom_type(atom, vec);
+      float radius = typer.get_atom_type_vector(atom, vec);
       if(radius > 0) { //don't ignore
         c.push_back(make_float3(atom->GetX(), atom->GetY(), atom->GetZ()));
         vector_types.push_back(vec);
@@ -39,7 +39,7 @@ CoordinateSet::CoordinateSet(OBMol *mol, const AtomTyper& typer)
       }
 
     } else {
-      auto type_rad = typer.get_atom_type(atom);
+      auto type_rad = typer.get_atom_type_index(atom);
       int type = type_rad.first;
       float r = type_rad.second;
       if(type >= (int)max_type) throw invalid_argument("Invalid type");

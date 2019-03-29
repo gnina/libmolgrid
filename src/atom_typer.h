@@ -30,8 +30,8 @@ class AtomTyper {
     //why not make these abstract you ask? python bindings
     virtual unsigned num_types() const  { throw std::logic_error("Base class AtomTyper function called");  }
 
-    virtual float get_atom_type(OpenBabel::OBAtom *a, std::vector<float>& typ) const { throw std::logic_error("Unimplemented atom typing function called"); }
-    virtual std::pair<int,float> get_atom_type(OpenBabel::OBAtom *a) const { throw std::logic_error("Unimplemented atom typing function called"); }
+    virtual float get_atom_type_vector(OpenBabel::OBAtom *a, std::vector<float>& typ) const { throw std::logic_error("Unimplemented atom typing function called"); }
+    virtual std::pair<int,float> get_atom_type_index(OpenBabel::OBAtom *a) const { throw std::logic_error("Unimplemented atom typing function called"); }
     virtual std::pair<int,float> get_int_type(int t) const { throw std::logic_error("Unimplemented atom typing function called"); }
 
     virtual std::vector<std::string> get_type_names() const { throw std::logic_error("Base class AtomTyper function called"); }
@@ -47,8 +47,10 @@ class AtomIndexTyper: public AtomTyper {
     /// return number of types
     virtual unsigned num_types() const = 0;
 
+    virtual float get_atom_type_vector(OpenBabel::OBAtom *a, std::vector<float>& typ) const final { throw std::logic_error("Vector typing called in index typer"); }
+
     ///return type index of a along with the apprioriate index
-    virtual std::pair<int,float> get_atom_type(OpenBabel::OBAtom *a) const = 0;
+    virtual std::pair<int,float> get_atom_type_index(OpenBabel::OBAtom *a) const = 0;
 
     /// return type and radius given a precomputed type, the meaning of which
     /// is specific to the implementation
@@ -74,8 +76,10 @@ class AtomVectorTyper: public AtomTyper {
     /// return number of types
     virtual unsigned num_types() const = 0;
 
+    virtual std::pair<int,float> get_atom_type_index(OpenBabel::OBAtom *a) const final { throw std::logic_error("Index typer called in vector typer"); }
+
     ///set vector type of atom a, return radius
-    virtual float get_atom_type(OpenBabel::OBAtom *a, std::vector<float>& typ) const = 0;
+    virtual float get_atom_type_vector(OpenBabel::OBAtom *a, std::vector<float>& typ) const = 0;
 
     //return vector of string representations of types
     //this isn't expected to be particularly efficient
@@ -176,7 +180,7 @@ class GninaIndexTyper: public AtomIndexTyper {
     virtual unsigned num_types() const;
 
     ///return type index of a
-    virtual std::pair<int,float> get_atom_type(OpenBabel::OBAtom* a) const;
+    virtual std::pair<int,float> get_atom_type_index(OpenBabel::OBAtom* a) const;
 
     /// basically look up the radius of the given gnina type
     virtual std::pair<int,float> get_int_type(int t) const;
@@ -206,7 +210,7 @@ class ElementIndexTyper: public AtomIndexTyper {
     virtual unsigned num_types() const;
 
     ///return type index of a
-    virtual std::pair<int,float> get_atom_type(OpenBabel::OBAtom* a) const;
+    virtual std::pair<int,float> get_atom_type_index(OpenBabel::OBAtom* a) const;
 
     ///look up covalent radius of element or provide default
     virtual std::pair<int,float> get_int_type(int t) const;
@@ -236,7 +240,7 @@ class CallbackIndexTyper: public AtomIndexTyper {
     virtual unsigned num_types() const { return type_names.size(); }
 
     ///return type index of a
-    virtual std::pair<int,float> get_atom_type(OpenBabel::OBAtom* a) const {
+    virtual std::pair<int,float> get_atom_type_index(OpenBabel::OBAtom* a) const {
       auto ret = callback(a);
       //don't allow out of range types
       if(ret.first >= (int)num_types()) ret.first = -1;
@@ -273,8 +277,8 @@ class MappedAtomIndexTyper: public AtomIndexTyper {
     }
 
     ///return type index of a
-    virtual std::pair<int,float> get_atom_type(OpenBabel::OBAtom* a) const {
-      auto res_rad = typer.get_atom_type(a);
+    virtual std::pair<int,float> get_atom_type_index(OpenBabel::OBAtom* a) const {
+      auto res_rad = typer.get_atom_type_index(a);
       //remap the type
       int ret = mapper.get_new_type(res_rad.first);
       return std::make_pair(ret, res_rad.second);
@@ -340,7 +344,7 @@ class GninaVectorTyper: public AtomVectorTyper {
     virtual unsigned num_types() const;
 
     ///return type index of a
-    virtual float get_atom_type(OpenBabel::OBAtom* a, std::vector<float>& typ) const;
+    virtual float get_atom_type_vector(OpenBabel::OBAtom* a, std::vector<float>& typ) const;
 
     //return vector of string representations of types
     virtual std::vector<std::string> get_type_names() const;
@@ -367,7 +371,7 @@ class CallbackVectorTyper: public AtomVectorTyper {
     virtual unsigned num_types() const { return type_names.size(); }
 
     ///set type vector and return radius for a
-    virtual float get_atom_type(OpenBabel::OBAtom* a, std::vector<float>& typ) const { return callback(a, typ); }
+    virtual float get_atom_type_vector(OpenBabel::OBAtom* a, std::vector<float>& typ) const { return callback(a, typ); }
 
     //return vector of string representations of types
     virtual std::vector<std::string> get_type_names() const { return type_names; }
