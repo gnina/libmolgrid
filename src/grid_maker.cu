@@ -142,7 +142,10 @@ namespace libmolgrid {
               }
             }
             else {
-                out(atype, grid_indices.x, grid_indices.y, grid_indices.z) += val;
+                // out(atype, grid_indices.x, grid_indices.y, grid_indices.z) += val;
+              size_t offset = ((((atype * dim) + grid_indices.x) * dim) +
+                  grid_indices.y) * dim + grid_indices.z;
+              *(out.data() + offset) += val;
             }
         }
       }
@@ -152,9 +155,6 @@ namespace libmolgrid {
     __global__ void forward_gpu(GridMaker gmaker, float3 grid_origin,
         const Grid<float, 2, true> coords, const Grid<float, 1, true> type_index, 
         const Grid<float, 1, true> radii, Grid<Dtype, 4, true> out) {
-      //start by zeroing out
-      zero_grid(out);
-
       //this is the thread's index within its block, used to parallelize over atoms
       size_t total_atoms = coords.dimension(0);
       size_t tidx = ((threadIdx.z * blockDim.y) + threadIdx.y) * blockDim.x + threadIdx.x;
@@ -202,6 +202,9 @@ namespace libmolgrid {
       unsigned blocksperside = ceil(dim / float(LMG_CUDA_BLOCKDIM));
       dim3 blocks(blocksperside, blocksperside, blocksperside);
       float3 grid_origin = getGridOrigin(grid_center);
+
+      //zero out grid to start
+      LMG_CUDA_CHECK(cudaMemset(out.data(), 0, out.size() * sizeof(float)));
       forward_gpu<Dtype><<<blocks, threads>>>(*this, grid_origin, coords, type_index, radii, out);
       LMG_CUDA_CHECK(cudaPeekAtLastError());
     }

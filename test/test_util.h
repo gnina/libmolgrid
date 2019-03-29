@@ -51,4 +51,22 @@ inline bool grid_empty(Grid<Dtype, NumDims, false>& grid) {
   return true;
 }
 
+inline void write_dx_header(std::ofstream& out, unsigned n, float3 grid_origin, float resolution) {
+    out.precision(5);
+    out << std::fixed;
+    out << "object 1 class gridpositions counts " << n << " " << n << " " << " "
+        << n << "\n";
+    out << "origin";
+    out << " " << grid_origin.x;
+    out << " " << grid_origin.y;
+    out << " " << grid_origin.z;
+    out << "\n";
+    out << "delta " << resolution << " 0 0\ndelta 0 " << resolution
+        << " 0\ndelta 0 0 " << resolution << "\n";
+    out << "object 2 class gridconnections counts " << n << " " << n << " " << " "
+        << n << "\n";
+    out << "object 3 class array type double rank 0 items [ " << n * n * n
+        << "] data follows\n";
+}
+
 #endif /* TEST_UTIL_H */
