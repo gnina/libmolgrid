@@ -64,6 +64,9 @@ struct CoordinateSet {
 
   unsigned num_types() const { return max_type; }
 
+  ///number of atoms
+  unsigned size() const { return coord.dimension(0); }
+
   //test for pointer equality, not particularly useful, but needed by boost::python
   bool operator==(const CoordinateSet& rhs) const {
     return max_type == rhs.max_type && coord == rhs.coord && type_index == rhs.type_index && type_vector == rhs.type_vector && radius == rhs.radius;

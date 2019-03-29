@@ -20,6 +20,8 @@ bool python_gpu_enabled = true;
 #include "boost/python.hpp"
 #include "boost/python/detail/api_placeholder.hpp"
 
+//#include "bindings_grids.cpp"
+
 //https://wiki.python.org/moin/boost.python/HowTo#A.22Raw.22_constructor
 namespace boost { namespace python {
 
@@ -71,12 +73,6 @@ object raw_constructor(F f, std::size_t min_args = 0)
 BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(Transform_forward_overloads, Transform::forward, 2, 3)
 BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(Transform_backward_overloads, Transform::backward, 2, 3)
 
-//wrap import array since it includes are return
-bool init_numpy()
-{
-  import_array2("Could not import numpy", false);
-  return true;
-}
 
 struct PySwigObject {
     PyObject_HEAD
@@ -331,10 +327,23 @@ static void set_settings_form_kwargs(dict kwargs, ExampleProviderSettings& setti
 std::shared_ptr<ExampleProvider> create_ex_provider(tuple args, dict kwargs) {
   using namespace std;
   ExampleProviderSettings settings;
-  set_settings_form_kwargs(kwargs, settings);
 
   //hard code some number of typers since this needs to be done statically
   int N = len(args);
+
+  //first positional argument can be a settings object
+  if(N > 0) {
+    extract<ExampleProviderSettings> maybe_settings(args[0]);
+    if (maybe_settings.check()) {
+      settings = maybe_settings();
+      args = boost::python::tuple(args.slice(1,_)); //remove
+      N--;
+    }
+  }
+
+  //kwargs take precedence over default/object
+  set_settings_form_kwargs(kwargs, settings);
+
   vector<shared_ptr<AtomTyper> > typers;
   for(int i = 0; i < N; i++) {
     typers.push_back(extract<shared_ptr<AtomTyper> >(args[i]));
@@ -363,25 +372,14 @@ BOOST_PYTHON_MODULE(molgrid)
 // Grids
 
 //Grid bindings
-#define DEFINE_GRID_TN(N, TYPE, NAME) define_grid<TYPE,NTYPES(N,unsigned)>(NAME, numpy_supported);
-#define DEFINE_GRID(N, CUDA, T) \
-DEFINE_GRID_TN(N,Grid##N##T##CUDA, "Grid" #N #T #CUDA)
+#undef MAKE_GRID_TN
+#define MAKE_GRID_TN(N, TYPE, NAME) define_grid<TYPE,NTYPES(N,unsigned)>(NAME, numpy_supported);
 
 // MGrid bindings
-#define DEFINE_MGRID_TN(N, TYPE, NAME) define_mgrid<TYPE,NTYPES(N,unsigned)>(NAME);
-#define DEFINE_MGRID(N, T) \
-DEFINE_MGRID_TN(N,MGrid##N##T,"MGrid" #N #T)
+#undef MAKE_MGRID_TN
+#define MAKE_MGRID_TN(N, TYPE, NAME) define_mgrid<TYPE,NTYPES(N,unsigned)>(NAME);
 
-//instantiate all dimensions up to and including six
-#define DEFINE_GRIDS(Z, N, _) \
-DEFINE_GRID(N,CUDA,f) \
-DEFINE_GRID(N,CUDA,d) \
-DEFINE_GRID(N, ,f) \
-DEFINE_GRID(N, ,d) \
-DEFINE_MGRID(N,f) \
-DEFINE_MGRID(N,d)
-
-  BOOST_PP_REPEAT_FROM_TO(1,LIBMOLGRID_MAX_GRID_DIM, DEFINE_GRIDS, 0);
+MAKE_ALL_GRIDS()
 
 //vector utility types
   class_<std::vector<size_t> >("SizeVec")
@@ -584,6 +582,8 @@ DEFINE_MGRID(N,d)
       .def("has_indexed_types", &CoordinateSet::has_indexed_types)
       .def("has_vector_types", &CoordinateSet::has_vector_types)
       .def("make_vector_types", &CoordinateSet::make_vector_types)
+      .def("size", &CoordinateSet::size)
+      .def("num_types", &CoordinateSet::num_types)
       .def_readwrite("coord", &CoordinateSet::coord)
       .def_readwrite("type_index", &CoordinateSet::type_index)
       .def_readwrite("type_vector", &CoordinateSet::type_vector)
@@ -597,45 +597,6 @@ DEFINE_MGRID(N,d)
 
   class_<ExampleProviderSettings>("ExampleProviderSettings")
       MAKE_SETTINGS();
-    /*
-     *     bool shuffle = false;
-    /// provide equal number of positive and negative examples, labelpos must be set
-    bool balanced = false;
-    /// sample uniformly across receptors (first molecule)
-    bool stratify_receptor = false;
-
-    ///position of binary label for balancing
-    int labelpos = 0;
-    //the following are for stratifying on a numerical label
-    /// position of label for numerical stratificatoin
-    int stratify_pos = 1;
-    ///stratify based on abs value, for cases where negative has special meaning (hinge loss indicator)
-    bool stratify_abs = true;
-    ///minimum range of stratificatoin
-    float stratify_min = 0;
-    ///maximum range of stratification
-    float stratify_max = 0;
-    ///step size of stratification
-    float stratify_step = 0;
-
-    //for grouped examples
-    /// slice time series (groups) by batches
-    int group_batch_size = 1;
-    /// max group size, all groups are padded out to this size
-    int max_group_size = 0;
-
-
-    //extract config
-    ///retain coordinates in memory for faster training
-    bool cache_structs = true;
-    ///protonate read in molecules with openbabel
-    bool add_hydrogens = true;
-    ///clone the first coordinate set to be paired with each of the remaining (think receptor ligand pairs)
-    bool duplicate_first = false;
-
-    ///prefix for data files
-    std::string data_root;
-    */
 
   class_<Example>("Example")
     .def("coordinate_size", &Example::coordinate_size)
@@ -648,7 +609,8 @@ DEFINE_MGRID(N,d)
 
   //there is quite a lot of functionality in the C++ api for example providers, but keep it simple in python for now
   class_<ExampleProvider>("ExampleProvider")
-      .def("__init__", raw_constructor(&create_ex_provider,0))
+      .def("__init__", raw_constructor(&create_ex_provider,0),"Construct an ExampleProvider using an ExampleSettings object "
+          "and the desired AtomTypers for each molecule.  Alternatively, specify individual settings using keyword arguments")
       .def("populate",
           static_cast<void (ExampleProvider::*)(const std::string&, int, bool)>(&ExampleProvider::populate),
           (arg("file_name"), arg("num_labels")=-1, arg("has_group")=false))
