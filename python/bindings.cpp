@@ -452,9 +452,7 @@ MAKE_ALL_GRIDS()
       .def(init<Quaternion>())
       .def(init<Quaternion, float3>())
       .def(init<Quaternion, float3, float3>())
-      .def(init<float3>()) //center
-  .def(init<float3, float>()) //center, translate
-  .def(init<float3, float, bool>()) //center, translate, rotate
+  .def(init<float3, float, bool>((arg("center"),arg("random_translate")=0.0,arg("random_rotation")=false))) //center, translate, rotate
   .def("quaternion", &Transform::quaternion, return_value_policy<copy_const_reference>())
   .def("rotation_center", &Transform::rotation_center)
   .def("translation", &Transform::translation)
@@ -597,6 +595,8 @@ MAKE_ALL_GRIDS()
       .def("size", &CoordinateSet::size)
       .def("num_types", &CoordinateSet::num_types)
       .def("center", &CoordinateSet::center)
+      .def("togpu", &CoordinateSet::togpu, "set memory affinity to GPU")
+      .def("tocpu", &CoordinateSet::tocpu, "set memory affinity to CPU")
       .def_readwrite("coord", &CoordinateSet::coord)
       .def_readwrite("type_index", &CoordinateSet::type_index)
       .def_readwrite("type_vector", &CoordinateSet::type_vector)
@@ -618,6 +618,8 @@ MAKE_ALL_GRIDS()
     .def("merge_coordinates", static_cast<CoordinateSet (Example::*)(bool)>(&Example::merge_coordinates), (arg("unique_index_types") = true))
     .def("merge_coordinates", static_cast<void (Example::*)(Grid2f&, Grid1f&, Grid1f&, bool)>(&Example::merge_coordinates), (arg("coord"), "type_index", "radius", arg("unique_index_types")=true))
     .def("merge_coordinates", static_cast<void (Example::*)(Grid2f&, Grid2f&, Grid1f&, bool)>(&Example::merge_coordinates), (arg("coord"), "type_vector", "radius", arg("unique_index_types")=true))
+    .def("togpu", &Example::togpu, "set memory affinity to GPU")
+    .def("tocpu", &Example::tocpu, "set memory affinity to CPU")
     .def_readwrite("coord_sets",&Example::sets)
     .def_readwrite("labels",&Example::labels);
 

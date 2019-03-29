@@ -148,6 +148,7 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<std
   }
 
   //copy data
+  type_index.tocpu(); radius.tocpu(); coord.tocpu();
   memcpy(radius.data(), &r[0], sizeof(float)*N);
   assert(sizeof(float3)*N == sizeof(float)*coord.size());
   memcpy(coord.data(), &c[0], sizeof(float3)*N);

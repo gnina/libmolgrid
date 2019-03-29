@@ -66,6 +66,7 @@ __global__ void transform_rotate_kernel(unsigned n, Quaternion Q, float3 center,
 template <typename Dtype>
  __host__ void Transform::forward(const Grid<Dtype, 2, true>& in, Grid<Dtype, 2, true>& out, bool dotranslate) const {
   checkGrids(in,out);
+
   unsigned N = in.dimension(0);
   if(dotranslate)
     transform_forward_kernel<float, true><<<LMG_GET_BLOCKS(N), LMG_CUDA_NUM_THREADS>>>(N, Q, center, translate, in, out);

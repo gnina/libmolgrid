@@ -58,6 +58,7 @@ template <typename Dtype>
 void Transform::forward(const Grid<Dtype, 2, false>& in, Grid<Dtype, 2, false>& out, bool dotranslate /*=true*/) const {
   checkGrids(in,out);
   unsigned N = in.dimension(0);
+
   for(unsigned i = 0; i < N; i++) {
     Dtype x,y,z;
     x = in(i,0);

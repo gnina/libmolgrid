@@ -94,6 +94,9 @@ struct Example {
     bool operator==(const Example& rhs) const {
       return sets == rhs.sets && labels == rhs.labels;
     }
+
+    void togpu() { for(unsigned i = 0, n = sets.size(); i < n; i++) { sets[i].togpu(); } }
+    void tocpu() { for(unsigned i = 0, n = sets.size(); i < n; i++) { sets[i].tocpu(); } }
 };
 
 /** \brief a reference to a single example - the parsed line.  This is distinct from an

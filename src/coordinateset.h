@@ -71,6 +71,9 @@ struct CoordinateSet {
   ///return mean of coordinates
   float3 center() const;
 
+  void togpu() { coord.togpu(); type_index.togpu(); type_vector.togpu(); radius.togpu(); }
+  void tocpu() { coord.tocpu(); type_index.tocpu(); type_vector.tocpu(); radius.tocpu(); }
+
   //test for pointer equality, not particularly useful, but needed by boost::python
   bool operator==(const CoordinateSet& rhs) const {
     return max_type == rhs.max_type && coord == rhs.coord && type_index == rhs.type_index && type_vector == rhs.type_vector && radius == rhs.radius;
