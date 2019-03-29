@@ -8,6 +8,8 @@ include_directories (${Boost_INCLUDE_DIRS})
 set( TEST_SRCS
  test_grid.cpp
  test_grid.cu
+ test_gridmaker.cpp
+ test_gridmaker.cu
  test_mgrid.cpp
  test_mgrid.cu
  test_quaternion.cpp

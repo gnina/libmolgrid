@@ -239,6 +239,7 @@ ExampleRef::ExampleRef(const std::string& line, int numlabels, bool hasgroup) {
   //remainder of the line should be whitespace spearated file names
   vector<const char *> names;
   while(stream) {
+    tmp.clear();
     stream >> tmp;
     if(tmp.length() == 0 || tmp[0] == '#') //nothing left or hit comment character
       break;

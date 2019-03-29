@@ -6,7 +6,7 @@ set( LIBMOLGRID_SOURCES
  exampleref_providers.cpp
  example_extractor.cpp
  example_provider.cpp
- grid_maker.cpp
+ grid_maker.cu
  coordinateset.cpp
  transform.cpp
  transform.cu
