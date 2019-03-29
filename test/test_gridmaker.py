@@ -39,14 +39,15 @@ def test_a_grid():
     gmaker.forward(center, c, molgrid.Grid4f(torchout))
     gmaker.forward(center, c, molgrid.Grid4fCUDA(cudaout))
     
-    assert 1.4387 == approx(mgridout.tonumpy().max())
-    assert 1.4387 == approx(mgridgpu.tonumpy().max())
-    assert 1.4387 == approx(npout.max())
-    assert 1.4387 == approx(torchout.max())
-    assert 1.4387 == approx(cudaout.cpu().max())
+    
+    assert 1.438691 == approx(mgridout.tonumpy().max())
+    assert 1.438691 == approx(mgridgpu.tonumpy().max())
+    assert 1.438691 == approx(npout.max())
+    assert 1.438691 == approx(torchout.numpy().max())
+    assert 1.438691 == approx(cudaout.cpu().numpy().max())
 
     #should overwrite by default, yes?
     gmaker.forward(center, c, mgridout.cpu())
     gmaker.forward(center, c, mgridgpu.gpu())
-    assert 1.4387 == approx(mgridout.tonumpy().max())
-    assert 1.4387 == approx(mgridgpu.tonumpy().max())
+    assert 1.438691 == approx(mgridout.tonumpy().max())
+    assert 1.438691 == approx(mgridgpu.tonumpy().max())
