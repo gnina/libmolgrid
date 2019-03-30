@@ -200,6 +200,53 @@ CoordinateSet Example::merge_coordinates(bool unique_index_types) const {
   }
 }
 
+template <bool isCUDA>
+void Example::extract_labels(const vector<Example>& examples, Grid<float, 2, isCUDA>& out) {
+  if(out.dimension(0) != examples.size()) throw std::out_of_range("Grid dimension does not match number of examples");
+  if(examples.size() == 0) return;
+  size_t nlabels = examples[0].labels.size();
+  if(nlabels != out.dimension(1)) throw std::out_of_range("Grid dimension does not match number of labels");
+
+  for(unsigned i = 0, n = examples.size(); i < n; i++) {
+    const vector<float>& labels = examples[i].labels;
+    if(labels.size() != nlabels) throw logic_error("Non-uniform number of labels: "+itoa(nlabels) +" vs "+ itoa(labels.size()));
+    if(isCUDA) {
+      cudaMemcpy(out[i].data(), &labels[0], sizeof(float)*nlabels, cudaMemcpyHostToDevice);
+    } else {
+      memcpy(out[i].data(), &labels[0], sizeof(float)*nlabels);
+    }
+  }
+}
+
+template void Example::extract_labels(const vector<Example>& examples, Grid<float, 2, false>& out);
+template void Example::extract_labels(const vector<Example>& examples, Grid<float, 2, true>& out);
+
+
+template <bool isCUDA>
+void Example::extract_label(const std::vector<Example>& examples, unsigned labelpos, Grid<float, 1, isCUDA>& out) {
+  unsigned N = examples.size();
+  if(out.dimension(0) != N) throw std::out_of_range("Grid dimension does not match number of examples");
+  if(N == 0) return;
+  size_t nlabels = examples[0].labels.size();
+  if(labelpos >= nlabels) throw std::out_of_range("labelpos invalid: " +itoa(labelpos) + " >= " + itoa(nlabels));
+  if(1 != out.dimension(1)) throw std::out_of_range("Grid dimension does not match number of labels");
+
+  //unpack into a single vector
+  vector<float> labels(N);
+  for(unsigned i = 0; i < N; i++) {
+    if(labelpos >= labels.size()) throw std::out_of_range("labelpos invalid (nonuniform labels): " +itoa(labelpos) + " >= " + itoa(labels.size()));
+    labels[i] = examples[i].labels[labelpos];
+  }
+   if(isCUDA) {
+     cudaMemcpy(out.data(), &labels[0], sizeof(float)*N, cudaMemcpyHostToDevice);
+   } else {
+     memcpy(out.data(), &labels[0], sizeof(float)*N);
+   }
+}
+
+template void Example::extract_label(const vector<Example>&, unsigned, Grid<float, 1, false>& );
+template void Example::extract_label(const vector<Example>&, unsigned, Grid<float, 1, true>& );
+
 
 bool is_numeric(const string& number)
 {

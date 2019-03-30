@@ -90,6 +90,23 @@ struct Example {
     void merge_coordinates(Grid2f& coords, Grid2f& type_vector, Grid1f& radii, bool unique_index_types=true) const;
     void merge_coordinates(std::vector<float3>& coords, std::vector<std::vector<float> >& type_vector, std::vector<float>& radii, bool unique_index_types=true) const;
 
+    /** \brief Extract labels from a vector of examples, as returned by ExampleProvider.next_batch.
+     *
+     * @param[in] examples  vector of examples
+     * @param[out] grid 2D grid (NxL)
+     */
+    template <bool isCUDA>
+    static void extract_labels(const std::vector<Example>& examples, Grid<float, 2, isCUDA>& out);
+
+    /** \brief Extract a specific label from a vector of examples, as returned by ExampleProvider.next_batch.
+     *
+     * @param[in] examples  vector of examples
+     * @param[in] labelpos position of label
+     * @param[out] grid 2D grid (NxL)
+     */
+    template <bool isCUDA>
+    static void extract_label(const std::vector<Example>& examples, unsigned labelpos, Grid<float, 1, isCUDA>& out);
+
     //pointer equality, implemented for python vector
     bool operator==(const Example& rhs) const {
       return sets == rhs.sets && labels == rhs.labels;
@@ -128,6 +145,8 @@ public:
 
 extern StringCache string_cache;
 
+extern template void Example::extract_labels(const std::vector<Example>& examples, Grid<float, 2, false>& out);
+extern template void Example::extract_labels(const std::vector<Example>& examples, Grid<float, 2, true>& out);
 
 } /* namespace libmolgrid */
 

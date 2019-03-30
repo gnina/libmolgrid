@@ -145,6 +145,26 @@ class GridMaker {
     template <typename Dtype, bool isCUDA>
     void forward(const Example& in, Grid<Dtype, 4, isCUDA>& out, float random_translation=0.0, bool random_rotation = false) const;
 
+    /* \brief Generate grid tensor from a vector of examples, as provided by ExampleProvider.next_batch.
+     * Coordinates may be optionally translated/rotated.  Do not use this function
+     * if it is desirable to retain the transformation used (e.g., when backpropagating).
+     * The center of the last coordinate set before transformation
+     * will be used as the grid center.
+     *
+     * @param[in] ex example
+     * @param[in] transform transformation to apply
+     * @param[out] out a 4D grid
+     * @param[in] random_translation  maximum amount to randomly translate each coordinate (+/-)
+     * @param[in] random_rotation whether or not to randomly rotate
+     */
+    template <typename Dtype, bool isCUDA>
+    void forward(const std::vector<Example>& in, Grid<Dtype, 5, isCUDA>& out, float random_translation=0.0, bool random_rotation = false) const {
+      if(in.size() != out.dimension(0)) throw std::out_of_range("output grid dimension does not match size of example vector");
+      for(unsigned i = 0, n = in.size(); i < n; i++) {
+        forward(in[i],out[i], random_translation, random_rotation);
+      }
+    }
+
 
     /* \brief Generate grid tensor from CPU atomic data.  Grid must be properly sized.
      * @param[in] center of grid

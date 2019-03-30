@@ -401,7 +401,11 @@ MAKE_ALL_GRIDS()
   class_<std::vector<CoordinateSet> >("CoordinateSetVec")
       .def(vector_indexing_suite<std::vector<CoordinateSet> >());
   class_<std::vector<Example> >("ExampleVec")
-      .def(vector_indexing_suite<std::vector<Example> >());
+      .def(vector_indexing_suite<std::vector<Example> >())
+      .def("extract_labels", +[](std::vector<Example>& self, Grid<float, 2, false>& out) { Example::extract_labels(self, out);})
+      .def("extract_labels", +[](std::vector<Example>& self, Grid<float, 2, true>& out) { Example::extract_labels(self, out);})
+      .def("extract_label", +[](std::vector<Example>& self, unsigned labelpos, Grid<float, 1, false>& out) { Example::extract_label(self, labelpos, out);})
+      .def("extract_label", +[](std::vector<Example>& self, unsigned labelpos, Grid<float, 1, true>& out) { Example::extract_label(self, labelpos, out);});
 
   class_<Pointer<float> >("FloatPtr", no_init);
   class_<Pointer<double> >("DoublePtr", no_init);
