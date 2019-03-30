@@ -76,7 +76,7 @@ namespace libmolgrid {
     
     //return 1 if atom potentially overlaps block, 0 otherwise
     __device__
-    unsigned GridMaker::atomOverlapsBlock(unsigned aidx, float3& grid_origin, 
+    unsigned GridMaker::atom_overlaps_block(unsigned aidx, float3& grid_origin, 
         const Grid<float, 2, true>& coords, const Grid<float, 1, true>& type_index, 
         const Grid<float, 1, true>& radii) {
    
@@ -119,6 +119,7 @@ namespace libmolgrid {
       if(grid_indices.x >= dim || grid_indices.y >= dim || grid_indices.z >= dim)
         return;//bail if we're off-grid, this should not be common
 
+      size_t ntypes = out.dimension(0);
       //compute x,y,z coordinate of grid point
       float3 grid_coords;
       grid_coords.x = grid_indices.x * resolution + grid_origin.x;
@@ -129,13 +130,13 @@ namespace libmolgrid {
       for(size_t ai = 0; ai < rel_atoms; ai++) {
         size_t i = atomIndices[ai];
         float atype = type_index(i);
-        if (atype >= 0) { //because of hydrogens on ligands
+        if (atype >= 0 && atype < ntypes) { //should really throw an exception here, but can't
           float3 acoords;
           acoords.x = coords(i, 0);
           acoords.y = coords(i, 1);
           acoords.z = coords(i, 2);
           float ar = radii(i);
-          float val = calcPoint(acoords, ar, grid_coords);
+          float val = calc_point(acoords, ar, grid_coords);
             if(binary) {
               if(val != 0) {
                 out(atype, grid_indices.x, grid_indices.y, grid_indices.z) = 1.0;
@@ -164,7 +165,7 @@ namespace libmolgrid {
         size_t aidx = atomoffset + tidx;
         
         if(aidx < total_atoms) {
-          atomMask[tidx] = gmaker.atomOverlapsBlock(aidx, grid_origin, coords,
+          atomMask[tidx] = gmaker.atom_overlaps_block(aidx, grid_origin, coords,
               type_index, radii);
         }
         else {
@@ -201,16 +202,63 @@ namespace libmolgrid {
       dim3 threads(LMG_CUDA_BLOCKDIM, LMG_CUDA_BLOCKDIM, LMG_CUDA_BLOCKDIM);
       unsigned blocksperside = ceil(dim / float(LMG_CUDA_BLOCKDIM));
       dim3 blocks(blocksperside, blocksperside, blocksperside);
-      float3 grid_origin = getGridOrigin(grid_center);
+      float3 grid_origin = get_grid_origin(grid_center);
 
+      check_index_args(coords, type_index, radii, out);
       //zero out grid to start
       LMG_CUDA_CHECK(cudaMemset(out.data(), 0, out.size() * sizeof(float)));
       forward_gpu<Dtype><<<blocks, threads>>>(*this, grid_origin, coords, type_index, radii, out);
       LMG_CUDA_CHECK(cudaPeekAtLastError());
     }
 
-    template 
-    void GridMaker::forward(float3 grid_center, const Grid<float, 2, true>& coords,
+    template void GridMaker::forward(float3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
         Grid<float, 4, true>& out) const;
+    template void GridMaker::forward(float3 grid_center, const Grid<float, 2, true>& coords,
+        const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
+        Grid<double, 4, true>& out) const;
+
+
+    float GridMaker::calc_point(const float3& coords, double ar,
+            const float3& grid_coords) const {
+          float dx = grid_coords.x - coords.x;
+          float dy = grid_coords.y - coords.y;
+          float dz = grid_coords.z - coords.z;
+
+          float rsq = dx * dx + dy * dy + dz * dz;
+          if (binary) {
+            //is point within radius?
+            if (rsq < ar * ar)
+              return 1.0;
+            else
+              return 0.0;
+          } else {
+            //For non-binary density we want a Gaussian where 2 std occurs at the
+            //radius, after which it becomes quadratic.
+            //The quadratic is fit to have both the same value and first derivative
+            //at the cross over point and a value and derivative of zero at
+            //1.5*radius
+            //FIXME wrong for radiusmultiple != 1.5
+            float dist = sqrtf(rsq);
+            if (dist >= ar * radiusmultiple) {
+              return 0.0;
+            } else
+              if (dist <= ar) {
+                //return gaussian
+                float h = 0.5 * ar;
+                float ex = -dist * dist / (2 * h * h);
+                return exp(ex);
+              } else //return quadratic
+              {
+                float h = 0.5 * ar;
+                float eval = 1.0 / (M_E * M_E); //e^(-2)
+                float q = dist * dist * eval / (h * h) - 6.0 * eval * dist / h
+                    + 9.0 * eval;
+                return q > 0 ? q : 0; //avoid very small negative numbers
+              }
+          }
+        }
+
+
+
 } /* namespace libmolgrid */

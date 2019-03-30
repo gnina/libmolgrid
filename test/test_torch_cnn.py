@@ -65,10 +65,7 @@ for iteration in range(100):
     batch = e.next_batch(batch_size)
     input_tensor.zero_()
     for (i,ex) in enumerate(batch):
-        center = ex.coord_sets[-1].center()
-        transform = molgrid.Transform(center, random_rotation=False) #not rotating since convergence is faster this way
-        transform.forward(ex, ex)
-        gmaker.forward(center, ex.merge_coordinates(), input_tensor[i])
+        gmaker.forward(ex, input_tensor[i], 0, random_rotation=False) #not rotating since convergence is faster this way
         labels[i] = ex.labels[0]
     labels = labels.to('cuda')
     

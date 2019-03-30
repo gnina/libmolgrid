@@ -595,6 +595,7 @@ MAKE_ALL_GRIDS()
       .def("size", &CoordinateSet::size)
       .def("num_types", &CoordinateSet::num_types)
       .def("center", &CoordinateSet::center)
+      .def("clone", &CoordinateSet::clone)
       .def("togpu", &CoordinateSet::togpu, "set memory affinity to GPU")
       .def("tocpu", &CoordinateSet::tocpu, "set memory affinity to CPU")
       .def_readwrite("coord", &CoordinateSet::coord)
@@ -615,9 +616,9 @@ MAKE_ALL_GRIDS()
   class_<Example>("Example")
     .def("coordinate_size", &Example::coordinate_size)
     .def("type_size", &Example::type_size, (arg("unique_index_type")=true))
-    .def("merge_coordinates", static_cast<CoordinateSet (Example::*)(bool)>(&Example::merge_coordinates), (arg("unique_index_types") = true))
-    .def("merge_coordinates", static_cast<void (Example::*)(Grid2f&, Grid1f&, Grid1f&, bool)>(&Example::merge_coordinates), (arg("coord"), "type_index", "radius", arg("unique_index_types")=true))
-    .def("merge_coordinates", static_cast<void (Example::*)(Grid2f&, Grid2f&, Grid1f&, bool)>(&Example::merge_coordinates), (arg("coord"), "type_vector", "radius", arg("unique_index_types")=true))
+    .def("merge_coordinates", static_cast<CoordinateSet (Example::*)(bool) const>(&Example::merge_coordinates), (arg("unique_index_types") = true))
+    .def("merge_coordinates", static_cast<void (Example::*)(Grid2f&, Grid1f&, Grid1f&, bool) const>(&Example::merge_coordinates), (arg("coord"), "type_index", "radius", arg("unique_index_types")=true))
+    .def("merge_coordinates", static_cast<void (Example::*)(Grid2f&, Grid2f&, Grid1f&, bool) const>(&Example::merge_coordinates), (arg("coord"), "type_vector", "radius", arg("unique_index_types")=true))
     .def("togpu", &Example::togpu, "set memory affinity to GPU")
     .def("tocpu", &Example::tocpu, "set memory affinity to CPU")
     .def_readwrite("coord_sets",&Example::sets)
@@ -647,11 +648,20 @@ MAKE_ALL_GRIDS()
   //grid maker
   class_<GridMaker>("GridMaker",
       init<float, float, float, bool>((arg("resolution")=0.5, arg("dimension")=23.5, arg("radius_multiple")=1.5, arg("binary")=false)))
-      .def("spatial_grid_dimensions", +[](GridMaker& self) { float3 dims = self.getGridDims(); return make_tuple(int(dims.x),int(dims.y),int(dims.z));})
-      .def("grid_dimensions", +[](GridMaker& self, int ntypes) { float3 dims = self.getGridDims(); return make_tuple(ntypes,int(dims.x),int(dims.y),int(dims.z));})
+      .def("spatial_grid_dimensions", +[](GridMaker& self) { float3 dims = self.get_grid_dims(); return make_tuple(int(dims.x),int(dims.y),int(dims.z));})
+      .def("grid_dimensions", +[](GridMaker& self, int ntypes) { float3 dims = self.get_grid_dims(); return make_tuple(ntypes,int(dims.x),int(dims.y),int(dims.z));})
       //grids need to be passed by value
+      .def("forward", +[](GridMaker& self, const Example& ex, Grid<float, 4, false> g, float random_translate, bool random_rotate){
+            self.forward(ex, g, random_translate, random_rotate); },
+            (arg("example"),arg("grid"),arg("random_translation")=0.0,arg("random_rotation")=false))
+      .def("forward", +[](GridMaker& self, const Example& ex, Grid<float, 4, true> g, float random_translate, bool random_rotate){
+            self.forward(ex, g, random_translate, random_rotate); },
+            (arg("example"),arg("grid"),arg("random_translation")=0.0,arg("random_rotation")=false))
       .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, false> g){ self.forward(center, c, g); })
-      .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, true> g){ self.forward(center, c, g); });
+      .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, true> g){ self.forward(center, c, g); })
+      .def("forward", +[](GridMaker& self, const Example& ex, const Transform& t, Grid<float, 4, false> g){ self.forward(ex, t, g); })
+      .def("forward", +[](GridMaker& self, const Example& ex, const Transform& t, Grid<float, 4, true> g){ self.forward(ex, t, g); })
+;
 
 }
 

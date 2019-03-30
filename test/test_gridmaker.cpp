@@ -32,8 +32,8 @@ BOOST_AUTO_TEST_CASE(forward_cpu) {
   float3 grid_center = make_float3(-16.56986 + half, 0.63044 + half, -17.51435 + half);
   // float3 grid_origin = make_float3(-16.56986, 0.63044, -17.51435);
   GridMaker gmaker(resolution, dimension);
-  float3 grid_dims = gmaker.getGridDims();
-  MGrid4f out(grid_dims.x, grid_dims.y, grid_dims.z, ntypes);
+  float3 grid_dims = gmaker.get_grid_dims();
+  MGrid4f out(ntypes, grid_dims.x, grid_dims.y, grid_dims.z);
   Grid4f cpu_grid = out.cpu();
   gmaker.forward(grid_center, combined, cpu_grid);
 

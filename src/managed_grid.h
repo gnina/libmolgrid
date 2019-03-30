@@ -42,6 +42,19 @@ class ManagedGridBase {
       cpu_grid.set_buffer(ptr.get());
     }
 
+    //helper for clone, allocate new memory and copies contents of current ptr into it
+    void clone_ptr() {
+      std::shared_ptr<Dtype> old = ptr;
+      size_t N = this->size();
+      ptr = create_unified_shared_ptr<Dtype>(N);
+      gpu_grid.set_buffer(ptr.get());
+      cpu_grid.set_buffer(ptr.get());
+      if(sent_to_gpu) {
+        LMG_CUDA_CHECK(cudaMemcpy(ptr.get(), old.get(), sizeof(Dtype)*N, cudaMemcpyDeviceToDevice));
+      } else {
+        memcpy(ptr.get(), old.get(),sizeof(Dtype)*N);
+      }
+    }
   public:
     const std::shared_ptr<Dtype> pointer() const { return ptr; }
 
@@ -199,6 +212,12 @@ class ManagedGrid :  public ManagedGridBase<Dtype, NumDims> {
       return ManagedGrid<Dtype,NumDims-1>(*static_cast<const ManagedGridBase<Dtype, NumDims> *>(this), i);
     }
 
+    /** \brief Return a copy of this grid */
+    ManagedGrid<Dtype, NumDims> clone() const {
+      ManagedGrid<Dtype, NumDims> ret(*this);
+      ret.clone_ptr();
+      return ret;
+    }
   protected:
     //only called from regular Grid
     friend ManagedGrid<Dtype,NumDims+1>;
@@ -237,6 +256,11 @@ class ManagedGrid<Dtype, 1> : public ManagedGridBase<Dtype, 1> {
       return this->cpu_grid(a);
     }
 
+    ManagedGrid<Dtype, 1> clone() const {
+      ManagedGrid<Dtype, 1> ret(*this);
+      ret.clone_ptr();
+      return ret;
+    }
   protected:
     //only called from regular Grid
     friend ManagedGrid<Dtype,2>;

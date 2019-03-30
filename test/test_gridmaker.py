@@ -81,3 +81,16 @@ def test_a_grid():
     gmaker.forward(center, c, mgridgpu.gpu())
     assert 1.438691 == approx(mgridout.tonumpy().max())
     assert 1.438691 == approx(mgridgpu.tonumpy().max())
+    
+    
+    dims = gmaker.grid_dimensions(e.type_size())
+    mgridout = molgrid.MGrid4f(*dims)    
+    mgridgpu = molgrid.MGrid4f(*dims)   
+    gmaker.forward(ex, mgridout.cpu())
+    gmaker.forward(ex, mgridgpu.gpu())
+    
+    gmaker.forward(ex, mgridout.cpu())
+    gmaker.forward(ex, mgridgpu.gpu())    
+    
+    assert 2.094017 == approx(mgridout.tonumpy().max())
+    assert 2.094017 == approx(mgridgpu.tonumpy().max())

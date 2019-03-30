@@ -78,6 +78,16 @@ struct CoordinateSet {
   bool operator==(const CoordinateSet& rhs) const {
     return max_type == rhs.max_type && coord == rhs.coord && type_index == rhs.type_index && type_vector == rhs.type_vector && radius == rhs.radius;
   }
+
+  ///return deep copy
+  CoordinateSet clone() const {
+    CoordinateSet ret(*this);
+    ret.coord = coord.clone();
+    ret.radius = radius.clone();
+    ret.type_index = type_index.clone();
+    ret.type_vector = type_vector.clone();
+    return ret;
+  }
 };
 
 }

@@ -16,7 +16,7 @@ BOOST_AUTO_TEST_CASE(forward_agreement) {
   float dimension = 23.5;
   float radiusmultiple = 1.5;
   GridMaker gmaker(resolution, dimension, radiusmultiple);
-  float3 dim = gmaker.getGridDims();
+  float3 dim = gmaker.get_grid_dims();
 
   //randomly generated example, check equivalence between gpu and cpu versions
   random_engine.seed(0);
@@ -85,7 +85,7 @@ BOOST_AUTO_TEST_CASE(forward_gpu) {
   float3 grid_center = make_float3(-16.56986 + half, 0.63044 + half, -17.51435 + half);
   // float grid_origin[3] = {-16.56986, 0.63044, -17.51435};
   GridMaker gmaker(resolution, dimension);
-  float3 grid_dims = gmaker.getGridDims();
+  float3 grid_dims = gmaker.get_grid_dims();
   MGrid4f out(ntypes, grid_dims.x, grid_dims.y, grid_dims.z);
   Grid4fCUDA gpu_grid = out.gpu();
   size_t gsize = grid_dims.x * grid_dims.y * grid_dims.z * ntypes;

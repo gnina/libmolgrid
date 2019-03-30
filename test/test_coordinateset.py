@@ -35,3 +35,7 @@ def test_coordset_from_array():
     
     assert c.coord[1,1] == 3.0
     assert np.sum(newcoord) == approx(3.0)
+    
+    c2 = c.clone()
+    c2.coord[1,1] = 0
+    assert c.coord[1,1] == 3.0

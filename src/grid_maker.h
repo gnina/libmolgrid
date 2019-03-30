@@ -15,6 +15,8 @@
 #include <cuda_runtime.h>
 #include "coordinateset.h"
 #include "grid.h"
+#include "example.h"
+#include "transform.h"
 
 namespace libmolgrid {
 
@@ -36,6 +38,10 @@ class GridMaker {
     bool binary; // use binary occupancy instead of real-valued atom density
     size_t dim; // grid width in points
 
+    template<typename Dtype, bool isCUDA>
+    void check_index_args(const Grid<float, 2, isCUDA>& coords,
+        const Grid<float, 1, isCUDA>& type_index, const Grid<float, 1, isCUDA>& radii,
+        Grid<Dtype, 4, isCUDA>& out) const;
   public:
 
     GridMaker(float res = 0, float d = 0, float rm = 1.5, bool bin = false) : 
@@ -52,7 +58,7 @@ class GridMaker {
       dim = ::round(dimension / resolution) + 1;
     }
 
-    float3 getGridDims() const { 
+    float3 get_grid_dims() const { 
       return make_float3(dim, dim, dim); 
     }
 
@@ -61,14 +67,7 @@ class GridMaker {
      * @param[in] grid center
      * @param[out] grid bounds
      */
-    float3 getGridOrigin(const float3& grid_center) const {
-      float half = dimension/2.0;
-      float3 grid_origin;
-      grid_origin.x = grid_center.x - half;
-      grid_origin.y = grid_center.y - half;
-      grid_origin.z = grid_center.z - half;
-      return grid_origin;
-    }
+    float3 get_grid_origin(const float3& grid_center) const;
 
     template <typename Dtype>
     CUDA_DEVICE_MEMBER void zero_grid(Grid<Dtype, 4, true>& grid);
@@ -80,21 +79,8 @@ class GridMaker {
      * @param[out] indices of grid points in the same dimension that could
      * possibly overlap atom density
      */
-    std::pair<size_t, size_t> getBounds_1D(const float grid_origin, float coord, 
-        float densityrad)  const {
-      std::pair<size_t, size_t> bounds(0, 0);
-      float low = coord - densityrad - grid_origin;
-      if (low > 0) {
-        bounds.first = floor(low / resolution);
-      }
-
-      float high = coord + densityrad - grid_origin;
-      if (high > 0) //otherwise zero
-          {
-        bounds.second = std::min(dim, (size_t) ceil(high / resolution));
-      }
-      return bounds;
-    }
+    std::pair<size_t, size_t> get_bounds_1d(const float grid_origin, float coord, 
+        float densityrad)  const;
 
     /* \brief Calculate atom density at a grid point.
      * @param[in] atomic coords
@@ -102,47 +88,11 @@ class GridMaker {
      * @param[in] grid point coords
      * @param[out] atom density
      */
-    CUDA_CALLABLE_MEMBER float calcPoint(const float3& coords, double ar, 
-        const float3& grid_coords) const {
-      float dx = grid_coords.x - coords.x;
-      float dy = grid_coords.y - coords.y;
-      float dz = grid_coords.z - coords.z;
+    CUDA_CALLABLE_MEMBER float calc_point(const float3& coords, double ar, 
+        const float3& grid_coords) const;
 
-      float rsq = dx * dx + dy * dy + dz * dz;
-      if (binary) {
-        //is point within radius?
-        if (rsq < ar * ar)
-          return 1.0;
-        else
-          return 0.0;
-      } else {
-        //For non-binary density we want a Gaussian where 2 std occurs at the
-        //radius, after which it becomes quadratic.  
-        //The quadratic is fit to have both the same value and first derivative
-        //at the cross over point and a value and derivative of zero at
-        //1.5*radius 
-        //FIXME wrong for radiusmultiple != 1.5
-        float dist = sqrtf(rsq);
-        if (dist >= ar * radiusmultiple) {
-          return 0.0;
-        } else
-          if (dist <= ar) {
-            //return gaussian
-            float h = 0.5 * ar;
-            float ex = -dist * dist / (2 * h * h);
-            return exp(ex);
-          } else //return quadratic
-          {
-            float h = 0.5 * ar;
-            float eval = 1.0 / (M_E * M_E); //e^(-2)
-            float q = dist * dist * eval / (h * h) - 6.0 * eval * dist / h
-                + 9.0 * eval;
-            return q > 0 ? q : 0; //avoid very small negative numbers
-          }
-      }
-    }
 
-    /* \brief Generate grid tensor from CPU atomic data.  Grid must be properly sized.
+    /* \brief Generate grid tensor from atomic data.  Grid (CPU) must be properly sized.
      * @param[in] center of grid
      * @param[in] coordinate set
      * @param[out] a 4D grid
@@ -156,7 +106,7 @@ class GridMaker {
       }
     }
 
-    /* \brief Generate grid tensor from GPU atomic data.  Grid must be properly sized.
+    /* \brief Generate grid tensor from atomic data.  Grid (GPU) must be properly sized.
      * @param[in] center of grid
      * @param[in] coordinate set
      * @param[out] a 4D grid
@@ -170,6 +120,32 @@ class GridMaker {
       }
     }
 
+    /* \brief Generate grid tensor from an example while applying a transformation.
+     * The center specified in the transform will be used as the grid center.
+     *
+     * @param[in] ex example
+     * @param[in] transform transformation to apply
+     * @param[out] out a 4D grid
+     */
+    template <typename Dtype, bool isCUDA>
+    void forward(const Example& in, const Transform& transform, Grid<Dtype, 4, isCUDA>& out) const;
+
+    /* \brief Generate grid tensor from an example.
+     * Coordinates may be optionally translated/rotated.  Do not use this function
+     * if it is desirable to retain the transformation used (e.g., when backpropagating).
+     * The center of the last coordinate set before transformation
+     * will be used as the grid center.
+     *
+     * @param[in] ex example
+     * @param[in] transform transformation to apply
+     * @param[out] out a 4D grid
+     * @param[in] random_translation  maximum amount to randomly translate each coordinate (+/-)
+     * @param[in] random_rotation whether or not to randomly rotate
+     */
+    template <typename Dtype, bool isCUDA>
+    void forward(const Example& in, Grid<Dtype, 4, isCUDA>& out, float random_translation=0.0, bool random_rotation = false) const;
+
+
     /* \brief Generate grid tensor from CPU atomic data.  Grid must be properly sized.
      * @param[in] center of grid
      * @param[in] coordinates (Nx3)
@@ -180,65 +156,7 @@ class GridMaker {
     template <typename Dtype>
     void forward(float3 grid_center, const Grid<float, 2, false>& coords,
         const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
-        Grid<Dtype, 4, false>& out) const {
-      //zero grid first
-      std::fill(out.data(), out.data() + out.size(), 0.0);
-      
-      float3 grid_origin = getGridOrigin(grid_center);
-      size_t natoms = coords.dimension(0);
-      //iterate over all atoms
-      for (size_t aidx=0; aidx<natoms; ++aidx) {
-        float atype = type_index(aidx);
-        if (atype >= 0) {
-          float3 acoords;
-          acoords.x = coords(aidx, 0);
-          acoords.y = coords(aidx, 1);
-          acoords.z = coords(aidx, 2);
-          float radius = radii(aidx);
-          float densityrad = radius * radiusmultiple;
-
-          std::array<std::pair<size_t,size_t>,3> bounds;
-          bounds[0] = getBounds_1D(grid_origin.x, coords(aidx,0), densityrad);
-          bounds[1] = getBounds_1D(grid_origin.y, coords(aidx,1), densityrad);
-          bounds[2] = getBounds_1D(grid_origin.z, coords(aidx,2), densityrad);
-          // std::cout << "coords.x " << acoords.x;
-          // std::cout << " coords.y " << acoords.y;
-          // std::cout << " coords.z " << acoords.z << "\n";
-          // std::cout << "bounds[0].first " << bounds[0].first;
-          // std::cout << " bounds[0].second " << bounds[0].second;
-          // std::cout << " bounds[1].first " << bounds[1].first;
-          // std::cout << " bounds[1].second " << bounds[1].second;
-          // std::cout << " bounds[2].first " << bounds[2].first;
-          // std::cout << " bounds[2].second " << bounds[2].second << "\n";
-
-          //for every grid point possibly overlapped by this atom
-          for (size_t i = bounds[0].first, iend = bounds[0].second; i < iend; i++) {
-            for (size_t j = bounds[1].first, jend = bounds[1].second; j < jend;
-                j++) {
-              for (size_t k = bounds[2].first, kend = bounds[2].second;
-                  k < kend; k++) {
-                float3 grid_coords;
-                grid_coords.x = grid_origin.x + i * resolution;
-                grid_coords.y = grid_origin.y + j * resolution;
-                grid_coords.z = grid_origin.z + k * resolution;
-                float val = calcPoint(acoords, radius, grid_coords);
-                size_t offset = ((((atype * dim) + i) * dim) + j) * dim + k;
-                // std::cout << "val " << val << "\n";
-
-                if (binary) {
-                  if (val != 0) 
-                    *(out.data() + offset) = 1.0;
-                }
-                else {
-                  *(out.data() + offset) += val;
-                }
-
-              }
-            }
-          }
-        }
-      }
-    }
+        Grid<Dtype, 4, false>& out) const;
 
     /* \brief Generate grid tensor from GPU atomic data.  Grid must be properly sized.
      * @param[in] center of grid
@@ -267,9 +185,10 @@ class GridMaker {
      * @param[out] 1 if atom could overlap block, 0 if not
      */
     CUDA_DEVICE_MEMBER
-    unsigned atomOverlapsBlock(unsigned aidx, float3& grid_origin, 
+    unsigned atom_overlaps_block(unsigned aidx, float3& grid_origin, 
         const Grid<float, 2, true>& coords, const Grid<float, 1, true>& type_index, 
         const Grid<float, 1, true>& radii);
+
 
     /* \brief The function that actually updates the voxel density values. 
      * @param[in] number of possibly relevant atoms
@@ -285,6 +204,47 @@ class GridMaker {
         const Grid<float, 1, true>& radii, Grid<Dtype, 4, true>& out);
 };
 
+//specify what instantiations are in grid_maker.cpp
+extern template void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
+    const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
+    Grid<float, 4, false>& out) const;
+extern template void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
+    const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
+    Grid<double, 4, false>& out) const;
+
+extern template void GridMaker::forward(float3 grid_center, const Grid<float, 2, true>& coords,
+    const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
+    Grid<float, 4, true>& out) const;
+extern template void GridMaker::forward(float3 grid_center, const Grid<float, 2, true>& coords,
+    const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
+    Grid<double, 4, true>& out) const;
+
+extern template void GridMaker::forward(const Example& in, Grid<float, 4, false>& out,
+    float random_translation, bool random_rotation) const;
+extern template void GridMaker::forward(const Example& in, Grid<float, 4, true>& out,
+    float random_translation, bool random_rotation) const;
+extern template void GridMaker::forward(const Example& in, Grid<double, 4, false>& out,
+    float random_translation, bool random_rotation) const;
+extern template void GridMaker::forward(const Example& in, Grid<double, 4, true>& out,
+    float random_translation, bool random_rotation) const;
+
+extern template void GridMaker::forward(const Example& in, const Transform& transform, Grid<float, 4, false>& out) const;
+extern template void GridMaker::forward(const Example& in, const Transform& transform, Grid<float, 4, true>& out) const;
+extern template void GridMaker::forward(const Example& in, const Transform& transform, Grid<double, 4, false>& out) const;
+extern template void GridMaker::forward(const Example& in, const Transform& transform, Grid<double, 4, true>& out) const;
+
+extern template void GridMaker::check_index_args(const Grid<float, 2, false>& coords,
+    const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
+    Grid<float, 4, false>& out) const;
+extern template void GridMaker::check_index_args(const Grid<float, 2, true>& coords,
+    const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
+    Grid<float, 4, true>& out) const;
+extern template void GridMaker::check_index_args(const Grid<float, 2, false>& coords,
+    const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
+    Grid<double, 4, false>& out) const;
+extern template void GridMaker::check_index_args(const Grid<float, 2, true>& coords,
+    const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
+    Grid<double, 4, true>& out) const;
 } /* namespace libmolgrid */
 
 #endif /* GRID_MAKER_H_ */

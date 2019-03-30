@@ -188,6 +188,7 @@ float3 CoordinateSet::center() const {
   float3 ret = make_float3(0,0,0);
   unsigned N = coord.dimension(0);
 
+  coord.tocpu();
   if(N == 0) return ret;
   for(unsigned i = 0; i < N; i++) {
     ret.x += coord(i,0);

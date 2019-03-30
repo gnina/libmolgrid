@@ -21,7 +21,7 @@ using namespace OpenBabel;
 //set coords using the which'th typer and cache
 void ExampleExtractor::set_coords(const char *fname, unsigned which, CoordinateSet& coord) {
   if(coord_caches[which].count(fname)) {
-    coord = coord_caches[which][fname];
+    coord = coord_caches[which][fname].clone(); //always copy out of cache
   } else {
     std::string fullname = fname;
     if(data_root.length()) {
