@@ -1,6 +1,7 @@
 import pytest
 import molgrid
 import torch
+import os
 from molgrid import tensor_as_grid
 from pytest import approx
 
@@ -14,10 +15,10 @@ def test_mgrid_copyto_tensor():
             mg2[i,j] = i*j+1
             for k in range(2):
                 mg3[i,j,k] = i*j+1+k
-                
+
     t2 = torch.FloatTensor(3,4)
     t3 = torch.DoubleTensor(3,4,2)
-    
+
     mg2.copyTo(t2)
     mg3.copyTo(t3)
 
@@ -26,7 +27,7 @@ def test_mgrid_copyto_tensor():
             assert t2[i,j] == i*j+1
             for k in range(2):
                 assert t3[i,j,k] == i*j+1+k
-                
+
 
 def test_mgrid_copyto_tensor_cuda():
     mg2 = molgrid.MGrid2f(3,4)
@@ -36,10 +37,10 @@ def test_mgrid_copyto_tensor_cuda():
             mg2[i,j] = i*j+1
             for k in range(2):
                 mg3[i,j,k] = i*j+1+k
-                
+
     t2 = torch.cuda.FloatTensor(3,4)
     t3 = torch.cuda.DoubleTensor(3,4,2)
-    
+
     mg2.copyTo(t2)
     mg3.copyTo(t3)
 
@@ -48,21 +49,21 @@ def test_mgrid_copyto_tensor_cuda():
             assert t2[i,j] == i*j+1
             for k in range(2):
                 assert t3[i,j,k] == i*j+1+k
-                
+
 def test_mgrid_copyfrom_tensor():
     mg2 = molgrid.MGrid2f(3,4)
     mg3 = molgrid.MGrid3d(3,4,2)
     t2 = torch.FloatTensor(3,4)
     t3 = torch.DoubleTensor(3,4,2)
-    
+
     for i in range(3):
         for j in range(4):
             t2[i,j] = i*j+1
             for k in range(2):
                 t3[i,j,k] = i*j+1+k
-                
 
-    
+
+
     mg2.copyFrom(t2)
     mg3.copyFrom(t3)
 
@@ -71,20 +72,20 @@ def test_mgrid_copyfrom_tensor():
             assert mg2[i,j] == i*j+1
             for k in range(2):
                 assert mg3[i,j,k] == i*j+1+k
-                
+
 
 def test_mgrid_copyfrom_tensor_cuda():
     mg2 = molgrid.MGrid2f(3,4)
     mg3 = molgrid.MGrid3d(3,4,2)
     t2 = torch.cuda.FloatTensor(3,4)
     t3 = torch.cuda.DoubleTensor(3,4,2)
-        
+
     for i in range(3):
         for j in range(4):
             t2[i,j] = i*j+1
             for k in range(2):
-                t3[i,j,k] = i*j+1+k            
-    
+                t3[i,j,k] = i*j+1+k
+
     mg2.copyFrom(t2)
     mg3.copyFrom(t3)
 
@@ -92,4 +93,31 @@ def test_mgrid_copyfrom_tensor_cuda():
         for j in range(4):
             assert mg2[i,j] == i*j+1
             for k in range(2):
-                assert mg3[i,j,k] == i*j+1+k                                             
+                assert mg3[i,j,k] == i*j+1+k
+
+
+def test_torch_gnina_example_provider():
+    datadir = os.path.dirname(__file__)+'/data'
+    fname = datadir+"/small.types"
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs")
+    e.populate(fname)
+
+    batch_size = 100
+    batch = e.next_batch(batch_size)
+    #extract labels
+    nlabels = e.num_labels()
+    assert nlabels == 3
+    labels = labels = torch.zeros((batch_size,nlabels), dtype=torch.float32)
+
+    batch.extract_labels(labels)
+    label0  = torch.zeros(batch_size, dtype=torch.float32)
+
+    batch.extract_label(0, label0)
+
+    assert label0[0] == 1
+    assert labels[0,0] == 1
+    assert float(labels[0][1]) == approx(6.05)
+    assert float(labels[0][2]) == approx(0.162643)
+
+    for i in range(nlabels):
+        assert label0[i] == labels[i][0]

@@ -163,6 +163,15 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
   }
 }
 
+template void GridMaker::forward(const std::vector<Example>& in, Grid<float, 5, false>& out,
+  float random_translation, bool random_rotation) const;
+template void GridMaker::forward(const std::vector<Example>& in, Grid<float, 5, true>& out,
+    float random_translation, bool random_rotation) const;
+template void GridMaker::forward(const std::vector<Example>& in, Grid<double, 5, false>& out,
+  float random_translation, bool random_rotation) const;
+template void GridMaker::forward(const std::vector<Example>& in, Grid<double, 5, true>& out,
+    float random_translation, bool random_rotation) const;
+
 template void GridMaker::forward(float3 grid_center,
     const Grid<float, 2, false>& coords,
     const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,

@@ -402,10 +402,10 @@ MAKE_ALL_GRIDS()
       .def(vector_indexing_suite<std::vector<CoordinateSet> >());
   class_<std::vector<Example> >("ExampleVec")
       .def(vector_indexing_suite<std::vector<Example> >())
-      .def("extract_labels", +[](const std::vector<Example>& self, Grid<float, 2, false>& out) { Example::extract_labels(self, out);})
-      .def("extract_labels", +[](const std::vector<Example>& self, Grid<float, 2, true>& out) { Example::extract_labels(self, out);})
-      .def("extract_label", +[](const std::vector<Example>& self, unsigned labelpos, Grid<float, 1, false>& out) { Example::extract_label(self, labelpos, out);})
-      .def("extract_label", +[](const std::vector<Example>& self, unsigned labelpos, Grid<float, 1, true>& out) { Example::extract_label(self, labelpos, out);});
+      .def("extract_labels", +[](const std::vector<Example>& self, Grid<float, 2, false> out) { Example::extract_labels(self, out);})
+      .def("extract_labels", +[](const std::vector<Example>& self, Grid<float, 2, true> out) { Example::extract_labels(self, out);})
+      .def("extract_label", +[](const std::vector<Example>& self, int labelpos, Grid<float, 1, false> out) { Example::extract_label(self, labelpos, out);})
+      .def("extract_label", +[](const std::vector<Example>& self, int labelpos, Grid<float, 1, true> out) { Example::extract_label(self, labelpos, out);});
 
   class_<Pointer<float> >("FloatPtr", no_init);
   class_<Pointer<double> >("DoublePtr", no_init);
@@ -662,6 +662,12 @@ MAKE_ALL_GRIDS()
       .def("forward", +[](GridMaker& self, const Example& ex, Grid<float, 4, true> g, float random_translate, bool random_rotate){
             self.forward(ex, g, random_translate, random_rotate); },
             (arg("example"),arg("grid"),arg("random_translation")=0.0,arg("random_rotation")=false))
+      .def("forward", +[](GridMaker& self, const std::vector<Example>& in, Grid<float, 5, false> g, float random_translate, bool random_rotate){
+            self.forward(in, g, random_translate, random_rotate); },
+            (arg("examplevec"),arg("grid"),arg("random_translation")=0.0,arg("random_rotation")=false))
+      .def("forward", +[](GridMaker& self, const std::vector<Example>& in, Grid<float, 5, true> g, float random_translate, bool random_rotate){
+            self.forward(in, g, random_translate, random_rotate); },
+            (arg("examples"),arg("grid"),arg("random_translation")=0.0,arg("random_rotation")=false))
       .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, false> g){ self.forward(center, c, g); })
       .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, true> g){ self.forward(center, c, g); })
       .def("forward", +[](GridMaker& self, const Example& ex, const Transform& t, Grid<float, 4, false> g){ self.forward(ex, t, g); })
