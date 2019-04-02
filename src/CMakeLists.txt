@@ -29,6 +29,8 @@ set( LIBMOLGRID_HEADERS
  grid_maker.h
 )
 
+include_directories (${Boost_INCLUDE_DIRS})
+
 add_library(libmolgrid_shared SHARED ${LIBMOLGRID_HEADERS} ${LIBMOLGRID_SOURCES})
 SET_TARGET_PROPERTIES(libmolgrid_shared PROPERTIES OUTPUT_NAME molgrid CUDA_SEPARABLE_COMPILATION ON)
 
