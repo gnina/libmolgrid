@@ -106,7 +106,7 @@ struct Example {
      */
     template <bool isCUDA>
     static void extract_label(const std::vector<Example>& examples, unsigned labelpos, Grid<float, 1, isCUDA>& out);
-
+    
     //pointer equality, implemented for python vector
     bool operator==(const Example& rhs) const {
       return sets == rhs.sets && labels == rhs.labels;

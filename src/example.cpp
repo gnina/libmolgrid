@@ -202,10 +202,10 @@ CoordinateSet Example::merge_coordinates(bool unique_index_types) const {
 
 template <bool isCUDA>
 void Example::extract_labels(const vector<Example>& examples, Grid<float, 2, isCUDA>& out) {
-  if(out.dimension(0) != examples.size()) throw std::out_of_range("Grid dimension does not match number of examples");
+  if(out.dimension(0) != examples.size()) throw std::out_of_range("Grid dimension does not match number of examples: "+itoa(out.dimension(0)) + " vs "+itoa(examples.size()));
   if(examples.size() == 0) return;
   size_t nlabels = examples[0].labels.size();
-  if(nlabels != out.dimension(1)) throw std::out_of_range("Grid dimension does not match number of labels");
+  if(nlabels != out.dimension(1)) throw std::out_of_range("Grid dimension does not match number of labels: "+itoa(nlabels)+ " vs "+itoa(out.dimension(1)));
 
   for(unsigned i = 0, n = examples.size(); i < n; i++) {
     const vector<float>& labels = examples[i].labels;
@@ -229,7 +229,6 @@ void Example::extract_label(const std::vector<Example>& examples, unsigned label
   if(N == 0) return;
   size_t nlabels = examples[0].labels.size();
   if(labelpos >= nlabels) throw std::out_of_range("labelpos invalid: " +itoa(labelpos) + " >= " + itoa(nlabels));
-  if(1 != out.dimension(1)) throw std::out_of_range("Grid dimension does not match number of labels");
 
   //unpack into a single vector
   vector<float> labels(N);

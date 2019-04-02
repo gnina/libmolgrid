@@ -31,7 +31,7 @@ foreach(testSrc ${TEST_SRCS})
         #link to Boost libraries AND your targets and dependencies
         target_link_libraries(${testName} libmolgrid_static ${Boost_LIBRARIES} ${CUDA_LIBRARIES})
 
-        #Finally add it to test execution - 
+        #Finally add it to test execution -
 
         add_test(NAME ${testName} COMMAND ${testName})
 endforeach(testSrc)
@@ -50,7 +50,11 @@ else()
 	  message(SEND_ERROR "Pytest package not available: ${PYTEST_error}")
 	endif()
 
-	add_test(NAME pymolgrid COMMAND ${PYTHON_EXECUTABLE} -m pytest -rsv WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+	add_test(NAME pymolgrid COMMAND ${PYTHON_EXECUTABLE} -m pytest -m "not slow" -rsv WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 	set_tests_properties(pymolgrid PROPERTIES ENVIRONMENT
+			"PYTHONPATH=${CMAKE_BINARY_DIR}/python:$PYTHONPATH")
+
+  add_test(NAME slowpymolgridtests COMMAND ${PYTHON_EXECUTABLE} -m pytest -m "slow" -rsv WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+	set_tests_properties(slowpymolgridtests PROPERTIES ENVIRONMENT
 			"PYTHONPATH=${CMAKE_BINARY_DIR}/python:$PYTHONPATH")
 endif()

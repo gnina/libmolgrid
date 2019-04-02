@@ -31,7 +31,9 @@ class ExampleRefProvider {
     virtual unsigned size() const = 0;
     virtual ~ExampleRefProvider() {}
 
-    //read in all the example refs from lines, but does not setup
+    ///return number of labels in *an* example
+    virtual size_t num_labels() const = 0;  
+    ///read in all the example refs from lines, but does not setup
     virtual int populate(std::istream& lines, int numlabels, bool hasgroup);
 };
 
@@ -41,6 +43,8 @@ class UniformExampleRefProvider: public ExampleRefProvider
 {
   std::vector<ExampleRef> all;
   size_t current = 0;
+  size_t nlabels = 0;
+
   bool randomize = false;
 
 public:
@@ -52,8 +56,13 @@ public:
   void addref(const ExampleRef& ex)
   {
     all.push_back(ex);
+    nlabels = ex.labels.size();
   }
 
+  virtual size_t num_labels() const {
+    return nlabels;
+  }
+  
   void setup()
   {
     current = 0;
@@ -103,6 +112,11 @@ public:
     }
   }
 
+  ///return number of labels in *an* example
+  virtual size_t num_labels() const {
+    return actives.num_labels();
+  }
+  
   void setup()
   {
     current = 0;
@@ -165,6 +179,10 @@ public:
     p2.setup();
   }
 
+  virtual size_t num_labels() const {
+    return p1.num_labels();
+  }
+  
   void nextref(ExampleRef& ex)
   {
     //alternate between actives and decoys
@@ -213,6 +231,14 @@ public:
     }
     unsigned pos = recmap[ex.files[0]];
     examples[pos].addref(ex);
+  }
+  
+  virtual size_t num_labels() const {
+    for(unsigned i = 0, n = examples.size(); i < n; i++) {
+      if(examples[i].size() > 0)
+        return examples[i].num_labels();
+    }
+    return 0;
   }
 
   //note there is an explicit specialization for balanced providers, k=2
@@ -318,6 +344,14 @@ public:
     examples[i].addref(ex);
   }
 
+  virtual size_t num_labels() const {
+    for(unsigned i = 0, n = examples.size(); i < n; i++) {
+      if(examples[i].size() > 0)
+        return examples[i].num_labels();
+    }
+    return 0;
+  }
+  
   void setup()
   {
     currenti = 0;
@@ -399,6 +433,10 @@ public:
     examples.setup();
   }
 
+  virtual size_t num_labels() const {
+    return examples.num_labels();
+  }
+  
   void nextref(ExampleRef& ex) {
     if(current_group_index >= current_groups.size()) {
       current_group_index = 0; //wrap and start next time step

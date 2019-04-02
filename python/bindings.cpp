@@ -402,10 +402,10 @@ MAKE_ALL_GRIDS()
       .def(vector_indexing_suite<std::vector<CoordinateSet> >());
   class_<std::vector<Example> >("ExampleVec")
       .def(vector_indexing_suite<std::vector<Example> >())
-      .def("extract_labels", +[](std::vector<Example>& self, Grid<float, 2, false>& out) { Example::extract_labels(self, out);})
-      .def("extract_labels", +[](std::vector<Example>& self, Grid<float, 2, true>& out) { Example::extract_labels(self, out);})
-      .def("extract_label", +[](std::vector<Example>& self, unsigned labelpos, Grid<float, 1, false>& out) { Example::extract_label(self, labelpos, out);})
-      .def("extract_label", +[](std::vector<Example>& self, unsigned labelpos, Grid<float, 1, true>& out) { Example::extract_label(self, labelpos, out);});
+      .def("extract_labels", +[](const std::vector<Example>& self, Grid<float, 2, false>& out) { Example::extract_labels(self, out);})
+      .def("extract_labels", +[](const std::vector<Example>& self, Grid<float, 2, true>& out) { Example::extract_labels(self, out);})
+      .def("extract_label", +[](const std::vector<Example>& self, unsigned labelpos, Grid<float, 1, false>& out) { Example::extract_label(self, labelpos, out);})
+      .def("extract_label", +[](const std::vector<Example>& self, unsigned labelpos, Grid<float, 1, true>& out) { Example::extract_label(self, labelpos, out);});
 
   class_<Pointer<float> >("FloatPtr", no_init);
   class_<Pointer<double> >("DoublePtr", no_init);
@@ -643,6 +643,7 @@ MAKE_ALL_GRIDS()
               }
           },
           (arg("file_name"), arg("num_labels")=-1, arg("has_group")=false))
+      .def("num_labels", &ExampleProvider::num_labels)
       .def("type_size", &ExampleProvider::type_size)
       .def("next", static_cast<Example (ExampleProvider::*)()>(&ExampleProvider::next))
       .def("next_batch", static_cast< std::vector<Example> (ExampleProvider::*)(unsigned)>(&ExampleProvider::next_batch),
@@ -668,4 +669,3 @@ MAKE_ALL_GRIDS()
 ;
 
 }
-
