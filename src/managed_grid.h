@@ -100,7 +100,7 @@ class ManagedGridBase {
     void copyTo(gpu_grid_t& dest) const {
       togpu();
       size_t sz = std::min(size(), dest.size());
-      cudaMemcpy(dest.data(),gpu_grid.data(),sz*sizeof(Dtype),cudaMemcpyDeviceToDevice);
+      LMG_CUDA_CHECK(cudaMemcpy(dest.data(),gpu_grid.data(),sz*sizeof(Dtype),cudaMemcpyDeviceToDevice));
     }
 
     /** \brief Copy data from src.  Should be same size, but will narrow if needed */
@@ -114,7 +114,7 @@ class ManagedGridBase {
     void copyFrom(const gpu_grid_t& dest) {
       togpu();
       size_t sz = std::min(size(), dest.size());
-      cudaMemcpy(gpu_grid.data(),dest.data(),sz*sizeof(Dtype),cudaMemcpyDeviceToDevice);
+      LMG_CUDA_CHECK(cudaMemcpy(gpu_grid.data(),dest.data(),sz*sizeof(Dtype),cudaMemcpyDeviceToDevice));
     }
 
     /** \brief Return GPU Grid view.  Host code should not access the grid

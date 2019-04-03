@@ -211,7 +211,7 @@ void Example::extract_labels(const vector<Example>& examples, Grid<float, 2, isC
     const vector<float>& labels = examples[i].labels;
     if(labels.size() != nlabels) throw logic_error("Non-uniform number of labels: "+itoa(nlabels) +" vs "+ itoa(labels.size()));
     if(isCUDA) {
-      cudaMemcpy(out[i].data(), &labels[0], sizeof(float)*nlabels, cudaMemcpyHostToDevice);
+      LMG_CUDA_CHECK(cudaMemcpy(out[i].data(), &labels[0], sizeof(float)*nlabels, cudaMemcpyHostToDevice));
     } else {
       memcpy(out[i].data(), &labels[0], sizeof(float)*nlabels);
     }
@@ -237,7 +237,7 @@ void Example::extract_label(const std::vector<Example>& examples, unsigned label
     labels[i] = examples[i].labels[labelpos];
   }
    if(isCUDA) {
-     cudaMemcpy(out.data(), &labels[0], sizeof(float)*N, cudaMemcpyHostToDevice);
+     LMG_CUDA_CHECK(cudaMemcpy(out.data(), &labels[0], sizeof(float)*N, cudaMemcpyHostToDevice));
    } else {
      memcpy(out.data(), &labels[0], sizeof(float)*N);
    }

@@ -173,7 +173,7 @@ class Grid {
     void copyTo(Grid<Dtype,NumDims,destCUDA>& dest) const {
       size_t sz = std::min(size(), dest.size());
       cudaMemcpyKind kind = copyKind(isCUDA,destCUDA);
-      cudaMemcpy(dest.data(),data(),sz*sizeof(Dtype),kind);
+      LMG_CUDA_CHECK(cudaMemcpy(dest.data(),data(),sz*sizeof(Dtype),kind));
     }
 
     /** \brief copy contents from src
@@ -184,7 +184,7 @@ class Grid {
     void copyFrom(const Grid<Dtype,NumDims,srcCUDA>& src) {
       size_t sz = std::min(size(), src.size());
       cudaMemcpyKind kind = copyKind(srcCUDA,isCUDA);
-      cudaMemcpy(data(),src.data(),sz*sizeof(Dtype),kind);
+      LMG_CUDA_CHECK(cudaMemcpy(data(),src.data(),sz*sizeof(Dtype),kind));
     }
 
     // constructor used by operator[]
@@ -272,14 +272,14 @@ class Grid<Dtype,1,isCUDA> {
     void copyTo(Grid<Dtype,1,destCUDA>& dest) const {
       size_t sz = std::min(size(), dest.size());
       cudaMemcpyKind kind = copyKind(isCUDA,destCUDA);
-      cudaMemcpy(dest.data(),data(),sz*sizeof(Dtype),kind);
+      LMG_CUDA_CHECK(cudaMemcpy(dest.data(),data(),sz*sizeof(Dtype),kind));
     }
 
     template<bool srcCUDA>
     void copyFrom(const Grid<Dtype,1,srcCUDA>& src) {
       size_t sz = std::min(size(), src.size());
       cudaMemcpyKind kind = copyKind(srcCUDA,isCUDA);
-      cudaMemcpy(data(),src.data(),sz*sizeof(Dtype),kind);
+      LMG_CUDA_CHECK(cudaMemcpy(data(),src.data(),sz*sizeof(Dtype),kind));
     }
 
 };
