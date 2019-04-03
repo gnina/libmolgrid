@@ -43,12 +43,14 @@ endif()
 
 set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -Werror cross-execution-space-call,deprecated-declarations")
 
+
 # add the binary tree to the search path for include files
 # so that we will find libmolgrid_config.h
 include_directories("${PROJECT_BINARY_DIR}")
 include_directories(${CMAKE_SOURCE_DIR}/src)
-include_directories(${CUDA_INCLUDE_DIRS})
-include_directories(${OPENBABEL2_INCLUDE_DIR})
+include_directories(SYSTEM ${CUDA_INCLUDE_DIRS})
+include_directories(SYSTEM ${OPENBABEL2_INCLUDE_DIR})
+include_directories(SYSTEM ${Boost_INCLUDE_DIR})
 
 add_subdirectory(src)
 add_subdirectory(python)

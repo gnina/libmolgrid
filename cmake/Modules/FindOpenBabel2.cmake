@@ -1,97 +1,75 @@
-# - Try to find OpenBabel2
-# Once done this will define
+# FindOpenBabel.cmake
+# Try to find Open Babel headers and libraries
+# Defines:
 #
-#  OPENBABEL2_FOUND - system has OpenBabel2
-#  OPENBABEL2_INCLUDE_DIR - the OpenBabel2 include directory
-#  OPENBABEL2_LIBRARIES - Link these to use OpenBabel2
-#
-# Copyright (c) 2006, 2007 Carsten Niehaus, <cniehaus@gmx.de>
-# Copyright (C) 2008 Marcus D. Hanwell <marcus@cryos.org>
-# Redistribution and use is allowed according to the terms of the BSD license.
-# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+#  OPENBABEL2_FOUND - system has Open Babel
+#  OPENBABEL2_INCLUDE_DIR - the Open Babel include directory
+#  OPENBABEL2_LIBRARIES - Link these to use Open Babel
+#  IF OPENBABEL_DIR is defined, will look there first
 
-if (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
-  # in cache already
+if(OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES)
+  # in cache already or user-specified
   set(OPENBABEL2_FOUND TRUE)
 
-else (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
-  if(NOT WIN32)
+else()
 
-    # Use the newer PkgConfig stuff
-    find_package(PkgConfig REQUIRED)
-    pkg_check_modules(OPENBABEL2 openbabel-2.0>=2.2.0)
+  if(NOT OPENBABEL2_INCLUDE_DIR)
+      find_path(OPENBABEL2_INCLUDE_DIR openbabel/obconversion.h
+        PATHS
+        ${OPENBABEL_DIR}/include/openbabel-2.0
+        ${OPENBABEL_DIR}/include
+        $ENV{OPENBABEL_INCLUDE_DIR}/openbabel-2.0
+        $ENV{OPENBABEL_INCLUDE_DIR}
+        $ENV{OPENBABEL_INCLUDE_PATH}/openbabel-2.0
+        $ENV{OPENBABEL_INCLUDE_PATH}
+        $ENV{OPENBABEL_DIR}/include/openbabel-2.0
+        $ENV{OPENBABEL_DIR}/include
+        $ENV{OPENBABEL_PATH}/include/openbabel-2.0
+        $ENV{OPENBABEL_PATH}/include
+        $ENV{OPENBABEL_BASE}/include/openbabel-2.0
+        $ENV{OPENBABEL_BASE}/include
+        /usr/include/openbabel-2.0
+        /usr/include
+        /usr/local/include/openbabel-2.0
+        /usr/local/include
+        /usr/local/openbabel/include/openbabel-2.0
+        /usr/local/openbabel/include
+        /usr/local/openbabel-2.0/include/openbabel-2.0
+        /usr/local/openbabel-2.0/include
+        ~/include/openbabel-2.0
+        ~/include
+      )
+    if(OPENBABEL2_INCLUDE_DIR)
+      message(STATUS "Found Open Babel include files at ${OPENBABEL2_INCLUDE_DIR}")
+    endif()
+  endif()
 
-    # Maintain backwards compatibility with previous version of module
-    if(OPENBABEL2_FOUND STREQUAL "1")
-      set(OPENBABEL2_VERSION_MET TRUE)
-      set(OPENBABEL2_INCLUDE_DIR ${OPENBABEL2_INCLUDE_DIRS})
-    endif(OPENBABEL2_FOUND STREQUAL "1")
-
-  else(NOT WIN32)
-    set(OPENBABEL2_VERSION_MET TRUE)
-  endif(NOT WIN32)
-
-  if(OPENBABEL2_VERSION_MET)
-
-    if(WIN32)
-      if(NOT OPENBABEL2_INCLUDE_DIR)
-        find_path(OPENBABEL2_INCLUDE_DIR openbabel-2.0/openbabel/obconversion.h
-          PATHS
-          ${_obIncDir}
-          ${GNUWIN32_DIR}/include
-          $ENV{OPENBABEL2_INCLUDE_DIR}
-        )
-        if(OPENBABEL2_INCLUDE_DIR)
-          set(OPENBABEL2_INCLUDE_DIR ${OPENBABEL2_INCLUDE_DIR}/openbabel-2.0)
-        endif(OPENBABEL2_INCLUDE_DIR)
-      endif(NOT OPENBABEL2_INCLUDE_DIR)
-    endif(WIN32)
-
-    find_library(OPENBABEL2_LIBRARIES NAMES openbabel openbabel-2
+  if(NOT OPENBABEL2_LIBRARIES)
+  find_library(OPENBABEL2_LIBRARIES NAMES openbabel openbabel-2
+      HINTS
+      ${OPENBABEL_DIR}/lib
+      ${OPENBABEL_DIR}/windows-vc2008/build/src/Release
+      ${OPENBABEL_DIR}/build/src/Release
       PATHS
-      ${_obLinkDir}
-      ${GNUWIN32_DIR}/lib
-      $ENV{OPENBABEL2_LIBRARIES}
+      $ENV{OPENBABEL_DIR}/lib
+      $ENV{OPENBABEL_DIR}/windows-vc2008/build/src/Release
+      $ENV{OPENBABEL_PATH}/lib
+      $ENV{OPENBABEL_BASE}/lib
+      /usr/lib
+      /usr/local/lib
+      ~/lib
+      $ENV{LD_LIBRARY_PATH}
     )
-  endif(OPENBABEL2_VERSION_MET)
+    if(OPENBABEL2_LIBRARIES)
+      message(STATUS "Found Open Babel library at ${OPENBABEL2_LIBRARIES}")
+    endif()
+  endif()
 
-  if(OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
+  if(OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES)
     set(OPENBABEL2_FOUND TRUE)
-  endif(OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
-
-  if (OPENBABEL2_FOUND)
-    if (NOT OpenBabel2_FIND_QUIETLY)
-      message(STATUS "Found OpenBabel 2.2 or later: ${OPENBABEL2_LIBRARIES}")
-    endif (NOT OpenBabel2_FIND_QUIETLY)
-  else (OPENBABEL2_FOUND)
-    if (OpenBabel2_FIND_REQUIRED)
-      message(FATAL_ERROR "Could NOT find OpenBabel 2.2 or later ")
-    endif (OpenBabel2_FIND_REQUIRED)
-  endif (OPENBABEL2_FOUND)
+message("Setting openbabel found ${OPENBABEL2_FOUND}")
+  endif()
 
   mark_as_advanced(OPENBABEL2_INCLUDE_DIR OPENBABEL2_LIBRARIES)
+endif()
 
-endif (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
-
-# Search for Open Babel2 executable
-if(OPENBABEL2_EXECUTABLE)
-
-  # in cache already
-  set(OPENBABEL2_EXECUTABLE_FOUND TRUE)
-
-else(OPENBABEL2_EXECUTABLE)
-  find_program(OPENBABEL2_EXECUTABLE NAMES babel
-    PATHS
-    [HKEY_CURRENT_USER\\SOFTWARE\\OpenBabel\ 2.2.0]
-    $ENV{OPENBABEL2_EXECUTABLE}
-  )
-
-  if(OPENBABEL2_EXECUTABLE)
-    set(OPENBABEL2_EXECUTABLE_FOUND TRUE)
-  endif(OPENBABEL2_EXECUTABLE)
-
-  if(OPENBABEL2_EXECUTABLE_FOUND)
-    message(STATUS "Found OpenBabel2 executable: ${OPENBABEL2_EXECUTABLE}")
-  endif(OPENBABEL2_EXECUTABLE_FOUND)
-
-endif(OPENBABEL2_EXECUTABLE)
