@@ -12,6 +12,17 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 
+#if (OB_VERSION >= OB_VERSION_CHECK(2,4,90))
+# include <openbabel/elements.h>
+# define GET_SYMBOL OpenBabel::OBElements::GetSymbol
+# define GET_COVALENT_RAD OBElements::GetCovalentRad
+# define GET_NAME OBElements::GetName
+#else
+# define GET_SYMBOL etab.GetSymbol
+# define GET_COVALENT_RAD etab.GetCovalentRad
+# define GET_NAME etab.GetName
+#endif
+
 using namespace OpenBabel;
 using namespace std;
 
@@ -74,7 +85,7 @@ std::pair<int,float> GninaIndexTyper::get_atom_type_index(OpenBabel::OBAtom* a) 
       heteroBonded = true; //hetero anything that is not hydrogen and not carbon
   }
 
-  const char *element_name = OpenBabel::OBElements::GetSymbol(a->GetAtomicNum());
+  const char *element_name = GET_SYMBOL(a->GetAtomicNum());
   std::string ename(element_name);
 
   //massage the element name in some cases
@@ -177,14 +188,14 @@ unsigned ElementIndexTyper::num_types() const {
 ///return type index of a
 std::pair<int,float> ElementIndexTyper::get_atom_type_index(OpenBabel::OBAtom* a) const {
   unsigned elem = a->GetAtomicNum();
-  float radius = OpenBabel::OBElements::GetCovalentRad(elem);
+  float radius = GET_COVALENT_RAD(elem);
   if(elem >= last_elem) elem = 0; //truncate
   return make_pair((int)elem,radius);
 }
 
 //return element with radius
 std::pair<int,float> ElementIndexTyper::get_int_type(int elem) const {
-  float radius = OpenBabel::OBElements::GetCovalentRad(elem);
+  float radius = GET_COVALENT_RAD(elem);
   if(elem >= (int)last_elem) elem = 0; //truncate
   return make_pair((int)elem,radius);
 }
@@ -194,7 +205,7 @@ std::vector<std::string> ElementIndexTyper::get_type_names() const {
   vector<string> ret; ret.reserve(last_elem);
   ret.push_back("GenericAtom");
   for(unsigned i = 1; i < last_elem; i++) {
-    ret.push_back(OpenBabel::OBElements::GetName(i));
+    ret.push_back(GET_NAME(i));
   }
   return ret;
 }

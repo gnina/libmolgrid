@@ -59,14 +59,13 @@ def test_train_torch_cnn():
 
     optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
 
-    input_tensor = torch.zeros(tensor_shape, dtype=torch.float32, device='cuda:0')
+    input_tensor = torch.zeros(tensor_shape, dtype=torch.float32, device='cuda')
     float_labels = torch.zeros(batch_size, dtype=torch.float32)
 
     losses = []
     for iteration in range(100):
         #load data
         batch = e.next_batch(batch_size)
-        input_tensor.zero_()
         gmaker.forward(batch, input_tensor, 0, random_rotation=False) #not rotating since convergence is faster this way
         batch.extract_label(0, float_labels)
         labels = float_labels.long().to('cuda')

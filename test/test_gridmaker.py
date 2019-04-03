@@ -55,7 +55,7 @@ def test_a_grid():
     mgridgpu = molgrid.MGrid4f(*dims)    
     npout = np.zeros(dims, dtype=np.float32)
     torchout = torch.zeros(dims, dtype=torch.float32)
-    cudaout = torch.zeros(dims, dtype=torch.float32, device='cuda:0')
+    cudaout = torch.zeros(dims, dtype=torch.float32, device='cuda')
     
     gmaker.forward(center, c, mgridout.cpu())
     gmaker.forward(center, c, mgridgpu.gpu())
