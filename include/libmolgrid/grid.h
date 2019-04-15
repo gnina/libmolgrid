@@ -14,7 +14,7 @@
 #include <iostream>
 
 
-#include "libmolgrid.h"
+#include "libmolgrid/libmolgrid.h"
 
 namespace libmolgrid {
 

@@ -1,9 +1,9 @@
 #ifndef TEST_UTIL_H
 #define TEST_UTIL_H
 #include <random>
-#include "grid.h"
-#include "atom_typer.h"
-#include "libmolgrid.h"
+#include "libmolgrid/grid.h"
+#include "libmolgrid/atom_typer.h"
+#include "libmolgrid/libmolgrid.h"
 
 using namespace libmolgrid;
 inline void make_mol(Grid<float, 2, false>& coords, Grid<float, 1, false>& type_indices,

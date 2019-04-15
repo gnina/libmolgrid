@@ -13,10 +13,10 @@
 #include <array>
 #include <algorithm>
 #include <cuda_runtime.h>
-#include "coordinateset.h"
-#include "grid.h"
-#include "example.h"
-#include "transform.h"
+#include "libmolgrid/coordinateset.h"
+#include "libmolgrid/grid.h"
+#include "libmolgrid/example.h"
+#include "libmolgrid/transform.h"
 
 namespace libmolgrid {
 

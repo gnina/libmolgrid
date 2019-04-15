@@ -8,7 +8,7 @@
 #define BOOST_TEST_MODULE quaternion_test
 #include <boost/test/unit_test.hpp>
 
-#include "quaternion.h"
+#include "libmolgrid/quaternion.h"
 #include <boost/math/quaternion.hpp>
 
 using namespace libmolgrid;

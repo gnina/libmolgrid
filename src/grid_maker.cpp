@@ -4,7 +4,7 @@
  *  Created on: Mar 29, 2019
  *      Author: dkoes
  */
-#include "grid_maker.h"
+#include "libmolgrid/grid_maker.h"
 
 namespace libmolgrid {
 

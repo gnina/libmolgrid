@@ -14,8 +14,8 @@
 #include <type_traits>
 #include <unordered_map>
 #include <boost/lexical_cast.hpp>
-#include "libmolgrid.h"
-#include "example.h"
+#include "libmolgrid/libmolgrid.h"
+#include "libmolgrid/example.h"
 
 namespace libmolgrid {
 

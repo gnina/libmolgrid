@@ -6,8 +6,8 @@
  */
 #include <cuda_runtime.h>
 
-#include "coordinateset.h"
-#include "atom_typer.h"
+#include "libmolgrid/coordinateset.h"
+#include "libmolgrid/atom_typer.h"
 
 namespace libmolgrid {
 

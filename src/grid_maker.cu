@@ -1,4 +1,4 @@
-#include "grid_maker.h"
+#include "libmolgrid/grid_maker.h"
 
 namespace libmolgrid {
     __shared__ uint scanScratch[LMG_CUDA_NUM_THREADS * 2];

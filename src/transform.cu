@@ -4,7 +4,7 @@
  *  CUDA implementations of Transform class.
  */
 
-#include "transform.h"
+#include "libmolgrid/transform.h"
 
 namespace libmolgrid {
 

@@ -8,7 +8,7 @@
 #define BOOST_TEST_MODULE mgrid_test
 #include <boost/test/unit_test.hpp>
 
-#include "grid.h"
+#include "libmolgrid/grid.h"
 
 using namespace libmolgrid;
 

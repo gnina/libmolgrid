@@ -5,8 +5,8 @@
  *      Author: dkoes
  */
 
-#include "example_provider.h"
-#include "atom_typer.h"
+#include "libmolgrid/example_provider.h"
+#include "libmolgrid/atom_typer.h"
 
 namespace libmolgrid {
 

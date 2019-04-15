@@ -7,7 +7,7 @@
  *      Author: dkoes
  */
 
-#include <atom_typer.h>
+#include "libmolgrid/atom_typer.h"
 #include <openbabel/obiter.h>
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>

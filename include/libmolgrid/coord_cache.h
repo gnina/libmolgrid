@@ -7,9 +7,9 @@
 #ifndef COORD_CACHE_H_
 #define COORD_CACHE_H_
 
-#include "coordinateset.h"
-#include "atom_typer.h"
-#include "example.h"
+#include "libmolgrid/coordinateset.h"
+#include "libmolgrid/atom_typer.h"
+#include "libmolgrid/example.h"
 #include <boost/iostreams/device/mapped_file.hpp>
 
 namespace libmolgrid {

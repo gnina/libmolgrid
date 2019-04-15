@@ -19,8 +19,8 @@
 #include <boost/preprocessor/repetition.hpp>
 #include <boost/preprocessor/punctuation/comma_if.hpp>
 
-#include "grid.h"
-#include "managed_grid.h"
+#include "libmolgrid/grid.h"
+#include "libmolgrid/managed_grid.h"
 
 #define TYPEARG(Z, N, T) BOOST_PP_COMMA_IF(N) T
 #define NTYPES(N, T) BOOST_PP_REPEAT(N, TYPEARG, T)

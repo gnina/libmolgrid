@@ -14,7 +14,7 @@
 
 #include <vector>
 #include <unordered_set>
-#include "coordinateset.h"
+#include "libmolgrid/coordinateset.h"
 
 namespace libmolgrid {
 

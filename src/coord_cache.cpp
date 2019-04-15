@@ -5,7 +5,7 @@
  *      Author: dkoes
  */
 
-#include "coord_cache.h"
+#include "libmolgrid/coord_cache.h"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/filesystem/path.hpp>

@@ -10,10 +10,10 @@
 #include <random>
 #include <stdexcept>
 
-#include "libmolgrid.h"
-#include "quaternion.h"
-#include "grid.h"
-#include "example.h"
+#include "libmolgrid/libmolgrid.h"
+#include "libmolgrid/quaternion.h"
+#include "libmolgrid/grid.h"
+#include "libmolgrid/example.h"
 
 namespace libmolgrid {
 

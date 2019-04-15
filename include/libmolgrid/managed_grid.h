@@ -10,8 +10,9 @@
 #define MANAGED_GRID_H_
 
 #include <memory>
-#include <grid.h>
 #include <boost/lexical_cast.hpp>
+
+#include "libmolgrid/grid.h"
 
 
 namespace libmolgrid {

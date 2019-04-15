@@ -1,11 +1,11 @@
 /** \file libmolgrid.cpp
  *  \brief Global options for libmolgrid
  */
-#include "libmolgrid.h"
-#include "config.h"
-#include "grid.h"
-#include "managed_grid.h"
-#include "transform.h"
+#include "libmolgrid/libmolgrid.h"
+#include "libmolgrid/config.h"
+#include "libmolgrid/grid.h"
+#include "libmolgrid/managed_grid.h"
+#include "libmolgrid/transform.h"
 
 namespace libmolgrid {
     std::default_random_engine random_engine;

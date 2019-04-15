@@ -13,10 +13,10 @@
 #include <memory>
 #include <vector>
 #include <unordered_map>
-#include "example.h"
-#include "exampleref_providers.h"
-#include "coordinateset.h"
-#include "coord_cache.h"
+#include "libmolgrid/example.h"
+#include "libmolgrid/exampleref_providers.h"
+#include "libmolgrid/coordinateset.h"
+#include "libmolgrid/coord_cache.h"
 
 namespace libmolgrid {
 

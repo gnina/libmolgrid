@@ -28,7 +28,7 @@ find_package(OpenBabel2 REQUIRED)
 # to the source code
 configure_file (
   "${PROJECT_SOURCE_DIR}/cmake/config.h.in"
-  "${PROJECT_BINARY_DIR}/config.h"
+  "${PROJECT_BINARY_DIR}/include/libmolgrid/config.h"
   ) 
 
 set(CMAKE_CXX_STANDARD 14)
@@ -47,7 +47,8 @@ set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -Werror cross-execution-space-call,dep
 # add the binary tree to the search path for include files
 # so that we will find libmolgrid_config.h
 include_directories("${PROJECT_BINARY_DIR}")
-include_directories(${CMAKE_SOURCE_DIR}/src)
+include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${PROJECT_BINARY_DIR}/include)
 include_directories(SYSTEM ${CUDA_INCLUDE_DIRS})
 include_directories(SYSTEM ${OPENBABEL2_INCLUDE_DIR})
 include_directories(SYSTEM ${Boost_INCLUDE_DIR})

@@ -6,7 +6,7 @@
  */
 
 
-#include "transform.h"
+#include "libmolgrid/transform.h"
 
 namespace libmolgrid {
 

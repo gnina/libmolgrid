@@ -9,9 +9,9 @@
 #ifndef EXAMPLE_PROVIDER_H_
 #define EXAMPLE_PROVIDER_H_
 
-#include "example.h"
-#include "exampleref_providers.h"
-#include "example_extractor.h"
+#include "libmolgrid/example.h"
+#include "libmolgrid/exampleref_providers.h"
+#include "libmolgrid/example_extractor.h"
 
 namespace libmolgrid {
 

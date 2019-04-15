@@ -5,7 +5,7 @@
  *      Author: dkoes
  */
 
-#include <exampleref_providers.h>
+#include "libmolgrid/exampleref_providers.h"
 
 namespace libmolgrid {
 

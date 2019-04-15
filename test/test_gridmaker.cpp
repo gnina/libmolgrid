@@ -1,8 +1,8 @@
 #define BOOST_TEST_MODULE gridmaker_test
 #include <boost/test/unit_test.hpp>
 #include "test_util.h"
-#include "grid_maker.h"
-#include "example_extractor.h"
+#include "libmolgrid/grid_maker.h"
+#include "libmolgrid/example_extractor.h"
 #include <iostream>
 #include <iomanip>
 

@@ -15,20 +15,19 @@ set( LIBMOLGRID_SOURCES
 )
 
 set( LIBMOLGRID_HEADERS
- libmolgrid.h
- grid.h
- managed_grid.h
- quaternion.h
- transform.h
- cartesian.h
- atom_typer.h
- example.h
- coordinateset.h
- exampleref_providers.h
- example_extractor.h
- example_provider.h
- grid_maker.h
- coord_cache.h
+ ../include/libmolgrid/libmolgrid.h
+ ../include/libmolgrid/grid.h
+ ../include/libmolgrid/managed_grid.h
+ ../include/libmolgrid/quaternion.h
+ ../include/libmolgrid/transform.h
+ ../include/libmolgrid/atom_typer.h
+ ../include/libmolgrid/example.h
+ ../include/libmolgrid/coordinateset.h
+ ../include/libmolgrid/exampleref_providers.h
+ ../include/libmolgrid/example_extractor.h
+ ../include/libmolgrid/example_provider.h
+ ../include/libmolgrid/grid_maker.h
+ ../include/libmolgrid/coord_cache.h
 )
 
 #include_directories (${Boost_INCLUDE_DIRS})

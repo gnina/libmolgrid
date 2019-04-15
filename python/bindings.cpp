@@ -5,11 +5,11 @@
  */
 
 #include "bindings.h"
-#include "quaternion.h"
-#include "transform.h"
-#include "atom_typer.h"
-#include "example_provider.h"
-#include "grid_maker.h"
+#include "libmolgrid/quaternion.h"
+#include "libmolgrid/transform.h"
+#include "libmolgrid/atom_typer.h"
+#include "libmolgrid/example_provider.h"
+#include "libmolgrid/grid_maker.h"
 
 using namespace boost::python;
 using namespace libmolgrid;

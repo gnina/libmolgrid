@@ -11,8 +11,8 @@
 #include <thrust/reduce.h>
 #include <thrust/execution_policy.h>
 
-#include "transform.h"
-#include "managed_grid.h"
+#include "libmolgrid/transform.h"
+#include "libmolgrid/managed_grid.h"
 #include "test_transform.h"
 
 using namespace libmolgrid;

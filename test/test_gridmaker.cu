@@ -1,9 +1,10 @@
 #define BOOST_TEST_MODULE gridmaker_cuda_test
 #include <boost/test/unit_test.hpp>
-#include "grid_maker.h"
-#include "atom_typer.h"
 #include "test_util.h"
-#include "example_extractor.h"
+
+#include "libmolgrid/grid_maker.h"
+#include "libmolgrid/atom_typer.h"
+#include "libmolgrid/example_extractor.h"
 #include <iostream>
 #include <iomanip>
 

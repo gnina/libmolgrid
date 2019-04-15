@@ -12,7 +12,7 @@
 
 #include <vector>
 #include <openbabel/mol.h>
-#include "managed_grid.h"
+#include "libmolgrid/managed_grid.h"
 
 namespace libmolgrid {
 

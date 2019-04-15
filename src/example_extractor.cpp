@@ -5,8 +5,8 @@
  *      Author: dkoes
  */
 
-#include "example_extractor.h"
-#include "atom_typer.h"
+#include "libmolgrid/example_extractor.h"
+#include "libmolgrid/atom_typer.h"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/filesystem/path.hpp>

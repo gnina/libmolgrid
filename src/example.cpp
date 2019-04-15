@@ -11,7 +11,7 @@
 #include <boost/algorithm/string.hpp>
 #include <cuda_runtime.h>
 
-#include "example.h"
+#include "libmolgrid/example.h"
 
 namespace libmolgrid {
 

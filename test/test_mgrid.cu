@@ -10,7 +10,7 @@
 #include <thrust/reduce.h>
 #include <thrust/execution_policy.h>
 
-#include "managed_grid.h"
+#include "libmolgrid/managed_grid.h"
 
 using namespace libmolgrid;
 
