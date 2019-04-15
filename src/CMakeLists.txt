@@ -47,4 +47,4 @@ install(TARGETS libmolgrid_shared DESTINATION lib)
 install(TARGETS libmolgrid_static DESTINATION lib)
 
 #install headers
-install(FILES ${LIBMOLGRID_HEADERS} DESTINATION include/libmolgrid)
+install(FILES ${LIBMOLGRID_HEADERS} ${PROJECT_BINARY_DIR}/include/libmolgrid/config.h DESTINATION include/libmolgrid)
