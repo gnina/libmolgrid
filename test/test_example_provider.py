@@ -68,3 +68,62 @@ def test_gnina_example_provider():
         assert label0[i] == labels[i][0]
         assert label1[i] == labels[i][1]
         assert label2[i] == labels[i][2]
+        
+    ex = batch[0]
+    crec = ex.coord_sets[0]
+    assert crec.size() == 1781
+    assert list(crec.coord[0]) == approx([45.042, 12.872, 13.001])
+    assert list(crec.type_index)[:10] == [6.0, 1.0, 1.0, 7.0, 0.0, 6.0, 1.0, 1.0, 7.0, 1.0]
+    
+    clig = ex.coord_sets[1]
+    assert clig.size() == 10
+    assert list(clig.coord[9]) == approx([27.0536, 3.2453, 32.4511])
+    assert list(clig.type_index) == [8.0, 1.0, 1.0, 9.0, 10.0, 0.0, 0.0, 1.0, 9.0, 8.0]
+
+
+def test_cached_example_provider():
+    fname = datadir+"/small.types"
+    e = molgrid.ExampleProvider(ligmolcache=datadir+'/lig.molcache2',recmolcache=datadir+'/rec.molcache2')
+    e.populate(fname)
+
+    batch_size = 100
+    batch = e.next_batch(batch_size)
+    #extract labels
+    nlabels = e.num_labels()
+    assert nlabels == 3
+    labels = molgrid.MGrid2f(batch_size,nlabels)
+    gpulabels = molgrid.MGrid2f(batch_size,nlabels)
+
+    batch.extract_labels(labels.cpu())
+    batch.extract_labels(gpulabels.gpu())
+    assert np.array_equal(labels.tonumpy(), gpulabels.tonumpy())
+    label0 = molgrid.MGrid1f(batch_size)
+    label1 = molgrid.MGrid1f(batch_size)
+    label2 = molgrid.MGrid1f(batch_size)
+    batch.extract_label(0, label0.cpu())
+    batch.extract_label(1, label1.cpu())
+    batch.extract_label(2, label2.gpu())
+
+    assert label0[0] == 1
+    assert label1[0] == approx(6.05)
+    assert label2[0] == approx(0.162643)
+    assert labels[0,0] == 1
+    assert labels[0][1] == approx(6.05)
+    assert labels[0][2] == approx(0.162643)
+
+    for i in range(nlabels):
+        assert label0[i] == labels[i][0]
+        assert label1[i] == labels[i][1]
+        assert label2[i] == labels[i][2]
+        
+    ex = batch[0]
+    crec = ex.coord_sets[0]
+    assert crec.size() == 1781
+    assert list(crec.coord[0]) == approx([45.042, 12.872, 13.001])
+    assert list(crec.type_index)[:10] == [6.0, 1.0, 1.0, 7.0, 0.0, 6.0, 1.0, 1.0, 7.0, 1.0]
+    
+    clig = ex.coord_sets[1]
+    assert clig.size() == 10
+    assert list(clig.coord[9]) == approx([27.0536, 3.2453, 32.4511])        
+    assert list(clig.type_index) == [8.0, 1.0, 1.0, 9.0, 10.0, 0.0, 0.0, 1.0, 9.0, 8.0]
+

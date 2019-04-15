@@ -16,6 +16,7 @@
 #include "example.h"
 #include "exampleref_providers.h"
 #include "coordinateset.h"
+#include "coord_cache.h"
 
 namespace libmolgrid {
 
@@ -30,36 +31,33 @@ namespace libmolgrid {
  */
 class ExampleExtractor {
 
-    using CoordCache = std::unordered_map<const char*, CoordinateSet>;
-
-    std::vector<std::shared_ptr<AtomTyper> > typers;
     std::vector<CoordCache> coord_caches; //different typers have duplicated caches
-
-    std::string data_root;
-    bool use_cache = true;
-    bool addh = true;
     bool duplicate_poses = false;
 
-    void set_coords(const char *fname, unsigned which, CoordinateSet& coord);
+    size_t count_types(unsigned n) const;
   public:
 
-    ExampleExtractor(const ExampleProviderSettings& settings, std::shared_ptr<AtomTyper> t):
-         data_root(settings.data_root), use_cache(settings.cache_structs), addh(settings.add_hydrogens) {
-      typers.push_back(t);
-      coord_caches.resize(typers.size());
+    ExampleExtractor(const ExampleProviderSettings& settings, std::shared_ptr<AtomTyper> t) {
+      coord_caches.push_back(CoordCache(t, settings, settings.recmolcache));
     }
 
-    ExampleExtractor(const ExampleProviderSettings& settings, std::shared_ptr<AtomTyper> t1, std::shared_ptr<AtomTyper> t2):
-         data_root(settings.data_root), use_cache(settings.cache_structs), addh(settings.add_hydrogens) {
-      typers.push_back(t1);
-      typers.push_back(t2);
-      coord_caches.resize(typers.size());
+    ExampleExtractor(const ExampleProviderSettings& settings, std::shared_ptr<AtomTyper> t1, std::shared_ptr<AtomTyper> t2) {
+      coord_caches.push_back(CoordCache(t1, settings, settings.recmolcache));
+      coord_caches.push_back(CoordCache(t2, settings, settings.ligmolcache));
     }
 
-    ExampleExtractor(const ExampleProviderSettings& settings, const std::vector<std::shared_ptr<AtomTyper> >& typrs):
-        typers(typrs), data_root(settings.data_root), use_cache(settings.cache_structs), addh(settings.add_hydrogens) {
-      coord_caches.resize(typers.size());
-      if(typers.size() == 0) throw std::invalid_argument("Need at least one atom typer for example extractor");
+    ExampleExtractor(const ExampleProviderSettings& settings,
+        const std::vector<std::shared_ptr<AtomTyper> >& typrs,
+        const std::vector<std::string>& molcaches = std::vector<std::string>()) {
+      coord_caches.reserve(typrs.size());
+      if(typrs.size() == 0) throw std::invalid_argument("Need at least one atom typer for example extractor");
+      for(unsigned i = 0, n = typrs.size(); i < n; i++) {
+        if(i < molcaches.size()) {
+          coord_caches.push_back(CoordCache(typrs[i], settings, molcaches[i]));
+        } else {
+          coord_caches.push_back(CoordCache(typrs[i], settings));
+        }
+      }
     }
 
     virtual ~ExampleExtractor() {}
@@ -68,7 +66,12 @@ class ExampleExtractor {
     virtual void extract(const ExampleRef& ref, Example& ex);
 
     /// return the number of types (channels) each example will have
+    /// Note: this is only accurate if types are explicitly setup.  Must provide an ExampleRef
+    // if implicit typing is being used
     virtual size_t type_size() const;
+
+    // return number types (channels) ref will produce
+    virtual size_t type_size(const ExampleRef& ref) const;
 };
 
 } /* namespace libmolgrid */

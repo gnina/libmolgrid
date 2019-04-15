@@ -9,6 +9,7 @@ set( LIBMOLGRID_SOURCES
  grid_maker.cpp
  grid_maker.cu
  coordinateset.cpp
+ coord_cache.cpp
  transform.cpp
  transform.cu
 )
@@ -27,6 +28,7 @@ set( LIBMOLGRID_HEADERS
  example_extractor.h
  example_provider.h
  grid_maker.h
+ coord_cache.h
 )
 
 #include_directories (${Boost_INCLUDE_DIRS})

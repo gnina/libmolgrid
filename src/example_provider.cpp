@@ -34,9 +34,9 @@ ExampleProvider::ExampleProvider(const ExampleProviderSettings& settings,
 }
 
 ExampleProvider::ExampleProvider(const ExampleProviderSettings& settings,
-    const std::vector<std::shared_ptr<AtomTyper> >& typrs)
+    const std::vector<std::shared_ptr<AtomTyper> >& typrs, const std::vector<std::string>& molcaches)
 :
-    provider(createProvider(settings)), extractor(settings, typrs) {
+    provider(createProvider(settings)), extractor(settings, typrs, molcaches) {
 
 }
 

@@ -38,7 +38,8 @@ class ExampleProvider {
     ExampleProvider(const ExampleProviderSettings& settings, std::shared_ptr<AtomTyper> t1, std::shared_ptr<AtomTyper> t2);
 
     /// Create provider/extractor according to settings
-    ExampleProvider(const ExampleProviderSettings& settings, const std::vector<std::shared_ptr<AtomTyper> >& typrs);
+    ExampleProvider(const ExampleProviderSettings& settings, const std::vector<std::shared_ptr<AtomTyper> >& typrs,
+        const std::vector<std::string>& molcaches = std::vector<std::string>());
 
     /// use provided provider
     ExampleProvider(std::shared_ptr<ExampleRefProvider> p, const ExampleExtractor& e);

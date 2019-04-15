@@ -18,69 +18,6 @@ namespace libmolgrid {
 using namespace std;
 using namespace OpenBabel;
 
-//set coords using the which'th typer and cache
-void ExampleExtractor::set_coords(const char *fname, unsigned which, CoordinateSet& coord) {
-  if(coord_caches[which].count(fname)) {
-    coord = coord_caches[which][fname].clone(); //always copy out of cache
-  } else {
-    std::string fullname = fname;
-    if(data_root.length()) {
-      boost::filesystem::path p = boost::filesystem::path(data_root) / boost::filesystem::path(fname);
-      fullname = p.string();
-    }
-    //check for custom gninatypes file
-    if(boost::algorithm::ends_with(fname,".gninatypes"))
-    {
-      if(typers[which]->is_vector_typer())
-        throw invalid_argument("Vector typer used with gninatypes files");
-
-      struct info {
-        float x,y,z;
-        int type;
-      } atom;
-
-      ifstream in(fullname.c_str());
-      if(!in) throw invalid_argument("Could not read "+fullname);
-
-      vector<float3> c;
-      vector<float> r;
-      vector<unsigned> t;
-      while(in.read((char*)&atom, sizeof(atom)))
-      {
-        auto t_r = typers[which]->get_int_type(atom.type);
-        if(t_r.first >= 0) { //ignore neg
-          t.push_back(t_r.first);
-          r.push_back(t_r.second);
-          c.push_back(make_float3(atom.x,atom.y,atom.z));
-        }
-      }
-
-      coord = CoordinateSet(c, t, r, typers[which]->num_types());
-      coord.src = fname;
-    }
-    else if(!boost::algorithm::ends_with(fname,"none")) //reserved word
-    {
-      //read mol from file and set mol info (atom coords and grid positions)
-      OBConversion conv;
-      OBMol mol;
-      if(!conv.ReadFile(&mol, fullname.c_str()))
-        throw invalid_argument("Could not read " + fullname);
-
-      if(addh) {
-        mol.AddHydrogens();
-      }
-
-      coord = CoordinateSet(&mol, *typers[which]);
-      coord.src = fname;
-    }
-
-    if(use_cache) { //save coord
-      coord_caches[which][fname] = coord;
-    }
-  }
-}
-
-
 void ExampleExtractor::extract(const ExampleRef& ref, Example& ex) {
   ex.labels = ref.labels; //the easy part
 
@@ -92,18 +29,18 @@ void ExampleExtractor::extract(const ExampleRef& ref, Example& ex) {
     for(unsigned i = 0, n = ref.files.size(); i < n; i++) {
       const char* fname = ref.files[i];
       unsigned t = i;
-      if(t >= typers.size()) t = typers.size()-1; //repeat last typer if necessary
-      set_coords(fname, t, ex.sets[i]);
+      if(t >= coord_caches.size()) t = coord_caches.size()-1; //repeat last typer if necessary
+      coord_caches[t].set_coords(fname, ex.sets[i]);
     }
   } else { //duplicate first pose (receptor) to match each of the remaining poses
     unsigned N = ref.files.size() - 1;
     ex.sets.resize(N*2);
-    set_coords(ref.files[0], 0, ex.sets[0]);
+    coord_caches[0].set_coords(ref.files[0], ex.sets[0]);
     for(unsigned i = 1, n = ref.files.size(); i < n; i++) {
       const char* fname = ref.files[i];
       unsigned t = i;
-      if(t >= typers.size()) t = typers.size()-1; //repeat last typer if necessary
-      set_coords(fname, t, ex.sets[2*(i-1)+1]);
+      if(t >= coord_caches.size()) t = coord_caches.size()-1; //repeat last typer if necessary
+      coord_caches[t].set_coords(fname, ex.sets[2*(i-1)+1]);
 
       //duplicate receptor by copying
       if(i > 1) ex.sets[2*(i-1)] = ex.sets[0];
@@ -112,14 +49,28 @@ void ExampleExtractor::extract(const ExampleRef& ref, Example& ex) {
 
 }
 
-size_t ExampleExtractor::type_size() const {
+//assume there are n files, return number oftypes
+size_t ExampleExtractor::count_types(unsigned n) const {
   size_t ret = 0;
-  for(unsigned i = 0, n = typers.size(); i < n; i++) {
-    ret += typers[i]->num_types();
+  for(unsigned i = 0; i < n; i++) {
+    unsigned t = i;
+    if(t >= coord_caches.size()) t = coord_caches.size()-1;
+    ret += coord_caches[t].type_size();
+  }
+  if(duplicate_poses && coord_caches.size() > 2) {
+    size_t rsize = coord_caches[0].type_size();
+    size_t dups = coord_caches.size() - 2;
+    ret += rsize*dups;
   }
   return ret;
 }
+size_t ExampleExtractor::type_size() const {
+  return count_types(coord_caches.size());
+}
 
+size_t ExampleExtractor::type_size(const ExampleRef& ref) const {
+  return count_types(ref.files.size());
+}
 
 
 } /* namespace libmolgrid */

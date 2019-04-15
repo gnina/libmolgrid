@@ -35,7 +35,9 @@ namespace libmolgrid {
     EXSET(bool, cache_structs, true, "retain coordinates in memory for faster training") \
     EXSET(bool, add_hydrogens, true, "protonate read in molecule using openbabel") \
     EXSET(bool, duplicate_first, false, "clone the first coordinate set to be paired with each of the remaining (receptor-ligand pairs)") \
-    EXSET(std::string, data_root, "", "prefix for data files")
+    EXSET(std::string, data_root, "", "prefix for data files") \
+    EXSET(std::string, recmolcache, "", "precalculated molcache2 file for receptor (first molecule)") \
+    EXSET(std::string, ligmolcache, "", "precalculated molcache2 file for ligand")
 
 /** Description of how examples should be provided
  * This provides configuration to example refs, extractors, and the provider itself
