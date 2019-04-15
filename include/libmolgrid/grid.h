@@ -10,10 +10,9 @@
 #include <boost/preprocessor/repetition.hpp>
 #include <boost/lexical_cast.hpp>
 #include <cassert>
-#include "common.h"
 #include <iostream>
 
-
+#include "libmolgrid/common.h"
 #include "libmolgrid/libmolgrid.h"
 
 namespace libmolgrid {

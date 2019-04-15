@@ -364,7 +364,7 @@ public:
         tmp.back().setup();
       }
       else {
-        LOG(INFO) << "Empty bucket " << i;
+        log(INFO) << "Empty bucket " << i;
       }
     }
     swap(examples,tmp);

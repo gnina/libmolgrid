@@ -28,6 +28,7 @@ set( LIBMOLGRID_HEADERS
  ../include/libmolgrid/example_provider.h
  ../include/libmolgrid/grid_maker.h
  ../include/libmolgrid/coord_cache.h
+ ../include/libmolgrid/common.h
 )
 
 #include_directories (${Boost_INCLUDE_DIRS})

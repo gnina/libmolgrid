@@ -19,7 +19,7 @@ namespace libmolgrid {
 
     enum LogLevel { INFO, WARNING, DEBUG};
 
-    inline std::ostream& LOG(LogLevel level = INFO) {
+    inline std::ostream& log(LogLevel level = INFO) {
       return std::cout; //todo, implement verbosity levels
     }
 

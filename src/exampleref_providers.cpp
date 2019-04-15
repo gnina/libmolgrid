@@ -28,13 +28,13 @@ void ReceptorStratifiedExampleRefProvider<BalancedExampleRefProvider, 2>::setup(
     {
       ExampleRef tmp;
       examples[i].next_active(tmp);
-      LOG(INFO) << "Dropping receptor " << tmp.files[0] << " with no decoys.";
+      log(INFO) << "Dropping receptor " << tmp.files[0] << " with no decoys.";
     }
     else if(examples[i].num_decoys() > 0)
     {
       ExampleRef tmp;
       examples[i].next_decoy(tmp);
-      LOG(INFO) << "Dropping receptor " << tmp.files[0] << " with no actives.";
+      log(INFO) << "Dropping receptor " << tmp.files[0] << " with no actives.";
     }
   }
 
