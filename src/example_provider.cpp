@@ -69,7 +69,7 @@ void ExampleProvider::populate(const std::vector<std::string>& fnames,
 
 ///provide next example
 void ExampleProvider::next(Example& ex) {
-  static ExampleRef ref;
+  static thread_local ExampleRef ref;
   provider->nextref(ref);
   extractor.extract(ref, ex);
 }
@@ -86,6 +86,14 @@ void ExampleProvider::next_batch(std::vector<Example>& ex,
   }
 
 }
+
+void ExampleProvider::skip(unsigned n) {
+  ExampleRef ref;
+  for(unsigned i = 0; i < n; i++) {
+    provider->nextref(ref);
+  }
+}
+
 
 std::shared_ptr<ExampleRefProvider> ExampleProvider::createProvider(
     const ExampleProviderSettings& settings) {

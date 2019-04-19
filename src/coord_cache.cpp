@@ -151,6 +151,8 @@ void CoordCache::set_coords(const char *fname, CoordinateSet& coord) {
 
       coord = CoordinateSet(&mol, *typer);
       coord.src = fname;
+    } else {
+      coord = CoordinateSet();
     }
 
     if(use_cache) { //save coord

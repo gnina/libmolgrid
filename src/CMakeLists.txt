@@ -12,6 +12,8 @@ set( LIBMOLGRID_SOURCES
  coord_cache.cpp
  transform.cpp
  transform.cu
+ grid_io.cpp
+ cartesian_grid.cpp
 )
 
 set( LIBMOLGRID_HEADERS
@@ -29,6 +31,8 @@ set( LIBMOLGRID_HEADERS
  ../include/libmolgrid/grid_maker.h
  ../include/libmolgrid/coord_cache.h
  ../include/libmolgrid/common.h
+ ../include/libmolgrid/grid_io.h
+ ../include/libmolgrid/cartesian_grid.h
 )
 
 #include_directories (${Boost_INCLUDE_DIRS})

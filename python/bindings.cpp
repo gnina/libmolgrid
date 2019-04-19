@@ -10,6 +10,7 @@
 #include "libmolgrid/atom_typer.h"
 #include "libmolgrid/example_provider.h"
 #include "libmolgrid/grid_maker.h"
+#include "libmolgrid/grid_io.h"
 
 using namespace boost::python;
 using namespace libmolgrid;
@@ -644,6 +645,7 @@ MAKE_ALL_GRIDS()
           },
           (arg("file_name"), arg("num_labels")=-1, arg("has_group")=false))
       .def("num_labels", &ExampleProvider::num_labels)
+      .def("settings", &ExampleProvider::settings,return_value_policy<copy_const_reference>())
       .def("type_size", &ExampleProvider::type_size)
       .def("next", static_cast<Example (ExampleProvider::*)()>(&ExampleProvider::next))
       .def("next_batch", static_cast< std::vector<Example> (ExampleProvider::*)(unsigned)>(&ExampleProvider::next_batch),
@@ -671,7 +673,17 @@ MAKE_ALL_GRIDS()
       .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, false> g){ self.forward(center, c, g); })
       .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, true> g){ self.forward(center, c, g); })
       .def("forward", +[](GridMaker& self, const Example& ex, const Transform& t, Grid<float, 4, false> g){ self.forward(ex, t, g); })
-      .def("forward", +[](GridMaker& self, const Example& ex, const Transform& t, Grid<float, 4, true> g){ self.forward(ex, t, g); })
-;
+      .def("forward", +[](GridMaker& self, const Example& ex, const Transform& t, Grid<float, 4, true> g){ self.forward(ex, t, g); });
+
+  class_<CartesianGrid<MGrid3f> >("CartesianGrid", init<MGrid3f, float3, float>())
+      .def("center",&CartesianGrid<MGrid3f>::center)
+      .def("resolution", &CartesianGrid<MGrid3f>::resolution)
+      .def("grid", +[](CartesianGrid<MGrid3f>& self) { return self.grid();});
+
+  //grid io
+  def("read_dx",static_cast<CartesianGrid<ManagedGrid<float, 3> > (*)(const std::string&)>(&read_dx<float>));
+  def("write_dx",static_cast<void (*)(const std::string& fname, const Grid3f&, const float3&, float)>(&write_dx<float>));
+  def("write_map",static_cast<void (*)(const std::string& fname, const Grid3f&, const float3&, float)>(&write_map<float>));
+
 
 }

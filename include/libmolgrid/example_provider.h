@@ -22,7 +22,7 @@ namespace libmolgrid {
 class ExampleProvider {
     std::shared_ptr<ExampleRefProvider> provider;
     ExampleExtractor extractor;
-
+    ExampleProviderSettings init_settings; //save settings created with
   public:
 
     /// return provider as specifyed by settings
@@ -57,6 +57,12 @@ class ExampleProvider {
     virtual void next(Example& ex);
     virtual Example next() { Example ex; next(ex); return ex; }
 
+    ///skip over the first n examples
+    virtual void skip(unsigned n);
+
+    ///return settings created with
+    const ExampleProviderSettings& settings() const { return init_settings; }
+
     ///provide a batch of examples
     virtual void next_batch(std::vector<Example>& ex, unsigned batch_size);
     virtual std::vector<Example> next_batch(unsigned batch_size) {
@@ -69,6 +75,8 @@ class ExampleProvider {
     ExampleRefProvider& get_provider() { return *provider; }
 
     size_t type_size() const { return extractor.type_size(); }
+    ///return number of examples
+    size_t size() const { return provider->size(); }
 };
 
 } /* namespace libmolgrid */
