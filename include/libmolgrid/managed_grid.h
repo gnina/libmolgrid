@@ -10,6 +10,7 @@
 #define MANAGED_GRID_H_
 
 #include <memory>
+#include <utility>
 #include <boost/lexical_cast.hpp>
 
 #include "libmolgrid/grid.h"
@@ -35,7 +36,10 @@ class ManagedGridBase {
     std::shared_ptr<Dtype> ptr; //shared pointer lets us not worry about copying the grid
     mutable bool sent_to_gpu = false; //a CUDA grid view has been requested and there have been no host accesses
 
-    template<typename... I>
+    ///empty (unusable) grid
+    ManagedGridBase() = default;
+
+    template<typename... I, typename = typename std::enable_if<sizeof...(I) == NumDims>::type>
     ManagedGridBase(I... sizes): gpu_grid(nullptr, sizes...), cpu_grid(nullptr, sizes...) {
       //allocate buffer
       ptr = create_unified_shared_ptr<Dtype>(this->size());
@@ -197,7 +201,10 @@ class ManagedGrid :  public ManagedGridBase<Dtype, NumDims> {
   public:
     using subgrid_t = ManagedGrid<Dtype,NumDims-1>;
 
-    template<typename... I>
+    //empty, unusable grid
+    ManagedGrid() = default;
+
+    template<typename... I, typename = typename std::enable_if<sizeof...(I) == NumDims>::type>
     ManagedGrid(I... sizes): ManagedGridBase<Dtype,NumDims>(sizes...) {
     }
 
@@ -234,6 +241,7 @@ class ManagedGrid<Dtype, 1> : public ManagedGridBase<Dtype, 1> {
   public:
     using subgrid_t = Dtype;
 
+    ManagedGrid() = default;
     ManagedGrid(size_t sz): ManagedGridBase<Dtype, 1>(sz) {
     }
 
@@ -270,52 +278,6 @@ class ManagedGrid<Dtype, 1> : public ManagedGridBase<Dtype, 1> {
 
 };
 
-#if 0
-template<typename Dtype, std::size_t NumDims, bool isCUDA>
-Grid<Dtype, NumDims, isCUDA>::Grid(const ManagedGrid<Dtype, NumDims>& mg):
-  buffer(mg.data()) {
-  int device = -1;
-
-  for(unsigned i = 0; i < NumDims; i++) {
-    dims[i] = mg.dimension(i);
-    offs[i] = mg.offset(i);
-  }
-
-  if(isCUDA) {
-    //prefetch to GPU
-    cudaGetDevice(&device);
-  } else {
-    //prefetch to host
-    device = cudaCpuDeviceId;
-  }
-  cudaMemPrefetchAsync(this->data(),this->size(),device, NULL);
-  //not all GPUs support prefetch, so absorb any errors here
-  cudaGetLastError();
-  //make sure mem is synced
-  if(isCUDA) mg.gpu();
-  else mg.cpu();
-}
-
-template<typename Dtype, bool isCUDA>
-Grid<Dtype, 1, isCUDA>::Grid(const ManagedGrid<Dtype, 1>& mg):
-  buffer(mg.data()), dims{mg.dimension(0)} {
-  int device = -1;
-
-  if(isCUDA) {
-    //prefetch to GPU
-    cudaGetDevice(&device);
-  } else {
-    //prefetch to host
-    device = cudaCpuDeviceId;
-  }
-  cudaMemPrefetchAsync(this->data(),this->size(),device, NULL);
-  //not all GPUs support prefetch, so absorb any errors here
-  cudaGetLastError();
-  //make sure mem is synced
-  if(isCUDA) mg.gpu();
-  else mg.cpu();
-}
-#endif
 
 #define EXPAND_MGRID_DEFINITIONS(Z,SIZE,_) \
 typedef ManagedGrid<float, SIZE> MGrid##SIZE##f; \

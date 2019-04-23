@@ -8,6 +8,7 @@
 #define BOOST_TEST_MODULE mgrid_test
 #include <boost/test/unit_test.hpp>
 
+#include <vector>
 #include "libmolgrid/grid.h"
 
 using namespace libmolgrid;
@@ -83,4 +84,18 @@ BOOST_AUTO_TEST_CASE( indirect_indexing )
 
   g2[7][3] = 314;
   BOOST_CHECK_EQUAL(g[1][3][7][3],314);
+}
+
+BOOST_AUTO_TEST_CASE( blank_grid )
+{
+  std::vector<Grid2f> vec(2);
+  float data[3][2] = {0};
+  data[1][1] = 3;
+  vec[0] = Grid2f(&data[0][0], 3, 2);
+  BOOST_CHECK_EQUAL(vec[0][1][1],3.0);
+  BOOST_CHECK_EQUAL(vec[1].dimension(0), 0);
+  BOOST_CHECK_EQUAL(vec[1].dimension(1), 0);
+
+  std::vector<Grid1f> vec1(3);
+  BOOST_CHECK_EQUAL(vec1[0].dimension(0), 0);
 }

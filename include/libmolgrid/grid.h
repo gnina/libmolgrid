@@ -107,6 +107,11 @@ class Grid {
     /// set the underlying memory buffer - use with caution!
     CUDA_CALLABLE_MEMBER inline void set_buffer(Dtype *ptr) { buffer = ptr; }
 
+    /** \brief Empty grid constructor. */
+    Grid(): buffer(nullptr), dims{0}, offs{0} {
+
+    }
+
     /** \brief Grid constructor
      *
      * Provide pointer and dimensions specified as arguments
@@ -239,6 +244,8 @@ class Grid<Dtype,1,isCUDA> {
 
     /// set the underlying memory buffer - use with caution!
     CUDA_CALLABLE_MEMBER inline void set_buffer(Dtype *ptr) { buffer = ptr; }
+
+    Grid(): buffer(nullptr), dims{0} { }
 
     Grid(Dtype* const d, size_t sz):
       buffer(d), dims{sz} { }

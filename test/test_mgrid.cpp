@@ -122,3 +122,20 @@ BOOST_AUTO_TEST_CASE( grid_conversion )
   BOOST_CHECK_EQUAL(gpu6(2,2,2,0,0,5), 3.14);
 
 }
+
+
+BOOST_AUTO_TEST_CASE( blank_mgrid )
+{
+  std::vector<MGrid1f> vec(2);
+  MGrid1f m(3);
+  m[1] = 3.0;
+  vec[0] = m;
+  BOOST_CHECK_EQUAL(vec[0][1],3.0);
+  BOOST_CHECK_EQUAL(vec[1].dimension(0), 0);
+
+  std::vector<MGrid3f> vec3(3);
+  BOOST_CHECK_EQUAL(vec3[1].dimension(0), 0);
+  BOOST_CHECK_EQUAL(vec3[1].dimension(1), 0);
+  BOOST_CHECK_EQUAL(vec3[1].dimension(2), 0);
+
+}
