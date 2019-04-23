@@ -10,6 +10,7 @@
 #include <random>
 #include <iostream>
 #include <boost/lexical_cast.hpp>
+#include <cuda_runtime.h>
 
 // dimensionalities up to but not including LIBMOLGRID_MAX_GRID_DIM are pre-instantiated
 #define LIBMOLGRID_MAX_GRID_DIM 9
@@ -17,6 +18,7 @@ namespace libmolgrid {
     ///random engine used in libmolgrid
     extern std::default_random_engine random_engine;
 
+    using cuda_float3 = ::float3; //in case "someone" has redefined float3
     enum LogLevel { INFO, WARNING, DEBUG};
 
     inline std::ostream& log(LogLevel level = INFO) {

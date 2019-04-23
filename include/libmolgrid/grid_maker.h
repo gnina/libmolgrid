@@ -133,17 +133,18 @@ class GridMaker {
     /* \brief Generate grid tensor from an example.
      * Coordinates may be optionally translated/rotated.  Do not use this function
      * if it is desirable to retain the transformation used (e.g., when backpropagating).
-     * The center of the last coordinate set before transformation
-     * will be used as the grid center.
      *
      * @param[in] ex example
      * @param[in] transform transformation to apply
      * @param[out] out a 4D grid
      * @param[in] random_translation  maximum amount to randomly translate each coordinate (+/-)
      * @param[in] random_rotation whether or not to randomly rotate
+     * @param[in] center grid center to use, if not provided will use center of the last coordinate set before transformation
      */
     template <typename Dtype, bool isCUDA>
-    void forward(const Example& in, Grid<Dtype, 4, isCUDA>& out, float random_translation=0.0, bool random_rotation = false) const;
+    void forward(const Example& in, Grid<Dtype, 4, isCUDA>& out,
+        float random_translation=0.0, bool random_rotation = false,
+        const float3& center = make_float3(INFINITY, INFINITY, INFINITY)) const;
 
     /* \brief Generate grid tensor from a vector of examples, as provided by ExampleProvider.next_batch.
      * Coordinates may be optionally translated/rotated.  Do not use this function
@@ -241,13 +242,13 @@ extern template void GridMaker::forward(float3 grid_center, const Grid<float, 2,
     Grid<double, 4, true>& out) const;
 
 extern template void GridMaker::forward(const Example& in, Grid<float, 4, false>& out,
-    float random_translation, bool random_rotation) const;
+    float random_translation, bool random_rotation, const float3& center) const;
 extern template void GridMaker::forward(const Example& in, Grid<float, 4, true>& out,
-    float random_translation, bool random_rotation) const;
+    float random_translation, bool random_rotation, const float3& center) const;
 extern template void GridMaker::forward(const Example& in, Grid<double, 4, false>& out,
-    float random_translation, bool random_rotation) const;
+    float random_translation, bool random_rotation, const float3& center) const;
 extern template void GridMaker::forward(const Example& in, Grid<double, 4, true>& out,
-    float random_translation, bool random_rotation) const;
+    float random_translation, bool random_rotation, const float3& center) const;
 
 extern template void GridMaker::forward(const Example& in, const Transform& transform, Grid<float, 4, false>& out) const;
 extern template void GridMaker::forward(const Example& in, const Transform& transform, Grid<float, 4, true>& out) const;

@@ -21,7 +21,7 @@ CartesianGrid<ManagedGrid<DType, 3> > read_dx(const std::string& fname);
 ///read in binary file, grid must be correct size
 template <class G>
 void read_bin(std::istream& in, G& grid) {
-    in.read(grid.data(), grid.size() * sizeof(G::type));
+    in.read((char*)grid.data(), grid.size() * sizeof(typename G::type));
 }
 
 
@@ -48,7 +48,7 @@ void write_map(const std::string& fname, const Grid<DType, 3>& grid, const float
 //dump raw data in binary
 template <class G>
 void write_bin(std::ostream& out, const G& grid) {
-    out.write(grid.data(), grid.size() * sizeof(G::type));
+    out.write((char*)grid.data(), grid.size() * sizeof(typename G::type));
 }
 
 

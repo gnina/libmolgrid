@@ -5,6 +5,7 @@
  *      Author: dkoes
  */
 #include "libmolgrid/grid_maker.h"
+#include <cmath>
 
 namespace libmolgrid {
 
@@ -82,20 +83,23 @@ template void GridMaker::forward(const Example& in, const Transform& transform, 
 
 template<typename Dtype, bool isCUDA>
 void GridMaker::forward(const Example& in, Grid<Dtype, 4, isCUDA>& out,
-    float random_translation, bool random_rotation) const {
-  float3 center = in.sets.back().center();
-  Transform t(center, random_translation, random_rotation);
+    float random_translation, bool random_rotation, const float3& center) const {
+  float3 c = center;
+  if(std::isinf(c.x)) {
+    c = in.sets.back().center();
+  }
+  Transform t(c, random_translation, random_rotation);
   forward(in, t, out);
 }
 
 template void GridMaker::forward(const Example& in, Grid<float, 4, false>& out,
-    float random_translation, bool random_rotation) const;
+    float random_translation, bool random_rotation, const float3& center) const;
 template void GridMaker::forward(const Example& in, Grid<float, 4, true>& out,
-    float random_translation, bool random_rotation) const;
+    float random_translation, bool random_rotation, const float3& center) const;
 template void GridMaker::forward(const Example& in, Grid<double, 4, false>& out,
-    float random_translation, bool random_rotation) const;
+    float random_translation, bool random_rotation, const float3& center) const;
 template void GridMaker::forward(const Example& in, Grid<double, 4, true>& out,
-    float random_translation, bool random_rotation) const;
+    float random_translation, bool random_rotation, const float3& center) const;
 
 template<typename Dtype>
 void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
