@@ -6,10 +6,12 @@
  */
 
 #include "libmolgrid/exampleref_providers.h"
+#include <boost/algorithm/string.hpp>
 
 namespace libmolgrid {
 
 using namespace std;
+using namespace boost::algorithm;
 
 template<>
 void ReceptorStratifiedExampleRefProvider<BalancedExampleRefProvider, 2>::setup() {
@@ -49,8 +51,11 @@ int ExampleRefProvider::populate(std::istream& lines, int numlabels, bool hasgro
   string line;
   while (getline(lines, line))
   {
-    ExampleRef ref(line, numlabels, hasgroup);
-    addref(ref);
+    trim(line);
+    if(line.length() > 0) { //ignore blank lines
+      ExampleRef ref(line, numlabels, hasgroup);
+      addref(ref);
+    }
   }
 
   return size();
