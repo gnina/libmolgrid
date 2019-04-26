@@ -88,6 +88,9 @@ struct CoordinateSet {
     ret.type_vector = type_vector.clone();
     return ret;
   }
+
+  ///for debugging
+  void dump(std::ostream& out) const;
 };
 
 }

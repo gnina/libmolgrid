@@ -62,6 +62,15 @@ class GridMaker {
       return make_float3(dim, dim, dim);
     }
 
+    float get_resolution() const { return resolution; }
+    void set_resolution(float res) { resolution = res; dim = ::round(dimension / resolution) + 1; }
+
+    float get_dimension() const { return dimension; }
+    void set_dimension(float d) { dimension = d; dim = ::round(dimension / resolution) + 1; }
+
+    bool get_binary() const { return binary; }
+    void set_binary(bool b) { binary = b; }
+
     /* \brief Use externally specified grid_center to determine where grid begins.
      * Used for translating between cartesian coords and grids.
      * @param[in] grid center

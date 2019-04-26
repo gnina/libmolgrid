@@ -41,7 +41,14 @@ if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
 endif()
 
-set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -Werror cross-execution-space-call,deprecated-declarations")
+#compile for all major architetures >=35
+set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -Werror cross-execution-space-call,deprecated-declarations \
+ -gencode arch=compute_35,code=sm_35  \
+ -gencode arch=compute_50,code=sm_50 \
+ -gencode arch=compute_60,code=sm_60 \
+ -gencode arch=compute_70,code=sm_70 \
+ -gencode arch=compute_75,code=sm_75 \
+ ")
 
 
 # add the binary tree to the search path for include files

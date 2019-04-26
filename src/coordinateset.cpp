@@ -201,4 +201,19 @@ float3 CoordinateSet::center() const {
   return ret;
 }
 
+void CoordinateSet::dump(std::ostream& out) const {
+  unsigned N = coord.dimension(0);
+  coord.tocpu();
+  if(N == 0) return;
+  for(unsigned i = 0; i < N; i++) {
+    out << coord(i,0) << "," << coord(i,1) << "," << coord(i,2);
+    if(has_indexed_types()) {
+      out << " " << type_index(i);
+    }
+    //todo vector types
+    out << "\n";
+  }
+}
+
+
 }

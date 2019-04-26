@@ -55,7 +55,7 @@ CartesianGrid<ManagedGrid<DType, 3> > read_dx(std::istream& in) {
   if (res != lexical_cast<float>(tokens[3])) throw invalid_argument("Could not read dx file: mismatch (2)");;
 
   //figure out center
-  double half = res * n / 2.0;
+  double half = res * (n-1) / 2.0;
   float3 center;
   center.x = x + half;
   center.y = y + half;
