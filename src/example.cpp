@@ -179,8 +179,8 @@ CoordinateSet Example::merge_coordinates(bool unique_index_types) const {
   if(sets.size() == 0) {
     return CoordinateSet();
   } else if(sets.size() == 1) {
-    //the super easy case, possibly dangerous since not copying data?
-    return sets[0];
+    //copy data for consistency with multiple sets
+    return sets[0].clone();
   } else if(sets[0].has_indexed_types()) {
 
     vector<float3> coords;

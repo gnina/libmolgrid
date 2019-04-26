@@ -97,6 +97,11 @@ class Transform {
     const Quaternion& quaternion() const { return Q; }
     float3 rotation_center() const { return center; }
     float3 translation() const { return translate; }
+
+    void set_quaternion(const Quaternion& q) { Q = q; }
+    void set_rotation_center(float3 c) { center = c; }
+    void set_translation(float3 t) { translate = t; }
+
   private:
 
     // Sanity check grid dimensions and throw exceptions if they are wrong

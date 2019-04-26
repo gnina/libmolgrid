@@ -67,7 +67,7 @@ std::pair<size_t, size_t> GridMaker::get_bounds_1d(const float grid_origin,
 
 template <typename Dtype, bool isCUDA>
 void GridMaker::forward(const Example& in, const Transform& transform, Grid<Dtype, 4, isCUDA>& out) const {
-  CoordinateSet c = in.merge_coordinates();
+  CoordinateSet c = in.merge_coordinates(); // !important - this copies the underlying coordinates so we can safely mogrify them
   if(c.max_type != out.dimension(0)) throw std::out_of_range("Incorrect number of channels in output grid: "+itoa(c.max_type) +" vs "+itoa(out.dimension(0)));
   if(isCUDA) c.togpu(); //this will enable tranformation on the gpu
   transform.forward(c,c);

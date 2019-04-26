@@ -65,8 +65,7 @@ struct Example {
     size_t type_size(bool unique_index_types=true) const;
 
     /** \brief Combine all coordinate sets into one and return it.
-     * All coordinate sets must have the same kind of typing.  Note that if there is only
-     * a single set, the returned set will reference the same memory.
+     * All coordinate sets must have the same kind of typing.  The result is a copy of the input coordinates.
      * @param[out] c coordinateset to overwrite
      * @param[in] unique_indexed_types if true, different coordinate sets will have unique, non-overlapping types
      */

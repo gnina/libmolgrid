@@ -102,7 +102,7 @@ void write_dx(std::ostream& out, const Grid<DType, 3>& grid, const float3& cente
       << n << "\n";
 
   // figure out origin from center and dim/res
-  double half = resolution * n / 2.0;
+  double half = resolution * (n-1) / 2.0;
   out << "origin " << center.x-half << " " << center.y-half << " " << center.z-half << "\n";
 
   out << "delta " << resolution << " 0 0\ndelta 0 " << resolution
