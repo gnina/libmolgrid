@@ -86,6 +86,7 @@ void Example::merge_coordinates(std::vector<float3>& coords, std::vector<float>&
   for(unsigned s = 0, ns = sets.size(); s < ns; s++) {
     const CoordinateSet& CS = sets[s];
     unsigned n = CS.radius.size();
+    if(n == 0) continue; //ignore empties
 
     if(!CS.has_indexed_types()) throw logic_error("Coordinate sets do not have compatible index types for merge.");
 
@@ -162,6 +163,8 @@ void Example::merge_coordinates(std::vector<float3>& coords, std::vector<std::ve
   for(unsigned s = 0, ns = sets.size(); s < ns; s++) {
     const CoordinateSet& CS = sets[s];
     unsigned n = CS.radius.size();
+    if(n == 0) continue;
+
     //todo: memcpy this
     for(unsigned i = 0; i < n; i++) {
       coords.push_back(make_float3(CS.coord[i][0], CS.coord[i][1], CS.coord[i][2]));
