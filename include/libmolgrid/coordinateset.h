@@ -64,6 +64,7 @@ struct CoordinateSet {
   void make_vector_types();
 
   unsigned num_types() const { return max_type; }
+  void set_num_types(unsigned maxt) { max_type = maxt; }
 
   ///number of atoms
   unsigned size() const { return coord.dimension(0); }
