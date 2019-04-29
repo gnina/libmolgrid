@@ -657,6 +657,12 @@ MAKE_ALL_GRIDS()
       init<float, float, float, bool>((arg("resolution")=0.5, arg("dimension")=23.5, arg("radius_multiple")=1.5, arg("binary")=false)))
       .def("spatial_grid_dimensions", +[](GridMaker& self) { float3 dims = self.get_grid_dims(); return make_tuple(int(dims.x),int(dims.y),int(dims.z));})
       .def("grid_dimensions", +[](GridMaker& self, int ntypes) { float3 dims = self.get_grid_dims(); return make_tuple(ntypes,int(dims.x),int(dims.y),int(dims.z));})
+      .def("get_resolution", &GridMaker::get_resolution)
+      .def("set_resolution", &GridMaker::set_resolution)
+      .def("get_dimension", &GridMaker::get_dimension)
+      .def("set_dimension", &GridMaker::set_dimension)
+      .def("get_binary", &GridMaker::get_binary)
+      .def("set_binary", &GridMaker::set_binary)
       //grids need to be passed by value
       .def("forward", +[](GridMaker& self, const Example& ex, Grid<float, 4, false> g, float random_translate, bool random_rotate){
             self.forward(ex, g, random_translate, random_rotate); },
