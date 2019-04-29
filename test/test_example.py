@@ -29,7 +29,11 @@ def test_example_merge():
     assert np.array_equal(t, c3.type_index.tonumpy())
     
     #test merging without unique types, which makes no sense
-    c4 = ex.merge_coordinates(False)
+    c4 = ex.merge_coordinates(0,False)
     assert c4.coord.tonumpy().shape == (24,3)
     t = np.concatenate([c.type_index.tonumpy(),c2.type_index.tonumpy()])
     assert np.array_equal(t, c4.type_index.tonumpy())
+    
+    #test sliced merging
+    c5 = ex.merge_coordinates(1,False)
+    assert c5.coord.tonumpy().shape == (8,3) #no hydrogens in this slice

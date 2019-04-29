@@ -39,13 +39,13 @@ size_t Example::type_size(bool unique_index_types) const {
 }
 
 //grid version
-void Example::merge_coordinates(Grid2f& c, Grid1f& t, Grid1f& r, bool unique_index_types) const {
+void Example::merge_coordinates(Grid2f& c, Grid1f& t, Grid1f& r, unsigned start, bool unique_index_types) const {
 
   vector<float3> coords;
   vector<float> types;
   vector<float> radii;
 
-  merge_coordinates(coords, types, radii, unique_index_types);
+  merge_coordinates(coords, types, radii, start, unique_index_types);
 
   //validate sizes
   if(c.dimension(0) != coords.size()) {
@@ -68,14 +68,14 @@ void Example::merge_coordinates(Grid2f& c, Grid1f& t, Grid1f& r, bool unique_ind
 
 }
 
-void Example::merge_coordinates(std::vector<float3>& coords, std::vector<float>& types, std::vector<float>& radii, bool unique_index_types) const {
+void Example::merge_coordinates(std::vector<float3>& coords, std::vector<float>& types, std::vector<float>& radii, unsigned start, bool unique_index_types) const {
   unsigned N = coordinate_size();
 
   coords.clear();
   types.clear();
   radii.clear();
 
-  if(sets.size() == 0) return;
+  if(sets.size() <= start) return;
 
   coords.reserve(N);
   types.reserve(N);
@@ -83,7 +83,7 @@ void Example::merge_coordinates(std::vector<float3>& coords, std::vector<float>&
 
   //accumulate info
   unsigned toffset = 0; //amount to offset types
-  for(unsigned s = 0, ns = sets.size(); s < ns; s++) {
+  for(unsigned s = start, ns = sets.size(); s < ns; s++) {
     const CoordinateSet& CS = sets[s];
     unsigned n = CS.radius.size();
     if(n == 0) continue; //ignore empties
@@ -101,13 +101,13 @@ void Example::merge_coordinates(std::vector<float3>& coords, std::vector<float>&
 }
 
 //grid version of vector
-void Example::merge_coordinates(Grid2f& c, Grid2f& t, Grid1f& r, bool unique_index_types) const {
+void Example::merge_coordinates(Grid2f& c, Grid2f& t, Grid1f& r, unsigned start, bool unique_index_types) const {
 
   vector<float3> coords;
   vector< vector<float> > types;
   vector<float> radii;
 
-  merge_coordinates(coords, types, radii, unique_index_types);
+  merge_coordinates(coords, types, radii, start, unique_index_types);
 
   if(types.size() == 0)
     return;
@@ -136,18 +136,18 @@ void Example::merge_coordinates(Grid2f& c, Grid2f& t, Grid1f& r, bool unique_ind
 
 }
 
-void Example::merge_coordinates(std::vector<float3>& coords, std::vector<std::vector<float> >& types, std::vector<float>& radii, bool unique_index_types) const {
+void Example::merge_coordinates(std::vector<float3>& coords, std::vector<std::vector<float> >& types, std::vector<float>& radii, unsigned start, bool unique_index_types) const {
 
   coords.clear();
   types.clear();
   radii.clear();
 
-  if(sets.size() == 0) return;
+  if(sets.size() <= start) return;
 
   unsigned N = coordinate_size();
-  unsigned maxt = sets[0].max_type;
+  unsigned maxt = sets[start].max_type;
   //validate type vector sizes
-  for(unsigned i = 0, n = sets.size(); i < n; i++) {
+  for(unsigned i = start, n = sets.size(); i < n; i++) {
     if(!sets[i].has_vector_types())
       throw logic_error("Coordinate sets do not have compatible vector types for merge.");
 
@@ -160,7 +160,7 @@ void Example::merge_coordinates(std::vector<float3>& coords, std::vector<std::ve
   radii.reserve(N);
 
   //accumulate info
-  for(unsigned s = 0, ns = sets.size(); s < ns; s++) {
+  for(unsigned s = start, ns = sets.size(); s < ns; s++) {
     const CoordinateSet& CS = sets[s];
     unsigned n = CS.radius.size();
     if(n == 0) continue;
@@ -178,18 +178,18 @@ void Example::merge_coordinates(std::vector<float3>& coords, std::vector<std::ve
   }
 }
 
-CoordinateSet Example::merge_coordinates(bool unique_index_types) const {
-  if(sets.size() == 0) {
+CoordinateSet Example::merge_coordinates(unsigned start, bool unique_index_types) const {
+  if(sets.size() <= start) {
     return CoordinateSet();
-  } else if(sets.size() == 1) {
+  } else if(sets.size() == start+1) {
     //copy data for consistency with multiple sets
-    return sets[0].clone();
-  } else if(sets[0].has_indexed_types()) {
+    return sets[start].clone();
+  } else if(sets[start].has_indexed_types()) {
 
     vector<float3> coords;
     vector<float> types;
     vector<float> radii;
-    merge_coordinates(coords, types, radii, unique_index_types);
+    merge_coordinates(coords, types, radii, start, unique_index_types);
 
     return CoordinateSet(coords, types, radii, type_size(unique_index_types));
 
@@ -198,7 +198,7 @@ CoordinateSet Example::merge_coordinates(bool unique_index_types) const {
     vector<float3> coords;
     vector<vector<float> > types;
     vector<float> radii;
-    merge_coordinates(coords, types, radii, unique_index_types);
+    merge_coordinates(coords, types, radii, start, unique_index_types);
     return CoordinateSet(coords, types, radii);
   }
 }

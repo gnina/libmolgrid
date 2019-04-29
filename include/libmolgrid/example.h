@@ -66,30 +66,33 @@ struct Example {
 
     /** \brief Combine all coordinate sets into one and return it.
      * All coordinate sets must have the same kind of typing.  The result is a copy of the input coordinates.
-     * @param[out] c coordinateset to overwrite
+     * @param[in] start ignore coordinates sets prior to this index (default zero)
      * @param[in] unique_indexed_types if true, different coordinate sets will have unique, non-overlapping types
+     *
      */
-    CoordinateSet merge_coordinates(bool unique_index_types=true) const;
+    CoordinateSet merge_coordinates(unsigned start = 0, bool unique_index_types=true) const;
 
     /** \brief Combine all coordinate sets into one.
      * All coordinate sets must have index typing
      * @param[out] coords  combined coordinates
      * @param[out] type_index combined types
      * @param[out] radii combined radii
+     * @param[in] start ignore coordinates sets prior to this index (default zero)
      * @param[in] unique_indexed_types if true, different coordinate sets will have unique, non-overlapping types
      */
-    void merge_coordinates(Grid2f& coords, Grid1f& type_index, Grid1f& radii, bool unique_index_types=true) const;
-    void merge_coordinates(std::vector<float3>& coords, std::vector<float>& type_index, std::vector<float>& radii, bool unique_index_types=true) const;
+    void merge_coordinates(Grid2f& coords, Grid1f& type_index, Grid1f& radii, unsigned start=0, bool unique_index_types=true) const;
+    void merge_coordinates(std::vector<float3>& coords, std::vector<float>& type_index, std::vector<float>& radii, unsigned start=0, bool unique_index_types=true) const;
 
     /** \brief Combine all coordinate sets into one.
      * All coordinate sets must have vector typing
      * @param[out] coords  combined coordinates
      * @param[out] type_index combined types
      * @param[out] radii combined radii
+     * @param[in] start ignore coordinates sets prior to this index (default zero)
      * @param[in] unique_indexed_types if true, different coordinate sets will have unique, non-overlapping types
      */
-    void merge_coordinates(Grid2f& coords, Grid2f& type_vector, Grid1f& radii, bool unique_index_types=true) const;
-    void merge_coordinates(std::vector<float3>& coords, std::vector<std::vector<float> >& type_vector, std::vector<float>& radii, bool unique_index_types=true) const;
+    void merge_coordinates(Grid2f& coords, Grid2f& type_vector, Grid1f& radii, unsigned start=0, bool unique_index_types=true) const;
+    void merge_coordinates(std::vector<float3>& coords, std::vector<std::vector<float> >& type_vector, std::vector<float>& radii, unsigned start=0, bool unique_index_types=true) const;
 
     /** \brief Extract labels from a vector of examples, as returned by ExampleProvider.next_batch.
      *
