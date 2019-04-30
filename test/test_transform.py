@@ -44,22 +44,22 @@ def test_random_transform():
   molgrid.set_random_seed(0) # reset, should get same sample
   t3 = Transform(c1, 4.0, True);
 
-  neqQ(t1.quaternion(),t2.quaternion());
-  neqQ(t1.quaternion(),nrt1.quaternion());
-  eqQ(t1.quaternion(),t3.quaternion());
-  eqQ(nrt1.quaternion(),nrt2.quaternion());
+  neqQ(t1.get_quaternion(),t2.get_quaternion());
+  neqQ(t1.get_quaternion(),nrt1.get_quaternion());
+  eqQ(t1.get_quaternion(),t3.get_quaternion());
+  eqQ(nrt1.get_quaternion(),nrt2.get_quaternion());
 
-  assert tup(t1.translation()) != tup(t2.translation())
-  assert tup(t1.translation()) != tup(nrt1.translation())
-  assert tup(t1.translation()) == tup(t3.translation())
-  assert tup(nrt1.translation()) == tup(nrt2.translation())
+  assert tup(t1.get_translation()) != tup(t2.get_translation())
+  assert tup(t1.get_translation()) != tup(nrt1.get_translation())
+  assert tup(t1.get_translation()) == tup(t3.get_translation())
+  assert tup(nrt1.get_translation()) == tup(nrt2.get_translation())
 
-  assert tup(c1) == tup(t1.rotation_center())
-  assert tup(c2) == tup(t2.rotation_center())
-  assert tup(c1) == tup(nrt1.rotation_center())
+  assert tup(c1) == tup(t1.get_rotation_center())
+  assert tup(c2) == tup(t2.get_rotation_center())
+  assert tup(c1) == tup(nrt1.get_rotation_center())
 
-  assert tup(c1) == tup(t.rotation_center())
-  assert tup(c1) == tup(t.translation())
+  assert tup(c1) == tup(t.get_rotation_center())
+  assert tup(c1) == tup(t.get_translation())
 
 
 def test_apply_transform():

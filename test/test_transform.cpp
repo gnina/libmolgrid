@@ -36,22 +36,22 @@ BOOST_AUTO_TEST_CASE( random_transform)
   random_engine.seed(0); //reset, should get same sample
   Transform t3(c1, 4.0, true);
 
-  neqQ(t1.quaternion(),t2.quaternion());
-  neqQ(t1.quaternion(),nrt1.quaternion());
-  eqQ(t1.quaternion(),t3.quaternion());
-  eqQ(nrt1.quaternion(),nrt2.quaternion());
+  neqQ(t1.get_quaternion(),t2.get_quaternion());
+  neqQ(t1.get_quaternion(),nrt1.get_quaternion());
+  eqQ(t1.get_quaternion(),t3.get_quaternion());
+  eqQ(nrt1.get_quaternion(),nrt2.get_quaternion());
 
-  neqPt(t1.translation(),t2.translation());
-  neqPt(t1.translation(),nrt1.translation());
-  eqPt(t1.translation(),t3.translation());
-  eqPt(nrt1.translation(),nrt2.translation());
+  neqPt(t1.get_translation(),t2.get_translation());
+  neqPt(t1.get_translation(),nrt1.get_translation());
+  eqPt(t1.get_translation(),t3.get_translation());
+  eqPt(nrt1.get_translation(),nrt2.get_translation());
 
-  eqPt(c1,t1.rotation_center());
-  eqPt(c2,t2.rotation_center());
-  eqPt(c1,nrt1.rotation_center());
+  eqPt(c1,t1.get_rotation_center());
+  eqPt(c2,t2.get_rotation_center());
+  eqPt(c1,nrt1.get_rotation_center());
 
-  eqPt(c1,t.rotation_center());
-  eqPt(c1,t.translation());
+  eqPt(c1,t.get_rotation_center());
+  eqPt(c1,t.get_translation());
 }
 
 BOOST_AUTO_TEST_CASE(apply_transform)

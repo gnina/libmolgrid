@@ -94,9 +94,9 @@ class Transform {
     template <typename Dtype>
     __host__ void backward(const Grid<Dtype, 2, true>& in, Grid<Dtype, 2, true>& out, bool dotranslate=true) const;
 
-    const Quaternion& quaternion() const { return Q; }
-    float3 rotation_center() const { return center; }
-    float3 translation() const { return translate; }
+    const Quaternion& get_quaternion() const { return Q; }
+    float3 get_rotation_center() const { return center; }
+    float3 get_translation() const { return translate; }
 
     void set_quaternion(const Quaternion& q) { Q = q; }
     void set_rotation_center(float3 c) { center = c; }

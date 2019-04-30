@@ -458,9 +458,12 @@ MAKE_ALL_GRIDS()
       .def(init<Quaternion, float3>())
       .def(init<Quaternion, float3, float3>())
   .def(init<float3, float, bool>((arg("center"),arg("random_translate")=0.0,arg("random_rotation")=false))) //center, translate, rotate
-  .def("quaternion", &Transform::quaternion, return_value_policy<copy_const_reference>())
-  .def("rotation_center", &Transform::rotation_center)
-  .def("translation", &Transform::translation)
+  .def("get_quaternion", &Transform::get_quaternion, return_value_policy<copy_const_reference>())
+  .def("get_rotation_center", &Transform::get_rotation_center)
+  .def("get_translation", &Transform::get_translation)
+  .def("set_quaternion", &Transform::set_quaternion)
+  .def("set_rotation_center", &Transform::set_rotation_center)
+  .def("set_translation", &Transform::set_translation)
   //non-const references need to be passed by value, so wrap
   .def("forward", +[](Transform& self, const Grid2f& in, Grid2f out, bool dotranslate) {self.forward(in,out,dotranslate);},
       Transform_forward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)))

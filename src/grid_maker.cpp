@@ -71,7 +71,7 @@ void GridMaker::forward(const Example& in, const Transform& transform, Grid<Dtyp
   if(c.max_type != out.dimension(0)) throw std::out_of_range("Incorrect number of channels in output grid: "+itoa(c.max_type) +" vs "+itoa(out.dimension(0)));
   if(isCUDA) c.togpu(); //this will enable tranformation on the gpu
   transform.forward(c,c);
-  forward(transform.rotation_center(), c, out);
+  forward(transform.get_rotation_center(), c, out);
 }
 
 //not sure why these have to be instantiated given the next function must implicitly isntantiate them
