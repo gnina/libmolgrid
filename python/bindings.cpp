@@ -528,12 +528,12 @@ MAKE_ALL_GRIDS()
       .def("get_type_names",&PythonCallbackVectorTyper::get_type_names);
   implicitly_convertible<std::shared_ptr<PythonCallbackVectorTyper>, std::shared_ptr<AtomTyper> >();
 
-  class_<FileAtomMapper, bases<AtomIndexTypeMapper>, std::shared_ptr<FileAtomMapper> >("FileAtomMapper", init<const std::string&, const std::vector<std::string> >())
+  class_<FileAtomMapper, std::shared_ptr<FileAtomMapper> >("FileAtomMapper", init<const std::string&, const std::vector<std::string> >())
       .def("num_types", &FileAtomMapper::num_types)
       .def("get_new_type", &FileAtomMapper::get_new_type)
       .def("get_type_names",&FileAtomMapper::get_type_names);
 
-  class_<SubsetAtomMapper, bases<AtomIndexTypeMapper>, std::shared_ptr<SubsetAtomMapper> >("SubsetAtomMapper", init<const std::vector<int>&, bool>())
+  class_<SubsetAtomMapper, std::shared_ptr<SubsetAtomMapper> >("SubsetAtomMapper", init<const std::vector<int>&, bool>())
       .def(init<const std::vector< std::vector<int> >&, bool>())
       .def(init<std::vector<int>&, bool, std::vector< std::string> >())
       .def(init<std::vector< std::vector<int> >&, bool, const std::vector< std::string>& >())
