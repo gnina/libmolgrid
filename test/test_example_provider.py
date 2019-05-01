@@ -40,6 +40,8 @@ def test_custom_typer_example_provider():
     e = molgrid.ExampleProvider(t,data_root=datadir+"/structs")
     e.populate(fname)
     batch = e.next_batch(10)
+    c = batch[0].coord_sets[0]
+    assert c.max_type == 80
     
 def test_gnina_example_provider():
     fname = datadir+"/small.types"
