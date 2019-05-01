@@ -66,4 +66,5 @@ void define_mgrid(const char* name);
 #define MAKE_ALL_GRIDS() BOOST_PP_REPEAT_FROM_TO(1,LIBMOLGRID_MAX_GRID_DIM, MAKE_GRIDS, 0);
 MAKE_ALL_GRIDS()
 
+
 #endif /* BINDINGS_H_ */

@@ -351,7 +351,7 @@ std::shared_ptr<ExampleProvider> create_ex_provider(tuple args, dict kwargs) {
 
   vector<shared_ptr<AtomTyper> > typers;
   for(int i = 0; i < N; i++) {
-    typers.push_back(extract<shared_ptr<AtomTyper> >(args[i]));
+    typers.push_back(extract<std::shared_ptr<AtomTyper> >(args[i]));
   }
 
   if(N == 0)
@@ -484,28 +484,32 @@ MAKE_ALL_GRIDS()
   converter::registry::insert(&extract_swig_wrapped_pointer, type_id<OpenBabel::OBMol>());
   converter::registry::insert(&extract_pybel_molecule, type_id<OpenBabel::OBMol>());
 
-  class_<AtomTyper>("AtomTyper", no_init);
+  class_<AtomTyper,  std::shared_ptr<AtomTyper> >("AtomTyper", no_init );
 
-  class_<GninaIndexTyper, bases<AtomTyper> >("GninaIndexTyper")
+  class_<GninaIndexTyper, bases<AtomTyper>, std::shared_ptr<GninaIndexTyper> >("GninaIndexTyper")
       .def(init<bool>())
       .def("num_types", &GninaIndexTyper::num_types)
       .def("get_atom_type_index", &GninaIndexTyper::get_atom_type_index)
       .def("get_type_names",&GninaIndexTyper::get_type_names);
+  implicitly_convertible<std::shared_ptr<GninaIndexTyper>, std::shared_ptr<AtomTyper> >();
 
-  class_<ElementIndexTyper, bases<AtomTyper> >("ElementIndexTyper")
+
+  class_<ElementIndexTyper, bases<AtomTyper>, std::shared_ptr<ElementIndexTyper> >("ElementIndexTyper")
       .def(init<int>())
       .def("num_types", &ElementIndexTyper::num_types)
       .def("get_atom_type_index", &ElementIndexTyper::get_atom_type_index)
       .def("get_type_names",&ElementIndexTyper::get_type_names);
+  implicitly_convertible<std::shared_ptr<ElementIndexTyper>, std::shared_ptr<AtomTyper> >();
 
-  class_<PythonCallbackIndexTyper, bases<AtomTyper> >("PythonCallbackIndexTyper",
+  class_<PythonCallbackIndexTyper, bases<AtomTyper>, std::shared_ptr<PythonCallbackIndexTyper> >("PythonCallbackIndexTyper",
       init<object, unsigned, list>(
           (arg("func"), arg("num_types"), arg("names") = list() ) ))
       .def("num_types", &PythonCallbackIndexTyper::num_types)
       .def("get_atom_type_index", &PythonCallbackIndexTyper::get_atom_type_index)
       .def("get_type_names",&PythonCallbackIndexTyper::get_type_names);
+  implicitly_convertible<std::shared_ptr<PythonCallbackIndexTyper>, std::shared_ptr<AtomTyper> >();
 
-  class_<GninaVectorTyper, bases<AtomTyper> >("GninaVectorTyper")
+  class_<GninaVectorTyper, bases<AtomTyper>, std::shared_ptr<GninaVectorTyper> >("GninaVectorTyper")
       .def("num_types", &GninaVectorTyper::num_types)
       .def("get_atom_type_vector", +[](const GninaVectorTyper& typer, OpenBabel::OBAtom* a) {
         std::vector<float> typs;
@@ -514,20 +518,22 @@ MAKE_ALL_GRIDS()
         return std::make_pair(ltyps,r);
         })
       .def("get_type_names",&GninaVectorTyper::get_type_names);
+  implicitly_convertible<std::shared_ptr<GninaVectorTyper>, std::shared_ptr<AtomTyper> >();
 
-  class_<PythonCallbackVectorTyper, bases<AtomTyper> >("PythonCallbackVectorTyper",
+  class_<PythonCallbackVectorTyper, bases<AtomTyper>, std::shared_ptr<PythonCallbackVectorTyper> >("PythonCallbackVectorTyper",
       init<object, unsigned, list>(
           (arg("func"), arg("num_types"), arg("names") = list() ) ))
       .def("num_types", &PythonCallbackVectorTyper::num_types)
       .def("get_atom_type_vector", &PythonCallbackVectorTyper::get_atom_type_vector)
       .def("get_type_names",&PythonCallbackVectorTyper::get_type_names);
+  implicitly_convertible<std::shared_ptr<PythonCallbackVectorTyper>, std::shared_ptr<AtomTyper> >();
 
-  class_<FileAtomMapper, bases<AtomTyper> >("FileAtomMapper", init<const std::string&, const std::vector<std::string> >())
+  class_<FileAtomMapper, bases<AtomIndexTypeMapper>, std::shared_ptr<FileAtomMapper> >("FileAtomMapper", init<const std::string&, const std::vector<std::string> >())
       .def("num_types", &FileAtomMapper::num_types)
       .def("get_new_type", &FileAtomMapper::get_new_type)
       .def("get_type_names",&FileAtomMapper::get_type_names);
 
-  class_<SubsetAtomMapper, bases<AtomTyper> >("SubsetAtomMapper", init<const std::vector<int>&, bool>())
+  class_<SubsetAtomMapper, bases<AtomIndexTypeMapper>, std::shared_ptr<SubsetAtomMapper> >("SubsetAtomMapper", init<const std::vector<int>&, bool>())
       .def(init<const std::vector< std::vector<int> >&, bool>())
       .def(init<std::vector<int>&, bool, std::vector< std::string> >())
       .def(init<std::vector< std::vector<int> >&, bool, const std::vector< std::string>& >())
@@ -544,7 +550,7 @@ MAKE_ALL_GRIDS()
       .def("get_new_type", &SubsetAtomMapper::get_new_type)
       .def("get_type_names",&SubsetAtomMapper::get_type_names);
 
-  class_<SubsettedElementTyper, bases<AtomTyper> >("SubsettedElementTyper", no_init)
+  class_<SubsettedElementTyper, bases<AtomTyper>, std::shared_ptr<SubsettedElementTyper> >("SubsettedElementTyper", no_init)
           .def("__init__",make_constructor(
               +[](list l, bool catchall, unsigned maxe) {
               if(list_is_vec<int>(l)) {
@@ -557,8 +563,9 @@ MAKE_ALL_GRIDS()
           .def("num_types", &SubsettedElementTyper::num_types)
           .def("get_atom_type_index", &SubsettedElementTyper::get_atom_type_index)
           .def("get_type_names",&SubsettedElementTyper::get_type_names);
+  implicitly_convertible<std::shared_ptr<SubsettedElementTyper>, std::shared_ptr<AtomTyper> >();
 
-  class_<SubsettedGninaTyper, bases<AtomTyper> >("SubsettedGninaTyper", no_init)
+  class_<SubsettedGninaTyper, bases<AtomTyper>, std::shared_ptr<SubsettedGninaTyper> >("SubsettedGninaTyper", no_init)
          .def("__init__",make_constructor(
                   +[](list l, bool catchall, bool usec) {
                   if(list_is_vec<int>(l)) {
@@ -571,19 +578,22 @@ MAKE_ALL_GRIDS()
           .def("num_types", &SubsettedGninaTyper::num_types)
           .def("get_atom_type_index", &SubsettedGninaTyper::get_atom_type_index)
           .def("get_type_names",&SubsettedGninaTyper::get_type_names);
+  implicitly_convertible<std::shared_ptr<SubsettedGninaTyper>, std::shared_ptr<AtomTyper> >();
 
-  class_<FileMappedGninaTyper, bases<AtomTyper> >("FileMappedGninaTyper",
+  class_<FileMappedGninaTyper, bases<AtomTyper>, std::shared_ptr<FileMappedGninaTyper> >("FileMappedGninaTyper",
           init<const std::string&, bool>((arg("fname"), arg("use_covalent_radius")=false)))
               //todo, add init for file stream inputs if we every want it
           .def("num_types", &FileMappedGninaTyper::num_types)
           .def("get_atom_type_index", &FileMappedGninaTyper::get_atom_type_index)
           .def("get_type_names",&FileMappedGninaTyper::get_type_names);
+  implicitly_convertible<std::shared_ptr<FileMappedGninaTyper>, std::shared_ptr<AtomTyper> >();
 
-  class_<FileMappedElementTyper, bases<AtomTyper> >("FileMappedElementTyper",
+  class_<FileMappedElementTyper, bases<AtomTyper>, std::shared_ptr<FileMappedElementTyper> >("FileMappedElementTyper",
           init<const std::string&, unsigned>((arg("fname"), arg("maxe")=84)))
           .def("num_types", &FileMappedElementTyper::num_types)
           .def("get_atom_type_index", &FileMappedElementTyper::get_atom_type_index)
           .def("get_type_names",&FileMappedElementTyper::get_type_names);
+  implicitly_convertible<std::shared_ptr<FileMappedElementTyper>, std::shared_ptr<AtomTyper> >();
 
   scope().attr("defaultGninaLigandTyper") = defaultGninaLigandTyper;
   scope().attr("defaultGninaReceptorTyper") = defaultGninaReceptorTyper;

@@ -34,6 +34,13 @@ def test_mol_example_provider(capsys):
 
     assert (6.0000, 3.8697, -6.6990, -4.3010, -9.0000, 3.3747, 6.0000, 3.8697, -6.6990, -4.3010) == approx(tuple(l1))
 
+def test_custom_typer_example_provider():
+    fname = datadir+"/small.types"
+    t = molgrid.ElementIndexTyper(80)
+    e = molgrid.ExampleProvider(t,data_root=datadir+"/structs")
+    e.populate(fname)
+    batch = e.next_batch(10)
+    
 def test_gnina_example_provider():
     fname = datadir+"/small.types"
     e = molgrid.ExampleProvider(data_root=datadir+"/structs")
