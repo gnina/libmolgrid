@@ -26,7 +26,7 @@ class AtomTyper;
  *
  */
 struct CoordinateSet {
-  MGrid2f coord{0,0};
+  MGrid2f coord{0,3};
   MGrid1f type_index{0}; //this should be integer
   MGrid2f type_vector{0,0};
   MGrid1f radius{0};
@@ -55,7 +55,7 @@ struct CoordinateSet {
   CoordinateSet(const Grid2fCUDA& c, const Grid2fCUDA& t, const Grid1fCUDA& r);
 
   /// return true if index types are available
-  bool has_indexed_types() const { return type_index.size() > 0; }
+  bool has_indexed_types() const { return type_index.size() > 0 || type_vector.size() == 0; }
 
   /// return true if vector types are available
   bool has_vector_types() const { return type_vector.size() > 0; }

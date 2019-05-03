@@ -201,6 +201,145 @@ class GridMaker {
         const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
         Grid<Dtype, 4, true>& out) const;
 
+    /* \brief Generate atom and type gradients from grid gradients. (CPU)
+     * Must provide atom coordinates that defined the original grid in forward
+     * Vector types are required.
+     * @param[in] center of grid
+     * @param[in] in coordinate set
+     * @param[in] diff a 4D grid of gradients
+     * @param[out] atomic_gradients vector quantities for each atom
+     * @param[out] type_gradients only set if input has type vectors
+     */
+    template <typename Dtype>
+    void backward(float3 grid_center, const CoordinateSet& in, const Grid<Dtype, 4, false>& diff,
+        Grid<Dtype, 2, false>& atomic_gradients, Grid<Dtype, 2, false>& type_gradients) const {
+      if(in.has_vector_types()) {
+        backward(grid_center, in.coord.cpu(), in.type_vector.cpu(), in.radius.cpu(), diff, atomic_gradients, type_gradients);
+      } else {
+        throw std::invalid_argument("Vector types missing from coordinate set");
+      }
+    }
+
+    /* \brief Generate atom gradients from grid gradients. (CPU)
+     * Must provide atom coordinates that defined the original grid in forward
+     * Index types are required
+     * @param[in] center of grid
+     * @param[in] in coordinate set
+     * @param[in] diff a 4D grid of gradients
+     * @param[out] atomic_gradients vector quantities for each atom
+     */
+    template <typename Dtype>
+    void backward(float3 grid_center, const CoordinateSet& in, const Grid<Dtype, 4, false>& diff,
+        Grid<Dtype, 2, false>& atomic_gradients) const {
+      if(in.has_indexed_types()) {
+        backward(grid_center, in.coord.cpu(), in.type_index.cpu(), in.radius.cpu(), diff, atomic_gradients);
+      } else {
+        throw std::invalid_argument("Index types missing from coordinate set"); //could setup dummy types here
+      }
+    }
+
+    /* \brief Generate atom and type gradients from grid gradients. (GPU)
+     * Must provide atom coordinates that defined the original grid in forward
+     * Vector types are required.
+     * @param[in] center of grid
+     * @param[in] in coordinate set
+     * @param[in] diff a 4D grid of gradients
+     * @param[out] atomic_gradients vector quantities for each atom
+     * @param[out] type_gradients only set if input has type vectors
+     */
+    template <typename Dtype>
+    void backward(float3 grid_center, const CoordinateSet& in, const Grid<Dtype, 4, true>& diff,
+        Grid<Dtype, 2, true>& atomic_gradients, Grid<Dtype, 2, true>& type_gradients) const {
+      if(in.has_vector_types()) {
+        backward(grid_center, in.coord.gpu(), in.type_vector.gpu(), in.radius.gpu(), diff, atomic_gradients, type_gradients);
+      } else {
+        throw std::invalid_argument("Vector types missing from coordinate set");
+      }
+    }
+
+    /* \brief Generate atom gradients from grid gradients. (GPU)
+     * Must provide atom coordinates that defined the original grid in forward
+     * Index types are required.
+     * @param[in] center of grid
+     * @param[in] in coordinate set
+     * @param[in] diff a 4D grid of gradients
+     * @param[out] atomic_gradients vector quantities for each atom
+     */
+    template <typename Dtype>
+    void backward(float3 grid_center, const CoordinateSet& in, const Grid<Dtype, 4, true>& diff,
+        Grid<Dtype, 2, true>& atomic_gradients) const {
+      if(in.has_indexed_types()) {
+        backward(grid_center, in.coord.gpu(), in.type_index.gpu(), in.radius.gpu(), diff, atomic_gradients);
+      } else {
+        throw std::invalid_argument("Index types missing from coordinate set");
+      }
+    }
+
+    /* \brief Generate atom gradients from grid gradients. (CPU)
+     * Must provide atom coordinates, types, and radii that defined the original grid in forward
+     * @param[in] center of grid
+     * @param[in] coordinates (Nx3)
+     * @param[in] type indices (N integers stored as floats)
+     * @param[in] radii (N)
+     * @param[in] diff a 4D grid of gradients
+     * @param[out] atomic_gradients vector quantities for each atom
+     */
+    template <typename Dtype>
+    void backward(float3 grid_center, const Grid<float, 2, false>& coords,
+        const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
+        const Grid<Dtype, 4, false>& diff, Grid<Dtype, 2, false>& atom_gradients);
+
+    /* \brief Generate atom gradients from grid gradients. (GPU)
+     * Must provide atom coordinates, types, and radii that defined the original grid in forward
+     * @param[in] center of grid
+     * @param[in] coordinates (Nx3)
+     * @param[in] type indices (N integers stored as floats)
+     * @param[in] radii (N)
+     * @param[in] diff a 4D grid of gradients
+     * @param[out] atomic_gradients vector quantities for each atom
+     */
+    template <typename Dtype>
+    void backward(float3 grid_center, const Grid<float, 2, true>& coords,
+        const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
+        const Grid<Dtype, 4, true>& grid, Grid<Dtype, 2, true>& atom_gradients);
+
+    /* \brief Generate atom and type gradients from grid gradients. (CPU)
+     * Must provide atom coordinates, types, and radii that defined the original grid in forward
+     * @param[in] center of grid
+     * @param[in] coordinates (Nx3)
+     * @param[in] type vectors (NxT)
+     * @param[in] radii (N)
+     * @param[in] diff a 4D grid of gradients
+     * @param[out] atomic_gradients vector quantities for each atom
+     * @param[out] type_gradients vector quantities for each atom
+     */
+    template <typename Dtype>
+    void backward(float3 grid_center, const Grid<float, 2, false>& coords,
+        const Grid<float, 2, false>& type_vectors, const Grid<float, 1, false>& radii,
+        const Grid<Dtype, 4, false>& diff,
+        Grid<Dtype, 2, false>& atom_gradients, Grid<Dtype, 2, false>& type_gradients) {
+      throw std::runtime_error("Vector type gradient calculation not implemented yet");
+    }
+
+    /* \brief Generate atom gradients from grid gradients. (GPU)
+     * Must provide atom coordinates, types, and radii that defined the original grid in forward
+     * @param[in] center of grid
+     * @param[in] coordinates (Nx3)
+     * @param[in] type vectors (NxT)
+     * @param[in] radii (N)
+     * @param[in] diff a 4D grid of gradients
+     * @param[out] atomic_gradients vector quantities for each atom
+     * @param[out] type_gradients vector quantities for each atom
+     *
+     */
+    template <typename Dtype>
+    void backward(float3 grid_center, const Grid<float, 2, true>& coords,
+        const Grid<float, 2, true>& type_vectors, const Grid<float, 1, true>& radii,
+        const Grid<Dtype, 4, true>& grid,
+        Grid<Dtype, 2, true>& atom_gradients,  Grid<Dtype, 2, true>& type_gradients) {
+      throw std::runtime_error("Vector type gradient calculation not implemented yet");
+    }
+
     /* \brief The GPU forward code path launches a kernel (forward_gpu) that
      * sets the grid values in two steps: first each thread cooperates with the
      * other threads in its block to determine which atoms could possibly
@@ -272,6 +411,21 @@ extern template void GridMaker::forward(const std::vector<Example>& in, Grid<dou
   float random_translation, bool random_rotation) const;
 extern template void GridMaker::forward(const std::vector<Example>& in, Grid<double, 5, true>& out,
     float random_translation, bool random_rotation) const;
+
+
+extern template void GridMaker::backward(float3 grid_center, const Grid<float, 2, false>& coords,
+    const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
+    const Grid<float, 4, false>& diff, Grid<float, 2, false>& atom_gradients);
+extern template void GridMaker::backward(float3 grid_center, const Grid<float, 2, false>& coords,
+    const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
+    const Grid<double, 4, false>& diff, Grid<double, 2, false>& atom_gradients);
+extern template void GridMaker::backward(float3 grid_center, const Grid<float, 2, true>& coords,
+    const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
+    const Grid<float, 4, true>& grid, Grid<float, 2, true>& atom_gradients);
+extern template void GridMaker::backward(float3 grid_center, const Grid<float, 2, true>& coords,
+    const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
+    const Grid<double, 4, true>& grid, Grid<double, 2, true>& atom_gradients);
+
 
 extern template void GridMaker::check_index_args(const Grid<float, 2, false>& coords,
     const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,

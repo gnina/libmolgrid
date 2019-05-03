@@ -361,6 +361,18 @@ std::shared_ptr<ExampleProvider> create_ex_provider(tuple args, dict kwargs) {
 
 }
 
+//register a vector of the specified type using name, but only if it isn't already registered
+template <typename T>
+void register_vector_type(const char *name) {
+  type_info info = type_id< std::vector<T> >();
+  const converter::registration* reg = converter::registry::query(info);
+  if (reg == NULL || (*reg).m_to_python == NULL) {
+    //register the type
+    class_<std::vector<T> >(name)
+        .def(vector_indexing_suite<std::vector<T> >());
+  }
+}
+
 BOOST_PYTHON_MODULE(molgrid)
 {
   Py_Initialize();
@@ -393,14 +405,13 @@ BOOST_PYTHON_MODULE(molgrid)
 MAKE_ALL_GRIDS()
 
 //vector utility types
-  class_<std::vector<size_t> >("SizeVec")
-      .def(vector_indexing_suite<std::vector<size_t> >());
-  class_<std::vector<std::string> >("StringVec")
-      .def(vector_indexing_suite<std::vector<std::string> >());
-  class_<std::vector<float> >("FloatVec")
-      .def(vector_indexing_suite<std::vector<float> >());
+  register_vector_type<size_t>("SizeVec");
+  register_vector_type<std::string>("StringVec");
+  register_vector_type<float>("FloatVec");
+
   class_<std::vector<CoordinateSet> >("CoordinateSetVec")
       .def(vector_indexing_suite<std::vector<CoordinateSet> >());
+
   class_<std::vector<Example> >("ExampleVec")
       .def(vector_indexing_suite<std::vector<Example> >())
       .def("extract_labels", +[](const std::vector<Example>& self, Grid<float, 2, false> out) { Example::extract_labels(self, out);})

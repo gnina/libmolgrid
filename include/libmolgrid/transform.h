@@ -102,6 +102,11 @@ class Transform {
     void set_rotation_center(float3 c) { center = c; }
     void set_translation(float3 t) { translate = t; }
 
+    /// transformation does not change inputs
+    bool is_identity() const {
+      return Q == Quaternion() && translate.x == 0 && translate.y == 0 && translate.z == 0;
+    }
+
   private:
 
     // Sanity check grid dimensions and throw exceptions if they are wrong

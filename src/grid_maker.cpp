@@ -185,4 +185,20 @@ template void GridMaker::forward(float3 grid_center,
     const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
     Grid<double, 4, false>& out) const;
 
+
+//cpu backwards
+template <typename Dtype>
+void GridMaker::backward(float3 grid_center, const Grid<float, 2, false>& coords,
+    const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
+    const Grid<Dtype, 4, false>& diff, Grid<Dtype, 2, false>& atom_gradients) {
+
+}
+
+template void GridMaker::backward(float3 grid_center, const Grid<float, 2, false>& coords,
+    const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
+    const Grid<float, 4, false>& diff, Grid<float, 2, false>& atom_gradients);
+template void GridMaker::backward(float3 grid_center, const Grid<float, 2, false>& coords,
+    const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
+    const Grid<double, 4, false>& diff, Grid<double, 2, false>& atom_gradients);
+
 }

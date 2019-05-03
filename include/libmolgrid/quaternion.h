@@ -95,6 +95,11 @@ class Quaternion {
       return *this;
     }
 
+    ///check bit level equality
+    __host__ __device__ bool operator==(const Quaternion& r) const {
+      return a == r.a && b == r.b && c == r.c && d == r.d;
+    }
+
     /// Quaternion divison
     __host__ __device__
     inline Quaternion operator/(const Quaternion& r) {
