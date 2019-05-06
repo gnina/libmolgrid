@@ -52,7 +52,7 @@ class GridMaker {
 
     GridMaker(float res = 0, float d = 0, bool bin = false, float rscale=1.0, float grm = 1.0) :
       resolution(res), dimension(d), radius_scale(rscale), gaussian_radius_multiple(grm), final_radius_multiple(0), binary(bin) {
-        initialize(res, d, rscale, grm, bin);
+        initialize(res, d, bin, rscale, grm);
       }
 
     virtual ~GridMaker() {}
