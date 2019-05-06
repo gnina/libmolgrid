@@ -32,6 +32,7 @@ npout = np.zeros(dims, dtype=np.float32)
                             
 from pytest import approx
 from numpy import around
+import numpy as np
 
 # there's like umpteen gazillion configuration options for example provider..
 datadir = os.path.dirname(__file__)+'/data'
@@ -94,3 +95,55 @@ def test_a_grid():
     
     assert 2.094017 == approx(mgridout.tonumpy().max())
     assert 2.094017 == approx(mgridgpu.tonumpy().max())
+
+def test_radius_multiples():
+    g1 = molgrid.GridMaker(resolution=.1,dimension=6.0)
+    c = np.array([[0,0,0]],np.float32)
+    t = np.array([0],np.float32)
+    r = np.array([1.0],np.float32)
+    coords = molgrid.CoordinateSet(molgrid.Grid2f(c),molgrid.Grid1f(t),molgrid.Grid1f(r),1)
+    shape = g1.grid_dimensions(1)
+    cpugrid = molgrid.MGrid4f(*shape)
+    gpugrid = molgrid.MGrid4f(*shape)
+    g1.forward((0,0,0),coords, cpugrid.cpu())
+    g1.forward((0,0,0),coords, gpugrid.gpu())
+    
+    np.testing.assert_allclose(cpugrid.tonumpy(),gpugrid.tonumpy(),atol=1e-5)
+    g = cpugrid.tonumpy()
+    
+    assert g[0,30,30,30] == approx(1)
+    
+    #cut a line across
+    line = g[0,30,30,:]
+    xvals = np.abs(np.arange(-3,3.1,.1))
+    gauss = np.exp(-2*xvals**2)
+    for i in range(20,41):
+        assert line[i] == approx(gauss[i])
+
+    for i in list(range(0,15))+list(range(45,61)):
+        assert line[i] == approx(0)
+        
+    quad = 4*np.exp(-2)*xvals**2 - 12 *np.exp(-2) * xvals + 9*np.exp(-2)
+    for i in list(range(15,20))+list(range(41,45)):
+        assert line[i] == approx(quad[i],abs=1e-5)        
+        
+    #funkier grid
+    g2 = molgrid.GridMaker(resolution=.1,dimension=6.0,radius_scale=0.5,gassian_radius_multiple=3.0)
+    cpugrid = molgrid.MGrid4f(*shape)
+    gpugrid = molgrid.MGrid4f(*shape)
+    g2.forward((0,0,0),coords, cpugrid.cpu())
+    g2.forward((0,0,0),coords, gpugrid.gpu())
+    
+    np.testing.assert_allclose(cpugrid.tonumpy(),gpugrid.tonumpy(),atol=1e-5)
+    g = cpugrid.tonumpy()
+    
+    assert g[0,30,30,30] == approx(1)
+    
+    #cut a line across
+    line = g[0,30,:,30]
+    xvals = np.abs(np.arange(-3,3.1,.1))*2.0
+    gauss = np.exp(-2*xvals**2)
+    #should be guassian the whole way, although quickly hits numerical zero
+    for i in range(0,61):
+        assert line[i] == approx(gauss[i],abs=1e-5)
+   

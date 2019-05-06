@@ -95,7 +95,7 @@ namespace libmolgrid {
       float endy = starty + resolution * blockDim.y;
       float endz = startz + resolution * blockDim.z;
     
-      float r = radii(aidx) * radiusmultiple;
+      float r = radii(aidx) * radius_scale * final_radius_multiple;
       float centerx = coords(aidx, 0);
       float centery = coords(aidx, 1);
       float centerz = coords(aidx, 2);
@@ -226,6 +226,7 @@ namespace libmolgrid {
           float dz = grid_coords.z - coords.z;
 
           float rsq = dx * dx + dy * dy + dz * dz;
+          ar *= radius_scale;
           if (binary) {
             //is point within radius?
             if (rsq < ar * ar)
@@ -236,24 +237,20 @@ namespace libmolgrid {
             //For non-binary density we want a Gaussian where 2 std occurs at the
             //radius, after which it becomes quadratic.
             //The quadratic is fit to have both the same value and first derivative
-            //at the cross over point and a value and derivative of zero at
-            //1.5*radius
-            //FIXME wrong for radiusmultiple != 1.5
+            //at the cross over point and a value and derivative of zero at fianl_radius_multiple
             float dist = sqrtf(rsq);
-            if (dist >= ar * radiusmultiple) {
+            if (dist >= ar * final_radius_multiple) {
               return 0.0;
             } else
-              if (dist <= ar) {
+              if (dist <= ar*gaussian_radius_multiple) {
                 //return gaussian
                 float h = 0.5 * ar;
                 float ex = -dist * dist / (2 * h * h);
                 return exp(ex);
               } else //return quadratic
               {
-                float h = 0.5 * ar;
-                float eval = 1.0 / (M_E * M_E); //e^(-2)
-                float q = dist * dist * eval / (h * h) - 6.0 * eval * dist / h
-                    + 9.0 * eval;
+                float dr = dist/ar;
+                float q = (A*dr+B)*dr+C;
                 return q > 0 ? q : 0; //avoid very small negative numbers
               }
           }

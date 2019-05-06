@@ -8,6 +8,7 @@
 
 #include "libmolgrid/coordinateset.h"
 #include "libmolgrid/atom_typer.h"
+#include <openbabel/obiter.h>
 
 namespace libmolgrid {
 

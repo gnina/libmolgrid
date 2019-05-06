@@ -32,11 +32,17 @@ namespace libmolgrid {
  */
 class GridMaker {
   protected:
-    float resolution; // grid spacing
-    float dimension; // grid side length in Angstroms
-    float radiusmultiple; // at what multiple of the atomic radius does the atom density go to 0
-    bool binary; // use binary occupancy instead of real-valued atom density
-    size_t dim; // grid width in points
+    float resolution = 0.5; /// grid spacing
+    float dimension = 0; /// grid side length in Angstroms
+    float radius_scale = 1.0; ///pre-multiplier for radius; simplest way to change size of atoms
+    float gaussian_radius_multiple = 1.0; /// multiple of atomic radius that gaussian function extends to
+    ///this is not set by the user, for G=gaussian_radius_multiple this is
+    /// $\frac{1+2G^2}{2G}$
+    float final_radius_multiple = 1.5;
+
+    float A,B,C; //precalculated coefficients for density
+    bool binary; /// use binary occupancy instead of real-valued atom density
+    size_t dim; /// grid width in points
 
     template<typename Dtype, bool isCUDA>
     void check_index_args(const Grid<float, 2, isCUDA>& coords,
@@ -44,18 +50,25 @@ class GridMaker {
         Grid<Dtype, 4, isCUDA>& out) const;
   public:
 
-    GridMaker(float res = 0, float d = 0, float rm = 1.5, bool bin = false) :
-      resolution(res), dimension(d), radiusmultiple(rm), binary(bin) {
-        initialize(res, d, rm, bin);
+    GridMaker(float res = 0, float d = 0, bool bin = false, float rscale=1.0, float grm = 1.0) :
+      resolution(res), dimension(d), radius_scale(rscale), gaussian_radius_multiple(grm), final_radius_multiple(0), binary(bin) {
+        initialize(res, d, rscale, grm, bin);
       }
 
     virtual ~GridMaker() {}
 
-    void initialize(float res, float d, float rm, bool bin = false) {
+    void initialize(float res, float d, float rscale=1.0, float grm=1.0, bool bin = false) {
       resolution = res;
       dimension = d;
-      radiusmultiple = rm;
+      radius_scale = rscale;
+      gaussian_radius_multiple = grm;
+      final_radius_multiple = (1+2*grm*grm)/(2*grm);
       dim = ::round(dimension / resolution) + 1;
+      binary = bin;
+
+      A = exp(-2*grm*grm)*4*grm*grm; // *d^2/r^2
+      B = -exp(-2*grm*grm)*(4*grm+8*grm*grm*grm); // * d/r
+      C = exp(-2*grm*grm)*(4*grm*grm*grm*grm+4*grm*grm+1); //constant
     }
 
     float3 get_grid_dims() const {

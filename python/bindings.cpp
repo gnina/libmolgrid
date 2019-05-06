@@ -678,7 +678,7 @@ MAKE_ALL_GRIDS()
 
   //grid maker
   class_<GridMaker>("GridMaker",
-      init<float, float, float, bool>((arg("resolution")=0.5, arg("dimension")=23.5, arg("radius_multiple")=1.5, arg("binary")=false)))
+      init<float, float, bool, float, float>(((arg("resolution")=0.5, arg("dimension")=23.5, arg("binary")=false, arg("radius_scale")=1.0), arg("gassian_radius_multiple")=1.0)))
       .def("spatial_grid_dimensions", +[](GridMaker& self) { float3 dims = self.get_grid_dims(); return make_tuple(int(dims.x),int(dims.y),int(dims.z));})
       .def("grid_dimensions", +[](GridMaker& self, int ntypes) { float3 dims = self.get_grid_dims(); return make_tuple(ntypes,int(dims.x),int(dims.y),int(dims.z));})
       .def("get_resolution", &GridMaker::get_resolution)

@@ -122,7 +122,7 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
       acoords.y = coords(aidx, 1);
       acoords.z = coords(aidx, 2);
       float radius = radii(aidx);
-      float densityrad = radius * radiusmultiple;
+      float densityrad = radius * radius_scale * final_radius_multiple;
 
       std::array<std::pair<size_t, size_t>, 3> bounds;
       bounds[0] = get_bounds_1d(grid_origin.x, coords(aidx, 0), densityrad);
