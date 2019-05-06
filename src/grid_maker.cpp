@@ -9,6 +9,22 @@
 
 namespace libmolgrid {
 
+
+void GridMaker::initialize(float res, float d, bool bin, float rscale, float grm) {
+  resolution = res;
+  dimension = d;
+  radius_scale = rscale;
+  gaussian_radius_multiple = grm;
+  final_radius_multiple = (1+2*grm*grm)/(2*grm);
+  dim = ::round(dimension / resolution) + 1;
+  binary = bin;
+
+  A = exp(-2*grm*grm)*4*grm*grm; // *d^2/r^2
+  B = -exp(-2*grm*grm)*(4*grm+8*grm*grm*grm); // * d/r
+  C = exp(-2*grm*grm)*(4*grm*grm*grm*grm+4*grm*grm+1); //constant
+  std::cerr << resolution << "," << dimension << "," << radius_scale << "," << gaussian_radius_multiple << "," << binary << "\n";
+}
+
 //validate argument ranges
 template<typename Dtype, bool isCUDA>
 void GridMaker::check_index_args(const Grid<float, 2, isCUDA>& coords,

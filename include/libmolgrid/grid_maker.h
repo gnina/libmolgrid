@@ -57,34 +57,37 @@ class GridMaker {
 
     virtual ~GridMaker() {}
 
-    void initialize(float res, float d, float rscale=1.0, float grm=1.0, bool bin = false) {
-      resolution = res;
-      dimension = d;
-      radius_scale = rscale;
-      gaussian_radius_multiple = grm;
-      final_radius_multiple = (1+2*grm*grm)/(2*grm);
-      dim = ::round(dimension / resolution) + 1;
-      binary = bin;
+    /** \brief Initialize grid settings
+     * @param[in] res resolution of grid in Angstroms
+     * @param[in] d dimension of cubic grid side in Angstroms
+     * @param[in] bin boolean indicating if binary density should be used
+     * @param[in] rscale scaling factor to be uniformly applied to all input radii
+     * @param[in] grm gaussian radius multiplier - cutoff point for switching from Gaussian density to quadratic
+     */
+    void initialize(float res, float d, bool bin = false, float rscale=1.0, float grm=1.0);
 
-      A = exp(-2*grm*grm)*4*grm*grm; // *d^2/r^2
-      B = -exp(-2*grm*grm)*(4*grm+8*grm*grm*grm); // * d/r
-      C = exp(-2*grm*grm)*(4*grm*grm*grm*grm+4*grm*grm+1); //constant
-    }
-
+    ///return spatial dimensions of grid
     float3 get_grid_dims() const {
       return make_float3(dim, dim, dim);
     }
 
+    ///return resolution in Angstroms
     float get_resolution() const { return resolution; }
+
+    ///set resolution in Angstroms
     void set_resolution(float res) { resolution = res; dim = ::round(dimension / resolution) + 1; }
 
+    ///get dimension in Angstroms
     float get_dimension() const { return dimension; }
+    ///set dimension in Angstroms
     void set_dimension(float d) { dimension = d; dim = ::round(dimension / resolution) + 1; }
 
+    ///return if density is binary
     bool get_binary() const { return binary; }
+    ///set if density is binary
     void set_binary(bool b) { binary = b; }
 
-    /* \brief Use externally specified grid_center to determine where grid begins.
+    /** \brief Use externally specified grid_center to determine where grid begins.
      * Used for translating between cartesian coords and grids.
      * @param[in] grid center
      * @param[out] grid bounds
