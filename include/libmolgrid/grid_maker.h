@@ -41,6 +41,7 @@ class GridMaker {
     float final_radius_multiple = 1.5;
 
     float A,B,C; //precalculated coefficients for density
+    float D,E; //precalculate coefficients for backprop
     bool binary; /// use binary occupancy instead of real-valued atom density
     size_t dim; /// grid width in points
 
@@ -92,30 +93,7 @@ class GridMaker {
      * @param[in] grid center
      * @param[out] grid bounds
      */
-    float3 get_grid_origin(const float3& grid_center) const;
-
-    template <typename Dtype>
-    CUDA_DEVICE_MEMBER void zero_grid(Grid<Dtype, 4, true>& grid);
-
-    /* \brief Find grid indices in one dimension that bound an atom's density.
-     * @param[in] grid min coordinate in a given dimension
-     * @param[in] atom coordinate in the same dimension
-     * @param[in] atomic density radius (N.B. this is not the atomic radius)
-     * @param[out] indices of grid points in the same dimension that could
-     * possibly overlap atom density
-     */
-    std::pair<size_t, size_t> get_bounds_1d(const float grid_origin, float coord,
-        float densityrad)  const;
-
-    /* \brief Calculate atom density at a grid point.
-     * @param[in] atomic coords
-     * @param[in] atomic radius
-     * @param[in] grid point coords
-     * @param[out] atom density
-     */
-    CUDA_CALLABLE_MEMBER float calc_point(const float3& coords, double ar,
-        const float3& grid_coords) const;
-
+    CUDA_CALLABLE_MEMBER float3 get_grid_origin(const float3& grid_center) const;
 
     /* \brief Generate grid tensor from atomic data.  Grid (CPU) must be properly sized.
      * @param[in] center of grid
@@ -303,7 +281,7 @@ class GridMaker {
     template <typename Dtype>
     void backward(float3 grid_center, const Grid<float, 2, false>& coords,
         const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
-        const Grid<Dtype, 4, false>& diff, Grid<Dtype, 2, false>& atom_gradients);
+        const Grid<Dtype, 4, false>& diff, Grid<Dtype, 2, false>& atom_gradients) const;
 
     /* \brief Generate atom gradients from grid gradients. (GPU)
      * Must provide atom coordinates, types, and radii that defined the original grid in forward
@@ -317,7 +295,7 @@ class GridMaker {
     template <typename Dtype>
     void backward(float3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
-        const Grid<Dtype, 4, true>& grid, Grid<Dtype, 2, true>& atom_gradients);
+        const Grid<Dtype, 4, true>& grid, Grid<Dtype, 2, true>& atom_gradients) const;
 
     /* \brief Generate atom and type gradients from grid gradients. (CPU)
      * Must provide atom coordinates, types, and radii that defined the original grid in forward
@@ -333,7 +311,7 @@ class GridMaker {
     void backward(float3 grid_center, const Grid<float, 2, false>& coords,
         const Grid<float, 2, false>& type_vectors, const Grid<float, 1, false>& radii,
         const Grid<Dtype, 4, false>& diff,
-        Grid<Dtype, 2, false>& atom_gradients, Grid<Dtype, 2, false>& type_gradients) {
+        Grid<Dtype, 2, false>& atom_gradients, Grid<Dtype, 2, false>& type_gradients) const {
       throw std::runtime_error("Vector type gradient calculation not implemented yet");
     }
 
@@ -352,7 +330,7 @@ class GridMaker {
     void backward(float3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 2, true>& type_vectors, const Grid<float, 1, true>& radii,
         const Grid<Dtype, 4, true>& grid,
-        Grid<Dtype, 2, true>& atom_gradients,  Grid<Dtype, 2, true>& type_gradients) {
+        Grid<Dtype, 2, true>& atom_gradients,  Grid<Dtype, 2, true>& type_gradients) const {
       throw std::runtime_error("Vector type gradient calculation not implemented yet");
     }
 
@@ -390,6 +368,37 @@ class GridMaker {
         const Grid<float, 1, true>& radii, Grid<Dtype, 4, true>& out);
 
   protected:
+
+    //calculate atomic gradient for single atom - cpu
+    template <typename Dtype>
+    float3 calc_atom_gradient_cpu(const float3& grid_origin, const Grid1f& coord, const Grid<Dtype, 3, false>& diff, float radius) const;
+
+    /* \brief Find grid indices in one dimension that bound an atom's density.
+     * @param[in] grid min coordinate in a given dimension
+     * @param[in] atom coordinate in the same dimension
+     * @param[in] atomic density radius (N.B. this is not the atomic radius)
+     * @param[out] indices of grid points in the same dimension that could
+     * possibly overlap atom density
+     */
+    CUDA_CALLABLE_MEMBER uint2 get_bounds_1d(const float grid_origin, float coord,
+        float densityrad)  const;
+
+    /* \brief Calculate atom density at a grid point.
+     * @param[in] atomic coords
+     * @param[in] atomic radius
+     * @param[in] grid point coords
+     * @param[out] atom density
+     */
+    CUDA_CALLABLE_MEMBER float calc_point(float ax, float ay, float az, float ar,
+        const float3& grid_coords) const;
+
+    //accumulate gradient from grid point x,y,z for provided atom at ax,ay,az
+    CUDA_CALLABLE_MEMBER void accumulate_atom_gradient(float ax, float ay, float az,
+            float x, float y, float z, float radius, float gridval, float3& agrad) const;
+
+    template<typename Dtype> __global__ friend //member functions don't kernel launch
+    void set_atom_gradients(GridMaker G, float3 grid_center, Grid2fCUDA coords, Grid1fCUDA type_index, Grid1fCUDA radii,
+        Grid<Dtype, 4, true> grid, Grid<Dtype, 2, true> atom_gradients);
 
 };
 
@@ -434,16 +443,16 @@ extern template void GridMaker::forward(const std::vector<Example>& in, Grid<dou
 
 extern template void GridMaker::backward(float3 grid_center, const Grid<float, 2, false>& coords,
     const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
-    const Grid<float, 4, false>& diff, Grid<float, 2, false>& atom_gradients);
+    const Grid<float, 4, false>& diff, Grid<float, 2, false>& atom_gradients) const;
 extern template void GridMaker::backward(float3 grid_center, const Grid<float, 2, false>& coords,
     const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
-    const Grid<double, 4, false>& diff, Grid<double, 2, false>& atom_gradients);
+    const Grid<double, 4, false>& diff, Grid<double, 2, false>& atom_gradients) const;
 extern template void GridMaker::backward(float3 grid_center, const Grid<float, 2, true>& coords,
     const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
-    const Grid<float, 4, true>& grid, Grid<float, 2, true>& atom_gradients);
+    const Grid<float, 4, true>& grid, Grid<float, 2, true>& atom_gradients) const;
 extern template void GridMaker::backward(float3 grid_center, const Grid<float, 2, true>& coords,
     const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
-    const Grid<double, 4, true>& grid, Grid<double, 2, true>& atom_gradients);
+    const Grid<double, 4, true>& grid, Grid<double, 2, true>& atom_gradients) const;
 
 
 extern template void GridMaker::check_index_args(const Grid<float, 2, false>& coords,

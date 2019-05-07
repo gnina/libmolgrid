@@ -7,20 +7,6 @@ namespace libmolgrid {
     __shared__ uint atomIndices[LMG_CUDA_NUM_THREADS];
     __shared__ uint atomMask[LMG_CUDA_NUM_THREADS];
 
-    template <typename Dtype>
-    __device__ void zero_grid(Grid<Dtype, 4, true>& grid) {
-      size_t gsize = grid.size();
-      Dtype* gdata = grid.data();
-      size_t bIdx = blockIdx.x + blockIdx.y * gridDim.x + gridDim.x * gridDim.y * blockIdx.z;
-      size_t tidx = bIdx * (blockDim.x * blockDim.y * blockDim.z)
-                      + (threadIdx.z * (blockDim.x * blockDim.y))
-                      + (threadIdx.y * blockDim.x) + threadIdx.x;
-      if (tidx < gsize) 
-        gdata[tidx] = 0;
-    }
-
-    template __device__ void zero_grid(Grid<float, 4, true> & grid);
-
     //TODO: warp shuffle version
     inline __device__ uint warpScanInclusive(int threadIndex, uint idata,
         volatile uint *s_Data, uint size) {
@@ -46,7 +32,7 @@ namespace libmolgrid {
       //Bottom-level inclusive warp scan
       uint warpResult = warpScanInclusive(threadIndex, idata, scanScratch,
           WARP_SIZE);
-    
+
       // Save top elements of each warp for exclusive warp scan sync
       // to wait for warp scans to complete (because s_Data is being
       // overwritten)
@@ -74,6 +60,22 @@ namespace libmolgrid {
           - idata;
     }
     
+
+    uint2 GridMaker::get_bounds_1d(const float grid_origin,
+        float coord, float densityrad) const {
+      uint2 bounds{0, 0};
+      float low = coord - densityrad - grid_origin;
+      if (low > 0) {
+        bounds.x = floor(low / resolution);
+      }
+
+      float high = coord + densityrad - grid_origin;
+      if (high > 0) { //otherwise zero
+        bounds.y = min(dim, (size_t) ceil(high / resolution));
+      }
+      return bounds;
+    }
+
     //return 1 if atom potentially overlaps block, 0 otherwise
     __device__
     unsigned GridMaker::atom_overlaps_block(unsigned aidx, float3& grid_origin, 
@@ -131,12 +133,8 @@ namespace libmolgrid {
         size_t i = atomIndices[ai];
         float atype = type_index(i);
         if (atype >= 0 && atype < ntypes) { //should really throw an exception here, but can't
-          float3 acoords;
-          acoords.x = coords(i, 0);
-          acoords.y = coords(i, 1);
-          acoords.z = coords(i, 2);
           float ar = radii(i);
-          float val = calc_point(acoords, ar, grid_coords);
+          float val = calc_point(coords(i, 0), coords(i, 1), coords(i, 2), ar, grid_coords);
             if(binary) {
               if(val != 0) {
                 out(atype, grid_indices.x, grid_indices.y, grid_indices.z) = 1.0;
@@ -218,43 +216,140 @@ namespace libmolgrid {
         const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
         Grid<double, 4, true>& out) const;
 
+    //kernel launch - parallelize across whole atoms
+    //TODO: accelerate this
+    template<typename Dtype>
+    __global__
+    void set_atom_gradients(GridMaker G, float3 grid_origin, Grid2fCUDA coords, Grid1fCUDA type_index, Grid1fCUDA radii,
+        Grid<Dtype, 4, true> grid, Grid<Dtype, 2, true> atom_gradients) {
+      int idx = blockDim.x * blockIdx.x + threadIdx.x;
+      if(idx >= radii.dimension(0)) return;
 
-    float GridMaker::calc_point(const float3& coords, double ar,
-            const float3& grid_coords) const {
-          float dx = grid_coords.x - coords.x;
-          float dy = grid_coords.y - coords.y;
-          float dz = grid_coords.z - coords.z;
+      //calculate gradient for atom at idx
+      float3 agrad{0,0,0};
+      float radius = radii[idx];
+      float3 a{coords(idx,0),coords(idx,1),coords(idx,2)}; //atom coordinate
 
-          float rsq = dx * dx + dy * dy + dz * dz;
-          ar *= radius_scale;
-          if (binary) {
-            //is point within radius?
-            if (rsq < ar * ar)
-              return 1.0;
-            else
-              return 0.0;
-          } else {
-            //For non-binary density we want a Gaussian where 2 std occurs at the
-            //radius, after which it becomes quadratic.
-            //The quadratic is fit to have both the same value and first derivative
-            //at the cross over point and a value and derivative of zero at fianl_radius_multiple
-            float dist = sqrtf(rsq);
-            if (dist >= ar * final_radius_multiple) {
-              return 0.0;
-            } else
-              if (dist <= ar*gaussian_radius_multiple) {
-                //return gaussian
-                float h = 0.5 * ar;
-                float ex = -dist * dist / (2 * h * h);
-                return exp(ex);
-              } else //return quadratic
-              {
-                float dr = dist/ar;
-                float q = (A*dr+B)*dr+C;
-                return q > 0 ? q : 0; //avoid very small negative numbers
-              }
+      float r = radius * G.radius_scale * G.final_radius_multiple;
+      uint2 ranges[3];
+      ranges[0] = G.get_bounds_1d(grid_origin.x, a.x, r);
+      ranges[1] = G.get_bounds_1d(grid_origin.y, a.y, r);
+      ranges[2] = G.get_bounds_1d(grid_origin.z, a.z, r);
+
+      int whichgrid = round(type_index[idx]);
+      Grid<Dtype, 3, true> diff = grid[whichgrid];
+
+      //for every grid point possibly overlapped by this atom
+      for (unsigned i = ranges[0].x, iend = ranges[0].y; i < iend; ++i) {
+        for (unsigned j = ranges[1].x, jend = ranges[1].y; j < jend; ++j) {
+          for (unsigned k = ranges[2].x, kend = ranges[2].y; k < kend; ++k) {
+            //convert grid point coordinates to angstroms
+            float x = grid_origin.x + i * G.resolution;
+            float y = grid_origin.y + j * G.resolution;
+            float z = grid_origin.z + k * G.resolution;
+
+            G.accumulate_atom_gradient(a.x,a.y,a.z, x,y,z, radius, diff(i,j,k), agrad);
           }
         }
+      }
+      atom_gradients(idx,0) = agrad.x;
+      atom_gradients(idx,1) = agrad.y;
+      atom_gradients(idx,2) = agrad.z;
+    }
+
+    //gpu accelerated gradient calculation
+    template <typename Dtype>
+    void GridMaker::backward(float3 grid_center, const Grid<float, 2, true>& coords,
+        const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
+        const Grid<Dtype, 4, true>& grid, Grid<Dtype, 2, true>& atom_gradients) const {
+      atom_gradients.fill_zero();
+      unsigned n = coords.dimension(0);
+      if(n != type_index.size()) throw std::invalid_argument("Type dimension doesn't equal number of coordinates.");
+      if(n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
+
+      float3 grid_origin = get_grid_origin(grid_center);
+
+      unsigned blocks =  n/LMG_CUDA_NUM_THREADS + bool(n%LMG_CUDA_NUM_THREADS); //at least one if n > 0
+      unsigned nthreads = blocks > 1 ? LMG_CUDA_NUM_THREADS : n;
+      set_atom_gradients<<<blocks, nthreads>>>(*this, grid_origin, coords, type_index, radii, grid, atom_gradients);
+
+    }
+
+    template void GridMaker::backward(float3 grid_center, const Grid<float, 2, true>& coords,
+        const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
+        const Grid<float, 4, true>& grid, Grid<float, 2, true>& atom_gradients) const;
+    template void GridMaker::backward(float3 grid_center, const Grid<float, 2, true>& coords,
+        const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
+        const Grid<double, 4, true>& grid, Grid<double, 2, true>& atom_gradients) const;
+
+    float GridMaker::calc_point(float ax, float ay, float az, float ar,
+        const float3& grid_coords) const {
+      float dx = grid_coords.x - ax;
+      float dy = grid_coords.y - ay;
+      float dz = grid_coords.z - az;
+
+      float rsq = dx * dx + dy * dy + dz * dz;
+      ar *= radius_scale;
+      if (binary) {
+        //is point within radius?
+        if (rsq < ar * ar)
+          return 1.0;
+        else
+          return 0.0;
+      } else {
+        //For non-binary density we want a Gaussian where 2 std occurs at the
+        //radius, after which it becomes quadratic.
+        //The quadratic is fit to have both the same value and first derivative
+        //at the cross over point and a value and derivative of zero at fianl_radius_multiple
+        float dist = sqrtf(rsq);
+        if (dist >= ar * final_radius_multiple) {
+          return 0.0;
+        } else
+        if (dist <= ar * gaussian_radius_multiple) {
+          //return gaussian
+          float ex = -2.0 * dist * dist / (ar*ar);
+          return exp(ex);
+        } else //return quadratic
+        {
+          float dr = dist / ar;
+          float q = (A * dr + B) * dr + C;
+          return q > 0 ? q : 0; //avoid very small negative numbers
+        }
+      }
+    }
+
+    void GridMaker::accumulate_atom_gradient(float ax, float ay, float az,
+        float x, float y, float z, float ar, float gridval, float3& agrad) const {
+      //sum gradient grid values overlapped by the atom times the
+      //derivative of the atom density at each grid point
+      float dist_x = x - ax;
+      float dist_y = y - ay;
+      float dist_z = z - az;
+      float dist2 = dist_x * dist_x + dist_y * dist_y + dist_z * dist_z;
+      double dist = sqrt(dist2);
+      float agrad_dist = 0.0;
+      ar *= radius_scale;
+      if (dist >= ar * final_radius_multiple) {//no overlap
+        return;
+      }
+      else if (dist <= ar * gaussian_radius_multiple) {//gaussian derivative
+        float ex = -2.0 * dist2 / (ar * ar);
+        float coef = -4.0 * dist / (ar * ar);
+        agrad_dist = coef * exp(ex);
+      }
+      else {//quadratic derivative
+        agrad_dist = (D*dist/ar + E)/ar;
+      }
+      // d_loss/d_atomx = d_atomdist/d_atomx * d_gridpoint/d_atomdist * d_loss/d_gridpoint
+      // sum across all gridpoints
+      //dkoes - the negative sign is because we are considering the derivative of the center vs grid
+      float gx = -(dist_x / dist) * agrad_dist * gridval;
+      float gy = -(dist_y / dist) * agrad_dist * gridval;
+      float gz = -(dist_z / dist) * agrad_dist * gridval;
+      agrad.x += gx;
+      agrad.y += gy;
+      agrad.z += gz;
+    }
 
 
 

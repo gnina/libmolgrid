@@ -703,7 +703,36 @@ MAKE_ALL_GRIDS()
       .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, false> g){ self.forward(center, c, g); })
       .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, true> g){ self.forward(center, c, g); })
       .def("forward", +[](GridMaker& self, const Example& ex, const Transform& t, Grid<float, 4, false> g){ self.forward(ex, t, g); })
-      .def("forward", +[](GridMaker& self, const Example& ex, const Transform& t, Grid<float, 4, true> g){ self.forward(ex, t, g); });
+      .def("forward", +[](GridMaker& self, const Example& ex, const Transform& t, Grid<float, 4, true> g){ self.forward(ex, t, g); })
+      .def("backward", +[](GridMaker& self, float3 grid_center, const CoordinateSet& in, const Grid<float, 4, false>& diff,
+          Grid<float, 2, false> atomic_gradients, Grid<float, 2, false> type_gradients){
+          self.backward(grid_center, in, diff, atomic_gradients, type_gradients);})
+      .def("backward", +[](GridMaker& self, float3 grid_center, const CoordinateSet& in,
+          const Grid<float, 4, false>& diff, Grid<float, 2, false> atomic_gradients) {
+          self.backward(grid_center, in, diff, atomic_gradients); })
+      .def("backward", +[](GridMaker& self, float3 grid_center, const CoordinateSet& in, const Grid<float, 4, true>& diff,
+          Grid<float, 2, true> atomic_gradients, Grid<float, 2, true> type_gradients){
+          self.backward(grid_center, in, diff, atomic_gradients, type_gradients);})
+      .def("backward", +[](GridMaker& self, float3 grid_center, const CoordinateSet& in,
+          const Grid<float, 4, true>& diff, Grid<float, 2, true> atomic_gradients) {
+          self.backward(grid_center, in, diff, atomic_gradients); })
+      .def("backward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, false>& coords,
+          const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
+          const Grid<float, 4, false>& diff, Grid<float, 2, false> atom_gradients) {
+          self.backward(grid_center, coords, type_index, radii, diff, atom_gradients);})
+      .def("backward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, true>& coords,
+          const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
+          const Grid<float, 4, true>& diff, Grid<float, 2, true> atom_gradients) {
+          self.backward(grid_center, coords, type_index, radii, diff, atom_gradients);})
+      .def("backward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, false>& coords,
+          const Grid<float, 2, false>& type_vectors, const Grid<float, 1, false>& radii,
+          const Grid<float, 4, false>& diff, Grid<float, 2, false> atom_gradients, Grid<float, 2, false> type_gradients) {
+          self.backward(grid_center, coords, type_vectors, radii, diff, atom_gradients, type_gradients);})
+      .def("backward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, true>& coords,
+          const Grid<float, 2, true>& type_vectors, const Grid<float, 1, true>& radii,
+          const Grid<float, 4, true>& diff, Grid<float, 2, true> atom_gradients, Grid<float, 2, true> type_gradients) {
+          self.backward(grid_center, coords, type_vectors, radii, diff, atom_gradients, type_gradients);});
+
 
   class_<CartesianGrid<MGrid3f> >("CartesianGrid", init<MGrid3f, float3, float>())
       .def("center",&CartesianGrid<MGrid3f>::center)

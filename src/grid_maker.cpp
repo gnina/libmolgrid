@@ -6,6 +6,7 @@
  */
 #include "libmolgrid/grid_maker.h"
 #include <cmath>
+#include <vector>
 
 namespace libmolgrid {
 
@@ -22,7 +23,9 @@ void GridMaker::initialize(float res, float d, bool bin, float rscale, float grm
   A = exp(-2*grm*grm)*4*grm*grm; // *d^2/r^2
   B = -exp(-2*grm*grm)*(4*grm+8*grm*grm*grm); // * d/r
   C = exp(-2*grm*grm)*(4*grm*grm*grm*grm+4*grm*grm+1); //constant
-  std::cerr << resolution << "," << dimension << "," << radius_scale << "," << gaussian_radius_multiple << "," << binary << "\n";
+
+  D = 8*grm*grm*exp(-2.0*grm*grm); // * d/r^2
+  E = - ( 4*grm + 8*grm*grm*grm) * exp(-2*grm*grm); // * 1/r
 }
 
 //validate argument ranges
@@ -62,23 +65,6 @@ float3 GridMaker::get_grid_origin(const float3& grid_center) const {
   grid_origin.y = grid_center.y - half;
   grid_origin.z = grid_center.z - half;
   return grid_origin;
-}
-
-std::pair<size_t, size_t> GridMaker::get_bounds_1d(const float grid_origin,
-    float coord,
-    float densityrad) const {
-  std::pair<size_t, size_t> bounds(0, 0);
-  float low = coord - densityrad - grid_origin;
-  if (low > 0) {
-    bounds.first = floor(low / resolution);
-  }
-
-  float high = coord + densityrad - grid_origin;
-  if (high > 0) //otherwise zero
-      {
-    bounds.second = std::min(dim, (size_t) ceil(high / resolution));
-  }
-  return bounds;
 }
 
 template <typename Dtype, bool isCUDA>
@@ -140,22 +126,20 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
       float radius = radii(aidx);
       float densityrad = radius * radius_scale * final_radius_multiple;
 
-      std::array<std::pair<size_t, size_t>, 3> bounds;
+      uint2 bounds[3];
       bounds[0] = get_bounds_1d(grid_origin.x, coords(aidx, 0), densityrad);
       bounds[1] = get_bounds_1d(grid_origin.y, coords(aidx, 1), densityrad);
       bounds[2] = get_bounds_1d(grid_origin.z, coords(aidx, 2), densityrad);
 
       //for every grid point possibly overlapped by this atom
-      for (size_t i = bounds[0].first, iend = bounds[0].second; i < iend; i++) {
-        for (size_t j = bounds[1].first, jend = bounds[1].second; j < jend;
-            j++) {
-          for (size_t k = bounds[2].first, kend = bounds[2].second;
-              k < kend; k++) {
+      for (size_t i = bounds[0].x, iend = bounds[0].y; i < iend; i++) {
+        for (size_t j = bounds[1].x, jend = bounds[1].y; j < jend; j++) {
+          for (size_t k = bounds[2].x, kend = bounds[2].y; k < kend; k++) {
             float3 grid_coords;
             grid_coords.x = grid_origin.x + i * resolution;
             grid_coords.y = grid_origin.y + j * resolution;
             grid_coords.z = grid_origin.z + k * resolution;
-            float val = calc_point(acoords, radius, grid_coords);
+            float val = calc_point(acoords.x, acoords.y, acoords.z, radius, grid_coords);
             size_t offset = ((((atype * dim) + i) * dim) + j) * dim + k;
             // std::cout << "val " << val << "\n";
 
@@ -193,20 +177,68 @@ template void GridMaker::forward(float3 grid_center,
     Grid<double, 4, false>& out) const;
 
 
+//set a single atom gradient - note can't pass a slice by reference
+template <typename Dtype>
+float3 GridMaker::calc_atom_gradient_cpu(const float3& grid_origin, const Grid1f& coord, const Grid<Dtype, 3, false>& diff, float radius) const {
+
+  float3 agrad{0,0,0};
+
+  float r = radius * radius_scale * final_radius_multiple;
+  std::array<uint2, 3> ranges;
+  ranges[0] = get_bounds_1d(grid_origin.x, coord(0), r);
+  ranges[1] = get_bounds_1d(grid_origin.y, coord(1), r);
+  ranges[2] = get_bounds_1d(grid_origin.z, coord(2), r);
+
+  float3 a{coord(0),coord(1),coord(2)}; //atom coordinate
+
+  //for every grid point possibly overlapped by this atom
+  for (unsigned i = ranges[0].x, iend = ranges[0].y; i < iend;
+      ++i) {
+    for (unsigned j = ranges[1].x, jend = ranges[1].y; j < jend; ++j) {
+      for (unsigned k = ranges[2].x, kend = ranges[2].y; k < kend; ++k) {
+        //convert grid point coordinates to angstroms
+        float x = grid_origin.x + i * resolution;
+        float y = grid_origin.y + j * resolution;
+        float z = grid_origin.z + k * resolution;
+
+        accumulate_atom_gradient(a.x,a.y,a.z, x,y,z, radius, diff(i,j,k), agrad);
+      }
+    }
+  }
+
+  return agrad;
+}
+
 //cpu backwards
 template <typename Dtype>
 void GridMaker::backward(float3 grid_center, const Grid<float, 2, false>& coords,
     const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
-    const Grid<Dtype, 4, false>& diff, Grid<Dtype, 2, false>& atom_gradients) {
+    const Grid<Dtype, 4, false>& diff, Grid<Dtype, 2, false>& atom_gradients) const {
 
+  atom_gradients.fill_zero();
+  unsigned n = coords.dimension(0);
+  if(n != type_index.size()) throw std::invalid_argument("Type dimension doesn't equal number of coordinates.");
+  if(n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
+
+  float3 grid_origin = get_grid_origin(grid_center);
+
+  for (unsigned i = 0; i < n; ++i) {
+    int whichgrid = round(type_index[i]); // this is which atom-type channel of the grid to look at
+    if (whichgrid >= 0) {
+      float3 agrad = calc_atom_gradient_cpu(grid_origin, coords[i], diff[whichgrid], radii[i]);
+      atom_gradients(i,0) = agrad.x;
+      atom_gradients(i,1) = agrad.y;
+      atom_gradients(i,2) = agrad.z;
+    }
+  }
 
 }
 
 template void GridMaker::backward(float3 grid_center, const Grid<float, 2, false>& coords,
     const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
-    const Grid<float, 4, false>& diff, Grid<float, 2, false>& atom_gradients);
+    const Grid<float, 4, false>& diff, Grid<float, 2, false>& atom_gradients) const;
 template void GridMaker::backward(float3 grid_center, const Grid<float, 2, false>& coords,
     const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
-    const Grid<double, 4, false>& diff, Grid<double, 2, false>& atom_gradients);
+    const Grid<double, 4, false>& diff, Grid<double, 2, false>& atom_gradients) const;
 
 }
