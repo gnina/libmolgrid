@@ -388,6 +388,9 @@ class GridMaker {
     CUDA_DEVICE_MEMBER void set_atoms(size_t natoms, float3& grid_origin,
         const Grid<float, 2, true>& coords, const Grid<float, 1, true>& type_index,
         const Grid<float, 1, true>& radii, Grid<Dtype, 4, true>& out);
+
+  protected:
+
 };
 
 //specify what instantiations are in grid_maker.cpp

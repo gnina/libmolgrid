@@ -221,6 +221,7 @@ void add_grid_members(class_<GridType>& C) {
       .def("copyTo", +[](const GridType& self, typename GridType::gpu_grid_t dest) { self.copyTo(dest);})
       .def("copyFrom", static_cast<void (GridType::*)(const typename GridType::cpu_grid_t&)>(&GridType::copyFrom))
       .def("copyFrom", static_cast<void (GridType::*)(const typename GridType::gpu_grid_t&)>(&GridType::copyFrom))
+      .def("fill_zero", &GridType::fill_zero)
       .def("type", +[](const GridType& g){
               return std::is_same<typename GridType::type,float>::value ? "float32" : std::is_same<typename GridType::type,double>::value  ? "float64" : "unknown";});
 

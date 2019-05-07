@@ -68,3 +68,15 @@ def test_tonumpy():
     assert a1.sum() == 45
     assert a2.sum() == 145
     assert a3.sum() == 0
+    
+def test_clear():
+     g1 = molgrid.Grid1d(np.random.rand(20))
+     mg = molgrid.MGrid3d(4,5,6)
+     mg.copyFrom(np.random.rand(4,5,6))
+     
+     mg.fill_zero()
+     g1.fill_zero()
+     
+     assert np.all(g1.tonumpy() == 0)
+     assert np.all(mg.tonumpy() == 0)
+     

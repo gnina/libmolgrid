@@ -191,6 +191,14 @@ class Grid {
       LMG_CUDA_CHECK(cudaMemcpy(data(),src.data(),sz*sizeof(Dtype),kind));
     }
 
+    /** \brief Set contents to zero.
+     *
+     */
+    void fill_zero() {
+      if(isCUDA) cudaMemset(data(), 0, sizeof(Dtype)*size());
+      else memset(data(), 0, sizeof(Dtype)*size());
+    }
+
     // constructor used by operator[]
     CUDA_CALLABLE_MEMBER
     explicit Grid(const Grid<Dtype,NumDims+1,isCUDA>& G, size_t i): buffer(&G.data()[i*G.offset(0)]) {
@@ -266,6 +274,11 @@ class Grid<Dtype,1,isCUDA> {
 
     CUDA_CALLABLE_MEMBER inline Dtype operator()(size_t a) const {
       return buffer[a];
+    }
+
+    void fill_zero() {
+      if(isCUDA) cudaMemset(data(), 0, sizeof(Dtype)*size());
+      else memset(data(), 0, sizeof(Dtype)*size());
     }
 
     //only called from regular Grid

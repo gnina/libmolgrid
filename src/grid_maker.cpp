@@ -144,15 +144,6 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
       bounds[0] = get_bounds_1d(grid_origin.x, coords(aidx, 0), densityrad);
       bounds[1] = get_bounds_1d(grid_origin.y, coords(aidx, 1), densityrad);
       bounds[2] = get_bounds_1d(grid_origin.z, coords(aidx, 2), densityrad);
-      // std::cout << "coords.x " << acoords.x;
-      // std::cout << " coords.y " << acoords.y;
-      // std::cout << " coords.z " << acoords.z << "\n";
-      // std::cout << "bounds[0].first " << bounds[0].first;
-      // std::cout << " bounds[0].second " << bounds[0].second;
-      // std::cout << " bounds[1].first " << bounds[1].first;
-      // std::cout << " bounds[1].second " << bounds[1].second;
-      // std::cout << " bounds[2].first " << bounds[2].first;
-      // std::cout << " bounds[2].second " << bounds[2].second << "\n";
 
       //for every grid point possibly overlapped by this atom
       for (size_t i = bounds[0].first, iend = bounds[0].second; i < iend; i++) {
@@ -207,6 +198,7 @@ template <typename Dtype>
 void GridMaker::backward(float3 grid_center, const Grid<float, 2, false>& coords,
     const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
     const Grid<Dtype, 4, false>& diff, Grid<Dtype, 2, false>& atom_gradients) {
+
 
 }
 

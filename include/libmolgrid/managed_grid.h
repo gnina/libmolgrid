@@ -79,6 +79,12 @@ class ManagedGridBase {
     /// raw pointer to underlying data - for subgrids may point into middle of grid
     CUDA_CALLABLE_MEMBER inline Dtype * data() const { return cpu_grid.data(); }
 
+    /// set contents to zero
+    inline void fill_zero() {
+      if(sent_to_gpu) gpu_grid.fill_zero();
+      else cpu_grid.fill_zero();
+    }
+
     /** \brief Initializer list indexing
      *
      */
