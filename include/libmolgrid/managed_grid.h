@@ -34,6 +34,7 @@ class ManagedGridBase {
     gpu_grid_t gpu_grid;
     cpu_grid_t cpu_grid;
     std::shared_ptr<Dtype> ptr; //shared pointer lets us not worry about copying the grid
+    size_t capacity = 0; //amount of memory allocated (for resizing)
     mutable bool sent_to_gpu = false; //a CUDA grid view has been requested and there have been no host accesses
 
     ///empty (unusable) grid
@@ -42,7 +43,8 @@ class ManagedGridBase {
     template<typename... I, typename = typename std::enable_if<sizeof...(I) == NumDims>::type>
     ManagedGridBase(I... sizes): gpu_grid(nullptr, sizes...), cpu_grid(nullptr, sizes...) {
       //allocate buffer
-      ptr = create_unified_shared_ptr<Dtype>(this->size());
+      capacity = this->size();
+      ptr = create_unified_shared_ptr<Dtype>(capacity);
       gpu_grid.set_buffer(ptr.get());
       cpu_grid.set_buffer(ptr.get());
     }
@@ -100,14 +102,14 @@ class ManagedGridBase {
       return cpu_grid(indices...);
     }
 
-    /** \brief Copy data into dest.  Should be same size, but will narrow if neede */
+    /** \brief Copy data into dest.  Should be same size, but will narrow if needed */
     void copyTo(cpu_grid_t& dest) const {
       tocpu();
       size_t sz = std::min(size(), dest.size());
       memcpy(dest.data(),cpu_grid.data(),sz*sizeof(Dtype));
     }
 
-    /** \brief Copy data into dest.  Should be same size, but will narrow if neede */
+    /** \brief Copy data into dest.  Should be same size, but will narrow if needed */
     void copyTo(gpu_grid_t& dest) const {
       togpu();
       size_t sz = std::min(size(), dest.size());
@@ -126,6 +128,34 @@ class ManagedGridBase {
       togpu();
       size_t sz = std::min(size(), dest.size());
       LMG_CUDA_CHECK(cudaMemcpy(gpu_grid.data(),dest.data(),sz*sizeof(Dtype),cudaMemcpyDeviceToDevice));
+    }
+
+    /** \brief Return a grid in the specified shape that attempts to reuse the memory of this grid.
+     * Memory will be allocated if needed.  Data will be truncated/copied as needed.
+     * DANGER!  The returned grid may or may not mirror this grid depending on the shape.
+     * This function is provided so code can be optimized to avoid unnecessary allocations and
+     * should be used carefully.
+     */
+    template<typename... I, typename = typename std::enable_if<sizeof...(I) == NumDims>::type>
+    ManagedGrid<Dtype, NumDims> resized(I... sizes) {
+      cpu_grid_t g(nullptr, sizes...);
+      if(g.size() <= capacity) {
+        //no need to allocate and copy; capacity stays the same
+        ManagedGrid<Dtype, NumDims> tmp;
+        tmp.ptr = ptr;
+        tmp.cpu_grid = cpu_grid_t(ptr.get(), sizes...);
+        tmp.gpu_grid = gpu_grid_t(ptr.get(), sizes...);
+        tmp.capacity = capacity;
+        tmp.sent_to_gpu = sent_to_gpu;
+        return tmp;
+      } else {
+        ManagedGrid<Dtype, NumDims> tmp(sizes...);
+        if(size() > 0 && tmp.size() > 0) {
+          if(sent_to_gpu) copyTo(tmp.gpu());
+          else copyTo(tmp.cpu());
+        }
+        return tmp;
+      }
     }
 
     /** \brief Return GPU Grid view.  Host code should not access the grid
@@ -179,8 +209,6 @@ class ManagedGridBase {
     friend ManagedGridBase<Dtype,NumDims-1>;
     explicit ManagedGridBase(const ManagedGridBase<Dtype,NumDims+1>& G, size_t i):
       gpu_grid(G.gpu_grid, i), cpu_grid(G.cpu_grid, i), ptr(G.ptr), sent_to_gpu(G.sent_to_gpu) {}
-
-
 };
 
 /** \brief A dense grid whose memory is managed by the class.

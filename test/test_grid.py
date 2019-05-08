@@ -15,3 +15,4 @@ def test_grid():
     gclone[5,1] = 5.5
     assert g[5,1] == 4.0
     assert gclone[5][1] == 5.5
+    

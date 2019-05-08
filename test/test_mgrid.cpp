@@ -139,3 +139,23 @@ BOOST_AUTO_TEST_CASE( blank_mgrid )
   BOOST_CHECK_EQUAL(vec3[1].dimension(2), 0);
 
 }
+
+BOOST_AUTO_TEST_CASE(resized)
+{
+  MGrid2f g(5,6);
+  MGrid2f g2 = g.resized(4,6); //smaller, so should be same mem
+  g(3,4) = 2.0;
+  BOOST_CHECK_EQUAL(g2(3,4), 2.0);
+
+  g2 = g2.resized(10,6); //larger, should be different mem with same values
+  BOOST_CHECK_EQUAL(g2(3,4), 2.0);
+
+  g(3,4) = 1.0;
+  BOOST_CHECK_EQUAL(g2(3,4), 2.0); //should not change
+
+  g2[9][5] = 3.0; //exists
+  BOOST_CHECK_EQUAL(g2(9,5),3.0);
+
+  BOOST_CHECK_EQUAL(g.size(), 30);
+  BOOST_CHECK_EQUAL(g2.size(), 60);
+}
