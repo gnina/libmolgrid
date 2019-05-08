@@ -149,9 +149,6 @@ public:
 
 extern StringCache string_cache;
 
-extern template void Example::extract_labels(const std::vector<Example>& examples, Grid<float, 2, false>& out);
-extern template void Example::extract_labels(const std::vector<Example>& examples, Grid<float, 2, true>& out);
-
 } /* namespace libmolgrid */
 
 #endif /* EXAMPLE_H_ */

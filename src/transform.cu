@@ -92,6 +92,7 @@ template <typename Dtype>
 }
 
 template __host__ void Transform::backward(const Grid<float, 2, true>&, Grid<float, 2, true>&, bool) const;
+template __host__ void Transform::backward(const Grid<double, 2, true>&, Grid<double, 2, true>&, bool) const;
 
 
 }
