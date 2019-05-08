@@ -159,3 +159,17 @@ BOOST_AUTO_TEST_CASE(resized)
   BOOST_CHECK_EQUAL(g.size(), 30);
   BOOST_CHECK_EQUAL(g2.size(), 60);
 }
+
+BOOST_AUTO_TEST_CASE(copyto)
+{
+  MGrid2f g(3,2);
+  MGrid2f h(2,2);
+  g(1,1) = 3;
+  g.copyTo(h);
+  BOOST_CHECK_EQUAL(h(1,1),3);
+
+  MGrid2f z;
+  z.copyTo(h);  //dealing with empty and not overwritting extra
+  BOOST_CHECK_EQUAL(h(1,1),3);
+
+}

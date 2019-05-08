@@ -116,6 +116,12 @@ class ManagedGridBase {
       LMG_CUDA_CHECK(cudaMemcpy(dest.data(),gpu_grid.data(),sz*sizeof(Dtype),cudaMemcpyDeviceToDevice));
     }
 
+    /** \brief Copy data into dest.  Should be same size, but will narrow if needed */
+    void copyTo(ManagedGridBase<Dtype, NumDims>& dest) const {
+      if(sent_to_gpu) gpu_grid.copyTo(dest.gpu_grid);
+      else cpu_grid.copyTo(dest.cpu_grid);
+    }
+
     /** \brief Copy data from src.  Should be same size, but will narrow if needed */
     void copyFrom(const cpu_grid_t& dest) {
       tocpu();
@@ -123,12 +129,19 @@ class ManagedGridBase {
       memcpy(cpu_grid.data(),dest.data(),sz*sizeof(Dtype));
     }
 
-    /** \brief Copy data from src.  Should be same size, but will narrow if neede */
+    /** \brief Copy data from src.  Should be same size, but will narrow if needed */
     void copyFrom(const gpu_grid_t& dest) {
       togpu();
       size_t sz = std::min(size(), dest.size());
       LMG_CUDA_CHECK(cudaMemcpy(gpu_grid.data(),dest.data(),sz*sizeof(Dtype),cudaMemcpyDeviceToDevice));
     }
+
+    /** \brief Copy data from src.  Should be same size, but will narrow if needed */
+    void copyFrom(const ManagedGridBase<Dtype, NumDims>& src) {
+      if(sent_to_gpu) gpu_grid.copyFrom(src.gpu_grid);
+      else cpu_grid.copyFrom(src.cpu_grid);
+    }
+
 
     /** \brief Return a grid in the specified shape that attempts to reuse the memory of this grid.
      * Memory will be allocated if needed.  Data will be truncated/copied as needed.
@@ -234,6 +247,7 @@ template<typename Dtype, std::size_t NumDims>
 class ManagedGrid :  public ManagedGridBase<Dtype, NumDims> {
   public:
     using subgrid_t = ManagedGrid<Dtype,NumDims-1>;
+    using base_t = ManagedGridBase<Dtype, NumDims>;
 
     //empty, unusable grid
     ManagedGrid() = default;
@@ -274,6 +288,7 @@ template<typename Dtype >
 class ManagedGrid<Dtype, 1> : public ManagedGridBase<Dtype, 1> {
   public:
     using subgrid_t = Dtype;
+    using base_t = ManagedGridBase<Dtype, 1>;
 
     ManagedGrid() = default;
     ManagedGrid(size_t sz): ManagedGridBase<Dtype, 1>(sz) {
@@ -304,6 +319,7 @@ class ManagedGrid<Dtype, 1> : public ManagedGridBase<Dtype, 1> {
       ret.clone_ptr();
       return ret;
     }
+
   protected:
     //only called from regular Grid
     friend ManagedGrid<Dtype,2>;

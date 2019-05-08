@@ -90,6 +90,8 @@ struct CoordinateSet {
     return ret;
   }
 
+  /// copy contents of src into this, attempting to avoid reallocation if possible
+  void copyInto(const CoordinateSet& src);
   ///for debugging
   void dump(std::ostream& out) const;
 };
