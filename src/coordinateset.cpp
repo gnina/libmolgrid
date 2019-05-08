@@ -227,7 +227,7 @@ void CoordinateSet::copyInto(const CoordinateSet& s) {
   type_vector = type_vector.resized(s.type_vector.dimension(0), s.type_vector.dimension(1));
   type_vector.copyFrom(s.type_vector);
 
-  radius = type_index.resized(s.radius.dimension(0));
+  radius = radius.resized(s.radius.dimension(0));
   radius.copyFrom(s.radius);
 
   max_type = s.max_type;
