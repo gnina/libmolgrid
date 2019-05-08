@@ -146,4 +146,35 @@ def test_radius_multiples():
     #should be guassian the whole way, although quickly hits numerical zero
     for i in range(0,61):
         assert line[i] == approx(gauss[i],abs=1e-5)
+        
+def test_backwards():
+    g1 = molgrid.GridMaker(resolution=.1,dimension=6.0)
+    c = np.array([[1.0,0,0]],np.float32)
+    t = np.array([0],np.float32)
+    r = np.array([2.0],np.float32)
+    coords = molgrid.CoordinateSet(molgrid.Grid2f(c),molgrid.Grid1f(t),molgrid.Grid1f(r),1)
+    shape = g1.grid_dimensions(1)
+    
+    #make diff with gradient in center
+    diff = molgrid.MGrid4f(*shape)
+    diff[0,30,30,30] = 1.0  
+    
+    cpuatoms = molgrid.MGrid2f(1,3)
+    gpuatoms = molgrid.MGrid2f(1,3)
+    
+    #apply random rotation
+    T = molgrid.Transform((0,0,0), 0, True)
+    T.forward(coords, coords);
+    
+    g1.backward((0,0,0),coords,diff.cpu(), cpuatoms.cpu())
+    g1.backward((0,0,0),coords,diff.gpu(), gpuatoms.gpu())
+
+    T.backward(cpuatoms.cpu(), cpuatoms.cpu(), False)
+    T.backward(gpuatoms.gpu(), gpuatoms.gpu(), False)
+    
+    print(cpuatoms.tonumpy(), gpuatoms.tonumpy())
+    # results should be ~ -.6, 0, 0
+    np.testing.assert_allclose(cpuatoms.tonumpy(), gpuatoms.tonumpy(), atol=1e-5)
+    np.testing.assert_allclose(cpuatoms.tonumpy().flatten(), [-0.60653067,0,0], atol=1e-5)
+    
    

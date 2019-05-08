@@ -309,8 +309,7 @@ namespace libmolgrid {
           //return gaussian
           float ex = -2.0 * dist * dist / (ar*ar);
           return exp(ex);
-        } else //return quadratic
-        {
+        } else { //return quadratic
           float dr = dist / ar;
           float q = (A * dr + B) * dr + C;
           return q > 0 ? q : 0; //avoid very small negative numbers
@@ -343,12 +342,11 @@ namespace libmolgrid {
       // d_loss/d_atomx = d_atomdist/d_atomx * d_gridpoint/d_atomdist * d_loss/d_gridpoint
       // sum across all gridpoints
       //dkoes - the negative sign is because we are considering the derivative of the center vs grid
-      float gx = -(dist_x / dist) * agrad_dist * gridval;
-      float gy = -(dist_y / dist) * agrad_dist * gridval;
-      float gz = -(dist_z / dist) * agrad_dist * gridval;
-      agrad.x += gx;
-      agrad.y += gy;
-      agrad.z += gz;
+      if(dist > 0) {
+        agrad.x += -(dist_x / dist) * (agrad_dist * gridval);
+        agrad.y += -(dist_y / dist) * (agrad_dist * gridval);
+        agrad.z += -(dist_z / dist) * (agrad_dist * gridval);
+      }
     }
 
 
