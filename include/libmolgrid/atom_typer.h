@@ -190,6 +190,9 @@ class GninaIndexTyper: public AtomIndexTyper {
 
     ///return gnina info for a given type
     const info& get_info(int t) const { return data[t]; }
+
+    ///return name of default gnina type t
+    static std::string gnina_type_name(int t);
 };
 
 /** \brief Calculate element types

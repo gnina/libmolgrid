@@ -237,6 +237,7 @@ namespace libmolgrid {
       ranges[2] = G.get_bounds_1d(grid_origin.z, a.z, r);
 
       int whichgrid = round(type_index[idx]);
+      if(whichgrid < 0) return;
       Grid<Dtype, 3, true> diff = grid[whichgrid];
 
       //for every grid point possibly overlapped by this atom
@@ -266,6 +267,7 @@ namespace libmolgrid {
       unsigned n = coords.dimension(0);
       if(n != type_index.size()) throw std::invalid_argument("Type dimension doesn't equal number of coordinates.");
       if(n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
+      if(n != atom_gradients.dimension(0)) throw std::invalid_argument("Gradient dimension doesn't equal number of coordinates");
 
       float3 grid_origin = get_grid_origin(grid_center);
 
@@ -349,6 +351,79 @@ namespace libmolgrid {
       }
     }
 
+    //kernel launch - parallelize across whole atoms
+    template<typename Dtype>
+    __global__
+    void set_atom_relevance(GridMaker G, float3 grid_origin, Grid2fCUDA coords, Grid1fCUDA type_index, Grid1fCUDA radii,
+        Grid<Dtype, 4, true> densitygrid, Grid<Dtype, 4, true> diffgrid, Grid<Dtype, 1, true> relevance) {
+      int idx = blockDim.x * blockIdx.x + threadIdx.x;
+      if(idx >= radii.dimension(0)) return;
 
+      //calculate gradient for atom at idx
+      float radius = radii[idx];
+      float3 a{coords(idx,0),coords(idx,1),coords(idx,2)}; //atom coordinate
+
+      float r = radius * G.radius_scale * G.final_radius_multiple;
+      uint2 ranges[3];
+      ranges[0] = G.get_bounds_1d(grid_origin.x, a.x, r);
+      ranges[1] = G.get_bounds_1d(grid_origin.y, a.y, r);
+      ranges[2] = G.get_bounds_1d(grid_origin.z, a.z, r);
+
+      int whichgrid = round(type_index[idx]);
+      if(whichgrid < 0) return;
+      Grid<Dtype, 3, true> diff = diffgrid[whichgrid];
+      Grid<Dtype, 3, true> density = densitygrid[whichgrid];
+
+      //for every grid point possibly overlapped by this atom
+      float ret = 0;
+      for (unsigned i = ranges[0].x, iend = ranges[0].y; i < iend; ++i) {
+        for (unsigned j = ranges[1].x, jend = ranges[1].y; j < jend; ++j) {
+          for (unsigned k = ranges[2].x, kend = ranges[2].y; k < kend; ++k) {
+            //convert grid point coordinates to angstroms
+            float x = grid_origin.x + i * G.resolution;
+            float y = grid_origin.y + j * G.resolution;
+            float z = grid_origin.z + k * G.resolution;
+
+            float val = G.calc_point(a.x, a.y, a.z, radius, float3{x,y,z});
+
+            if (val > 0) {
+              float denseval = density(i,j,k);
+              float gridval = diff(i,j,k);
+              if(denseval > 0) {
+                //weight by contribution to density grid
+                ret += gridval*val/denseval;
+              } // surely denseval >= val?
+            }
+          }
+        }
+      }
+      relevance(idx) = ret;
+    }
+
+    template <typename Dtype>
+    void GridMaker::backward_relevance(float3 grid_center,  const Grid<float, 2, true>& coords,
+        const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
+        const Grid<Dtype, 4, true>& density, const Grid<Dtype, 4, true>& diff,
+        Grid<Dtype, 1, true>& relevance) const {
+
+      relevance.fill_zero();
+      unsigned n = coords.dimension(0);
+      if(n != type_index.size()) throw std::invalid_argument("Type dimension doesn't equal number of coordinates.");
+      if(n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
+      if(n != relevance.size()) throw std::invalid_argument("Relevance dimension doesn't equal number of coordinates");
+
+      float3 grid_origin = get_grid_origin(grid_center);
+
+      unsigned blocks =  n/LMG_CUDA_NUM_THREADS + bool(n%LMG_CUDA_NUM_THREADS); //at least one if n > 0
+      unsigned nthreads = blocks > 1 ? LMG_CUDA_NUM_THREADS : n;
+      set_atom_relevance<<<blocks, nthreads>>>(*this, grid_origin, coords, type_index, radii, density, diff, relevance);
+    }
+
+    template void GridMaker::backward_relevance(float3,  const Grid<float, 2, true>&,
+        const Grid<float, 1, true>&, const Grid<float, 1, true>&, const Grid<float, 4, true>&,
+        const Grid<float, 4, true>&, Grid<float, 1, true>&) const;
+    template void GridMaker::backward_relevance(float3,  const Grid<float, 2, true>&,
+        const Grid<float, 1, true>&, const Grid<float, 1, true>&,  const Grid<double, 4, true>&,
+        const Grid<double, 4, true>& , Grid<double, 1, true>& ) const;
 
 } /* namespace libmolgrid */

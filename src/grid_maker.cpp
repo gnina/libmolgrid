@@ -184,7 +184,7 @@ float3 GridMaker::calc_atom_gradient_cpu(const float3& grid_origin, const Grid1f
   float3 agrad{0,0,0};
 
   float r = radius * radius_scale * final_radius_multiple;
-  std::array<uint2, 3> ranges;
+  uint2 ranges[3];
   ranges[0] = get_bounds_1d(grid_origin.x, coord(0), r);
   ranges[1] = get_bounds_1d(grid_origin.y, coord(1), r);
   ranges[2] = get_bounds_1d(grid_origin.z, coord(2), r);
@@ -209,6 +209,45 @@ float3 GridMaker::calc_atom_gradient_cpu(const float3& grid_origin, const Grid1f
   return agrad;
 }
 
+template <typename Dtype>
+float GridMaker::calc_atom_relevance_cpu(const float3& grid_origin, const Grid1f& coord, const Grid<Dtype, 3, false>& density, const Grid<Dtype, 3, false>& diff, float radius) const {
+
+  float ret = 0;
+  float r = radius * radius_scale * final_radius_multiple;
+  uint2 ranges[3];
+  ranges[0] = get_bounds_1d(grid_origin.x, coord(0), r);
+  ranges[1] = get_bounds_1d(grid_origin.y, coord(1), r);
+  ranges[2] = get_bounds_1d(grid_origin.z, coord(2), r);
+
+  float3 a{coord(0),coord(1),coord(2)}; //atom coordinate
+
+  //for every grid point possibly overlapped by this atom
+  for (unsigned i = ranges[0].x, iend = ranges[0].y; i < iend;
+      ++i) {
+    for (unsigned j = ranges[1].x, jend = ranges[1].y; j < jend; ++j) {
+      for (unsigned k = ranges[2].x, kend = ranges[2].y; k < kend; ++k) {
+        //convert grid point coordinates to angstroms
+        float x = grid_origin.x + i * resolution;
+        float y = grid_origin.y + j * resolution;
+        float z = grid_origin.z + k * resolution;
+
+        float val = calc_point(a.x, a.y, a.z, radius, float3{x,y,z});
+
+        if (val > 0) {
+          float denseval = density(i,j,k);
+          float gridval = diff(i,j,k);
+          if(denseval > 0) {
+            //weight by contribution to density grid
+            ret += gridval*val/denseval;
+          } // surely denseval >= val?
+        }
+      }
+    }
+  }
+
+  return ret;
+}
+
 //cpu backwards
 template <typename Dtype>
 void GridMaker::backward(float3 grid_center, const Grid<float, 2, false>& coords,
@@ -219,6 +258,7 @@ void GridMaker::backward(float3 grid_center, const Grid<float, 2, false>& coords
   unsigned n = coords.dimension(0);
   if(n != type_index.size()) throw std::invalid_argument("Type dimension doesn't equal number of coordinates.");
   if(n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
+  if(n != atom_gradients.dimension(0)) throw std::invalid_argument("Gradient dimension doesn't equal number of coordinates");
 
   float3 grid_origin = get_grid_origin(grid_center);
 
@@ -241,4 +281,31 @@ template void GridMaker::backward(float3 grid_center, const Grid<float, 2, false
     const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
     const Grid<double, 4, false>& diff, Grid<double, 2, false>& atom_gradients) const;
 
+template <typename Dtype>
+void GridMaker::backward_relevance(float3 grid_center,  const Grid<float, 2, false>& coords,
+    const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
+    const Grid<Dtype, 4, false>& density, const Grid<Dtype, 4, false>& diff,
+    Grid<Dtype, 1, false>& relevance) const {
+
+  relevance.fill_zero();
+  unsigned n = coords.dimension(0);
+  if(n != type_index.size()) throw std::invalid_argument("Type dimension doesn't equal number of coordinates.");
+  if(n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
+
+  float3 grid_origin = get_grid_origin(grid_center);
+
+  for (unsigned i = 0; i < n; ++i) {
+    int whichgrid = round(type_index[i]); // this is which atom-type channel of the grid to look at
+    if (whichgrid >= 0) {
+      relevance(i) = calc_atom_relevance_cpu(grid_origin, coords[i], density[whichgrid], diff[whichgrid], radii[i]);
+    }
+  }
+}
+
+template void GridMaker::backward_relevance(float3,  const Grid<float, 2, false>&,
+    const Grid<float, 1, false>&, const Grid<float, 1, false>&, const Grid<float, 4, false>&,
+    const Grid<float, 4, false>&, Grid<float, 1, false>&) const;
+template void GridMaker::backward_relevance(float3,  const Grid<float, 2, false>&,
+    const Grid<float, 1, false>&, const Grid<float, 1, false>&,  const Grid<double, 4, false>&,
+    const Grid<double, 4, false>& , Grid<double, 1, false>& ) const;
 }

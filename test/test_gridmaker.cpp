@@ -160,7 +160,6 @@ BOOST_AUTO_TEST_CASE(backward) {
 
   //with random rotation, all three coordinates should have gradient
   for (unsigned i = 0; i < 3; i++) {
-    std::cout << cpuatoms(0,i) << "\n";
     BOOST_CHECK_GT(fabs(cpuatoms(0, i)), TOL);
   }
 
@@ -173,4 +172,33 @@ BOOST_AUTO_TEST_CASE(backward) {
   for (unsigned i = 1; i < 3; i++) {
     BOOST_CHECK_SMALL(cpuatoms(0, i), TOL);
   }
+}
+
+
+BOOST_AUTO_TEST_CASE(backward_relevance) {
+  using namespace std;
+  GridMaker g(0.1, 6.0);
+
+  vector<float3> c { make_float3(0, 0, 0) };
+  vector<unsigned> t { 0 };
+  vector<float> r { 2.0 };
+
+  CoordinateSet coords(c, t, r, 1);
+  float dim = g.get_grid_dims().x;
+  MGrid4f diff(1, dim, dim, dim);
+  diff(0, 31, 30, 30) = 10.0;
+
+  MGrid4f density(1, dim, dim, dim);
+  density(0, 31,30, 30) = 1.0; //offset so only partial relevance shoudl be propped
+
+  MGrid1f cpurel(1);
+  MGrid1f gpurel(1);
+
+  g.backward_relevance(float3 { 0, 0, 0 }, coords, density.cpu(), diff.cpu(), cpurel.cpu());
+  g.backward_relevance(float3 { 0, 0, 0 }, coords, density.gpu(), diff.gpu(), gpurel.gpu());
+
+  BOOST_CHECK_SMALL(cpurel(0)-gpurel(0), TOL);
+  BOOST_CHECK_GT(cpurel(0), 1.0);
+  BOOST_CHECK_LT(cpurel(0), 10.0);
+
 }

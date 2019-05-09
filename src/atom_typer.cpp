@@ -68,6 +68,13 @@ unsigned GninaIndexTyper::num_types() const {
   return NumTypes;
 }
 
+std::string GninaIndexTyper::gnina_type_name(int t) {
+  if(t >= 0 && t < GninaIndexTyper::NumTypes) {
+    return default_data[t].smina_name;
+  }
+  return "Unsupported";
+}
+
 
 ///return type index and radius of a
 std::pair<int,float> GninaIndexTyper::get_atom_type_index(OpenBabel::OBAtom* a) const {
