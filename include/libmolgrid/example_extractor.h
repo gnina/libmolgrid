@@ -72,6 +72,10 @@ class ExampleExtractor {
 
     // return number types (channels) ref will produce
     virtual size_t type_size(const ExampleRef& ref) const;
+
+    ///return names of types for explicitly typed examples
+    ///type names are prepended by coordinate set index
+    virtual std::vector<std::string> get_type_names() const;
 };
 
 } /* namespace libmolgrid */

@@ -72,5 +72,15 @@ size_t ExampleExtractor::type_size(const ExampleRef& ref) const {
   return count_types(ref.files.size());
 }
 
+std::vector<std::string> ExampleExtractor::get_type_names() const {
+  vector<string> ret;
+  for(unsigned i = 0, n = coord_caches.size(); i < n; i++) {
+    vector<string> names = coord_caches[i].get_type_names();
+    for(auto name : names) {
+      ret.push_back(itoa(i)+"_"+name);
+    }
+  }
+  return ret;
+}
 
 } /* namespace libmolgrid */

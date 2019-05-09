@@ -671,6 +671,7 @@ MAKE_ALL_GRIDS()
       .def("num_labels", &ExampleProvider::num_labels)
       .def("settings", &ExampleProvider::settings,return_value_policy<copy_const_reference>())
       .def("type_size", &ExampleProvider::type_size)
+      .def("get_type_names", &ExampleProvider::get_type_names)
       .def("next", static_cast<Example (ExampleProvider::*)()>(&ExampleProvider::next))
       .def("next_batch", static_cast< std::vector<Example> (ExampleProvider::*)(unsigned)>(&ExampleProvider::next_batch),
           (arg("batch_size")));
@@ -741,8 +742,13 @@ MAKE_ALL_GRIDS()
 
   //grid io
   def("read_dx",static_cast<CartesianGrid<ManagedGrid<float, 3> > (*)(const std::string&)>(&read_dx<float>));
-  def("write_dx",static_cast<void (*)(const std::string& fname, const Grid3f&, const float3&, float)>(&write_dx<float>));
-  def("write_map",static_cast<void (*)(const std::string& fname, const Grid3f&, const float3&, float)>(&write_map<float>));
+  def("write_dx",static_cast<void (*)(const std::string& fname, const Grid3f&, const float3&, float, float)>(&write_dx<float>),
+      (arg("file_name"),"grid","center","resolution",arg("scale")=1.0));
+  def("write_map",static_cast<void (*)(const std::string& fname, const Grid3f&, const float3&, float, float)>(&write_map<float>),
+      (arg("file_name"),"grid","center","resolution",arg("scale")=1.0));
+  def("write_dx_grids",static_cast<void (*)(const std::string&, const std::vector<std::string>&, const Grid4f&, const float3&, float, float)>(&write_dx_grids<float>),
+      (arg("prefix"),"type_names","grid","center","resolution",arg("scale")=1.0));
+  def("read_dx_grids",+[](const std::string& prefix, const std::vector<std::string>& names, Grid4f grid) { read_dx_grids(prefix, names, grid);});
 
 
 }

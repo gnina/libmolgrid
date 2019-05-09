@@ -18,6 +18,12 @@ CartesianGrid<ManagedGrid<DType, 3> > read_dx(std::istream& in);
 template <typename DType>
 CartesianGrid<ManagedGrid<DType, 3> > read_dx(const std::string& fname);
 
+/// Read dx formatted grid into provided grid, which must have the correct dimensions.
+template <typename Dtype>
+void read_dx(std::istream& in, Grid<Dtype, 3>& grid);
+template <typename Dtype>
+void read_dx(const std::string& fname, Grid<Dtype, 3>& grid);
+
 ///read in binary file, grid must be correct size
 template <class G>
 void read_bin(std::istream& in, G& grid) {
@@ -27,23 +33,42 @@ void read_bin(std::istream& in, G& grid) {
 
 //output routines
 
-/// output grid as dx formatted file
+/** \brief output grid as dx formatted file
+ * Values are multiplied by scale, which may be necessary to adjust for limited precision in the text-based format
+ */
 template <typename DType>
-void write_dx(std::ostream& out, const Grid<DType, 3>& grid, const float3& center, float resolution);
+void write_dx(std::ostream& out, const Grid<DType, 3>& grid, const float3& center, float resolution, float scale=1.0);
 template <typename DType>
-void write_dx(const std::string& fname, const Grid<DType, 3>& grid, const float3& center, float resolution);
+void write_dx(const std::string& fname, const Grid<DType, 3>& grid, const float3& center, float resolution, float scale=1.0);
 
-/// output grid as dx formatted file
-template <typename DType>
-void write_dx(std::ostream& out, const Grid<DType, 3>& grid, const float3& center, float resolution);
-template <typename DType>
-void write_dx(const std::string& fname, const Grid<DType, 3>& grid, const float3& center, float resolution);
+/** \brief Output multiple grids using type names as a suffix.
+ * @param[in] prefix filename will have form [prefix]_[typename].dx
+ * @param[in] names must have same size as first dimension of grid
+ * @param[in] grid input grids
+ * @param[in] center
+ * @param[in] resolution
+ * @param[in] scale multiply each value by this factor
+ */
+template <typename Dtype>
+void write_dx_grids(const std::string& prefix, const std::vector<std::string>& names, const Grid<Dtype, 4>& grid, const float3& center, float resolution, float scale=1.0);
+
+/** \brief Read multiple grids using type names as a suffix.  Grids must be correctly sized
+ * @param[in] prefix filename will have form [prefix]_[typename].dx
+ * @param[in] names must have same size as first dimension of grid
+ * @param[in] grid input grids
+ * @param[in] center
+ * @param[in] resolution
+ * @param[in] scale multiply each value by this factor
+ */
+template <typename Dtype>
+void read_dx_grids(const std::string& prefix, const std::vector<std::string>& names, Grid<Dtype, 4>& grid);
+
 
 /// output grid as autodock map formatted file
 template <typename DType>
-void write_map(std::ostream& out, const Grid<DType, 3>& grid, const float3& center, float resolution);
+void write_map(std::ostream& out, const Grid<DType, 3>& grid, const float3& center, float resolution, float scale=1.0);
 template <typename DType>
-void write_map(const std::string& fname, const Grid<DType, 3>& grid, const float3& center, float resolution);
+void write_map(const std::string& fname, const Grid<DType, 3>& grid, const float3& center, float resolution, float scale=1.0);
 
 //dump raw data in binary
 template <class G>
@@ -51,21 +76,6 @@ void write_bin(std::ostream& out, const G& grid) {
     out.write((char*)grid.data(), grid.size() * sizeof(typename G::type));
 }
 
-
-extern template CartesianGrid<ManagedGrid<float, 3> > read_dx(std::istream& in);
-extern template CartesianGrid<ManagedGrid<double, 3> > read_dx(std::istream& in);
-extern template CartesianGrid<ManagedGrid<float, 3> > read_dx(const std::string& fname);
-extern template CartesianGrid<ManagedGrid<double, 3> > read_dx(const std::string& fname);
-
-extern template void write_dx(std::ostream& out, const Grid<float, 3>& grid, const float3& center, float resolution);
-extern template void write_dx(const std::string& fname, const Grid<float, 3>& grid, const float3& center, float resolution);
-extern template void write_dx(std::ostream& out, const Grid<double, 3>& grid, const float3& center, float resolution);
-extern template void write_dx(const std::string& fname, const Grid<double, 3>& grid, const float3& center, float resolution);
-
-extern template void write_map(std::ostream& out, const Grid<float, 3>& grid, const float3& center, float resolution);
-extern template void write_map(const std::string& fname, const Grid<float, 3>& grid, const float3& center, float resolution);
-extern template void write_map(std::ostream& out, const Grid<double, 3>& grid, const float3& center, float resolution);
-extern template void write_map(const std::string& fname, const Grid<double, 3>& grid, const float3& center, float resolution);
 }
 
 

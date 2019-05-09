@@ -21,7 +21,7 @@ def test_dx():
     assert np.min(c.type_index.tonumpy()) >= 0
 
     gmaker = molgrid.GridMaker()
-    dims = gmaker.grid_dimensions(c.max_type) # this should be grid_dims or get_grid_dims
+    dims = gmaker.grid_dimensions(e.type_size()) # this should be grid_dims or get_grid_dims
     center = c.coord.tonumpy().mean(axis=0)
     center = tuple(center.astype(float))
 
@@ -39,3 +39,12 @@ def test_dx():
     
     assert center == approx(list(mgridin.center()))
     assert mgridin.resolution() == 0.5
+    
+    #dump everything
+    molgrid.write_dx_grids("/tmp/tmp", e.get_type_names(), mgridout.cpu(), center, gmaker.get_resolution(),0.5)
+    checkgrid = molgrid.MGrid4f(*dims)
+    molgrid.read_dx_grids("/tmp/tmp", e.get_type_names(), checkgrid.cpu())
+    
+    np.testing.assert_array_almost_equal(mgridout.tonumpy(), 2.0*checkgrid.tonumpy(),decimal=5)
+    
+    
