@@ -1,10 +1,13 @@
 import pytest
 import molgrid
-import pybel
 import os
 import numpy as np
 from pytest import approx
-
+try:
+    import pybel #2.0
+except ImportError:
+    from openbabel import pybel  #3.0
+    
 def test_gninatyping():
     m = pybel.readstring('smi','c1ccccc1CO')
     m.addh()

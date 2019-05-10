@@ -7,6 +7,7 @@
 #include "libmolgrid/grid_maker.h"
 #include <cmath>
 #include <vector>
+#include <iomanip>
 
 namespace libmolgrid {
 

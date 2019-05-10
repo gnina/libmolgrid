@@ -1,6 +1,10 @@
 import pytest
 import molgrid
-import pybel
+try:
+    import pybel #2.0
+except ImportError:
+    from openbabel import pybel  #3.0
+
 import numpy as np
 
 from pytest import approx
