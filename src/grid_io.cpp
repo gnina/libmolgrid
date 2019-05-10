@@ -181,6 +181,9 @@ void write_dx_grids(const std::string& prefix, const std::vector<std::string>& n
 
   for(unsigned i = 0, n = names.size(); i < n; i++) {
     string fname = prefix+"_"+names[i]+".dx";
+    if(fname.length() > 255) { //max file name length on linux
+      fname = fname.substr(0,250) + ".dx";
+    }
     write_dx(fname, grid[i], center, resolution, scale);
   }
 }
