@@ -1,8 +1,10 @@
 import pytest
 import molgrid
-import pybel
 import numpy as np
-
+try:
+    import pybel #2.0
+except ImportError:
+    from openbabel import pybel  #3.0
 from pytest import approx
 
 #manually construct an example and test merge_coordinates
