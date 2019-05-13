@@ -5,6 +5,7 @@ import os
 
 from pytest import approx
 from numpy import around
+from matplotlib.mlab import recs_join
 
 # there's like umpteen gazillion configuration options for example provider..
 datadir = os.path.dirname(__file__)+'/data'
@@ -136,3 +137,46 @@ def test_cached_example_provider():
     assert list(clig.coord[9]) == approx([27.0536, 3.2453, 32.4511])        
     assert list(clig.type_index) == [8.0, 1.0, 1.0, 9.0, 10.0, 0.0, 0.0, 1.0, 9.0, 8.0]
 
+def test_grouped_example_provider():
+    fname = datadir+"/grouped.types"
+    batch_size = 3
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs",max_group_size=5,group_batch_size=batch_size)
+    e.populate(fname)
+
+    
+    def testprovider(e,gsize):
+        def getrecs(b):
+            return [ ex.coord_sets[0].src for ex in b]
+        
+        def getligs(b):
+            ligs = []
+            for ex in b:
+                if len(ex.coord_sets) > 1:
+                    ligs.append(ex.coord_sets[1].src)
+                else:
+                    ligs.append(None)
+            return ligs
+        
+        for _ in range(10):
+            batch = e.next_batch(batch_size)
+            firstrecs = getrecs(batch)
+            firstligs = getligs(batch)
+            
+            for i in range(gsize-1):
+                #rest of group - should match receptor but not ligand
+                batch = e.next_batch(batch_size)
+                recs = getrecs(batch)
+                ligs = getligs(batch)
+                for (r1,r2) in zip(firstrecs,recs):
+                    if r2:
+                        assert r1 == r2
+                for (l1,l2) in zip(firstligs, ligs):
+                    assert l1 != l2
+    
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs",max_group_size=5,group_batch_size=batch_size)
+    e.populate(fname)
+    testprovider(e,5)
+    
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs",max_group_size=7,group_batch_size=batch_size,shuffle=True,balanced=True)
+    e.populate(fname)
+    testprovider(e,7)    

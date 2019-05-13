@@ -31,10 +31,12 @@ class ExampleRefProvider {
     virtual unsigned size() const = 0;
     virtual ~ExampleRefProvider() {}
 
+    virtual bool has_group() const { return false; } ///has group field
+    virtual void check_batch_size(unsigned bsize) const {} ///if provider has predetermined batch size
     ///return number of labels in *an* example
     virtual size_t num_labels() const = 0;  
     ///read in all the example refs from lines, but does not setup
-    virtual int populate(std::istream& lines, int numlabels, bool hasgroup);
+    virtual int populate(std::istream& lines, int numlabels);
 };
 
 
@@ -49,38 +51,14 @@ class UniformExampleRefProvider: public ExampleRefProvider
 
 public:
   UniformExampleRefProvider() {}
-  UniformExampleRefProvider(const ExampleProviderSettings& settings): ExampleRefProvider(settings), current(0), randomize(settings.shuffle)
-  {
+  UniformExampleRefProvider(const ExampleProviderSettings& settings): ExampleRefProvider(settings),
+      current(0), randomize(settings.shuffle) {
   }
 
-  void addref(const ExampleRef& ex)
-  {
-    all.push_back(ex);
-    nlabels = ex.labels.size();
-  }
-
-  virtual size_t num_labels() const {
-    return nlabels;
-  }
-  
-  void setup()
-  {
-    current = 0;
-    if(randomize) shuffle(all.begin(), all.end(), random_engine);
-    if(all.size() == 0) throw std::invalid_argument("No valid examples found in training set.");
-  }
-
-  void nextref(ExampleRef& ex)
-  {
-    assert(current < all.size());
-    ex = all[current];
-    current++;
-    if(current >= all.size())
-    {
-      setup(); //reset current and shuffle if necessary
-    }
-  }
-
+  void addref(const ExampleRef& ex);
+  virtual size_t num_labels() const { return nlabels; }
+  void setup();
+  void nextref(ExampleRef& ex);
   unsigned size() const { return all.size(); }
 };
 
@@ -96,59 +74,22 @@ class BalancedExampleRefProvider: public ExampleRefProvider
 public:
   BalancedExampleRefProvider() {}
   BalancedExampleRefProvider(const ExampleProviderSettings& settings):
-    ExampleRefProvider(settings), actives(settings), decoys(settings), current(0), labelpos(settings.labelpos)
-  {
+    ExampleRefProvider(settings), actives(settings), decoys(settings),
+    current(0), labelpos(settings.labelpos) {
   }
 
-  void addref(const ExampleRef& ex)
-  {
-    if(labelpos < ex.labels.size()) {
-    if (ex.labels[labelpos])
-      actives.addref(ex);
-    else
-      decoys.addref(ex);
-    } else {
-      throw std::invalid_argument("Example has no label at position "+ itoa(labelpos) + ".  There are only "+itoa(ex.labels.size())+" labels");
-    }
-  }
+  void addref(const ExampleRef& ex);
 
   ///return number of labels in *an* example
-  virtual size_t num_labels() const {
-    return actives.num_labels();
-  }
-  
-  void setup()
-  {
-    current = 0;
-    actives.setup();
-    decoys.setup();
-  }
-
-  void nextref(ExampleRef& ex)
-  {
-    //alternate between actives and decoys
-    if(current % 2 == 0)
-      actives.nextref(ex);
-    else
-      decoys.nextref(ex);
-
-    current++;
-  }
-
+  virtual size_t num_labels() const {  return actives.num_labels(); }
+  void setup();
+  void nextref(ExampleRef& ex);
   unsigned size() const { return actives.size()+decoys.size(); }
-
   unsigned num_actives() const { return actives.size(); }
   unsigned num_decoys() const { return decoys.size(); }
 
-  void next_active(ExampleRef& ex)
-  {
-    actives.nextref(ex);
-  }
-
-  void next_decoy(ExampleRef& ex)
-  {
-    decoys.nextref(ex);
-  }
+  void next_active(ExampleRef& ex) {  actives.nextref(ex); }
+  void next_decoy(ExampleRef& ex) { decoys.nextref(ex); }
 };
 
 
@@ -164,8 +105,7 @@ class SamplingExampleRefProvider: public ExampleRefProvider
 public:
   SamplingExampleRefProvider() {}
   SamplingExampleRefProvider(const ExampleProviderSettings& settings, Provider1 P1, Provider2 P2, double srate):
-    ExampleRefProvider(settings), p1(P1), p2(P2), sample_rate(srate)
-  {
+    ExampleRefProvider(settings), p1(P1), p2(P2), sample_rate(srate) {
   }
 
   void addref(const ExampleRef& ex)
@@ -182,7 +122,7 @@ public:
   virtual size_t num_labels() const {
     return p1.num_labels();
   }
-  
+
   void nextref(ExampleRef& ex)
   {
     //alternate between actives and decoys
@@ -394,6 +334,10 @@ public:
  * next() returns the next frame for the next example in the batch;
  * traversal is row-major with layout TxN.  Frames are maintained in the order
  * they are added.  There is a fixed batch and time series (group) size.
+ *
+ * The group is specified in the first column.  Although labels are permitted to
+ * vary across group members, only the labels of the first frame will be used
+ * for balancing/stratification.
  * */
 template<class Provider>
 class GroupedExampleRefProvider : public ExampleRefProvider {
@@ -425,8 +369,8 @@ public:
       examples.addref(ex); //let provider manage, but we are really just using it to select the groups
 
     frame_groups[group].push_back(ex);
-    if(frame_groups[group].size() >= maxgroupsize)
-      throw std::invalid_argument("Frame group "+itoa(group)+" is larger than max group size");
+    if(frame_groups[group].size() > maxgroupsize)
+      log(WARNING) << "Frame group " << group <<" has " << frame_groups[group].size() << " frames, which is more than max group size "<<maxgroupsize << "\n";
   }
 
   void setup() {
@@ -437,6 +381,14 @@ public:
     return examples.num_labels();
   }
   
+  virtual bool has_group() const { return true; } ///has group field
+
+  virtual void check_batch_size(unsigned bsize) const {
+    if(bsize != batch_size) {
+      throw std::invalid_argument("Requested batch size "+itoa(bsize)+ " does not match configured group batch size "+itoa(batch_size));
+    }
+  }
+
   void nextref(ExampleRef& ex) {
     if(current_group_index >= current_groups.size()) {
       current_group_index = 0; //wrap and start next time step

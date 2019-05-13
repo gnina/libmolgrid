@@ -19,10 +19,13 @@ namespace libmolgrid {
     extern std::default_random_engine random_engine;
 
     using cuda_float3 = ::float3; //in case "someone" has redefined float3
-    enum LogLevel { INFO, WARNING, DEBUG};
+    enum LogLevel { INFO, WARNING, ERROR, DEBUG};
 
     inline std::ostream& log(LogLevel level = INFO) {
-      return std::cout; //todo, implement verbosity levels
+      if(level > INFO)
+        return std::cerr;
+      else
+        return std::cout; //todo, implement verbosity levels
     }
 
     inline std::string ftoa(float v) { return boost::lexical_cast<std::string>(v); }

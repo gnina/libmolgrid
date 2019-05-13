@@ -31,7 +31,7 @@ namespace libmolgrid {
     EXSET(float, stratify_max, 0, "maximum range for value stratification") \
     EXSET(float, stratify_step, 0, "step size for value stratification, together with min and max determines number of bins") \
     EXSET(int, group_batch_size, 1, "slice time series (groups) by batches of this size") \
-    EXSET(int, max_group_size, 0, "maximum group size, all groups are padded out to this size") \
+    EXSET(int, max_group_size, 0, "maximum group size, all groups are padded out to this size; example file must contain group number in first column") \
     EXSET(bool, cache_structs, true, "retain coordinates in memory for faster training") \
     EXSET(bool, add_hydrogens, true, "protonate read in molecule using openbabel") \
     EXSET(bool, duplicate_first, false, "clone the first coordinate set to be paired with each of the remaining (receptor-ligand pairs)") \

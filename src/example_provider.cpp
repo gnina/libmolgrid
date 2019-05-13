@@ -48,21 +48,19 @@ ExampleProvider::ExampleProvider(std::shared_ptr<ExampleRefProvider> p,
 }
 
 ///load example file file fname and setup provider
-void ExampleProvider::populate(const std::string& fname, int num_labels,
-    bool has_group) {
+void ExampleProvider::populate(const std::string& fname, int num_labels) {
   ifstream f(fname.c_str());
   if (!f) throw invalid_argument("Could not open file " + fname);
-  provider->populate(f, num_labels, has_group);
+  provider->populate(f, num_labels);
   provider->setup();
 }
 
 ///load multiple example files
-void ExampleProvider::populate(const std::vector<std::string>& fnames,
-    int num_labels, bool has_group) {
+void ExampleProvider::populate(const std::vector<std::string>& fnames, int num_labels) {
   for (unsigned i = 0, n = fnames.size(); i < n; i++) {
     ifstream f(fnames[i].c_str());
     if (!f) throw invalid_argument("Could not open file " + fnames[i]);
-    provider->populate(f, num_labels, has_group);
+    provider->populate(f, num_labels);
   }
   provider->setup();
 }
@@ -75,11 +73,11 @@ void ExampleProvider::next(Example& ex) {
 }
 
 ///provide a batch of examples
-void ExampleProvider::next_batch(std::vector<Example>& ex,
-    unsigned batch_size) {
+void ExampleProvider::next_batch(std::vector<Example>& ex, unsigned batch_size) {
   static vector<ExampleRef> refs;
   ex.resize(batch_size);
   refs.resize(batch_size);
+  provider->check_batch_size(batch_size);
   for (unsigned i = 0; i < batch_size; i++) {
     provider->nextref(refs[i]);
     extractor.extract(refs[i], ex[i]);

@@ -45,7 +45,7 @@ void ReceptorStratifiedExampleRefProvider<BalancedExampleRefProvider, 2>::setup(
 
 }
 
-int ExampleRefProvider::populate(std::istream& lines, int numlabels, bool hasgroup) {
+int ExampleRefProvider::populate(std::istream& lines, int numlabels) {
   if(!lines) throw invalid_argument("Could not read lines");
 
   string line;
@@ -53,12 +53,66 @@ int ExampleRefProvider::populate(std::istream& lines, int numlabels, bool hasgro
   {
     trim(line);
     if(line.length() > 0) { //ignore blank lines
-      ExampleRef ref(line, numlabels, hasgroup);
+      ExampleRef ref(line, numlabels, has_group());
       addref(ref);
     }
   }
 
   return size();
+}
+
+void UniformExampleRefProvider::addref(const ExampleRef& ex)
+{
+  all.push_back(ex);
+  nlabels = ex.labels.size();
+}
+
+void UniformExampleRefProvider::setup()
+{
+  current = 0;
+  if(randomize) shuffle(all.begin(), all.end(), random_engine);
+  if(all.size() == 0) throw std::invalid_argument("No valid examples found in training set.");
+}
+
+void UniformExampleRefProvider::nextref(ExampleRef& ex)
+{
+  assert(current < all.size());
+  ex = all[current];
+  current++;
+  if(current >= all.size())
+  {
+    setup(); //reset current and shuffle if necessary
+  }
+}
+
+void BalancedExampleRefProvider::addref(const ExampleRef& ex)
+{
+  if(labelpos < ex.labels.size()) {
+  if (ex.labels[labelpos])
+    actives.addref(ex);
+  else
+    decoys.addref(ex);
+  } else {
+    throw std::invalid_argument("Example has no label at position "+ itoa(labelpos) + ".  There are only "+itoa(ex.labels.size())+" labels");
+  }
+}
+
+void BalancedExampleRefProvider::setup()
+{
+  current = 0;
+  actives.setup();
+  decoys.setup();
+}
+
+void BalancedExampleRefProvider::nextref(ExampleRef& ex)
+{
+  //alternate between actives and decoys
+  if(current % 2 == 0)
+    actives.nextref(ex);
+  else
+    decoys.nextref(ex);
+
+  current++;
 }
 
 

@@ -262,7 +262,7 @@ ExampleRef::ExampleRef(const std::string& line, int numlabels, bool hasgroup) {
   stringstream stream(line);
   string tmp;
 
-  if(numlabels < 0) { //auto detect, assume no group
+  if(numlabels < 0) { //auto detect
     vector<string> tokens;
     boost::algorithm::split(tokens, line,boost::is_any_of("\t "),boost::token_compress_on);
     for(unsigned i = 0, n = tokens.size(); i < n; i++) {
@@ -272,17 +272,18 @@ ExampleRef::ExampleRef(const std::string& line, int numlabels, bool hasgroup) {
     }
     if(hasgroup) numlabels--;
   }
+
+  //get group if needed
+  if(hasgroup) {
+    stream >> group;
+  }
+
   //grab all labels
   double label = 0;
   labels.reserve(numlabels);
   for(int i = 0; i < numlabels; i++) {
     stream >> label;
     labels.push_back(label);
-  }
-
-  //get group if needed
-  if(hasgroup) {
-    stream >> group;
   }
 
   //remainder of the line should be whitespace spearated file names
