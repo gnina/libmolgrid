@@ -337,7 +337,8 @@ public:
  *
  * The group is specified in the first column.  Although labels are permitted to
  * vary across group members, only the labels of the first frame will be used
- * for balancing/stratification.
+ * for balancing/stratification.  If fewer frames are specified than the
+ * maxgroupsize, they will be padded with "none" and the labels set to NaN
  * */
 template<class Provider>
 class GroupedExampleRefProvider : public ExampleRefProvider {
@@ -411,6 +412,10 @@ public:
       ex = timeseries[current_ts];
     } else {
       ex = timeseries.back();
+      for(unsigned i = 0, n = ex.files.size(); i < n; i++)
+        ex.files[i] = string_cache.get("none");
+      for(unsigned i = 0, n = ex.labels.size(); i < n; i++)
+        ex.labels[i] = NAN;
     }
 
     current_group_index++; //read from next group next
