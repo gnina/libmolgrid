@@ -57,6 +57,8 @@ struct Example {
     //indexed  by atom group
     std::vector<CoordinateSet> sets;
     std::vector<float> labels;
+    int group = -1;
+    bool seqcont = false; ///for grouped inputs, true if not first member of group
 
     /// The total number of atom across all sets
     size_t coordinate_size() const;
@@ -128,6 +130,7 @@ struct ExampleRef {
     std::vector<const char*> files;
     std::vector<float> labels;
     int group = -1;
+    bool seqcont = false; ///true if not first frame of group
 
     ExampleRef() {}
     ///parse a line into an example reference - should have numlabels labels

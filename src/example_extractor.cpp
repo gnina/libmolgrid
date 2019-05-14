@@ -20,6 +20,8 @@ using namespace OpenBabel;
 
 void ExampleExtractor::extract(const ExampleRef& ref, Example& ex) {
   ex.labels = ref.labels; //the easy part
+  ex.group = ref.group;
+  ex.seqcont = ref.seqcont;
 
   //for each file in ref, get a coordinate set using the matching typer
   ex.sets.clear();

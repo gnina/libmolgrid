@@ -161,12 +161,18 @@ def test_grouped_example_provider():
             batch = e.next_batch(batch_size)
             firstrecs = getrecs(batch)
             firstligs = getligs(batch)
-            
+            grps = [ex.group for ex in batch]
+            for x in batch:
+                assert not x.seqcont
             for i in range(gsize-1):
                 #rest of group - should match receptor but not ligand
                 batch = e.next_batch(batch_size)
                 recs = getrecs(batch)
                 ligs = getligs(batch)
+                for (x,g) in zip(batch,grps):
+                    assert x.seqcont        
+                    assert x.group == g 
+                           
                 for (r1,r2) in zip(firstrecs,recs):
                     if r2:
                         assert r1 == r2

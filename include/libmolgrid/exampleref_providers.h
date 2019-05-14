@@ -417,7 +417,8 @@ public:
       for(unsigned i = 0, n = ex.labels.size(); i < n; i++)
         ex.labels[i] = NAN;
     }
-
+    ex.group = group;
+    ex.seqcont = current_ts > 0;
     current_group_index++; //read from next group next
   }
 

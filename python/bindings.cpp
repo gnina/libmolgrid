@@ -651,7 +651,9 @@ MAKE_ALL_GRIDS()
     .def("togpu", &Example::togpu, "set memory affinity to GPU")
     .def("tocpu", &Example::tocpu, "set memory affinity to CPU")
     .def_readwrite("coord_sets",&Example::sets)
-    .def_readwrite("labels",&Example::labels);
+    .def_readwrite("labels",&Example::labels)
+    .def_readwrite("group",&Example::group)
+    .def_readwrite("seqcont", &Example::seqcont);
 
   //there is quite a lot of functionality in the C++ api for example providers, but keep it simple in python for now
   class_<ExampleProvider>("ExampleProvider")
