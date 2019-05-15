@@ -205,6 +205,8 @@ namespace libmolgrid {
       check_index_args(coords, type_index, radii, out);
       //zero out grid to start
       LMG_CUDA_CHECK(cudaMemset(out.data(), 0, out.size() * sizeof(float)));
+
+      if(coords.dimension(0) == 0) return; //no atoms
       forward_gpu<Dtype><<<blocks, threads>>>(*this, grid_origin, coords, type_index, radii, out);
       LMG_CUDA_CHECK(cudaPeekAtLastError());
     }

@@ -651,18 +651,20 @@ MAKE_ALL_GRIDS()
     .def("togpu", &Example::togpu, "set memory affinity to GPU")
     .def("tocpu", &Example::tocpu, "set memory affinity to CPU")
     .def_readwrite("coord_sets",&Example::sets)
-    .def_readwrite("labels",&Example::labels);
+    .def_readwrite("labels",&Example::labels)
+    .def_readwrite("group",&Example::group)
+    .def_readwrite("seqcont", &Example::seqcont);
 
   //there is quite a lot of functionality in the C++ api for example providers, but keep it simple in python for now
   class_<ExampleProvider>("ExampleProvider")
       .def("__init__", raw_constructor(&create_ex_provider,0),"Construct an ExampleProvider using an ExampleSettings object "
           "and the desired AtomTypers for each molecule.  Alternatively, specify individual settings using keyword arguments")
       .def("populate",
-          static_cast<void (ExampleProvider::*)(const std::string&, int, bool)>(&ExampleProvider::populate),
-          (arg("file_name"), arg("num_labels")=-1, arg("has_group")=false))
-      .def("populate", +[](ExampleProvider& self, list l, int num_labels, bool has_group) {
+          static_cast<void (ExampleProvider::*)(const std::string&, int)>(&ExampleProvider::populate),
+          (arg("file_name"), arg("num_labels")=-1))
+      .def("populate", +[](ExampleProvider& self, list l, int num_labels) {
             if(list_is_vec<std::string>(l)) {
-                self.populate(list_to_vec<std::string>(l), num_labels, has_group);
+                self.populate(list_to_vec<std::string>(l), num_labels);
               } else {
                 throw std::invalid_argument("Need list of file names for ExampleProvider");
               }

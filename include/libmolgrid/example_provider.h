@@ -46,9 +46,9 @@ class ExampleProvider {
     virtual ~ExampleProvider() {}
 
     ///load example file file fname and setup provider
-    virtual void populate(const std::string& fname, int num_labels=-1, bool has_group=false);
+    virtual void populate(const std::string& fname, int num_labels=-1);
     ///load multiple example files
-    virtual void populate(const std::vector<std::string>& fnames, int num_labels=-1, bool has_group=false);
+    virtual void populate(const std::vector<std::string>& fnames, int num_labels=-1);
 
     ///return number of labels for each example (computed from first example only)
     virtual size_t num_labels() const { return provider->num_labels(); }
