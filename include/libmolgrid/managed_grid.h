@@ -138,8 +138,14 @@ class ManagedGridBase {
 
     /** \brief Copy data from src.  Should be same size, but will narrow if needed */
     void copyFrom(const ManagedGridBase<Dtype, NumDims>& src) {
-      if(sent_to_gpu) gpu_grid.copyFrom(src.gpu_grid);
-      else cpu_grid.copyFrom(src.cpu_grid);
+      if(sent_to_gpu) {
+        if(src.sent_to_gpu) gpu_grid.copyFrom(src.gpu_grid);
+        else gpu_grid.copyFrom(src.cpu_grid);
+      }
+      else { //on host
+        if(src.sent_to_gpu) cpu_grid.copyFrom(src.gpu_grid);
+        else cpu_grid.copyFrom(src.cpu_grid);
+      }
     }
 
 

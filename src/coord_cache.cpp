@@ -9,6 +9,7 @@
 
 #include <boost/algorithm/string.hpp>
 #include <boost/filesystem/path.hpp>
+#include <boost/filesystem.hpp>
 #include <openbabel/obconversion.h>
 #include <cuda_runtime.h>
 
@@ -27,6 +28,10 @@ CoordCache::CoordCache(std::shared_ptr<AtomTyper> t, const ExampleProviderSettin
   if(molcache.length() > 0) {
     static_assert(sizeof(size_t) == 8, "size_t must be 8 bytes");
 
+    if(!boost::filesystem::exists(molcache)) {
+      //try looking in dataroot
+      molcache = (boost::filesystem::path(data_root) / molcache).string();
+    }
     ifstream mcache(molcache.c_str());
     if(!mcache) throw invalid_argument("Could not open file: "+molcache);
     int version = 0;

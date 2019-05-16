@@ -176,6 +176,7 @@ class Grid {
     template<bool destCUDA>
     void copyTo(Grid<Dtype,NumDims,destCUDA>& dest) const {
       size_t sz = std::min(size(), dest.size());
+      if(sz == 0) return;
       cudaMemcpyKind kind = copyKind(isCUDA,destCUDA);
       LMG_CUDA_CHECK(cudaMemcpy(dest.data(),data(),sz*sizeof(Dtype),kind));
     }
@@ -187,6 +188,7 @@ class Grid {
     template<bool srcCUDA>
     void copyFrom(const Grid<Dtype,NumDims,srcCUDA>& src) {
       size_t sz = std::min(size(), src.size());
+      if(sz == 0) return;
       cudaMemcpyKind kind = copyKind(srcCUDA,isCUDA);
       LMG_CUDA_CHECK(cudaMemcpy(data(),src.data(),sz*sizeof(Dtype),kind));
     }
