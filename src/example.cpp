@@ -77,7 +77,7 @@ void Example::merge_coordinates(std::vector<float4>& coordrs, std::vector<float>
   unsigned toffset = 0; //amount to offset types
   for(unsigned s = start, ns = sets.size(); s < ns; s++) {
     const CoordinateSet& CS = sets[s];
-    unsigned n = CS.coord_radius.size();
+    unsigned n = CS.coord_radius.dimension(0);
     if(n == 0) continue; //ignore empties
 
     if(!CS.has_indexed_types()) throw logic_error("Coordinate sets do not have compatible index types for merge.");
@@ -147,7 +147,7 @@ void Example::merge_coordinates(std::vector<float4>& coordrs, std::vector<std::v
   //accumulate info
   for(unsigned s = start, ns = sets.size(); s < ns; s++) {
     const CoordinateSet& CS = sets[s];
-    unsigned n = CS.coord_radius.size();
+    unsigned n = CS.coord_radius.dimension(0);
     if(n == 0) continue;
 
     //todo: memcpy this

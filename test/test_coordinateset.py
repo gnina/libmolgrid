@@ -16,11 +16,11 @@ def test_coordset_from_mol():
     m.make3D()
     
     c = molgrid.CoordinateSet(m,molgrid.ElementIndexTyper())
-    oldcoord = c.coord.tonumpy()
+    oldcoord = c.coord_radius.tonumpy()[:,:3]
     #simple translate
     t = molgrid.Transform(molgrid.Quaternion(), (0,0,0), (1,1,1))
     t.forward(c,c)
-    newcoord = c.coord.tonumpy()
+    newcoord = c.coord_radius.tonumpy()[:,:3]
     assert np.sum(newcoord-oldcoord) == approx(48)
 
 #create a coordinateset from numpy and transform it
