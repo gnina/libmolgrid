@@ -193,8 +193,7 @@ float3 GridMaker::calc_atom_gradient_cpu(const float3& grid_origin, const Grid1f
   float3 a{coord(0),coord(1),coord(2)}; //atom coordinate
 
   //for every grid point possibly overlapped by this atom
-  for (unsigned i = ranges[0].x, iend = ranges[0].y; i < iend;
-      ++i) {
+  for (unsigned i = ranges[0].x, iend = ranges[0].y; i < iend; ++i) {
     for (unsigned j = ranges[1].x, jend = ranges[1].y; j < jend; ++j) {
       for (unsigned k = ranges[2].x, kend = ranges[2].y; k < kend; ++k) {
         //convert grid point coordinates to angstroms
