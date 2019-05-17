@@ -290,6 +290,10 @@ class ManagedGridBase {
     operator gpu_grid_t() const { return gpu(); }
     operator gpu_grid_t&() {return gpu(); }
 
+    /// Return pointer to CPU data
+    inline const Dtype * data() const { tocpu(); return cpu().data(); }
+    inline Dtype * data() { tocpu(); return cpu().data(); }
+
     //pointer equality
     bool operator==(const ManagedGridBase<Dtype, NumDims>& rhs) const {
       return cpu_ptr == rhs.cpu_ptr;

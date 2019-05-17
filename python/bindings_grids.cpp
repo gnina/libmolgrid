@@ -206,6 +206,7 @@ void add_grid_members(class_<GridType>& C) {
   C.def(init<GridType>())
       .def("size", &GridType::size)
       .def("dimension", &GridType::dimension)
+      .def("data", +[](const GridType& self) { return (size_t)self.data();}) //more for debugging
       .add_property("shape",
           make_function(
           +[](const GridType& g)->tuple {
@@ -238,7 +239,6 @@ void define_grid(const char* name, bool numpysupport) {
   add_grid_members(C);
   //setters only for one dimension grids
   add_one_dim(C); //SFINAE!
-  C.def("data", +[](const GridType& self) { return (size_t)self.data();}); //more for debugging
 
   if(numpysupport)
     Grid_from_python<GridType, true> convert; //register
