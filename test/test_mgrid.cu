@@ -23,7 +23,7 @@ BOOST_AUTO_TEST_CASE( unifiedmem )
     g[i] = i;
   }
 
-  float sum = thrust::reduce(thrust::device, g.data(), g.data()+g.size());
+  float sum = thrust::reduce(thrust::device, g.gpu().data(), g.gpu().data()+g.size());
   BOOST_CHECK_EQUAL(sum, 4950);
 
   cudaError_t error = cudaGetLastError();

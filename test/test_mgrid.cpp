@@ -27,9 +27,9 @@ BOOST_AUTO_TEST_CASE( constructors )
   MGrid2d g2d(64,2);
   MGrid4d g4d(2,2,2,16);
 
-  BOOST_CHECK_NE(g1f.data(),g6f.data());
-  BOOST_CHECK_NE(g2d.data(),g4d.data());
-  BOOST_CHECK_NE((void*)g4f.data(),(void*)g4d.data());
+  BOOST_CHECK_NE(g1f.cpu().data(),g6f.cpu().data());
+  BOOST_CHECK_NE(g2d.cpu().data(),g4d.cpu().data());
+  BOOST_CHECK_NE((void*)g4f.cpu().data(),(void*)g4d.cpu().data());
 }
 
 BOOST_AUTO_TEST_CASE( direct_indexing )
@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_CASE( direct_indexing )
   MGrid4d gd(2,4,8,4);
 
   for(unsigned i = 0; i < 256; i++) {
-    g.data()[i] = i;
+    g.cpu().data()[i] = i;
   }
 
   BOOST_CHECK_EQUAL(g(0,0,0,0), 0);
@@ -54,7 +54,7 @@ BOOST_AUTO_TEST_CASE( direct_indexing )
         }
 
   for(unsigned i = 0; i < 256; i++) {
-    BOOST_CHECK_EQUAL(g.data()[i],i);
+    BOOST_CHECK_EQUAL(g.cpu().data()[i],i);
   }
 }
 
@@ -62,7 +62,7 @@ BOOST_AUTO_TEST_CASE( indirect_indexing )
 {
   MGrid4f g(2,4,8,4);
   for(unsigned i = 0; i < 256; i++) {
-    g.data()[i] = i;
+    g.cpu().data()[i] = i;
   }
   BOOST_CHECK_EQUAL(g[0][0][0][0], 0);
   BOOST_CHECK_EQUAL(g[1][1][1][1], 165);
@@ -84,7 +84,7 @@ BOOST_AUTO_TEST_CASE( indirect_indexing )
   BOOST_CHECK_EQUAL(g1[0],128);
 
   MGrid4f gg = g;
-  BOOST_CHECK_EQUAL(gg.data(),g.data());
+  BOOST_CHECK_EQUAL(gg.cpu().data(),g.cpu().data());
 
 }
 
@@ -119,7 +119,10 @@ BOOST_AUTO_TEST_CASE( grid_conversion )
   BOOST_CHECK_EQUAL(cpu6(2,2,2,0,0,5), 3.14);
 
   Grid6dCUDA gpu6 = (Grid6dCUDA)g6;
-  BOOST_CHECK_EQUAL(gpu6(2,2,2,0,0,5), 3.14);
+  double *cudaptr = gpu6.address(2,2,2,0,0,5);
+  double val = 0;
+  cudaMemcpy(&val, cudaptr, sizeof(double), cudaMemcpyDeviceToHost);
+  BOOST_CHECK_EQUAL(val, 3.14);
 
 }
 

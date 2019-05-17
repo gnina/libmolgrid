@@ -92,7 +92,7 @@ void CoordCache::set_coords(const char *fname, CoordinateSet& coord) {
 
     vector<float3> c; c.reserve(natoms);
     vector<float> r; r.reserve(natoms);
-    vector<unsigned> t; t.reserve(natoms);
+    vector<int> t; t.reserve(natoms);
     for(unsigned i = 0; i < natoms; i++)
     {
       info& atom = atoms[i];
@@ -126,7 +126,7 @@ void CoordCache::set_coords(const char *fname, CoordinateSet& coord) {
 
       vector<float3> c;
       vector<float> r;
-      vector<unsigned> t;
+      vector<int> t;
       info atom;
 
       while(in.read((char*)&atom, sizeof(atom)))

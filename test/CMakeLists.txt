@@ -6,6 +6,7 @@ include_directories (${Boost_INCLUDE_DIRS})
 
 #get all cpp files
 set( TEST_SRCS
+ test_coordinateset.cpp
  test_grid.cpp
  test_grid.cu
  test_gridmaker.cpp

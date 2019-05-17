@@ -169,6 +169,17 @@ class Grid {
       return buffer[getPos(indices...)];
     }
 
+    /** \brief Return memory address of specified index */
+    template<typename... I>
+    CUDA_CALLABLE_MEMBER inline Dtype* address(I... indices) {
+      return &buffer[getPos(indices...)];
+    }
+
+    template<typename... I>
+    CUDA_CALLABLE_MEMBER inline const Dtype* address(I... indices) const {
+      return &buffer[getPos(indices...)];
+    }
+
     /** \brief copy contents to dest
      *
      *  Sizes should be the same, but will narrow as necessary.  Will copy across device/host.
@@ -201,9 +212,9 @@ class Grid {
       else memset(data(), 0, sizeof(Dtype)*size());
     }
 
-    // constructor used by operator[]
+    // constructor used by operator[], create a subgrid, assuming memory is allocated
     CUDA_CALLABLE_MEMBER
-    explicit Grid(const Grid<Dtype,NumDims+1,isCUDA>& G, size_t i): buffer(&G.data()[i*G.offset(0)]) {
+    explicit Grid(const Grid<Dtype,NumDims+1,isCUDA>& G, size_t i): buffer(G.data() ? &G.data()[i*G.offset(0)] : nullptr) {
       //slice off first dimension
       for(size_t i = 0; i < NumDims; i++) {
         dims[i] = G.dimension(i+1);

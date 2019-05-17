@@ -128,17 +128,20 @@ struct Grid_from_python {
 
       if(obj_ptr == nullptr) return nullptr;
 
+      //convert from managed to grid
       extract<typename Grid_t::managed_t> mgrid(obj_ptr);
       if (mgrid.check() && Grid_t::GPU == python_gpu_enabled) {
-
-        Grid_t g = mgrid();
-        info.dataptr = g.data();
+        typename Grid_t::managed_t mg = mgrid();
+        if(Grid_t::GPU)
+          info.dataptr = mg.gpu().data();
+        else
+          info.dataptr = mg.cpu().data();
         info.ndim = Grid_t::N;
         info.isdouble = std::is_same<typename Grid_t::type,double>::value;
         info.isGPU = Grid_t::GPU;
 
         for(unsigned i = 0; i < info.ndim; i++) {
-          info.shape[i] = g.dimension(i);
+          info.shape[i] = mg.dimension(i);
         }
         return new tensor_info(info);
       }
@@ -235,6 +238,7 @@ void define_grid(const char* name, bool numpysupport) {
   add_grid_members(C);
   //setters only for one dimension grids
   add_one_dim(C); //SFINAE!
+  C.def("data", +[](const GridType& self) { return (size_t)self.data();}); //more for debugging
 
   if(numpysupport)
     Grid_from_python<GridType, true> convert; //register

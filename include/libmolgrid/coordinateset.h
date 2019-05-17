@@ -40,7 +40,7 @@ struct CoordinateSet {
   CoordinateSet(OpenBabel::OBMol *mol); //use defaultGninaLigandTypes
 
   ///initialize with indexed types
-  CoordinateSet(const std::vector<float3>& c, const std::vector<unsigned>& t, const std::vector<float>& r, unsigned maxt);
+  CoordinateSet(const std::vector<float3>& c, const std::vector<int>& t, const std::vector<float>& r, unsigned maxt);
   CoordinateSet(const std::vector<float3>& c, const std::vector<float>& t, const std::vector<float>& r, unsigned maxt);
 
   ///initialize with indexed types using grids - data is copied into coordinate set

@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE(forward_agreement) {
       for (size_t j=0; j<dim.y; ++j) {
         for (size_t k=0; k<dim.z; ++k) {
           size_t offset = ((((ch * dim.x) + i) * dim.y) + j) * dim.z + k;
-          BOOST_CHECK_SMALL(*(cout.data()+offset) - *(gout.data()+offset), TOL);
+          BOOST_CHECK_SMALL(*(cout.cpu().data()+offset) - *(gout.cpu().data()+offset), TOL);
         }
       }
     }
@@ -138,7 +138,7 @@ BOOST_AUTO_TEST_CASE(forward_gpu) {
             // fout << "\n";
           // else
             // fout << " ";
-          BOOST_CHECK_SMALL(*(out.data()+offset) - *(ref_grid.data()+offset), TOL);
+          BOOST_CHECK_SMALL(*(out.cpu().data()+offset) - *(ref_grid.data()+offset), TOL);
         }
       }
     }
