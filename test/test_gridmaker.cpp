@@ -123,7 +123,7 @@ BOOST_AUTO_TEST_CASE(backward) {
   same_coords(cpuatoms,gpuatoms);
 
   //move coordinate
-  coords.coord(0, 0) = 1.0;
+  coords.coord_radius(0, 0) = 1.0;
 
   g.backward(float3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu());
 
@@ -137,7 +137,7 @@ BOOST_AUTO_TEST_CASE(backward) {
   same_coords(cpuatoms,gpuatoms);
 
   //move to other side
-  coords.coord(0, 0) = -1.0;
+  coords.coord_radius(0, 0) = -1.0;
   g.backward(float3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu());
 
   BOOST_CHECK_GT(cpuatoms(0,0),TOL);
