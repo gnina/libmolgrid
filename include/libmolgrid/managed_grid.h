@@ -277,6 +277,13 @@ class ManagedGridBase {
       }
     }
 
+    /** \brief Switch ownership of data to CPU without copying back from GPU.
+     * Use this after togpu() if data will only be read.
+     */
+    void reset_tocpu() const {
+      if(gpu_info) gpu_info->sent_to_gpu = false;
+    }
+
     /** \brief Return true if memory is currently on GPU */
     bool ongpu() const { return gpu_info && gpu_info->sent_to_gpu; }
 
