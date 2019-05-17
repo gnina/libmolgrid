@@ -68,25 +68,25 @@ class GridMaker {
     void initialize(float res, float d, bool bin = false, float rscale=1.0, float grm=1.0);
 
     ///return spatial dimensions of grid
-    CUDA_CALLABLE_MEMBER float3 get_grid_dims() const {
+    float3 get_grid_dims() const {
       return make_float3(dim, dim, dim);
     }
 
     ///return resolution in Angstroms
-    CUDA_CALLABLE_MEMBER float get_resolution() const { return resolution; }
+    float get_resolution() const { return resolution; }
 
     ///set resolution in Angstroms
-    CUDA_CALLABLE_MEMBER void set_resolution(float res) { resolution = res; dim = ::round(dimension / resolution) + 1; }
+    void set_resolution(float res) { resolution = res; dim = ::round(dimension / resolution) + 1; }
 
     ///get dimension in Angstroms
-    CUDA_CALLABLE_MEMBER float get_dimension() const { return dimension; }
+    float get_dimension() const { return dimension; }
     ///set dimension in Angstroms
-    CUDA_CALLABLE_MEMBER void set_dimension(float d) { dimension = d; dim = ::round(dimension / resolution) + 1; }
+    void set_dimension(float d) { dimension = d; dim = ::round(dimension / resolution) + 1; }
 
     ///return if density is binary
-    CUDA_CALLABLE_MEMBER bool get_binary() const { return binary; }
+    bool get_binary() const { return binary; }
     ///set if density is binary
-    CUDA_CALLABLE_MEMBER void set_binary(bool b) { binary = b; }
+    void set_binary(bool b) { binary = b; }
 
     /** \brief Use externally specified grid_center to determine where grid begins.
      * Used for translating between cartesian coords and grids.
@@ -432,7 +432,7 @@ class GridMaker {
      * @param[in] radii (N)
      * @param[out] a 4D grid
      */
-    template <typename Dtype, bool Binary>
+    template <typename Dtype>
     CUDA_DEVICE_MEMBER void set_atoms(size_t natoms, float3& grid_origin,
         const Grid<float, 2, true>& coords, const Grid<float, 1, true>& type_index,
         const Grid<float, 1, true>& radii, Grid<Dtype, 4, true>& out);

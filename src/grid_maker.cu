@@ -108,7 +108,7 @@ namespace libmolgrid {
           || (centerz - r > endz) || (centerz + r < startz));
     }
 
-    template <typename Dtype, bool Binary>
+    template <typename Dtype>
     __device__ void GridMaker::set_atoms(size_t rel_atoms, float3& grid_origin, 
         const Grid<float, 2, true>& coords, const Grid<float, 1, true>& type_index, 
         const Grid<float, 1, true>& radii, Grid<Dtype, 4, true>& out) {
@@ -135,7 +135,7 @@ namespace libmolgrid {
         if (atype >= 0 && atype < ntypes) { //should really throw an exception here, but can't
           float ar = radii(i);
           float val = calc_point(coords(i, 0), coords(i, 1), coords(i, 2), ar, grid_coords);
-            if(Binary) {
+            if(binary) {
               if(val != 0) {
                 out(atype, grid_indices.x, grid_indices.y, grid_indices.z) = 1.0;
               }
@@ -186,11 +186,7 @@ namespace libmolgrid {
 
         size_t rel_atoms = scanOutput[LMG_CUDA_NUM_THREADS - 1] + atomMask[LMG_CUDA_NUM_THREADS - 1];
         //atomIndex is now a list of rel_atoms possibly relevant atom indices
-        if(gmaker.get_binary())
-          gmaker.set_atoms<Dtype,true>(rel_atoms, grid_origin, coords, type_index, radii, out);
-        else
-          gmaker.set_atoms<Dtype,false>(rel_atoms, grid_origin, coords, type_index, radii, out);
-
+        gmaker.set_atoms(rel_atoms, grid_origin, coords, type_index, radii, out);
         __syncthreads();//everyone needs to finish before we muck with atomIndices again
       }
     }
