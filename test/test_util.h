@@ -7,6 +7,7 @@
 
 using namespace libmolgrid;
 inline void make_mol(Grid<float, 2, false>& coords, Grid<float, 1, false>& type_indices,
+    Grid<float, 1, false>& radii, 
     size_t natoms = 0, size_t min_atoms = 10,
     size_t max_atoms = 1000, float max_x = 25, float max_y = 25,
     float max_z = 25) {
@@ -35,7 +36,7 @@ inline void make_mol(Grid<float, 2, false>& coords, Grid<float, 1, false>& type_
     int atype = type_dist(random_engine);
     type_indices[i] = (float)atype;
     auto ainfo = gtyper.get_int_type(atype);
-    coords[i][3] = ainfo.second;
+    radii[i] = ainfo.second;
   }
 }
 

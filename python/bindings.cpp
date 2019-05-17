@@ -614,10 +614,10 @@ MAKE_ALL_GRIDS()
   class_<CoordinateSet>("CoordinateSet")
       .def(init<OpenBabel::OBMol*, const AtomTyper&>())
       .def(init<OpenBabel::OBMol*>())
-      .def(init<const Grid2f&, const Grid1f&, unsigned>())
-      .def(init<const Grid2fCUDA&, const Grid1fCUDA&, unsigned>())
-      .def(init<const Grid2f&, const Grid2f&>())
-      .def(init<const Grid2fCUDA&, const Grid2fCUDA&>())
+      .def(init<const Grid2f&, const Grid1f&, const Grid1f&, unsigned>())
+      .def(init<const Grid2fCUDA&, const Grid1fCUDA&, const Grid1fCUDA&, unsigned>())
+      .def(init<const Grid2f&, const Grid2f&, const Grid1f&>())
+      .def(init<const Grid2fCUDA&, const Grid2fCUDA&, const Grid1fCUDA&>())
       .def("has_indexed_types", &CoordinateSet::has_indexed_types)
       .def("has_vector_types", &CoordinateSet::has_vector_types)
       .def("make_vector_types", &CoordinateSet::make_vector_types)
@@ -627,9 +627,10 @@ MAKE_ALL_GRIDS()
       .def("clone", &CoordinateSet::clone)
       .def("togpu", &CoordinateSet::togpu, "set memory affinity to GPU")
       .def("tocpu", &CoordinateSet::tocpu, "set memory affinity to CPU")
-      .def_readwrite("coord_radius", &CoordinateSet::coord_radius)
+      .def_readwrite("coord", &CoordinateSet::coord)
       .def_readwrite("type_index", &CoordinateSet::type_index)
       .def_readwrite("type_vector", &CoordinateSet::type_vector)
+      .def_readwrite("radius", &CoordinateSet::radius)
       .def_readwrite("max_type", &CoordinateSet::max_type)
       .def_readonly("src", &CoordinateSet::src);
 
@@ -645,8 +646,8 @@ MAKE_ALL_GRIDS()
     .def("coordinate_size", &Example::coordinate_size)
     .def("type_size", &Example::type_size, (arg("unique_index_type")=true))
     .def("merge_coordinates", static_cast<CoordinateSet (Example::*)(unsigned, bool) const>(&Example::merge_coordinates), (arg("start")=0,arg("unique_index_types") = true))
-    .def("merge_coordinates", static_cast<void (Example::*)(Grid2f&, Grid1f&, unsigned, bool) const>(&Example::merge_coordinates), (arg("coord_radius"), "type_index", arg("start")=0, arg("unique_index_types")=true))
-    .def("merge_coordinates", static_cast<void (Example::*)(Grid2f&, Grid2f&, unsigned, bool) const>(&Example::merge_coordinates), (arg("coord_radius"), "type_vector", arg("start")=0, arg("unique_index_types")=true))
+    .def("merge_coordinates", static_cast<void (Example::*)(Grid2f&, Grid1f&, Grid1f&, unsigned, bool) const>(&Example::merge_coordinates), (arg("coord"), "type_index", "radius", arg("start")=0, arg("unique_index_types")=true))
+    .def("merge_coordinates", static_cast<void (Example::*)(Grid2f&, Grid2f&, Grid1f&, unsigned, bool) const>(&Example::merge_coordinates), (arg("coord"), "type_vector", "radius", arg("start")=0, arg("unique_index_types")=true))
     .def("togpu", &Example::togpu, "set memory affinity to GPU")
     .def("tocpu", &Example::tocpu, "set memory affinity to CPU")
     .def_readwrite("coord_sets",&Example::sets)
@@ -718,20 +719,22 @@ MAKE_ALL_GRIDS()
       .def("backward", +[](GridMaker& self, float3 grid_center, const CoordinateSet& in,
           const Grid<float, 4, true>& diff, Grid<float, 2, true> atomic_gradients) {
           self.backward(grid_center, in, diff, atomic_gradients); })
-      .def("backward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, false>& coord_radius,
-          const Grid<float, 1, false>& type_index, const Grid<float, 4, false>& diff, Grid<float, 2, false> atom_gradients) {
-          self.backward(grid_center, coord_radius, type_index, diff, atom_gradients);})
-      .def("backward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, true>& coord_radius,
-          const Grid<float, 1, true>& type_index, const Grid<float, 4, true>& diff, Grid<float, 2, true> atom_gradients) {
-          self.backward(grid_center, coord_radius, type_index, diff, atom_gradients);})
-      .def("backward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, false>& coord_radius,
-          const Grid<float, 2, false>& type_vectors,
+      .def("backward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, false>& coords,
+          const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
+          const Grid<float, 4, false>& diff, Grid<float, 2, false> atom_gradients) {
+          self.backward(grid_center, coords, type_index, radii, diff, atom_gradients);})
+      .def("backward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, true>& coords,
+          const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
+          const Grid<float, 4, true>& diff, Grid<float, 2, true> atom_gradients) {
+          self.backward(grid_center, coords, type_index, radii, diff, atom_gradients);})
+      .def("backward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, false>& coords,
+          const Grid<float, 2, false>& type_vectors, const Grid<float, 1, false>& radii,
           const Grid<float, 4, false>& diff, Grid<float, 2, false> atom_gradients, Grid<float, 2, false> type_gradients) {
-          self.backward(grid_center, coord_radius, type_vectors, diff, atom_gradients, type_gradients);})
-      .def("backward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, true>& coord_radius,
-          const Grid<float, 2, true>& type_vectors,
+          self.backward(grid_center, coords, type_vectors, radii, diff, atom_gradients, type_gradients);})
+      .def("backward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, true>& coords,
+          const Grid<float, 2, true>& type_vectors, const Grid<float, 1, true>& radii,
           const Grid<float, 4, true>& diff, Grid<float, 2, true> atom_gradients, Grid<float, 2, true> type_gradients) {
-          self.backward(grid_center, coord_radius, type_vectors, diff, atom_gradients, type_gradients);});
+          self.backward(grid_center, coords, type_vectors, radii, diff, atom_gradients, type_gradients);});
 
 
   class_<CartesianGrid<MGrid3f> >("CartesianGrid", init<MGrid3f, float3, float>())

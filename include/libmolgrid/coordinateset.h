@@ -26,9 +26,10 @@ class AtomTyper;
  *
  */
 struct CoordinateSet {
-  MGrid2f coord_radius{0,4}; //combined for spatial locality
+  MGrid2f coord{0,3};
   MGrid1f type_index{0}; //this should be integer
   MGrid2f type_vector{0,0};
+  MGrid1f radius{0};
   unsigned max_type = 0;  //for indexed types, non-inclusive max
   const char *src = nullptr; //mostly for debugging, source of coordinates
 
@@ -42,23 +43,16 @@ struct CoordinateSet {
   CoordinateSet(const std::vector<float3>& c, const std::vector<int>& t, const std::vector<float>& r, unsigned maxt);
   CoordinateSet(const std::vector<float3>& c, const std::vector<float>& t, const std::vector<float>& r, unsigned maxt);
 
-  //indexed types with combined coordinates/radius
-  CoordinateSet(const std::vector<float4>& cr, const std::vector<int>& t, unsigned maxt);
-  CoordinateSet(const std::vector<float4>& cr, const std::vector<float>& t, unsigned maxt);
-
   ///initialize with indexed types using grids - data is copied into coordinate set
-  CoordinateSet(const Grid2f& cr, const Grid1f& t, unsigned maxt);
-  CoordinateSet(const Grid2fCUDA& cr, const Grid1fCUDA& t, unsigned maxt);
+  CoordinateSet(const Grid2f& c, const Grid1f& t, const Grid1f& r, unsigned maxt);
+  CoordinateSet(const Grid2fCUDA& c, const Grid1fCUDA& t, const Grid1fCUDA& r, unsigned maxt);
 
   ///initialize with vector types
   CoordinateSet(const std::vector<float3>& c, const std::vector<std::vector<float> >& t, const std::vector<float>& r);
 
-  ///initialize with vector types and combined coord/radius
-  CoordinateSet(const std::vector<float4>& cr, const std::vector<std::vector<float> >& t);
-
   ///initialize with vector types using grids - data is copied into coordinate set
-  CoordinateSet(const Grid2f& cr, const Grid2f& t);
-  CoordinateSet(const Grid2fCUDA& cr, const Grid2fCUDA& t);
+  CoordinateSet(const Grid2f& c, const Grid2f& t, const Grid1f& r);
+  CoordinateSet(const Grid2fCUDA& c, const Grid2fCUDA& t, const Grid1fCUDA& r);
 
   /// return true if index types are available
   bool has_indexed_types() const { return type_index.size() > 0 || type_vector.size() == 0; }
@@ -73,23 +67,24 @@ struct CoordinateSet {
   void set_num_types(unsigned maxt) { max_type = maxt; }
 
   ///number of atoms
-  unsigned size() const { return coord_radius.dimension(0); }
+  unsigned size() const { return coord.dimension(0); }
 
   ///return mean of coordinates
   float3 center() const;
 
-  void togpu() { coord_radius.togpu(); type_index.togpu(); type_vector.togpu(); }
-  void tocpu() { coord_radius.tocpu(); type_index.tocpu(); type_vector.tocpu(); }
+  void togpu() { coord.togpu(); type_index.togpu(); type_vector.togpu(); radius.togpu(); }
+  void tocpu() { coord.tocpu(); type_index.tocpu(); type_vector.tocpu(); radius.tocpu(); }
 
   //test for pointer equality, not particularly useful, but needed by boost::python
   bool operator==(const CoordinateSet& rhs) const {
-    return max_type == rhs.max_type && coord_radius == rhs.coord_radius && type_index == rhs.type_index && type_vector == rhs.type_vector;
+    return max_type == rhs.max_type && coord == rhs.coord && type_index == rhs.type_index && type_vector == rhs.type_vector && radius == rhs.radius;
   }
 
   ///return deep copy
   CoordinateSet clone() const {
     CoordinateSet ret(*this);
-    ret.coord_radius = coord_radius.clone();
+    ret.coord = coord.clone();
+    ret.radius = radius.clone();
     ret.type_index = type_index.clone();
     ret.type_vector = type_vector.clone();
     return ret;
