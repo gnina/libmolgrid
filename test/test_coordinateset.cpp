@@ -20,11 +20,11 @@ BOOST_AUTO_TEST_CASE(coordinates) {
   CoordinateSet c(coords,types,radii, 4);
   Transform t(Quaternion(), {0,0,0}, {-1,0,1});
   t.forward(c,c);
-  BOOST_CHECK_SMALL(c.coord[1][1]-3.0f,TOL);
-  BOOST_CHECK_SMALL(c.coord[0][0],TOL);
+  BOOST_CHECK_SMALL(c.coord_radius[1][1]-3.0f,TOL);
+  BOOST_CHECK_SMALL(c.coord_radius[0][0],TOL);
     
   CoordinateSet c2 = c.clone();
-  c2.coord(1,1) = 0;
-  BOOST_CHECK_SMALL(c.coord(1,1)-3.0f,TOL);
+  c2.coord_radius(1,1) = 0;
+  BOOST_CHECK_SMALL(c.coord_radius(1,1)-3.0f,TOL);
 
 }

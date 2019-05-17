@@ -7,6 +7,7 @@ try:
     import pybel #2.0
 except ImportError:
     from openbabel import pybel  #3.0
+    from openbabel import openbabel
     
 def test_gninatyping():
     m = pybel.readstring('smi','c1ccccc1CO')

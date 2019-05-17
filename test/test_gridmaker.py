@@ -48,8 +48,8 @@ def test_a_grid():
 
     gmaker = molgrid.GridMaker()
     dims = gmaker.grid_dimensions(c.max_type) # this should be grid_dims or get_grid_dims
-    center = c.coord.tonumpy().mean(axis=0)
-    center = tuple(center.astype(float))
+    center = c.center()
+    center = tuple(center)
 
 
     mgridout = molgrid.MGrid4f(*dims)    
@@ -101,10 +101,11 @@ def test_radius_multiples():
     c = np.array([[0,0,0]],np.float32)
     t = np.array([0],np.float32)
     r = np.array([1.0],np.float32)
-    coords = molgrid.CoordinateSet(molgrid.Grid2f(c),molgrid.Grid1f(t),molgrid.Grid1f(r),1)
+    coords = molgrid.CoordinateSet(molgrid.Grid2f(c),molgrid.Grid1f(r),molgrid.Grid1f(t),1)
     shape = g1.grid_dimensions(1)
     cpugrid = molgrid.MGrid4f(*shape)
     gpugrid = molgrid.MGrid4f(*shape)
+
     g1.forward((0,0,0),coords, cpugrid.cpu())
     g1.forward((0,0,0),coords, gpugrid.gpu())
     
@@ -152,7 +153,7 @@ def test_backwards():
     c = np.array([[1.0,0,0]],np.float32)
     t = np.array([0],np.float32)
     r = np.array([2.0],np.float32)
-    coords = molgrid.CoordinateSet(molgrid.Grid2f(c),molgrid.Grid1f(t),molgrid.Grid1f(r),1)
+    coords = molgrid.CoordinateSet(c,r,t,1)
     shape = g1.grid_dimensions(1)
     
     #make diff with gradient in center
