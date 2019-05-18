@@ -35,7 +35,7 @@ find_package(OpenBabel2 REQUIRED)
 configure_file (
   "${PROJECT_SOURCE_DIR}/cmake/config.h.in"
   "${PROJECT_BINARY_DIR}/include/libmolgrid/config.h"
-  ) 
+  )
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CUDA_STANDARD 14)
@@ -48,6 +48,14 @@ if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
 endif()
 
 #compile for all major architetures >=35
+if ("${CUDA_VERSION}" VERSION_LESS "10.0")
+set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -Werror cross-execution-space-call,deprecated-declarations \
+ -gencode arch=compute_35,code=sm_35  \
+ -gencode arch=compute_50,code=sm_50 \
+ -gencode arch=compute_60,code=sm_60 \
+ -gencode arch=compute_70,code=sm_70 \
+ ")
+else()
 set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -Werror cross-execution-space-call,deprecated-declarations \
  -gencode arch=compute_35,code=sm_35  \
  -gencode arch=compute_50,code=sm_50 \
@@ -55,7 +63,7 @@ set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -Werror cross-execution-space-call,dep
  -gencode arch=compute_70,code=sm_70 \
  -gencode arch=compute_75,code=sm_75 \
  ")
-
+endif()
 
 # add the binary tree to the search path for include files
 # so that we will find libmolgrid_config.h
