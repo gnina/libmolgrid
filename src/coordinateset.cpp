@@ -56,22 +56,22 @@ CoordinateSet::CoordinateSet(OBMol *mol, const AtomTyper& typer)
   unsigned N = c.size();
   coord = MGrid2f(N,3);
   assert(sizeof(float3)*N == sizeof(float)*coord.size());
-  memcpy(coord.data(), &c[0], sizeof(float3)*N);
+  memcpy(coord.cpu().data(), &c[0], sizeof(float3)*N);
 
   radius = MGrid1f(N);
-  memcpy(radius.data(), &radii[0], sizeof(float)*N);
+  memcpy(radius.cpu().data(), &radii[0], sizeof(float)*N);
 
   if(typer.is_vector_typer()) {
     type_vector = MGrid2f(N,max_type);
-    memcpy(type_vector.data(), &vector_types[0], sizeof(float)*N*max_type);
+    memcpy(type_vector.cpu().data(), &vector_types[0], sizeof(float)*N*max_type);
   } else {
     type_index = MGrid1f(N);
-    memcpy(type_index.data(), &types[0], sizeof(float)*N*max_type);
+    memcpy(type_index.cpu().data(), &types[0], sizeof(float)*N);
   }
 }
 
 //initialize with indexed types
-CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<unsigned>& t, const std::vector<float>& r, unsigned maxt):
+CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<int>& t, const std::vector<float>& r, unsigned maxt):
   coord(c.size(),3), type_index(c.size()), radius(c.size()), max_type(maxt) {
   unsigned N = c.size();
   if(N != t.size()) {
@@ -83,9 +83,9 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<uns
 
   //copy data
   type_index.tocpu(); radius.tocpu(); coord.tocpu();
-  memcpy(radius.data(), &r[0], sizeof(float)*N);
+  memcpy(radius.cpu().data(), &r[0], sizeof(float)*N);
   assert(sizeof(float3)*N == sizeof(float)*coord.size());
-  memcpy(coord.data(), &c[0], sizeof(float3)*N);
+  memcpy(coord.cpu().data(), &c[0], sizeof(float3)*N);
 
   //convert to float
   for(unsigned i = 0; i < N; i++) {
@@ -106,10 +106,10 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<flo
 
   //copy data
   type_index.tocpu(); radius.tocpu(); coord.tocpu();
-  memcpy(type_index.data(), &t[0], sizeof(float)*N);
-  memcpy(radius.data(), &r[0], sizeof(float)*N);
+  memcpy(type_index.cpu().data(), &t[0], sizeof(float)*N);
+  memcpy(radius.cpu().data(), &r[0], sizeof(float)*N);
   assert(sizeof(float3)*N == sizeof(float)*coord.size());
-  memcpy(coord.data(), &c[0], sizeof(float3)*N);
+  memcpy(coord.cpu().data(), &c[0], sizeof(float3)*N);
 
 }
 
@@ -150,10 +150,10 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<std
 
   //copy data
   type_index.tocpu(); radius.tocpu(); coord.tocpu();
-  memcpy(radius.data(), &r[0], sizeof(float)*N);
+  memcpy(radius.cpu().data(), &r[0], sizeof(float)*N);
   assert(sizeof(float3)*N == sizeof(float)*coord.size());
-  memcpy(coord.data(), &c[0], sizeof(float3)*N);
-  memcpy(type_vector.data(), &t[0], sizeof(float)*N*max_type);
+  memcpy(coord.cpu().data(), &c[0], sizeof(float3)*N);
+  memcpy(type_vector.cpu().data(), &t[0], sizeof(float)*N*max_type);
 
 }
 
@@ -216,18 +216,18 @@ void CoordinateSet::dump(std::ostream& out) const {
   }
 }
 
-void CoordinateSet::copyInto(const CoordinateSet& s) {
-
+void CoordinateSet::size_like(const CoordinateSet& s) {
   coord = coord.resized(s.coord.dimension(0), 3);
-  coord.copyFrom(s.coord);
-
   type_index = type_index.resized(s.type_index.dimension(0));
-  type_index.copyFrom(s.type_index);
-
   type_vector = type_vector.resized(s.type_vector.dimension(0), s.type_vector.dimension(1));
-  type_vector.copyFrom(s.type_vector);
-
   radius = radius.resized(s.radius.dimension(0));
+}
+
+void CoordinateSet::copyInto(const CoordinateSet& s) {
+  size_like(s);
+  coord.copyFrom(s.coord);
+  type_index.copyFrom(s.type_index);
+  type_vector.copyFrom(s.type_vector);
   radius.copyFrom(s.radius);
 
   max_type = s.max_type;

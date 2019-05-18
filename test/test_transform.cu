@@ -69,7 +69,7 @@ BOOST_AUTO_TEST_CASE(apply_transform)
   }
 
   //cpu calculation
-  Grid2f cpucoords(coords.data(),8,3);
+  Grid2f cpucoords(coords.cpu().data(),8,3);
   Grid2f cpucoords2((float*)buffer,8,3);
   r.forward(cpucoords,cpucoords2);
   for(unsigned i = 0; i < 8; i++) {
@@ -77,7 +77,7 @@ BOOST_AUTO_TEST_CASE(apply_transform)
   }
 
   r.backward(coords2.gpu(),coords2.gpu());
-  coords2.sync(); //not pleased that we have to do this..
+  coords2.tocpu(); //not pleased that we have to do this..
 
   for(unsigned i = 0; i < 8; i++) {
     std::cerr << "(" << coords[i][0]<<","<<coords[i][1]<<","<<coords[i][2]<<")  ("<<coords2[i][0]<<","<<coords2[i][1]<<","<<coords2[i][2]<<")  ("<<cpucoords2[i][0]<<","<<cpucoords2[i][1]<<","<<cpucoords2[i][2]<<")\n";

@@ -89,6 +89,7 @@ template <typename Dtype>
   } else {
     transform_rotate_kernel<Dtype><<<LMG_GET_BLOCKS(N), LMG_CUDA_NUM_THREADS>>>(N,invQ,center,in,out);
   }
+  LMG_CUDA_CHECK(cudaPeekAtLastError());
 }
 
 template __host__ void Transform::backward(const Grid<float, 2, true>&, Grid<float, 2, true>&, bool) const;

@@ -121,6 +121,12 @@ class Transform {
       if(out.dimension(1) != 3) {
         throw std::invalid_argument("Output coordinates are not 3D.");
       }
+      if(in.data() == nullptr) {
+        throw std::invalid_argument("Input coordinates missing memory");
+      }
+      if(out.data() == nullptr) {
+        throw std::invalid_argument("Output coordinates missing memory");
+      }
     }
 
 

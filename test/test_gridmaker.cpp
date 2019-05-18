@@ -102,7 +102,7 @@ BOOST_AUTO_TEST_CASE(backward) {
   GridMaker g(0.1, 6.0);
 
   vector<float3> c { make_float3(0, 0, 0) };
-  vector<unsigned> t { 0 };
+  vector<int> t { 0 };
   vector<float> r { 2.0 };
 
   CoordinateSet coords(c, t, r, 1);
@@ -180,7 +180,7 @@ BOOST_AUTO_TEST_CASE(backward_relevance) {
   GridMaker g(0.1, 6.0);
 
   vector<float3> c { make_float3(0, 0, 0) };
-  vector<unsigned> t { 0 };
+  vector<int> t { 0 };
   vector<float> r { 2.0 };
 
   CoordinateSet coords(c, t, r, 1);

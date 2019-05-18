@@ -40,7 +40,7 @@ struct CoordinateSet {
   CoordinateSet(OpenBabel::OBMol *mol); //use defaultGninaLigandTypes
 
   ///initialize with indexed types
-  CoordinateSet(const std::vector<float3>& c, const std::vector<unsigned>& t, const std::vector<float>& r, unsigned maxt);
+  CoordinateSet(const std::vector<float3>& c, const std::vector<int>& t, const std::vector<float>& r, unsigned maxt);
   CoordinateSet(const std::vector<float3>& c, const std::vector<float>& t, const std::vector<float>& r, unsigned maxt);
 
   ///initialize with indexed types using grids - data is copied into coordinate set
@@ -72,8 +72,8 @@ struct CoordinateSet {
   ///return mean of coordinates
   float3 center() const;
 
-  void togpu() { coord.togpu(); type_index.togpu(); type_vector.togpu(); radius.togpu(); }
-  void tocpu() { coord.tocpu(); type_index.tocpu(); type_vector.tocpu(); radius.tocpu(); }
+  void togpu(bool copy=true) { coord.togpu(copy); type_index.togpu(copy); type_vector.togpu(copy); radius.togpu(copy); }
+  void tocpu(bool copy=true) { coord.tocpu(copy); type_index.tocpu(copy); type_vector.tocpu(copy); radius.tocpu(copy); }
 
   //test for pointer equality, not particularly useful, but needed by boost::python
   bool operator==(const CoordinateSet& rhs) const {
@@ -89,6 +89,9 @@ struct CoordinateSet {
     ret.type_vector = type_vector.clone();
     return ret;
   }
+
+  /// size this to have the same size as s without copying data
+  void size_like(const CoordinateSet& s); 
 
   /// copy contents of src into this, attempting to avoid reallocation if possible
   void copyInto(const CoordinateSet& src);

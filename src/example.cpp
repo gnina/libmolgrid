@@ -171,7 +171,7 @@ void Example::merge_coordinates(std::vector<float3>& coords, std::vector<std::ve
 
       types.push_back(vector<float>(maxt));
       vector<float>& tvec = types.back();
-      memcpy(&tvec[0], CS.type_vector[i].data(), sizeof(float)*maxt);
+      memcpy(&tvec[0], CS.type_vector[i].cpu().data(), sizeof(float)*maxt);
 
       radii.push_back(CS.radius[i]);
     }
