@@ -216,18 +216,18 @@ void CoordinateSet::dump(std::ostream& out) const {
   }
 }
 
-void CoordinateSet::copyInto(const CoordinateSet& s) {
-
+void CoordinateSet::size_like(const CoordinateSet& s) {
   coord = coord.resized(s.coord.dimension(0), 3);
-  coord.copyFrom(s.coord);
-
   type_index = type_index.resized(s.type_index.dimension(0));
-  type_index.copyFrom(s.type_index);
-
   type_vector = type_vector.resized(s.type_vector.dimension(0), s.type_vector.dimension(1));
-  type_vector.copyFrom(s.type_vector);
-
   radius = radius.resized(s.radius.dimension(0));
+}
+
+void CoordinateSet::copyInto(const CoordinateSet& s) {
+  size_like(s);
+  coord.copyFrom(s.coord);
+  type_index.copyFrom(s.type_index);
+  type_vector.copyFrom(s.type_vector);
   radius.copyFrom(s.radius);
 
   max_type = s.max_type;

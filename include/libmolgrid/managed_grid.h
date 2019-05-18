@@ -253,7 +253,7 @@ class ManagedGridBase {
     cpu_grid_t& cpu() { tocpu(); return cpu_grid; }
 
     /** \brief Transfer data to GPU */
-    void togpu() const {
+    void togpu(bool dotransfer=true) const {
       if(capacity == 0) return;
       //check that memory is allocated - even if data is on gpu, may still need to set this mgrid's gpu_grid
       if(gpu_grid.data() == nullptr) {
@@ -263,24 +263,17 @@ class ManagedGridBase {
         size_t offset = cpu_grid.data() - cpu_ptr.get(); //might be subgrid
           gpu_grid.set_buffer(gpu_info->gpu_ptr+offset);
       }
-      if(!ongpu()) {
+      if(!ongpu() && dotransfer) {
         LMG_CUDA_CHECK(cudaMemcpy(gpu_info->gpu_ptr,cpu_ptr.get(),capacity*sizeof(Dtype),cudaMemcpyHostToDevice));
-        gpu_info->sent_to_gpu = true;
       }
+      if(gpu_info) gpu_info->sent_to_gpu = true;
     }
 
-    /** \brief Transfer data to CPU */
-    void tocpu() const {
-      if(ongpu() && capacity > 0) {
+    /** \brief Transfer data to CPU.  If not dotransfer, data is not copied back. */
+    void tocpu(bool dotransfer=true) const {
+      if(ongpu() && capacity > 0 && dotransfer) {
         LMG_CUDA_CHECK(cudaMemcpy(cpu_ptr.get(),gpu_info->gpu_ptr,capacity*sizeof(Dtype),cudaMemcpyDeviceToHost));
-        gpu_info->sent_to_gpu = false;
       }
-    }
-
-    /** \brief Switch ownership of data to CPU without copying back from GPU.
-     * Use this after togpu() if data will only be read.
-     */
-    void reset_tocpu() const {
       if(gpu_info) gpu_info->sent_to_gpu = false;
     }
 
