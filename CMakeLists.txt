@@ -54,9 +54,12 @@ set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -Werror cross-execution-space-call,dep
  -gencode arch=compute_60,code=sm_60 \
  -gencode arch=compute_70,code=sm_70 \
  ")
-if ("${CUDA_VERSION}" VERSION_GREATER "9.1")
+if ("${CUDA_VERSION}" VERSION_GREATER "9.2")
   set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -gencode arch=compute_75,code=sm_75 ")
 endif()
+
+set(CMAKE_CUDA_FLAGS_RELEASE "-O3 -g")
+set(CMAKE_CUDA_FLAGS_DEBUG "-O0 -g -G")
 
 # add the binary tree to the search path for include files
 # so that we will find libmolgrid_config.h
