@@ -5,7 +5,6 @@ import os
 
 from pytest import approx
 from numpy import around
-from matplotlib.mlab import recs_join
 
 # there's like umpteen gazillion configuration options for example provider..
 datadir = os.path.dirname(__file__)+'/data'

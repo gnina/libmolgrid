@@ -140,15 +140,16 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
             grid_coords.x = grid_origin.x + i * resolution;
             grid_coords.y = grid_origin.y + j * resolution;
             grid_coords.z = grid_origin.z + k * resolution;
-            float val = calc_point(acoords.x, acoords.y, acoords.z, radius, grid_coords);
-            size_t offset = ((((atype * dim) + i) * dim) + j) * dim + k;
-            // std::cout << "val " << val << "\n";
 
+            size_t offset = ((((atype * dim) + i) * dim) + j) * dim + k;
             if (binary) {
+              float val = calc_point<true>(acoords.x, acoords.y, acoords.z, radius, grid_coords);
+
               if (val != 0)
                 *(out.data() + offset) = 1.0;
             }
             else {
+              float val = calc_point<false>(acoords.x, acoords.y, acoords.z, radius, grid_coords);
               *(out.data() + offset) += val;
             }
 
@@ -231,8 +232,11 @@ float GridMaker::calc_atom_relevance_cpu(const float3& grid_origin, const Grid1f
         float x = grid_origin.x + i * resolution;
         float y = grid_origin.y + j * resolution;
         float z = grid_origin.z + k * resolution;
-
-        float val = calc_point(a.x, a.y, a.z, radius, float3{x,y,z});
+        float val = 0;
+        if(binary)
+          val = calc_point<true>(a.x, a.y, a.z, radius, float3{x,y,z});
+        else
+          val = calc_point<false>(a.x, a.y, a.z, radius, float3{x,y,z});
 
         if (val > 0) {
           float denseval = density(i,j,k);

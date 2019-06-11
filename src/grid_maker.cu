@@ -108,50 +108,54 @@ namespace libmolgrid {
           || (centerz - r > endz) || (centerz + r < startz));
     }
 
-    template <typename Dtype>
-    __device__ void GridMaker::set_atoms(size_t rel_atoms, float3& grid_origin, 
+    template <typename Dtype, bool Binary>
+    __device__ void GridMaker::set_atoms(size_t rel_atoms, float3& grid_origin,
         const Grid<float, 2, true>& coords, const Grid<float, 1, true>& type_index, 
         const Grid<float, 1, true>& radii, Grid<Dtype, 4, true>& out) {
       //figure out what grid point we are 
-      uint3 grid_indices;
-      grid_indices.x = threadIdx.x + blockIdx.x * blockDim.x;
-      grid_indices.y = threadIdx.y + blockIdx.y * blockDim.y;
-      grid_indices.z = threadIdx.z + blockIdx.z * blockDim.z;
+      unsigned x = threadIdx.x + blockIdx.x * blockDim.x;
+      unsigned y = threadIdx.y + blockIdx.y * blockDim.y;
+      unsigned z = threadIdx.z + blockIdx.z * blockDim.z;
 
-      if(grid_indices.x >= dim || grid_indices.y >= dim || grid_indices.z >= dim)
+      if(x >= dim || y >= dim || z >= dim)
         return;//bail if we're off-grid, this should not be common
 
-      size_t ntypes = out.dimension(0);
       //compute x,y,z coordinate of grid point
       float3 grid_coords;
-      grid_coords.x = grid_indices.x * resolution + grid_origin.x;
-      grid_coords.y = grid_indices.y * resolution + grid_origin.y;
-      grid_coords.z = grid_indices.z * resolution + grid_origin.z;
-
+      grid_coords.x = x * resolution + grid_origin.x;
+      grid_coords.y = y * resolution + grid_origin.y;
+      grid_coords.z = z * resolution + grid_origin.z;
+      size_t goffset = ((x*dim)+y)*dim + z; //offset into channel grid
+      size_t chmult = dim*dim*dim; //what to multiply type/channel seletion by
+      Dtype *data = out.data();
+      float *rdata = radii.data();
+      float *tdata = type_index.data();
+      float3 *coord_data = (float3*)coords.data();
+      size_t ntypes = out.dimension(0);
       //iterate over all possibly relevant atoms
       for(size_t ai = 0; ai < rel_atoms; ai++) {
         size_t i = atomIndices[ai];
-        float atype = type_index(i);
-        if (atype >= 0 && atype < ntypes) { //should really throw an exception here, but can't
-          float ar = radii(i);
-          float val = calc_point(coords(i, 0), coords(i, 1), coords(i, 2), ar, grid_coords);
-            if(binary) {
-              if(val != 0) {
-                out(atype, grid_indices.x, grid_indices.y, grid_indices.z) = 1.0;
-              }
-            }
-            else {
-                // out(atype, grid_indices.x, grid_indices.y, grid_indices.z) += val;
-              size_t offset = ((((atype * dim) + grid_indices.x) * dim) +
-                  grid_indices.y) * dim + grid_indices.z;
-              *(out.data() + offset) += val;
-            }
+        float ar = rdata[i];
+        float3 c = coord_data[i];
+        float val = calc_point<Binary>(c.x, c.y, c.z, ar, grid_coords);
+        int atype = int(tdata[i]); //type is assumed correct because atom_overlaps at least gets rid of neg
+
+        if(Binary) {
+          if(val != 0) {
+            data[atype*chmult+goffset] = 1.0;
+          }
         }
+        else {
+          data[atype*chmult+goffset] += val;
+        }
+
       }
     }
 
-    template <typename Dtype>
-    __global__ void forward_gpu(GridMaker gmaker, float3 grid_origin,
+    template <typename Dtype, bool Binary>
+    __global__ void
+    __launch_bounds__(LMG_CUDA_NUM_THREADS)
+    forward_gpu(GridMaker gmaker, float3 grid_origin,
         const Grid<float, 2, true> coords, const Grid<float, 1, true> type_index, 
         const Grid<float, 1, true> radii, Grid<Dtype, 4, true> out) {
       //this is the thread's index within its block, used to parallelize over atoms
@@ -186,7 +190,8 @@ namespace libmolgrid {
 
         size_t rel_atoms = scanOutput[LMG_CUDA_NUM_THREADS - 1] + atomMask[LMG_CUDA_NUM_THREADS - 1];
         //atomIndex is now a list of rel_atoms possibly relevant atom indices
-        gmaker.set_atoms(rel_atoms, grid_origin, coords, type_index, radii, out);
+        gmaker.set_atoms<Dtype, Binary>(rel_atoms, grid_origin, coords, type_index, radii, out);
+
         __syncthreads();//everyone needs to finish before we muck with atomIndices again
       }
     }
@@ -207,7 +212,12 @@ namespace libmolgrid {
       LMG_CUDA_CHECK(cudaMemset(out.data(), 0, out.size() * sizeof(float)));
 
       if(coords.dimension(0) == 0) return; //no atoms
-      forward_gpu<Dtype><<<blocks, threads>>>(*this, grid_origin, coords, type_index, radii, out);
+
+      if(binary)
+        forward_gpu<Dtype, true><<<blocks, threads>>>(*this, grid_origin, coords, type_index, radii, out);
+      else
+        forward_gpu<Dtype, false><<<blocks, threads>>>(*this, grid_origin, coords, type_index, radii, out);
+
       LMG_CUDA_CHECK(cudaPeekAtLastError());
     }
 
@@ -286,6 +296,7 @@ namespace libmolgrid {
         const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
         const Grid<double, 4, true>& grid, Grid<double, 2, true>& atom_gradients) const;
 
+    template<bool Binary>
     float GridMaker::calc_point(float ax, float ay, float az, float ar,
         const float3& grid_coords) const {
       float dx = grid_coords.x - ax;
@@ -294,7 +305,7 @@ namespace libmolgrid {
 
       float rsq = dx * dx + dy * dy + dz * dz;
       ar *= radius_scale;
-      if (binary) {
+      if (Binary) {
         //is point within radius?
         if (rsq < ar * ar)
           return 1.0;
@@ -320,6 +331,10 @@ namespace libmolgrid {
         }
       }
     }
+    template float GridMaker::calc_point<true>(float ax, float ay, float az, float ar,
+        const float3& grid_coords) const;
+    template float GridMaker::calc_point<false>(float ax, float ay, float az, float ar,
+        const float3& grid_coords) const;
 
     void GridMaker::accumulate_atom_gradient(float ax, float ay, float az,
         float x, float y, float z, float ar, float gridval, float3& agrad) const {
@@ -385,8 +400,11 @@ namespace libmolgrid {
             float x = grid_origin.x + i * G.resolution;
             float y = grid_origin.y + j * G.resolution;
             float z = grid_origin.z + k * G.resolution;
-
-            float val = G.calc_point(a.x, a.y, a.z, radius, float3{x,y,z});
+            float val = 0;
+            if(G.get_binary())
+              val = G.calc_point<true>(a.x, a.y, a.z, radius, float3{x,y,z});
+            else
+              val = G.calc_point<false>(a.x, a.y, a.z, radius, float3{x,y,z});
 
             if (val > 0) {
               float denseval = density(i,j,k);
