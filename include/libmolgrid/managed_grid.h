@@ -228,7 +228,7 @@ class ManagedGridBase {
         tmp.cpu_ptr = cpu_ptr;
         tmp.gpu_info = gpu_info;
         tmp.cpu_grid = cpu_grid_t(cpu_ptr.get(), sizes...);
-        tmp.gpu_grid = gpu_grid_t(gpu_info->gpu_ptr, sizes...);
+        if(gpu_info) tmp.gpu_grid = gpu_grid_t(gpu_info->gpu_ptr, sizes...);
         tmp.capacity = capacity;
         return tmp;
       } else {
