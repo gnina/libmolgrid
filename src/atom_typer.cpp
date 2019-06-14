@@ -423,6 +423,12 @@ void FileAtomMapper::setup(std::istream& in) {
 
 FileAtomMapper::FileAtomMapper(const std::string& fname, const std::vector<std::string>& type_names): old_type_names(type_names) {
   ifstream in(fname.c_str());
+
+  if(!in) {
+    std::cerr << "Could not open " << fname << "\n";
+    exit(-1);
+  }
+
   setup(in);
 }
 
