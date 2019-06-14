@@ -425,8 +425,7 @@ FileAtomMapper::FileAtomMapper(const std::string& fname, const std::vector<std::
   ifstream in(fname.c_str());
 
   if(!in) {
-    std::cerr << "Could not open " << fname << "\n";
-    exit(-1);
+    throw std::invalid_argument("Could not open " + fname);
   }
 
   setup(in);
