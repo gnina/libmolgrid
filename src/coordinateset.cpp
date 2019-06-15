@@ -80,10 +80,10 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<int
   for(unsigned i = 0; i < N; i++) {
     type_index[i] = t[i];   //convert to float
     float3 p = c[i];
-    coord_radius[i][0] = p.x;
-    coord_radius[i][1] = p.y;
-    coord_radius[i][2] = p.z;
-    coord_radius[i][3] = r[i];
+    coord_radius(i,0) = p.x;
+    coord_radius(i,1) = p.y;
+    coord_radius(i,2) = p.z;
+    coord_radius(i,3) = r[i];
   }
 }
 
@@ -104,10 +104,10 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<flo
 
   for(unsigned i = 0; i < N; i++) {
     float3 p = c[i];
-    coord_radius[i][0] = p.x;
-    coord_radius[i][1] = p.y;
-    coord_radius[i][2] = p.z;
-    coord_radius[i][3] = r[i];
+    coord_radius(i,0) = p.x;
+    coord_radius(i,1) = p.y;
+    coord_radius(i,2) = p.z;
+    coord_radius(i,3) = r[i];
   }
 }
 
@@ -193,10 +193,10 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<std
   type_vector.tocpu();  coord_radius.tocpu();
   for(unsigned i = 0; i < N; i++) {
     float3 p = c[i];
-    coord_radius[i][0] = p.x;
-    coord_radius[i][1] = p.y;
-    coord_radius[i][2] = p.z;
-    coord_radius[i][3] = r[i];
+    coord_radius(i,0) = p.x;
+    coord_radius(i,1) = p.y;
+    coord_radius(i,2) = p.z;
+    coord_radius(i,3) = r[i];
   }
   memcpy(type_vector.cpu().data(), &t[0], sizeof(float)*N*max_type);
 
@@ -236,7 +236,7 @@ void CoordinateSet::make_vector_types() {
   for(unsigned i = 0; i < N; i++) {
     unsigned t = type_index[i];
     if(t < max_type) {
-      type_vector[i][t] = 1.0;
+      type_vector(i,t) = 1.0;
     }
   }
 
