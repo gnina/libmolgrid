@@ -151,7 +151,7 @@ namespace libmolgrid {
         if(Binary) {
             if(val != 0)
               data[atype*chmult+goffset] = 1.0;
-        } else {
+        } else if(val > 0) {
           data[atype*chmult+goffset] += val;
         }
 
