@@ -98,6 +98,7 @@ template void GridMaker::forward(const Example& in, Grid<double, 4, false>& out,
 template void GridMaker::forward(const Example& in, Grid<double, 4, true>& out,
     float random_translation, bool random_rotation, const float3& center) const;
 
+
 template<typename Dtype>
 void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coord_radius,
     const Grid<float, 1, false>& type_index, Grid<Dtype, 4, false>& out) const {

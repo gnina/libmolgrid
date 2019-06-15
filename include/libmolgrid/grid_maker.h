@@ -43,7 +43,7 @@ class GridMaker {
     float A,B,C; //precalculated coefficients for density
     float D,E; //precalculate coefficients for backprop
     bool binary; /// use binary occupancy instead of real-valued atom density
-    size_t dim; /// grid width in points
+    unsigned dim; /// grid width in points
 
     template<typename Dtype, bool isCUDA>
     void check_index_args(const Grid<float, 2, isCUDA>& coordrs,
@@ -82,12 +82,15 @@ class GridMaker {
     ///set dimension in Angstroms
     CUDA_CALLABLE_MEMBER void set_dimension(float d) { dimension = d; dim = ::round(dimension / resolution) + 1; }
 
-    CUDA_CALLABLE_MEMBER size_t get_first_dim() const { return dim; }
+    CUDA_CALLABLE_MEMBER unsigned get_first_dim() const { return dim; }
 
     ///return if density is binary
     CUDA_CALLABLE_MEMBER bool get_binary() const { return binary; }
     ///set if density is binary
     CUDA_CALLABLE_MEMBER void set_binary(bool b) { binary = b; }
+
+    ///return multiplier of radius where density goes to zero
+    CUDA_CALLABLE_MEMBER float get_radiusmultiple() const { return radius_scale*final_radius_multiple; }
 
     /** \brief Use externally specified grid_center to determine where grid begins.
      * Used for translating between cartesian coords and grids.
@@ -396,37 +399,17 @@ class GridMaker {
         const Grid<Dtype, 4, true>& density, const Grid<Dtype, 4, true>& diff,
         Grid<Dtype, 1, true>& relevance) const;
 
-    /* \brief The GPU forward code path launches a kernel (forward_gpu) that
-     * sets the grid values in two steps: first each thread cooperates with the
-     * other threads in its block to determine which atoms could possibly
-     * overlap them. Then, working from this significantly reduced atom set,
-     * they actually check whether they are overlapped by an atom and update
-     * their density accordingly. atomOverlapsBlock is a helper for generating
-     * the reduced array of possibly relevant atoms.
-     * @param[in] atom index to check
-     * @param[in] grid origin
-     * @param[in] coordinates (Nx3)
-     * @param[in] type indices (N integers stored as floats)
-     * @param[in] radii (N)
-     * @param[out] 1 if atom could overlap block, 0 if not
-     */
-    CUDA_DEVICE_MEMBER
-    unsigned atom_overlaps_block(unsigned aidx, float3& grid_origin,
-        const Grid<float, 2, true>& coord_radius, const Grid<float, 1, true>& type_index);
-
 
     /* \brief The function that actually updates the voxel density values.
      * @param[in] number of possibly relevant atoms
      * @param[in] grid origin
-     * @param[in] coordinates (Nx3)
+     * @param[in] coordinates with radii
      * @param[in] type indices (N integers stored as floats)
-     * @param[in] radii (N)
      * @param[out] a 4D grid
      */
     template <typename Dtype, bool Binary>
-    CUDA_DEVICE_MEMBER void set_atoms(size_t natoms, float3& grid_origin,
-        const Grid<float, 2, true>& coord_radius, const Grid<float, 1, true>& type_index,
-        Grid<Dtype, 4, true>& out);
+    CUDA_DEVICE_MEMBER void set_atoms(unsigned natoms, float3 grid_origin,
+        const float4 *coordr_data, const float *tindex, Dtype* out);
 
   //protected:
 

@@ -71,17 +71,30 @@ namespace libmolgrid {
 
       float high = coord + densityrad - grid_origin;
       if (high > 0) { //otherwise zero
-        bounds.y = min(dim, (size_t) ceil(high / resolution));
+        bounds.y = min(dim, (unsigned) ceil(high / resolution));
       }
       return bounds;
     }
 
-    //return 1 if atom potentially overlaps block, 0 otherwise
+    /* \brief The GPU forward code path launches a kernel (forward_gpu) that
+     * sets the grid values in two steps: first each thread cooperates with the
+     * other threads in its block to determine which atoms could possibly
+     * overlap them. Then, working from this significantly reduced atom set,
+     * they actually check whether they are overlapped by an atom and update
+     * their density accordingly. atomOverlapsBlock is a helper for generating
+     * the reduced array of possibly relevant atoms.
+     * @param[in] atom index to check
+     * @param[in] grid origin
+     * @param[in] coordinates (Nx3)
+     * @param[in] type indices (N integers stored as floats)
+     * @param[in] radii (N)
+     * @param[out] 1 if atom could overlap block, 0 if not
+     */
     __device__
-    unsigned GridMaker::atom_overlaps_block(unsigned aidx, float3& grid_origin, 
-        const Grid<float, 2, true>& coordrs, const Grid<float, 1, true>& type_index) {
+    static unsigned atom_overlaps_block(unsigned aidx, float3& grid_origin,
+        float resolution, const float4 *coordrs, const float *type_index, float rmult) {
    
-      if (type_index(aidx) < 0) return 0; //hydrogen
+      if (type_index[aidx] < 0) return 0; //hydrogen
     
       unsigned xi = blockIdx.x * blockDim.x;
       unsigned yi = blockIdx.y * blockDim.y;
@@ -95,11 +108,12 @@ namespace libmolgrid {
       float endx = startx + resolution * blockDim.x;
       float endy = starty + resolution * blockDim.y;
       float endz = startz + resolution * blockDim.z;
-    
-      float centerx = coordrs(aidx, 0);
-      float centery = coordrs(aidx, 1);
-      float centerz = coordrs(aidx, 2);
-      float r = coordrs(aidx, 3) * radius_scale * final_radius_multiple;
+
+      float4 a = coordrs[aidx];
+      float centerx = a.x;
+      float centery = a.y;
+      float centerz = a.z;
+      float r = a.w * rmult;
     
       //does atom overlap box?
       return !((centerx - r > endx) || (centerx + r < startx)
@@ -107,42 +121,37 @@ namespace libmolgrid {
           || (centerz - r > endz) || (centerz + r < startz));
     }
 
-    template <typename Dtype, bool Binary>
-    __device__ void GridMaker::set_atoms(size_t rel_atoms, float3& grid_origin,
-        const Grid<float, 2, true>& coord_radius, const Grid<float, 1, true>& type_index,
-        Grid<Dtype, 4, true>& out) {
-      //figure out what grid point we are 
-      unsigned x = threadIdx.x + blockIdx.x * blockDim.x;
-      unsigned y = threadIdx.y + blockIdx.y * blockDim.y;
-      unsigned z = threadIdx.z + blockIdx.z * blockDim.z;
 
-      if(x >= dim || y >= dim || z >= dim)
+    template <typename Dtype, bool Binary>
+    __device__ void GridMaker::set_atoms(unsigned rel_atoms, float3 grid_origin,
+        const float4 *coordr_data, const float *tdata, Dtype *data) {
+      //figure out what grid point we are 
+      unsigned xi = threadIdx.x + blockIdx.x * blockDim.x;
+      unsigned yi = threadIdx.y + blockIdx.y * blockDim.y;
+      unsigned zi = threadIdx.z + blockIdx.z * blockDim.z;
+
+      if(xi >= dim || yi >= dim || zi >= dim)
         return;//bail if we're off-grid, this should not be common
 
       //compute x,y,z coordinate of grid point
       float3 grid_coords;
-      grid_coords.x = x * resolution + grid_origin.x;
-      grid_coords.y = y * resolution + grid_origin.y;
-      grid_coords.z = z * resolution + grid_origin.z;
-      size_t goffset = ((x*dim)+y)*dim + z; //offset into channel grid
-      size_t chmult = dim*dim*dim; //what to multiply type/channel seletion by
-      Dtype *data = out.data();
-      float *tdata = type_index.data();
-      float4 *coordr_data = (float4*)coord_radius.data();
-      size_t ntypes = out.dimension(0);
+      grid_coords.x = xi * resolution + grid_origin.x;
+      grid_coords.y = yi * resolution + grid_origin.y;
+      grid_coords.z = zi * resolution + grid_origin.z;
+      unsigned goffset = ((xi*dim)+yi)*dim + zi; //offset into channel grid
+      unsigned chmult = dim*dim*dim; //what to multiply type/channel seletion by
+
       //iterate over all possibly relevant atoms
-      for(size_t ai = 0; ai < rel_atoms; ai++) {
-        size_t i = atomIndices[ai];
+      for(unsigned ai = 0; ai < rel_atoms; ai++) {
+        unsigned i = atomIndices[ai];
         float4 cr = coordr_data[i];
         float val = calc_point<Binary>(cr.x, cr.y, cr.z, cr.w, grid_coords);
         int atype = int(tdata[i]); //type is assumed correct because atom_overlaps at least gets rid of neg
 
         if(Binary) {
-          if(val != 0) {
-            data[atype*chmult+goffset] = 1.0;
-          }
-        }
-        else {
+            if(val != 0)
+              data[atype*chmult+goffset] = 1.0;
+        } else {
           data[atype*chmult+goffset] += val;
         }
 
@@ -151,20 +160,24 @@ namespace libmolgrid {
 
     template <typename Dtype, bool Binary>
     __global__ void
-    __launch_bounds__(LMG_CUDA_NUM_THREADS)
+  //  __launch_bounds__(LMG_CUDA_NUM_THREADS)
     forward_gpu(GridMaker gmaker, float3 grid_origin,
         const Grid<float, 2, true> coordrs, const Grid<float, 1, true> type_index,
         Grid<Dtype, 4, true> out) {
       //this is the thread's index within its block, used to parallelize over atoms
-      size_t total_atoms = coordrs.dimension(0);
-      size_t tidx = ((threadIdx.z * blockDim.y) + threadIdx.y) * blockDim.x + threadIdx.x;
+      unsigned total_atoms = coordrs.dimension(0);
+      unsigned tidx = ((threadIdx.z * blockDim.y) + threadIdx.y) * blockDim.x + threadIdx.x;
+      float4 *coordrs_data = (float4*)coordrs.data();
+      float *types = type_index.data();
+      Dtype *outgrid = out.data();
+
       //if there are more then LMG_CUDA_NUM_THREADS atoms, chunk them
-      for(size_t atomoffset = 0; atomoffset < total_atoms; atomoffset += LMG_CUDA_NUM_THREADS) {
+      for(unsigned atomoffset = 0; atomoffset < total_atoms; atomoffset += LMG_CUDA_NUM_THREADS) {
         //first parallelize over atoms to figure out if they might overlap this block
-        size_t aidx = atomoffset + tidx;
+        unsigned aidx = atomoffset + tidx;
         
         if(aidx < total_atoms) {
-          atomMask[tidx] = gmaker.atom_overlaps_block(aidx, grid_origin, coordrs, type_index);
+          atomMask[tidx] = atom_overlaps_block(aidx, grid_origin, gmaker.get_resolution(), coordrs_data, types, gmaker.get_radiusmultiple());
         }
         else {
           atomMask[tidx] = 0;
@@ -184,9 +197,9 @@ namespace libmolgrid {
         }
         __syncthreads();
 
-        size_t rel_atoms = scanOutput[LMG_CUDA_NUM_THREADS - 1] + atomMask[LMG_CUDA_NUM_THREADS - 1];
+        unsigned rel_atoms = scanOutput[LMG_CUDA_NUM_THREADS - 1] + atomMask[LMG_CUDA_NUM_THREADS - 1];
         //atomIndex is now a list of rel_atoms possibly relevant atom indices
-        gmaker.set_atoms<Dtype, Binary>(rel_atoms, grid_origin, coordrs, type_index, out);
+        gmaker.set_atoms<Dtype, Binary>(rel_atoms, grid_origin, coordrs_data, types, outgrid);
 
         __syncthreads();//everyone needs to finish before we muck with atomIndices again
       }
@@ -289,45 +302,58 @@ namespace libmolgrid {
         const Grid<float, 1, true>& type_index,
         const Grid<double, 4, true>& grid, Grid<double, 2, true>& atom_gradients) const;
 
-    template<bool Binary>
-    float GridMaker::calc_point(float ax, float ay, float az, float ar,
-        const float3& grid_coords) const {
-      float dx = grid_coords.x - ax;
-      float dy = grid_coords.y - ay;
-      float dz = grid_coords.z - az;
 
-      float rsq = dx * dx + dy * dy + dz * dz;
-      ar *= radius_scale;
-      if (Binary) {
-        //is point within radius?
-        if (rsq < ar * ar)
-          return 1.0;
-        else
-          return 0.0;
-      } else {
-        //For non-binary density we want a Gaussian where 2 std occurs at the
-        //radius, after which it becomes quadratic.
-        //The quadratic is fit to have both the same value and first derivative
-        //at the cross over point and a value and derivative of zero at fianl_radius_multiple
-        float dist = sqrtf(rsq);
-        if (dist >= ar * final_radius_multiple) {
-          return 0.0;
-        } else
-        if (dist <= ar * gaussian_radius_multiple) {
-          //return gaussian
-          float ex = -2.0 * dist * dist / (ar*ar);
-          return exp(ex);
-        } else { //return quadratic
-          float dr = dist / ar;
-          float q = (A * dr + B) * dr + C;
-          return q > 0 ? q : 0; //avoid very small negative numbers
-        }
-      }
+    //return squared distance between pt and (x,y,z)
+    __host__ __device__ inline
+    float sqDistance(float3 pt, float x, float y, float z) {
+      float ret;
+      float tmp = pt.x - x;
+      ret = tmp * tmp;
+      tmp = pt.y - y;
+      ret += tmp * tmp;
+      tmp = pt.z - z;
+      ret += tmp * tmp;
+      return ret;
     }
-    template float GridMaker::calc_point<true>(float ax, float ay, float az, float ar,
-        const float3& grid_coords) const;
-    template float GridMaker::calc_point<false>(float ax, float ay, float az, float ar,
-        const float3& grid_coords) const;
+
+
+    //non-binary, gaussian case
+    template<>
+    float GridMaker::calc_point<false>(float ax, float ay, float az, float ar,
+        const float3& grid_coords) const {
+      float rsq = sqDistance(grid_coords, ax, ay, az);
+      ar *= radius_scale;
+      //For non-binary density we want a Gaussian where 2 std occurs at the
+      //radius, after which it becomes quadratic.
+      //The quadratic is fit to have both the same value and first derivative
+      //at the cross over point and a value and derivative of zero at fianl_radius_multiple
+      float dist = sqrtf(rsq);
+      if (dist >= ar * final_radius_multiple) {
+        return 0.0;
+      } else
+      if (dist <= ar * gaussian_radius_multiple) {
+        //return gaussian
+        float ex = -2.0 * dist * dist / (ar*ar);
+        return exp(ex);
+      } else { //return quadratic
+        float dr = dist / ar;
+        float q = (A * dr + B) * dr + C;
+        return q > 0 ? q : 0; //avoid very small negative numbers
+      }
+
+    }
+
+    template<>
+    float GridMaker::calc_point<true>(float ax, float ay, float az, float ar,
+        const float3& grid_coords) const {
+      float rsq = sqDistance(grid_coords, ax, ay, az);
+      ar *= radius_scale;
+      //is point within radius?
+      if (rsq < ar * ar)
+        return 1.0;
+      else
+        return 0.0;
+    }
 
     void GridMaker::accumulate_atom_gradient(float ax, float ay, float az,
         float x, float y, float z, float ar, float gridval, float3& agrad) const {
