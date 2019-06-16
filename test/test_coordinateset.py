@@ -16,11 +16,11 @@ def test_coordset_from_mol():
     m.make3D()
     
     c = molgrid.CoordinateSet(m,molgrid.ElementIndexTyper())
-    oldcoord = c.coord.tonumpy()
+    oldcoord = c.coord_radius.tonumpy()[:,:3]
     #simple translate
     t = molgrid.Transform(molgrid.Quaternion(), (0,0,0), (1,1,1))
     t.forward(c,c)
-    newcoord = c.coord.tonumpy()
+    newcoord = c.coord_radius.tonumpy()[:,:3]
     assert np.sum(newcoord-oldcoord) == approx(48)
 
 #create a coordinateset from numpy and transform it
@@ -31,15 +31,15 @@ def test_coordset_from_array():
     radii = np.array([1.5,1.5,1.0],np.float32)
     c = molgrid.CoordinateSet(coords, types, radii, 4)
 
-    oldcoord = c.coord.tonumpy()
+    oldcoordr = c.coord_radius.tonumpy()
     #simple translate
     t = molgrid.Transform(molgrid.Quaternion(), (0,0,0), (-1,0,1))
     t.forward(c,c)
-    newcoord = c.coord.tonumpy()
+    newcoord = c.coord_radius.tonumpy()
     
-    assert c.coord[1,1] == 3.0
-    assert np.sum(newcoord) == approx(3.0)
+    assert c.coord_radius[1,1] == 3.0
+    assert np.sum(newcoord[:,:3]) == approx(3.0)
     
     c2 = c.clone()
-    c2.coord[1,1] = 0
-    assert c.coord[1,1] == 3.0
+    c2.coord_radius[1,1] = 0
+    assert c.coord_radius[1,1] == 3.0

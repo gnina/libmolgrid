@@ -22,8 +22,7 @@ def test_dx():
 
     gmaker = molgrid.GridMaker()
     dims = gmaker.grid_dimensions(e.type_size()) # this should be grid_dims or get_grid_dims
-    center = c.coord.tonumpy().mean(axis=0)
-    center = tuple(center.astype(float))
+    center = tuple(c.center())
 
     mgridout = molgrid.MGrid4f(*dims)    
     gmaker.forward(center, c, mgridout.cpu())

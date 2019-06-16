@@ -7,6 +7,7 @@ try:
     import pybel #2.0
 except ImportError:
     from openbabel import pybel  #3.0
+    from openbabel import openbabel
     
 def test_gninatyping():
     m = pybel.readstring('smi','c1ccccc1CO')
@@ -382,7 +383,10 @@ def test_callbackvector_typing():
     m.addh()
 
     def mytyper(atom):
-        return ([atom.GetAtomicNum(),atom.GetValence()], 1.5)
+        if hasattr(atom, 'GetValence'):
+            return ([atom.GetAtomicNum(),atom.GetValence()], 1.5)
+        else:
+            return ([atom.GetAtomicNum(),atom.GetExplicitDegree()], 1.5)
     
     t = molgrid.PythonCallbackVectorTyper(mytyper, 2, ["anum","valence"])
     typs = [t.get_atom_type_vector(a.OBAtom) for a in m.atoms]
