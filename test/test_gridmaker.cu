@@ -21,23 +21,23 @@ BOOST_AUTO_TEST_CASE(forward_agreement) {
 
   //randomly generated example, check equivalence between gpu and cpu versions
   random_engine.seed(0);
-  MGrid2f coords(natoms, 4);
+  MGrid2f coords(natoms, 3);
   MGrid1f type_indices(natoms); 
   MGrid1f radii(natoms);
   size_t ntypes = (unsigned)GninaIndexTyper::NumTypes;
   MGrid4f cout(ntypes, dim.x, dim.y, dim.z);
-  make_mol(coords.cpu(), type_indices.cpu(), natoms);
+  make_mol(coords.cpu(), type_indices.cpu(), radii.cpu(), natoms);
   float3 grid_center = make_float3(0,0,0); //coords generated from -25 to 25
                                            //so this should be ok
 
   //make grid
-  gmaker.forward(grid_center, coords.cpu(), type_indices.cpu(), cout.cpu());
+  gmaker.forward(grid_center, coords.cpu(), type_indices.cpu(), radii.cpu(), cout.cpu());
 
   Grid2fCUDA gcoords = coords.gpu();
   Grid1fCUDA gtype_indices = type_indices.gpu();
   Grid1fCUDA gradii = radii.gpu();
   MGrid4f gout(ntypes, dim.x, dim.y, dim.z);
-  gmaker.forward(grid_center, gcoords, gtype_indices, gout.gpu());
+  gmaker.forward(grid_center, gcoords, gtype_indices, gradii, gout.gpu());
   cudaError_t error = cudaGetLastError();
   BOOST_CHECK_EQUAL(error, cudaSuccess);
   gout.tocpu();
@@ -72,9 +72,10 @@ BOOST_AUTO_TEST_CASE(forward_gpu) {
   Example ex;
   extractor.extract(exref, ex);
   CoordinateSet combined = ex.merge_coordinates();
-  Grid2fCUDA coord = combined.coord_radius.gpu();
+  Grid2fCUDA coord = combined.coords.gpu();
   Grid1fCUDA type_index = combined.type_index.gpu();
-  CoordinateSet coordgpu(coord, type_index, combined.max_type);
+  Grid1fCUDA radius = combined.radii.gpu();
+  CoordinateSet coordgpu(coord, type_index, radius, combined.max_type);
 
   size_t ntypes = coordgpu.num_types();
 

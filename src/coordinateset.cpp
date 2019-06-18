@@ -21,10 +21,10 @@ CoordinateSet::CoordinateSet(OBMol *mol): CoordinateSet(mol, defaultGninaLigandT
 CoordinateSet::CoordinateSet(OBMol *mol, const AtomTyper& typer)
     : max_type(typer.num_types()) {
 
-  vector<float4> c; c.reserve(mol->NumAtoms());
+  vector<float3> c; c.reserve(mol->NumAtoms());
   vector<float> types;  types.reserve(mol->NumAtoms());
   vector<vector<float> > vector_types;  vector_types.reserve(mol->NumAtoms());
-  vector<float> radii; radii.reserve(mol->NumAtoms());
+  vector<float> rads; rads.reserve(mol->NumAtoms());
   vector<float> vec;
 
   FOR_ATOMS_OF_MOL(a, mol){
@@ -34,8 +34,9 @@ CoordinateSet::CoordinateSet(OBMol *mol, const AtomTyper& typer)
 
       float radius = typer.get_atom_type_vector(atom, vec);
       if(radius > 0) { //don't ignore
-        c.push_back(make_float4(atom->GetX(), atom->GetY(), atom->GetZ(), radius));
+        c.push_back(make_float3(atom->GetX(), atom->GetY(), atom->GetZ()));
         vector_types.push_back(vec);
+        rads.push_back(radius);
       }
     } else {
       auto type_rad = typer.get_atom_type_index(atom);
@@ -43,17 +44,21 @@ CoordinateSet::CoordinateSet(OBMol *mol, const AtomTyper& typer)
       float r = type_rad.second;
       if(type >= (int)max_type) throw invalid_argument("Invalid type");
       if(type >= 0) { //don't ignore atom
-        c.push_back(make_float4(atom->GetX(), atom->GetY(), atom->GetZ(), r));
+        c.push_back(make_float3(atom->GetX(), atom->GetY(), atom->GetZ()));
         types.push_back(type);
+        rads.push_back(r);
       }
     }
   }
 
   //allocate grids and initialize
   unsigned N = c.size();
-  coord_radius = MGrid2f(N,4);
-  assert(sizeof(float4)*N == sizeof(float)*coord_radius.size());
-  memcpy(coord_radius.cpu().data(), &c[0], sizeof(float4)*N);
+  coords = MGrid2f(N,3);
+  assert(sizeof(float3)*N == sizeof(float)*coords.size());
+  memcpy(coords.cpu().data(), &c[0], sizeof(float3)*N);
+
+  radii = MGrid1f(N);
+  memcpy(radii.cpu().data(), &rads[0], sizeof(float)*N);
 
   if(typer.is_vector_typer()) {
     type_vector = MGrid2f(N,max_type);
@@ -66,7 +71,7 @@ CoordinateSet::CoordinateSet(OBMol *mol, const AtomTyper& typer)
 
 //initialize with indexed types
 CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<int>& t, const std::vector<float>& r, unsigned maxt):
-  coord_radius(c.size(),4), type_index(c.size()), max_type(maxt) {
+  coords(c.size(),3), type_index(c.size()), radii(c.size()), max_type(maxt) {
   unsigned N = c.size();
   if(N != t.size()) {
     throw std::invalid_argument("Types and coordinates are of different sizes");
@@ -76,20 +81,19 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<int
   }
 
   //copy data
-  type_index.tocpu(); coord_radius.tocpu();
+  type_index.tocpu(); coords.tocpu(); radii.tocpu();
+  memcpy(radii.cpu().data(), &r[0], sizeof(float)*N);
+  assert(sizeof(float3)*N == sizeof(float)*coords.size());
+  memcpy(coords.cpu().data(), &c[0], sizeof(float3)*N);
+
   for(unsigned i = 0; i < N; i++) {
     type_index[i] = t[i];   //convert to float
-    float3 p = c[i];
-    coord_radius(i,0) = p.x;
-    coord_radius(i,1) = p.y;
-    coord_radius(i,2) = p.z;
-    coord_radius(i,3) = r[i];
   }
 }
 
 //initialize with indexed types (float)
 CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<float>& t, const std::vector<float>& r, unsigned maxt):
-  coord_radius(c.size(),4), type_index(c.size()), max_type(maxt) {
+  coords(c.size(),3), type_index(c.size()), radii(c.size()), max_type(maxt) {
   unsigned N = c.size();
   if(N != t.size()) {
     throw std::invalid_argument("Types and coordinates are of different sizes");
@@ -99,76 +103,26 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<flo
   }
 
   //copy data
-  type_index.tocpu(); coord_radius.tocpu();
+  type_index.tocpu(); coords.tocpu(); radii.tocpu();
   memcpy(type_index.cpu().data(), &t[0], sizeof(float)*N);
-
-  for(unsigned i = 0; i < N; i++) {
-    float3 p = c[i];
-    coord_radius(i,0) = p.x;
-    coord_radius(i,1) = p.y;
-    coord_radius(i,2) = p.z;
-    coord_radius(i,3) = r[i];
-  }
-}
-
-//initialize with indexed types and combined cr
-CoordinateSet::CoordinateSet(const std::vector<float4>& cr, const std::vector<int>& t, unsigned maxt):
-  coord_radius(cr.size(),4), type_index(cr.size()), max_type(maxt) {
-  unsigned N = cr.size();
-  if(N != t.size()) {
-    throw std::invalid_argument("Types and coordinates are of different sizes");
-  }
-
-  //copy data
-  memcpy(coord_radius.cpu().data(), &cr[0], sizeof(float4)*N);
-  for(unsigned i = 0; i < N; i++) {
-    type_index[i] = t[i];   //convert to float
-  }
-}
-
-//initialize with indexed types (float) and combined cr
-CoordinateSet::CoordinateSet(const std::vector<float4>& cr, const std::vector<float>& t, unsigned maxt):
-  coord_radius(cr.size(),4), type_index(cr.size()), max_type(maxt) {
-  unsigned N = cr.size();
-  if(N != t.size()) {
-    throw std::invalid_argument("Types and coordinates are of different sizes");
-  }
-
-  //copy data
-  memcpy(type_index.cpu().data(), &t[0], sizeof(float)*N);
-  memcpy(coord_radius.cpu().data(), &cr[0], sizeof(float4)*N);
+  memcpy(radii.cpu().data(), &r[0], sizeof(float)*N);
+  assert(sizeof(float3)*N == sizeof(float)*coords.size());
+  memcpy(coords.cpu().data(), &c[0], sizeof(float3)*N);
 }
 
 ///initialize with indexed types using grids - data is copied into coordinate set
-CoordinateSet::CoordinateSet(const Grid2f& cr, const Grid1f& t, unsigned maxt):
-    coord_radius(cr.dimension(0), cr.dimension(1)), type_index(t.dimension(0)), max_type(maxt) {
-  coord_radius.copyFrom(cr);
+CoordinateSet::CoordinateSet(const Grid2f& c, const Grid1f& t, const Grid1f& r, unsigned maxt):
+    coords(c.dimension(0), c.dimension(1)), type_index(t.dimension(0)), radii(r.dimension(0)), max_type(maxt) {
+  coords.copyFrom(c);
   type_index.copyFrom(t);
+  radii.copyFrom(r);
 }
 
-CoordinateSet::CoordinateSet(const Grid2fCUDA& cr, const Grid1fCUDA& t, unsigned maxt):
-    coord_radius(cr.dimension(0), cr.dimension(1)), type_index(t.dimension(0)), max_type(maxt) {
-  coord_radius.copyFrom(cr);
+CoordinateSet::CoordinateSet(const Grid2fCUDA& c, const Grid1fCUDA& t, const Grid1fCUDA& r, unsigned maxt):
+    coords(c.dimension(0), c.dimension(1)), type_index(t.dimension(0)), radii(r.dimension(0)), max_type(maxt) {
+  coords.copyFrom(c);
   type_index.copyFrom(t);
-}
-
-//not as efficient
-CoordinateSet::CoordinateSet(const Grid2f& coords, const Grid1f& radii, const Grid1f& t, unsigned maxt):
-    coord_radius(coords.dimension(0), 4), type_index(t.dimension(0)), max_type(maxt) {
-
-  if(coords.dimension(0) != radii.dimension(0)) {
-    throw std::invalid_argument("Coordinates and radii are of different sizes.");
-  }
-  if(coords.dimension(0) != type_index.dimension(0)) {
-    throw std::invalid_argument("Coordinates and types are of different sizes.");
-  }
-  for(unsigned i = 0, n = coords.dimension(0); i < n; i++) {
-    coord_radius(i,0) = coords(i,0);
-    coord_radius(i,1) = coords(i,1);
-    coord_radius(i,2) = coords(i,2);
-    coord_radius(i,3) = radii(i);
-  }
-  type_index.copyFrom(t);
+  radii.copyFrom(r);
 }
 
 inline size_t typ_vec_size(const std::vector<std::vector<float> >& t) {
@@ -179,7 +133,7 @@ inline size_t typ_vec_size(const std::vector<std::vector<float> >& t) {
 
 //initialize with vector types
 CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<std::vector<float> >& t, const std::vector<float>& r):
-  coord_radius(c.size(),4), type_vector(c.size(),typ_vec_size(t)), max_type(typ_vec_size(t)) {
+  coords(c.size(),3), type_vector(c.size(),typ_vec_size(t)), radii(r.size()), max_type(typ_vec_size(t)) {
 
   unsigned N = c.size();
   if(N != t.size()) {
@@ -190,43 +144,27 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<std
   }
 
   //copy data
-  type_vector.tocpu();  coord_radius.tocpu();
-  for(unsigned i = 0; i < N; i++) {
-    float3 p = c[i];
-    coord_radius(i,0) = p.x;
-    coord_radius(i,1) = p.y;
-    coord_radius(i,2) = p.z;
-    coord_radius(i,3) = r[i];
-  }
+  type_vector.tocpu();  coords.tocpu(); radii.tocpu();
+  memcpy(radii.cpu().data(), &r[0], sizeof(float)*r.size());
+  assert(sizeof(float3)*N == sizeof(float)*coords.size());
+  memcpy(coords.cpu().data(), &c[0], sizeof(float3)*N);
   memcpy(type_vector.cpu().data(), &t[0], sizeof(float)*N*max_type);
 
-}
-
-//initialize with vector types and combined cr
-CoordinateSet::CoordinateSet(const std::vector<float4>& cr, const std::vector<std::vector<float> >& t):
-  coord_radius(cr.size(),4), type_vector(cr.size(),typ_vec_size(t)), max_type(typ_vec_size(t)) {
-
-  unsigned N = cr.size();
-  if(N != t.size()) {
-    throw std::invalid_argument("Types and coordinates are of different sizes");
-  }
-
-  //copy data
-  memcpy(coord_radius.cpu().data(), &cr[0], sizeof(float4)*N);
-  memcpy(type_vector.cpu().data(), &t[0], sizeof(float)*N*max_type);
 }
 
 //vector types in grids
-CoordinateSet::CoordinateSet(const Grid2f& cr, const Grid2f& t):
-    coord_radius(cr.dimension(0),cr.dimension(1)), type_vector(t.dimension(0), t.dimension(1)), max_type(t.dimension(1)) {
-  coord_radius.copyFrom(cr);
+CoordinateSet::CoordinateSet(const Grid2f& c, const Grid2f& t, const Grid1f& r):
+    coords(c.dimension(0),c.dimension(1)), type_vector(t.dimension(0), t.dimension(1)), radii(r.dimension(0)), max_type(t.dimension(1)) {
+  coords.copyFrom(c);
   type_vector.copyFrom(t);
+  radii.copyFrom(r);
 }
 
-CoordinateSet::CoordinateSet(const Grid2fCUDA& cr, const Grid2fCUDA& t):
-    coord_radius(cr.dimension(0),cr.dimension(1)), type_vector(t.dimension(0), t.dimension(1)), max_type(t.dimension(1)) {
-  coord_radius.copyFrom(cr);
+CoordinateSet::CoordinateSet(const Grid2fCUDA& c, const Grid2fCUDA& t, const Grid1fCUDA& r):
+    coords(c.dimension(0),c.dimension(1)), type_vector(t.dimension(0), t.dimension(1)), radii(r.dimension(0)), max_type(t.dimension(1)) {
+  coords.copyFrom(c);
   type_vector.copyFrom(t);
+  radii.copyFrom(r);
 }
 
 ///convert index types to vector types in-place
@@ -244,14 +182,14 @@ void CoordinateSet::make_vector_types() {
 
 float3 CoordinateSet::center() const {
   float3 ret = make_float3(0,0,0);
-  unsigned N = coord_radius.dimension(0);
+  unsigned N = coords.dimension(0);
   if(N == 0) return ret;
 
-  coord_radius.tocpu(); //todo, gpuize
+  coords.tocpu(); //todo, gpuize
   for(unsigned i = 0; i < N; i++) {
-    ret.x += coord_radius(i,0);
-    ret.y += coord_radius(i,1);
-    ret.z += coord_radius(i,2);
+    ret.x += coords(i,0);
+    ret.y += coords(i,1);
+    ret.z += coords(i,2);
   }
   ret.x /= N;
   ret.y /= N;
@@ -260,11 +198,11 @@ float3 CoordinateSet::center() const {
 }
 
 void CoordinateSet::dump(std::ostream& out) const {
-  unsigned N = coord_radius.dimension(0);
-  coord_radius.tocpu();
+  unsigned N = coords.dimension(0);
+  coords.tocpu();
   if(N == 0) return;
   for(unsigned i = 0; i < N; i++) {
-    out << coord_radius(i,0) << "," << coord_radius(i,1) << "," << coord_radius(i,2);
+    out << coords(i,0) << "," << coords(i,1) << "," << coords(i,2);
     if(has_indexed_types()) {
       out << " " << type_index(i);
     }
@@ -274,21 +212,22 @@ void CoordinateSet::dump(std::ostream& out) const {
 }
 
 void CoordinateSet::size_like(const CoordinateSet& s) {
-  coord_radius = coord_radius.resized(s.coord_radius.dimension(0), 4);
+  coords = coords.resized(s.coords.dimension(0), 3);
   type_index = type_index.resized(s.type_index.dimension(0));
   type_vector = type_vector.resized(s.type_vector.dimension(0), s.type_vector.dimension(1));
+  radii = radii.resized(s.radii.dimension(0));
 }
 
 void CoordinateSet::copyInto(const CoordinateSet& s) {
   size_like(s);
-  coord_radius.copyFrom(s.coord_radius);
+  coords.copyFrom(s.coords);
   type_index.copyFrom(s.type_index);
   type_vector.copyFrom(s.type_vector);
+  radii.copyFrom(s.radii);
 
   max_type = s.max_type;
   src = s.src;
 }
-
 
 
 }

@@ -101,7 +101,7 @@ def test_radius_multiples():
     c = np.array([[0,0,0]],np.float32)
     t = np.array([0],np.float32)
     r = np.array([1.0],np.float32)
-    coords = molgrid.CoordinateSet(molgrid.Grid2f(c),molgrid.Grid1f(r),molgrid.Grid1f(t),1)
+    coords = molgrid.CoordinateSet(molgrid.Grid2f(c),molgrid.Grid1f(t),molgrid.Grid1f(r),1)
     shape = g1.grid_dimensions(1)
     cpugrid = molgrid.MGrid4f(*shape)
     gpugrid = molgrid.MGrid4f(*shape)
@@ -153,7 +153,7 @@ def test_backwards():
     c = np.array([[1.0,0,0]],np.float32)
     t = np.array([0],np.float32)
     r = np.array([2.0],np.float32)
-    coords = molgrid.CoordinateSet(c,r,t,1)
+    coords = molgrid.CoordinateSet(c,t,r,1)
     shape = g1.grid_dimensions(1)
     
     #make diff with gradient in center

@@ -115,11 +115,11 @@ class Transform {
       if(in.dimension(0) != out.dimension(0)) {
         throw std::invalid_argument("Different dimensions and input and output coordinates grids.");
       }
-      if(in.dimension(1) < 3) {
-        throw std::invalid_argument("Input coordinates/radius are wrong dimension.");
+      if(in.dimension(1) != 3) {
+        throw std::invalid_argument("Input coordinates wrong dimension.");
       }
-      if(out.dimension(1) < 3) {
-        throw std::invalid_argument("Output coordinates/radius are wrong dimension.");
+      if(out.dimension(1) != 3) {
+        throw std::invalid_argument("Output coordinates are wrong dimension.");
       }
       if(in.data() == nullptr) {
         throw std::invalid_argument("Input coordinates missing memory");
