@@ -219,9 +219,9 @@ class ManagedGridBase {
       sz = std::min(sz, src.size());
       if(src.ongpu()) {
         if(ongpu()) {
-          LMG_CUDA_CHECK(cudaMemcpy(gpu_grid.data()+off,src.data(),sz*sizeof(Dtype),cudaMemcpyDeviceToDevice));
+          LMG_CUDA_CHECK(cudaMemcpy(gpu_grid.data()+off,src.gpu_grid.data(),sz*sizeof(Dtype),cudaMemcpyDeviceToDevice));
         } else {
-          LMG_CUDA_CHECK(cudaMemcpy(cpu_grid.data()+off,src.data(),sz*sizeof(Dtype),cudaMemcpyDeviceToHost));
+          LMG_CUDA_CHECK(cudaMemcpy(cpu_grid.data()+off,src.gpu_grid.data(),sz*sizeof(Dtype),cudaMemcpyDeviceToHost));
         }
       } else { //on host
         if(ongpu()) {
