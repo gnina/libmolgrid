@@ -263,6 +263,8 @@ class Grid<Dtype,1,isCUDA> {
     /// pointer to underlying data
     CUDA_CALLABLE_MEMBER inline Dtype * data() const { return buffer; }
 
+    CUDA_CALLABLE_MEMBER inline size_t offset(size_t i) const { return 1; }
+
     /// set the underlying memory buffer - use with caution!
     CUDA_CALLABLE_MEMBER inline void set_buffer(Dtype *ptr) { buffer = ptr; }
 

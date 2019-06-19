@@ -167,6 +167,55 @@ CoordinateSet::CoordinateSet(const Grid2fCUDA& c, const Grid2fCUDA& t, const Gri
   radii.copyFrom(r);
 }
 
+
+CoordinateSet::CoordinateSet(const CoordinateSet& rec, const CoordinateSet& lig, bool unique_index_types):
+  coords(rec.coords.dimension(0)+lig.coords.dimension(0), 3),
+  type_index(rec.type_index.dimension(0)+lig.type_index.dimension(0)),
+  type_vector(rec.type_vector.dimension(0)+lig.type_vector.dimension(0), rec.type_vector.dimension(1)),
+  radii(rec.radii.dimension(0)+lig.radii.dimension(0)) {
+
+  unsigned NR = rec.coords.dimension(0);
+  unsigned NL = lig.coords.dimension(0);
+  unsigned num_rec_types = rec.max_type;
+
+  if(rec.type_vector.dimension(1) != lig.type_vector.dimension(1)) {
+    throw std::invalid_argument("Type vectors are incompatible sizes");
+  }
+  if(rec.has_vector_types() != lig.has_vector_types() || rec.has_indexed_types() != lig.has_indexed_types()) {
+    throw std::invalid_argument("Incompatible types when combining coodinate sets");
+  }
+  if(rec.has_indexed_types()) {
+    if(unique_index_types)
+      max_type = rec.max_type + lig.max_type;
+    else
+      max_type = max(rec.max_type,lig.max_type);
+  } else {
+    if(rec.max_type != lig.max_type)
+      throw std::invalid_argument("Type vectors are incompatible sizes, weirdly"); //should be checked above
+  }
+
+  coords.copyFrom(rec.coords);
+  type_index.copyFrom(rec.type_index);
+  type_vector.copyFrom(rec.type_vector);
+  radii.copyFrom(rec.radii);
+
+  coords.copyInto(NR, lig.coords);
+  type_index.copyInto(NR, lig.type_index);
+  type_vector.copyInto(NR, lig.type_vector);
+  radii.copyInto(NR, lig.radii);
+
+  if(unique_index_types) {
+    //todo: gpuize
+    bool isgpu = type_index.ongpu();
+    type_index.tocpu();
+    for(unsigned i = NR; i < NR+NL; i++) {
+      type_index[i] += num_rec_types;
+    }
+    if(isgpu) type_index.togpu();
+  }
+}
+
+
 ///convert index types to vector types in-place
 void CoordinateSet::make_vector_types() {
   unsigned N = type_index.size();

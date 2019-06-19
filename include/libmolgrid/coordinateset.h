@@ -54,6 +54,10 @@ struct CoordinateSet {
   CoordinateSet(const Grid2f& cr, const Grid2f& t, const Grid1f& r);
   CoordinateSet(const Grid2fCUDA& cr, const Grid2fCUDA& t, const Grid1fCUDA& r);
 
+  ///create coordinate set from the merger of two coordinate sets
+  ///if unique_index_types, the index types of the second are offset
+  CoordinateSet(const CoordinateSet& rec, const CoordinateSet& lig, bool unique_index_types=true);
+
   /// return true if index types are available
   bool has_indexed_types() const { return type_index.size() > 0 || type_vector.size() == 0; }
 

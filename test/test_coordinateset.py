@@ -43,3 +43,30 @@ def test_coordset_from_array():
     c2 = c.clone()
     c2.coords[1,1] = 0
     assert c.coords[1,1] == 3.0
+
+def test_coordset_merge():
+    m = pybel.readstring('smi','c1ccccc1CO')
+    m.addh()
+    m.make3D()
+    
+    c = molgrid.CoordinateSet(m,molgrid.ElementIndexTyper())
+    c2 = molgrid.CoordinateSet(m)
+
+    c3 = molgrid.CoordinateSet(c,c2)
+    c4 = molgrid.CoordinateSet(c,c2,False)
+
+    assert c3.max_type == (c.max_type + c2.max_type)
+    assert c3.coords.dimension(0) == (c.coords.dimension(0)+c2.type_index.size())
+
+    assert c4.max_type == max(c.max_type,c2.max_type)
+    assert c4.coords.dimension(0) == (c.coords.dimension(0)+c2.type_index.size())
+    
+    t = np.concatenate([c.type_index.tonumpy(),c2.type_index.tonumpy()+c.max_type])
+    assert np.array_equal(t, c3.type_index.tonumpy())
+    
+    #test merging without unique types, which makes no sense
+    assert c4.coords.tonumpy().shape == (24,3)
+    t = np.concatenate([c.type_index.tonumpy(),c2.type_index.tonumpy()])
+    assert np.array_equal(t, c4.type_index.tonumpy())
+    
+   
