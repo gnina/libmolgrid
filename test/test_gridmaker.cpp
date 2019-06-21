@@ -220,6 +220,7 @@ BOOST_AUTO_TEST_CASE(backward_vec) {
   MGrid2f cputypes(1, 2);
   g.backward(float3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu(), cputypes.cpu());
 
-
+  BOOST_CHECK_GT(cputypes[0][0],0);
+  BOOST_CHECK_EQUAL(cputypes[0][1],0);
 }
 
