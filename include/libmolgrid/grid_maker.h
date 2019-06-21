@@ -49,6 +49,11 @@ class GridMaker {
     void check_index_args(const Grid<float, 2, isCUDA>& coords,
         const Grid<float, 1, isCUDA>& type_index, const Grid<float, 1, isCUDA>& radii,
         Grid<Dtype, 4, isCUDA>& out) const;
+
+    template<typename Dtype, bool isCUDA>
+    void check_vector_args(const Grid<float, 2, isCUDA>& coords,
+        const Grid<float, 2, isCUDA>& type_vector, const Grid<float, 1, isCUDA>& radii,
+        Grid<Dtype, 4, isCUDA>& out) const;
   public:
 
     GridMaker(float res = 0, float d = 0, bool bin = false, float rscale=1.0, float grm = 1.0) :
@@ -110,7 +115,7 @@ class GridMaker {
       if(in.has_indexed_types()) {
         forward(grid_center, in.coords.cpu(), in.type_index.cpu(), in.radii.cpu(), out);
       } else {
-        throw std::invalid_argument("Type vector gridding not implemented yet");
+        forward(grid_center, in.coords.cpu(), in.type_vector.cpu(), in.radii.cpu(), out);
       }
     }
 
@@ -124,7 +129,7 @@ class GridMaker {
       if(in.has_indexed_types()) {
         forward(grid_center, in.coords.gpu(), in.type_index.gpu(), in.radii.gpu(), out);
       } else {
-        throw std::invalid_argument("Type vector gridding not implemented yet");
+        forward(grid_center, in.coords.gpu(), in.type_vector.gpu(), in.radii.gpu(), out);
       }
     }
 
@@ -199,6 +204,32 @@ class GridMaker {
     void forward(float3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
         Grid<Dtype, 4, true>& out) const;
+        
+        
+    /* \brief Generate grid tensor from CPU atomic data.  Grid must be properly sized.
+     * @param[in] center of grid
+     * @param[in] coordinates (Nx3)
+     * @param[in] type vectors (NxT)
+     * @param[in] radii (N)
+     * @param[out] a 4D grid
+     */
+    template <typename Dtype>
+    void forward(float3 grid_center, const Grid<float, 2, false>& coords,
+        const Grid<float, 2, false>& type_vector, const Grid<float, 1, false>& radii,
+        Grid<Dtype, 4, false>& out) const;
+
+    /* \brief Generate grid tensor from GPU atomic data.  Grid must be properly sized.
+     * @param[in] center of grid
+     * @param[in] coordinates (Nx3)
+     * @param[in] type indices (NxT)
+     * @param[in] radii (N)
+     * @param[out] a 4D grid
+     */
+    template <typename Dtype>
+    void forward(float3 grid_center, const Grid<float, 2, true>& coords,
+        const Grid<float, 2, true>& type_vector, const Grid<float, 1, true>& radii,
+        Grid<Dtype, 4, true>& out) const;        
+
 
     /* \brief Generate atom and type gradients from grid gradients. (CPU)
      * Must provide atom coordinates that defined the original grid in forward
@@ -314,11 +345,9 @@ class GridMaker {
      */
     template <typename Dtype>
     void backward(float3 grid_center, const Grid<float, 2, false>& coords,
-        const Grid<float, 2, false>& type_vectors, const Grid<Dtype, 1, false>& radii,
+        const Grid<float, 2, false>& type_vectors, const Grid<float, 1, false>& radii,
         const Grid<Dtype, 4, false>& diff,
-        Grid<Dtype, 2, false>& atom_gradients, Grid<Dtype, 2, false>& type_gradients) const {
-      throw std::runtime_error("Vector type gradient calculation not implemented yet");
-    }
+        Grid<Dtype, 2, false>& atom_gradients, Grid<Dtype, 2, false>& type_gradients) const;
 
     /* \brief Generate atom gradients from grid gradients. (GPU)
      * Must provide atom coordinates, types, and radii that defined the original grid in forward
@@ -335,9 +364,7 @@ class GridMaker {
     void backward(float3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 2, true>& type_vectors, const Grid<float, 1, true>& radii,
         const Grid<Dtype, 4, true>& grid,
-        Grid<Dtype, 2, true>& atom_gradients,  Grid<Dtype, 2, true>& type_gradients) const {
-      throw std::runtime_error("Vector type gradient calculation not implemented yet");
-    }
+        Grid<Dtype, 2, true>& atom_gradients,  Grid<Dtype, 2, true>& type_gradients) const;
 
     /* \brief Propagate relevance (in diff) onto atoms. (CPU)
      * Index types are required.
@@ -422,11 +449,30 @@ class GridMaker {
     CUDA_DEVICE_MEMBER void set_atoms(unsigned natoms, float3 grid_origin,
         const float3 *coords, const float *tindex, const float *radii, Dtype* out);
 
+    /* \brief The function that actually updates the voxel density values.
+     * @param[in] number of possibly relevant atoms
+     * @param[in] grid origin
+     * @param[in] coordinates
+     * @param[in] type vector (NxT)
+     * @param[in] ntypes number of types
+     * @param[in] radii (N)
+     * @param[out] a 4D grid
+     */
+    template <typename Dtype, bool Binary>
+    CUDA_DEVICE_MEMBER void set_atoms(unsigned natoms, float3 grid_origin,
+        const float3 *coords, const float *type_vec, unsigned ntypes,
+        const float *radii, Dtype* out);
+
   //protected:
 
     //calculate atomic gradient for single atom - cpu
     template <typename Dtype>
     float3 calc_atom_gradient_cpu(const float3& grid_origin, const Grid1f& coord, const Grid<Dtype, 3, false>& diff, float radius) const;
+
+    //calculate gradient of type for type vector case
+    template <typename Dtype>
+    float calc_type_gradient_cpu(const float3& grid_origin, const Grid1f& coord, const Grid<Dtype, 3, false>& diff, float radius) const;
+
 
     //calculate atomic relevance for single atom - cpu
     template <typename Dtype>
@@ -459,6 +505,10 @@ class GridMaker {
     template<typename Dtype> __global__ friend //member functions don't kernel launch
     void set_atom_gradients(GridMaker G, float3 grid_center, Grid2fCUDA coords, Grid1fCUDA type_index,
         Grid1fCUDA radii, Grid<Dtype, 4, true> grid, Grid<Dtype, 2, true> atom_gradients);
+    template<typename Dtype> __global__ friend
+    void set_atom_type_gradients(GridMaker G, float3 grid_origin, Grid2fCUDA coords, Grid2fCUDA type_vector,
+        unsigned ntypes, Grid1fCUDA radii, Grid<Dtype, 4, true> grid, Grid<Dtype, 2, true> atom_gradients,
+        Grid<Dtype, 2, true> type_gradients);
     template<typename Dtype> __global__ friend
     void set_atom_relevance(GridMaker G, float3 grid_origin, Grid2fCUDA coords, Grid1fCUDA type_index,
         Grid1fCUDA radii, Grid<Dtype, 4, true> densitygrid, Grid<Dtype, 4, true> diffgrid, Grid<Dtype, 1, true> relevance);

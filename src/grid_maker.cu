@@ -92,10 +92,8 @@ namespace libmolgrid {
      */
     __device__
     static unsigned atom_overlaps_block(unsigned aidx, float3& grid_origin,
-        float resolution, const float3 *coords, const float *type_index, const float * radii, float rmult) {
-   
-      if (type_index[aidx] < 0) return 0; //hydrogen
-    
+        float resolution, const float3 *coords, const float * radii, float rmult) {
+
       unsigned xi = blockIdx.x * blockDim.x;
       unsigned yi = blockIdx.y * blockDim.y;
       unsigned zi = blockIdx.z * blockDim.z;
@@ -177,8 +175,8 @@ namespace libmolgrid {
         //first parallelize over atoms to figure out if they might overlap this block
         unsigned aidx = atomoffset + tidx;
         
-        if(aidx < total_atoms) {
-          atomMask[tidx] = atom_overlaps_block(aidx, grid_origin, gmaker.get_resolution(), coord_data, types, radii_data, gmaker.get_radiusmultiple());
+        if(aidx < total_atoms && types[aidx] >= 0) {
+          atomMask[tidx] = atom_overlaps_block(aidx, grid_origin, gmaker.get_resolution(), coord_data, radii_data, gmaker.get_radiusmultiple());
         }
         else {
           atomMask[tidx] = 0;
@@ -236,8 +234,133 @@ namespace libmolgrid {
     template void GridMaker::forward(float3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii, Grid<double, 4, true>& out) const;
 
+
+    template <typename Dtype, bool Binary>
+    __device__ void GridMaker::set_atoms(unsigned rel_atoms, float3 grid_origin,
+        const float3 *coord_data, const float *tdata, unsigned ntypes,
+        const float *radii, Dtype *data) {
+      //figure out what grid point we are
+      unsigned xi = threadIdx.x + blockIdx.x * blockDim.x;
+      unsigned yi = threadIdx.y + blockIdx.y * blockDim.y;
+      unsigned zi = threadIdx.z + blockIdx.z * blockDim.z;
+
+      if(xi >= dim || yi >= dim || zi >= dim)
+        return;//bail if we're off-grid, this should not be common
+
+      //compute x,y,z coordinate of grid point
+      float3 grid_coords;
+      grid_coords.x = xi * resolution + grid_origin.x;
+      grid_coords.y = yi * resolution + grid_origin.y;
+      grid_coords.z = zi * resolution + grid_origin.z;
+      unsigned goffset = ((xi*dim)+yi)*dim + zi; //offset into channel grid
+      unsigned chmult = dim*dim*dim; //what to multiply type/channel seletion by
+
+      //iterate over all possibly relevant atoms
+      for(unsigned ai = 0; ai < rel_atoms; ai++) {
+        unsigned i = atomIndices[ai];
+        float3 c = coord_data[i];
+        float val = calc_point<Binary>(c.x, c.y, c.z, radii[i], grid_coords);
+        if(val == 0) continue;
+
+        const float *atom_type_mult = tdata+(ntypes*i); //type vector for this atom
+        for(unsigned atype = 0; atype < ntypes; atype++) {
+          float tmult = atom_type_mult[atype];
+          if(tmult != 0) {
+            if(Binary) {
+              data[atype*chmult+goffset] += tmult;
+            } else  {
+              data[atype*chmult+goffset] += val*tmult;
+            }
+          }
+        }
+      }
+    }
+
+
+    template <typename Dtype, bool Binary>
+    __global__ void
+  //  __launch_bounds__(LMG_CUDA_NUM_THREADS)
+    forward_gpu_vec(GridMaker gmaker, float3 grid_origin,
+        const Grid<float, 2, true> coords, const Grid<float, 2, true> type_vector,
+        const Grid<float, 1, true> radii, Grid<Dtype, 4, true> out) {
+      //this is the thread's index within its block, used to parallelize over atoms
+      unsigned total_atoms = coords.dimension(0);
+      unsigned tidx = ((threadIdx.z * blockDim.y) + threadIdx.y) * blockDim.x + threadIdx.x; //thread index
+      float3 *coord_data = (float3*)coords.data();
+      float *types = type_vector.data();
+      unsigned ntypes = type_vector.dimension(1);
+      float *radii_data = radii.data();
+      Dtype *outgrid = out.data();
+
+      //if there are more then LMG_CUDA_NUM_THREADS atoms, chunk them
+      for(unsigned atomoffset = 0; atomoffset < total_atoms; atomoffset += LMG_CUDA_NUM_THREADS) {
+        //first parallelize over atoms to figure out if they might overlap this block
+        unsigned aidx = atomoffset + tidx;
+
+        if(aidx < total_atoms) {
+          atomMask[tidx] = atom_overlaps_block(aidx, grid_origin, gmaker.get_resolution(), coord_data, radii_data, gmaker.get_radiusmultiple());
+        }
+        else {
+          atomMask[tidx] = 0;
+        }
+
+        __syncthreads();
+
+        //scan the mask to get just relevant indices
+        sharedMemExclusiveScan(tidx, atomMask, scanOutput);
+
+        __syncthreads();
+
+        //do scatter (stream compaction)
+        if(atomMask[tidx])
+        {
+          atomIndices[scanOutput[tidx]] = tidx + atomoffset;
+        }
+        __syncthreads();
+
+        unsigned rel_atoms = scanOutput[LMG_CUDA_NUM_THREADS - 1] + atomMask[LMG_CUDA_NUM_THREADS - 1];
+        //atomIndex is now a list of rel_atoms possibly relevant atom indices
+        //there should be plenty of parallelism just distributing across grid points, don't bother across types
+        gmaker.set_atoms<Dtype, Binary>(rel_atoms, grid_origin, coord_data, types, ntypes, radii_data, outgrid);
+
+        __syncthreads();//everyone needs to finish before we muck with atomIndices again
+      }
+    }
+
+    template <typename Dtype>
+    void GridMaker::forward(float3 grid_center, const Grid<float, 2, true>& coords,
+        const Grid<float, 2, true>& type_vector, const Grid<float, 1, true>& radii,
+        Grid<Dtype, 4, true>& out) const {
+
+      //threads are laid out in three dimensions to match the voxel grid,
+      //8x8x8=512 threads per block
+      dim3 threads(LMG_CUDA_BLOCKDIM, LMG_CUDA_BLOCKDIM, LMG_CUDA_BLOCKDIM);
+      unsigned blocksperside = ceil(dim / float(LMG_CUDA_BLOCKDIM));
+      dim3 blocks(blocksperside, blocksperside, blocksperside);
+      float3 grid_origin = get_grid_origin(grid_center);
+      unsigned ntypes = type_vector.dimension(1);
+
+      check_vector_args(coords, type_vector, radii, out);
+      //zero out grid to start
+      LMG_CUDA_CHECK(cudaMemset(out.data(), 0, out.size() * sizeof(float)));
+
+      if(coords.dimension(0) == 0) return; //no atoms
+
+      if(binary)
+        forward_gpu_vec<Dtype, true><<<blocks, threads>>>(*this, grid_origin, coords, type_vector, radii, out);
+      else
+        forward_gpu_vec<Dtype, false><<<blocks, threads>>>(*this, grid_origin, coords, type_vector, radii, out);
+
+      LMG_CUDA_CHECK(cudaPeekAtLastError());
+    }
+
+    template void GridMaker::forward(float3 grid_center, const Grid<float, 2, true>& coords,
+        const Grid<float, 2, true>& type_vector, const Grid<float, 1, true>& radii, Grid<float, 4, true>& out) const;
+    template void GridMaker::forward(float3 grid_center, const Grid<float, 2, true>& coords,
+        const Grid<float, 2, true>& type_vector, const Grid<float, 1, true>& radii, Grid<double, 4, true>& out) const;
+
     //kernel launch - parallelize across whole atoms
-    //TODO: accelerate this
+    //TODO: accelerate this more
     template<typename Dtype>
     __global__
     void set_atom_gradients(GridMaker G, float3 grid_origin, Grid2fCUDA coords, Grid1fCUDA type_index,
@@ -278,6 +401,63 @@ namespace libmolgrid {
       atom_gradients(idx,2) = agrad.z;
     }
 
+    //type vector version block.y is the type
+    template<typename Dtype>
+    __global__
+    void set_atom_type_gradients(GridMaker G, float3 grid_origin, Grid2fCUDA coords, Grid2fCUDA type_vector,
+        unsigned ntypes, Grid1fCUDA radii, Grid<Dtype, 4, true> grid, Grid<Dtype, 2, true> atom_gradients,
+        Grid<Dtype, 2, true> type_gradients) {
+      int idx = blockDim.x * blockIdx.x + threadIdx.x;
+      if(idx >= coords.dimension(0)) return;
+      unsigned whicht = blockIdx.y;
+
+      //calculate gradient for atom at idx
+      float3 agrad{0,0,0};
+      float3 a{coords(idx,0),coords(idx,1),coords(idx,2)}; //atom coordinate
+      float radius = radii(idx);
+
+      float r = radius * G.radius_scale * G.final_radius_multiple;
+      uint2 ranges[3];
+      ranges[0] = G.get_bounds_1d(grid_origin.x, a.x, r);
+      ranges[1] = G.get_bounds_1d(grid_origin.y, a.y, r);
+      ranges[2] = G.get_bounds_1d(grid_origin.z, a.z, r);
+
+      Grid<Dtype, 3, true> diff = grid[whicht];
+
+      //for every grid point possibly overlapped by this atom
+      float tgrad = 0.0;
+      for (unsigned i = ranges[0].x, iend = ranges[0].y; i < iend; ++i) {
+        for (unsigned j = ranges[1].x, jend = ranges[1].y; j < jend; ++j) {
+          for (unsigned k = ranges[2].x, kend = ranges[2].y; k < kend; ++k) {
+            //convert grid point coordinates to angstroms
+            float x = grid_origin.x + i * G.resolution;
+            float y = grid_origin.y + j * G.resolution;
+            float z = grid_origin.z + k * G.resolution;
+
+            G.accumulate_atom_gradient(a.x,a.y,a.z, x,y,z, radius, diff(i,j,k), agrad);
+
+            //type gradient is just some of density vals
+            float val;
+            if(G.binary)
+              val = G.calc_point<true>(a.x, a.y, a.z, radius, float3{x,y,z});
+            else
+              val = G.calc_point<false>(a.x, a.y, a.z, radius, float3{x,y,z});
+            tgrad += val * diff(i,j,k);
+          }
+        }
+      }
+      float tmult = type_vector(idx,whicht);
+      agrad.x *= tmult;
+      agrad.y *= tmult;
+      agrad.z *= tmult;
+
+      atomicAdd(&atom_gradients(idx,0), (Dtype)agrad.x);
+      atomicAdd(&atom_gradients(idx,1), (Dtype)agrad.y);
+      atomicAdd(&atom_gradients(idx,2), (Dtype)agrad.z);
+
+      type_gradients(idx,whicht) = tgrad;
+    }
+
     //gpu accelerated gradient calculation
     template <typename Dtype>
     void GridMaker::backward(float3 grid_center, const Grid<float, 2, true>& coords,
@@ -305,6 +485,43 @@ namespace libmolgrid {
         const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
         const Grid<double, 4, true>& grid, Grid<double, 2, true>& atom_gradients) const;
 
+    template<typename Dtype>
+    void GridMaker::backward(float3 grid_center, const Grid<float, 2, true>& coords,
+        const Grid<float, 2, true>& type_vector, const Grid<float, 1, true>& radii,
+        const Grid<Dtype, 4, true>& grid,
+        Grid<Dtype, 2, true>& atom_gradients, Grid<Dtype, 2, true>& type_gradients) const {
+      atom_gradients.fill_zero();
+      type_gradients.fill_zero();
+      unsigned n = coords.dimension(0);
+      unsigned ntypes = type_vector.dimension(1);
+
+      if (n != type_vector.dimension(0)) throw std::invalid_argument("Type dimension doesn't equal number of coordinates.");
+      if (ntypes != grid.dimension(0)) throw std::invalid_argument("Channels in diff doesn't equal number of types");
+      if (n != atom_gradients.dimension(0))
+        throw std::invalid_argument("Atom gradient dimension doesn't equal number of coordinates");
+      if (n != type_gradients.dimension(0))
+        throw std::invalid_argument("Type gradient dimension doesn't equal number of coordinates");
+      if (type_gradients.dimension(1) != ntypes)
+        throw std::invalid_argument("Type gradient dimension has wrong number of types");
+      if (n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
+      if (coords.dimension(1) != 3) throw std::invalid_argument("Need x,y,z,r for coord_radius");
+      float3 grid_origin = get_grid_origin(grid_center);
+
+
+      unsigned blocks = n / LMG_CUDA_NUM_THREADS + bool(n % LMG_CUDA_NUM_THREADS); //at least one if n > 0
+      unsigned nthreads = blocks > 1 ? LMG_CUDA_NUM_THREADS : n;
+      if(ntypes >= 1024)
+        throw std::invalid_argument("Really? More than 1024 types?  The GPU can't handle that.  Are you sure this is a good idea?  I'm giving up.");
+      dim3 B(blocks, ntypes, 1); //in theory could support more 1024 by using z, but really..
+      set_atom_type_gradients<<<B, nthreads>>>(*this, grid_origin, coords, type_vector, ntypes, radii, grid, atom_gradients, type_gradients);
+    }
+
+    template void GridMaker::backward(float3 grid_center, const Grid<float, 2, true>& coords,
+        const Grid<float, 2, true>& type_vectors, const Grid<float, 1, true>& radii,
+        const Grid<float, 4, true>& grid,
+        Grid<float, 2, true>& atom_gradients, Grid<float, 2, true>& type_gradients) const;
+
+    //atomicAdd isn't working with doubles??
 
     //return squared distance between pt and (x,y,z)
     __host__ __device__ inline

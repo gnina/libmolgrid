@@ -179,5 +179,75 @@ def test_backwards():
     np.testing.assert_allclose(cpuatoms.tonumpy().flatten(), [-0.60653067,0,0], atol=1e-5)
     
    
+def test_vector_types():
+    g1 = molgrid.GridMaker(resolution=.25,dimension=6.0)
+    c = np.array([[0,0,0]],np.float32)
+    t = np.array([0],np.float32)
+    vt = np.array([[1.0,0]],np.float32)
+    vt2 = np.array([[0.5,0.5]],np.float32)
+    r = np.array([1.0],np.float32)
+    coords = molgrid.CoordinateSet(molgrid.Grid2f(c),molgrid.Grid1f(t),molgrid.Grid1f(r),2)
+    vcoords = molgrid.CoordinateSet(molgrid.Grid2f(c),molgrid.Grid2f(vt),molgrid.Grid1f(r))
+    v2coords = molgrid.CoordinateSet(molgrid.Grid2f(c),molgrid.Grid2f(vt2),molgrid.Grid1f(r))
+
+    shape = g1.grid_dimensions(2)
+    reference = molgrid.MGrid4f(*shape)
+    vgrid = molgrid.MGrid4f(*shape)
+    v2grid = molgrid.MGrid4f(*shape)
+    
+    g1.forward((0,0,0),coords, reference.cpu())
+    g1.forward((0,0,0),vcoords, vgrid.cpu())
+    g1.forward((0,0,0),v2coords, v2grid.cpu())        
+    np.testing.assert_allclose(reference.tonumpy(),vgrid.tonumpy(),atol=1e-5)
+
+    v2g = v2grid.tonumpy()
+    g = reference.tonumpy()
+
+    np.testing.assert_allclose(g[0,:],v2g[0,:]*2.0,atol=1e-5)
+    np.testing.assert_allclose(g[0,:],v2g[1,:]*2.0,atol=1e-5)
+    
+    vgridgpu = molgrid.MGrid4f(*shape)
+    v2gridgpu = molgrid.MGrid4f(*shape)
+    g1.forward((0,0,0),vcoords, vgridgpu.gpu())
+    g1.forward((0,0,0),v2coords, v2gridgpu.gpu())
+    
+    np.testing.assert_allclose(reference.tonumpy(),vgridgpu.tonumpy(),atol=1e-5)
+    v2gpu = v2gridgpu.tonumpy()
+    
+
+    np.testing.assert_allclose(g[0,:],v2gpu[0,:]*2.0,atol=1e-5)
+    np.testing.assert_allclose(g[0,:],v2gpu[1,:]*2.0,atol=1e-5)    
+    
+def test_backward_vec():
+    g1 = molgrid.GridMaker(resolution=.1,dimension=6.0)
+    c = np.array([[1.0,0,0],[-1,-1,0]],np.float32)
+    t = np.array([[0,1.0,0],[1.0,0,0]],np.float32)
+    r = np.array([2.0,2.0],np.float32)
+    coords = molgrid.CoordinateSet(c,t,r)
+    shape = g1.grid_dimensions(3)
+    
+    #make diff with gradient in center
+    diff = molgrid.MGrid4f(*shape)
+    diff[0,30,30,30] = 1.0  
+    diff[1,30,30,30] = -1.0  
+    
+    cpuatoms = molgrid.MGrid2f(2,3)
+    cputypes = molgrid.MGrid2f(2,3)
+    gpuatoms = molgrid.MGrid2f(2,3)    
+    gputypes = molgrid.MGrid2f(2,3)
+    
+    g1.backward((0,0,0),coords,diff.cpu(), cpuatoms.cpu(), cputypes.cpu())
+    
+    assert cputypes[0][0] > 0
+    assert cputypes[0][1] < 0
+    assert cputypes[0][2] == 0
+
+    g1.backward((0,0,0),coords,diff.gpu(), gpuatoms.gpu(), gputypes.gpu())
+
+    np.testing.assert_allclose(gpuatoms.tonumpy(),cpuatoms.tonumpy(),atol=1e-5)
+    np.testing.assert_allclose(gputypes.tonumpy(),cputypes.tonumpy(),atol=1e-5)
+
+
+
 
     

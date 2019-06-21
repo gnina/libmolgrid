@@ -87,7 +87,7 @@ struct PySwigObject {
 object obatom_to_object(OpenBabel::OBAtom* a) {
   //this uses a complete hack of constructing a dummy atom and then
   //swapping out the underlying pointer
-  object ob = import("openbabel");
+  object ob = import("openbabel.openbabel");
   object atom = ob.attr("OBAtom")();
 
   PyObject *obj = atom.ptr();
