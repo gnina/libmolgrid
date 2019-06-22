@@ -100,6 +100,10 @@ struct CoordinateSet {
 
   /// copy contents of src into this, attempting to avoid reallocation if possible
   void copyInto(const CoordinateSet& src);
+
+  /// merge provided sets into this, reallocating as necessary
+  void mergeInto(const CoordinateSet& rec, const CoordinateSet& lig, bool unique_index_types=true);
+
   ///for debugging
   void dump(std::ostream& out) const;
 };

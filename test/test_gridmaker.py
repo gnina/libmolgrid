@@ -104,12 +104,15 @@ def test_radius_multiples():
     coords = molgrid.CoordinateSet(molgrid.Grid2f(c),molgrid.Grid1f(t),molgrid.Grid1f(r),1)
     shape = g1.grid_dimensions(1)
     cpugrid = molgrid.MGrid4f(*shape)
+    cpugrid2 = molgrid.MGrid4f(*shape)
     gpugrid = molgrid.MGrid4f(*shape)
 
     g1.forward((0,0,0),coords, cpugrid.cpu())
     g1.forward((0,0,0),coords, gpugrid.gpu())
+    g1.forward((0,0,0),c,t,r, cpugrid2.cpu())
     
     np.testing.assert_allclose(cpugrid.tonumpy(),gpugrid.tonumpy(),atol=1e-5)
+    np.testing.assert_allclose(cpugrid.tonumpy(),cpugrid2.tonumpy(),atol=1e-6)
     g = cpugrid.tonumpy()
     
     assert g[0,30,30,30] == approx(1)
@@ -194,12 +197,15 @@ def test_vector_types():
     reference = molgrid.MGrid4f(*shape)
     vgrid = molgrid.MGrid4f(*shape)
     v2grid = molgrid.MGrid4f(*shape)
+    v3grid = molgrid.MGrid4f(*shape)
     
     g1.forward((0,0,0),coords, reference.cpu())
     g1.forward((0,0,0),vcoords, vgrid.cpu())
-    g1.forward((0,0,0),v2coords, v2grid.cpu())        
+    g1.forward((0,0,0),v2coords, v2grid.cpu())
+    g1.forward((0,0,0),c,vt,r, v3grid.cpu())        
     np.testing.assert_allclose(reference.tonumpy(),vgrid.tonumpy(),atol=1e-5)
-
+    np.testing.assert_allclose(vgrid.tonumpy(),v3grid.tonumpy(),atol=1e-6)
+    
     v2g = v2grid.tonumpy()
     g = reference.tonumpy()
 
@@ -217,6 +223,8 @@ def test_vector_types():
 
     np.testing.assert_allclose(g[0,:],v2gpu[0,:]*2.0,atol=1e-5)
     np.testing.assert_allclose(g[0,:],v2gpu[1,:]*2.0,atol=1e-5)    
+    
+    
     
 def test_backward_vec():
     g1 = molgrid.GridMaker(resolution=.1,dimension=6.0)

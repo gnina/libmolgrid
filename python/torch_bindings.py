@@ -36,3 +36,19 @@ def make_grid_tensor(gridmaker, center, c):
 
 mg.GridMaker.make_tensor = make_grid_tensor
     
+class Coords2GridFunction(torch.Function):
+    '''Layer for converting from coordinate and type tensors to a molecular grid'''
+    
+    @staticmethod
+    def forward(ctx, gmaker, coords, types, radii):
+        '''coords are Nx3, types are NxT, radii are N'''
+        ctx.save_for_backward(coords, types, radii)
+        ctx.gmaker = gmaker
+        #gmaker.forward()
+        
+        #will need to create output tensor to view as grid
+        
+    @staticmethod
+    def backward(ctx, grid_gradient):
+        coords, types, radii = ctx.saved_tensors
+        gmaker = ctx.gmaker
