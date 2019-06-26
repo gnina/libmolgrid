@@ -76,6 +76,57 @@ namespace libmolgrid {
       return bounds;
     }
 
+    //return squared distance between pt and (x,y,z)
+    __host__ __device__ inline
+    float sqDistance(float3 pt, float x, float y, float z) {
+      float ret;
+      float tmp = pt.x - x;
+      ret = tmp * tmp;
+      tmp = pt.y - y;
+      ret += tmp * tmp;
+      tmp = pt.z - z;
+      ret += tmp * tmp;
+      return ret;
+    }
+
+    //non-binary, gaussian case
+    template<>
+    float GridMaker::calc_point<false>(float ax, float ay, float az, float ar,
+        const float3& grid_coords) const {
+      float rsq = sqDistance(grid_coords, ax, ay, az);
+      ar *= radius_scale;
+      //For non-binary density we want a Gaussian where 2 std occurs at the
+      //radius, after which it becomes quadratic.
+      //The quadratic is fit to have both the same value and first derivative
+      //at the cross over point and a value and derivative of zero at fianl_radius_multiple
+      float dist = sqrtf(rsq);
+      if (dist >= ar * final_radius_multiple) {
+        return 0.0;
+      } else
+      if (dist <= ar * gaussian_radius_multiple) {
+        //return gaussian
+        float ex = -2.0 * dist * dist / (ar*ar);
+        return exp(ex);
+      } else { //return quadratic
+        float dr = dist / ar;
+        float q = (A * dr + B) * dr + C;
+        return q > 0 ? q : 0; //avoid very small negative numbers
+      }
+
+    }
+
+    template<>
+    float GridMaker::calc_point<true>(float ax, float ay, float az, float ar,
+        const float3& grid_coords) const {
+      float rsq = sqDistance(grid_coords, ax, ay, az);
+      ar *= radius_scale;
+      //is point within radius?
+      if (rsq < ar * ar)
+        return 1.0;
+      else
+        return 0.0;
+    }
+
     /* \brief The GPU forward code path launches a kernel (forward_gpu) that
      * sets the grid values in two steps: first each thread cooperates with the
      * other threads in its block to determine which atoms could possibly
@@ -522,58 +573,6 @@ namespace libmolgrid {
         Grid<float, 2, true>& atom_gradients, Grid<float, 2, true>& type_gradients) const;
 
     //atomicAdd isn't working with doubles??
-
-    //return squared distance between pt and (x,y,z)
-    __host__ __device__ inline
-    float sqDistance(float3 pt, float x, float y, float z) {
-      float ret;
-      float tmp = pt.x - x;
-      ret = tmp * tmp;
-      tmp = pt.y - y;
-      ret += tmp * tmp;
-      tmp = pt.z - z;
-      ret += tmp * tmp;
-      return ret;
-    }
-
-
-    //non-binary, gaussian case
-    template<>
-    float GridMaker::calc_point<false>(float ax, float ay, float az, float ar,
-        const float3& grid_coords) const {
-      float rsq = sqDistance(grid_coords, ax, ay, az);
-      ar *= radius_scale;
-      //For non-binary density we want a Gaussian where 2 std occurs at the
-      //radius, after which it becomes quadratic.
-      //The quadratic is fit to have both the same value and first derivative
-      //at the cross over point and a value and derivative of zero at fianl_radius_multiple
-      float dist = sqrtf(rsq);
-      if (dist >= ar * final_radius_multiple) {
-        return 0.0;
-      } else
-      if (dist <= ar * gaussian_radius_multiple) {
-        //return gaussian
-        float ex = -2.0 * dist * dist / (ar*ar);
-        return exp(ex);
-      } else { //return quadratic
-        float dr = dist / ar;
-        float q = (A * dr + B) * dr + C;
-        return q > 0 ? q : 0; //avoid very small negative numbers
-      }
-
-    }
-
-    template<>
-    float GridMaker::calc_point<true>(float ax, float ay, float az, float ar,
-        const float3& grid_coords) const {
-      float rsq = sqDistance(grid_coords, ax, ay, az);
-      ar *= radius_scale;
-      //is point within radius?
-      if (rsq < ar * ar)
-        return 1.0;
-      else
-        return 0.0;
-    }
 
     void GridMaker::accumulate_atom_gradient(float ax, float ay, float az,
         float x, float y, float z, float ar, float gridval, float3& agrad) const {
