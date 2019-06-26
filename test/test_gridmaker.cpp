@@ -123,7 +123,7 @@ BOOST_AUTO_TEST_CASE(backward) {
   same_coords(cpuatoms,gpuatoms);
 
   //move coordinate
-  coords.coord_radius(0, 0) = 1.0;
+  coords.coords(0, 0) = 1.0;
 
   g.backward(float3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu());
 
@@ -137,7 +137,7 @@ BOOST_AUTO_TEST_CASE(backward) {
   same_coords(cpuatoms,gpuatoms);
 
   //move to other side
-  coords.coord_radius(0, 0) = -1.0;
+  coords.coords(0, 0) = -1.0;
   g.backward(float3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu());
 
   BOOST_CHECK_GT(cpuatoms(0,0),TOL);
@@ -202,3 +202,25 @@ BOOST_AUTO_TEST_CASE(backward_relevance) {
   BOOST_CHECK_LT(cpurel(0), 10.0);
 
 }
+
+BOOST_AUTO_TEST_CASE(backward_vec) {
+  using namespace std;
+  GridMaker g(0.1, 6.0);
+
+  vector<float3> c { make_float3(0, 0, 0) };
+  vector<vector<float> > t { vector<float>{0,1.0} };
+  vector<float> r { 2.0 };
+
+  CoordinateSet coords(c, t, r);
+  float dim = g.get_grid_dims().x;
+  MGrid4f diff(2, dim, dim, dim);
+  diff(0, 30, 30, 30) = 1.0;
+
+  MGrid2f cpuatoms(1, 3);
+  MGrid2f cputypes(1, 2);
+  g.backward(float3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu(), cputypes.cpu());
+
+  BOOST_CHECK_GT(cputypes[0][0],0);
+  BOOST_CHECK_EQUAL(cputypes[0][1],0);
+}
+

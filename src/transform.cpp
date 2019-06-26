@@ -43,13 +43,13 @@ void Transform::forward(const Example& in, Example& out, bool dotranslate) const
 }
 
 void Transform::forward(const CoordinateSet& in, CoordinateSet& out, bool dotranslate) const {
-  if(in.coord_radius.dimension(0) != out.coord_radius.dimension(0)) {
+  if(in.coords.dimension(0) != out.coords.dimension(0)) {
     throw std::invalid_argument("Incompatible coordinateset sizes"); //todo, resize out
   }
-  if(in.coord_radius.ongpu()) {
-    forward(in.coord_radius.gpu(), out.coord_radius.gpu(), dotranslate);
+  if(in.coords.ongpu()) {
+    forward(in.coords.gpu(), out.coords.gpu(), dotranslate);
   } else {
-    forward(in.coord_radius.cpu(), out.coord_radius.cpu(), dotranslate);
+    forward(in.coords.cpu(), out.coords.cpu(), dotranslate);
   }
 
 }

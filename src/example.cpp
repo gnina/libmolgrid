@@ -22,7 +22,7 @@ StringCache string_cache;
 size_t Example::coordinate_size() const {
   unsigned N = 0;
   for(unsigned i = 0, n = sets.size(); i < n; i++) {
-    N += sets[i].coord_radius.dimension(0);
+    N += sets[i].coords.dimension(0);
   }
   return N;
 }
@@ -39,77 +39,86 @@ size_t Example::type_size(bool unique_index_types) const {
 }
 
 //grid version
-void Example::merge_coordinates(Grid2f& c, Grid1f& t, unsigned start, bool unique_index_types) const {
+void Example::merge_coordinates(Grid2f& c, Grid1f& t, Grid1f& r, unsigned start, bool unique_index_types) const {
 
-  vector<float4> coordrs;
+  vector<float3> coords;
   vector<float> types;
+  vector<float> radii;
 
-  merge_coordinates(coordrs, types, start, unique_index_types);
+  merge_coordinates(coords, types, radii, start, unique_index_types);
 
   //validate sizes
-  if(c.dimension(0) != coordrs.size()) {
-    throw invalid_argument("Coordinates do not have correct dimension: "+itoa(c.dimension(0)) + " != " + itoa(coordrs.size()));
+  if(c.dimension(0) != coords.size()) {
+    throw invalid_argument("Coordinates do not have correct dimension: "+itoa(c.dimension(0)) + " != " + itoa(coords.size()));
   }
-  if(c.dimension(1) != 4) {
-    throw invalid_argument("Coordinates do not have correct second dimension (4): "+itoa(c.dimension(1)));
+  if(c.dimension(1) != 3) {
+    throw invalid_argument("Coordinates do not have correct second dimension (3): "+itoa(c.dimension(1)));
   }
   if(t.size() != types.size()) {
     throw invalid_argument("Types do not have correct dimension: "+itoa(t.size())+ " != " +itoa(types.size()));
   }
+  if(r.size() != radii.size()) {
+    throw invalid_argument("Radii do not have correct dimension: "+itoa(r.size())+ " != " +itoa(radii.size()));
+  }
 
   //copy data
-  memcpy(c.data(), &coordrs[0], sizeof(float4)*coordrs.size());
+  memcpy(c.data(), &coords[0], sizeof(float3)*coords.size());
   memcpy(t.data(), &types[0], sizeof(float)*types.size());
+  memcpy(r.data(), &radii[0], sizeof(float)*radii.size());
+
 }
 
-void Example::merge_coordinates(std::vector<float4>& coordrs, std::vector<float>& types, unsigned start, bool unique_index_types) const {
+void Example::merge_coordinates(std::vector<float3>& coords, std::vector<float>& types, std::vector<float>& radii, unsigned start, bool unique_index_types) const {
   unsigned N = coordinate_size();
 
-  coordrs.clear();
+  coords.clear();
   types.clear();
+  radii.clear();
 
   if(sets.size() <= start) return;
 
-  coordrs.reserve(N);
+  coords.reserve(N);
   types.reserve(N);
+  radii.reserve(N);
 
   //accumulate info
   unsigned toffset = 0; //amount to offset types
   for(unsigned s = start, ns = sets.size(); s < ns; s++) {
     const CoordinateSet& CS = sets[s];
-    unsigned n = CS.coord_radius.dimension(0);
+    unsigned n = CS.coords.dimension(0);
     if(n == 0) continue; //ignore empties
 
     if(!CS.has_indexed_types()) throw logic_error("Coordinate sets do not have compatible index types for merge.");
 
     //todo: memcpy this
     for(unsigned i = 0; i < n; i++) {
-      auto cr = CS.coord_radius[i];
-      coordrs.push_back(make_float4(cr[0],cr[1],cr[2],cr[3]));
+      auto cr = CS.coords[i];
+      coords.push_back(make_float3(cr[0],cr[1],cr[2]));
       types.push_back(CS.type_index[i]+toffset);
+      radii.push_back(CS.radii[i]);
     }
     if(unique_index_types) toffset += CS.max_type;
   }
 }
 
 //grid version of vector
-void Example::merge_coordinates(Grid2f& c, Grid2f& t, unsigned start, bool unique_index_types) const {
+void Example::merge_coordinates(Grid2f& c, Grid2f& t, Grid1f& r, unsigned start, bool unique_index_types) const {
 
-  vector<float4> coordrs;
+  vector<float3> coords;
   vector< vector<float> > types;
   vector<float> radii;
 
-  merge_coordinates(coordrs, types, start, unique_index_types);
+  merge_coordinates(coords, types, radii, start, unique_index_types);
 
   if(types.size() == 0)
     return;
 
   //validate sizes
-  if(c.dimension(0) != coordrs.size()) {
-    throw invalid_argument("Coordinates do not have correct dimension: "+itoa(c.dimension(0)) + " != " + itoa(coordrs.size()));
+  if(c.dimension(0) != coords.size()) {
+    throw invalid_argument("Coordinates do not have correct dimension: "+itoa(c.dimension(0)) + " != " + itoa(coords.size()));
   }
-  if(c.dimension(1) != 4) {
-    throw invalid_argument("Coordinates do not have correct second dimension (4): "+itoa(c.dimension(1)));
+  if(c.dimension(1) != 3) {
+    throw invalid_argument("Coordinates do not have correct second dimension (3): "+itoa(c.dimension(1)));
   }
   if(t.dimension(0) != types.size()) {
     throw invalid_argument("Types do not have correct dimension: "+itoa(t.dimension(0))+ " != " +itoa(types.size()));
@@ -117,16 +126,23 @@ void Example::merge_coordinates(Grid2f& c, Grid2f& t, unsigned start, bool uniqu
   if(t.dimension(1) != types[0].size()) {
     throw invalid_argument("Types do not have correct dimension: "+itoa(t.dimension(1))+ " != " +itoa(types[0].size()));
   }
+  if(r.size() != radii.size()) {
+     throw invalid_argument("Radii do not have correct dimension: "+itoa(r.size())+ " != " +itoa(radii.size()));
+  }
 
   //copy data
-  memcpy(c.data(), &coordrs[0], sizeof(float4)*coordrs.size());
+  memcpy(c.data(), &coords[0], sizeof(float3)*coords.size());
   memcpy(t.data(), &types[0], sizeof(float)*types.size());
+  memcpy(r.data(), &radii[0], sizeof(float)*radii.size());
+
 }
 
-void Example::merge_coordinates(std::vector<float4>& coordrs, std::vector<std::vector<float> >& types, unsigned start, bool unique_index_types) const {
+void Example::merge_coordinates(std::vector<float3>& coords, std::vector<std::vector<float> >& types,
+    std::vector<float>& radii, unsigned start, bool unique_index_types) const {
 
-  coordrs.clear();
+  coords.clear();
   types.clear();
+  radii.clear();
 
   if(sets.size() <= start) return;
 
@@ -141,23 +157,27 @@ void Example::merge_coordinates(std::vector<float4>& coordrs, std::vector<std::v
       throw logic_error("Coordinate sets do not have compatible sized vector types.");
   }
 
-  coordrs.reserve(N);
+  coords.reserve(N);
   types.reserve(N);
+  radii.reserve(N);
 
   //accumulate info
   for(unsigned s = start, ns = sets.size(); s < ns; s++) {
     const CoordinateSet& CS = sets[s];
-    unsigned n = CS.coord_radius.dimension(0);
+    unsigned n = CS.coords.dimension(0);
     if(n == 0) continue;
 
     //todo: memcpy this
     for(unsigned i = 0; i < n; i++) {
-      auto cr = CS.coord_radius[i];
-      coordrs.push_back(make_float4(cr[0],cr[1],cr[2],cr[3]));
+      auto cr = CS.coords[i];
+      coords.push_back(make_float3(cr[0],cr[1],cr[2]));
 
       types.push_back(vector<float>(maxt));
       vector<float>& tvec = types.back();
       memcpy(&tvec[0], CS.type_vector[i].cpu().data(), sizeof(float)*maxt);
+    }
+    for(unsigned i = 0, nr = CS.radii.size(); i < nr; i++) {
+      radii.push_back(CS.radii[i]);
     }
   }
 }
@@ -170,19 +190,20 @@ CoordinateSet Example::merge_coordinates(unsigned start, bool unique_index_types
     return sets[start].clone();
   } else if(sets[start].has_indexed_types()) {
 
-    vector<float4> coords;
+    vector<float3> coords;
     vector<float> types;
     vector<float> radii;
-    merge_coordinates(coords, types, start, unique_index_types);
+    merge_coordinates(coords, types, radii, start, unique_index_types);
 
-    return CoordinateSet(coords, types, type_size(unique_index_types));
+    return CoordinateSet(coords, types, radii, type_size(unique_index_types));
 
   } else { //vector types
 
-    vector<float4> coords;
+    vector<float3> coords;
     vector<vector<float> > types;
-    merge_coordinates(coords, types, start, unique_index_types);
-    return CoordinateSet(coords, types);
+    vector<float> radii;
+    merge_coordinates(coords, types, radii, start, unique_index_types);
+    return CoordinateSet(coords, types, radii);
   }
 }
 

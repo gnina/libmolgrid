@@ -26,9 +26,10 @@ class AtomTyper;
  *
  */
 struct CoordinateSet {
-  MGrid2f coord_radius{0,4}; //combined for spatial locality
+  MGrid2f coords{0,3}; //coordinats
   MGrid1f type_index{0}; //this should be integer
   MGrid2f type_vector{0,0};
+  MGrid1f radii{0}; ///radii - for type_index, indexed by atom, for type vector, indexed by type
   unsigned max_type = 0;  //for indexed types, non-inclusive max
   const char *src = nullptr; //mostly for debugging, source of coordinates
 
@@ -42,25 +43,20 @@ struct CoordinateSet {
   CoordinateSet(const std::vector<float3>& c, const std::vector<int>& t, const std::vector<float>& r, unsigned maxt);
   CoordinateSet(const std::vector<float3>& c, const std::vector<float>& t, const std::vector<float>& r, unsigned maxt);
 
-  //indexed types with combined coordinates/radius
-  CoordinateSet(const std::vector<float4>& cr, const std::vector<int>& t, unsigned maxt);
-  CoordinateSet(const std::vector<float4>& cr, const std::vector<float>& t, unsigned maxt);
-
   ///initialize with indexed types using grids - data is copied into coordinate set
-  CoordinateSet(const Grid2f& cr, const Grid1f& t, unsigned maxt);
-  CoordinateSet(const Grid2fCUDA& cr, const Grid1fCUDA& t, unsigned maxt);
-  CoordinateSet(const Grid2f& coords, const Grid1f& radii, const Grid1f& t, unsigned maxt);
-  CoordinateSet(const Grid2fCUDA& coors, const Grid1f& radii, const Grid1fCUDA& t, unsigned maxt);
+  CoordinateSet(const Grid2f& coords, const Grid1f& t, const Grid1f& radii, unsigned maxt);
+  CoordinateSet(const Grid2fCUDA& coords, const Grid1fCUDA& t, const Grid1fCUDA& radii, unsigned maxt);
 
   ///initialize with vector types
   CoordinateSet(const std::vector<float3>& c, const std::vector<std::vector<float> >& t, const std::vector<float>& r);
 
-  ///initialize with vector types and combined coord/radius
-  CoordinateSet(const std::vector<float4>& cr, const std::vector<std::vector<float> >& t);
-
   ///initialize with vector types using grids - data is copied into coordinate set
-  CoordinateSet(const Grid2f& cr, const Grid2f& t);
-  CoordinateSet(const Grid2fCUDA& cr, const Grid2fCUDA& t);
+  CoordinateSet(const Grid2f& cr, const Grid2f& t, const Grid1f& r);
+  CoordinateSet(const Grid2fCUDA& cr, const Grid2fCUDA& t, const Grid1fCUDA& r);
+
+  ///create coordinate set from the merger of two coordinate sets
+  ///if unique_index_types, the index types of the second are offset
+  CoordinateSet(const CoordinateSet& rec, const CoordinateSet& lig, bool unique_index_types=true);
 
   /// return true if index types are available
   bool has_indexed_types() const { return type_index.size() > 0 || type_vector.size() == 0; }
@@ -75,25 +71,27 @@ struct CoordinateSet {
   void set_num_types(unsigned maxt) { max_type = maxt; }
 
   ///number of atoms
-  unsigned size() const { return coord_radius.dimension(0); }
+  unsigned size() const { return coords.dimension(0); }
 
   ///return mean of coordinates
   float3 center() const;
 
-  void togpu(bool copy=true) { coord_radius.togpu(copy); type_index.togpu(copy); type_vector.togpu(copy); }
-  void tocpu(bool copy=true) { coord_radius.tocpu(copy); type_index.tocpu(copy); type_vector.tocpu(copy); }
+  void togpu(bool copy=true) { coords.togpu(copy); type_index.togpu(copy); type_vector.togpu(copy); radii.togpu(copy);}
+  void tocpu(bool copy=true) { coords.tocpu(copy); type_index.tocpu(copy); type_vector.tocpu(copy); radii.tocpu(copy);}
 
   //test for pointer equality, not particularly useful, but needed by boost::python
   bool operator==(const CoordinateSet& rhs) const {
-    return max_type == rhs.max_type && coord_radius == rhs.coord_radius && type_index == rhs.type_index && type_vector == rhs.type_vector;
+    return max_type == rhs.max_type && coords == rhs.coords && type_index == rhs.type_index
+        && type_vector == rhs.type_vector && radii == rhs.radii;
   }
 
   ///return deep copy
   CoordinateSet clone() const {
     CoordinateSet ret(*this);
-    ret.coord_radius = coord_radius.clone();
+    ret.coords = coords.clone();
     ret.type_index = type_index.clone();
     ret.type_vector = type_vector.clone();
+    ret.radii = radii.clone();
     return ret;
   }
 

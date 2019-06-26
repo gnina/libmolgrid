@@ -22,20 +22,20 @@ def test_example_merge():
     ex.coord_sets.append(c)
     ex.coord_sets.append(c2)
     assert ex.type_size() == (c.max_type + c2.max_type)
-    assert ex.coordinate_size() == (c.coord_radius.dimension(0)+c2.type_index.size())
+    assert ex.coordinate_size() == (c.coords.dimension(0)+c2.type_index.size())
     
     c3 = ex.merge_coordinates()
-    assert c3.coord_radius.tonumpy().shape == (24,4)
+    assert c3.coords.tonumpy().shape == (24,3)
     
     t = np.concatenate([c.type_index.tonumpy(),c2.type_index.tonumpy()+c.max_type])
     assert np.array_equal(t, c3.type_index.tonumpy())
     
     #test merging without unique types, which makes no sense
     c4 = ex.merge_coordinates(0,False)
-    assert c4.coord_radius.tonumpy().shape == (24,4)
+    assert c4.coords.tonumpy().shape == (24,3)
     t = np.concatenate([c.type_index.tonumpy(),c2.type_index.tonumpy()])
     assert np.array_equal(t, c4.type_index.tonumpy())
     
     #test sliced merging
     c5 = ex.merge_coordinates(1,False)
-    assert c5.coord_radius.tonumpy().shape == (8,4) #no hydrogens in this slice
+    assert c5.coords.tonumpy().shape == (8,3) #no hydrogens in this slice

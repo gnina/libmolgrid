@@ -23,8 +23,8 @@ def test_mol_example_provider(capsys):
     assert ex.coord_sets[0].size() == 1289
     assert ex.coord_sets[1].size() == 8
 
-    coords = ex.coord_sets[1].coord_radius.tonumpy()
-    assert tuple(coords[0,:3]) == approx((26.6450,6.1410,4.6680))
+    coords = ex.coord_sets[1].coords.tonumpy()
+    assert tuple(coords[0,:]) == approx((26.6450,6.1410,4.6680))
     assert len(ex.coord_sets) == 2
     l0 = [ex.labels[0] for ex in b]
     l1 = [ex.labels[1] for ex in b]
@@ -81,12 +81,13 @@ def test_gnina_example_provider():
     ex = batch[0]
     crec = ex.coord_sets[0]
     assert crec.size() == 1781
-    assert list(crec.coord_radius[0]) == approx([45.042, 12.872, 13.001, 1.8])
+    assert list(crec.coords[0]) == approx([45.042, 12.872, 13.001])
+    assert crec.radii[0] == approx(1.8)
     assert list(crec.type_index)[:10] == [6.0, 1.0, 1.0, 7.0, 0.0, 6.0, 1.0, 1.0, 7.0, 1.0]
     
     clig = ex.coord_sets[1]
     assert clig.size() == 10
-    assert list(clig.coord_radius[9]) == approx([27.0536, 3.2453, 32.4511, 1.8])
+    assert list(clig.coords[9]) == approx([27.0536, 3.2453, 32.4511])
     assert list(clig.type_index) == [8.0, 1.0, 1.0, 9.0, 10.0, 0.0, 0.0, 1.0, 9.0, 8.0]
 
 
@@ -128,12 +129,13 @@ def test_cached_example_provider():
     ex = batch[0]
     crec = ex.coord_sets[0]
     assert crec.size() == 1781
-    assert list(crec.coord_radius[0]) == approx([45.042, 12.872, 13.001,1.8])
+    assert list(crec.coords[0]) == approx([45.042, 12.872, 13.001])
     assert list(crec.type_index)[:10] == [6.0, 1.0, 1.0, 7.0, 0.0, 6.0, 1.0, 1.0, 7.0, 1.0]
     
     clig = ex.coord_sets[1]
     assert clig.size() == 10
-    assert list(clig.coord_radius[9]) == approx([27.0536, 3.2453, 32.4511,1.8])        
+    assert list(clig.coords[9]) == approx([27.0536, 3.2453, 32.4511])
+    assert clig.radii[9] == approx(1.8)        
     assert list(clig.type_index) == [8.0, 1.0, 1.0, 9.0, 10.0, 0.0, 0.0, 1.0, 9.0, 8.0]
 
 def test_grouped_example_provider():

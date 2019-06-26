@@ -367,6 +367,16 @@ float GninaVectorTyper::get_atom_type_vector(OpenBabel::OBAtom* a, std::vector<f
   return radius;
 }
 
+///return radii of types
+std::vector<float> GninaVectorTyper::get_vector_type_radii() const {
+  std::vector<float> ret;
+  for(unsigned i = 0; i < NumTypes; i++) {
+    const GninaIndexTyper::info& info = ityper.get_info(i);
+    ret.push_back(info.xs_radius);
+  }
+  return ret;
+}
+
 //return vector of string representations of types
 std::vector<std::string> GninaVectorTyper::get_type_names() const {
   return vtype_names;

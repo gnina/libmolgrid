@@ -81,6 +81,9 @@ class AtomVectorTyper: public AtomTyper {
     ///set vector type of atom a, return radius
     virtual float get_atom_type_vector(OpenBabel::OBAtom *a, std::vector<float>& typ) const = 0;
 
+    ///return radii of types
+    virtual std::vector<float> get_vector_type_radii() const { return std::vector<float>(num_types(), 1.0); }
+
     //return vector of string representations of types
     //this isn't expected to be particularly efficient
     virtual std::vector<std::string> get_type_names() const = 0;
@@ -348,6 +351,9 @@ class GninaVectorTyper: public AtomVectorTyper {
 
     ///return type index of a
     virtual float get_atom_type_vector(OpenBabel::OBAtom* a, std::vector<float>& typ) const;
+
+    ///return radii of types
+    virtual std::vector<float> get_vector_type_radii() const;
 
     //return vector of string representations of types
     virtual std::vector<std::string> get_type_names() const;
