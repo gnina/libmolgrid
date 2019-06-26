@@ -70,3 +70,36 @@ def test_coordset_merge():
     assert np.array_equal(t, c4.type_index.tonumpy())
     
    
+def test_coordset_merge():
+    m = pybel.readstring('smi','c1ccccc1CO')
+    m.addh()
+    m.make3D()
+    
+    c = molgrid.CoordinateSet(m)
+    c.make_vector_types()
+    
+    coords = np.zeros([10,3],np.float32)
+    types = np.zeros([10,15],np.float32)
+    radii = np.zeros(10,np.float32)
+    
+    n = c.copyTo(coords,types,radii)
+    assert n == 8
+    
+    assert np.sum(coords) != 0
+    #types should be padded out
+    assert types[:,11].sum() == 0
+    #coords too 
+    assert coords[8:].sum() == 0
+    assert radii[8:].sum() == 0
+    
+    #check truncation
+    coordsm = np.zeros([5,3],np.float32)
+    typesm = np.zeros([5,8],np.float32)
+    radiim = np.zeros(5,np.float32)
+    n = c.copyTo(coordsm,typesm,radiim)
+    assert n == 5
+    
+    assert np.all(coordsm == coords[:5])
+    assert np.all(typesm == types[:5,:8])
+    assert np.all(radiim == radii[:5])
+    

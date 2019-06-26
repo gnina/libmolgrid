@@ -185,11 +185,12 @@ class Grid {
      *  Sizes should be the same, but will narrow as necessary.  Will copy across device/host.
      */
     template<bool destCUDA>
-    void copyTo(Grid<Dtype,NumDims,destCUDA>& dest) const {
+    size_t copyTo(Grid<Dtype,NumDims,destCUDA>& dest) const {
       size_t sz = std::min(size(), dest.size());
-      if(sz == 0) return;
+      if(sz == 0) return 0;
       cudaMemcpyKind kind = copyKind(isCUDA,destCUDA);
       LMG_CUDA_CHECK(cudaMemcpy(dest.data(),data(),sz*sizeof(Dtype),kind));
+      return sz;
     }
 
     /** \brief copy contents from src
@@ -197,11 +198,12 @@ class Grid {
      *  Sizes should be the same, but will narrow as necessary.  Will copy across device/host.
      */
     template<bool srcCUDA>
-    void copyFrom(const Grid<Dtype,NumDims,srcCUDA>& src) {
+    size_t copyFrom(const Grid<Dtype,NumDims,srcCUDA>& src) {
       size_t sz = std::min(size(), src.size());
-      if(sz == 0) return;
+      if(sz == 0) return 0;
       cudaMemcpyKind kind = copyKind(srcCUDA,isCUDA);
       LMG_CUDA_CHECK(cudaMemcpy(data(),src.data(),sz*sizeof(Dtype),kind));
+      return sz;
     }
 
     /** \brief Set contents to zero.
@@ -303,17 +305,21 @@ class Grid<Dtype,1,isCUDA> {
 
 
     template<bool destCUDA>
-    void copyTo(Grid<Dtype,1,destCUDA>& dest) const {
+    size_t copyTo(Grid<Dtype,1,destCUDA>& dest) const {
       size_t sz = std::min(size(), dest.size());
+      if(sz == 0) return sz;
       cudaMemcpyKind kind = copyKind(isCUDA,destCUDA);
       LMG_CUDA_CHECK(cudaMemcpy(dest.data(),data(),sz*sizeof(Dtype),kind));
+      return sz;
     }
 
     template<bool srcCUDA>
-    void copyFrom(const Grid<Dtype,1,srcCUDA>& src) {
+    size_t copyFrom(const Grid<Dtype,1,srcCUDA>& src) {
       size_t sz = std::min(size(), src.size());
+      if(sz == 0) return sz;
       cudaMemcpyKind kind = copyKind(srcCUDA,isCUDA);
       LMG_CUDA_CHECK(cudaMemcpy(data(),src.data(),sz*sizeof(Dtype),kind));
+      return sz;
     }
 
 };

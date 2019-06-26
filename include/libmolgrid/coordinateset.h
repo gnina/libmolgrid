@@ -58,6 +58,24 @@ struct CoordinateSet {
   ///if unique_index_types, the index types of the second are offset
   CoordinateSet(const CoordinateSet& rec, const CoordinateSet& lig, bool unique_index_types=true);
 
+
+  /** \brief Copy coordinates into provided grids.
+   * If grids are too small, copy will be truncated.  If grids are too large,
+   * extra elements will _not_ be overwritten (fill with pad characters before
+   * copying).  Returns the number of coordinates copied.
+   */
+  template <bool isCUDA>
+  size_t copyTo(Grid<float, 2, isCUDA>& c, Grid<float, 1, isCUDA>& t, Grid<float, 1, isCUDA>& r) const;
+
+  /** \brief Copy coordinates into provided grids.
+   * If grids are too small, copy will be truncated.  If grids are too large,
+   * extra elements will _not_ be overwritten (fill with pad characters before
+   * copying).  Returns the number of coordinates copied.
+   * Vectored types are copied a row at a time so truncation/expansion happens per-atom
+   */
+  template <bool isCUDA>
+  size_t copyTo(Grid<float, 2, isCUDA>& c, Grid<float, 2, isCUDA>& t, Grid<float, 1, isCUDA>& r) const;
+
   /// return true if index types are available
   bool has_indexed_types() const { return type_index.size() > 0 || type_vector.size() == 0; }
 
@@ -107,6 +125,11 @@ struct CoordinateSet {
   ///for debugging
   void dump(std::ostream& out) const;
 };
+
+extern template size_t CoordinateSet::copyTo(Grid<float, 2, false>& c, Grid<float, 1, false>& t, Grid<float, 1, false>& r) const;
+extern template size_t CoordinateSet::copyTo(Grid<float, 2, true>& c, Grid<float, 1, true>& t, Grid<float, 1, true>& r) const;
+extern template size_t CoordinateSet::copyTo(Grid<float, 2, false>& c, Grid<float, 2, false>& t, Grid<float, 1, false>& r) const;
+extern template size_t CoordinateSet::copyTo(Grid<float, 2, true>& c, Grid<float, 2, true>& t, Grid<float, 1, true>& r) const;
 
 }
 

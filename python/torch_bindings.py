@@ -46,7 +46,7 @@ class Coords2GridFunction(torch.autograd.Function):
         ctx.gmaker = gmaker
         ctx.center = center
         shape = gmaker.grid_dimensions(types.shape[1]) #ntypes == nchannels
-        output = torch.empty(*shape,dtype=torch.float32,device=coords.device)
+        output = torch.empty(*shape,dtype=coords.dtype,device=coords.device)
         gmaker.forward(center, coords, types, radii, output)
         return output
         
@@ -62,7 +62,38 @@ class Coords2GridFunction(torch.autograd.Function):
         gmaker.backward(center, coords, types, radii, grid_gradient, grad_coords, grad_types)
         return None, None, grad_coords, grad_types, None
         
+class BatchedCoords2GridFunction(torch.autograd.Function):
+    '''Layer for converting from coordinate and type tensors to a molecular grid using batched input'''
+    
+    @staticmethod
+    def forward(ctx, gmaker, center, coords, types, radii):
+        '''coords are Nx3, types are NxT, radii are N'''
+        ctx.save_for_backward(coords, types, radii)
+        ctx.gmaker = gmaker
+        ctx.center = center
+        batch_size = coords.shape[0]
+        if batch_size != types.shape[0] or batch_size != radii.shape[0]:
+            raise RuntimeError("Inconsistent batch sizes in Coords2Grid inputs")
+        shape = gmaker.grid_dimensions(types.shape[2]) #ntypes == nchannels
+        output = torch.empty(batch_size,*shape,dtype=coords.dtype,device=coords.device)
+        for i in range(batch_size):
+            gmaker.forward(center, coords[i], types[i], radii[i], output[i])
+        return output
         
+    @staticmethod
+    def backward(ctx, grid_gradient):
+        '''Return Nx3 coordinate gradient and NxT type gradient'''
+        coords, types, radii = ctx.saved_tensors
+        gmaker = ctx.gmaker
+        center = ctx.center
+        grad_coords = torch.empty(*coords.shape,dtype=coords.dtype,device=coords.device)
+        grad_types = torch.empty(*types.shape,dtype=types.dtype,device=types.device)
+        #radii are fixed
+        batch_size = coords.shape[0]
+        for i in range(batch_size):
+            gmaker.backward(center, coords[i], types[i], radii[i], grid_gradient[i], grad_coords[i], grad_types[i])
+        return None, None, grad_coords, grad_types, None
+            
 class Coords2Grid(torch.nn.Module):
     def __init__(self, gmaker, center):
         '''Convert coordinates/types/radii to a grid using the provided
@@ -72,7 +103,12 @@ class Coords2Grid(torch.nn.Module):
         self.center = center
         
     def forward(self, coords, types, radii):
-        return Coords2GridFunction.apply(self.gmaker, self.center, coords, types, radii)
+        if len(coords.shape) == 3 and len(types.shape) == 3 and len(radii.shape) == 2: #batched
+            return BatchedCoords2GridFunction.apply(self.gmaker, self.center, coords, types, radii)
+        elif len(coords.shape) == 2 and len(types.shape) == 2 and len(radii.shape) == 1:
+            return Coords2GridFunction.apply(self.gmaker, self.center, coords, types, radii)
+        else:
+            raise RuntimeError("Invalid input dimensions in forward of Coords2Grid")
     
     def extra_repr(self):
         return 'resolution {:.2f}, dimension {}, center {:.3f},{:.3f},{:.3f}'.format(
