@@ -628,6 +628,10 @@ MAKE_ALL_GRIDS()
       .def("clone", &CoordinateSet::clone)
       .def("togpu", &CoordinateSet::togpu, "set memory affinity to GPU")
       .def("tocpu", &CoordinateSet::tocpu, "set memory affinity to CPU")
+      .def("copyTo", +[](const CoordinateSet& self, Grid2f c, Grid1f t, Grid1f r) {return self.copyTo(c,t,r);}, "copy into coord/type/radii grids")
+      .def("copyTo", +[](const CoordinateSet& self, Grid2fCUDA c, Grid1fCUDA t, Grid1fCUDA r) {return self.copyTo(c,t,r);}, "copy into coord/type/radii grids")
+      .def("copyTo", +[](const CoordinateSet& self, Grid2f c, Grid2f t, Grid1f r) {return self.copyTo(c,t,r);}, "copy into coord/type/radii grids")
+      .def("copyTo", +[](const CoordinateSet& self, Grid2fCUDA c, Grid2fCUDA t, Grid1fCUDA r) {return self.copyTo(c,t,r);}, "copy into coord/type/radii grids")
       .def_readwrite("coords", &CoordinateSet::coords)
       .def_readwrite("type_index", &CoordinateSet::type_index)
       .def_readwrite("type_vector", &CoordinateSet::type_vector)
@@ -708,6 +712,18 @@ MAKE_ALL_GRIDS()
       .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, true> g){ self.forward(center, c, g); })
       .def("forward", +[](GridMaker& self, const Example& ex, const Transform& t, Grid<float, 4, false> g){ self.forward(ex, t, g); })
       .def("forward", +[](GridMaker& self, const Example& ex, const Transform& t, Grid<float, 4, true> g){ self.forward(ex, t, g); })
+      .def("forward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, false>& coords,
+        const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
+        Grid<float, 4, false>& out){ self.forward(grid_center, coords, type_index, radii, out);})
+      .def("forward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, true>& coords,
+          const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
+          Grid<float, 4, true>& out){ self.forward(grid_center, coords, type_index, radii, out);})
+      .def("forward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, false>& coords,
+          const Grid<float, 2, false>& type_vector, const Grid<float, 1, false>& radii,
+          Grid<float, 4, false> g){ self.forward(grid_center, coords, type_vector, radii, g); })
+      .def("forward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, true>& coords,
+              const Grid<float, 2, true>& type_vector, const Grid<float, 1, true>& radii,
+              Grid<float, 4, true> g){ self.forward(grid_center, coords, type_vector, radii, g); })
       .def("backward", +[](GridMaker& self, float3 grid_center, const CoordinateSet& in, const Grid<float, 4, false>& diff,
           Grid<float, 2, false> atomic_gradients, Grid<float, 2, false> type_gradients){
           self.backward(grid_center, in, diff, atomic_gradients, type_gradients);})

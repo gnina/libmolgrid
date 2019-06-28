@@ -221,10 +221,10 @@ void add_grid_members(class_<GridType>& C) {
       .def("__setitem__",
           +[](GridType& g, tuple t, typename GridType::type val) {grid_get(g, t, std::make_index_sequence<GridType::N>()) = val;})
        // if arguments passed by non-const reference, have to pass grid by value to get bindings to work
-      .def("copyTo", +[](const GridType& self, typename GridType::cpu_grid_t dest) { self.copyTo(dest);})
-      .def("copyTo", +[](const GridType& self, typename GridType::gpu_grid_t dest) { self.copyTo(dest);})
-      .def("copyFrom", static_cast<void (GridType::*)(const typename GridType::cpu_grid_t&)>(&GridType::copyFrom))
-      .def("copyFrom", static_cast<void (GridType::*)(const typename GridType::gpu_grid_t&)>(&GridType::copyFrom))
+      .def("copyTo", +[](const GridType& self, typename GridType::cpu_grid_t dest) { return self.copyTo(dest);})
+      .def("copyTo", +[](const GridType& self, typename GridType::gpu_grid_t dest) { return self.copyTo(dest);})
+      .def("copyFrom", static_cast<size_t (GridType::*)(const typename GridType::cpu_grid_t&)>(&GridType::copyFrom))
+      .def("copyFrom", static_cast<size_t (GridType::*)(const typename GridType::gpu_grid_t&)>(&GridType::copyFrom))
       .def("fill_zero", &GridType::fill_zero)
       .def("type", +[](const GridType& g){
               return std::is_same<typename GridType::type,float>::value ? "float32" : std::is_same<typename GridType::type,double>::value  ? "float64" : "unknown";});
@@ -255,8 +255,8 @@ void define_mgrid(const char* name) {
   C.def("cpu",static_cast<const typename GridType::cpu_grid_t& (GridType::*)() const>(&GridType::cpu), return_value_policy<copy_const_reference>())
       .def("gpu",static_cast<const typename GridType::gpu_grid_t& (GridType::*)() const>(&GridType::gpu), return_value_policy<copy_const_reference>())
       .def("clone", &GridType::clone)
-      .def("copyTo", +[](const GridType& self, GridType dest) {self.copyTo(dest);})
-      .def("copyFrom", static_cast<void (GridType::*)(const typename GridType::base_t&)>(&GridType::copyFrom))
+      .def("copyTo", +[](const GridType& self, GridType dest) {return self.copyTo(dest);})
+      .def("copyFrom", static_cast<size_t (GridType::*)(const typename GridType::base_t&)>(&GridType::copyFrom))
       ;
   //setters only for one dimension grids
   add_one_dim(C); //SFINAE!

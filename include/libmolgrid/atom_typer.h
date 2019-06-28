@@ -340,7 +340,7 @@ class GninaVectorTyper: public AtomVectorTyper {
       /* 23 */AD_heteroatom, //bool
       /* 24 */OB_partialcharge, //float
       /* 25 */Aromatic, //bool
-      /* 25 */ NumTypes
+      /* 26 */ NumTypes
     };
 
     GninaVectorTyper(const GninaIndexTyper& ityp = GninaIndexTyper()): ityper(ityp) {}

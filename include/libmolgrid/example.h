@@ -120,6 +120,9 @@ struct Example {
 
     void togpu() { for(unsigned i = 0, n = sets.size(); i < n; i++) { sets[i].togpu(); } }
     void tocpu() { for(unsigned i = 0, n = sets.size(); i < n; i++) { sets[i].tocpu(); } }
+
+    /// Convert coordinate sets to vector types
+    void make_vector_types() { for(unsigned i = 0, n = sets.size(); i < n; i++) { sets[i].make_vector_types(); } }
 };
 
 /** \brief a reference to a single example - the parsed line.  This is distinct from an

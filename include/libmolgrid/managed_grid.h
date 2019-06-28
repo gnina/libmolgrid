@@ -155,68 +155,77 @@ class ManagedGridBase {
     }
 
     /** \brief Copy data into dest.  Should be same size, but will narrow if needed */
-    void copyTo(cpu_grid_t& dest) const {
+    size_t copyTo(cpu_grid_t& dest) const {
       size_t sz = std::min(size(), dest.size());
+      if(sz == 0) return 0;
       if(ongpu()) {
         LMG_CUDA_CHECK(cudaMemcpy(dest.data(), gpu_grid.data(), sz*sizeof(Dtype), cudaMemcpyDeviceToHost));
       } else { //host ot host
         memcpy(dest.data(),cpu_grid.data(),sz*sizeof(Dtype));
       }
+      return sz;
     }
 
     /** \brief Copy data into dest.  Should be same size, but will narrow if needed */
-    void copyTo(gpu_grid_t& dest) const {
+    size_t copyTo(gpu_grid_t& dest) const {
       size_t sz = std::min(size(), dest.size());
+      if(sz == 0) return 0;
       if(ongpu()) {
         LMG_CUDA_CHECK(cudaMemcpy(dest.data(),gpu_grid.data(),sz*sizeof(Dtype),cudaMemcpyDeviceToDevice));
       } else {
         LMG_CUDA_CHECK(cudaMemcpy(dest.data(),cpu_grid.data(),sz*sizeof(Dtype),cudaMemcpyHostToDevice));
       }
+      return sz;
     }
 
     /** \brief Copy data into dest.  Should be same size, but will narrow if needed */
-    void copyTo(ManagedGridBase<Dtype, NumDims>& dest) const {
+    size_t copyTo(ManagedGridBase<Dtype, NumDims>& dest) const {
       if(dest.ongpu()) {
-        copyTo(dest.gpu_grid);
+        return copyTo(dest.gpu_grid);
       } else {
-        copyTo(dest.cpu_grid);
+        return copyTo(dest.cpu_grid);
       }
     }
 
     /** \brief Copy data from src.  Should be same size, but will narrow if needed */
-    void copyFrom(const cpu_grid_t& src) {
+    size_t copyFrom(const cpu_grid_t& src) {
       size_t sz = std::min(size(), src.size());
+      if(sz == 0) return 0;
       if(ongpu()) {
        LMG_CUDA_CHECK(cudaMemcpy(gpu_grid.data(), src.data(), sz*sizeof(Dtype), cudaMemcpyHostToDevice));
       } else {
         memcpy(cpu_grid.data(),src.data(),sz*sizeof(Dtype));
       }
+      return sz;
     }
 
     /** \brief Copy data from src.  Should be same size, but will narrow if needed */
-    void copyFrom(const gpu_grid_t& src) {
+    size_t copyFrom(const gpu_grid_t& src) {
       size_t sz = std::min(size(), src.size());
+      if(sz == 0) return 0;
       if(ongpu()) {
         LMG_CUDA_CHECK(cudaMemcpy(gpu_grid.data(),src.data(),sz*sizeof(Dtype),cudaMemcpyDeviceToDevice));
       } else {
         LMG_CUDA_CHECK(cudaMemcpy(cpu_grid.data(),src.data(),sz*sizeof(Dtype),cudaMemcpyDeviceToHost));
       }
+      return sz;
     }
 
     /** \brief Copy data from src.  Should be same size, but will narrow if needed */
-    void copyFrom(const ManagedGridBase<Dtype, NumDims>& src) {
+    size_t copyFrom(const ManagedGridBase<Dtype, NumDims>& src) {
       if(src.ongpu()) {
-        copyFrom(src.gpu_grid);
+        return copyFrom(src.gpu_grid);
       } else { //on host
-        copyFrom(src.cpu_grid);
+        return copyFrom(src.cpu_grid);
       }
     }
 
     /** \brief Copy data from src into this starting at start.  Should be same size, but will narrow if needed */
-    void copyInto(size_t start, const ManagedGridBase<Dtype, NumDims>& src) {
+    size_t copyInto(size_t start, const ManagedGridBase<Dtype, NumDims>& src) {
       size_t off = offset(0)*start;
       size_t sz = size()-off;
       sz = std::min(sz, src.size());
+      if(sz == 0) return 0;
       if(src.ongpu()) {
         if(ongpu()) {
           LMG_CUDA_CHECK(cudaMemcpy(gpu_grid.data()+off,src.gpu_grid.data(),sz*sizeof(Dtype),cudaMemcpyDeviceToDevice));
@@ -230,6 +239,7 @@ class ManagedGridBase {
           memcpy(cpu_grid.data()+off,src.data(),sz*sizeof(Dtype));
         }
       }
+      return sz;
     }
 
     /** \brief Return a grid in the specified shape that attempts to reuse the memory of this grid.
