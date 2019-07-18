@@ -95,7 +95,7 @@ class BatchedCoords2GridFunction(torch.autograd.Function):
         return None, None, grad_coords, grad_types, None
             
 class Coords2Grid(torch.nn.Module):
-    def __init__(self, gmaker, center):
+    def __init__(self, gmaker, center=(0,0,0)):
         '''Convert coordinates/types/radii to a grid using the provided
         GridMaker and grid center'''
         super(Coords2Grid, self).__init__()
