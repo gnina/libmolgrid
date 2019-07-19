@@ -3,7 +3,31 @@ libmolgrid
 
 libmolgrid is under active development, but should be suitable for use by early adopters.
 
-Example:
+## Installation
+
+```apt install git build-essential libboost-all-dev python3-pip rapidjson-dev
+pip3 install numpy pytest
+```
+
+[Install cmake 3.12 or higher.](https://cmake.org/install/)
+
+[Install CUDA.](https://developer.nvidia.com/cuda-downloads)
+
+Install OpenBabel 3.0 (Not yet released, build from master)
+
+```git clone https://github.com/gnina/libmolgrid.git
+cd libmolgrid
+mkdir build
+cd build
+cmake ..
+make -j8
+sudo make install
+```
+
+
+
+
+## Example
 ```
 import molgrid
 import pytest
