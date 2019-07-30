@@ -1,4 +1,6 @@
 #include "libmolgrid/grid_maker.h"
+#include <thrust/extrema.h>
+#include <thrust/device_ptr.h>
 
 namespace libmolgrid {
     __shared__ uint scanScratch[LMG_CUDA_NUM_THREADS * 2];
@@ -143,7 +145,7 @@ namespace libmolgrid {
      */
     __device__
     static unsigned atom_overlaps_block(unsigned aidx, float3& grid_origin,
-        float resolution, const float3 *coords, const float * radii, float rmult) {
+        float resolution, const float3 *coords, float radius, float rmult) {
 
       unsigned xi = blockIdx.x * blockDim.x;
       unsigned yi = blockIdx.y * blockDim.y;
@@ -162,7 +164,7 @@ namespace libmolgrid {
       float centerx = a.x;
       float centery = a.y;
       float centerz = a.z;
-      float r = radii[aidx] * rmult;
+      float r = radius * rmult;
     
       //does atom overlap box?
       return !((centerx - r > endx) || (centerx + r < startx)
@@ -227,7 +229,7 @@ namespace libmolgrid {
         unsigned aidx = atomoffset + tidx;
         
         if(aidx < total_atoms && types[aidx] >= 0) {
-          atomMask[tidx] = atom_overlaps_block(aidx, grid_origin, gmaker.get_resolution(), coord_data, radii_data, gmaker.get_radiusmultiple());
+          atomMask[tidx] = atom_overlaps_block(aidx, grid_origin, gmaker.get_resolution(), coord_data, radii_data[aidx], gmaker.get_radiusmultiple());
         }
         else {
           atomMask[tidx] = 0;
@@ -286,7 +288,7 @@ namespace libmolgrid {
         const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii, Grid<double, 4, true>& out) const;
 
 
-    template <typename Dtype, bool Binary>
+    template <typename Dtype, bool Binary, bool RadiiFromTypes>
     __device__ void GridMaker::set_atoms(unsigned rel_atoms, float3 grid_origin,
         const float3 *coord_data, const float *tdata, unsigned ntypes,
         const float *radii, Dtype *data) {
@@ -310,13 +312,22 @@ namespace libmolgrid {
       for(unsigned ai = 0; ai < rel_atoms; ai++) {
         unsigned i = atomIndices[ai];
         float3 c = coord_data[i];
-        float val = calc_point<Binary>(c.x, c.y, c.z, radii[i], grid_coords);
-        if(val == 0) continue;
+        float val = 0;
+        if(!RadiiFromTypes) {
+          val = calc_point<Binary>(c.x, c.y, c.z, radii[i], grid_coords);
+          if(val == 0) continue;
+        }
 
         const float *atom_type_mult = tdata+(ntypes*i); //type vector for this atom
         for(unsigned atype = 0; atype < ntypes; atype++) {
           float tmult = atom_type_mult[atype];
           if(tmult != 0) {
+            if(RadiiFromTypes) {
+              //need to wait until here to get the right radius
+              val = calc_point<Binary>(c.x, c.y, c.z, radii[atype], grid_coords);
+              if( val == 0) continue;
+            }
+
             if(Binary) {
               data[atype*chmult+goffset] += tmult;
             } else  {
@@ -328,12 +339,12 @@ namespace libmolgrid {
     }
 
 
-    template <typename Dtype, bool Binary>
+    template <typename Dtype, bool Binary, bool RadiiTypeIndexed>
     __global__ void
   //  __launch_bounds__(LMG_CUDA_NUM_THREADS)
     forward_gpu_vec(GridMaker gmaker, float3 grid_origin,
         const Grid<float, 2, true> coords, const Grid<float, 2, true> type_vector,
-        const Grid<float, 1, true> radii, Grid<Dtype, 4, true> out) {
+        const Grid<float, 1, true> radii, float maxradius, Grid<Dtype, 4, true> out) {
       //this is the thread's index within its block, used to parallelize over atoms
       unsigned total_atoms = coords.dimension(0);
       unsigned tidx = ((threadIdx.z * blockDim.y) + threadIdx.y) * blockDim.x + threadIdx.x; //thread index
@@ -349,7 +360,11 @@ namespace libmolgrid {
         unsigned aidx = atomoffset + tidx;
 
         if(aidx < total_atoms) {
-          atomMask[tidx] = atom_overlaps_block(aidx, grid_origin, gmaker.get_resolution(), coord_data, radii_data, gmaker.get_radiusmultiple());
+          //assume radii are about the same so can approximate with maxradius
+          if(RadiiTypeIndexed)
+            atomMask[tidx] = atom_overlaps_block(aidx, grid_origin, gmaker.get_resolution(), coord_data, maxradius, gmaker.get_radiusmultiple());
+          else
+            atomMask[tidx] = atom_overlaps_block(aidx, grid_origin, gmaker.get_resolution(), coord_data, radii[aidx], gmaker.get_radiusmultiple());
         }
         else {
           atomMask[tidx] = 0;
@@ -372,7 +387,7 @@ namespace libmolgrid {
         unsigned rel_atoms = scanOutput[LMG_CUDA_NUM_THREADS - 1] + atomMask[LMG_CUDA_NUM_THREADS - 1];
         //atomIndex is now a list of rel_atoms possibly relevant atom indices
         //there should be plenty of parallelism just distributing across grid points, don't bother across types
-        gmaker.set_atoms<Dtype, Binary>(rel_atoms, grid_origin, coord_data, types, ntypes, radii_data, outgrid);
+        gmaker.set_atoms<Dtype, Binary, RadiiTypeIndexed>(rel_atoms, grid_origin, coord_data, types, ntypes, radii_data, outgrid);
 
         __syncthreads();//everyone needs to finish before we muck with atomIndices again
       }
@@ -397,10 +412,24 @@ namespace libmolgrid {
 
       if(coords.dimension(0) == 0) return; //no atoms
 
-      if(binary)
-        forward_gpu_vec<Dtype, true><<<blocks, threads>>>(*this, grid_origin, coords, type_vector, radii, out);
-      else
-        forward_gpu_vec<Dtype, false><<<blocks, threads>>>(*this, grid_origin, coords, type_vector, radii, out);
+      float maxr = 0;
+      if(radii_type_indexed) {
+        thrust::device_ptr<float> rptr = thrust::device_pointer_cast(radii.data());
+        thrust::device_ptr<float> maxptr = thrust::max_element(rptr, rptr+radii.size());
+        maxr = *maxptr;
+      }
+
+      if(binary) {
+        if(radii_type_indexed)
+          forward_gpu_vec<Dtype, true, true><<<blocks, threads>>>(*this, grid_origin, coords, type_vector, radii, maxr, out);
+        else
+          forward_gpu_vec<Dtype, true, false><<<blocks, threads>>>(*this, grid_origin, coords, type_vector, radii, maxr, out);
+      } else {
+        if(radii_type_indexed)
+          forward_gpu_vec<Dtype, false, true><<<blocks, threads>>>(*this, grid_origin, coords, type_vector, radii, maxr, out);
+        else
+          forward_gpu_vec<Dtype, false, false><<<blocks, threads>>>(*this, grid_origin, coords, type_vector, radii, maxr, out);
+      }
 
       LMG_CUDA_CHECK(cudaPeekAtLastError());
     }

@@ -6,7 +6,7 @@ libmolgrid is under active development, but should be suitable for use by early 
 ## Installation
 
 ```apt install git build-essential libboost-all-dev python3-pip rapidjson-dev
-pip3 install numpy pytest
+pip3 install numpy pytest pyquaternion
 ```
 
 [Install cmake 3.12 or higher.](https://cmake.org/install/)

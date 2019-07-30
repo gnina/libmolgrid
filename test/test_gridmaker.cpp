@@ -224,3 +224,74 @@ BOOST_AUTO_TEST_CASE(backward_vec) {
   BOOST_CHECK_EQUAL(cputypes[0][1],0);
 }
 
+BOOST_AUTO_TEST_CASE(forward_vec) {
+  using namespace std;
+  GridMaker g(0.1, 6.0);
+
+  vector<float3> c { make_float3(0, 0, 0) };
+  vector<vector<float> > t { vector<float>{0.5,0.5} };
+  vector<float> r { 2.0 };
+
+  CoordinateSet coords(c, t, r);
+  float dim = g.get_grid_dims().x;
+  MGrid4f out(2, dim, dim, dim);
+  MGrid4f out2(2, dim, dim, dim);
+
+  g.forward(float3{0,0,0}, coords, out.cpu());
+  g.forward(float3{0,0,0}, coords, out2.gpu());
+
+  unsigned sz = out.size();
+  float *g1 = out.data();
+  float *g2 = out2.data();
+  float max = 0;
+  for(unsigned i = 0; i < sz; i++) {
+    BOOST_CHECK_SMALL(g1[i] - g2[i], TOL);
+    if(g1[i] > max) max = g1[i];
+  }
+  BOOST_CHECK_EQUAL(max, .5); //make sure not zero
+}
+
+//test using radii from types
+BOOST_AUTO_TEST_CASE(forward_vec_types) {
+  using namespace std;
+  GridMaker ga(0.5, 6.0);
+  GridMaker gt(0.5, 6.0, false, true);
+
+  vector<float3> ct { make_float3(0, 0, 0) };
+  vector<vector<float> > tt { vector<float>{1.0,1.0,1.0} };
+  vector<float> rt { 3.0, 2.0, 1.0 };
+
+  vector<float3> ca { make_float3(0, 0, 0), make_float3(0,0,0), make_float3(0,0,0) };
+  vector<float> ra { 3.0, 2.0, 1.0 };
+  vector<vector<float> > ta { vector<float>{1.0,0.0,0.0}, vector<float>{0.0,1.0,0.0}, vector<float>{0.0,0.0,1.0} };
+
+  CoordinateSet coordsa(ca, ta, ra);
+  CoordinateSet coordst(ct, tt, rt);
+
+  float dim = ga.get_grid_dims().x;
+  MGrid4f outa(3, dim, dim, dim);
+  MGrid4f outt(3, dim, dim, dim);
+
+  ga.forward(float3{0,0,0}, coordsa, outa.cpu());
+  gt.forward(float3{0,0,0}, coordst, outt.cpu());
+
+  unsigned sz = outa.size();
+  float *Ga = outa.data();
+  float *Gt = outt.data();
+  float max = 0;
+  for(unsigned i = 0; i < sz; i++) {
+    BOOST_CHECK_SMALL(Ga[i] - Gt[i], TOL);
+    if(Ga[i] > max) max = Ga[i];
+  }
+
+  //check gpu code
+  outt.fill_zero();
+  gt.forward(float3{0,0,0}, coordst, outt.gpu());
+  Gt = outt.data(); //bring back to cpu
+  for(unsigned i = 0; i < sz; i++) {
+    BOOST_CHECK_SMALL(Ga[i] - Gt[i], TOL);
+  }
+
+  BOOST_CHECK_EQUAL(max, 1.0); //make sure not zero
+}
+

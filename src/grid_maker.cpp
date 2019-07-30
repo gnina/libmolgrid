@@ -64,6 +64,7 @@ void GridMaker::check_vector_args(const Grid<float, 2, isCUDA>& coords,
     Grid<Dtype, 4, isCUDA>& out) const {
 
   size_t N = coords.dimension(0);
+  size_t T = type_vector.dimension(1);
 
   if(dim != out.dimension(1)) throw std::out_of_range("Output grid dimension incorrect: "+itoa(dim) +" vs " +itoa(out.dimension(1)));
   if(dim != out.dimension(2)) throw std::out_of_range("Output grid dimension incorrect: "+itoa(dim) +" vs " +itoa(out.dimension(2)));
@@ -71,9 +72,14 @@ void GridMaker::check_vector_args(const Grid<float, 2, isCUDA>& coords,
 
   if(type_vector.dimension(0) != N)
     throw std::out_of_range("type_vector does not match number of atoms: "+itoa(type_vector.dimension(0))+" vs "+itoa(N));
-  if(type_vector.dimension(1) != out.dimension(0))
-    throw std::out_of_range("number of types in type_vector does not match number of output channels: "+itoa(type_vector.dimension(1))+" vs "+itoa(out.dimension(0)));
-  if(radii.size() != N) throw std::out_of_range("radii does not match number of atoms: "+itoa(radii.size())+" vs "+itoa(N));
+  if(T != out.dimension(0))
+    throw std::out_of_range("number of types in type_vector does not match number of output channels: "+itoa(T)+" vs "+itoa(out.dimension(0)));
+
+  if(radii_type_indexed) {
+    if(radii.size() != T) throw std::out_of_range("radii does not match number of types: "+itoa(radii.size())+" vs "+itoa(T));
+  } else {
+    if(radii.size() != N) throw std::out_of_range("radii does not match number of atoms: "+itoa(radii.size())+" vs "+itoa(N));
+  }
 }
 
 template void GridMaker::check_vector_args(const Grid<float, 2, false>& coords,
@@ -187,7 +193,7 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
   }
 }
 
-template<typename Dtype>
+template<typename Dtype, bool TypesFromRadii>
 void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
     const Grid<float, 2, false>& type_vector, const Grid<float, 1, false>& radii,
     Grid<Dtype, 4, false>& out) const {
@@ -207,7 +213,10 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
         acoords.x = coords(aidx, 0);
         acoords.y = coords(aidx, 1);
         acoords.z = coords(aidx, 2);
-        float radius = radii(aidx);
+        float radius = 0;
+        if(radii_type_indexed) radius = radii(tidx);
+        else radius = radii(aidx);
+
         float densityrad = radius * radius_scale * final_radius_multiple;
 
         uint2 bounds[3];
@@ -242,6 +251,7 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
     } //tidx
   } //aidx
 }
+
         
         
 template void GridMaker::forward(const std::vector<Example>& in, Grid<float, 5, false>& out,
