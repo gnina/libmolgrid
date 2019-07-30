@@ -695,6 +695,8 @@ MAKE_ALL_GRIDS()
       .def("set_dimension", &GridMaker::set_dimension)
       .def("get_binary", &GridMaker::get_binary)
       .def("set_binary", &GridMaker::set_binary)
+      .def("get_radii_type_indexed", &GridMaker::get_radii_type_indexed)
+      .def("set_radii_type_indexed", &GridMaker::set_radii_type_indexed)
       //grids need to be passed by value
       .def("forward", +[](GridMaker& self, const Example& ex, Grid<float, 4, false> g, float random_translate, bool random_rotate){
             self.forward(ex, g, random_translate, random_rotate); },

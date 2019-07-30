@@ -275,6 +275,9 @@ BOOST_AUTO_TEST_CASE(forward_vec_types) {
   ga.forward(float3{0,0,0}, coordsa, outa.cpu());
   gt.forward(float3{0,0,0}, coordst, outt.cpu());
 
+  BOOST_CHECK_EQUAL(gt.get_radii_type_indexed(),true);
+  BOOST_CHECK_EQUAL(ga.get_radii_type_indexed(),false);
+
   unsigned sz = outa.size();
   float *Ga = outa.data();
   float *Gt = outt.data();
