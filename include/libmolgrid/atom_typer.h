@@ -56,9 +56,12 @@ class AtomIndexTyper: public AtomTyper {
     /// is specific to the implementation
     virtual std::pair<int,float> get_int_type(int t) const = 0;
 
-    //return vector of string representations of types
-    //this isn't expected to be particularly efficient
+    ///return vector of string representations of types
+    ///this isn't expected to be particularly efficient
     virtual std::vector<std::string> get_type_names() const = 0;
+
+    ///if applicable to the typer, return the standard atomic radius of each type
+    virtual std::vector<float> get_type_radii() const  {  return std::vector<float>(num_types(), 1.0); }
 
     static void set_names(unsigned ntypes, std::vector<std::string>& type_names, const std::vector<std::string>& names);
 
@@ -188,8 +191,12 @@ class GninaIndexTyper: public AtomIndexTyper {
     /// basically look up the radius of the given gnina type
     virtual std::pair<int,float> get_int_type(int t) const;
 
-    //return vector of string representations of types
+    ///return vector of string representations of types
     virtual std::vector<std::string> get_type_names() const;
+
+    ///return atomic radius of each type
+    virtual std::vector<float> get_type_radii() const;
+
 
     ///return gnina info for a given type
     const info& get_info(int t) const { return data[t]; }
@@ -223,6 +230,9 @@ class ElementIndexTyper: public AtomIndexTyper {
 
     //return vector of string representations of types
     virtual std::vector<std::string> get_type_names() const;
+
+    ///return atomic radius of each type, generic type is given zero radius
+    virtual std::vector<float> get_type_radii() const;
 };
 
 /** \brief Use user-provided callback to do typing
@@ -261,6 +271,9 @@ class CallbackIndexTyper: public AtomIndexTyper {
 
     //return vector of string representations of types
     virtual std::vector<std::string> get_type_names() const { return type_names; }
+
+    virtual std::vector<float> get_type_radii() const  {  return std::vector<float>(num_types(), default_radius); }
+
 };
 
 
@@ -274,7 +287,7 @@ class MappedAtomIndexTyper: public AtomIndexTyper {
     Mapper mapper;
     Typer typer;
   public:
-    MappedAtomIndexTyper(const Mapper& map, const Typer& typr): mapper(map), typer(typr) {}
+    MappedAtomIndexTyper(const Mapper& map, const Typer& typr): mapper(map), typer(typr) {} //TODO: process radii
     virtual ~MappedAtomIndexTyper() {}
 
     /// return number of types

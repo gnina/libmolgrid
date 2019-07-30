@@ -185,6 +185,19 @@ std::vector<std::string> GninaIndexTyper::get_type_names() const {
   return ret;
 }
 
+//return vector of atomic radii
+std::vector<float> GninaIndexTyper::get_type_radii() const {
+  vector<float> ret; ret.reserve(NumTypes);
+  for(unsigned i = 0; i < NumTypes; i++) {
+    if(use_covalent) {
+      ret.push_back(data[i].covalent_radius);
+    } else {
+      ret.push_back(data[i].xs_radius);
+    }
+  }
+  return ret;
+}
+
 /************** Element IndexTyper  ********************/
 
 /// return number of types
@@ -213,6 +226,17 @@ std::vector<std::string> ElementIndexTyper::get_type_names() const {
   ret.push_back("GenericAtom");
   for(unsigned i = 1; i < last_elem; i++) {
     ret.push_back(GET_NAME(i));
+  }
+  return ret;
+}
+
+//return vector of atomic radii
+std::vector<float> ElementIndexTyper::get_type_radii() const {
+  vector<float> ret; ret.reserve(last_elem+1);
+  ret.push_back(0);
+  for(unsigned i = 1; i < last_elem; i++) {
+    float radius = GET_COVALENT_RAD(i);
+    ret.push_back(radius);
   }
   return ret;
 }
@@ -402,6 +426,8 @@ void FileAtomMapper::setup(std::istream& in) {
 
   old_type_to_new_type.assign(old_type_names.size(), -1);
   new_type_names.clear();
+
+  vector<vector<float> > radii;
 
   //each non blank line is a type
   string line;

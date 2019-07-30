@@ -220,7 +220,6 @@ def test_vector_types():
     np.testing.assert_allclose(reference.tonumpy(),vgridgpu.tonumpy(),atol=1e-5)
     v2gpu = v2gridgpu.tonumpy()
     
-
     np.testing.assert_allclose(g[0,:],v2gpu[0,:]*2.0,atol=1e-5)
     np.testing.assert_allclose(g[0,:],v2gpu[1,:]*2.0,atol=1e-5)    
     
