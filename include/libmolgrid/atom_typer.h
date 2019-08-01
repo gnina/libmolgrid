@@ -286,8 +286,34 @@ class MappedAtomIndexTyper: public AtomIndexTyper {
   protected:
     Mapper mapper;
     Typer typer;
+
+    std::vector<float> type_radii;
   public:
-    MappedAtomIndexTyper(const Mapper& map, const Typer& typr): mapper(map), typer(typr) {} //TODO: process radii
+    MappedAtomIndexTyper(const Mapper& map, const Typer& typr): mapper(map), typer(typr) {
+      unsigned oldN = typer.num_types();
+      unsigned newN = mapper.num_types();
+
+      std::vector< std::vector<float> > radii(newN);
+      for(unsigned ot = 0; ot < oldN; ot++) {
+        auto t_r = typer.get_int_type(ot);
+        if(t_r.first >= 0) {
+          unsigned nt = mapper.get_new_type(t_r.first);
+          if(nt < radii.size()) {
+            radii[nt].push_back(t_r.second);
+          }
+        }
+      }
+
+      type_radii.resize(newN);
+      for(unsigned i = 0; i < newN; i++) {
+        float sum = 0.0;
+        for(unsigned j = 0, n = radii[i].size(); j < n; j++) {
+          sum += radii[i][j];
+        }
+        type_radii[i] = sum/radii[i].size();
+      }
+    }
+
     virtual ~MappedAtomIndexTyper() {}
 
     /// return number of types
@@ -315,6 +341,10 @@ class MappedAtomIndexTyper: public AtomIndexTyper {
     virtual std::vector<std::string> get_type_names() const {
       return mapper.get_type_names();
     }
+
+    ///radii are the average of the underlying mapped types
+    virtual std::vector<float> get_type_radii() const  {  return type_radii; }
+
 };
 
 /** \brief Decompose gnina types into elements and properties.  Result is boolean.

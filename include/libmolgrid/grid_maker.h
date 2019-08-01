@@ -119,10 +119,10 @@ class GridMaker {
      */
     template <typename Dtype>
     void forward(float3 grid_center, const CoordinateSet& in, Grid<Dtype, 4, false>& out) const {
-      if(in.has_indexed_types()) {
-        forward(grid_center, in.coords.cpu(), in.type_index.cpu(), in.radii.cpu(), out);
-      } else {
+      if(in.has_vector_types()) {
         forward(grid_center, in.coords.cpu(), in.type_vector.cpu(), in.radii.cpu(), out);
+      } else {
+        forward(grid_center, in.coords.cpu(), in.type_index.cpu(), in.radii.cpu(), out);
       }
     }
 
@@ -133,10 +133,10 @@ class GridMaker {
      */
     template <typename Dtype>
     void forward(float3 grid_center, const CoordinateSet& in, Grid<Dtype, 4, true>& out) const {
-      if(in.has_indexed_types()) {
-        forward(grid_center, in.coords.gpu(), in.type_index.gpu(), in.radii.gpu(), out);
-      } else {
+      if(in.has_vector_types()) {
         forward(grid_center, in.coords.gpu(), in.type_vector.gpu(), in.radii.gpu(), out);
+      } else {
+        forward(grid_center, in.coords.gpu(), in.type_index.gpu(), in.radii.gpu(), out);
       }
     }
 
@@ -514,7 +514,7 @@ class GridMaker {
     template<typename Dtype> __global__ friend //member functions don't kernel launch
     void set_atom_gradients(GridMaker G, float3 grid_center, Grid2fCUDA coords, Grid1fCUDA type_index,
         Grid1fCUDA radii, Grid<Dtype, 4, true> grid, Grid<Dtype, 2, true> atom_gradients);
-    template<typename Dtype> __global__ friend
+    template<typename Dtype, bool RadiiFromTypes> __global__ friend
     void set_atom_type_gradients(GridMaker G, float3 grid_origin, Grid2fCUDA coords, Grid2fCUDA type_vector,
         unsigned ntypes, Grid1fCUDA radii, Grid<Dtype, 4, true> grid, Grid<Dtype, 2, true> atom_gradients,
         Grid<Dtype, 2, true> type_gradients);

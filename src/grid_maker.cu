@@ -269,6 +269,10 @@ namespace libmolgrid {
       float3 grid_origin = get_grid_origin(grid_center);
 
       check_index_args(coords, type_index, radii, out);
+      if(radii_type_indexed) {
+        throw std::invalid_argument("Type indexed radii not supported with index types.");
+      }
+
       //zero out grid to start
       LMG_CUDA_CHECK(cudaMemset(out.data(), 0, out.size() * sizeof(float)));
 
@@ -482,7 +486,7 @@ namespace libmolgrid {
     }
 
     //type vector version block.y is the type
-    template<typename Dtype>
+    template<typename Dtype, bool RadiiFromTypes>
     __global__
     void set_atom_type_gradients(GridMaker G, float3 grid_origin, Grid2fCUDA coords, Grid2fCUDA type_vector,
         unsigned ntypes, Grid1fCUDA radii, Grid<Dtype, 4, true> grid, Grid<Dtype, 2, true> atom_gradients,
@@ -494,7 +498,11 @@ namespace libmolgrid {
       //calculate gradient for atom at idx
       float3 agrad{0,0,0};
       float3 a{coords(idx,0),coords(idx,1),coords(idx,2)}; //atom coordinate
-      float radius = radii(idx);
+      float radius = 0;
+      if(RadiiFromTypes)
+        radius = radii(whicht);
+      else
+        radius = radii(idx);
 
       float r = radius * G.radius_scale * G.final_radius_multiple;
       uint2 ranges[3];
@@ -549,6 +557,9 @@ namespace libmolgrid {
       if(n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
       if(n != atom_gradients.dimension(0)) throw std::invalid_argument("Gradient dimension doesn't equal number of coordinates");
       if(coords.dimension(1) != 3) throw std::invalid_argument("Coordinates wrong secondary dimension (!= 3)");
+      if(radii_type_indexed) {
+        throw std::invalid_argument("Type indexed radii not supported with index types.");
+      }
 
       float3 grid_origin = get_grid_origin(grid_center);
 
@@ -583,8 +594,14 @@ namespace libmolgrid {
         throw std::invalid_argument("Type gradient dimension doesn't equal number of coordinates");
       if (type_gradients.dimension(1) != ntypes)
         throw std::invalid_argument("Type gradient dimension has wrong number of types");
-      if (n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
       if (coords.dimension(1) != 3) throw std::invalid_argument("Need x,y,z,r for coord_radius");
+
+      if(radii_type_indexed) { //radii should be size of types
+        if(ntypes != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of types");
+      } else { //radii should be size of atoms
+        if(n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
+      }
+
       float3 grid_origin = get_grid_origin(grid_center);
 
 
@@ -593,7 +610,11 @@ namespace libmolgrid {
       if(ntypes >= 1024)
         throw std::invalid_argument("Really? More than 1024 types?  The GPU can't handle that.  Are you sure this is a good idea?  I'm giving up.");
       dim3 B(blocks, ntypes, 1); //in theory could support more 1024 by using z, but really..
-      set_atom_type_gradients<<<B, nthreads>>>(*this, grid_origin, coords, type_vector, ntypes, radii, grid, atom_gradients, type_gradients);
+      if(radii_type_indexed)
+        set_atom_type_gradients<Dtype,true><<<B, nthreads>>>(*this, grid_origin, coords, type_vector, ntypes, radii, grid, atom_gradients, type_gradients);
+      else
+        set_atom_type_gradients<Dtype,false><<<B, nthreads>>>(*this, grid_origin, coords, type_vector, ntypes, radii, grid, atom_gradients, type_gradients);
+
     }
 
     template void GridMaker::backward(float3 grid_center, const Grid<float, 2, true>& coords,

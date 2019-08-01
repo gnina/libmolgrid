@@ -82,8 +82,11 @@ struct CoordinateSet {
   /// return true if vector types are available
   bool has_vector_types() const { return type_vector.size() > 0; }
 
-  ///convert index types to vector types in-place
-  void make_vector_types();
+  /** \brief convert index types to vector types in-place
+   * @param include_dummy_type - if true will create an additional type at end (has zero radii if type radii are provided is true)
+   * @param type_radii - if provided, convert radii array to be type indexed,
+   */
+  void make_vector_types(bool include_dummy_type=false, const std::vector<float>& type_radii = std::vector<float>());
 
   unsigned num_types() const { return max_type; }
   void set_num_types(unsigned maxt) { max_type = maxt; }

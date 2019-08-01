@@ -144,6 +144,9 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
   //zero grid first
   std::fill(out.data(), out.data() + out.size(), 0.0);
   check_index_args(coords, type_index, radii, out);
+  if(radii_type_indexed) {
+    throw std::invalid_argument("Type indexed radii not supported with index types.");
+  }
 
   float3 grid_origin = get_grid_origin(grid_center);
   size_t natoms = coords.dimension(0);
@@ -400,6 +403,9 @@ void GridMaker::backward(float3 grid_center, const Grid<float, 2, false>& coords
 
   atom_gradients.fill_zero();
   unsigned n = coords.dimension(0);
+  if(radii_type_indexed) {
+    throw std::invalid_argument("Type indexed radii not supported with index types.");
+  }
   if(n != type_index.size()) throw std::invalid_argument("Type dimension doesn't equal number of coordinates.");
   if(n != atom_gradients.dimension(0)) throw std::invalid_argument("Gradient dimension doesn't equal number of coordinates");
   if(n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
@@ -440,14 +446,24 @@ void GridMaker::backward(float3 grid_center, const Grid<float, 2, false>& coords
   if(n != atom_gradients.dimension(0)) throw std::invalid_argument("Atom gradient dimension doesn't equal number of coordinates");
   if(n != type_gradients.dimension(0)) throw std::invalid_argument("Type gradient dimension doesn't equal number of coordinates");
   if(type_gradients.dimension(1) != ntypes) throw std::invalid_argument("Type gradient dimension has wrong number of types");
-  if(n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
   if(coords.dimension(1) != 3) throw std::invalid_argument("Need x,y,z,r for coord_radius");
+
+  if(radii_type_indexed) { //radii should be size of types
+    if(ntypes != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of types");
+  } else { //radii should be size of atoms
+    if(n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
+  }
+
   float3 grid_origin = get_grid_origin(grid_center);
 
   for (unsigned i = 0; i < n; ++i) {
-    float radius = radii(i);
+    float radius = 0;
+    if(!radii_type_indexed)
+      radius = radii(i);
     for(unsigned whichgrid = 0; whichgrid < ntypes; whichgrid++) {
       float tmult = type_vector(i,whichgrid);
+      if(radii_type_indexed)
+        radius = radii(whichgrid);
       if(tmult != 0) {
         float3 agrad = calc_atom_gradient_cpu(grid_origin, coords[i], diff[whichgrid], radius);
         atom_gradients(i,0) += agrad.x*tmult;

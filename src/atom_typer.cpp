@@ -427,7 +427,7 @@ void FileAtomMapper::setup(std::istream& in) {
   old_type_to_new_type.assign(old_type_names.size(), -1);
   new_type_names.clear();
 
-  vector<vector<float> > radii;
+  vector<vector<float> > radii; //indexed by new type (line), stores all radii of represnted types
 
   //each non blank line is a type
   string line;
