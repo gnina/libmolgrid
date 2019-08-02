@@ -80,7 +80,7 @@ struct CoordinateSet {
   bool has_indexed_types() const { return type_index.size() > 0 || type_vector.size() == 0; }
 
   /// return true if vector types are available
-  bool has_vector_types() const { return type_vector.size() > 0; }
+  bool has_vector_types() const { return type_vector.size() > 0 || type_index.size() == 0; }
 
   /** \brief convert index types to vector types in-place
    * @param include_dummy_type - if true will create an additional type at end (has zero radii if type radii are provided is true)
