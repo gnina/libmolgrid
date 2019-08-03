@@ -150,11 +150,15 @@ void Example::merge_coordinates(std::vector<float3>& coords, std::vector<std::ve
   unsigned maxt = sets[start].max_type;
   //validate type vector sizes
   for(unsigned i = start, n = sets.size(); i < n; i++) {
+    if(sets[i].coords.dimension(0) == 0)
+      continue;
     if(!sets[i].has_vector_types())
       throw logic_error("Coordinate sets do not have compatible vector types for merge.");
 
+    if(maxt == 0) //skip over empty sets
+      maxt = sets[i].max_type;
     if(sets[i].type_vector.dimension(1) != maxt)
-      throw logic_error("Coordinate sets do not have compatible sized vector types.");
+      throw logic_error("Coordinate sets do not have compatible sized vector types. "+itoa(sets[i].type_vector.dimension(1)) + " vs " + itoa(maxt));
   }
 
   coords.reserve(N);

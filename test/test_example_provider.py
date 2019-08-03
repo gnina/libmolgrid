@@ -186,4 +186,29 @@ def test_grouped_example_provider():
     
     e = molgrid.ExampleProvider(data_root=datadir+"/structs",max_group_size=7,group_batch_size=batch_size,shuffle=True,balanced=True)
     e.populate(fname)
-    testprovider(e,7)    
+    testprovider(e,7)   
+    
+def test_make_vector_types_ex_provider(capsys):
+    fname = datadir+"/ligonly.types"
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs",make_vector_types=True)
+    e.populate(fname)
+    batch_size = 10
+    b = e.next_batch(batch_size)
+
+    gmaker = molgrid.GridMaker(dimension=23.5,radius_type_indexed=True)
+    shape = gmaker.grid_dimensions(molgrid.defaultGninaLigandTyper.num_types()+1)
+    mgrid = molgrid.MGrid5f(batch_size,*shape)
+
+    c = b[0].merge_coordinates()
+    tv = c.type_vector.tonumpy()
+    assert tv.shape == (10,15)
+    assert tv[0].sum() == 1.0
+    assert tv[0][8] == 1.0
+    
+    gmaker.forward(b, mgrid)
+    
+    assert b[0].coord_sets[0].has_vector_types()
+    assert b[0].coord_sets[1].has_vector_types()
+    
+    assert b[0].type_size() == 15
+

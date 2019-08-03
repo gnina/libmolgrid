@@ -185,6 +185,8 @@ CoordinateSet::CoordinateSet(const CoordinateSet& rec, const CoordinateSet& lig,
 void CoordinateSet::make_vector_types(bool include_dummy_type, const std::vector<float>& type_radii) {
   unsigned N = type_index.size();
 
+  if(N == 0) return; //empty set, do nothing
+
   if(type_radii.size() > 0 && type_radii.size() != max_type) {
     throw invalid_argument("Type radii size " + itoa(type_radii.size()) + " does not equal max type "+itoa(max_type));
   }
