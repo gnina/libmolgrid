@@ -183,12 +183,19 @@ void Example::merge_coordinates(std::vector<float3>& coords, std::vector<std::ve
 }
 
 CoordinateSet Example::merge_coordinates(unsigned start, bool unique_index_types) const {
+
+  //if all sets are vector types, merge as such - empty sets are ambiguous so have to check all
+  bool has_vector_types = true;
+  for(unsigned i = start, n = sets.size(); i < n; i++) {
+    if(!sets[i].has_vector_types())
+      has_vector_types = false;
+  }
   if(sets.size() <= start) {
     return CoordinateSet();
   } else if(sets.size() == start+1) {
     //copy data for consistency with multiple sets
     return sets[start].clone();
-  } else if(sets[start].has_indexed_types()) {
+  } else if(!has_vector_types) {
 
     vector<float3> coords;
     vector<float> types;
