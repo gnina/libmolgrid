@@ -220,7 +220,6 @@ def test_vector_types():
     np.testing.assert_allclose(reference.tonumpy(),vgridgpu.tonumpy(),atol=1e-5)
     v2gpu = v2gridgpu.tonumpy()
     
-
     np.testing.assert_allclose(g[0,:],v2gpu[0,:]*2.0,atol=1e-5)
     np.testing.assert_allclose(g[0,:],v2gpu[1,:]*2.0,atol=1e-5)    
     
@@ -255,7 +254,49 @@ def test_backward_vec():
     np.testing.assert_allclose(gpuatoms.tonumpy(),cpuatoms.tonumpy(),atol=1e-5)
     np.testing.assert_allclose(gputypes.tonumpy(),cputypes.tonumpy(),atol=1e-5)
 
+def test_type_radii():
+    g1 = molgrid.GridMaker(resolution=.25,dimension=6.0,radius_type_indexed=True)
+    c = np.array([[0,0,0]],np.float32)
+    t = np.array([0],np.float32)
+    r = np.array([1.0],np.float32)
+    coords = molgrid.CoordinateSet(molgrid.Grid2f(c),molgrid.Grid1f(t),molgrid.Grid1f(r),2)
+    coords.make_vector_types(True, [3.0,1.0])
 
+    shape = g1.grid_dimensions(3) #includes dummy type
+    reference = molgrid.MGrid4f(*shape)
+    gpudata = molgrid.MGrid4f(*shape)
 
-
+    assert g1.get_radii_type_indexed()
     
+    g1.forward((0,0,0),coords, reference.cpu())
+    g1.forward((0,0,0),coords, gpudata.gpu())
+    
+    np.testing.assert_allclose(reference.tonumpy(),gpudata.tonumpy(),atol=1e-5)
+
+    assert reference.tonumpy().sum() > 2980 #radius of 1 would be 116
+    
+    reference.fill_zero()
+    reference[0][20][12][12] = -1
+    reference[1][20][12][12] = 1
+    reference[2][20][12][12] = 2
+
+    cpuatoms = molgrid.MGrid2f(1,3)
+    cputypes = molgrid.MGrid2f(1,3)
+    gpuatoms = molgrid.MGrid2f(1,3)    
+    gputypes = molgrid.MGrid2f(1,3)
+    
+    g1.backward((0,0,0),coords,reference.cpu(), cpuatoms.cpu(), cputypes.cpu())
+
+    assert cpuatoms[0][0] < 0
+    assert cpuatoms[0][1] == 0
+    assert cpuatoms[0][2] == 0
+    
+    assert cputypes[0][0] < 0
+    assert cputypes[0][1] == 0
+    assert cputypes[0][2] == 0
+
+    g1.backward((0,0,0),coords,reference.gpu(), gpuatoms.gpu(), gputypes.gpu())
+    
+    np.testing.assert_allclose(gpuatoms.tonumpy(),cpuatoms.tonumpy(),atol=1e-5)
+    np.testing.assert_allclose(gputypes.tonumpy(),cputypes.tonumpy(),atol=1e-5)
+

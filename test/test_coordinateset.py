@@ -22,7 +22,24 @@ def test_coordset_from_mol():
     t.forward(c,c)
     newcoord = c.coords.tonumpy()
     assert np.sum(newcoord-oldcoord) == approx(48)
+    
 
+#create a coordinateset from a molecule and convert to vector
+#types with a dummy atom and typed radii
+def test_coordset_from_mol_vec():
+    m = pybel.readstring('smi','c1ccccc1CO')
+    m.addh()
+    m.make3D()
+    
+    c = molgrid.CoordinateSet(m) #default gnina ligand types
+    c.make_vector_types(True, molgrid.defaultGninaLigandTyper.get_type_radii())
+    
+    assert c.type_vector.dimension(1) == 15
+    assert c.radii.dimension(0) == 15
+    assert c.has_vector_types()
+
+    
+    
 #create a coordinateset from numpy and transform it
 def test_coordset_from_array():
     

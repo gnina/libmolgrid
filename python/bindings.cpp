@@ -501,6 +501,7 @@ MAKE_ALL_GRIDS()
       .def(init<bool>())
       .def("num_types", &GninaIndexTyper::num_types)
       .def("get_atom_type_index", &GninaIndexTyper::get_atom_type_index)
+      .def("get_type_radii", &GninaIndexTyper::get_type_radii)
       .def("get_type_names",&GninaIndexTyper::get_type_names);
   implicitly_convertible<std::shared_ptr<GninaIndexTyper>, std::shared_ptr<AtomTyper> >();
 
@@ -509,6 +510,7 @@ MAKE_ALL_GRIDS()
       .def(init<int>())
       .def("num_types", &ElementIndexTyper::num_types)
       .def("get_atom_type_index", &ElementIndexTyper::get_atom_type_index)
+      .def("get_type_radii", &ElementIndexTyper::get_type_radii)
       .def("get_type_names",&ElementIndexTyper::get_type_names);
   implicitly_convertible<std::shared_ptr<ElementIndexTyper>, std::shared_ptr<AtomTyper> >();
 
@@ -573,6 +575,7 @@ MAKE_ALL_GRIDS()
             (arg("map"), arg("catchall") = true, arg("maxe") = 84U)))
           .def("num_types", &SubsettedElementTyper::num_types)
           .def("get_atom_type_index", &SubsettedElementTyper::get_atom_type_index)
+          .def("get_type_radii",&SubsettedElementTyper::get_type_radii)
           .def("get_type_names",&SubsettedElementTyper::get_type_names);
   implicitly_convertible<std::shared_ptr<SubsettedElementTyper>, std::shared_ptr<AtomTyper> >();
 
@@ -588,6 +591,7 @@ MAKE_ALL_GRIDS()
                 (arg("map"), arg("catchall") = true, arg("use_covalent_radius") = false)))
           .def("num_types", &SubsettedGninaTyper::num_types)
           .def("get_atom_type_index", &SubsettedGninaTyper::get_atom_type_index)
+          .def("get_type_radii",&SubsettedGninaTyper::get_type_radii)
           .def("get_type_names",&SubsettedGninaTyper::get_type_names);
   implicitly_convertible<std::shared_ptr<SubsettedGninaTyper>, std::shared_ptr<AtomTyper> >();
 
@@ -596,6 +600,7 @@ MAKE_ALL_GRIDS()
               //todo, add init for file stream inputs if we every want it
           .def("num_types", &FileMappedGninaTyper::num_types)
           .def("get_atom_type_index", &FileMappedGninaTyper::get_atom_type_index)
+          .def("get_type_radii",&FileMappedGninaTyper::get_type_radii)
           .def("get_type_names",&FileMappedGninaTyper::get_type_names);
   implicitly_convertible<std::shared_ptr<FileMappedGninaTyper>, std::shared_ptr<AtomTyper> >();
 
@@ -603,6 +608,7 @@ MAKE_ALL_GRIDS()
           init<const std::string&, unsigned>((arg("fname"), arg("maxe")=84)))
           .def("num_types", &FileMappedElementTyper::num_types)
           .def("get_atom_type_index", &FileMappedElementTyper::get_atom_type_index)
+          .def("get_type_radii",&FileMappedElementTyper::get_type_radii)
           .def("get_type_names",&FileMappedElementTyper::get_type_names);
   implicitly_convertible<std::shared_ptr<FileMappedElementTyper>, std::shared_ptr<AtomTyper> >();
 
@@ -621,7 +627,9 @@ MAKE_ALL_GRIDS()
       .def(init<const CoordinateSet&, const CoordinateSet&, bool>((arg("rec"), arg("lig"), arg("unique_index_types")=true)))
       .def("has_indexed_types", &CoordinateSet::has_indexed_types)
       .def("has_vector_types", &CoordinateSet::has_vector_types)
-      .def("make_vector_types", &CoordinateSet::make_vector_types)
+      .def("make_vector_types", +[](CoordinateSet& self, bool dummy, list tr) { return self.make_vector_types(dummy,list_to_vec<float>(tr));},
+          (arg("include_dummy_type")=false, arg("type_radii") = list()))
+      .def("make_vector_types", &CoordinateSet::make_vector_types, (arg("include_dummy_type")=false, arg("type_radii") = std::vector<float>()))
       .def("size", &CoordinateSet::size)
       .def("num_types", &CoordinateSet::num_types)
       .def("center", &CoordinateSet::center)
@@ -686,7 +694,7 @@ MAKE_ALL_GRIDS()
 
   //grid maker
   class_<GridMaker>("GridMaker",
-      init<float, float, bool, float, float>(((arg("resolution")=0.5, arg("dimension")=23.5, arg("binary")=false, arg("radius_scale")=1.0), arg("gassian_radius_multiple")=1.0)))
+      init<float, float, bool, bool, float, float>(((arg("resolution")=0.5, arg("dimension")=23.5, arg("binary")=false, arg("radius_type_indexed")=false,arg("radius_scale")=1.0), arg("gassian_radius_multiple")=1.0)))
       .def("spatial_grid_dimensions", +[](GridMaker& self) { float3 dims = self.get_grid_dims(); return make_tuple(int(dims.x),int(dims.y),int(dims.z));})
       .def("grid_dimensions", +[](GridMaker& self, int ntypes) { float3 dims = self.get_grid_dims(); return make_tuple(ntypes,int(dims.x),int(dims.y),int(dims.z));})
       .def("get_resolution", &GridMaker::get_resolution)
@@ -695,6 +703,8 @@ MAKE_ALL_GRIDS()
       .def("set_dimension", &GridMaker::set_dimension)
       .def("get_binary", &GridMaker::get_binary)
       .def("set_binary", &GridMaker::set_binary)
+      .def("get_radii_type_indexed", &GridMaker::get_radii_type_indexed)
+      .def("set_radii_type_indexed", &GridMaker::set_radii_type_indexed)
       //grids need to be passed by value
       .def("forward", +[](GridMaker& self, const Example& ex, Grid<float, 4, false> g, float random_translate, bool random_rotate){
             self.forward(ex, g, random_translate, random_rotate); },

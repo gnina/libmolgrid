@@ -42,7 +42,8 @@ class GridMaker {
 
     float A,B,C; //precalculated coefficients for density
     float D,E; //precalculate coefficients for backprop
-    bool binary; /// use binary occupancy instead of real-valued atom density
+    bool binary = false; /// use binary occupancy instead of real-valued atom density
+    bool radii_type_indexed = false;
     unsigned dim; /// grid width in points
 
     template<typename Dtype, bool isCUDA>
@@ -56,8 +57,9 @@ class GridMaker {
         Grid<Dtype, 4, isCUDA>& out) const;
   public:
 
-    GridMaker(float res = 0, float d = 0, bool bin = false, float rscale=1.0, float grm = 1.0) :
-      resolution(res), dimension(d), radius_scale(rscale), gaussian_radius_multiple(grm), final_radius_multiple(0), binary(bin) {
+    GridMaker(float res = 0, float d = 0, bool bin = false, bool rti = false, float rscale=1.0, float grm = 1.0) :
+      resolution(res), dimension(d), radius_scale(rscale), gaussian_radius_multiple(grm), final_radius_multiple(0),
+      binary(bin), radii_type_indexed(rti) {
         initialize(res, d, bin, rscale, grm);
       }
 
@@ -95,6 +97,11 @@ class GridMaker {
     ///set if density is binary
     CUDA_CALLABLE_MEMBER void set_binary(bool b) { binary = b; }
 
+    ///return if radius array should be indexed by type id (for vector types)
+    CUDA_CALLABLE_MEMBER bool get_radii_type_indexed() const { return radii_type_indexed; }
+    ///set if radius array should be indexed by type id, not atom
+    CUDA_CALLABLE_MEMBER void set_radii_type_indexed(bool b) { radii_type_indexed = b; }
+
     ///return multiplier of radius where density goes to zero
     CUDA_CALLABLE_MEMBER float get_radiusmultiple() const { return radius_scale*final_radius_multiple; }
 
@@ -112,10 +119,10 @@ class GridMaker {
      */
     template <typename Dtype>
     void forward(float3 grid_center, const CoordinateSet& in, Grid<Dtype, 4, false>& out) const {
-      if(in.has_indexed_types()) {
-        forward(grid_center, in.coords.cpu(), in.type_index.cpu(), in.radii.cpu(), out);
-      } else {
+      if(in.has_vector_types()) {
         forward(grid_center, in.coords.cpu(), in.type_vector.cpu(), in.radii.cpu(), out);
+      } else {
+        forward(grid_center, in.coords.cpu(), in.type_index.cpu(), in.radii.cpu(), out);
       }
     }
 
@@ -126,10 +133,10 @@ class GridMaker {
      */
     template <typename Dtype>
     void forward(float3 grid_center, const CoordinateSet& in, Grid<Dtype, 4, true>& out) const {
-      if(in.has_indexed_types()) {
-        forward(grid_center, in.coords.gpu(), in.type_index.gpu(), in.radii.gpu(), out);
-      } else {
+      if(in.has_vector_types()) {
         forward(grid_center, in.coords.gpu(), in.type_vector.gpu(), in.radii.gpu(), out);
+      } else {
+        forward(grid_center, in.coords.gpu(), in.type_index.gpu(), in.radii.gpu(), out);
       }
     }
 
@@ -207,13 +214,15 @@ class GridMaker {
         
         
     /* \brief Generate grid tensor from CPU atomic data.  Grid must be properly sized.
+     * If TypesFromRadii, radii should be size of types and type information will be used
+     * to select the radii.
      * @param[in] center of grid
      * @param[in] coordinates (Nx3)
      * @param[in] type vectors (NxT)
-     * @param[in] radii (N)
+     * @param[in] radii (N) or (T)
      * @param[out] a 4D grid
      */
-    template <typename Dtype>
+    template <typename Dtype, bool TypesFromRadii = false>
     void forward(float3 grid_center, const Grid<float, 2, false>& coords,
         const Grid<float, 2, false>& type_vector, const Grid<float, 1, false>& radii,
         Grid<Dtype, 4, false>& out) const;
@@ -222,13 +231,13 @@ class GridMaker {
      * @param[in] center of grid
      * @param[in] coordinates (Nx3)
      * @param[in] type indices (NxT)
-     * @param[in] radii (N)
+     * @param[in] radii (N) or (T) depending on if radii_type_indexed is set
      * @param[out] a 4D grid
      */
     template <typename Dtype>
     void forward(float3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 2, true>& type_vector, const Grid<float, 1, true>& radii,
-        Grid<Dtype, 4, true>& out) const;        
+        Grid<Dtype, 4, true>& out) const;
 
 
     /* \brief Generate atom and type gradients from grid gradients. (CPU)
@@ -458,7 +467,7 @@ class GridMaker {
      * @param[in] radii (N)
      * @param[out] a 4D grid
      */
-    template <typename Dtype, bool Binary>
+    template <typename Dtype, bool Binary, bool RadiiFromTypes>
     CUDA_DEVICE_MEMBER void set_atoms(unsigned natoms, float3 grid_origin,
         const float3 *coords, const float *type_vec, unsigned ntypes,
         const float *radii, Dtype* out);
@@ -505,7 +514,7 @@ class GridMaker {
     template<typename Dtype> __global__ friend //member functions don't kernel launch
     void set_atom_gradients(GridMaker G, float3 grid_center, Grid2fCUDA coords, Grid1fCUDA type_index,
         Grid1fCUDA radii, Grid<Dtype, 4, true> grid, Grid<Dtype, 2, true> atom_gradients);
-    template<typename Dtype> __global__ friend
+    template<typename Dtype, bool RadiiFromTypes> __global__ friend
     void set_atom_type_gradients(GridMaker G, float3 grid_origin, Grid2fCUDA coords, Grid2fCUDA type_vector,
         unsigned ntypes, Grid1fCUDA radii, Grid<Dtype, 4, true> grid, Grid<Dtype, 2, true> atom_gradients,
         Grid<Dtype, 2, true> type_gradients);

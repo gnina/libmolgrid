@@ -27,7 +27,8 @@ class CoordCache {
     std::string data_root;
     std::string molcache;
     bool use_cache = true; //is possible to disable caching
-    bool addh = true; //protonate
+    bool addh = true; ///protonate
+    bool make_vector_types = false; ///convert index types to vector, will also convert to type based radii and add a dummy type
 
     //for memory mapped cache
     boost::iostreams::mapped_file_source cache_map;

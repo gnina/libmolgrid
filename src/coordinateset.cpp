@@ -139,8 +139,8 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<std
   if(N != t.size()) {
     throw std::invalid_argument("Types and coordinates are of different sizes");
   }
-  if(N != r.size()) {
-    throw std::invalid_argument("Radius and coordinates are of different sizes");
+  if(N != r.size() && max_type != r.size()) {
+    throw std::invalid_argument("Radius and coordinates/types are of different sizes");
   }
 
   //copy data
@@ -148,7 +148,10 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<std
   memcpy(radii.cpu().data(), &r[0], sizeof(float)*r.size());
   assert(sizeof(float3)*N == sizeof(float)*coords.size());
   memcpy(coords.cpu().data(), &c[0], sizeof(float3)*N);
-  memcpy(type_vector.cpu().data(), &t[0], sizeof(float)*N*max_type);
+
+  for(unsigned i = 0; i < N; i++) {
+    memcpy(type_vector[i].cpu().data(), &t[i][0], sizeof(float)*t[i].size());
+  }
 
 }
 
@@ -179,14 +182,32 @@ CoordinateSet::CoordinateSet(const CoordinateSet& rec, const CoordinateSet& lig,
 
 
 ///convert index types to vector types in-place
-void CoordinateSet::make_vector_types() {
+void CoordinateSet::make_vector_types(bool include_dummy_type, const std::vector<float>& type_radii) {
   unsigned N = type_index.size();
+
+  if(N == 0) return; //empty set, do nothing
+
+  if(type_radii.size() > 0 && type_radii.size() != max_type) {
+    throw invalid_argument("Type radii size " + itoa(type_radii.size()) + " does not equal max type "+itoa(max_type));
+  }
+
+  if(include_dummy_type)
+    max_type++; //add a type that doesn't match any atom
+
   type_vector = MGrid2f(N, max_type); //grid are always zero initialized
   for(unsigned i = 0; i < N; i++) {
     unsigned t = type_index[i];
     if(t < max_type) {
       type_vector(i,t) = 1.0;
     }
+  }
+
+  if(type_radii.size()>  0) {
+    //change radii from being indexed by atom to being indexed by type
+    radii = radii.resized(max_type);
+    radii.tocpu();
+    if(include_dummy_type) radii[max_type-1] = 0.0;
+    memcpy(radii.data(), &type_radii[0], sizeof(float)*type_radii.size());
   }
 }
 

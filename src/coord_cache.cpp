@@ -24,7 +24,7 @@ unsigned do_not_optimize_away;
 //read in molcache if present
 CoordCache::CoordCache(std::shared_ptr<AtomTyper> t, const ExampleProviderSettings& settings,
     const std::string& mc): typer(t), data_root(settings.data_root), molcache(mc),
-        use_cache(settings.cache_structs), addh(settings.add_hydrogens) {
+        use_cache(settings.cache_structs), addh(settings.add_hydrogens), make_vector_types(settings.make_vector_types) {
   if(molcache.length() > 0) {
     static_assert(sizeof(size_t) == 8, "size_t must be 8 bytes");
 
@@ -160,6 +160,10 @@ void CoordCache::set_coords(const char *fname, CoordinateSet& coord) {
       coord = CoordinateSet();
     }
 
+    AtomIndexTyper *ityper = dynamic_cast<AtomIndexTyper*>(typer.get());
+    if(make_vector_types && ityper) {
+      coord.make_vector_types(true, ityper->get_type_radii());
+    }
     if(use_cache) { //save coord
       memcache[fname] = coord;
     }
