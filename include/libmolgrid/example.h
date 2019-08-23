@@ -35,7 +35,7 @@ namespace libmolgrid {
     EXSET(bool, cache_structs, true, "retain coordinates in memory for faster training") \
     EXSET(bool, add_hydrogens, true, "protonate read in molecule using openbabel") \
     EXSET(bool, duplicate_first, false, "clone the first coordinate set to be paired with each of the remaining (receptor-ligand pairs)") \
-    EXSET(bool, make_vector_types, false, "convert index types into one-hot encoded vector types with an additional \"dummy\" type") \
+    EXSET(bool, make_vector_types, false, "convert index types into one-hot encoded vector types") \
     EXSET(std::string, data_root, "", "prefix for data files") \
     EXSET(std::string, recmolcache, "", "precalculated molcache2 file for receptor (first molecule); if doesn't exist, will look in data _root") \
     EXSET(std::string, ligmolcache, "", "precalculated molcache2 file for ligand; if doesn't exist, will look in data_root")
@@ -66,6 +66,10 @@ struct Example {
 
     /// The maximum number of types across all sets - if unique_index_types is true, each set gets different type ids
     size_t type_size(bool unique_index_types=true) const;
+
+    /// Accumulate sum of each type class into sum
+    template<bool isCUDA>
+    void sum_types(Grid<float, 1, isCUDA>& sum, bool unique_types=true) const;
 
     /** \brief Combine all coordinate sets into one and return it.
      * All coordinate sets must have the same kind of typing.  The result is a copy of the input coordinates.

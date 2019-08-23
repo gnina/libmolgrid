@@ -235,6 +235,30 @@ class ElementIndexTyper: public AtomIndexTyper {
     virtual std::vector<float> get_type_radii() const;
 };
 
+/** \brief Always return an invalid type
+ *  */
+class NullIndexTyper: public AtomIndexTyper {
+
+  public:
+    NullIndexTyper() {}
+    virtual ~NullIndexTyper() {}
+
+    /// return number of types
+    virtual unsigned num_types() const { return 0; }
+
+    ///return type index of a
+    virtual std::pair<int,float> get_atom_type_index(OpenBabel::OBAtom* a) const { return std::make_pair(-1,0.0f); }
+
+    ///look up covalent radius of element or provide default
+    virtual std::pair<int,float> get_int_type(int t) const { return std::make_pair(-1,0.0f);}
+
+    //return vector of string representations of types
+    virtual std::vector<std::string> get_type_names() const { return std::vector<std::string>(); }
+
+    ///return atomic radius of each type, generic type is given zero radius
+    virtual std::vector<float> get_type_radii() const { return std::vector<float>(); }
+};
+
 /** \brief Use user-provided callback to do typing
  *  Must provide the number of types and their names.
  */

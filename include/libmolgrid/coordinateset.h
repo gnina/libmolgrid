@@ -88,8 +88,15 @@ struct CoordinateSet {
    */
   void make_vector_types(bool include_dummy_type=false, const std::vector<float>& type_radii = std::vector<float>());
 
+  /// return number of types
   unsigned num_types() const { return max_type; }
+
+  /// set number of (indexed) types
   void set_num_types(unsigned maxt) { max_type = maxt; }
+
+  /// compute the sum of each type class across vector types for this set, if zerofirst is false, add to existing elements of sum
+  void sum_types(Grid<float, 1, false>& sum, bool zerofirst=true) const;
+  void sum_types(Grid<float, 1, true>& sum, bool zerofirst=true) const;
 
   ///number of atoms
   unsigned size() const { return coords.dimension(0); }

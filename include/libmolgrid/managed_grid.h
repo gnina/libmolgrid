@@ -292,7 +292,7 @@ class ManagedGridBase {
         size_t offset = cpu_grid.data() - cpu_ptr.get(); //might be subgrid
           gpu_grid.set_buffer(gpu_info->gpu_ptr+offset);
       }
-      if(!ongpu() && dotransfer) {
+      if(oncpu() && dotransfer) {
         LMG_CUDA_CHECK(cudaMemcpy(gpu_info->gpu_ptr,cpu_ptr.get(),capacity*sizeof(Dtype),cudaMemcpyHostToDevice));
       }
       if(gpu_info) gpu_info->sent_to_gpu = true;
@@ -307,7 +307,11 @@ class ManagedGridBase {
     }
 
     /** \brief Return true if memory is currently on GPU */
-    bool ongpu() const { return gpu_info && gpu_info->sent_to_gpu; }
+    bool ongpu() const {
+      bool ret = gpu_info && gpu_info->sent_to_gpu;
+      if(ret && gpu_grid.data() == nullptr) togpu(); //needed if this is a copy made before another transfered
+      return ret;
+    }
 
     /** \brief Return true if memory is currently on CPU */
     bool oncpu() const { return gpu_info == nullptr || !gpu_info->sent_to_gpu; }

@@ -69,9 +69,9 @@ template <typename Dtype>
 
   unsigned N = in.dimension(0);
   if(dotranslate)
-    transform_forward_kernel<float, true><<<LMG_GET_BLOCKS(N), LMG_CUDA_NUM_THREADS>>>(N, Q, center, translate, in, out);
+    transform_forward_kernel<float, true><<<LMG_GET_BLOCKS(N), LMG_GET_THREADS(N)>>>(N, Q, center, translate, in, out);
   else
-    transform_forward_kernel<float, false><<<LMG_GET_BLOCKS(N), LMG_CUDA_NUM_THREADS>>>(N, Q, center, translate, in, out);
+    transform_forward_kernel<float, false><<<LMG_GET_BLOCKS(N), LMG_GET_THREADS(N)>>>(N, Q, center, translate, in, out);
 }
 
 template __host__ void Transform::forward(const Grid<float, 2, true>&, Grid<float, 2, true>&, bool) const;
@@ -84,10 +84,10 @@ template <typename Dtype>
 
   if(dotranslate) {
     float3 untranslate = make_float3(-translate.x,-translate.y,-translate.z);
-    transform_translate_kernel<Dtype><<<LMG_GET_BLOCKS(N), LMG_CUDA_NUM_THREADS>>>(N, untranslate, in, out);
-    transform_rotate_kernel<Dtype><<<LMG_GET_BLOCKS(N), LMG_CUDA_NUM_THREADS>>>(N,invQ,center,out,out);
+    transform_translate_kernel<Dtype><<<LMG_GET_BLOCKS(N), LMG_GET_THREADS(N)>>>(N, untranslate, in, out);
+    transform_rotate_kernel<Dtype><<<LMG_GET_BLOCKS(N), LMG_GET_THREADS(N)>>>(N,invQ,center,out,out);
   } else {
-    transform_rotate_kernel<Dtype><<<LMG_GET_BLOCKS(N), LMG_CUDA_NUM_THREADS>>>(N,invQ,center,in,out);
+    transform_rotate_kernel<Dtype><<<LMG_GET_BLOCKS(N), LMG_GET_THREADS(N)>>>(N,invQ,center,in,out);
   }
   LMG_CUDA_CHECK(cudaPeekAtLastError());
 }

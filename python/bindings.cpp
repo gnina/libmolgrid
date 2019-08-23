@@ -373,6 +373,17 @@ void register_vector_type(const char *name) {
   }
 }
 
+template <bool isCUDA>
+static void vector_sum_types(const std::vector<Example>& self, Grid<float, 2, isCUDA> sum, bool unique_types) {
+  if(self.size() != sum.dimension(0)) {
+    throw std::invalid_argument("Size of example vector does not match sum grid: "+itoa(self.size())+" vs "+itoa(sum.dimension(0)));
+  }
+  for(unsigned i = 0, n = self.size(); i < n; i++) {
+    Grid<float, 1, isCUDA> subgrid = sum[i];
+    self[i].sum_types(subgrid,unique_types);
+  }
+}
+
 BOOST_PYTHON_MODULE(molgrid)
 {
   Py_Initialize();
@@ -417,7 +428,9 @@ MAKE_ALL_GRIDS()
       .def("extract_labels", +[](const std::vector<Example>& self, Grid<float, 2, false> out) { Example::extract_labels(self, out);})
       .def("extract_labels", +[](const std::vector<Example>& self, Grid<float, 2, true> out) { Example::extract_labels(self, out);})
       .def("extract_label", +[](const std::vector<Example>& self, int labelpos, Grid<float, 1, false> out) { Example::extract_label(self, labelpos, out);})
-      .def("extract_label", +[](const std::vector<Example>& self, int labelpos, Grid<float, 1, true> out) { Example::extract_label(self, labelpos, out);});
+      .def("extract_label", +[](const std::vector<Example>& self, int labelpos, Grid<float, 1, true> out) { Example::extract_label(self, labelpos, out);})
+      .def("sum_types", +[](const std::vector<Example>& self, Grid2fCUDA sum, bool unique_types) { vector_sum_types(self, sum, unique_types); }, (arg("sum"), arg("unique_types") = true))
+      .def("sum_types", +[](const std::vector<Example>& self, Grid2f sum, bool unique_types) { vector_sum_types(self, sum, unique_types); }, (arg("sum"), arg("unique_types") = true));
 
   class_<Pointer<float> >("FloatPtr", no_init);
   class_<Pointer<double> >("DoublePtr", no_init);
@@ -513,6 +526,13 @@ MAKE_ALL_GRIDS()
       .def("get_type_radii", &ElementIndexTyper::get_type_radii)
       .def("get_type_names",&ElementIndexTyper::get_type_names);
   implicitly_convertible<std::shared_ptr<ElementIndexTyper>, std::shared_ptr<AtomTyper> >();
+
+  class_<NullIndexTyper, bases<AtomTyper>, std::shared_ptr<NullIndexTyper> >("NullIndexTyper")
+      .def("num_types", &NullIndexTyper::num_types)
+      .def("get_atom_type_index", &NullIndexTyper::get_atom_type_index)
+      .def("get_type_radii", &NullIndexTyper::get_type_radii)
+      .def("get_type_names",&NullIndexTyper::get_type_names);
+  implicitly_convertible<std::shared_ptr<NullIndexTyper>, std::shared_ptr<AtomTyper> >();
 
   class_<PythonCallbackIndexTyper, bases<AtomTyper>, std::shared_ptr<PythonCallbackIndexTyper> >("PythonCallbackIndexTyper",
       init<object, unsigned, list>(
@@ -640,6 +660,8 @@ MAKE_ALL_GRIDS()
       .def("copyTo", +[](const CoordinateSet& self, Grid2fCUDA c, Grid1fCUDA t, Grid1fCUDA r) {return self.copyTo(c,t,r);}, "copy into coord/type/radii grids")
       .def("copyTo", +[](const CoordinateSet& self, Grid2f c, Grid2f t, Grid1f r) {return self.copyTo(c,t,r);}, "copy into coord/type/radii grids")
       .def("copyTo", +[](const CoordinateSet& self, Grid2fCUDA c, Grid2fCUDA t, Grid1fCUDA r) {return self.copyTo(c,t,r);}, "copy into coord/type/radii grids")
+      .def("sum_types", +[](const CoordinateSet& self, Grid1f sum) { self.sum_types(sum);}, "sum types across atoms")
+      .def("sum_types", +[](const CoordinateSet& self, Grid1fCUDA sum) { self.sum_types(sum);}, "sum types across atoms")
       .def_readwrite("coords", &CoordinateSet::coords)
       .def_readwrite("type_index", &CoordinateSet::type_index)
       .def_readwrite("type_vector", &CoordinateSet::type_vector)
@@ -663,6 +685,8 @@ MAKE_ALL_GRIDS()
     .def("merge_coordinates", static_cast<void (Example::*)(Grid2f&, Grid2f&, Grid1f&, unsigned, bool) const>(&Example::merge_coordinates), (arg("coord"), "type_vector", "radius", arg("start")=0, arg("unique_index_types")=true))
     .def("togpu", &Example::togpu, "set memory affinity to GPU")
     .def("tocpu", &Example::tocpu, "set memory affinity to CPU")
+    .def("sum_types", +[](const Example& self, Grid1fCUDA sum, bool unique_types) { self.sum_types(sum,unique_types);}, (arg("sum"), arg("unique_types") = true), "sum types across atoms in coordinate sets")
+    .def("sum_types", +[](const Example& self, Grid1f sum, bool unique_types) { self.sum_types(sum,unique_types);}, (arg("sum"), arg("unique_types") = true), "sum types across atoms in coordinate sets")
     .def_readwrite("coord_sets",&Example::sets)
     .def_readwrite("labels",&Example::labels)
     .def_readwrite("group",&Example::group)

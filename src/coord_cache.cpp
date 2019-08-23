@@ -158,11 +158,12 @@ void CoordCache::set_coords(const char *fname, CoordinateSet& coord) {
       coord.src = fname;
     } else {
       coord = CoordinateSet();
+      coord.max_type = typer->num_types(); //empty, but include type size
     }
 
     AtomIndexTyper *ityper = dynamic_cast<AtomIndexTyper*>(typer.get());
     if(make_vector_types && ityper) {
-      coord.make_vector_types(true, ityper->get_type_radii());
+      coord.make_vector_types(false, ityper->get_type_radii());
     }
     if(use_cache) { //save coord
       memcache[fname] = coord;
