@@ -330,8 +330,10 @@ void Example::sum_types(Grid<float, 1, isCUDA>& sum, bool unique_types) const {
   unsigned offset = 0;
   for(unsigned i = 0, n = sets.size(); i < n; i++) {
     if(unique_types) {
-      Grid<float, 1, isCUDA> subsum(sum.data()+offset, sets[i].num_types());
-      offset += sets[i].num_types();
+      unsigned nt = sets[i].num_types();
+      if(nt == 0) continue;
+      Grid<float, 1, isCUDA> subsum(sum.data()+offset, nt);
+      offset += nt; 
       if(offset > NT) throw out_of_range("Type sizes don't add up in Example::sum_types "+itoa(offset)+" vs "+itoa(NT));
       sets[i].sum_types(subsum);
     } else {

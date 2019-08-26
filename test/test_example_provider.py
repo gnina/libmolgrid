@@ -2,6 +2,7 @@ import pytest
 import molgrid
 import numpy as np
 import os
+import torch
 
 from pytest import approx
 from numpy import around
@@ -231,6 +232,18 @@ def test_vector_sum_types():
     b.sum_types(sum)
     sum2 = np.zeros(sum.shape,np.float32)
     b.sum_types(sum2)
+    sum3 = torch.empty(sum.shape,dtype=torch.float32,device='cuda')
+    b.sum_types(sum3)
+    np.testing.assert_allclose(sum.tonumpy(),sum3.detach().cpu().numpy(),atol=1e-5)
     np.testing.assert_allclose(sum.tonumpy(),sum2,atol=1e-5)
     np.testing.assert_allclose(sum[0].tonumpy(), [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 2., 3., 0.,
        0., 0., 0., 0., 0., 2., 2., 1., 0., 0., 0.], atol=1e-5)
+
+    e = molgrid.ExampleProvider(molgrid.NullIndexTyper(), molgrid.defaultGninaLigandTyper, data_root=datadir+"/structs",make_vector_types=True)
+    e.populate(fname)
+    b = e.next_batch(batch_size)
+    sum = molgrid.MGrid2f(batch_size, e.type_size())
+    b.sum_types(sum)
+    np.testing.assert_allclose(sum[0].tonumpy(), [ 2., 3., 0.,
+       0., 0., 0., 0., 0., 2., 2., 1., 0., 0., 0.], atol=1e-5)
+
