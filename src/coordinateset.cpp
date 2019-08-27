@@ -348,4 +348,29 @@ template size_t CoordinateSet::copyTo(Grid<float, 2, false>& c, Grid<float, 2, f
 template size_t CoordinateSet::copyTo(Grid<float, 2, true>& c, Grid<float, 2, true>& t, Grid<float, 1, true>& r) const;
 
 
+void CoordinateSet::sum_types(Grid<float, 1, false>& sum, bool zerofirst) const {
+  if(sum.dimension(0) != num_types())
+    throw invalid_argument("Type sum output dimension does not match number of types: "+itoa(sum.dimension(0))+" vs "+itoa(num_types()));
+
+  if(zerofirst) sum.fill_zero();
+  int NT = num_types();
+  if(!has_vector_types()) {
+    for(unsigned i = 0, n = type_index.dimension(0); i < n; i++) {
+      int t = round(type_index[i]);
+      if(t < 0) continue;
+      if(t >= NT) throw out_of_range("Somehow an index type is too large (internal error).");
+      sum[t] += 1.0;
+    }
+  } else { //vector types
+    for(unsigned i = 0, n = type_vector.dimension(0); i < n; i++) {
+      //i is atom index
+      for(unsigned j = 0, m = type_vector.dimension(1); j < m; j++) {
+        //j is type index
+        sum[j] += type_vector[i][j];
+      }
+    }
+  }
+}
+
+
 }

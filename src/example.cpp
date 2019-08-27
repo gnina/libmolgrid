@@ -320,6 +320,31 @@ ExampleRef::ExampleRef(const std::string& line, int numlabels, bool hasgroup) {
 
 }
 
+template<bool isCUDA>
+void Example::sum_types(Grid<float, 1, isCUDA>& sum, bool unique_types) const {
+  unsigned NT = type_size(unique_types);
+  if(sum.dimension(0) != NT) {
+    throw invalid_argument("Size of sum output doesn't match number of types in example: "+itoa(sum.dimension(0))+" vs "+itoa(NT));
+  }
+
+  unsigned offset = 0;
+  for(unsigned i = 0, n = sets.size(); i < n; i++) {
+    if(unique_types) {
+      unsigned nt = sets[i].num_types();
+      if(nt == 0) continue;
+      Grid<float, 1, isCUDA> subsum(sum.data()+offset, nt);
+      offset += nt; 
+      if(offset > NT) throw out_of_range("Type sizes don't add up in Example::sum_types "+itoa(offset)+" vs "+itoa(NT));
+      sets[i].sum_types(subsum);
+    } else {
+      sets[i].sum_types(sum, false);
+    }
+  }
+}
+
+
+template void Example::sum_types(Grid<float, 1, true>& sum, bool unique_types) const;
+template void Example::sum_types(Grid<float, 1, false>& sum, bool unique_types) const;
 
 
 } /* namespace libmolgrid */

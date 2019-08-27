@@ -170,6 +170,17 @@ def test_elementtyping():
     assert ccnt == 7
     assert ocnt == 1
     assert hcnt == 8
+    
+def test_nulltyping():
+    m = pybel.readstring('smi','c1ccccc1CO')
+    m.addh()
+    t = molgrid.NullIndexTyper()
+    typs = [t.get_atom_type_index(a.OBAtom) for a in m.atoms]
+
+    assert t.num_types() == 0
+    for t,r in typs:
+        assert t == -1
+        assert r == 0.0   
 
 def test_subset_elementtyping():
     m = pybel.readstring('smi','c1c(Cl)cccc1CO')

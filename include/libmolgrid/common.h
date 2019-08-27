@@ -33,8 +33,9 @@
 #define WARP_SIZE (1U << LOG2_WARP_SIZE)
 
 // CUDA: number of blocks for threads.
-#define LMG_GET_BLOCKS(N) \
-  ((N + LMG_CUDA_NUM_THREADS - 1) / LMG_CUDA_NUM_THREADS)
+#define LMG_GET_BLOCKS(N) ((unsigned(N) + LMG_CUDA_NUM_THREADS - 1) / LMG_CUDA_NUM_THREADS)
+// CUDA: combined with GET_BLOCKS, number of threads
+#define LMG_GET_THREADS(N) min(N,LMG_CUDA_NUM_THREADS)
 
 #ifndef __CUDA_ARCH__
 #define LMG_CUDA_CHECK(condition) \

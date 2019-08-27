@@ -109,7 +109,7 @@ void GridMaker::forward(const Example& in, const Transform& transform, Grid<Dtyp
   forward(transform.get_rotation_center(), c, out);
 }
 
-//not sure why these have to be instantiated given the next function must implicitly isntantiate them
+//not sure why these have to be instantiated given the next function must implicitly instantiate them
 template void GridMaker::forward(const Example& in, const Transform& transform, Grid<float, 4, false>& out) const;
 template void GridMaker::forward(const Example& in, const Transform& transform, Grid<float, 4, true>& out) const;
 template void GridMaker::forward(const Example& in, const Transform& transform, Grid<double, 4, false>& out) const;

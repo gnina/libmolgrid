@@ -9,6 +9,7 @@ set( LIBMOLGRID_SOURCES
  grid_maker.cpp
  grid_maker.cu
  coordinateset.cpp
+ coordinateset.cu
  coord_cache.cpp
  transform.cpp
  transform.cu

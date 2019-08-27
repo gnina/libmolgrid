@@ -563,10 +563,9 @@ namespace libmolgrid {
 
       float3 grid_origin = get_grid_origin(grid_center);
 
-      unsigned blocks =  n/LMG_CUDA_NUM_THREADS + bool(n%LMG_CUDA_NUM_THREADS); //at least one if n > 0
-      unsigned nthreads = blocks > 1 ? LMG_CUDA_NUM_THREADS : n;
+      unsigned blocks =  LMG_GET_BLOCKS(n);
+      unsigned nthreads = LMG_GET_THREADS(n);
       set_atom_gradients<<<blocks, nthreads>>>(*this, grid_origin, coords, type_index, radii, grid, atom_gradients);
-
     }
 
     template void GridMaker::backward(float3 grid_center, const Grid<float, 2, true>& coords,
@@ -605,8 +604,8 @@ namespace libmolgrid {
       float3 grid_origin = get_grid_origin(grid_center);
 
 
-      unsigned blocks = n / LMG_CUDA_NUM_THREADS + bool(n % LMG_CUDA_NUM_THREADS); //at least one if n > 0
-      unsigned nthreads = blocks > 1 ? LMG_CUDA_NUM_THREADS : n;
+      unsigned blocks = LMG_GET_BLOCKS(n);
+      unsigned nthreads = LMG_GET_THREADS(n);
       if(ntypes >= 1024)
         throw std::invalid_argument("Really? More than 1024 types?  The GPU can't handle that.  Are you sure this is a good idea?  I'm giving up.");
       dim3 B(blocks, ntypes, 1); //in theory could support more 1024 by using z, but really..
@@ -724,8 +723,8 @@ namespace libmolgrid {
 
       float3 grid_origin = get_grid_origin(grid_center);
 
-      unsigned blocks =  n/LMG_CUDA_NUM_THREADS + bool(n%LMG_CUDA_NUM_THREADS); //at least one if n > 0
-      unsigned nthreads = blocks > 1 ? LMG_CUDA_NUM_THREADS : n;
+      unsigned blocks =  LMG_GET_BLOCKS(n);
+      unsigned nthreads = LMG_GET_THREADS(n);
       set_atom_relevance<<<blocks, nthreads>>>(*this, grid_origin, coords, type_index, radii, density, diff, relevance);
     }
 
