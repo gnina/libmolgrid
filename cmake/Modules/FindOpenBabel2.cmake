@@ -72,4 +72,3 @@ message("Setting openbabel found ${OPENBABEL2_FOUND}")
 
   mark_as_advanced(OPENBABEL2_INCLUDE_DIR OPENBABEL2_LIBRARIES)
 endif()
-
