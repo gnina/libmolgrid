@@ -132,7 +132,7 @@ def test_radius_multiples():
         assert line[i] == approx(quad[i],abs=1e-5)        
         
     #funkier grid
-    g2 = molgrid.GridMaker(resolution=.1,dimension=6.0,radius_scale=0.5,gassian_radius_multiple=3.0)
+    g2 = molgrid.GridMaker(resolution=.1,dimension=6.0,radius_scale=0.5,gaussian_radius_multiple=3.0)
     cpugrid = molgrid.MGrid4f(*shape)
     gpugrid = molgrid.MGrid4f(*shape)
     g2.forward((0,0,0),coords, cpugrid.cpu())
