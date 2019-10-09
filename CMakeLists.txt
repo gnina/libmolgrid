@@ -28,7 +28,13 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 #dependencies
 find_package(CUDA REQUIRED)
 find_package(Boost REQUIRED COMPONENTS regex unit_test_framework program_options system filesystem iostreams)
-find_package(OpenBabel2 REQUIRED)
+find_package(OpenBabel2)
+if(${OPENBABEL2_FOUND})
+  include_directories(SYSTEM ${OPENBABEL2_INCLUDE_DIR})
+else()
+  find_package(OpenBabel3 REQUIRED)
+  include_directories(SYSTEM ${OPENBABEL3_INCLUDE_DIR})
+endif()
 
 # configure a header file to pass some of the CMake settings
 # to the source code
@@ -67,7 +73,6 @@ include_directories("${PROJECT_BINARY_DIR}")
 include_directories(${CMAKE_SOURCE_DIR}/include)
 include_directories(${PROJECT_BINARY_DIR}/include)
 include_directories(SYSTEM ${CUDA_INCLUDE_DIRS})
-include_directories(SYSTEM ${OPENBABEL2_INCLUDE_DIR})
 include_directories(SYSTEM ${Boost_INCLUDE_DIR})
 
 add_subdirectory(src)
