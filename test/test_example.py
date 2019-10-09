@@ -39,3 +39,23 @@ def test_example_merge():
     #test sliced merging
     c5 = ex.merge_coordinates(1,False)
     assert c5.coords.tonumpy().shape == (8,3) #no hydrogens in this slice
+    
+def test_examplevec():
+    m = pybel.readstring('smi','c1ccccc1CO')
+    m.addh()
+    m.make3D()
+    
+    c = molgrid.CoordinateSet(m,molgrid.ElementIndexTyper())
+    c2 = molgrid.CoordinateSet(m)
+
+    c2.make_vector_types() #this should not screw up index types
+    
+    ex = molgrid.Example()
+    ex.coord_sets.append(c)
+    ex.labels.append(0)
+    
+    ex2 = molgrid.Example()
+    ex2.coord_sets.append(c2)
+    ex2.labels.append(1)
+    
+    evec = molgrid.ExampleVec([ex,ex2])    

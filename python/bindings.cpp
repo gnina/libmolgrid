@@ -424,6 +424,13 @@ MAKE_ALL_GRIDS()
       .def(vector_indexing_suite<std::vector<CoordinateSet> >());
 
   class_<std::vector<Example> >("ExampleVec")
+      .def("__init__",make_constructor(+[](list l) {
+          if(list_is_vec<Example>(l)) {
+            return std::make_shared<std::vector<Example> >(list_to_vec<Example>(l));
+          } else { //invalid
+            throw std::invalid_argument("Need list of examples for ExampleVec");
+          }
+        }, default_call_policies()))
       .def(vector_indexing_suite<std::vector<Example> >())
       .def("extract_labels", +[](const std::vector<Example>& self, Grid<float, 2, false> out) { Example::extract_labels(self, out);})
       .def("extract_labels", +[](const std::vector<Example>& self, Grid<float, 2, true> out) { Example::extract_labels(self, out);})
@@ -710,6 +717,7 @@ MAKE_ALL_GRIDS()
       .def("num_labels", &ExampleProvider::num_labels)
       .def("settings", &ExampleProvider::settings,return_value_policy<copy_const_reference>())
       .def("type_size", &ExampleProvider::type_size)
+      .def("size", &ExampleProvider::size)
       .def("get_type_names", &ExampleProvider::get_type_names)
       .def("next", static_cast<Example (ExampleProvider::*)()>(&ExampleProvider::next))
       .def("next_batch", static_cast< std::vector<Example> (ExampleProvider::*)(unsigned)>(&ExampleProvider::next_batch),
