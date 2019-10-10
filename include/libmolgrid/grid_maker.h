@@ -119,7 +119,7 @@ class GridMaker {
      */
     template <typename Dtype>
     void forward(float3 grid_center, const CoordinateSet& in, Grid<Dtype, 4, false>& out) const {
-      if(in.has_vector_types()) {
+      if(in.has_vector_types() && in.size() > 0) {
         forward(grid_center, in.coords.cpu(), in.type_vector.cpu(), in.radii.cpu(), out);
       } else {
         forward(grid_center, in.coords.cpu(), in.type_index.cpu(), in.radii.cpu(), out);
@@ -133,7 +133,7 @@ class GridMaker {
      */
     template <typename Dtype>
     void forward(float3 grid_center, const CoordinateSet& in, Grid<Dtype, 4, true>& out) const {
-      if(in.has_vector_types()) {
+      if(in.has_vector_types() && in.size() > 0) {
         forward(grid_center, in.coords.gpu(), in.type_vector.gpu(), in.radii.gpu(), out);
       } else {
         forward(grid_center, in.coords.gpu(), in.type_index.gpu(), in.radii.gpu(), out);
