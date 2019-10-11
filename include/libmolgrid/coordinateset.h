@@ -76,11 +76,11 @@ struct CoordinateSet {
   template <bool isCUDA>
   size_t copyTo(Grid<float, 2, isCUDA>& c, Grid<float, 2, isCUDA>& t, Grid<float, 1, isCUDA>& r) const;
 
-  /// return true if index types are available (or if empty)
-  bool has_indexed_types() const { return type_index.size() > 0 || type_vector.size() == 0; }
+  /// return true if index types are available (or no atoms)
+  bool has_indexed_types() const { return type_index.size() > 0 || coords.size() == 0; }
 
-  /// return true if vector types are available
-  bool has_vector_types() const { return type_vector.size() > 0; }
+  /// return true if vector types are available (or no atoms)
+  bool has_vector_types() const { return type_vector.size() > 0 || coords.size() == 0;  }
 
   /** \brief convert index types to vector types in-place
    * @param include_dummy_type - if true will create an additional type at end (has zero radii if type radii are provided is true)

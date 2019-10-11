@@ -190,10 +190,20 @@ CoordinateSet Example::merge_coordinates(unsigned start, bool unique_index_types
 
   //if all sets are vector types, merge as such - empty sets are ambiguous so have to check all
   bool has_vector_types = true;
+  bool has_index_types = true;
   for(unsigned i = start, n = sets.size(); i < n; i++) {
-    if(!sets[i].has_vector_types())
-      has_vector_types = false;
+    if(sets[i].size() > 0) {
+      if(!sets[i].has_vector_types())
+        has_vector_types = false;
+      if(!sets[i].has_indexed_types())
+        has_index_types = false;
+    }
   }
+
+  if(!has_index_types && !has_vector_types) {
+    throw invalid_argument("Inconsistent typing schemes in merge_coordinates");
+  }
+
   if(sets.size() <= start) {
     return CoordinateSet();
   } else if(sets.size() == start+1) {

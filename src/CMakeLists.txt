@@ -39,18 +39,21 @@ set( LIBMOLGRID_HEADERS
 #include_directories (${Boost_INCLUDE_DIRS})
 #include_directories(${OPENBABEL2_INCLUDE_DIR})
 
-add_library(libmolgrid_shared SHARED ${LIBMOLGRID_HEADERS} ${LIBMOLGRID_SOURCES})
-SET_TARGET_PROPERTIES(libmolgrid_shared PROPERTIES OUTPUT_NAME molgrid CUDA_SEPARABLE_COMPILATION OFF)
+if(BUILD_SHARED)
+    add_library(libmolgrid_shared SHARED ${LIBMOLGRID_HEADERS} ${LIBMOLGRID_SOURCES})
+    SET_TARGET_PROPERTIES(libmolgrid_shared PROPERTIES OUTPUT_NAME molgrid CUDA_SEPARABLE_COMPILATION OFF)
+    target_link_libraries(libmolgrid_shared ${OPENBABEL2_LIBRARIES} ${Boost_LIBRARIES})
+    install(TARGETS libmolgrid_shared DESTINATION lib)
+endif()
 
-add_library(libmolgrid_static STATIC ${LIBMOLGRID_HEADERS} ${LIBMOLGRID_SOURCES})
-SET_TARGET_PROPERTIES(libmolgrid_static PROPERTIES OUTPUT_NAME molgrid CUDA_SEPARABLE_COMPILATION OFF)
+if(BUILD_STATIC)
+    add_library(libmolgrid_static STATIC ${LIBMOLGRID_HEADERS} ${LIBMOLGRID_SOURCES})
+    SET_TARGET_PROPERTIES(libmolgrid_static PROPERTIES OUTPUT_NAME molgrid CUDA_SEPARABLE_COMPILATION OFF)
+    target_link_libraries(libmolgrid_static ${OPENBABEL2_LIBRARIES} ${Boost_LIBRARIES})
+    #install libs
+    install(TARGETS libmolgrid_static DESTINATION lib)
+endif()
 
-target_link_libraries(libmolgrid_shared ${OPENBABEL2_LIBRARIES} ${Boost_LIBRARIES})
-target_link_libraries(libmolgrid_static ${OPENBABEL2_LIBRARIES} ${Boost_LIBRARIES})
-
-#install libs
-install(TARGETS libmolgrid_shared DESTINATION lib)
-install(TARGETS libmolgrid_static DESTINATION lib)
 
 #install headers
 install(FILES ${LIBMOLGRID_HEADERS} ${PROJECT_BINARY_DIR}/include/libmolgrid/config.h DESTINATION include/libmolgrid)
