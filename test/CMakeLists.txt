@@ -26,11 +26,14 @@ foreach(testSrc ${TEST_SRCS})
 
         #Add compile target
         add_executable(${testName} ${testSrc})
-
-		target_compile_definitions(${testName} PRIVATE "BOOST_TEST_DYN_LINK=1")
+        target_compile_definitions(${testName} PRIVATE "BOOST_TEST_DYN_LINK=1")
 
         #link to Boost libraries AND your targets and dependencies
-        target_link_libraries(${testName} libmolgrid_static ${Boost_LIBRARIES} ${CUDA_LIBRARIES})
+        if(BUILD_STATIC)
+           target_link_libraries(${testName} libmolgrid_static ${Boost_LIBRARIES} ${CUDA_LIBRARIES})
+        else()
+           target_link_libraries(${testName} libmolgrid_shared ${Boost_LIBRARIES} ${CUDA_LIBRARIES})
+        endif()
 
         #Finally add it to test execution -
 
