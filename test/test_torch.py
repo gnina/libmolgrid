@@ -197,12 +197,9 @@ def test_coords2grid():
     types.data[...] = 0
     types.data[:,10] = 1
 
-    batch_radii = torch.tensor(np.tile(radii, (batch_size, 1)), dtype=torch.float32,  device='cuda')
-    
-    with pytest.raises(ValueError):
-        grid_gen = c2grid(coords.unsqueeze(0), types.unsqueeze(0)[:,:,:-1], batch_radii)
+    batch_radii = torch.tensor(np.tile(radii, (batch_size, 1)), dtype=torch.float32,  device='cuda')    
 
-    grid_gen = c2grid(coords.unsqueeze(0), types.unsqueeze(0)[:,:,:-1].clone(), batch_radii)
+    grid_gen = c2grid(coords.unsqueeze(0), types.unsqueeze(0)[:,:,:-1], batch_radii)
     
     assert float(grid_gen[0][10].sum()) == approx(float(grid_gen.sum()))
     assert grid_gen.sum() > 0
