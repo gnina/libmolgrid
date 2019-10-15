@@ -62,10 +62,10 @@ struct Example {
     bool seqcont = false; ///for grouped inputs, true if not first member of group
 
     /// The total number of atom across all sets
-    size_t coordinate_size() const;
+    size_t num_coordinates() const;
 
     /// The maximum number of types across all sets - if unique_index_types is true, each set gets different type ids
-    size_t type_size(bool unique_index_types=true) const;
+    size_t num_types(bool unique_index_types=true) const;
 
     /// Accumulate sum of each type class into sum
     template<bool isCUDA>
@@ -128,6 +128,12 @@ struct Example {
 
     /// Convert coordinate sets to vector types
     void make_vector_types() { for(unsigned i = 0, n = sets.size(); i < n; i++) { sets[i].make_vector_types(); } }
+
+    /// Return true if all coord_sets >= start have vector types (or is empty)
+    bool has_vector_types(unsigned start = 0) const;
+
+    /// Return true if all coord_sets >= start have index types (or is empty)
+    bool has_index_types(unsigned start = 0) const;
 };
 
 /** \brief a reference to a single example - the parsed line.  This is distinct from an

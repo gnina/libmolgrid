@@ -140,7 +140,7 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<std
     throw std::invalid_argument("Types and coordinates are of different sizes");
   }
   if(N != r.size() && max_type != r.size()) {
-    throw std::invalid_argument("Radius and coordinates/types are of different sizes");
+    throw std::invalid_argument("Radius and coordinates/types are of different sizes: "+itoa(N)+" "+itoa(r.size())+" "+itoa(max_type));
   }
 
   //copy data
@@ -184,8 +184,6 @@ CoordinateSet::CoordinateSet(const CoordinateSet& rec, const CoordinateSet& lig,
 ///convert index types to vector types in-place
 void CoordinateSet::make_vector_types(bool include_dummy_type, const std::vector<float>& type_radii) {
   unsigned N = type_index.size();
-
-  if(N == 0) return; //empty set, do nothing
 
   if(type_radii.size() > 0 && type_radii.size() != max_type) {
     throw invalid_argument("Type radii size " + itoa(type_radii.size()) + " does not equal max type "+itoa(max_type));

@@ -21,8 +21,8 @@ def test_example_merge():
     ex = molgrid.Example()
     ex.coord_sets.append(c)
     ex.coord_sets.append(c2)
-    assert ex.type_size() == (c.max_type + c2.max_type)
-    assert ex.coordinate_size() == (c.coords.dimension(0)+c2.type_index.size())
+    assert ex.num_types() == (c.max_type + c2.max_type)
+    assert ex.num_coordinates() == (c.coords.dimension(0)+c2.type_index.size())
     
     c3 = ex.merge_coordinates()
     assert c3.coords.tonumpy().shape == (24,3)

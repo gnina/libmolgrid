@@ -117,6 +117,12 @@ struct Grid_from_python {
         } else {
           return false; //don't recognize
         }
+        if(hasattr(t,"is_contiguous")) {
+          if(!t.attr("is_contiguous")()) {
+            throw std::invalid_argument("Attempt to use non-contiguous tensor in molgrid.  Call clone first.");
+            return false;
+          }
+        }
         return true;
       }
       return false;

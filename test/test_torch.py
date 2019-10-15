@@ -2,8 +2,11 @@ import pytest
 import molgrid
 import torch
 import os
+import numpy as np
 from molgrid import tensor_as_grid, Coords2GridFunction, BatchedCoords2GridFunction
 from pytest import approx
+import torch.nn as nn
+import torch.nn.functional as F
 
 '''Test ability to manipulate data in torch tensors'''
 
@@ -172,3 +175,49 @@ def test_batched_function():
         
         assert vt.grad[1][0].cpu().numpy() == approx([0.60653,-0.60653,0],abs=1e-4)
         assert vt.grad[1][1].cpu().numpy() == approx([0.60653,-0.60653,0],abs=1e-4)    
+
+def test_coords2grid():
+    gmaker = molgrid.GridMaker(resolution=0.5,
+                           dimension=23.5,
+                           radius_scale=1,
+                           radius_type_indexed=True)
+    n_types = molgrid.defaultGninaLigandTyper.num_types()
+    radii = np.array(list(molgrid.defaultGninaLigandTyper.get_type_radii()),np.float32)
+    dims = gmaker.grid_dimensions(n_types)
+    grid_size = dims[0] * dims[1] * dims[2] * dims[3]
+
+    c2grid = molgrid.Coords2Grid(gmaker, center=(0,0,0))
+    n_atoms = 2
+    batch_size = 1
+    coords = nn.Parameter(torch.randn(n_atoms, 3,device='cuda'))
+    types = nn.Parameter(torch.randn(n_atoms, n_types+1,device='cuda'))
+    
+    coords.data[0,:] = torch.tensor([ 1,0,0])
+    coords.data[1,:] = torch.tensor([-1,0,0])
+    types.data[...] = 0
+    types.data[:,10] = 1
+
+    batch_radii = torch.tensor(np.tile(radii, (batch_size, 1)), dtype=torch.float32,  device='cuda')
+    
+    with pytest.raises(ValueError):
+        grid_gen = c2grid(coords.unsqueeze(0), types.unsqueeze(0)[:,:,:-1], batch_radii)
+
+    grid_gen = c2grid(coords.unsqueeze(0), types.unsqueeze(0)[:,:,:-1].clone(), batch_radii)
+    
+    assert float(grid_gen[0][10].sum()) == approx(float(grid_gen.sum()))
+    assert grid_gen.sum() > 0
+    
+    target = torch.zeros_like(grid_gen)
+    target[0,:,24,24,24] = 1000.0
+        
+    grad_coords = molgrid.MGrid2f(n_atoms,3)
+    grad_types = molgrid.MGrid2f(n_atoms,n_types)
+    r = molgrid.MGrid1f(len(radii))
+    r.copyFrom(radii)
+    
+    grid_loss = F.mse_loss(target, grid_gen)
+    grid_loss.backward()
+    print(grid_loss)
+    print(coords.grad.detach().cpu().numpy())
+
+

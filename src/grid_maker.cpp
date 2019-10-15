@@ -410,11 +410,18 @@ void GridMaker::backward(float3 grid_center, const Grid<float, 2, false>& coords
   if(n != atom_gradients.dimension(0)) throw std::invalid_argument("Gradient dimension doesn't equal number of coordinates");
   if(n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
   if(coords.dimension(1) != 3) throw std::invalid_argument("Need x,y,z,r for coord_radius");
+  for(unsigned i = 1; i <= 3; i++) {
+    if(diff.dimension(i) != dim)
+      throw std::invalid_argument("diff does not have correct dimension "+itoa(i)+": "+itoa(diff.dimension(i))+" vs "+itoa(dim));
+  }
   float3 grid_origin = get_grid_origin(grid_center);
 
   for (unsigned i = 0; i < n; ++i) {
     int whichgrid = round(type_index[i]); // this is which atom-type channel of the grid to look at
     if (whichgrid >= 0) {
+      if((unsigned)whichgrid >= diff.dimension(0)) {
+        throw std::invalid_argument("Incorrect channel size for diff: "+itoa(whichgrid)+" vs "+itoa(diff.dimension(0)));
+      }
       float3 agrad = calc_atom_gradient_cpu(grid_origin, coords[i], diff[whichgrid], radii[i]);
       atom_gradients(i,0) = agrad.x;
       atom_gradients(i,1) = agrad.y;

@@ -202,17 +202,25 @@ def test_make_vector_types_ex_provider(capsys):
 
     c = b[0].merge_coordinates()
     tv = c.type_vector.tonumpy()
-    assert tv.shape == (10,14) #no dummy type
+    assert tv.shape == (10,14) 
     assert tv[0].sum() == 1.0
     assert tv[0][8] == 1.0
+    
+    
+    e2 = molgrid.ExampleProvider(data_root=datadir+"/structs",make_vector_types=True)
+    e2.populate(fname)
+    b2 = e2.next_batch(batch_size)
+    c2 = b2[0].merge_coordinates(unique_index_types=True)
+    tv2 = c2.type_vector.tonumpy()
+    assert tv2.shape == (10,28)
     
     gmaker.forward(b, mgrid)
     
     assert b[0].coord_sets[0].has_vector_types()
     assert b[0].coord_sets[1].has_vector_types()
     
-    assert b[0].type_size() == 14
-    
+    assert b[0].num_types() == 14
+        
 def test_type_sizing():
     fname = datadir+"/ligonly.types"
     e = molgrid.ExampleProvider(data_root=datadir+"/structs",make_vector_types=True)
@@ -220,7 +228,7 @@ def test_type_sizing():
     batch_size = 10
     b = e.next_batch(batch_size)
     #provider and example should agree on number of types, even if one coordset is empty
-    assert e.type_size() == b[0].type_size()
+    assert e.num_types() == b[0].num_types()
     
 def test_vector_sum_types():
     fname = datadir+"/ligonly.types"
@@ -228,7 +236,7 @@ def test_vector_sum_types():
     e.populate(fname)
     batch_size = 10
     b = e.next_batch(batch_size)
-    sum = molgrid.MGrid2f(batch_size, e.type_size())
+    sum = molgrid.MGrid2f(batch_size, e.num_types())
     b.sum_types(sum)
     sum2 = np.zeros(sum.shape,np.float32)
     b.sum_types(sum2)
@@ -242,7 +250,7 @@ def test_vector_sum_types():
     e = molgrid.ExampleProvider(molgrid.NullIndexTyper(), molgrid.defaultGninaLigandTyper, data_root=datadir+"/structs",make_vector_types=True)
     e.populate(fname)
     b = e.next_batch(batch_size)
-    sum = molgrid.MGrid2f(batch_size, e.type_size())
+    sum = molgrid.MGrid2f(batch_size, e.num_types())
     b.sum_types(sum)
     np.testing.assert_allclose(sum[0].tonumpy(), [ 2., 3., 0.,
        0., 0., 0., 0., 0., 2., 2., 1., 0., 0., 0.], atol=1e-5)

@@ -47,7 +47,7 @@ class CoordCache {
     void set_coords(const char *fname, CoordinateSet& coord);
 
     /// return the number of types (channels) each example will have
-    size_t type_size() const { return typer->num_types(); }
+    size_t num_types() const { return typer->num_types(); }
 
     std::vector<std::string> get_type_names() const { return typer->get_type_names(); }
 };

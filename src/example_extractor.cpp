@@ -57,20 +57,20 @@ size_t ExampleExtractor::count_types(unsigned n) const {
   for(unsigned i = 0; i < n; i++) {
     unsigned t = i;
     if(t >= coord_caches.size()) t = coord_caches.size()-1;
-    ret += coord_caches[t].type_size();
+    ret += coord_caches[t].num_types();
   }
   if(duplicate_poses && coord_caches.size() > 2) {
-    size_t rsize = coord_caches[0].type_size();
+    size_t rsize = coord_caches[0].num_types();
     size_t dups = coord_caches.size() - 2;
     ret += rsize*dups;
   }
   return ret;
 }
-size_t ExampleExtractor::type_size() const {
+size_t ExampleExtractor::num_types() const {
   return count_types(coord_caches.size());
 }
 
-size_t ExampleExtractor::type_size(const ExampleRef& ref) const {
+size_t ExampleExtractor::num_types(const ExampleRef& ref) const {
   return count_types(ref.files.size());
 }
 
