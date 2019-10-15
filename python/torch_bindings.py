@@ -103,6 +103,12 @@ class Coords2Grid(torch.nn.Module):
         self.center = center
         
     def forward(self, coords, types, radii):
+        if not coords.is_contiguous():
+            coords = coords.clone()
+        if not types.is_contiguous():
+            types = types.clone()
+        if not radii.is_contiguous():
+            radii == radii.clone()
         if len(coords.shape) == 3 and len(types.shape) == 3 and len(radii.shape) == 2: #batched
             return BatchedCoords2GridFunction.apply(self.gmaker, self.center, coords, types, radii)
         elif len(coords.shape) == 2 and len(types.shape) == 2 and len(radii.shape) == 1:
