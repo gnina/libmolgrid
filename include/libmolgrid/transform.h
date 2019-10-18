@@ -40,6 +40,7 @@ class Transform {
         : Q(q), center(c), translate(t) {
     }
 
+    // Docstring_Transform
     /* \brief Create random transform.
      * @param[in] c  Center of rotation
      * @param[in] random_translate Amount (+/-) to randomly translte
