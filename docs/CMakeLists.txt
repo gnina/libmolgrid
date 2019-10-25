@@ -11,7 +11,7 @@ IF(BUILD_DOCS)
     ENDIF(DOT)
     # This processes our Doxyfile.in and substitutes paths to generate
     # a final Doxyfile
-    CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/doc/Doxyfile.in
+    CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/docs/Doxyfile.in
       ${PROJECT_SOURCE_DIR}/Doxyfile
     )
     # This creates a new target to build documentation.

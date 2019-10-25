@@ -1,0 +1,9 @@
+source "https://rubygems.org"
+gem "minima", "~> 2.5"
+gem "github-pages", "201", group: :jekyll_plugins
+group :jekyll_plugins do
+  gem "jekyll-feed", "~> 0.11"
+end
+
+# Plugin for building Jekyll sites with any public GitHub-hosted theme
+gem "jekyll-remote-theme"
