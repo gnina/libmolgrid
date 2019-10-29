@@ -296,5 +296,18 @@ BOOST_AUTO_TEST_CASE(forward_vec_types) {
   }
 
   BOOST_CHECK_EQUAL(max, 1.0); //make sure not zero
+
+  //check that types go in right channel
+  vector<float> ra2 { 2.0, 2.0, 2.0 };
+  CoordinateSet coords(ca,ta, ra2);
+  gt.forward(float3{0,0,0}, coords, outt.cpu());
+  for(unsigned i = 0; i < dim; i++)
+    for(unsigned j = 0; j < dim; j++)
+      for(unsigned k = 0; k < dim; k++) {
+        BOOST_CHECK_SMALL(outt(0,i,j,k)-outt(1,i,j,k),TOL);
+        BOOST_CHECK_SMALL(outt(1,i,j,k)-outt(2,i,j,k),TOL);
+      }
+
+
 }
 

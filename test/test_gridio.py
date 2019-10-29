@@ -21,7 +21,7 @@ def test_dx():
     assert np.min(c.type_index.tonumpy()) >= 0
 
     gmaker = molgrid.GridMaker()
-    dims = gmaker.grid_dimensions(e.type_size()) # this should be grid_dims or get_grid_dims
+    dims = gmaker.grid_dimensions(e.num_types()) # this should be grid_dims or get_grid_dims
     center = tuple(c.center())
 
     mgridout = molgrid.MGrid4f(*dims)    

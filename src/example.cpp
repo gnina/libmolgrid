@@ -19,7 +19,7 @@ using namespace std;
 
 StringCache string_cache;
 
-size_t Example::coordinate_size() const {
+size_t Example::num_coordinates() const {
   unsigned N = 0;
   for(unsigned i = 0, n = sets.size(); i < n; i++) {
     N += sets[i].coords.dimension(0);
@@ -27,7 +27,7 @@ size_t Example::coordinate_size() const {
   return N;
 }
 
-size_t Example::type_size(bool unique_index_types) const {
+size_t Example::num_types(bool unique_index_types) const {
   unsigned maxt = 0;
   for(unsigned i = 0, n = sets.size(); i < n; i++) {
     if(unique_index_types)
@@ -69,7 +69,7 @@ void Example::merge_coordinates(Grid2f& c, Grid1f& t, Grid1f& r, unsigned start,
 }
 
 void Example::merge_coordinates(std::vector<float3>& coords, std::vector<float>& types, std::vector<float>& radii, unsigned start, bool unique_index_types) const {
-  unsigned N = coordinate_size();
+  unsigned N = num_coordinates();
 
   coords.clear();
   types.clear();
@@ -146,19 +146,24 @@ void Example::merge_coordinates(std::vector<float3>& coords, std::vector<std::ve
 
   if(sets.size() <= start) return;
 
-  unsigned N = coordinate_size();
-  unsigned maxt = sets[start].max_type;
-  //validate type vector sizes
+  unsigned N = num_coordinates();
+  unsigned maxt = 0;
+  //validate type vector sizes - if unique_index_types is true, maxt is the sum of
+  //the number of types, otherwise it is the max
   for(unsigned i = start, n = sets.size(); i < n; i++) {
+    if(unique_index_types)
+      maxt += sets[i].max_type;
+    else
+      maxt = max(maxt,sets[i].max_type);
+
     if(sets[i].coords.dimension(0) == 0)
       continue;
+
     if(!sets[i].has_vector_types())
       throw logic_error("Coordinate sets do not have compatible vector types for merge.");
-
-    if(maxt == 0) //skip over empty sets
-      maxt = sets[i].max_type;
-    if(sets[i].type_vector.dimension(1) != maxt)
-      throw logic_error("Coordinate sets do not have compatible sized vector types. "+itoa(sets[i].type_vector.dimension(1)) + " vs " + itoa(maxt));
+    if(sets[i].max_type != sets[i].type_vector.dimension(1)) {
+      throw logic_error("Coordinate set "+itoa(i)+" does not have consistent max_type/vector type sizes");
+    }
   }
 
   coords.reserve(N);
@@ -166,41 +171,37 @@ void Example::merge_coordinates(std::vector<float3>& coords, std::vector<std::ve
   radii.reserve(N);
 
   //accumulate info
+  unsigned offset = 0;
   for(unsigned s = start, ns = sets.size(); s < ns; s++) {
     const CoordinateSet& CS = sets[s];
     unsigned n = CS.coords.dimension(0);
-    if(n == 0) continue;
 
     //todo: memcpy this
     for(unsigned i = 0; i < n; i++) {
       auto cr = CS.coords[i];
       coords.push_back(make_float3(cr[0],cr[1],cr[2]));
 
-      types.push_back(vector<float>(maxt));
+      types.push_back(vector<float>(maxt, 0.0));
       vector<float>& tvec = types.back();
-      memcpy(&tvec[0], CS.type_vector[i].cpu().data(), sizeof(float)*maxt);
+
+      if(offset+CS.type_vector[i].size() > tvec.size())
+        throw logic_error("Incompatible vector sizes in merge_coordinates");
+      memcpy(&tvec[0]+offset, CS.type_vector[i].cpu().data(), sizeof(float)*CS.type_vector[i].size());
     }
     for(unsigned i = 0, nr = CS.radii.size(); i < nr; i++) {
       radii.push_back(CS.radii[i]);
+    }
+    if(unique_index_types) {
+      offset += sets[s].max_type;
     }
   }
 }
 
 CoordinateSet Example::merge_coordinates(unsigned start, bool unique_index_types) const {
 
-  //if all sets are vector types, merge as such - empty sets are ambiguous so have to check all
-  bool has_vector_types = true;
-  bool has_index_types = true;
-  for(unsigned i = start, n = sets.size(); i < n; i++) {
-    if(sets[i].size() > 0) {
-      if(!sets[i].has_vector_types())
-        has_vector_types = false;
-      if(!sets[i].has_indexed_types())
-        has_index_types = false;
-    }
-  }
-
-  if(!has_index_types && !has_vector_types) {
+  bool has_vec = has_vector_types();
+  bool has_ind = has_index_types();
+  if(!has_ind && !has_vec) {
     throw invalid_argument("Inconsistent typing schemes in merge_coordinates");
   }
 
@@ -209,14 +210,14 @@ CoordinateSet Example::merge_coordinates(unsigned start, bool unique_index_types
   } else if(sets.size() == start+1) {
     //copy data for consistency with multiple sets
     return sets[start].clone();
-  } else if(!has_vector_types) {
+  } else if(!has_vec) {
 
     vector<float3> coords;
     vector<float> types;
     vector<float> radii;
     merge_coordinates(coords, types, radii, start, unique_index_types);
 
-    return CoordinateSet(coords, types, radii, type_size(unique_index_types));
+    return CoordinateSet(coords, types, radii, num_types(unique_index_types));
 
   } else { //vector types
 
@@ -226,6 +227,28 @@ CoordinateSet Example::merge_coordinates(unsigned start, bool unique_index_types
     merge_coordinates(coords, types, radii, start, unique_index_types);
     return CoordinateSet(coords, types, radii);
   }
+}
+
+bool Example::has_vector_types(unsigned start) const {
+  //if all sets are vector types, merge as such - empty sets are ambiguous so have to check all
+  for(unsigned i = start, n = sets.size(); i < n; i++) {
+    if(sets[i].size() > 0) {
+      if(!sets[i].has_vector_types())
+        return false;
+    }
+  }
+  return true;
+}
+
+bool Example::has_index_types(unsigned start) const {
+  //if all sets are vector types, merge as such - empty sets are ambiguous so have to check all
+  for(unsigned i = start, n = sets.size(); i < n; i++) {
+    if(sets[i].size() > 0) {
+      if(!sets[i].has_indexed_types())
+        return false;
+    }
+  }
+  return true;
 }
 
 template <bool isCUDA>
@@ -332,7 +355,7 @@ ExampleRef::ExampleRef(const std::string& line, int numlabels, bool hasgroup) {
 
 template<bool isCUDA>
 void Example::sum_types(Grid<float, 1, isCUDA>& sum, bool unique_types) const {
-  unsigned NT = type_size(unique_types);
+  unsigned NT = num_types(unique_types);
   if(sum.dimension(0) != NT) {
     throw invalid_argument("Size of sum output doesn't match number of types in example: "+itoa(sum.dimension(0))+" vs "+itoa(NT));
   }

@@ -68,10 +68,10 @@ class ExampleExtractor {
     /// return the number of types (channels) each example will have
     /// Note: this is only accurate if types are explicitly setup.  Must provide an ExampleRef
     // if implicit typing is being used
-    virtual size_t type_size() const;
+    virtual size_t num_types() const;
 
     // return number types (channels) ref will produce
-    virtual size_t type_size(const ExampleRef& ref) const;
+    virtual size_t num_types(const ExampleRef& ref) const;
 
     ///return names of types for explicitly typed examples
     ///type names are prepended by coordinate set index

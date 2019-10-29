@@ -75,7 +75,7 @@ class ExampleProvider {
     ExampleRefProvider& get_provider() { return *provider; }
 
     ///number of types
-    size_t type_size() const { return extractor.type_size(); }
+    size_t num_types() const { return extractor.num_types(); }
     ///names of types (requires explicit typing)
     std::vector<std::string> get_type_names() const { return extractor.get_type_names(); }
     ///return number of examples

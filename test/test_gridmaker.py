@@ -84,7 +84,7 @@ def test_a_grid():
     assert 1.438691 == approx(mgridgpu.tonumpy().max())
     
     
-    dims = gmaker.grid_dimensions(e.type_size())
+    dims = gmaker.grid_dimensions(e.num_types())
     mgridout = molgrid.MGrid4f(*dims)    
     mgridgpu = molgrid.MGrid4f(*dims)   
     gmaker.forward(ex, mgridout.cpu())
@@ -184,11 +184,11 @@ def test_backwards():
    
 def test_vector_types():
     g1 = molgrid.GridMaker(resolution=.25,dimension=6.0)
-    c = np.array([[0,0,0]],np.float32)
-    t = np.array([0],np.float32)
-    vt = np.array([[1.0,0]],np.float32)
-    vt2 = np.array([[0.5,0.5]],np.float32)
-    r = np.array([1.0],np.float32)
+    c = np.array([[0,0,0],[2,0,0]],np.float32)
+    t = np.array([0,1],np.float32)
+    vt = np.array([[1.0,0],[0,1.0]],np.float32)
+    vt2 = np.array([[0.5,0.0],[0.0,0.5]],np.float32)
+    r = np.array([1.0,1.0],np.float32)
     coords = molgrid.CoordinateSet(molgrid.Grid2f(c),molgrid.Grid1f(t),molgrid.Grid1f(r),2)
     vcoords = molgrid.CoordinateSet(molgrid.Grid2f(c),molgrid.Grid2f(vt),molgrid.Grid1f(r))
     v2coords = molgrid.CoordinateSet(molgrid.Grid2f(c),molgrid.Grid2f(vt2),molgrid.Grid1f(r))
@@ -210,7 +210,7 @@ def test_vector_types():
     g = reference.tonumpy()
 
     np.testing.assert_allclose(g[0,:],v2g[0,:]*2.0,atol=1e-5)
-    np.testing.assert_allclose(g[0,:],v2g[1,:]*2.0,atol=1e-5)
+    np.testing.assert_allclose(g[1,:],v2g[1,:]*2.0,atol=1e-5)
     
     vgridgpu = molgrid.MGrid4f(*shape)
     v2gridgpu = molgrid.MGrid4f(*shape)
@@ -221,10 +221,94 @@ def test_vector_types():
     v2gpu = v2gridgpu.tonumpy()
     
     np.testing.assert_allclose(g[0,:],v2gpu[0,:]*2.0,atol=1e-5)
-    np.testing.assert_allclose(g[0,:],v2gpu[1,:]*2.0,atol=1e-5)    
+    np.testing.assert_allclose(g[1,:],v2gpu[1,:]*2.0,atol=1e-5)    
     
+    #create target grid with equal type density at 1,0,0
+    tc = molgrid.Grid2f(np.array([[1,0,0]],np.float32))
+    tv = molgrid.Grid2f(np.array([[0.5,0.5]],np.float32))
+    tr = molgrid.Grid1f(np.array([1.0],np.float32))
+    targetc = molgrid.CoordinateSet(tc,tv,tr)
+    tgrid = molgrid.MGrid4f(*shape)
+    g1.forward((0,0,0),targetc,tgrid.cpu())
     
+    gradc = molgrid.MGrid2f(2,3)
+    gradt = molgrid.MGrid2f(2,2)
+    g1.backward((0,0,0),vcoords,tgrid.cpu(),gradc.cpu(),gradt.cpu())
+    assert gradc[0,0] == approx(-gradc[1,0],abs=1e-4)
+    assert gradc[0,0] > 0
     
+    gradc.fill_zero()
+    gradt.fill_zero()
+    g1.backward((0,0,0),vcoords,tgrid.gpu(),gradc.gpu(),gradt.gpu())
+
+    assert gradc[0,0] == approx(-gradc[1,0],abs=1e-4)
+    assert gradc[0,0] > 0
+    
+
+    
+def test_vector_types_mol():
+    '''Test vector types with a real molecule'''
+    fname = datadir+"/small.types"
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs")    
+    e.populate(fname)
+    ex = e.next()
+        
+    ev = molgrid.ExampleProvider(data_root=datadir+"/structs",make_vector_types=True)
+    ev.populate(fname)
+    exv = ev.next()
+    
+    assert exv.has_vector_types()
+    assert not ex.has_vector_types()
+
+    gmaker = molgrid.GridMaker()
+    dims = gmaker.grid_dimensions(ex.num_types()) # this should be grid_dims or get_grid_dims    
+    
+    mgridout = molgrid.MGrid4f(*dims)    
+    mgridgpu = molgrid.MGrid4f(*dims)
+        
+    mgridoutv = molgrid.MGrid4f(*dims)    
+    mgridgpuv = molgrid.MGrid4f(*dims)
+    
+    d = np.ones(dims,np.float32)
+    diff = molgrid.MGrid4f(*dims)
+    diff.copyFrom(d)       
+    
+    gmaker.forward(ex, mgridout.cpu())
+    gmaker.forward(ex, mgridgpu.gpu())
+    center = ex.coord_sets[-1].center()
+    c = ex.merge_coordinates()
+    backcoordscpu = molgrid.MGrid2f(c.size(),3)
+    backcoordsgpu = molgrid.MGrid2f(c.size(),3)
+    
+    gmaker.backward(center, c, diff.cpu(), backcoordscpu.cpu())
+    gmaker.backward(center, c, diff.gpu(), backcoordsgpu.gpu())
+
+    #vector types
+    gmaker.set_radii_type_indexed(True)
+    
+    gmaker.forward(exv, mgridoutv.cpu())
+    gmaker.forward(exv, mgridgpuv.gpu())
+    
+    cv = exv.merge_coordinates()
+    vbackcoordscpu = molgrid.MGrid2f(cv.size(),3)
+    vbackcoordsgpu = molgrid.MGrid2f(cv.size(),3)
+    vbacktypescpu = molgrid.MGrid2f(cv.size(),cv.num_types())
+    vbacktypesgpu = molgrid.MGrid2f(cv.size(),cv.num_types())
+        
+    gmaker.backward(center, cv, diff.cpu(), vbackcoordscpu.cpu(),vbacktypescpu.cpu())
+    gmaker.backward(center, cv, diff.gpu(), vbackcoordsgpu.gpu(),vbacktypesgpu.gpu())
+    
+    np.testing.assert_allclose(mgridout.tonumpy(),mgridoutv.tonumpy(),atol=1e-5)
+    np.testing.assert_allclose(mgridgpu.tonumpy(),mgridgpuv.tonumpy(),atol=1e-5)
+    np.testing.assert_allclose(mgridoutv.tonumpy(),mgridgpuv.tonumpy(),atol=1e-5)
+
+    np.testing.assert_allclose(vbackcoordscpu.tonumpy(),backcoordscpu.tonumpy(),atol=1e-5)
+    np.testing.assert_allclose(vbackcoordsgpu.tonumpy(),backcoordsgpu.tonumpy(),atol=1e-5)
+    np.testing.assert_allclose(vbackcoordscpu.tonumpy(),vbackcoordsgpu.tonumpy(),atol=1e-4)
+    np.testing.assert_allclose(vbacktypescpu.tonumpy(),vbacktypesgpu.tonumpy(),atol=1e-4)
+
+    
+        
 def test_backward_vec():
     g1 = molgrid.GridMaker(resolution=.1,dimension=6.0)
     c = np.array([[1.0,0,0],[-1,-1,0]],np.float32)
