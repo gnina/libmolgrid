@@ -79,7 +79,7 @@ include_directories(SYSTEM ${Boost_INCLUDE_DIR})
 
 add_subdirectory(src)
 add_subdirectory(python)
-add_subdirectory(doc)
+add_subdirectory(docs)
 
 # enable testing
 include(CTest)
