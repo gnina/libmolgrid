@@ -6,7 +6,6 @@ baseurl: ""
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 plugins:
-  - jekyll-remote-theme
 
 # name of the software
 name: libmolgrid

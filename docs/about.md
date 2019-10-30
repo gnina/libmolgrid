@@ -1,6 +1,7 @@
 ---
 layout: default
 homepage: true
+title: About
 ---
 
 # About

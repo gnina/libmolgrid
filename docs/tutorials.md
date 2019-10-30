@@ -1,6 +1,7 @@
 ---
 layout: page
 homepage: false
+title: Tutorials
 ---
 
 # Tutorials

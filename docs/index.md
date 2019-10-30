@@ -2,6 +2,7 @@
 layout: page
 homepage: true
 hide: true
+title: libmolgrid
 ---
 
 # Overview

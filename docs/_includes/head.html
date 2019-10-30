@@ -2,11 +2,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>libmolgrid: Grid-based molecular modeling</title>
+<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.name | escape }} {{ site.project.version | escape }}{% endif %}</title>
 <meta name="description"
       content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
 
-<link rel="shortcut icon" href="favicon.ico?" type="image/x-icon">
+<link rel="shortcut icon" href="{{ "favicon.ico?" type="image/x-icon" | relative_url }}"" >
 
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ "/assets/css/docs.css"   | relative_url }}">
