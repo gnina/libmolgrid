@@ -1,0 +1,8 @@
+<map id="ExampleRefProvider" name="ExampleRefProvider">
+<area shape="rect" id="node2" href="$classlibmolgrid_1_1BalancedExampleRefProvider.html" title="sample uniformly from actives and decoys " alt="" coords="196,5,392,32"/>
+<area shape="rect" id="node3" href="$classlibmolgrid_1_1GroupedExampleRefProvider.html" title="group multiple grids into a single example For example, multiple frames of an MD simulation that will..." alt="" coords="199,57,389,98"/>
+<area shape="rect" id="node4" href="$classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider.html" title="Partition examples by receptor and sample k times uniformly from each receptor with k=2 and a balance..." alt="" coords="204,122,384,163"/>
+<area shape="rect" id="node5" href="$classlibmolgrid_1_1SamplingExampleRefProvider.html" title="sample with some specified probability between two providers that should already be initialized ..." alt="" coords="196,187,392,229"/>
+<area shape="rect" id="node6" href="$classlibmolgrid_1_1UniformExampleRefProvider.html" title="single array of examples, possibly shuffled " alt="" coords="200,253,388,280"/>
+<area shape="rect" id="node7" href="$classlibmolgrid_1_1ValueStratifiedExampleRefProfider.html" title="Partition examples by affinity and sample uniformly from each affinity bin affinities are binned by a..." alt="" coords="205,305,383,346"/>
+</map>

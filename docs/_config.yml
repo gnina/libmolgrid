@@ -5,8 +5,6 @@ description: >-
 baseurl: ""
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
-# Build settings
-# remote_theme: allejo/jekyll-docs-theme
 plugins:
   - jekyll-remote-theme
 
@@ -31,6 +29,11 @@ links:
         url: https://github.com/gnina/libmolgrid
       - title: Issues
         url: https://github.com/gnina/libmolgrid/issues?state=open
+
+# the documentation part of the site is special
+collections:
+    docs:
+      output: true
 
 ui:
     header:

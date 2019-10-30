@@ -1,5 +1,6 @@
 <header class="navbar navbar-static-top bs-docs-nav" id="top">
     <div class="container">
+        <img width="50" height="50" style="position:absolute;top:0;left:0;border:0;" src="images/favicon.png">
         <div class="navbar-header" role="banner">
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -21,11 +22,17 @@
                 {% endfor %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                {% for p in site.links.header %}
-                    <li>
-                        <a href="{{ p.url }}">{{ p.title }}</a>
-                    </li>
-                {% endfor %}
+                {% if p.title != "Docs" %}
+                  {% for p in site.links.header %}
+                      <li>
+                          <a href="{{ p.url }}">{{ p.title }}</a>
+                      </li>
+                  {% endfor %}
+                {% else %}
+                  {% for page in site.collections.docs %}
+                  <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                  {% endfor %}
+                {% endif %}
             </ul>
         </nav>
     </div>
