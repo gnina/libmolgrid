@@ -5,6 +5,19 @@ img {
   max-width: 100%;
 }
 
+.sidebar
+{
+	overflow-y: scroll;
+  width: 25%;
+  position: fixed;
+	top: 350px;
+  z-index: 1;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 0;
+  right: 15px;
+}
+
 .bs-docs-masthead {
   padding-top: 50px;
   padding-bottom: 40px;
