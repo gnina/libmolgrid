@@ -9,13 +9,13 @@ img {
 {
 	overflow-y: scroll;
   width: 25%;
-  position: fixed;
+  position: absolute;
 	top: 350px;
   z-index: 1;
   margin-top: 0;
   margin-bottom: 0;
   margin-right: 0;
-  right: 15px;
+  right: 20px;
 }
 
 .bs-docs-masthead {

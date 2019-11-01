@@ -61,3 +61,6 @@ markdown: kramdown
 exclude:
     - Gemfile
     - Gemfile.lock
+
+# store empty array to use as a convenience
+emptyArray: []
