@@ -1,5 +1,6 @@
 <map id="cartesian_grid.h" name="cartesian_grid.h">
-<area shape="rect" id="node2" href="$grid__io_8h.html" title="grid_io.h" alt="" coords="13,80,83,107"/>
-<area shape="rect" id="node4" href="$cartesian__grid_8cpp.html" title="cartesian_grid.cpp" alt="" coords="108,80,236,107"/>
-<area shape="rect" id="node3" href="$grid__io_8cpp.html" title="grid_io.cpp" alt="" coords="5,155,91,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="52,5,167,32"/>
+<area shape="rect" id="node2" href="$grid__io_8h.html" title=" " alt="" coords="13,80,83,107"/>
+<area shape="rect" id="node4" href="$cartesian__grid_8cpp.html" title=" " alt="" coords="108,80,236,107"/>
+<area shape="rect" id="node3" href="$grid__io_8cpp.html" title=" " alt="" coords="5,155,91,181"/>
 </map>

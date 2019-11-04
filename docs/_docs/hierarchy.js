@@ -51,9 +51,8 @@ var hierarchy =
     [ "Grid< Dtype, NumDims, true >", "classlibmolgrid_1_1Grid.html", null ],
     [ "GridMaker", "classlibmolgrid_1_1GridMaker.html", null ],
     [ "GninaIndexTyper::info", "structlibmolgrid_1_1GninaIndexTyper_1_1info.html", null ],
-    [ "ManagedGridBase< Dtype, NumDims >", "classlibmolgrid_1_1ManagedGridBase.html", [
-      [ "ManagedGrid< Dtype, NumDims >", "classlibmolgrid_1_1ManagedGrid.html", null ]
-    ] ],
+    [ "ManagedGrid< Dtype, NumDims >", "classlibmolgrid_1_1ManagedGrid.html", null ],
+    [ "ManagedGridBase< Dtype, NumDims >", "classlibmolgrid_1_1ManagedGridBase.html", null ],
     [ "ManagedGridBase< Dtype, 1 >", "classlibmolgrid_1_1ManagedGridBase.html", [
       [ "ManagedGrid< Dtype, 1 >", "classlibmolgrid_1_1ManagedGrid_3_01Dtype_00_011_01_4.html", null ]
     ] ],

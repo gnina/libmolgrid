@@ -1,5 +1,6 @@
 <map id="SubsettedGninaTyper" name="SubsettedGninaTyper">
-<area shape="rect" id="node2" href="$classlibmolgrid_1_1MappedAtomIndexTyper.html" title="MappedAtomIndexTyper\l\&lt; SubsetAtomMapper, GninaIndex\lTyper \&gt;" alt="" coords="5,155,228,211"/>
-<area shape="rect" id="node3" href="$classlibmolgrid_1_1AtomIndexTyper.html" title="Base class for generating numerical types along with atomic radius. " alt="" coords="57,80,176,107"/>
-<area shape="rect" id="node4" href="$classlibmolgrid_1_1AtomTyper.html" title="Base class for all atom typers. " alt="" coords="73,5,160,32"/>
+<area shape="rect" id="node1" title="subsetting gnina types, derived class for convenient initialization" alt="" coords="43,259,191,285"/>
+<area shape="rect" id="node2" href="$classlibmolgrid_1_1MappedAtomIndexTyper.html" title=" " alt="" coords="5,155,228,211"/>
+<area shape="rect" id="node3" href="$classlibmolgrid_1_1AtomIndexTyper.html" title="Base class for generating numerical types along with atomic radius." alt="" coords="57,80,176,107"/>
+<area shape="rect" id="node4" href="$classlibmolgrid_1_1AtomTyper.html" title="Base class for all atom typers." alt="" coords="73,5,160,32"/>
 </map>

@@ -1,4 +1,5 @@
 <map id="NullIndexTyper" name="NullIndexTyper">
-<area shape="rect" id="node2" href="$classlibmolgrid_1_1AtomIndexTyper.html" title="Base class for generating numerical types along with atomic radius. " alt="" coords="5,80,124,107"/>
-<area shape="rect" id="node3" href="$classlibmolgrid_1_1AtomTyper.html" title="Base class for all atom typers. " alt="" coords="21,5,108,32"/>
+<area shape="rect" id="node1" title="Always return an invalid type." alt="" coords="9,155,120,181"/>
+<area shape="rect" id="node2" href="$classlibmolgrid_1_1AtomIndexTyper.html" title="Base class for generating numerical types along with atomic radius." alt="" coords="5,80,124,107"/>
+<area shape="rect" id="node3" href="$classlibmolgrid_1_1AtomTyper.html" title="Base class for all atom typers." alt="" coords="21,5,108,32"/>
 </map>

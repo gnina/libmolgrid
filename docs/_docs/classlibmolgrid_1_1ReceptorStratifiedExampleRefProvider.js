@@ -7,8 +7,8 @@ var classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider =
     [ "setup", "classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider.html#a4fc01d736fe50cf5b977f755b675f11d", null ],
     [ "nextref", "classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider.html#ae630292b50e44deb19e001f322914934", null ],
     [ "size", "classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider.html#a126a73e6d140f9e2a7b795c20fa42f70", null ],
-    [ "setup", "classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider.html#a909e6a1cd55405d11fd6543e0ae9a582", null ],
-    [ "setup", "classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider.html#a909e6a1cd55405d11fd6543e0ae9a582", null ],
+    [ "setup", "classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider.html#a4fc01d736fe50cf5b977f755b675f11d", null ],
+    [ "setup", "classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider.html#a4fc01d736fe50cf5b977f755b675f11d", null ],
     [ "has_group", "classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider.html#aee411e008a9cb6d21a7f465c608b7028", null ],
     [ "check_batch_size", "classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider.html#a0f9ab6a4312a9937752f660a907b928a", null ],
     [ "populate", "classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider.html#a9c9f40c52d51bd365750f062aff89a95", null ]

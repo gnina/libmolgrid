@@ -1,4 +1,5 @@
 <map id="AtomIndexTypeMapper" name="AtomIndexTypeMapper">
-<area shape="rect" id="node2" href="$classlibmolgrid_1_1FileAtomMapper.html" title="Map atom types based on provided file. " alt="" coords="5,80,123,107"/>
-<area shape="rect" id="node3" href="$classlibmolgrid_1_1SubsetAtomMapper.html" title="Map atom types onto a provided subset. " alt="" coords="147,80,285,107"/>
+<area shape="rect" id="node1" title="Base class for mapping between type indices." alt="" coords="61,5,219,32"/>
+<area shape="rect" id="node2" href="$classlibmolgrid_1_1FileAtomMapper.html" title="Map atom types based on provided file." alt="" coords="5,80,123,107"/>
+<area shape="rect" id="node3" href="$classlibmolgrid_1_1SubsetAtomMapper.html" title="Map atom types onto a provided subset." alt="" coords="147,80,285,107"/>
 </map>

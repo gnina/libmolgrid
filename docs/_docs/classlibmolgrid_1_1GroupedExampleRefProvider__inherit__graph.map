@@ -1,3 +1,4 @@
 <map id="GroupedExampleRefProvider&lt; Provider &gt;" name="GroupedExampleRefProvider&lt; Provider &gt;">
-<area shape="rect" id="node2" href="$classlibmolgrid_1_1ExampleRefProvider.html" title="abstract class for storing training example references " alt="" coords="29,5,172,32"/>
+<area shape="rect" id="node1" title="group multiple grids into a single example For example, multiple frames of an MD simulation that will..." alt="" coords="5,80,196,121"/>
+<area shape="rect" id="node2" href="$classlibmolgrid_1_1ExampleRefProvider.html" title="abstract class for storing training example references" alt="" coords="29,5,172,32"/>
 </map>
