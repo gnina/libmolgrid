@@ -29,9 +29,11 @@ links:
       - title: Issues
         url: https://github.com/gnina/libmolgrid/issues?state=open
 
-# the documentation part of the site is special
+# documentation and tutorials are special
 collections:
     docs:
+      output: true
+    tutorials:
       output: true
 
 ui:
