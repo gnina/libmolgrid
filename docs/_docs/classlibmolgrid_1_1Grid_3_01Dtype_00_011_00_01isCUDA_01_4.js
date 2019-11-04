@@ -9,7 +9,7 @@ var classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4 =
     [ "Grid", "classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4.html#aef69ac40c00f38f7d637f1af03f8d63a", null ],
     [ "Grid", "classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4.html#a133c18fbd775019548ec10f171ec157a", null ],
     [ "check_index", "classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4.html#a18ec2ecbbcf47264c34b0fd73242b119", null ],
-    [ "dimensions", "classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4.html#a9f86f62cd29badc89d2c72631b63264d", null ],
+    [ "dimensions", "classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4.html#a483b22b3df988a8a315fe4525097cd91", null ],
     [ "dimension", "classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4.html#aa9b61e8668a98c2e264339c38e74065b", null ],
     [ "size", "classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4.html#acb2f16129f492fbb0aa93ae8b78402ec", null ],
     [ "data", "classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4.html#aaa5a68e1e5befda24cb7b3e422ba9cc5", null ],
