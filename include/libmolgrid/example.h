@@ -101,6 +101,7 @@ struct Example {
     void merge_coordinates(Grid2f& coords, Grid2f& type_vector, Grid1f& radii, unsigned start=0, bool unique_index_types=true) const;
     void merge_coordinates(std::vector<float3>& coords, std::vector<std::vector<float> >& type_vector, std::vector<float>& radii, unsigned start=0, bool unique_index_types=true) const;
 
+    // Docstring_Example_extract_labels
     /** \brief Extract labels from a vector of examples, as returned by ExampleProvider.next_batch.
      *
      * @param[in] examples  vector of examples
@@ -109,6 +110,7 @@ struct Example {
     template <bool isCUDA>
     static void extract_labels(const std::vector<Example>& examples, Grid<float, 2, isCUDA>& out);
 
+    // Docstring_Example_extract_label
     /** \brief Extract a specific label from a vector of examples, as returned by ExampleProvider.next_batch.
      *
      * @param[in] examples  vector of examples

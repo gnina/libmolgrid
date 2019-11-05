@@ -1,6 +1,6 @@
 # function to convert Doxygen-style comments into Python-style docstrings
 function(doxyToDoc DOCSTRING DOXYSTRING)
-  string(REGEX REPLACE "\brief " "" DOXSTRING"${DOXYSTRING}")
+  string(REGEX REPLACE "\brief " "" DOCSTRING "${DOXYSTRING}")
   if("${DOXYSTRING}" MATCHES "@param ([a-zA-Z0-9_]+) (.*)")
     set(DOXYSTRING ":param ${CMAKE_MATCH_1}: ${CMAKE_MATCH_2}")
   endif()
@@ -15,15 +15,11 @@ file(READ "bindings.cpp.in" CONTENTS)
 STRING(REGEX REPLACE ";" "\\\\;" CONTENTS "${CONTENTS}")
 string(REGEX REPLACE "\n" ";" CONTENTS "${CONTENTS}")
 
-# make map of object name to line in bindings file 
-# and list of object names for retrieval later
-set(INDEX "0")
+# make list of object names for retrieval later
 foreach(LINE ${CONTENTS})
-  if("${LINE}" MATCHES "\"@(Docstring_[a-zA-Z0-9_]+)@\"\);")
-    set(${CMAKE_MATCH_1} ${INDEX})
-    set(OBJS ${OBJECTS} ${CMAKE_MATCH_1})
+  if("${LINE}" MATCHES ".*\"@(Docstring_[a-zA-Z0-9_]+)@\"\);")
+    set(OBJS ${OBJS} ${CMAKE_MATCH_1})
   endif()
-  math(EXPR INDEX "${INDEX}+1")
 endforeach()
 
 # find the headers
@@ -37,35 +33,21 @@ foreach(fname ${HEADERS})
   string(REGEX REPLACE "\n" ";" HEADER_CONTENTS "${HEADER_CONTENTS}")
   foreach(LINE ${HEADER_CONTENTS})
     # extract Doxygen 
-    if("${LINE}" MATCHES "// (Docstring_[a-zA-Z0-9_]+)")
-      string(REGEX MATCH "@([a-z]+) (.*)" LINE "${LINE}")
+    if("${LINE}" MATCHES "[ \t]+// (Docstring_[a-zA-Z0-9_]+)")
       set(COPYING "1")
+      set(FUNC ${CMAKE_MATCH_1})
     # continuing extraction of previous comment
     elseif(${COPYING} AND "${LINE}" MATCHES "(/\*|\*)([\*]+)([a-zA-Z0-9@\\\.\(\)]+)")
-      set(DOCSTRING ${DOCSTRING} ${LINE})
+      doxyToDoc(DOCSTRING LINE)
     # insert into map, zero out string
     elseif(${COPYING})
       string(REPLACE ";" "\\n" DOCSTRING "${DOCSTRING}")
-      set(${CMAKE_MATCH_1}_DOXY ${DOCSTRING})
+      set(${FUNC} ${DOCSTRING})
       set(COPYING "0")
       set(DOCSTRING "")
     endif()
   endforeach()
 endforeach()
 
-# To convert doxygen comments into docstrings
-foreach(LINE ${DOXY_COMMENTS})
-  string(REGEX REPLACE "\brief " "" LINE "${LINE}")
-  if("${LINE}" MATCHES "@param ([a-zA-Z0-9_]+) (.*)")
-    set(LINE ":param ${CMAKE_MATCH_1}: ${CMAKE_MATCH_2}")
-  endif()
-  if ("${LINE}" MATCHES "@return (.+)")
-    set(LINE ":returns: ${CMAKE_MATCH_1}")
-  endif()
-  set(DOCSTRING ${DOCSTRING} ${LINE})
-endforeach()
-string(REPLACE ";" "\\n" DOCSTRING "${DOCSTRING}")
-
 # insert docstrings into bindings
-set(Docstring_${FUNCTION} ${DOCSTRING})
 configure_file("bindings.cpp.in" "bindings.cpp" @ONLY)
