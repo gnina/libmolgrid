@@ -4,7 +4,6 @@ homepage: false
 title: Tutorials
 ---
 
-# Tutorials
 Here are some notebooks demonstrating basic tasks implemented with libmolgrid.
 We demonstrate usage with PyTorch and Keras with the Tensorflow backend, 
 and show how to implement and train a few types of models. For examples of
