@@ -2,7 +2,7 @@ title: "libmolgrid: Grid-based molecular modeling"
 email: "dkoes@pitt.edu"
 description: >- 
   libmolgrid is a C++ library with Python bindings that generates tensors from molecular structures that are optimized for machine learning workflows
-baseurl: ""
+baseurl: "/libmolgrid"
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 plugins:
