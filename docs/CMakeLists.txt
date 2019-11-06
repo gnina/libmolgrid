@@ -2,6 +2,7 @@ OPTION(BUILD_DOCS "Build libmolgrid documentation" OFF)
 IF(BUILD_DOCS)
     find_package(Doxygen)
     if(NOT DOXYGEN_EXECUTABLE)
+			message(WARNING "Doxygen not found; docs will not be built")
       return()
     endif(NOT DOXYGEN_EXECUTABLE)
     IF(DOT)
@@ -9,15 +10,57 @@ IF(BUILD_DOCS)
     ELSE(DOT)
         SET(HAVE_DOT NO)
     ENDIF(DOT)
+    find_package(Sphinx)
+		if(NOT SPHINX_EXECUTABLE)
+			message(WARNING "Sphinx not found; docs will not be built")
+    	return()
+		endif(NOT SPHINX_EXECUTABLE)
+
+		# Find all the public headers
+		file(GLOB_RECURSE LIBMOLGRID_PUBLIC_HEADERS ${PROJECT_SOURCE_DIR}/include/libmolgrid/*.h)
+		 
+		set(DOXYGEN_INPUT_DIR ${PROJECT_SOURCE_DIR})
+		set(DOXYGEN_OUTPUT_DIR ${PROJECT_SOURCE_DIR}/docs/_docs)
+		set(DOXYGEN_INDEX_FILE ${PROJECT_SOURCE_DIR}/docs/_docs/index.xml)
+		set(DOXYFILE_IN ${PROJECT_SOURCE_DIR}/docs/Doxyfile.in)
+		set(DOXYFILE_OUT ${PROJECT_SOURCE_DIR}/Doxyfile)
+		 
     # process Doxyfile.in and substitute paths to generate a final Doxyfile
-    CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/docs/Doxyfile.in
-      ${PROJECT_SOURCE_DIR}/Doxyfile
-    )
-    # remove any stale documentation that might already exist in the docs directory
-    file(GLOB_RECURSE DOCFILES ${PROJECT_SOURCE_DIR}/docs/_docs/*)
-    foreach(file ${DOCFILES})
-      file(REMOVE "${file}")
-    endforeach()
+		configure_file(${DOXYFILE_IN} ${DOXYFILE_OUT})
+		 
+		# only regenerate Doxygen when the Doxyfile or public headers change
+		add_custom_command(OUTPUT ${DOXYGEN_INDEX_FILE}
+		                   DEPENDS ${LIBMOLGRID_PUBLIC_HEADERS}
+		                   COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYFILE_OUT}
+		                   MAIN_DEPENDENCY ${DOXYFILE_OUT} ${DOXYFILE_IN}
+		                   COMMENT "Generating docs"
+		                   VERBATIM)
+		 
+		add_custom_target(Doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
+		 
+		set(SPHINX_SOURCE ${PROJECT_SOURCE_DIR}/docs/_docs)
+		set(SPHINX_BUILD ${PROJECT_SOURCE_DIR}/docs/_docs)
+		set(SPHINX_INDEX_FILE ${SPHINX_BUILD}/index.html)
+		 
+		# Only regenerate Sphinx when:
+		# - Doxygen has rerun
+		# - Our doc files have been updated
+		# - The Sphinx config has been updated
+		add_custom_command(OUTPUT ${SPHINX_INDEX_FILE}
+		                   COMMAND 
+		                     ${SPHINX_EXECUTABLE} -b html
+		                     # Tell Breathe where to find the Doxygen output
+		                     -Dbreathe_projects.ligmolgrid=${DOXYGEN_OUTPUT_DIR}/xml
+		                   ${SPHINX_SOURCE} ${SPHINX_BUILD}
+		                   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/docs/_docs}
+		                   DEPENDS
+		                   ${PROJECT_SOURCE_DIR}/docs/_docs}/index.rst
+		                   ${DOXYGEN_INDEX_FILE}
+		                   MAIN_DEPENDENCY ${SPHINX_SOURCE}/conf.py
+		                   COMMENT "Generating documentation with Sphinx")
+		 
+		add_custom_target(Sphinx ALL DEPENDS ${SPHINX_INDEX_FILE})
+		 
     # generate jekyll-compatible html from notebooks for the tutorials page
     file(GLOB NOTEBOOKS ${PROJECT_SOURCE_DIR}/docs/_tutorials/*.ipynb)
     foreach(file ${NOTEBOOKS})
@@ -35,13 +78,4 @@ IF(BUILD_DOCS)
       execute_process(COMMAND bash "-c" "sed -i 's/\\(.*img src.*\\)<br>/\\1/g' ${OUTNAME}")
       file(REMOVE ${TMPFILE})
     endforeach()
-    # This creates a new target to build documentation.
-    # It runs ${DOXYGEN} which is the full path and executable to
-    # Doxygen on your system, set by the FindDoxygen.cmake module
-    # It runs the final generated Doxyfile against it.
-    # The DOT_PATH is substituted into the Doxyfile.
-    ADD_CUSTOM_TARGET(docs ALL 
-      COMMAND ${DOXYGEN_EXECUTABLE} ${PROJECT_SOURCE_DIR}/Doxyfile
-      WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-    )
 ENDIF(BUILD_DOCS)
