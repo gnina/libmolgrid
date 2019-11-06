@@ -432,10 +432,10 @@ MAKE_ALL_GRIDS()
           }
         }, default_call_policies()))
       .def(vector_indexing_suite<std::vector<Example> >())
-      .def("extract_labels", +[](const std::vector<Example>& self, Grid<float, 2, false> out) { Example::extract_labels(self, out);})
-      .def("extract_labels", +[](const std::vector<Example>& self, Grid<float, 2, true> out) { Example::extract_labels(self, out);})
-      .def("extract_label", +[](const std::vector<Example>& self, int labelpos, Grid<float, 1, false> out) { Example::extract_label(self, labelpos, out);})
-      .def("extract_label", +[](const std::vector<Example>& self, int labelpos, Grid<float, 1, true> out) { Example::extract_label(self, labelpos, out);})
+      .def("extract_labels", +[](const std::vector<Example>& self, Grid<float, 2, false> out) { Example::extract_labels(self, out);}, "@Docstring_Example_extract_labels@")
+      .def("extract_labels", +[](const std::vector<Example>& self, Grid<float, 2, true> out) { Example::extract_labels(self, out);}, "@Docstring_Example_extract_labels@")
+      .def("extract_label", +[](const std::vector<Example>& self, int labelpos, Grid<float, 1, false> out) { Example::extract_label(self, labelpos, out);}, "@Docstring_Example_extract_label@")
+      .def("extract_label", +[](const std::vector<Example>& self, int labelpos, Grid<float, 1, true> out) { Example::extract_label(self, labelpos, out);}, "@Docstring_Example_extract_label@")
       .def("sum_types", +[](const std::vector<Example>& self, Grid2fCUDA sum, bool unique_types) { vector_sum_types(self, sum, unique_types); }, (arg("sum"), arg("unique_types") = true))
       .def("sum_types", +[](const std::vector<Example>& self, Grid2f sum, bool unique_types) { vector_sum_types(self, sum, unique_types); }, (arg("sum"), arg("unique_types") = true));
 
@@ -497,17 +497,17 @@ MAKE_ALL_GRIDS()
   .def("set_translation", &Transform::set_translation)
   //non-const references need to be passed by value, so wrap
   .def("forward", +[](Transform& self, const Grid2f& in, Grid2f out, bool dotranslate) {self.forward(in,out,dotranslate);},
-      Transform_forward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)))
+      Transform_forward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)), "@Docstring_Transform_forward_1@")
   .def("forward",  +[](Transform& self, const Grid2fCUDA& in, Grid2fCUDA out, bool dotranslate) {self.forward(in,out,dotranslate);},
-      Transform_forward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)))
+      Transform_forward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)), "@Docstring_Transform_forward_4@")
   .def("forward", static_cast<void (Transform::*)(const CoordinateSet&, CoordinateSet&, bool) const>(&Transform::forward),
-      Transform_forward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)))
+      Transform_forward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)), "@Docstring_Transform_forward_3@")
   .def("forward", static_cast<void (Transform::*)(const Example&, Example&, bool) const>(&Transform::forward),
-          Transform_forward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)))
+          Transform_forward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)), "@Docstring_Transform_forward_2@")
   .def("backward", +[](Transform& self, const Grid2f& in, Grid2f out, bool dotranslate) {self.backward(in,out,dotranslate);},
-      Transform_backward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)))
+      Transform_backward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)), "@Docstring_Transform_backward_1@")
   .def("backward",+[](Transform& self, const Grid2fCUDA& in, Grid2fCUDA out, bool dotranslate) {self.backward(in,out,dotranslate);},
-       Transform_backward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)));
+       Transform_backward_overloads((arg("in"), arg("out"), arg("dotranslate")=true)), "@Docstring_Transform_backward_2@");
 
 //Atom typing
   converter::registry::insert(&extract_swig_wrapped_pointer, type_id<OpenBabel::OBAtom>());
