@@ -33,8 +33,6 @@ links:
 collections:
     docs:
       output: true
-    python:
-      output: true
     tutorials:
       output: true
 
