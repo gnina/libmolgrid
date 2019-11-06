@@ -16,7 +16,7 @@ layout: default
           <ul>
           {% assign sorted = site.tutorials | sort: "title" %}
           {% for page in sorted %}
-            <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+            <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a></li>
           {% endfor %}
           </ul>
           </nav>
