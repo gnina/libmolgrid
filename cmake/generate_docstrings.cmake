@@ -1,6 +1,5 @@
 # function to convert Doxygen-style comments into Python-style docstrings
 function(doxyToDoc DOXYSTRING)
-  message(STATUS "got line " "${DOXYSTRING}")
   string(REGEX REPLACE "[ \t]*/\\*+[ \t]*\\\\brief[ \t]*" "" DOXYSTRING "${DOXYSTRING}")
   if("${DOXYSTRING}" MATCHES "[ \t]*\\*[ \t]*@param[ \t]*(\\[[a-zA-Z0-9_]+\\]) (.*)")
     set(DOXYSTRING ":param ${CMAKE_MATCH_1}: ${CMAKE_MATCH_2}")
@@ -9,7 +8,6 @@ function(doxyToDoc DOXYSTRING)
   elseif("${DOXYSTRING}" MATCHES "[ \t]*\\*/*(.*)")
     set(DOXYSTRING "${CMAKE_MATCH_1}")
   endif()
-  message(STATUS "doxystring is " "${DOXYSTRING}")
   set(DOCSTRING "${DOCSTRING}" "${DOXYSTRING}" PARENT_SCOPE)
 endfunction()
 
@@ -35,7 +33,6 @@ foreach(fname ${HEADERS})
         # insert into map, zero out string
         string(REPLACE ";" "\\n" DOCSTRING "${DOCSTRING}")
         set(${FUNC} ${DOCSTRING})
-        message(STATUS "function " "${FUNC}" " has docstring " "${DOCSTRING}")
         set(COPYING "0")
         set(DOCSTRING "")
       endif()
