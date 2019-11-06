@@ -1,8 +1,8 @@
 # function to convert Doxygen-style comments into Python-style docstrings
 function(doxyToDoc DOXYSTRING)
   string(REGEX REPLACE "[ \t]*/\\*+[ \t]*\\\\brief[ \t]*" "" DOXYSTRING "${DOXYSTRING}")
-  if("${DOXYSTRING}" MATCHES "[ \t]*\\*[ \t]*@param[ \t]*(\\[[a-zA-Z0-9_]+\\]) (.*)")
-    set(DOXYSTRING ":param ${CMAKE_MATCH_1}: ${CMAKE_MATCH_2}")
+  if("${DOXYSTRING}" MATCHES "[ \t]*\\*[ \t]*@param[ \t]*(\\[[a-zA-Z0-9_]+\\]) ([A-Za-z0-9_]+)(.*)")
+    set(DOXYSTRING ":param ${CMAKE_MATCH_2}: ${CMAKE_MATCH_3}")
   elseif ("${DOXYSTRING}" MATCHES "[ \t]*\\*[ \t]*@return (.+)")
     set(DOXYSTRING ":returns: ${CMAKE_MATCH_1}")
   elseif("${DOXYSTRING}" MATCHES "[ \t]*\\*/*(.*)")
