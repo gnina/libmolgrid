@@ -33,6 +33,8 @@ links:
 collections:
     docs:
       output: true
+    python:
+      output: true
 
 ui:
     header:

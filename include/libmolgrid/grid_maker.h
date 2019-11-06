@@ -112,6 +112,7 @@ class GridMaker {
      */
     CUDA_CALLABLE_MEMBER float3 get_grid_origin(const float3& grid_center) const;
 
+    // Docstring_GridMaker_forward_1
     /* \brief Generate grid tensor from atomic data.  Grid (CPU) must be properly sized.
      * @param[in] center of grid
      * @param[in] coordinate set
@@ -126,6 +127,7 @@ class GridMaker {
       }
     }
 
+    // Docstring_GridMaker_forward_2
     /* \brief Generate grid tensor from atomic data.  Grid (GPU) must be properly sized.
      * @param[in] center of grid
      * @param[in] coordinate set
@@ -140,6 +142,7 @@ class GridMaker {
       }
     }
 
+    // Docstring_GridMaker_forward_3
     /* \brief Generate grid tensor from an example while applying a transformation.
      * The center specified in the transform will be used as the grid center.
      *

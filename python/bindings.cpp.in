@@ -752,10 +752,10 @@ MAKE_ALL_GRIDS()
       .def("forward", +[](GridMaker& self, const std::vector<Example>& in, Grid<float, 5, true> g, float random_translate, bool random_rotate){
             self.forward(in, g, random_translate, random_rotate); },
             (arg("examples"),arg("grid"),arg("random_translation")=0.0,arg("random_rotation")=false))
-      .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, false> g){ self.forward(center, c, g); })
-      .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, true> g){ self.forward(center, c, g); })
-      .def("forward", +[](GridMaker& self, const Example& ex, const Transform& t, Grid<float, 4, false> g){ self.forward(ex, t, g); })
-      .def("forward", +[](GridMaker& self, const Example& ex, const Transform& t, Grid<float, 4, true> g){ self.forward(ex, t, g); })
+      .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, false> g){ self.forward(center, c, g); }, "@Docstring_GridMaker_forward_1@")
+      .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, true> g){ self.forward(center, c, g); }, "@Docstring_GridMaker_forward_2@")
+      .def("forward", +[](GridMaker& self, const Example& ex, const Transform& t, Grid<float, 4, false> g){ self.forward(ex, t, g); }, "@Docstring_GridMaker_forward_3@")
+      .def("forward", +[](GridMaker& self, const Example& ex, const Transform& t, Grid<float, 4, true> g){ self.forward(ex, t, g); }, "@Docstring_GridMaker_forward_3@")
       .def("forward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, false>& coords,
         const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
         Grid<float, 4, false>& out){ self.forward(grid_center, coords, type_index, radii, out);})
