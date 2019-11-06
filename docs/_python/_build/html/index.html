@@ -80,7 +80,15 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">libmolgrid Python documentation</a></li>
+<li><a class="reference internal" href="#">libmolgrid Python documentation</a><ul>
+<li><a class="reference internal" href="#module-molgrid.torch_bindings">molgrid.torch_bindings module</a><ul>
+<li><a class="reference internal" href="#the-gridmaker-class">The <code class="docutils literal notranslate"><span class="pre">GridMaker</span></code> class</a></li>
+<li><a class="reference internal" href="#the-transform-class">The <code class="docutils literal notranslate"><span class="pre">Transform</span></code> class</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-molgrid">Module contents</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 </div>
@@ -148,15 +156,540 @@
             
   <div class="section" id="libmolgrid-python-documentation">
 <h1>libmolgrid Python documentation<a class="headerlink" href="#libmolgrid-python-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-molgrid.torch_bindings">
+<span id="molgrid-torch-bindings-module"></span><h2>molgrid.torch_bindings module<a class="headerlink" href="#module-molgrid.torch_bindings" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="molgrid.torch_bindings.BatchedCoords2GridFunction">
+<em class="property">class </em><code class="sig-prename descclassname">molgrid.torch_bindings.</code><code class="sig-name descname">BatchedCoords2GridFunction</code><a class="headerlink" href="#molgrid.torch_bindings.BatchedCoords2GridFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.autograd.function.Function</span></code></p>
+<p>Layer for converting from coordinate and type tensors to a molecular grid using batched input</p>
+<dl class="method">
+<dt id="molgrid.torch_bindings.BatchedCoords2GridFunction.backward">
+<em class="property">static </em><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param">ctx</em>, <em class="sig-param">grid_gradient</em><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.torch_bindings.BatchedCoords2GridFunction.backward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return Nx3 coordinate gradient and NxT type gradient</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.torch_bindings.BatchedCoords2GridFunction.forward">
+<em class="property">static </em><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">ctx</em>, <em class="sig-param">gmaker</em>, <em class="sig-param">center</em>, <em class="sig-param">coords</em>, <em class="sig-param">types</em>, <em class="sig-param">radii</em><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.torch_bindings.BatchedCoords2GridFunction.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>coords are Nx3, types are NxT, radii are N</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="molgrid.torch_bindings.Coords2Grid">
+<em class="property">class </em><code class="sig-prename descclassname">molgrid.torch_bindings.</code><code class="sig-name descname">Coords2Grid</code><span class="sig-paren">(</span><em class="sig-param">gmaker</em>, <em class="sig-param">center=(0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.torch_bindings.Coords2Grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="method">
+<dt id="molgrid.torch_bindings.Coords2Grid.extra_repr">
+<code class="sig-name descname">extra_repr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.torch_bindings.Coords2Grid.extra_repr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the extra representation of the module</p>
+<p>To print customized extra information, you should reimplement
+this method in your own modules. Both single-line and multi-line
+strings are acceptable.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.torch_bindings.Coords2Grid.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">coords</em>, <em class="sig-param">types</em>, <em class="sig-param">radii</em><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.torch_bindings.Coords2Grid.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="molgrid.torch_bindings.Coords2GridFunction">
+<em class="property">class </em><code class="sig-prename descclassname">molgrid.torch_bindings.</code><code class="sig-name descname">Coords2GridFunction</code><a class="headerlink" href="#molgrid.torch_bindings.Coords2GridFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.autograd.function.Function</span></code></p>
+<p>Layer for converting from coordinate and type tensors to a molecular grid</p>
+<dl class="method">
+<dt id="molgrid.torch_bindings.Coords2GridFunction.backward">
+<em class="property">static </em><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param">ctx</em>, <em class="sig-param">grid_gradient</em><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.torch_bindings.Coords2GridFunction.backward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return Nx3 coordinate gradient and NxT type gradient</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.torch_bindings.Coords2GridFunction.forward">
+<em class="property">static </em><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">ctx</em>, <em class="sig-param">gmaker</em>, <em class="sig-param">center</em>, <em class="sig-param">coords</em>, <em class="sig-param">types</em>, <em class="sig-param">radii</em><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.torch_bindings.Coords2GridFunction.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>coords are Nx3, types are NxT, radii are N</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="molgrid.torch_bindings.make_grid_tensor">
+<code class="sig-prename descclassname">molgrid.torch_bindings.</code><code class="sig-name descname">make_grid_tensor</code><span class="sig-paren">(</span><em class="sig-param">gridmaker</em>, <em class="sig-param">center</em>, <em class="sig-param">c</em><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.torch_bindings.make_grid_tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create appropriately sized pytorch tensor of grid densities.  set_gpu_enabled can be used to control if result is located on the cpu or gpu</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="molgrid.torch_bindings.tensor_as_grid">
+<code class="sig-prename descclassname">molgrid.torch_bindings.</code><code class="sig-name descname">tensor_as_grid</code><span class="sig-paren">(</span><em class="sig-param">t</em><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.torch_bindings.tensor_as_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Grid view of tensor t</p>
+</dd></dl>
+
+<div class="section" id="the-gridmaker-class">
+<h3>The <code class="docutils literal notranslate"><span class="pre">GridMaker</span></code> class<a class="headerlink" href="#the-gridmaker-class" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="molgrid.GridMaker">
+<em class="property">class </em><code class="sig-prename descclassname">molgrid.</code><code class="sig-name descname">GridMaker</code><a class="headerlink" href="#molgrid.GridMaker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Boost.Python.instance</span></code></p>
+<dl class="method">
+<dt id="molgrid.GridMaker.backward">
+<code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param">(GridMaker)arg1</em>, <em class="sig-param">(float3)arg2</em>, <em class="sig-param">(CoordinateSet)arg3</em>, <em class="sig-param">(Grid4f)arg4</em>, <em class="sig-param">(Grid2f)arg5</em><span class="optional">[</span>, <em class="sig-param">(Grid2f)arg6</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#molgrid.GridMaker.backward" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void backward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::CoordinateSet,libmolgrid::Grid&lt;float, 4ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt; [,libmolgrid::Grid&lt;float, 2ul, false&gt;])</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>backward( (GridMaker)arg1, (float3)arg2, (CoordinateSet)arg3, (Grid4fCUDA)arg4, (Grid2fCUDA)arg5 [, (Grid2fCUDA)arg6]) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void backward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::CoordinateSet,libmolgrid::Grid&lt;float, 4ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt; [,libmolgrid::Grid&lt;float, 2ul, true&gt;])</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>backward( (GridMaker)arg1, (float3)arg2, (Grid2f)arg3, (Grid1f)arg4, (Grid1f)arg5, (Grid4f)arg6, (Grid2f)arg7) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void backward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 1ul, false&gt;,libmolgrid::Grid&lt;float, 1ul, false&gt;,libmolgrid::Grid&lt;float, 4ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>backward( (GridMaker)arg1, (float3)arg2, (Grid2fCUDA)arg3, (Grid1fCUDA)arg4, (Grid1fCUDA)arg5, (Grid4fCUDA)arg6, (Grid2fCUDA)arg7) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void backward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 1ul, true&gt;,libmolgrid::Grid&lt;float, 1ul, true&gt;,libmolgrid::Grid&lt;float, 4ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>backward( (GridMaker)arg1, (float3)arg2, (Grid2f)arg3, (Grid2f)arg4, (Grid1f)arg5, (Grid4f)arg6, (Grid2f)arg7, (Grid2f)arg8) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void backward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 1ul, false&gt;,libmolgrid::Grid&lt;float, 4ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>backward( (GridMaker)arg1, (float3)arg2, (Grid2fCUDA)arg3, (Grid2fCUDA)arg4, (Grid1fCUDA)arg5, (Grid4fCUDA)arg6, (Grid2fCUDA)arg7, (Grid2fCUDA)arg8) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void backward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 1ul, true&gt;,libmolgrid::Grid&lt;float, 4ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.GridMaker.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">(GridMaker)arg1</em>, <em class="sig-param">(Example)example</em>, <em class="sig-param">(Grid4f)grid</em><span class="optional">[</span>, <em class="sig-param">(float)random_translation=0.0</em><span class="optional">[</span>, <em class="sig-param">(bool)random_rotation=False</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#molgrid.GridMaker.forward" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},libmolgrid::Example,libmolgrid::Grid&lt;float, 4ul, false&gt; [,float=0.0 [,bool=False]])</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (GridMaker)arg1, (Example)example, (Grid4fCUDA)grid [, (float)random_translation=0.0 [, (bool)random_rotation=False]]) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},libmolgrid::Example,libmolgrid::Grid&lt;float, 4ul, true&gt; [,float=0.0 [,bool=False]])</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (GridMaker)arg1, (ExampleVec)examplevec, (Grid5f)grid [, (float)random_translation=0.0 [, (bool)random_rotation=False]]) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},std::vector&lt;libmolgrid::Example, std::allocator&lt;libmolgrid::Example&gt; &gt;,libmolgrid::Grid&lt;float, 5ul, false&gt; [,float=0.0 [,bool=False]])</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (GridMaker)arg1, (ExampleVec)examples, (Grid5fCUDA)grid [, (float)random_translation=0.0 [, (bool)random_rotation=False]]) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},std::vector&lt;libmolgrid::Example, std::allocator&lt;libmolgrid::Example&gt; &gt;,libmolgrid::Grid&lt;float, 5ul, true&gt; [,float=0.0 [,bool=False]])</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (GridMaker)arg1, (float3)arg2, (CoordinateSet)arg3, (Grid4f)arg4) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::CoordinateSet,libmolgrid::Grid&lt;float, 4ul, false&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (GridMaker)arg1, (float3)arg2, (CoordinateSet)arg3, (Grid4fCUDA)arg4) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::CoordinateSet,libmolgrid::Grid&lt;float, 4ul, true&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (GridMaker)arg1, (Example)arg2, (Transform)arg3, (Grid4f)arg4) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},libmolgrid::Example,libmolgrid::Transform,libmolgrid::Grid&lt;float, 4ul, false&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (GridMaker)arg1, (Example)arg2, (Transform)arg3, (Grid4fCUDA)arg4) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},libmolgrid::Example,libmolgrid::Transform,libmolgrid::Grid&lt;float, 4ul, true&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (GridMaker)arg1, (float3)arg2, (Grid2f)arg3, (Grid1f)arg4, (Grid1f)arg5, (Grid4f)arg6) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 1ul, false&gt;,libmolgrid::Grid&lt;float, 1ul, false&gt;,libmolgrid::Grid&lt;float, 4ul, false&gt; {lvalue})</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (GridMaker)arg1, (float3)arg2, (Grid2fCUDA)arg3, (Grid1fCUDA)arg4, (Grid1fCUDA)arg5, (Grid4fCUDA)arg6) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 1ul, true&gt;,libmolgrid::Grid&lt;float, 1ul, true&gt;,libmolgrid::Grid&lt;float, 4ul, true&gt; {lvalue})</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (GridMaker)arg1, (float3)arg2, (Grid2f)arg3, (Grid2f)arg4, (Grid1f)arg5, (Grid4f)arg6) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 1ul, false&gt;,libmolgrid::Grid&lt;float, 4ul, false&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (GridMaker)arg1, (float3)arg2, (Grid2fCUDA)arg3, (Grid2fCUDA)arg4, (Grid1fCUDA)arg5, (Grid4fCUDA)arg6) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 1ul, true&gt;,libmolgrid::Grid&lt;float, 4ul, true&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.GridMaker.get_binary">
+<code class="sig-name descname">get_binary</code><span class="sig-paren">(</span><em class="sig-param">(GridMaker)arg1</em><span class="sig-paren">)</span> &#x2192; bool :<a class="headerlink" href="#molgrid.GridMaker.get_binary" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>bool get_binary(libmolgrid::GridMaker {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.GridMaker.get_dimension">
+<code class="sig-name descname">get_dimension</code><span class="sig-paren">(</span><em class="sig-param">(GridMaker)arg1</em><span class="sig-paren">)</span> &#x2192; float :<a class="headerlink" href="#molgrid.GridMaker.get_dimension" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>float get_dimension(libmolgrid::GridMaker {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.GridMaker.get_radii_type_indexed">
+<code class="sig-name descname">get_radii_type_indexed</code><span class="sig-paren">(</span><em class="sig-param">(GridMaker)arg1</em><span class="sig-paren">)</span> &#x2192; bool :<a class="headerlink" href="#molgrid.GridMaker.get_radii_type_indexed" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>bool get_radii_type_indexed(libmolgrid::GridMaker {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.GridMaker.get_resolution">
+<code class="sig-name descname">get_resolution</code><span class="sig-paren">(</span><em class="sig-param">(GridMaker)arg1</em><span class="sig-paren">)</span> &#x2192; float :<a class="headerlink" href="#molgrid.GridMaker.get_resolution" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>float get_resolution(libmolgrid::GridMaker {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.GridMaker.grid_dimensions">
+<code class="sig-name descname">grid_dimensions</code><span class="sig-paren">(</span><em class="sig-param">(GridMaker)arg1</em>, <em class="sig-param">(int)arg2</em><span class="sig-paren">)</span> &#x2192; tuple :<a class="headerlink" href="#molgrid.GridMaker.grid_dimensions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>boost::python::tuple grid_dimensions(libmolgrid::GridMaker {lvalue},int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.GridMaker.make_ndarray">
+<code class="sig-name descname">make_ndarray</code><span class="sig-paren">(</span><em class="sig-param">center</em>, <em class="sig-param">c</em><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.GridMaker.make_ndarray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create appropriately sized numpy array of grid densities.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.GridMaker.make_tensor">
+<code class="sig-name descname">make_tensor</code><span class="sig-paren">(</span><em class="sig-param">center</em>, <em class="sig-param">c</em><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.GridMaker.make_tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create appropriately sized pytorch tensor of grid densities.  set_gpu_enabled can be used to control if result is located on the cpu or gpu</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.GridMaker.set_binary">
+<code class="sig-name descname">set_binary</code><span class="sig-paren">(</span><em class="sig-param">(GridMaker)arg1</em>, <em class="sig-param">(bool)arg2</em><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#molgrid.GridMaker.set_binary" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void set_binary(libmolgrid::GridMaker {lvalue},bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.GridMaker.set_dimension">
+<code class="sig-name descname">set_dimension</code><span class="sig-paren">(</span><em class="sig-param">(GridMaker)arg1</em>, <em class="sig-param">(float)arg2</em><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#molgrid.GridMaker.set_dimension" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void set_dimension(libmolgrid::GridMaker {lvalue},float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.GridMaker.set_radii_type_indexed">
+<code class="sig-name descname">set_radii_type_indexed</code><span class="sig-paren">(</span><em class="sig-param">(GridMaker)arg1</em>, <em class="sig-param">(bool)arg2</em><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#molgrid.GridMaker.set_radii_type_indexed" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void set_radii_type_indexed(libmolgrid::GridMaker {lvalue},bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.GridMaker.set_resolution">
+<code class="sig-name descname">set_resolution</code><span class="sig-paren">(</span><em class="sig-param">(GridMaker)arg1</em>, <em class="sig-param">(float)arg2</em><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#molgrid.GridMaker.set_resolution" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void set_resolution(libmolgrid::GridMaker {lvalue},float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.GridMaker.spatial_grid_dimensions">
+<code class="sig-name descname">spatial_grid_dimensions</code><span class="sig-paren">(</span><em class="sig-param">(GridMaker)arg1</em><span class="sig-paren">)</span> &#x2192; tuple :<a class="headerlink" href="#molgrid.GridMaker.spatial_grid_dimensions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>boost::python::tuple spatial_grid_dimensions(libmolgrid::GridMaker {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.GridMaker.tonumpy">
+<code class="sig-name descname">tonumpy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.GridMaker.tonumpy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a numpy array copy of grid g</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="the-transform-class">
+<h3>The <code class="docutils literal notranslate"><span class="pre">Transform</span></code> class<a class="headerlink" href="#the-transform-class" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="molgrid.Transform">
+<em class="property">class </em><code class="sig-prename descclassname">molgrid.</code><code class="sig-name descname">Transform</code><a class="headerlink" href="#molgrid.Transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Boost.Python.instance</span></code></p>
+<dl class="method">
+<dt id="molgrid.Transform.backward">
+<code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param">(Transform)arg1</em>, <em class="sig-param">(Grid2f)in</em>, <em class="sig-param">(Grid2f)out</em><span class="optional">[</span>, <em class="sig-param">(bool)dotranslate=True</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#molgrid.Transform.backward" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Apply inverse of 3D transformation on CPU.
+:param in:  Nx3 input grid
+:param out:  Nx3 output grid (will be overwritten)
+:param dotranslate:  if false only the inverse rotation is applied</p>
+<dl class="simple">
+<dt>C++ signature :</dt><dd><p>void backward(libmolgrid::Transform {lvalue},libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt; [,bool=True])</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>backward( (Transform)arg1, (Grid2fCUDA)in, (Grid2fCUDA)out [, (bool)dotranslate=True]) -&gt; None :</p>
+<blockquote>
+<div><p>Apply inverse of 3D transformation on GPU.
+:param in:  Nx3 input grid
+:param out:  Nx3 output grid (will be overwritten)
+:param dotranslate:  if false only the inverse rotation is applied</p>
+<dl class="simple">
+<dt>C++ signature :</dt><dd><p>void backward(libmolgrid::Transform {lvalue},libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt; [,bool=True])</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.Transform.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">(Transform)arg1</em>, <em class="sig-param">(Grid2f)in</em>, <em class="sig-param">(Grid2f)out</em><span class="optional">[</span>, <em class="sig-param">(bool)dotranslate=True</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#molgrid.Transform.forward" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>Apply 3D transformation on CPU.   It is safe to transform</dt><dd><p>a grid in-place.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">param in</dt>
+<dd class="field-odd"><p>Nx3 input grid</p>
+</dd>
+<dt class="field-even">param out</dt>
+<dd class="field-even"><p>Nx3 output grid (will be overwritten)</p>
+</dd>
+<dt class="field-odd">param dotranslate</dt>
+<dd class="field-odd"><p>if false only a rotation around the origin is applied.
+(This is for vector quantities such as gradients and normals).</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::Transform {lvalue},libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt; [,bool=True])</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (Transform)arg1, (Grid2fCUDA)in, (Grid2fCUDA)out [, (bool)dotranslate=True]) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Apply 3D transformation on GPU.  It is safe to transform a grid</dt><dd><p>in-place.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">param in</dt>
+<dd class="field-odd"><p>Nx3 input grid</p>
+</dd>
+<dt class="field-even">param out</dt>
+<dd class="field-even"><p>Nx3 output grid (will be overwritten)</p>
+</dd>
+<dt class="field-odd">param dotranslate</dt>
+<dd class="field-odd"><p>if false only a rotation around the origin is applied.
+(This is for vector quantities such as gradients and normals).</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::Transform {lvalue},libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt; [,bool=True])</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (Transform)arg1, (CoordinateSet)in, (CoordinateSet)out [, (bool)dotranslate=True]) -&gt; None :</p>
+<blockquote>
+<div><p>Apply 3D transformation to CoordinateSet.   It is safe to transform in-place</p>
+<dl class="field-list simple">
+<dt class="field-odd">param input</dt>
+<dd class="field-odd"><p>coords</p>
+</dd>
+<dt class="field-even">param output</dt>
+<dd class="field-even"><p>coords with same dimensions</p>
+</dd>
+<dt class="field-odd">param dotranslate</dt>
+<dd class="field-odd"><p>if false only a rotation around the origin is applied.
+(This is for vector quantities such as gradients and normals).</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::Transform {lvalue},libmolgrid::CoordinateSet,libmolgrid::CoordinateSet {lvalue} [,bool=True])</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (Transform)arg1, (Example)in, (Example)out [, (bool)dotranslate=True]) -&gt; None :</p>
+<blockquote>
+<div><p>Apply 3D transformation to Example.   It is safe to transform in-place</p>
+<dl class="field-list simple">
+<dt class="field-odd">param input</dt>
+<dd class="field-odd"><p>example</p>
+</dd>
+<dt class="field-even">param output</dt>
+<dd class="field-even"><p>example with same dimensions</p>
+</dd>
+<dt class="field-odd">param dotranslate</dt>
+<dd class="field-odd"><p>if false only a rotation around the origin is applied.
+(This is for vector quantities such as gradients and normals).</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::Transform {lvalue},libmolgrid::Example,libmolgrid::Example {lvalue} [,bool=True])</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.Transform.get_quaternion">
+<code class="sig-name descname">get_quaternion</code><span class="sig-paren">(</span><em class="sig-param">(Transform)arg1</em><span class="sig-paren">)</span> &#x2192; Quaternion :<a class="headerlink" href="#molgrid.Transform.get_quaternion" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>libmolgrid::Quaternion get_quaternion(libmolgrid::Transform {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.Transform.get_rotation_center">
+<code class="sig-name descname">get_rotation_center</code><span class="sig-paren">(</span><em class="sig-param">(Transform)arg1</em><span class="sig-paren">)</span> &#x2192; float3 :<a class="headerlink" href="#molgrid.Transform.get_rotation_center" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>float3 get_rotation_center(libmolgrid::Transform {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.Transform.get_translation">
+<code class="sig-name descname">get_translation</code><span class="sig-paren">(</span><em class="sig-param">(Transform)arg1</em><span class="sig-paren">)</span> &#x2192; float3 :<a class="headerlink" href="#molgrid.Transform.get_translation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>float3 get_translation(libmolgrid::Transform {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.Transform.set_quaternion">
+<code class="sig-name descname">set_quaternion</code><span class="sig-paren">(</span><em class="sig-param">(Transform)arg1</em>, <em class="sig-param">(Quaternion)arg2</em><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#molgrid.Transform.set_quaternion" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void set_quaternion(libmolgrid::Transform {lvalue},libmolgrid::Quaternion)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.Transform.set_rotation_center">
+<code class="sig-name descname">set_rotation_center</code><span class="sig-paren">(</span><em class="sig-param">(Transform)arg1</em>, <em class="sig-param">(float3)arg2</em><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#molgrid.Transform.set_rotation_center" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void set_rotation_center(libmolgrid::Transform {lvalue},float3)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.Transform.set_translation">
+<code class="sig-name descname">set_translation</code><span class="sig-paren">(</span><em class="sig-param">(Transform)arg1</em>, <em class="sig-param">(float3)arg2</em><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#molgrid.Transform.set_translation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void set_translation(libmolgrid::Transform {lvalue},float3)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-molgrid">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-molgrid" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="molgrid.make_grid_ndarray">
+<code class="sig-prename descclassname">molgrid.</code><code class="sig-name descname">make_grid_ndarray</code><span class="sig-paren">(</span><em class="sig-param">gridmaker</em>, <em class="sig-param">center</em>, <em class="sig-param">c</em><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.make_grid_ndarray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create appropriately sized numpy array of grid densities.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="molgrid.tonumpy">
+<code class="sig-prename descclassname">molgrid.</code><code class="sig-name descname">tonumpy</code><span class="sig-paren">(</span><em class="sig-param">g</em><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.tonumpy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a numpy array copy of grid g</p>
+</dd></dl>
+
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </div>
 
