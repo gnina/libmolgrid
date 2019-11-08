@@ -18,10 +18,11 @@ IF(BUILD_DOCS)
 
 		# Find all the public headers
 		file(GLOB_RECURSE LIBMOLGRID_PUBLIC_HEADERS ${PROJECT_SOURCE_DIR}/include/libmolgrid/*.h)
-		 
+
 		set(DOXYGEN_INPUT_DIR ${PROJECT_SOURCE_DIR})
-		set(DOXYGEN_OUTPUT_DIR ${PROJECT_SOURCE_DIR}/docs/_docs)
-		set(DOXYGEN_INDEX_FILE ${PROJECT_SOURCE_DIR}/docs/_docs/index.xml)
+		set(DOXYGEN_OUTPUT_DIR ${PROJECT_SOURCE_DIR}/docs/cpp/xml)
+    file(MAKE_DIRECTORY ${DOXYGEN_OUTPUT_DIR})
+    set(DOXYGEN_INDEX_FILE ${DOXYGEN_OUTPUT_DIR}/index.xml)
 		set(DOXYFILE_IN ${PROJECT_SOURCE_DIR}/docs/Doxyfile.in)
 		set(DOXYFILE_OUT ${PROJECT_SOURCE_DIR}/Doxyfile)
 		 
@@ -38,8 +39,8 @@ IF(BUILD_DOCS)
 		 
 		add_custom_target(Doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
 		 
-		set(SPHINX_SOURCE ${PROJECT_SOURCE_DIR}/docs/_docs)
-		set(SPHINX_BUILD ${PROJECT_SOURCE_DIR}/docs/_docs)
+		set(SPHINX_SOURCE ${PROJECT_SOURCE_DIR}/sphinx/cpp)
+		set(SPHINX_BUILD ${PROJECT_SOURCE_DIR}/docs/cpp)
 		set(SPHINX_INDEX_FILE ${SPHINX_BUILD}/index.html)
 		 
 		# Only regenerate Sphinx when:
@@ -50,16 +51,24 @@ IF(BUILD_DOCS)
 		                   COMMAND 
 		                     ${SPHINX_EXECUTABLE} -b html
 		                     # Tell Breathe where to find the Doxygen output
-		                     -Dbreathe_projects.ligmolgrid=${DOXYGEN_OUTPUT_DIR}/xml
+		                     -Dbreathe_projects.ligmolgrid=${DOXYGEN_OUTPUT_DIR}
 		                   ${SPHINX_SOURCE} ${SPHINX_BUILD}
-		                   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/docs/_docs}
+		                   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/docs/cpp
 		                   DEPENDS
-		                   ${PROJECT_SOURCE_DIR}/docs/_docs}/index.rst
+		                   ${PROJECT_SOURCE_DIR}/sphinx/cpp/index.rst
 		                   ${DOXYGEN_INDEX_FILE}
 		                   MAIN_DEPENDENCY ${SPHINX_SOURCE}/conf.py
-		                   COMMENT "Generating documentation with Sphinx")
+                       COMMENT "Generating C++ documentation with Sphinx")
 		 
 		add_custom_target(Sphinx ALL DEPENDS ${SPHINX_INDEX_FILE})
+
+    # update sphinx output to include bootstrap layout
+    set(SPHINX_HTML_OUTPUT
+      "${SPHINX_BUILD}/genindex.html;${SPHINX_BUILD}/index.html;${SPHINX_BUILD}/search.html")
+    foreach(fname ${SPHINX_HTML_OUTPUT})
+      add_custom_command(TARGET Sphinx POST_BUILD COMMAND bash "-c" "sed -i '1s/^/---\\\\ntitle: libmolgrid C++ Documentation\\\\nlayout: default\\\\nhomepage: false\\\\nhide: true\\\\n---\\\\n/' ${fname}")
+    endforeach()
+    add_custom_command(TARGET Sphinx POST_BUILD COMMAND bash "-c" "sed -i 's/wy-nav-side{position:fixed\;top\:0/wy-nav-side{position\:fixed\;top\:34\.25%/' ${SPHINX_BUILD}/_static/css/theme.css")
 		 
     # generate jekyll-compatible html from notebooks for the tutorials page
     file(GLOB NOTEBOOKS ${PROJECT_SOURCE_DIR}/docs/_tutorials/*.ipynb)

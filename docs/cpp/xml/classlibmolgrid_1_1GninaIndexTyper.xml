@@ -1,0 +1,590 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classlibmolgrid_1_1GninaIndexTyper" kind="class" language="C++" prot="public">
+    <compoundname>libmolgrid::GninaIndexTyper</compoundname>
+    <basecompoundref refid="classlibmolgrid_1_1AtomIndexTyper" prot="public" virt="non-virtual">AtomIndexTyper</basecompoundref>
+    <includes refid="atom__typer_8h" local="no">atom_typer.h</includes>
+    <innerclass refid="structlibmolgrid_1_1GninaIndexTyper_1_1info" prot="public">libmolgrid::GninaIndexTyper::info</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2d" prot="public" static="no" strong="no">
+        <type></type>
+        <name>type</name>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da20fa2720571344499f799d2839b23c7e" prot="public">
+          <name>Hydrogen</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2daa3d3ec6d4feccb909e375261fc5e747a" prot="public">
+          <name>PolarHydrogen</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da1ea7ee189d41ec98ed6592d7e07cbe01" prot="public">
+          <name>AliphaticCarbonXSHydrophobe</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da9b66ff931740ae4be675a9fa83f9c130" prot="public">
+          <name>AliphaticCarbonXSNonHydrophobe</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2daf3113296791638a80d64ba33c5fd4427" prot="public">
+          <name>AromaticCarbonXSHydrophobe</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da0bd3db5b7e161ee0ebb624494e30af85" prot="public">
+          <name>AromaticCarbonXSNonHydrophobe</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2daf766de68d927b08d86af09a7aadbe81b" prot="public">
+          <name>Nitrogen</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da6abe6c6a3e353efda94a61eec0bc6e1c" prot="public">
+          <name>NitrogenXSDonor</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da5739855eaaa648af57dc0188e3698743" prot="public">
+          <name>NitrogenXSDonorAcceptor</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da99a9bbcbf26abb65fafcebd4ee38b1cc" prot="public">
+          <name>NitrogenXSAcceptor</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dae54b22e3be885eb43db3925118a89f02" prot="public">
+          <name>Oxygen</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dae139a25d0b4fda3f0a87918043c19640" prot="public">
+          <name>OxygenXSDonor</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da5a0891509ad2a1599770d76eac6f11b6" prot="public">
+          <name>OxygenXSDonorAcceptor</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da0de17bde588e82e1aed388dd71381026" prot="public">
+          <name>OxygenXSAcceptor</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dadfc4f003c99e8ae202fa0bbe5433e37d" prot="public">
+          <name>Sulfur</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dab0aaebb4b47401db206171bcbf5f83ff" prot="public">
+          <name>SulfurAcceptor</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dafb6902001cce5e4c30fbf6ff798d14ff" prot="public">
+          <name>Phosphorus</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da720bc1d5b753af7cf738a52d4b390004" prot="public">
+          <name>Fluorine</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da8b6a342c70d3df3c2927e8a07b798170" prot="public">
+          <name>Chlorine</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da0aa79218b633c599741632eb7393d2fe" prot="public">
+          <name>Bromine</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2daf293af144ce688a9a2e0a43a9af4e279" prot="public">
+          <name>Iodine</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2daff5ab7e500a1c16d48b11aa93bb60439" prot="public">
+          <name>Magnesium</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da2481971aeae9ed91247d0e6c69447bcf" prot="public">
+          <name>Manganese</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da64391040c4d0c382ba484cfc7dc24cce" prot="public">
+          <name>Zinc</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da40f67c18f45fbcb3396df8fb55e41145" prot="public">
+          <name>Calcium</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da8750950e70ba4037061ecd568a56b944" prot="public">
+          <name>Iron</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dad89b17a8892a5bd6aac5579a777515e0" prot="public">
+          <name>GenericMetal</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da3a2170e4ebad18bd68d1cd7ebd73bd3d" prot="public">
+          <name>Boron</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2daac64c8922ff64ae0d88ad358421d026f" prot="public">
+          <name>NumTypes</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="123" column="14" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" bodystart="123" bodyend="153"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classlibmolgrid_1_1GninaIndexTyper_1a00161623a95c7ffa27d620532c573984" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool use_covalent</definition>
+        <argsstring></argsstring>
+        <name>use_covalent</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="175" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1GninaIndexTyper_1a2bddd8ea9bcb04d6f926e6527a34cfb6" prot="private" static="no" mutable="no">
+        <type>const <ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info" kindref="compound">info</ref> *</type>
+        <definition>const info* data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <initializer>= NULL</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="177" column="16" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classlibmolgrid_1_1GninaIndexTyper_1aa5bf93ecd6c0d77173098ab6812167e0" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info" kindref="compound">info</ref></type>
+        <definition>const GninaIndexTyper::info default_data</definition>
+        <argsstring>[NumTypes]</argsstring>
+        <name>default_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="176" column="23" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classlibmolgrid_1_1GninaIndexTyper_1a683729a67c4252fdfa71f23d0810a7ab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GninaIndexTyper</definition>
+        <argsstring>(bool usec=false, const info *d=default_data)</argsstring>
+        <name>GninaIndexTyper</name>
+        <param>
+          <type>bool</type>
+          <declname>usec</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>const <ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info" kindref="compound">info</ref> *</type>
+          <declname>d</declname>
+          <defval>default_data</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="182" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" bodystart="182" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GninaIndexTyper_1a187ae086fdbb7327510642b6dd674634" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~GninaIndexTyper</definition>
+        <argsstring>()</argsstring>
+        <name>~GninaIndexTyper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="183" column="13" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" bodystart="183" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GninaIndexTyper_1a5e84ac0f1e5fbb3fd24d137b02de0a3f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>unsigned</type>
+        <definition>unsigned num_types</definition>
+        <argsstring>() const</argsstring>
+        <name>num_types</name>
+        <reimplements refid="classlibmolgrid_1_1AtomIndexTyper_1ae503ecbf9ca173356ef6e475597e2b46">num_types</reimplements>
+        <briefdescription>
+<para>return number of types </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="186" column="22" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" bodystart="67" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GninaIndexTyper_1afa822a9ced021828013716b9b2e99670" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::pair&lt; int, float &gt;</type>
+        <definition>std::pair&lt; int, float &gt; get_atom_type_index</definition>
+        <argsstring>(OpenBabel::OBAtom *a) const</argsstring>
+        <name>get_atom_type_index</name>
+        <reimplements refid="classlibmolgrid_1_1AtomIndexTyper_1ad802287783424562d69b6ce6a118a7da">get_atom_type_index</reimplements>
+        <param>
+          <type>OpenBabel::OBAtom *</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+<para>return type index of a </para>
+        </briefdescription>
+        <detaileddescription>
+<para>return type index and radius of a </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="189" column="23" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" bodystart="80" bodyend="164"/>
+        <referencedby refid="classlibmolgrid_1_1GninaVectorTyper_1ae665f55a8d914fa0d36e469284e2443d" compoundref="atom__typer_8cpp" startline="303" endline="392">GninaVectorTyper::get_atom_type_vector</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GninaIndexTyper_1a2f2292603513836fcc299e920d102969" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::pair&lt; int, float &gt;</type>
+        <definition>pair&lt; int, float &gt; get_int_type</definition>
+        <argsstring>(int t) const</argsstring>
+        <name>get_int_type</name>
+        <reimplements refid="classlibmolgrid_1_1AtomIndexTyper_1a6b076295fcb7c38c547345e1992fe342">get_int_type</reimplements>
+        <param>
+          <type>int</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>basically look up the radius of the given gnina type </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="192" column="23" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" bodystart="167" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GninaIndexTyper_1ab179299d9dc6bb3a4bfe868fd60882a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; get_type_names</definition>
+        <argsstring>() const</argsstring>
+        <name>get_type_names</name>
+        <reimplements refid="classlibmolgrid_1_1AtomIndexTyper_1aedda205572fbbaa3a868181802232263">get_type_names</reimplements>
+        <briefdescription>
+<para>return vector of string representations of types </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="195" column="25" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" bodystart="180" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GninaIndexTyper_1adc0b9aacfdd83b3b868ab09424d3c04b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt; float &gt; get_type_radii</definition>
+        <argsstring>() const</argsstring>
+        <name>get_type_radii</name>
+        <reimplements refid="classlibmolgrid_1_1AtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2">get_type_radii</reimplements>
+        <briefdescription>
+<para>return atomic radius of each type </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="198" column="25" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" bodystart="189" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GninaIndexTyper_1aef23b5c76e723f1fa66e56819225126b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info" kindref="compound">info</ref> &amp;</type>
+        <definition>const info&amp; get_info</definition>
+        <argsstring>(int t) const</argsstring>
+        <name>get_info</name>
+        <param>
+          <type>int</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>return gnina info for a given type </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="202" column="16" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" bodystart="202" bodyend="202"/>
+        <referencedby refid="classlibmolgrid_1_1GninaVectorTyper_1ae665f55a8d914fa0d36e469284e2443d" compoundref="atom__typer_8cpp" startline="303" endline="392">GninaVectorTyper::get_atom_type_vector</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GninaVectorTyper_1ad2de174aee1d2d6da3500c728ee71e23" compoundref="atom__typer_8cpp" startline="395" endline="402">GninaVectorTyper::get_vector_type_radii</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1AtomIndexTyper_1a4f56173834b1bf3f850e5cb9880eaeea" prot="public" static="no" const="yes" explicit="no" inline="yes" final="yes" virt="virtual">
+        <type>float</type>
+        <definition>virtual float get_atom_type_vector</definition>
+        <argsstring>(OpenBabel::OBAtom *a, std::vector&lt; float &gt; &amp;typ) const final</argsstring>
+        <name>get_atom_type_vector</name>
+        <reimplements refid="classlibmolgrid_1_1AtomTyper_1a831a48238388829d1fae97d002719674">get_atom_type_vector</reimplements>
+        <param>
+          <type>OpenBabel::OBAtom *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; float &gt; &amp;</type>
+          <declname>typ</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="50" column="19" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" bodystart="50" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1AtomIndexTyper_1a38a567b5922504c0767ac0dcdff287f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool is_vector_typer</definition>
+        <argsstring>() const</argsstring>
+        <name>is_vector_typer</name>
+        <reimplements refid="classlibmolgrid_1_1AtomTyper_1a38a567b5922504c0767ac0dcdff287f5">is_vector_typer</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="68" column="18" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classlibmolgrid_1_1GninaIndexTyper_1a34534793e0879fb3222beee2f60d7e79" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string gnina_type_name</definition>
+        <argsstring>(int t)</argsstring>
+        <name>gnina_type_name</name>
+        <param>
+          <type>int</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>return name of default gnina type t </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="205" column="24" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" bodystart="71" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1AtomIndexTyper_1a50bdca9ea03cabe38347121b8ef98cad" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void set_names</definition>
+        <argsstring>(unsigned ntypes, std::vector&lt; std::string &gt; &amp;type_names, const std::vector&lt; std::string &gt; &amp;names)</argsstring>
+        <name>set_names</name>
+        <param>
+          <type>unsigned</type>
+          <declname>ntypes</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt; &amp;</type>
+          <declname>type_names</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>names</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="66" column="17" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" bodystart="246" bodyend="256"/>
+        <referencedby refid="classlibmolgrid_1_1CallbackIndexTyper_1afeb018e0ea5231c3b5ac23526abf5361" compoundref="atom__typer_8cpp" startline="257" endline="260">CallbackIndexTyper::CallbackIndexTyper</referencedby>
+        <referencedby refid="classlibmolgrid_1_1CallbackVectorTyper_1a50cbe32479180cea5aa8c25adda9ee4a" compoundref="atom__typer_8cpp" startline="410" endline="413">CallbackVectorTyper::CallbackVectorTyper</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Calculate gnina types. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>These are variants of AutoDock4 types. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>AtomTyper</label>
+        <link refid="classlibmolgrid_1_1AtomTyper"/>
+      </node>
+      <node id="2">
+        <label>AtomIndexTyper</label>
+        <link refid="classlibmolgrid_1_1AtomIndexTyper"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>GninaIndexTyper</label>
+        <link refid="classlibmolgrid_1_1GninaIndexTyper"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>AtomTyper</label>
+        <link refid="classlibmolgrid_1_1AtomTyper"/>
+      </node>
+      <node id="2">
+        <label>AtomIndexTyper</label>
+        <link refid="classlibmolgrid_1_1AtomIndexTyper"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>GninaIndexTyper</label>
+        <link refid="classlibmolgrid_1_1GninaIndexTyper"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="120" column="44" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" bodystart="120" bodyend="206"/>
+    <listofallmembers>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da1ea7ee189d41ec98ed6592d7e07cbe01" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>AliphaticCarbonXSHydrophobe</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da9b66ff931740ae4be675a9fa83f9c130" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>AliphaticCarbonXSNonHydrophobe</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2daf3113296791638a80d64ba33c5fd4427" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>AromaticCarbonXSHydrophobe</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da0bd3db5b7e161ee0ebb624494e30af85" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>AromaticCarbonXSNonHydrophobe</name></member>
+      <member refid="classlibmolgrid_1_1AtomIndexTyper_1ae7dde92cf35e2c63afde3176cafcbda3" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>AtomIndexTyper</name></member>
+      <member refid="classlibmolgrid_1_1AtomTyper_1a554d6f387f3aff6cf68c24ffddd08567" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>AtomTyper</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da3a2170e4ebad18bd68d1cd7ebd73bd3d" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>Boron</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da0aa79218b633c599741632eb7393d2fe" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>Bromine</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da40f67c18f45fbcb3396df8fb55e41145" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>Calcium</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da8b6a342c70d3df3c2927e8a07b798170" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>Chlorine</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a2bddd8ea9bcb04d6f926e6527a34cfb6" prot="private" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>data</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1aa5bf93ecd6c0d77173098ab6812167e0" prot="private" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>default_data</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da720bc1d5b753af7cf738a52d4b390004" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>Fluorine</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dad89b17a8892a5bd6aac5579a777515e0" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>GenericMetal</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1afa822a9ced021828013716b9b2e99670" prot="public" virt="virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>get_atom_type_index</name></member>
+      <member refid="classlibmolgrid_1_1AtomIndexTyper_1a4f56173834b1bf3f850e5cb9880eaeea" prot="public" virt="virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>get_atom_type_vector</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1aef23b5c76e723f1fa66e56819225126b" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>get_info</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a2f2292603513836fcc299e920d102969" prot="public" virt="virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>get_int_type</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1ab179299d9dc6bb3a4bfe868fd60882a6" prot="public" virt="virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>get_type_names</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1adc0b9aacfdd83b3b868ab09424d3c04b" prot="public" virt="virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>get_type_radii</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a34534793e0879fb3222beee2f60d7e79" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>gnina_type_name</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a683729a67c4252fdfa71f23d0810a7ab" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>GninaIndexTyper</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da20fa2720571344499f799d2839b23c7e" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>Hydrogen</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2daf293af144ce688a9a2e0a43a9af4e279" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>Iodine</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da8750950e70ba4037061ecd568a56b944" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>Iron</name></member>
+      <member refid="classlibmolgrid_1_1AtomIndexTyper_1a38a567b5922504c0767ac0dcdff287f5" prot="public" virt="virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>is_vector_typer</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2daff5ab7e500a1c16d48b11aa93bb60439" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>Magnesium</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da2481971aeae9ed91247d0e6c69447bcf" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>Manganese</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2daf766de68d927b08d86af09a7aadbe81b" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>Nitrogen</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da99a9bbcbf26abb65fafcebd4ee38b1cc" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>NitrogenXSAcceptor</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da6abe6c6a3e353efda94a61eec0bc6e1c" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>NitrogenXSDonor</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da5739855eaaa648af57dc0188e3698743" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>NitrogenXSDonorAcceptor</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a5e84ac0f1e5fbb3fd24d137b02de0a3f" prot="public" virt="virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>num_types</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2daac64c8922ff64ae0d88ad358421d026f" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>NumTypes</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dae54b22e3be885eb43db3925118a89f02" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>Oxygen</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da0de17bde588e82e1aed388dd71381026" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>OxygenXSAcceptor</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dae139a25d0b4fda3f0a87918043c19640" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>OxygenXSDonor</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da5a0891509ad2a1599770d76eac6f11b6" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>OxygenXSDonorAcceptor</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dafb6902001cce5e4c30fbf6ff798d14ff" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>Phosphorus</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2daa3d3ec6d4feccb909e375261fc5e747a" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>PolarHydrogen</name></member>
+      <member refid="classlibmolgrid_1_1AtomIndexTyper_1a50bdca9ea03cabe38347121b8ef98cad" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>set_names</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dadfc4f003c99e8ae202fa0bbe5433e37d" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>Sulfur</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dab0aaebb4b47401db206171bcbf5f83ff" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>SulfurAcceptor</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2d" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>type</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a00161623a95c7ffa27d620532c573984" prot="private" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>use_covalent</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da64391040c4d0c382ba484cfc7dc24cce" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>Zinc</name></member>
+      <member refid="classlibmolgrid_1_1AtomIndexTyper_1a3a023938558392b20fba9fea9971016a" prot="public" virt="virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>~AtomIndexTyper</name></member>
+      <member refid="classlibmolgrid_1_1AtomTyper_1a7fdb3f1fa76c8e3f6fdcddea4f144541" prot="public" virt="virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>~AtomTyper</name></member>
+      <member refid="classlibmolgrid_1_1GninaIndexTyper_1a187ae086fdbb7327510642b6dd674634" prot="public" virt="virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>~GninaIndexTyper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

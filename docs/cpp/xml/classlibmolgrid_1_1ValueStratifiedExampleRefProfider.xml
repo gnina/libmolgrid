@@ -1,0 +1,353 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classlibmolgrid_1_1ValueStratifiedExampleRefProfider" kind="class" language="C++" prot="public">
+    <compoundname>libmolgrid::ValueStratifiedExampleRefProfider</compoundname>
+    <basecompoundref refid="classlibmolgrid_1_1ExampleRefProvider" prot="public" virt="non-virtual">ExampleRefProvider</basecompoundref>
+    <includes refid="exampleref__providers_8h" local="no">exampleref_providers.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class Provider</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a6679797ca81af02c9ba75e65ccf4c836" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; Provider &gt;</type>
+        <definition>std::vector&lt;Provider&gt; examples</definition>
+        <argsstring></argsstring>
+        <name>examples</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="240" column="15" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a465880796d95af0ed2be2a015b58202d" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t currenti</definition>
+        <argsstring></argsstring>
+        <name>currenti</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="241" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1aad36546e8175d2922bee165fe028fedc" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double min</definition>
+        <argsstring></argsstring>
+        <name>min</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="242" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a0b0ede69e8156eb97acc579b88e883de" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double max</definition>
+        <argsstring></argsstring>
+        <name>max</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="242" column="15" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a4736138d712d9ee570d0652f08a4786a" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double step</definition>
+        <argsstring></argsstring>
+        <name>step</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="242" column="20" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a61e9e4f44d01297c0fdd0d3fe827d534" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int valpos</definition>
+        <argsstring></argsstring>
+        <name>valpos</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="243" column="7" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a328cfab556bca9b9fffefeb43a0dc490" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool use_abs</definition>
+        <argsstring></argsstring>
+        <name>use_abs</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="244" column="8" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="244" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1aafe02a48e6c0a187ad218cffeddab088" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned bin</definition>
+        <argsstring>(double val) const</argsstring>
+        <name>bin</name>
+        <param>
+          <type>double</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="247" column="12" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="247" bodyend="256"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ad074c52ca9025bfe5cd13fb4403759da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ValueStratifiedExampleRefProfider</definition>
+        <argsstring>()</argsstring>
+        <name>ValueStratifiedExampleRefProfider</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="258" column="3" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="258" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a7283e7554f9b6a2b1269ba97c75d6558" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ValueStratifiedExampleRefProfider</definition>
+        <argsstring>(const ExampleProviderSettings &amp;parm)</argsstring>
+        <name>ValueStratifiedExampleRefProfider</name>
+        <param>
+          <type>const <ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref> &amp;</type>
+          <declname>parm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="259" column="3" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="259" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a8b9d408cf4383f3569d23636d5f3e62a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void addref</definition>
+        <argsstring>(const ExampleRef &amp;ex)</argsstring>
+        <name>addref</name>
+        <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a134b2325787965e2ef6260960f06adfc">addref</reimplements>
+        <param>
+          <type>const <ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref> &amp;</type>
+          <declname>ex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="279" column="8" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="279" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>virtual size_t num_labels</definition>
+        <argsstring>() const</argsstring>
+        <name>num_labels</name>
+        <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a4af792d6af8f9f676a2dc30f2262158b">num_labels</reimplements>
+        <briefdescription>
+<para>return number of labels in <emphasis>an</emphasis> example </para>
+        </briefdescription>
+        <detaileddescription>
+<para>if provider has predetermined batch size </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="287" column="18" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="287" bodyend="293"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a4fc01d736fe50cf5b977f755b675f11d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void setup</definition>
+        <argsstring>()</argsstring>
+        <name>setup</name>
+        <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a39fe489f6eb526d59b6b804a8343fe8c">setup</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="295" column="8" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="295" bodyend="312"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ae630292b50e44deb19e001f322914934" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void nextref</definition>
+        <argsstring>(ExampleRef &amp;ex)</argsstring>
+        <name>nextref</name>
+        <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a7a953020850169224c78ac9bfda9e423">nextref</reimplements>
+        <param>
+          <type><ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref> &amp;</type>
+          <declname>ex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="314" column="8" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="314" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a126a73e6d140f9e2a7b795c20fa42f70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>unsigned</type>
+        <definition>unsigned size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a962e2830e9c2869a2ee70cd5331f815f">size</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="320" column="12" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="320" bodyend="329"/>
+        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="exampleref__providers_8h" startline="287" endline="293">ValueStratifiedExampleRefProfider&lt; Provider &gt;::num_labels</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8h" startline="295" endline="312">ValueStratifiedExampleRefProfider&lt; Provider &gt;::setup</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool has_group</definition>
+        <argsstring>() const</argsstring>
+        <name>has_group</name>
+        <reimplementedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028">has_group</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="34" column="18" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void check_batch_size</definition>
+        <argsstring>(unsigned bsize) const</argsstring>
+        <name>check_batch_size</name>
+        <reimplementedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a">check_batch_size</reimplementedby>
+        <param>
+          <type>unsigned</type>
+          <declname>bsize</declname>
+        </param>
+        <briefdescription>
+<para>has group field </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="35" column="18" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int populate</definition>
+        <argsstring>(std::istream &amp;lines, int numlabels)</argsstring>
+        <name>populate</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>lines</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>numlabels</declname>
+        </param>
+        <briefdescription>
+<para>read in all the example refs from lines, but does not setup </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="39" column="17" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/exampleref_providers.cpp" bodystart="48" bodyend="62"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Partition examples by affinity and sample uniformly from each affinity bin affinities are binned by absolute value according to molgriddataparameters. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ExampleRefProvider</label>
+        <link refid="classlibmolgrid_1_1ExampleRefProvider"/>
+      </node>
+      <node id="1">
+        <label>ValueStratifiedExampleRefProfider&lt; Provider &gt;</label>
+        <link refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>ExampleRefProvider</label>
+        <link refid="classlibmolgrid_1_1ExampleRefProvider"/>
+      </node>
+      <node id="1">
+        <label>ValueStratifiedExampleRefProfider&lt; Provider &gt;</label>
+        <link refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="239" column="1" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="238" bodyend="330"/>
+    <listofallmembers>
+      <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a8b9d408cf4383f3569d23636d5f3e62a" prot="public" virt="virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>addref</name></member>
+      <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1aafe02a48e6c0a187ad218cffeddab088" prot="private" virt="non-virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>bin</name></member>
+      <member refid="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" prot="public" virt="virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>check_batch_size</name></member>
+      <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a465880796d95af0ed2be2a015b58202d" prot="private" virt="non-virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>currenti</name></member>
+      <member refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" prot="public" virt="non-virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>ExampleRefProvider</name></member>
+      <member refid="classlibmolgrid_1_1ExampleRefProvider_1ae32c6ad6aeaeba0d2d2ab74a48a553b5" prot="public" virt="non-virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>ExampleRefProvider</name></member>
+      <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a6679797ca81af02c9ba75e65ccf4c836" prot="private" virt="non-virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>examples</name></member>
+      <member refid="classlibmolgrid_1_1ExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028" prot="public" virt="virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>has_group</name></member>
+      <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a0b0ede69e8156eb97acc579b88e883de" prot="private" virt="non-virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>max</name></member>
+      <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1aad36546e8175d2922bee165fe028fedc" prot="private" virt="non-virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>min</name></member>
+      <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ae630292b50e44deb19e001f322914934" prot="public" virt="virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>nextref</name></member>
+      <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" prot="public" virt="virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>num_labels</name></member>
+      <member refid="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" prot="public" virt="virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>populate</name></member>
+      <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a4fc01d736fe50cf5b977f755b675f11d" prot="public" virt="virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>setup</name></member>
+      <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a126a73e6d140f9e2a7b795c20fa42f70" prot="public" virt="virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>size</name></member>
+      <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a4736138d712d9ee570d0652f08a4786a" prot="private" virt="non-virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>step</name></member>
+      <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a328cfab556bca9b9fffefeb43a0dc490" prot="private" virt="non-virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>use_abs</name></member>
+      <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a61e9e4f44d01297c0fdd0d3fe827d534" prot="private" virt="non-virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>valpos</name></member>
+      <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ad074c52ca9025bfe5cd13fb4403759da" prot="public" virt="non-virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>ValueStratifiedExampleRefProfider</name></member>
+      <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a7283e7554f9b6a2b1269ba97c75d6558" prot="public" virt="non-virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>ValueStratifiedExampleRefProfider</name></member>
+      <member refid="classlibmolgrid_1_1ExampleRefProvider_1a6dab7933abd006833437122f78468007" prot="public" virt="virtual"><scope>libmolgrid::ValueStratifiedExampleRefProfider</scope><name>~ExampleRefProvider</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

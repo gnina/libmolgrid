@@ -1,0 +1,552 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="example_8cpp" kind="file" language="C++">
+    <compoundname>example.cpp</compoundname>
+    <includes local="no">fstream</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">string</includes>
+    <includes local="no">unordered_set</includes>
+    <includes local="no">boost/algorithm/string.hpp</includes>
+    <includes local="no">cuda_runtime.h</includes>
+    <includes refid="example_8h" local="yes">libmolgrid/example.h</includes>
+    <incdepgraph>
+      <node id="6">
+        <label>boost/algorithm/string.hpp</label>
+      </node>
+      <node id="16">
+        <label>libmolgrid/grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="12">
+        <label>libmolgrid/managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>cuda_runtime.h</label>
+      </node>
+      <node id="19">
+        <label>cassert</label>
+      </node>
+      <node id="11">
+        <label>openbabel/mol.h</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="5">
+        <label>unordered_set</label>
+      </node>
+      <node id="2">
+        <label>fstream</label>
+      </node>
+      <node id="20">
+        <label>libmolgrid/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>random</label>
+      </node>
+      <node id="8">
+        <label>libmolgrid/example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>vector</label>
+      </node>
+      <node id="14">
+        <label>utility</label>
+      </node>
+      <node id="3">
+        <label>iostream</label>
+      </node>
+      <node id="23">
+        <label>cuda.h</label>
+      </node>
+      <node id="22">
+        <label>cuda_runtime_api.h</label>
+      </node>
+      <node id="1">
+        <label>example.cpp</label>
+        <link refid="example_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>boost/preprocessor/repetition.hpp</label>
+      </node>
+      <node id="17">
+        <label>boost/multi_array.hpp</label>
+      </node>
+      <node id="10">
+        <label>libmolgrid/coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>cstring</label>
+      </node>
+      <node id="13">
+        <label>memory</label>
+      </node>
+      <node id="24">
+        <label>libmolgrid/libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacelibmolgrid">libmolgrid</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Example.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/><sp/>Created<sp/>on:<sp/>Feb<sp/>27,<sp/>2019</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>Author:<sp/>dkoes</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT(readability/streams)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT(readability/streams)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_set&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/algorithm/string.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cuda_runtime.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="example_8h" kindref="compound">libmolgrid/example.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelibmolgrid" kindref="compound">libmolgrid</ref><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="namespacelibmolgrid_1ae85ac8fbef92553b049a1d50afa4c183" refkind="member"><highlight class="normal"><ref refid="classlibmolgrid_1_1StringCache" kindref="compound">StringCache</ref><sp/><ref refid="namespacelibmolgrid_1ae85ac8fbef92553b049a1d50afa4c183" kindref="member">string_cache</ref>;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="structlibmolgrid_1_1Example_1a29b5e5fcb7a177c6e0ce80c9423ff231" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a29b5e5fcb7a177c6e0ce80c9423ff231" kindref="member">Example::num_coordinates</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>n<sp/>=<sp/>sets.size();<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>N<sp/>+=<sp/>sets[i].coords.dimension(0);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>N;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="structlibmolgrid_1_1Example_1a9cdf22c0ea09d46e82c22a9e8c62f7a8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a9cdf22c0ea09d46e82c22a9e8c62f7a8" kindref="member">Example::num_types</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_index_types)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>maxt<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>n<sp/>=<sp/>sets.size();<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(unique_index_types)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>maxt<sp/>+=<sp/>sets[i].max_type;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>maxt<sp/>=<sp/>max(maxt,<sp/>sets[i].max_type);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>maxt;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//grid<sp/>version</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="structlibmolgrid_1_1Example_1aaf8ff3176b68cb7987d5ec8c95612180" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" kindref="member">Example::merge_coordinates</ref>(Grid2f&amp;<sp/>c,<sp/>Grid1f&amp;<sp/>t,<sp/>Grid1f&amp;<sp/>r,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>start,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_index_types)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>vector&lt;float3&gt;<sp/>coords;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>vector&lt;float&gt;<sp/>types;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>vector&lt;float&gt;<sp/>radii;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>merge_coordinates(coords,<sp/>types,<sp/>radii,<sp/>start,<sp/>unique_index_types);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//validate<sp/>sizes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(c.dimension(0)<sp/>!=<sp/>coords.size())<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>invalid_argument(</highlight><highlight class="stringliteral">&quot;Coordinates<sp/>do<sp/>not<sp/>have<sp/>correct<sp/>dimension:<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(c.dimension(0))<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>!=<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(coords.size()));</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(c.dimension(1)<sp/>!=<sp/>3)<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>invalid_argument(</highlight><highlight class="stringliteral">&quot;Coordinates<sp/>do<sp/>not<sp/>have<sp/>correct<sp/>second<sp/>dimension<sp/>(3):<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(c.dimension(1)));</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(t.size()<sp/>!=<sp/>types.size())<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>invalid_argument(</highlight><highlight class="stringliteral">&quot;Types<sp/>do<sp/>not<sp/>have<sp/>correct<sp/>dimension:<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(t.size())+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>!=<sp/>&quot;</highlight><highlight class="normal"><sp/>+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(types.size()));</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(r.size()<sp/>!=<sp/>radii.size())<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>invalid_argument(</highlight><highlight class="stringliteral">&quot;Radii<sp/>do<sp/>not<sp/>have<sp/>correct<sp/>dimension:<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(r.size())+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>!=<sp/>&quot;</highlight><highlight class="normal"><sp/>+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(radii.size()));</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//copy<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>memcpy(c.data(),<sp/>&amp;coords[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float3)*coords.size());</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>memcpy(t.data(),<sp/>&amp;types[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*types.size());</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>memcpy(r.data(),<sp/>&amp;radii[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*radii.size());</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="structlibmolgrid_1_1Example_1aadbf4bff47ee7557c49edcb73e404604" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" kindref="member">Example::merge_coordinates</ref>(std::vector&lt;float3&gt;&amp;<sp/>coords,<sp/>std::vector&lt;float&gt;&amp;<sp/>types,<sp/>std::vector&lt;float&gt;&amp;<sp/>radii,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>start,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_index_types)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>num_coordinates();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>coords.clear();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>types.clear();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>radii.clear();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(sets.size()<sp/>&lt;=<sp/>start)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>coords.reserve(N);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>types.reserve(N);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>radii.reserve(N);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//accumulate<sp/>info</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>toffset<sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//amount<sp/>to<sp/>offset<sp/>types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>start,<sp/>ns<sp/>=<sp/>sets.size();<sp/>s<sp/>&lt;<sp/>ns;<sp/>s++)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref>&amp;<sp/>CS<sp/>=<sp/>sets[s];</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>CS.<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.dimension(0);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(n<sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//ignore<sp/>empties</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!CS.<ref refid="structlibmolgrid_1_1CoordinateSet_1a0383762ea62d2afd3844dea2c4a0befb" kindref="member">has_indexed_types</ref>())<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>logic_error(</highlight><highlight class="stringliteral">&quot;Coordinate<sp/>sets<sp/>do<sp/>not<sp/>have<sp/>compatible<sp/>index<sp/>types<sp/>for<sp/>merge.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//todo:<sp/>memcpy<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>cr<sp/>=<sp/>CS.<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>[i];</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>coords.push_back(make_float3(cr[0],cr[1],cr[2]));</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>types.push_back(CS.<ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>[i]+toffset);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>radii.push_back(CS.<ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>[i]);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(unique_index_types)<sp/>toffset<sp/>+=<sp/>CS.<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">//grid<sp/>version<sp/>of<sp/>vector</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="structlibmolgrid_1_1Example_1ad44ab023ef81acc53befe9741066de55" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" kindref="member">Example::merge_coordinates</ref>(Grid2f&amp;<sp/>c,<sp/>Grid2f&amp;<sp/>t,<sp/>Grid1f&amp;<sp/>r,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>start,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_index_types)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>vector&lt;float3&gt;<sp/>coords;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>vector&lt;<sp/>vector&lt;float&gt;<sp/>&gt;<sp/>types;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>vector&lt;float&gt;<sp/>radii;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/>merge_coordinates(coords,<sp/>types,<sp/>radii,<sp/>start,<sp/>unique_index_types);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(types.size()<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//validate<sp/>sizes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(c.dimension(0)<sp/>!=<sp/>coords.size())<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>invalid_argument(</highlight><highlight class="stringliteral">&quot;Coordinates<sp/>do<sp/>not<sp/>have<sp/>correct<sp/>dimension:<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(c.dimension(0))<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>!=<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(coords.size()));</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(c.dimension(1)<sp/>!=<sp/>3)<sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>invalid_argument(</highlight><highlight class="stringliteral">&quot;Coordinates<sp/>do<sp/>not<sp/>have<sp/>correct<sp/>second<sp/>dimension<sp/>(3):<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(c.dimension(1)));</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(t.dimension(0)<sp/>!=<sp/>types.size())<sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>invalid_argument(</highlight><highlight class="stringliteral">&quot;Types<sp/>do<sp/>not<sp/>have<sp/>correct<sp/>dimension:<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(t.dimension(0))+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>!=<sp/>&quot;</highlight><highlight class="normal"><sp/>+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(types.size()));</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(t.dimension(1)<sp/>!=<sp/>types[0].size())<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>invalid_argument(</highlight><highlight class="stringliteral">&quot;Types<sp/>do<sp/>not<sp/>have<sp/>correct<sp/>dimension:<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(t.dimension(1))+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>!=<sp/>&quot;</highlight><highlight class="normal"><sp/>+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(types[0].size()));</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(r.size()<sp/>!=<sp/>radii.size())<sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>invalid_argument(</highlight><highlight class="stringliteral">&quot;Radii<sp/>do<sp/>not<sp/>have<sp/>correct<sp/>dimension:<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(r.size())+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>!=<sp/>&quot;</highlight><highlight class="normal"><sp/>+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(radii.size()));</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//copy<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>memcpy(c.data(),<sp/>&amp;coords[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float3)*coords.size());</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>memcpy(t.data(),<sp/>&amp;types[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*types.size());</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/>memcpy(r.data(),<sp/>&amp;radii[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*radii.size());</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="structlibmolgrid_1_1Example_1aa0927ed6ec846f2a8e7daeb64e39795d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" kindref="member">Example::merge_coordinates</ref>(std::vector&lt;float3&gt;&amp;<sp/>coords,<sp/>std::vector&lt;std::vector&lt;float&gt;<sp/>&gt;&amp;<sp/>types,</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;float&gt;&amp;<sp/>radii,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>start,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_index_types)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/>coords.clear();</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/>types.clear();</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/>radii.clear();</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(sets.size()<sp/>&lt;=<sp/>start)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>num_coordinates();</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>maxt<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//validate<sp/>type<sp/>vector<sp/>sizes<sp/>-<sp/>if<sp/>unique_index_types<sp/>is<sp/>true,<sp/>maxt<sp/>is<sp/>the<sp/>sum<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//the<sp/>number<sp/>of<sp/>types,<sp/>otherwise<sp/>it<sp/>is<sp/>the<sp/>max</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>start,<sp/>n<sp/>=<sp/>sets.size();<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(unique_index_types)</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>maxt<sp/>+=<sp/>sets[i].max_type;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>maxt<sp/>=<sp/>max(maxt,sets[i].max_type);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(sets[i].coords.dimension(0)<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!sets[i].has_vector_types())</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>logic_error(</highlight><highlight class="stringliteral">&quot;Coordinate<sp/>sets<sp/>do<sp/>not<sp/>have<sp/>compatible<sp/>vector<sp/>types<sp/>for<sp/>merge.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(sets[i].max_type<sp/>!=<sp/>sets[i].type_vector.dimension(1))<sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>logic_error(</highlight><highlight class="stringliteral">&quot;Coordinate<sp/>set<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(i)+</highlight><highlight class="stringliteral">&quot;<sp/>does<sp/>not<sp/>have<sp/>consistent<sp/>max_type/vector<sp/>type<sp/>sizes&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>coords.reserve(N);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/>types.reserve(N);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>radii.reserve(N);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//accumulate<sp/>info</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>start,<sp/>ns<sp/>=<sp/>sets.size();<sp/>s<sp/>&lt;<sp/>ns;<sp/>s++)<sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref>&amp;<sp/>CS<sp/>=<sp/>sets[s];</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>CS.<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.dimension(0);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//todo:<sp/>memcpy<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>cr<sp/>=<sp/>CS.<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>[i];</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>coords.push_back(make_float3(cr[0],cr[1],cr[2]));</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>types.push_back(vector&lt;float&gt;(maxt,<sp/>0.0));</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;float&gt;&amp;<sp/>tvec<sp/>=<sp/>types.back();</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(offset+CS.<ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>[i].size()<sp/>&gt;<sp/>tvec.size())</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>logic_error(</highlight><highlight class="stringliteral">&quot;Incompatible<sp/>vector<sp/>sizes<sp/>in<sp/>merge_coordinates&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(&amp;tvec[0]+offset,<sp/>CS.<ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>[i].cpu().data(),<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*CS.<ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>[i].size());</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>nr<sp/>=<sp/>CS.<ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.size();<sp/>i<sp/>&lt;<sp/>nr;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>radii.push_back(CS.<ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>[i]);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(unique_index_types)<sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>offset<sp/>+=<sp/>sets[s].max_type;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200" refid="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" refkind="member"><highlight class="normal"><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref><sp/><ref refid="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" kindref="member">Example::merge_coordinates</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>start,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_index_types)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>has_vec<sp/>=<sp/>has_vector_types();</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>has_ind<sp/>=<sp/>has_index_types();</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!has_ind<sp/>&amp;&amp;<sp/>!has_vec)<sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>invalid_argument(</highlight><highlight class="stringliteral">&quot;Inconsistent<sp/>typing<sp/>schemes<sp/>in<sp/>merge_coordinates&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(sets.size()<sp/>&lt;=<sp/>start)<sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref>();</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(sets.size()<sp/>==<sp/>start+1)<sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//copy<sp/>data<sp/>for<sp/>consistency<sp/>with<sp/>multiple<sp/>sets</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sets[start].clone();</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!has_vec)<sp/>{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;float3&gt;<sp/>coords;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;float&gt;<sp/>types;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;float&gt;<sp/>radii;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>merge_coordinates(coords,<sp/>types,<sp/>radii,<sp/>start,<sp/>unique_index_types);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref>(coords,<sp/>types,<sp/>radii,<sp/>num_types(unique_index_types));</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="comment">//vector<sp/>types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;float3&gt;<sp/>coords;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;vector&lt;float&gt;<sp/>&gt;<sp/>types;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;float&gt;<sp/>radii;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>merge_coordinates(coords,<sp/>types,<sp/>radii,<sp/>start,<sp/>unique_index_types);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref>(coords,<sp/>types,<sp/>radii);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232" refid="structlibmolgrid_1_1Example_1a7503b6a47c9b4b6cc834e6a0f8415e26" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a7503b6a47c9b4b6cc834e6a0f8415e26" kindref="member">Example::has_vector_types</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>start)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//if<sp/>all<sp/>sets<sp/>are<sp/>vector<sp/>types,<sp/>merge<sp/>as<sp/>such<sp/>-<sp/>empty<sp/>sets<sp/>are<sp/>ambiguous<sp/>so<sp/>have<sp/>to<sp/>check<sp/>all</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>start,<sp/>n<sp/>=<sp/>sets.size();<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(sets[i].size()<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!sets[i].has_vector_types())</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243" refid="structlibmolgrid_1_1Example_1a2e1844ea21f945bfed11383c4ca32bf0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a2e1844ea21f945bfed11383c4ca32bf0" kindref="member">Example::has_index_types</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>start)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//if<sp/>all<sp/>sets<sp/>are<sp/>vector<sp/>types,<sp/>merge<sp/>as<sp/>such<sp/>-<sp/>empty<sp/>sets<sp/>are<sp/>ambiguous<sp/>so<sp/>have<sp/>to<sp/>check<sp/>all</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>start,<sp/>n<sp/>=<sp/>sets.size();<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(sets[i].size()<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!sets[i].has_indexed_types())</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isCUDA&gt;</highlight></codeline>
+<codeline lineno="255" refid="structlibmolgrid_1_1Example_1a000f4bbd3c5453860543c5ad97be617a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a000f4bbd3c5453860543c5ad97be617a" kindref="member">Example::extract_labels</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;Example&gt;&amp;<sp/>examples,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 2, isCUDA&gt;</ref>&amp;<sp/>out)<sp/>{</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(out.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(0)<sp/>!=<sp/>examples.size())<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::out_of_range(</highlight><highlight class="stringliteral">&quot;Grid<sp/>dimension<sp/>does<sp/>not<sp/>match<sp/>number<sp/>of<sp/>examples:<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(out.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(0))<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>vs<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(examples.size()));</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(examples.size()<sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nlabels<sp/>=<sp/>examples[0].labels.size();</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nlabels<sp/>!=<sp/>out.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(1))<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::out_of_range(</highlight><highlight class="stringliteral">&quot;Grid<sp/>dimension<sp/>does<sp/>not<sp/>match<sp/>number<sp/>of<sp/>labels:<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(nlabels)+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>vs<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(out.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(1)));</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>n<sp/>=<sp/>examples.size();<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;float&gt;&amp;<sp/>labels<sp/>=<sp/>examples[i].labels;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(labels.size()<sp/>!=<sp/>nlabels)<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>logic_error(</highlight><highlight class="stringliteral">&quot;Non-uniform<sp/>number<sp/>of<sp/>labels:<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(nlabels)<sp/>+</highlight><highlight class="stringliteral">&quot;<sp/>vs<sp/>&quot;</highlight><highlight class="normal">+<sp/><ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(labels.size()));</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(isCUDA)<sp/>{</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1aa79d03c876b7392cd06c1f77d5286b59" kindref="member">LMG_CUDA_CHECK</ref>(cudaMemcpy(out[i].data(),<sp/>&amp;labels[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*nlabels,<sp/>cudaMemcpyHostToDevice));</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(out[i].data(),<sp/>&amp;labels[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*nlabels);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="270"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a000f4bbd3c5453860543c5ad97be617a" kindref="member">Example::extract_labels</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;Example&gt;&amp;<sp/>examples,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 2, false&gt;</ref>&amp;<sp/>out);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a000f4bbd3c5453860543c5ad97be617a" kindref="member">Example::extract_labels</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;Example&gt;&amp;<sp/>examples,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 2, true&gt;</ref>&amp;<sp/>out);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isCUDA&gt;</highlight></codeline>
+<codeline lineno="277" refid="structlibmolgrid_1_1Example_1abd2622389892168945e6f8d721072e38" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1abd2622389892168945e6f8d721072e38" kindref="member">Example::extract_label</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;Example&gt;&amp;<sp/>examples,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>labelpos,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 1, isCUDA&gt;</ref>&amp;<sp/>out)<sp/>{</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>examples.size();</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(out.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(0)<sp/>!=<sp/>N)<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::out_of_range(</highlight><highlight class="stringliteral">&quot;Grid<sp/>dimension<sp/>does<sp/>not<sp/>match<sp/>number<sp/>of<sp/>examples&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(N<sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nlabels<sp/>=<sp/>examples[0].labels.size();</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(labelpos<sp/>&gt;=<sp/>nlabels)<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::out_of_range(</highlight><highlight class="stringliteral">&quot;labelpos<sp/>invalid:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(labelpos)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&gt;=<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(nlabels));</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//unpack<sp/>into<sp/>a<sp/>single<sp/>vector</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/>vector&lt;float&gt;<sp/>labels(N);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>N;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(labelpos<sp/>&gt;=<sp/>labels.size())<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::out_of_range(</highlight><highlight class="stringliteral">&quot;labelpos<sp/>invalid<sp/>(nonuniform<sp/>labels):<sp/>&quot;</highlight><highlight class="normal"><sp/>+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(labelpos)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&gt;=<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(labels.size()));</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/>labels[i]<sp/>=<sp/>examples[i].labels[labelpos];</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(isCUDA)<sp/>{</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1aa79d03c876b7392cd06c1f77d5286b59" kindref="member">LMG_CUDA_CHECK</ref>(cudaMemcpy(out.<ref refid="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5" kindref="member">data</ref>(),<sp/>&amp;labels[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*N,<sp/>cudaMemcpyHostToDevice));</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>memcpy(out.<ref refid="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5" kindref="member">data</ref>(),<sp/>&amp;labels[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*N);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="295"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1abd2622389892168945e6f8d721072e38" kindref="member">Example::extract_label</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;Example&gt;&amp;,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal">,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 1, false&gt;</ref>&amp;<sp/>);</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1abd2622389892168945e6f8d721072e38" kindref="member">Example::extract_label</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;Example&gt;&amp;,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal">,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 1, true&gt;</ref>&amp;<sp/>);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301" refid="namespacelibmolgrid_1a1fca3edcd06bb699eed3954b29644ef9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a1fca3edcd06bb699eed3954b29644ef9" kindref="member">is_numeric</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&amp;<sp/>number)</highlight></codeline>
+<codeline lineno="302"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>end<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>strtod(number.c_str(),<sp/>&amp;end);<sp/><sp/></highlight><highlight class="comment">//if<sp/>entire<sp/>string<sp/>is<sp/>number,<sp/>end<sp/>will<sp/>be<sp/>set<sp/>to<sp/>end<sp/>of<sp/>string</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>end<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>*end<sp/>==<sp/>0;<sp/><sp/></highlight><highlight class="comment">//could<sp/>also<sp/>check<sp/>end<sp/>!=<sp/>number.c_str()<sp/>if<sp/>whole<sp/>string<sp/>doesn&apos;t<sp/>need<sp/>to<sp/>be<sp/>numerical</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309" refid="structlibmolgrid_1_1ExampleRef_1af68ef87a6eab8ca94bd25484c273a402" refkind="member"><highlight class="normal"><ref refid="structlibmolgrid_1_1ExampleRef_1a673e48c4d531cbc1bd304594141eadfc" kindref="member">ExampleRef::ExampleRef</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>line,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>numlabels,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>hasgroup)<sp/>{</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/>stringstream<sp/>stream(line);</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>tmp;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(numlabels<sp/>&lt;<sp/>0)<sp/>{<sp/></highlight><highlight class="comment">//auto<sp/>detect</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;string&gt;<sp/>tokens;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/>boost::algorithm::split(tokens,<sp/>line,boost::is_any_of(</highlight><highlight class="stringliteral">&quot;\t<sp/>&quot;</highlight><highlight class="normal">),boost::token_compress_on);</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>n<sp/>=<sp/>tokens.size();<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>numlabels<sp/>=<sp/>i;</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!<ref refid="namespacelibmolgrid_1a1fca3edcd06bb699eed3954b29644ef9" kindref="member">is_numeric</ref>(tokens[i]))</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(hasgroup)<sp/>numlabels--;</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//get<sp/>group<sp/>if<sp/>needed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(hasgroup)<sp/>{</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>stream<sp/>&gt;&gt;<sp/>group;</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//grab<sp/>all<sp/>labels</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>label<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/>labels.reserve(numlabels);</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>numlabels;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/>stream<sp/>&gt;&gt;<sp/>label;</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/>labels.push_back(label);</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//remainder<sp/>of<sp/>the<sp/>line<sp/>should<sp/>be<sp/>whitespace<sp/>spearated<sp/>file<sp/>names</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/>vector&lt;const<sp/>char<sp/>*&gt;<sp/>names;</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(stream)<sp/>{</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/>tmp.clear();</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/>stream<sp/>&gt;&gt;<sp/>tmp;</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(tmp.length()<sp/>==<sp/>0<sp/>||<sp/>tmp[0]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;#&apos;</highlight><highlight class="normal">)<sp/></highlight><highlight class="comment">//nothing<sp/>left<sp/>or<sp/>hit<sp/>comment<sp/>character</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>n<sp/>=<sp/><ref refid="namespacelibmolgrid_1ae85ac8fbef92553b049a1d50afa4c183" kindref="member">string_cache</ref>.<ref refid="classlibmolgrid_1_1StringCache_1ae455591e43349bd3ef26f574a6ea2ecd" kindref="member">get</ref>(tmp);</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/>names.push_back(n);</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(names.size()<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Missing<sp/>molecular<sp/>data<sp/>in<sp/>line:<sp/>&quot;</highlight><highlight class="normal">+line);</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/>files.reserve(names.size());</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/>files<sp/>=<sp/>names;</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isCUDA&gt;</highlight></codeline>
+<codeline lineno="357" refid="structlibmolgrid_1_1Example_1ad1f4b659e53779914a303ad373b7db79" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1ad1f4b659e53779914a303ad373b7db79" kindref="member">Example::sum_types</ref>(<ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 1, isCUDA&gt;</ref>&amp;<sp/>sum,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_types)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>NT<sp/>=<sp/>num_types(unique_types);</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(sum.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(0)<sp/>!=<sp/>NT)<sp/>{</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>invalid_argument(</highlight><highlight class="stringliteral">&quot;Size<sp/>of<sp/>sum<sp/>output<sp/>doesn&apos;t<sp/>match<sp/>number<sp/>of<sp/>types<sp/>in<sp/>example:<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(sum.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(0))+</highlight><highlight class="stringliteral">&quot;<sp/>vs<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(NT));</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>n<sp/>=<sp/>sets.size();<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(unique_types)<sp/>{</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>nt<sp/>=<sp/>sets[i].num_types();</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nt<sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 1, isCUDA&gt;</ref><sp/>subsum(sum.<ref refid="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5" kindref="member">data</ref>()+offset,<sp/>nt);</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>offset<sp/>+=<sp/>nt;<sp/></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(offset<sp/>&gt;<sp/>NT)<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>out_of_range(</highlight><highlight class="stringliteral">&quot;Type<sp/>sizes<sp/>don&apos;t<sp/>add<sp/>up<sp/>in<sp/>Example::sum_types<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(offset)+</highlight><highlight class="stringliteral">&quot;<sp/>vs<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(NT));</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>sets[i].sum_types(subsum);</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>sets[i].sum_types(sum,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="376"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"></highlight></codeline>
+<codeline lineno="378"><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1ad1f4b659e53779914a303ad373b7db79" kindref="member">Example::sum_types</ref>(<ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 1, true&gt;</ref>&amp;<sp/>sum,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_types)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1ad1f4b659e53779914a303ad373b7db79" kindref="member">Example::sum_types</ref>(<ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 1, false&gt;</ref>&amp;<sp/>sum,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_types)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight></codeline>
+<codeline lineno="383"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/example.cpp"/>
+  </compounddef>
+</doxygen>

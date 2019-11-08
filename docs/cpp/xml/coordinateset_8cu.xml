@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="coordinateset_8cu" kind="file" language="C++">
+    <compoundname>coordinateset.cu</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">/*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>coordinateset.cu</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/>Created<sp/>on:<sp/>Aug<sp/>7,<sp/>2019</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>Author:<sp/>dkoes</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;cuda_runtime.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;thrust/device_ptr.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;thrust/reduce.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;thrust/functional.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;libmolgrid/coordinateset.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>libmolgrid<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">using<sp/>namespace<sp/>std;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//kernel<sp/>parallelized<sp/>over<sp/>types</highlight></codeline>
+<codeline><highlight class="normal">__global__<sp/>void<sp/>sum_vector_types_gpu(Grid&lt;float,<sp/>2,<sp/>true&gt;<sp/>types,<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;<sp/>sum)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>unsigned<sp/>t<sp/>=<sp/>blockIdx.x<sp/>*<sp/>blockDim.x<sp/>+<sp/>threadIdx.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>float<sp/>tsum<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for(unsigned<sp/>i<sp/>=<sp/>0,<sp/>n<sp/>=<sp/>types.dimension(0);<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tsum<sp/>+=<sp/>types[i][t];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sum[t]<sp/>=<sp/>tsum;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//kernel<sp/>parallelized<sp/>over<sp/>types<sp/>-<sp/>parrallelizing<sp/>over<sp/>index<sp/>types<sp/>this<sp/>way<sp/>is<sp/>silly</highlight></codeline>
+<codeline><highlight class="normal">//and<sp/>likely<sp/>ineffective,<sp/>but<sp/>I&apos;m<sp/>not<sp/>expecting<sp/>it<sp/>to<sp/>be<sp/>used/matter<sp/>much</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>you<sp/>at<sp/>least<sp/>get<sp/>a<sp/>parallel<sp/>store,<sp/>so<sp/>that&apos;s<sp/>something?</highlight></codeline>
+<codeline><highlight class="normal">__global__<sp/>void<sp/>sum_index_types_gpu(Grid&lt;float,<sp/>1,<sp/>true&gt;<sp/>types,<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;<sp/>sum)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>float<sp/>t<sp/>=<sp/>blockIdx.x<sp/>*<sp/>blockDim.x<sp/>+<sp/>threadIdx.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>float<sp/>tsum<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for(unsigned<sp/>i<sp/>=<sp/>0,<sp/>n<sp/>=<sp/>types.dimension(0);<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(types[i]<sp/>==<sp/>t)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tsum<sp/>+=<sp/>types[i];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sum[t]<sp/>=<sp/>tsum;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>CoordinateSet::sum_types(Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>sum,<sp/>bool<sp/>zerofirst)<sp/>const<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if(zerofirst)<sp/>sum.fill_zero();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>NT<sp/>=<sp/>num_types();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>blocks<sp/>=<sp/>LMG_GET_BLOCKS(NT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>threads<sp/>=<sp/>LMG_GET_THREADS(NT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if(!has_vector_types())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sum_index_types_gpu&lt;&lt;&lt;blocks,threads&gt;&gt;&gt;(type_index.gpu(),<sp/>sum);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{<sp/>//vector<sp/>types</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sum_vector_types_gpu&lt;&lt;&lt;blocks,threads&gt;&gt;&gt;(type_vector.gpu(),<sp/>sum);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>LMG_CUDA_CHECK(cudaPeekAtLastError());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//thrust::device_ptr&lt;float&gt;<sp/>start<sp/>=<sp/>thrust::device_pointer_cast(sum.data());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//return<sp/>thrust::reduce(start,<sp/>start+sum.size(),<sp/>0,<sp/>thrust::plus&lt;float&gt;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/coordinateset.cu"/>
+  </compounddef>
+</doxygen>

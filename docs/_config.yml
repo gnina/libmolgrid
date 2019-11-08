@@ -31,8 +31,6 @@ links:
 
 # documentation and tutorials are special
 collections:
-    docs:
-      output: true
     tutorials:
       output: true
 
