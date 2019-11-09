@@ -4,9 +4,6 @@
 libmolgrid C++ API Documentation
 ======================================
 
-Indices and tables
-==================
-
 * :ref:`genindex`
 * :ref:`search`
 
@@ -161,12 +158,6 @@ Docs
   :private-members:
   :undoc-members:
 
-.. doxygenclass:: libmolgrid::Grid_3_01Dtype_00_011_00_01isCUDA_01_4
-  :project: libmolgrid
-  :members:
-  :private-members:
-  :undoc-members:
-
 .. doxygenclass:: libmolgrid::GridMaker
   :project: libmolgrid
   :members:
@@ -180,12 +171,6 @@ Docs
   :undoc-members:
 
 .. doxygenclass:: libmolgrid::ManagedGrid
-  :project: libmolgrid
-  :members:
-  :private-members:
-  :undoc-members:
-
-.. doxygenclass:: libmolgrid::ManagedGrid_3_01Dtype_00_011_01_4
   :project: libmolgrid
   :members:
   :private-members:
