@@ -125,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" line="533" column="22" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" declline="609" declcolumn="29"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" line="533" column="22" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" declline="610" declcolumn="29"/>
       </memberdef>
       <memberdef kind="variable" id="namespacelibmolgrid_1a371ec05022b3d175a5b02d540f947ac2" prot="public" static="no" mutable="no">
         <type><ref refid="classlibmolgrid_1_1FileMappedGninaTyper" kindref="compound">FileMappedGninaTyper</ref></type>
@@ -138,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" line="534" column="22" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" declline="610" declcolumn="29"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" line="534" column="22" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" declline="611" declcolumn="29"/>
       </memberdef>
       <memberdef kind="variable" id="namespacelibmolgrid_1ae85ac8fbef92553b049a1d50afa4c183" prot="public" static="no" mutable="no">
         <type><ref refid="classlibmolgrid_1_1StringCache" kindref="compound">StringCache</ref></type>

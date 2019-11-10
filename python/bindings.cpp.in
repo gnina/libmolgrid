@@ -515,7 +515,7 @@ MAKE_ALL_GRIDS()
   converter::registry::insert(&extract_swig_wrapped_pointer, type_id<OpenBabel::OBMol>());
   converter::registry::insert(&extract_pybel_molecule, type_id<OpenBabel::OBMol>());
 
-  class_<AtomTyper,  std::shared_ptr<AtomTyper> >("AtomTyper", no_init );
+  class_<AtomTyper,  std::shared_ptr<AtomTyper> >("AtomTyper", "@Docstring_AtomTyper@", no_init);
 
   class_<GninaIndexTyper, bases<AtomTyper>, std::shared_ptr<GninaIndexTyper> >("GninaIndexTyper")
       .def(init<bool>())

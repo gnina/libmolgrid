@@ -21,6 +21,7 @@ namespace libmolgrid {
 
 /***** Base classes **********/
 
+// Docstring_AtomTyper
 /** \brief Base class for all atom typers */
 class AtomTyper {
   public:

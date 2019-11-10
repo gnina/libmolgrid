@@ -15,7 +15,7 @@ Docs
 ====
 
 The ``AtomIndexTypeMapper`` class
-*****************************
+*********************************
 .. doxygenclass:: libmolgrid::AtomIndexTypeMapper
   :project: libmolgrid
   :members:
@@ -23,7 +23,7 @@ The ``AtomIndexTypeMapper`` class
   :undoc-members:
 
 The ``AtomIndexTyper`` class
-*****************************
+****************************
 .. doxygenclass:: libmolgrid::AtomIndexTyper
   :project: libmolgrid
   :members:
@@ -31,7 +31,7 @@ The ``AtomIndexTyper`` class
   :undoc-members:
 
 The ``AtomTyper`` class
-*****************************
+***********************
 .. doxygenclass:: libmolgrid::AtomTyper
   :project: libmolgrid
   :members:
@@ -47,7 +47,7 @@ The ``AtomVectorTyper`` class
   :undoc-members:
 
 The ``BalancedExampleRefProvider`` class
-*****************************
+****************************************
 .. doxygenclass:: libmolgrid::BalancedExampleRefProvider
   :project: libmolgrid
   :members:
@@ -55,7 +55,7 @@ The ``BalancedExampleRefProvider`` class
   :undoc-members:
 
 The ``CallbackIndexTyper`` class
-*****************************
+********************************
 .. doxygenclass:: libmolgrid::CallbackIndexTyper
   :project: libmolgrid
   :members:
@@ -63,7 +63,7 @@ The ``CallbackIndexTyper`` class
   :undoc-members:
 
 The ``CallbackVectorTyper`` class
-*****************************
+*********************************
 .. doxygenclass:: libmolgrid::CallbackVectorTyper
   :project: libmolgrid
   :members:
@@ -71,7 +71,7 @@ The ``CallbackVectorTyper`` class
   :undoc-members:
 
 The ``CartesianGrid`` class
-*****************************
+***************************
 .. doxygenclass:: libmolgrid::CartesianGrid
   :project: libmolgrid
   :members:
@@ -79,7 +79,7 @@ The ``CartesianGrid`` class
   :undoc-members:
 
 The ``CoordCache`` class
-*****************************
+************************
 .. doxygenclass:: libmolgrid::CoordCache
   :project: libmolgrid
   :members:
@@ -87,7 +87,7 @@ The ``CoordCache`` class
   :undoc-members:
 
 The ``CoordinateSet`` class
-*****************************
+***************************
 .. doxygenstruct:: libmolgrid::CoordinateSet
   :project: libmolgrid
   :members:
@@ -95,7 +95,7 @@ The ``CoordinateSet`` class
   :undoc-members:
 
 The ``ElementIndexTyper`` class
-*****************************
+*******************************
 .. doxygenclass:: libmolgrid::ElementIndexTyper
   :project: libmolgrid
   :members:
@@ -103,7 +103,7 @@ The ``ElementIndexTyper`` class
   :undoc-members:
 
 The ``Example`` class
-*****************************
+*********************
 .. doxygenstruct:: libmolgrid::Example
   :project: libmolgrid
   :members:
@@ -111,7 +111,7 @@ The ``Example`` class
   :undoc-members:
 
 The ``ExampleExtractor`` class
-*****************************
+******************************
 .. doxygenclass:: libmolgrid::ExampleExtractor
   :project: libmolgrid
   :members:
@@ -127,7 +127,7 @@ The ``ExampleProvider`` class
   :undoc-members:
 
 The ``ExampleProviderSettings`` class
-*****************************
+*************************************
 .. doxygenstruct:: libmolgrid::ExampleProviderSettings
   :project: libmolgrid
   :members:
@@ -135,7 +135,7 @@ The ``ExampleProviderSettings`` class
   :undoc-members:
 
 The ``ExampleRef`` class
-*****************************
+************************
 .. doxygenstruct:: libmolgrid::ExampleRef
   :project: libmolgrid
   :members:
@@ -143,7 +143,7 @@ The ``ExampleRef`` class
   :undoc-members:
 
 The ``ExampleRefProvider`` class
-*****************************
+********************************
 .. doxygenclass:: libmolgrid::ExampleRefProvider
   :project: libmolgrid
   :members:
@@ -151,7 +151,7 @@ The ``ExampleRefProvider`` class
   :undoc-members:
 
 The ``FileAtomMapper`` class
-*****************************
+****************************
 .. doxygenclass:: libmolgrid::FileAtomMapper
   :project: libmolgrid
   :members:
@@ -159,7 +159,7 @@ The ``FileAtomMapper`` class
   :undoc-members:
 
 The ``FileMappedElementTyper`` class
-*****************************
+************************************
 .. doxygenclass:: libmolgrid::FileMappedElementTyper
   :project: libmolgrid
   :members:
@@ -167,7 +167,7 @@ The ``FileMappedElementTyper`` class
   :undoc-members:
 
 The ``FileMappedGninaTyper`` class
-*****************************
+**********************************
 .. doxygenclass:: libmolgrid::FileMappedGninaTyper
   :project: libmolgrid
   :members:
@@ -183,7 +183,7 @@ The ``GninaIndexTyper`` class
   :undoc-members:
 
 The ``GninaIndexTyper::info`` class
-*****************************
+***********************************
 .. doxygenstruct:: libmolgrid::GninaIndexTyper::info
   :project: libmolgrid
   :members:
@@ -191,7 +191,7 @@ The ``GninaIndexTyper::info`` class
   :undoc-members:
 
 The ``GninaVectorTyper`` class
-*****************************
+******************************
 .. doxygenclass:: libmolgrid::GninaVectorTyper
   :project: libmolgrid
   :members:
@@ -199,7 +199,7 @@ The ``GninaVectorTyper`` class
   :undoc-members:
 
 The ``Grid`` class
-*****************************
+******************
 .. doxygenclass:: libmolgrid::Grid
   :project: libmolgrid
   :members:
@@ -207,7 +207,7 @@ The ``Grid`` class
   :undoc-members:
 
 The ``GridMaker`` class
-*****************************
+***********************
 .. doxygenclass:: libmolgrid::GridMaker
   :project: libmolgrid
   :members:
@@ -215,7 +215,7 @@ The ``GridMaker`` class
   :undoc-members:
 
 The ``GroupedExampleRefProvider`` class
-*****************************
+***************************************
 .. doxygenclass:: libmolgrid::GroupedExampleRefProvider
   :project: libmolgrid
   :members:
@@ -223,7 +223,7 @@ The ``GroupedExampleRefProvider`` class
   :undoc-members:
 
 The ``ManagedGrid`` class
-*****************************
+*************************
 .. doxygenclass:: libmolgrid::ManagedGrid
   :project: libmolgrid
   :members:
@@ -239,7 +239,7 @@ The ``ManagedGridBase`` class
   :undoc-members:
 
 The ``MappedAtomIndexTyper`` class
-*****************************
+**********************************
 .. doxygenclass:: libmolgrid::MappedAtomIndexTyper
   :project: libmolgrid
   :members:
@@ -247,7 +247,7 @@ The ``MappedAtomIndexTyper`` class
   :undoc-members:
 
 The ``mgrid_buffer_data`` class
-*****************************
+*******************************
 .. doxygenstruct:: libmolgrid::mgrid_buffer_data
   :project: libmolgrid
   :members:
@@ -255,7 +255,7 @@ The ``mgrid_buffer_data`` class
   :undoc-members:
 
 The ``NullIndexTyper`` class
-*****************************
+****************************
 .. doxygenclass:: libmolgrid::NullIndexTyper
   :project: libmolgrid
   :members:
@@ -263,7 +263,7 @@ The ``NullIndexTyper`` class
   :undoc-members:
 
 The ``Quaternion`` class
-*****************************
+************************
 .. doxygenclass:: libmolgrid::Quaternion
   :project: libmolgrid
   :members:
@@ -271,7 +271,7 @@ The ``Quaternion`` class
   :undoc-members:
 
 The ``ReceptorStratifiedExampleRefProvider`` class
-*****************************
+**************************************************
 .. doxygenclass:: libmolgrid::ReceptorStratifiedExampleRefProvider
   :project: libmolgrid
   :members:
@@ -279,7 +279,7 @@ The ``ReceptorStratifiedExampleRefProvider`` class
   :undoc-members:
 
 The ``SamplingExampleRefProvider`` class
-*****************************
+****************************************
 .. doxygenclass:: libmolgrid::SamplingExampleRefProvider
   :project: libmolgrid
   :members:
@@ -287,7 +287,7 @@ The ``SamplingExampleRefProvider`` class
   :undoc-members:
 
 The ``StringCache`` class
-*****************************
+*************************
 .. doxygenclass:: libmolgrid::StringCache
   :project: libmolgrid
   :members:
@@ -295,7 +295,7 @@ The ``StringCache`` class
   :undoc-members:
 
 The ``SubsetAtomMapper`` class
-*****************************
+******************************
 .. doxygenclass:: libmolgrid::SubsetAtomMapper
   :project: libmolgrid
   :members:
@@ -303,7 +303,7 @@ The ``SubsetAtomMapper`` class
   :undoc-members:
 
 The ``SubsettedElementTyper`` class
-*****************************
+***********************************
 .. doxygenclass:: libmolgrid::SubsettedElementTyper
   :project: libmolgrid
   :members:
@@ -311,7 +311,7 @@ The ``SubsettedElementTyper`` class
   :undoc-members:
 
 The ``SubsettedGninaTyper`` class
-*****************************
+*********************************
 .. doxygenclass:: libmolgrid::SubsettedGninaTyper
   :project: libmolgrid
   :members:
@@ -319,7 +319,7 @@ The ``SubsettedGninaTyper`` class
   :undoc-members:
 
 The ``Transform`` class
-*****************************
+***********************
 .. doxygenclass:: libmolgrid::Transform
   :project: libmolgrid
   :members:
@@ -327,7 +327,7 @@ The ``Transform`` class
   :undoc-members:
 
 The ``UniformExampleRefProvider`` class
-*****************************
+***************************************
 .. doxygenclass:: libmolgrid::UniformExampleRefProvider
   :project: libmolgrid
   :members:
@@ -335,7 +335,7 @@ The ``UniformExampleRefProvider`` class
   :undoc-members:
 
 The ``ValueStratifiedExampleRefProfider`` class
-*****************************
+***********************************************
 .. doxygenclass:: libmolgrid::ValueStratifiedExampleRefProfider
   :project: libmolgrid
   :members:

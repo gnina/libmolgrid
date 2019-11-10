@@ -4,6 +4,18 @@ layout: default
 homepage: false
 hide: true
 ---
+---
+title: libmolgrid C++ Documentation
+layout: default
+homepage: false
+hide: true
+---
+---
+title: libmolgrid C++ Documentation
+layout: default
+homepage: false
+hide: true
+---
 
 
 <!DOCTYPE html>
@@ -87,7 +99,50 @@ hide: true
               <!-- Local TOC -->
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">libmolgrid C++ API Documentation</a></li>
-<li><a class="reference internal" href="#docs">Docs</a></li>
+<li><a class="reference internal" href="#docs">Docs</a><ul>
+<li><a class="reference internal" href="#the-atomindextypemapper-class">The <code class="docutils literal notranslate"><span class="pre">AtomIndexTypeMapper</span></code> class</a></li>
+<li><a class="reference internal" href="#the-atomindextyper-class">The <code class="docutils literal notranslate"><span class="pre">AtomIndexTyper</span></code> class</a></li>
+<li><a class="reference internal" href="#the-atomtyper-class">The <code class="docutils literal notranslate"><span class="pre">AtomTyper</span></code> class</a></li>
+<li><a class="reference internal" href="#the-atomvectortyper-class">The <code class="docutils literal notranslate"><span class="pre">AtomVectorTyper</span></code> class</a></li>
+<li><a class="reference internal" href="#the-balancedexamplerefprovider-class">The <code class="docutils literal notranslate"><span class="pre">BalancedExampleRefProvider</span></code> class</a></li>
+<li><a class="reference internal" href="#the-callbackindextyper-class">The <code class="docutils literal notranslate"><span class="pre">CallbackIndexTyper</span></code> class</a></li>
+<li><a class="reference internal" href="#the-callbackvectortyper-class">The <code class="docutils literal notranslate"><span class="pre">CallbackVectorTyper</span></code> class</a></li>
+<li><a class="reference internal" href="#the-cartesiangrid-class">The <code class="docutils literal notranslate"><span class="pre">CartesianGrid</span></code> class</a></li>
+<li><a class="reference internal" href="#the-coordcache-class">The <code class="docutils literal notranslate"><span class="pre">CoordCache</span></code> class</a></li>
+<li><a class="reference internal" href="#the-coordinateset-class">The <code class="docutils literal notranslate"><span class="pre">CoordinateSet</span></code> class</a></li>
+<li><a class="reference internal" href="#the-elementindextyper-class">The <code class="docutils literal notranslate"><span class="pre">ElementIndexTyper</span></code> class</a></li>
+<li><a class="reference internal" href="#the-example-class">The <code class="docutils literal notranslate"><span class="pre">Example</span></code> class</a></li>
+<li><a class="reference internal" href="#the-exampleextractor-class">The <code class="docutils literal notranslate"><span class="pre">ExampleExtractor</span></code> class</a></li>
+<li><a class="reference internal" href="#the-exampleprovider-class">The <code class="docutils literal notranslate"><span class="pre">ExampleProvider</span></code> class</a></li>
+<li><a class="reference internal" href="#the-exampleprovidersettings-class">The <code class="docutils literal notranslate"><span class="pre">ExampleProviderSettings</span></code> class</a></li>
+<li><a class="reference internal" href="#the-exampleref-class">The <code class="docutils literal notranslate"><span class="pre">ExampleRef</span></code> class</a></li>
+<li><a class="reference internal" href="#the-examplerefprovider-class">The <code class="docutils literal notranslate"><span class="pre">ExampleRefProvider</span></code> class</a></li>
+<li><a class="reference internal" href="#the-fileatommapper-class">The <code class="docutils literal notranslate"><span class="pre">FileAtomMapper</span></code> class</a></li>
+<li><a class="reference internal" href="#the-filemappedelementtyper-class">The <code class="docutils literal notranslate"><span class="pre">FileMappedElementTyper</span></code> class</a></li>
+<li><a class="reference internal" href="#the-filemappedgninatyper-class">The <code class="docutils literal notranslate"><span class="pre">FileMappedGninaTyper</span></code> class</a></li>
+<li><a class="reference internal" href="#the-gninaindextyper-class">The <code class="docutils literal notranslate"><span class="pre">GninaIndexTyper</span></code> class</a></li>
+<li><a class="reference internal" href="#the-gninaindextyper-info-class">The <code class="docutils literal notranslate"><span class="pre">GninaIndexTyper::info</span></code> class</a></li>
+<li><a class="reference internal" href="#the-gninavectortyper-class">The <code class="docutils literal notranslate"><span class="pre">GninaVectorTyper</span></code> class</a></li>
+<li><a class="reference internal" href="#the-grid-class">The <code class="docutils literal notranslate"><span class="pre">Grid</span></code> class</a></li>
+<li><a class="reference internal" href="#the-gridmaker-class">The <code class="docutils literal notranslate"><span class="pre">GridMaker</span></code> class</a></li>
+<li><a class="reference internal" href="#the-groupedexamplerefprovider-class">The <code class="docutils literal notranslate"><span class="pre">GroupedExampleRefProvider</span></code> class</a></li>
+<li><a class="reference internal" href="#the-managedgrid-class">The <code class="docutils literal notranslate"><span class="pre">ManagedGrid</span></code> class</a></li>
+<li><a class="reference internal" href="#the-managedgridbase-class">The <code class="docutils literal notranslate"><span class="pre">ManagedGridBase</span></code> class</a></li>
+<li><a class="reference internal" href="#the-mappedatomindextyper-class">The <code class="docutils literal notranslate"><span class="pre">MappedAtomIndexTyper</span></code> class</a></li>
+<li><a class="reference internal" href="#the-mgrid-buffer-data-class">The <code class="docutils literal notranslate"><span class="pre">mgrid_buffer_data</span></code> class</a></li>
+<li><a class="reference internal" href="#the-nullindextyper-class">The <code class="docutils literal notranslate"><span class="pre">NullIndexTyper</span></code> class</a></li>
+<li><a class="reference internal" href="#the-quaternion-class">The <code class="docutils literal notranslate"><span class="pre">Quaternion</span></code> class</a></li>
+<li><a class="reference internal" href="#the-receptorstratifiedexamplerefprovider-class">The <code class="docutils literal notranslate"><span class="pre">ReceptorStratifiedExampleRefProvider</span></code> class</a></li>
+<li><a class="reference internal" href="#the-samplingexamplerefprovider-class">The <code class="docutils literal notranslate"><span class="pre">SamplingExampleRefProvider</span></code> class</a></li>
+<li><a class="reference internal" href="#the-stringcache-class">The <code class="docutils literal notranslate"><span class="pre">StringCache</span></code> class</a></li>
+<li><a class="reference internal" href="#the-subsetatommapper-class">The <code class="docutils literal notranslate"><span class="pre">SubsetAtomMapper</span></code> class</a></li>
+<li><a class="reference internal" href="#the-subsettedelementtyper-class">The <code class="docutils literal notranslate"><span class="pre">SubsettedElementTyper</span></code> class</a></li>
+<li><a class="reference internal" href="#the-subsettedgninatyper-class">The <code class="docutils literal notranslate"><span class="pre">SubsettedGninaTyper</span></code> class</a></li>
+<li><a class="reference internal" href="#the-transform-class">The <code class="docutils literal notranslate"><span class="pre">Transform</span></code> class</a></li>
+<li><a class="reference internal" href="#the-uniformexamplerefprovider-class">The <code class="docutils literal notranslate"><span class="pre">UniformExampleRefProvider</span></code> class</a></li>
+<li><a class="reference internal" href="#the-valuestratifiedexamplerefprofider-class">The <code class="docutils literal notranslate"><span class="pre">ValueStratifiedExampleRefProfider</span></code> class</a></li>
+</ul>
+</li>
 </ul>
 </div>
             
@@ -163,6 +218,8 @@ hide: true
 </div>
 <div class="section" id="docs">
 <h1>Docs<a class="headerlink" href="#docs" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-atomindextypemapper-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">AtomIndexTypeMapper</span></code> class<a class="headerlink" href="#the-atomindextypemapper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid19AtomIndexTypeMapperE">
 <span id="_CPPv3N10libmolgrid19AtomIndexTypeMapperE"></span><span id="_CPPv2N10libmolgrid19AtomIndexTypeMapperE"></span><span id="libmolgrid::AtomIndexTypeMapper"></span><span class="target" id="classlibmolgrid_1_1AtomIndexTypeMapper"></span><em class="property">class </em><code class="sig-name descname">AtomIndexTypeMapper</code><a class="headerlink" href="#_CPPv4N10libmolgrid19AtomIndexTypeMapperE" title="Permalink to this definition">¶</a><br /></dt>
@@ -201,6 +258,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-atomindextyper-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">AtomIndexTyper</span></code> class<a class="headerlink" href="#the-atomindextyper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid14AtomIndexTyperE">
 <span id="_CPPv3N10libmolgrid14AtomIndexTyperE"></span><span id="_CPPv2N10libmolgrid14AtomIndexTyperE"></span><span id="libmolgrid::AtomIndexTyper"></span><span class="target" id="classlibmolgrid_1_1AtomIndexTyper"></span><em class="property">class </em><code class="sig-name descname">AtomIndexTyper</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4N10libmolgrid9AtomTyperE" title="libmolgrid::AtomTyper">AtomTyper</a><a class="headerlink" href="#_CPPv4N10libmolgrid14AtomIndexTyperE" title="Permalink to this definition">¶</a><br /></dt>
@@ -269,6 +329,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-atomtyper-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">AtomTyper</span></code> class<a class="headerlink" href="#the-atomtyper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid9AtomTyperE">
 <span id="_CPPv3N10libmolgrid9AtomTyperE"></span><span id="_CPPv2N10libmolgrid9AtomTyperE"></span><span id="libmolgrid::AtomTyper"></span><span class="target" id="classlibmolgrid_1_1AtomTyper"></span><em class="property">class </em><code class="sig-name descname">AtomTyper</code><a class="headerlink" href="#_CPPv4N10libmolgrid9AtomTyperE" title="Permalink to this definition">¶</a><br /></dt>
@@ -319,6 +382,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-atomvectortyper-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">AtomVectorTyper</span></code> class<a class="headerlink" href="#the-atomvectortyper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid15AtomVectorTyperE">
 <span id="_CPPv3N10libmolgrid15AtomVectorTyperE"></span><span id="_CPPv2N10libmolgrid15AtomVectorTyperE"></span><span id="libmolgrid::AtomVectorTyper"></span><span class="target" id="classlibmolgrid_1_1AtomVectorTyper"></span><em class="property">class </em><code class="sig-name descname">AtomVectorTyper</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4N10libmolgrid9AtomTyperE" title="libmolgrid::AtomTyper">AtomTyper</a><a class="headerlink" href="#_CPPv4N10libmolgrid15AtomVectorTyperE" title="Permalink to this definition">¶</a><br /></dt>
@@ -377,6 +443,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-balancedexamplerefprovider-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">BalancedExampleRefProvider</span></code> class<a class="headerlink" href="#the-balancedexamplerefprovider-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid26BalancedExampleRefProviderE">
 <span id="_CPPv3N10libmolgrid26BalancedExampleRefProviderE"></span><span id="_CPPv2N10libmolgrid26BalancedExampleRefProviderE"></span><span id="libmolgrid::BalancedExampleRefProvider"></span><span class="target" id="classlibmolgrid_1_1BalancedExampleRefProvider"></span><em class="property">class </em><code class="sig-name descname">BalancedExampleRefProvider</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4N10libmolgrid18ExampleRefProviderE" title="libmolgrid::ExampleRefProvider">ExampleRefProvider</a><a class="headerlink" href="#_CPPv4N10libmolgrid26BalancedExampleRefProviderE" title="Permalink to this definition">¶</a><br /></dt>
@@ -482,6 +551,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-callbackindextyper-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">CallbackIndexTyper</span></code> class<a class="headerlink" href="#the-callbackindextyper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid18CallbackIndexTyperE">
 <span id="_CPPv3N10libmolgrid18CallbackIndexTyperE"></span><span id="_CPPv2N10libmolgrid18CallbackIndexTyperE"></span><span id="libmolgrid::CallbackIndexTyper"></span><span class="target" id="classlibmolgrid_1_1CallbackIndexTyper"></span><em class="property">class </em><code class="sig-name descname">CallbackIndexTyper</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4N10libmolgrid14AtomIndexTyperE" title="libmolgrid::AtomIndexTyper">AtomIndexTyper</a><a class="headerlink" href="#_CPPv4N10libmolgrid18CallbackIndexTyperE" title="Permalink to this definition">¶</a><br /></dt>
@@ -571,6 +643,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-callbackvectortyper-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">CallbackVectorTyper</span></code> class<a class="headerlink" href="#the-callbackvectortyper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid19CallbackVectorTyperE">
 <span id="_CPPv3N10libmolgrid19CallbackVectorTyperE"></span><span id="_CPPv2N10libmolgrid19CallbackVectorTyperE"></span><span id="libmolgrid::CallbackVectorTyper"></span><span class="target" id="classlibmolgrid_1_1CallbackVectorTyper"></span><em class="property">class </em><code class="sig-name descname">CallbackVectorTyper</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4N10libmolgrid15AtomVectorTyperE" title="libmolgrid::AtomVectorTyper">AtomVectorTyper</a><a class="headerlink" href="#_CPPv4N10libmolgrid19CallbackVectorTyperE" title="Permalink to this definition">¶</a><br /></dt>
@@ -645,6 +720,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-cartesiangrid-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">CartesianGrid</span></code> class<a class="headerlink" href="#the-cartesiangrid-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4I0EN10libmolgrid13CartesianGridE">
 <span id="_CPPv3I0EN10libmolgrid13CartesianGridE"></span><span id="_CPPv2I0EN10libmolgrid13CartesianGridE"></span><span class="target" id="classlibmolgrid_1_1CartesianGrid"></span>template&lt;class <code class="sig-name descname">G</code>&gt;<br /><em class="property">class </em><code class="sig-name descname">CartesianGrid</code><a class="headerlink" href="#_CPPv4I0EN10libmolgrid13CartesianGridE" title="Permalink to this definition">¶</a><br /></dt>
@@ -712,6 +790,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-coordcache-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">CoordCache</span></code> class<a class="headerlink" href="#the-coordcache-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid10CoordCacheE">
 <span id="_CPPv3N10libmolgrid10CoordCacheE"></span><span id="_CPPv2N10libmolgrid10CoordCacheE"></span><span id="libmolgrid::CoordCache"></span><span class="target" id="classlibmolgrid_1_1CoordCache"></span><em class="property">class </em><code class="sig-name descname">CoordCache</code><a class="headerlink" href="#_CPPv4N10libmolgrid10CoordCacheE" title="Permalink to this definition">¶</a><br /></dt>
@@ -820,6 +901,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-coordinateset-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">CoordinateSet</span></code> class<a class="headerlink" href="#the-coordinateset-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid13CoordinateSetE">
 <span id="_CPPv3N10libmolgrid13CoordinateSetE"></span><span id="_CPPv2N10libmolgrid13CoordinateSetE"></span><span id="libmolgrid::CoordinateSet"></span><span class="target" id="structlibmolgrid_1_1CoordinateSet"></span><em class="property">struct </em><code class="sig-name descname">CoordinateSet</code><a class="headerlink" href="#_CPPv4N10libmolgrid13CoordinateSetE" title="Permalink to this definition">¶</a><br /></dt>
@@ -1043,6 +1127,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-elementindextyper-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">ElementIndexTyper</span></code> class<a class="headerlink" href="#the-elementindextyper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid17ElementIndexTyperE">
 <span id="_CPPv3N10libmolgrid17ElementIndexTyperE"></span><span id="_CPPv2N10libmolgrid17ElementIndexTyperE"></span><span id="libmolgrid::ElementIndexTyper"></span><span class="target" id="classlibmolgrid_1_1ElementIndexTyper"></span><em class="property">class </em><code class="sig-name descname">ElementIndexTyper</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4N10libmolgrid14AtomIndexTyperE" title="libmolgrid::AtomIndexTyper">AtomIndexTyper</a><a class="headerlink" href="#_CPPv4N10libmolgrid17ElementIndexTyperE" title="Permalink to this definition">¶</a><br /></dt>
@@ -1124,6 +1211,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-example-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">Example</span></code> class<a class="headerlink" href="#the-example-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid7ExampleE">
 <span id="_CPPv3N10libmolgrid7ExampleE"></span><span id="_CPPv2N10libmolgrid7ExampleE"></span><span id="libmolgrid::Example"></span><span class="target" id="structlibmolgrid_1_1Example"></span><em class="property">struct </em><code class="sig-name descname">Example</code><a class="headerlink" href="#_CPPv4N10libmolgrid7ExampleE" title="Permalink to this definition">¶</a><br /></dt>
@@ -1298,6 +1388,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-exampleextractor-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">ExampleExtractor</span></code> class<a class="headerlink" href="#the-exampleextractor-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid16ExampleExtractorE">
 <span id="_CPPv3N10libmolgrid16ExampleExtractorE"></span><span id="_CPPv2N10libmolgrid16ExampleExtractorE"></span><span id="libmolgrid::ExampleExtractor"></span><span class="target" id="classlibmolgrid_1_1ExampleExtractor"></span><em class="property">class </em><code class="sig-name descname">ExampleExtractor</code><a class="headerlink" href="#_CPPv4N10libmolgrid16ExampleExtractorE" title="Permalink to this definition">¶</a><br /></dt>
@@ -1372,6 +1465,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-exampleprovider-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">ExampleProvider</span></code> class<a class="headerlink" href="#the-exampleprovider-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid15ExampleProviderE">
 <span id="_CPPv3N10libmolgrid15ExampleProviderE"></span><span id="_CPPv2N10libmolgrid15ExampleProviderE"></span><span id="libmolgrid::ExampleProvider"></span><span class="target" id="classlibmolgrid_1_1ExampleProvider"></span><em class="property">class </em><code class="sig-name descname">ExampleProvider</code><a class="headerlink" href="#_CPPv4N10libmolgrid15ExampleProviderE" title="Permalink to this definition">¶</a><br /></dt>
@@ -1523,12 +1619,18 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-exampleprovidersettings-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">ExampleProviderSettings</span></code> class<a class="headerlink" href="#the-exampleprovidersettings-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid23ExampleProviderSettingsE">
 <span id="_CPPv3N10libmolgrid23ExampleProviderSettingsE"></span><span id="_CPPv2N10libmolgrid23ExampleProviderSettingsE"></span><span id="libmolgrid::ExampleProviderSettings"></span><span class="target" id="structlibmolgrid_1_1ExampleProviderSettings"></span><em class="property">struct </em><code class="sig-name descname">ExampleProviderSettings</code><a class="headerlink" href="#_CPPv4N10libmolgrid23ExampleProviderSettingsE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Description of how examples should be provided This provides configuration to example refs, extractors, and the provider itself as a declarative syntax. </p>
 </dd></dl>
 
+</div>
+<div class="section" id="the-exampleref-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">ExampleRef</span></code> class<a class="headerlink" href="#the-exampleref-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid10ExampleRefE">
 <span id="_CPPv3N10libmolgrid10ExampleRefE"></span><span id="_CPPv2N10libmolgrid10ExampleRefE"></span><span id="libmolgrid::ExampleRef"></span><span class="target" id="structlibmolgrid_1_1ExampleRef"></span><em class="property">struct </em><code class="sig-name descname">ExampleRef</code><a class="headerlink" href="#_CPPv4N10libmolgrid10ExampleRefE" title="Permalink to this definition">¶</a><br /></dt>
@@ -1573,6 +1675,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-examplerefprovider-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">ExampleRefProvider</span></code> class<a class="headerlink" href="#the-examplerefprovider-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid18ExampleRefProviderE">
 <span id="_CPPv3N10libmolgrid18ExampleRefProviderE"></span><span id="_CPPv2N10libmolgrid18ExampleRefProviderE"></span><span id="libmolgrid::ExampleRefProvider"></span><span class="target" id="classlibmolgrid_1_1ExampleRefProvider"></span><em class="property">class </em><code class="sig-name descname">ExampleRefProvider</code><a class="headerlink" href="#_CPPv4N10libmolgrid18ExampleRefProviderE" title="Permalink to this definition">¶</a><br /></dt>
@@ -1642,6 +1747,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-fileatommapper-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">FileAtomMapper</span></code> class<a class="headerlink" href="#the-fileatommapper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid14FileAtomMapperE">
 <span id="_CPPv3N10libmolgrid14FileAtomMapperE"></span><span id="_CPPv2N10libmolgrid14FileAtomMapperE"></span><span id="libmolgrid::FileAtomMapper"></span><span class="target" id="classlibmolgrid_1_1FileAtomMapper"></span><em class="property">class </em><code class="sig-name descname">FileAtomMapper</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4N10libmolgrid19AtomIndexTypeMapperE" title="libmolgrid::AtomIndexTypeMapper">AtomIndexTypeMapper</a><a class="headerlink" href="#_CPPv4N10libmolgrid14FileAtomMapperE" title="Permalink to this definition">¶</a><br /></dt>
@@ -1714,6 +1822,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-filemappedelementtyper-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">FileMappedElementTyper</span></code> class<a class="headerlink" href="#the-filemappedelementtyper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid22FileMappedElementTyperE">
 <span id="_CPPv3N10libmolgrid22FileMappedElementTyperE"></span><span id="_CPPv2N10libmolgrid22FileMappedElementTyperE"></span><span id="libmolgrid::FileMappedElementTyper"></span><span class="target" id="classlibmolgrid_1_1FileMappedElementTyper"></span><em class="property">class </em><code class="sig-name descname">FileMappedElementTyper</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4I00EN10libmolgrid20MappedAtomIndexTyperE" title="libmolgrid::MappedAtomIndexTyper">MappedAtomIndexTyper</a>&lt;<a class="reference internal" href="#_CPPv4N10libmolgrid14FileAtomMapperE" title="libmolgrid::FileAtomMapper">FileAtomMapper</a>, <a class="reference internal" href="#_CPPv4N10libmolgrid17ElementIndexTyperE" title="libmolgrid::ElementIndexTyper">ElementIndexTyper</a>&gt;<a class="headerlink" href="#_CPPv4N10libmolgrid22FileMappedElementTyperE" title="Permalink to this definition">¶</a><br /></dt>
@@ -1809,6 +1920,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-filemappedgninatyper-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">FileMappedGninaTyper</span></code> class<a class="headerlink" href="#the-filemappedgninatyper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid20FileMappedGninaTyperE">
 <span id="_CPPv3N10libmolgrid20FileMappedGninaTyperE"></span><span id="_CPPv2N10libmolgrid20FileMappedGninaTyperE"></span><span id="libmolgrid::FileMappedGninaTyper"></span><span class="target" id="classlibmolgrid_1_1FileMappedGninaTyper"></span><em class="property">class </em><code class="sig-name descname">FileMappedGninaTyper</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4I00EN10libmolgrid20MappedAtomIndexTyperE" title="libmolgrid::MappedAtomIndexTyper">MappedAtomIndexTyper</a>&lt;<a class="reference internal" href="#_CPPv4N10libmolgrid14FileAtomMapperE" title="libmolgrid::FileAtomMapper">FileAtomMapper</a>, <a class="reference internal" href="#_CPPv4N10libmolgrid15GninaIndexTyperE" title="libmolgrid::GninaIndexTyper">GninaIndexTyper</a>&gt;<a class="headerlink" href="#_CPPv4N10libmolgrid20FileMappedGninaTyperE" title="Permalink to this definition">¶</a><br /></dt>
@@ -1904,6 +2018,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-gninaindextyper-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">GninaIndexTyper</span></code> class<a class="headerlink" href="#the-gninaindextyper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid15GninaIndexTyperE">
 <span id="_CPPv3N10libmolgrid15GninaIndexTyperE"></span><span id="_CPPv2N10libmolgrid15GninaIndexTyperE"></span><span id="libmolgrid::GninaIndexTyper"></span><span class="target" id="classlibmolgrid_1_1GninaIndexTyper"></span><em class="property">class </em><code class="sig-name descname">GninaIndexTyper</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4N10libmolgrid14AtomIndexTyperE" title="libmolgrid::AtomIndexTyper">AtomIndexTyper</a><a class="headerlink" href="#_CPPv4N10libmolgrid15GninaIndexTyperE" title="Permalink to this definition">¶</a><br /></dt>
@@ -2239,6 +2356,9 @@ hide: true
 
 </dd></dl>
 
+</div>
+<div class="section" id="the-gninaindextyper-info-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">GninaIndexTyper::info</span></code> class<a class="headerlink" href="#the-gninaindextyper-info-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid15GninaIndexTyper4infoE">
 <span id="_CPPv3N10libmolgrid15GninaIndexTyper4infoE"></span><span id="_CPPv2N10libmolgrid15GninaIndexTyper4infoE"></span><span class="target" id="structlibmolgrid_1_1GninaIndexTyper_1_1info"></span><em class="property">struct </em><code class="sig-name descname">info</code><br /></dt>
@@ -2318,6 +2438,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-gninavectortyper-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">GninaVectorTyper</span></code> class<a class="headerlink" href="#the-gninavectortyper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid16GninaVectorTyperE">
 <span id="_CPPv3N10libmolgrid16GninaVectorTyperE"></span><span id="_CPPv2N10libmolgrid16GninaVectorTyperE"></span><span id="libmolgrid::GninaVectorTyper"></span><span class="target" id="classlibmolgrid_1_1GninaVectorTyper"></span><em class="property">class </em><code class="sig-name descname">GninaVectorTyper</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4N10libmolgrid15AtomVectorTyperE" title="libmolgrid::AtomVectorTyper">AtomVectorTyper</a><a class="headerlink" href="#_CPPv4N10libmolgrid16GninaVectorTyperE" title="Permalink to this definition">¶</a><br /></dt>
@@ -2537,6 +2660,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-grid-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">Grid</span></code> class<a class="headerlink" href="#the-grid-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE">
 <span id="_CPPv3I0_NSt6size_tE_bEN10libmolgrid4GridE"></span><span id="_CPPv2I0_NSt6size_tE_bEN10libmolgrid4GridE"></span><span class="target" id="classlibmolgrid_1_1Grid"></span>template&lt;typename <code class="sig-name descname">Dtype</code>, std::size_t <code class="sig-name descname">NumDims</code>, bool <code class="sig-name descname">isCUDA</code> = false&gt;<br /><em class="property">class </em><code class="sig-name descname">Grid</code><a class="headerlink" href="#_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE" title="Permalink to this definition">¶</a><br /></dt>
@@ -2713,6 +2839,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-gridmaker-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">GridMaker</span></code> class<a class="headerlink" href="#the-gridmaker-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid9GridMakerE">
 <span id="_CPPv3N10libmolgrid9GridMakerE"></span><span id="_CPPv2N10libmolgrid9GridMakerE"></span><span id="libmolgrid::GridMaker"></span><span class="target" id="classlibmolgrid_1_1GridMaker"></span><em class="property">class </em><code class="sig-name descname">GridMaker</code><a class="headerlink" href="#_CPPv4N10libmolgrid9GridMakerE" title="Permalink to this definition">¶</a><br /></dt>
@@ -2991,6 +3120,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-groupedexamplerefprovider-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">GroupedExampleRefProvider</span></code> class<a class="headerlink" href="#the-groupedexamplerefprovider-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4I0EN10libmolgrid25GroupedExampleRefProviderE">
 <span id="_CPPv3I0EN10libmolgrid25GroupedExampleRefProviderE"></span><span id="_CPPv2I0EN10libmolgrid25GroupedExampleRefProviderE"></span><span class="target" id="classlibmolgrid_1_1GroupedExampleRefProvider"></span>template&lt;class <code class="sig-name descname">Provider</code>&gt;<br /><em class="property">class </em><code class="sig-name descname">GroupedExampleRefProvider</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4N10libmolgrid18ExampleRefProviderE" title="libmolgrid::ExampleRefProvider">ExampleRefProvider</a><a class="headerlink" href="#_CPPv4I0EN10libmolgrid25GroupedExampleRefProviderE" title="Permalink to this definition">¶</a><br /></dt>
@@ -3093,6 +3225,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-managedgrid-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">ManagedGrid</span></code> class<a class="headerlink" href="#the-managedgrid-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4I0_NSt6size_tEEN10libmolgrid11ManagedGridE">
 <span id="_CPPv3I0_NSt6size_tEEN10libmolgrid11ManagedGridE"></span><span id="_CPPv2I0_NSt6size_tEEN10libmolgrid11ManagedGridE"></span><span class="target" id="classlibmolgrid_1_1ManagedGrid"></span>template&lt;typename <code class="sig-name descname">Dtype</code>, std::size_t <code class="sig-name descname">NumDims</code>&gt;<br /><em class="property">class </em><code class="sig-name descname">ManagedGrid</code><a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN10libmolgrid11ManagedGridE" title="Permalink to this definition">¶</a><br /></dt>
@@ -3142,6 +3277,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-managedgridbase-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">ManagedGridBase</span></code> class<a class="headerlink" href="#the-managedgridbase-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4I0_NSt6size_tEEN10libmolgrid15ManagedGridBaseE">
 <span id="_CPPv3I0_NSt6size_tEEN10libmolgrid15ManagedGridBaseE"></span><span id="_CPPv2I0_NSt6size_tEEN10libmolgrid15ManagedGridBaseE"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase"></span>template&lt;typename <code class="sig-name descname">Dtype</code>, std::size_t <code class="sig-name descname">NumDims</code>&gt;<br /><em class="property">class </em><code class="sig-name descname">ManagedGridBase</code><a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN10libmolgrid15ManagedGridBaseE" title="Permalink to this definition">¶</a><br /></dt>
@@ -3355,6 +3493,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-mappedatomindextyper-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">MappedAtomIndexTyper</span></code> class<a class="headerlink" href="#the-mappedatomindextyper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4I00EN10libmolgrid20MappedAtomIndexTyperE">
 <span id="_CPPv3I00EN10libmolgrid20MappedAtomIndexTyperE"></span><span id="_CPPv2I00EN10libmolgrid20MappedAtomIndexTyperE"></span><span class="target" id="classlibmolgrid_1_1MappedAtomIndexTyper"></span>template&lt;class <code class="sig-name descname">Mapper</code>, class <code class="sig-name descname">Typer</code>&gt;<br /><em class="property">class </em><code class="sig-name descname">MappedAtomIndexTyper</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4N10libmolgrid14AtomIndexTyperE" title="libmolgrid::AtomIndexTyper">AtomIndexTyper</a><a class="headerlink" href="#_CPPv4I00EN10libmolgrid20MappedAtomIndexTyperE" title="Permalink to this definition">¶</a><br /></dt>
@@ -3422,6 +3563,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-mgrid-buffer-data-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">mgrid_buffer_data</span></code> class<a class="headerlink" href="#the-mgrid-buffer-data-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4I0EN10libmolgrid17mgrid_buffer_dataE">
 <span id="_CPPv3I0EN10libmolgrid17mgrid_buffer_dataE"></span><span id="_CPPv2I0EN10libmolgrid17mgrid_buffer_dataE"></span><span class="target" id="structlibmolgrid_1_1mgrid__buffer__data"></span>template&lt;typename <code class="sig-name descname">Dtype</code>&gt;<br /><em class="property">struct </em><code class="sig-name descname">mgrid_buffer_data</code><a class="headerlink" href="#_CPPv4I0EN10libmolgrid17mgrid_buffer_dataE" title="Permalink to this definition">¶</a><br /></dt>
@@ -3440,6 +3584,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-nullindextyper-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">NullIndexTyper</span></code> class<a class="headerlink" href="#the-nullindextyper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid14NullIndexTyperE">
 <span id="_CPPv3N10libmolgrid14NullIndexTyperE"></span><span id="_CPPv2N10libmolgrid14NullIndexTyperE"></span><span id="libmolgrid::NullIndexTyper"></span><span class="target" id="classlibmolgrid_1_1NullIndexTyper"></span><em class="property">class </em><code class="sig-name descname">NullIndexTyper</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4N10libmolgrid14AtomIndexTyperE" title="libmolgrid::AtomIndexTyper">AtomIndexTyper</a><a class="headerlink" href="#_CPPv4N10libmolgrid14NullIndexTyperE" title="Permalink to this definition">¶</a><br /></dt>
@@ -3507,6 +3654,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-quaternion-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">Quaternion</span></code> class<a class="headerlink" href="#the-quaternion-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid10QuaternionE">
 <span id="_CPPv3N10libmolgrid10QuaternionE"></span><span id="_CPPv2N10libmolgrid10QuaternionE"></span><span id="libmolgrid::Quaternion"></span><span class="target" id="classlibmolgrid_1_1Quaternion"></span><em class="property">class </em><code class="sig-name descname">Quaternion</code><a class="headerlink" href="#_CPPv4N10libmolgrid10QuaternionE" title="Permalink to this definition">¶</a><br /></dt>
@@ -3642,6 +3792,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-receptorstratifiedexamplerefprovider-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">ReceptorStratifiedExampleRefProvider</span></code> class<a class="headerlink" href="#the-receptorstratifiedexamplerefprovider-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4I0_iEN10libmolgrid36ReceptorStratifiedExampleRefProviderE">
 <span id="_CPPv3I0_iEN10libmolgrid36ReceptorStratifiedExampleRefProviderE"></span><span id="_CPPv2I0_iEN10libmolgrid36ReceptorStratifiedExampleRefProviderE"></span><span class="target" id="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider"></span>template&lt;class <code class="sig-name descname">Provider</code>, int <code class="sig-name descname">K</code> = 1&gt;<br /><em class="property">class </em><code class="sig-name descname">ReceptorStratifiedExampleRefProvider</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4N10libmolgrid18ExampleRefProviderE" title="libmolgrid::ExampleRefProvider">ExampleRefProvider</a><a class="headerlink" href="#_CPPv4I0_iEN10libmolgrid36ReceptorStratifiedExampleRefProviderE" title="Permalink to this definition">¶</a><br /></dt>
@@ -3748,6 +3901,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-samplingexamplerefprovider-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">SamplingExampleRefProvider</span></code> class<a class="headerlink" href="#the-samplingexamplerefprovider-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4I00EN10libmolgrid26SamplingExampleRefProviderE">
 <span id="_CPPv3I00EN10libmolgrid26SamplingExampleRefProviderE"></span><span id="_CPPv2I00EN10libmolgrid26SamplingExampleRefProviderE"></span><span class="target" id="classlibmolgrid_1_1SamplingExampleRefProvider"></span>template&lt;class <code class="sig-name descname">Provider1</code>, class <code class="sig-name descname">Provider2</code>&gt;<br /><em class="property">class </em><code class="sig-name descname">SamplingExampleRefProvider</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4N10libmolgrid18ExampleRefProviderE" title="libmolgrid::ExampleRefProvider">ExampleRefProvider</a><a class="headerlink" href="#_CPPv4I00EN10libmolgrid26SamplingExampleRefProviderE" title="Permalink to this definition">¶</a><br /></dt>
@@ -3834,6 +3990,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-stringcache-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">StringCache</span></code> class<a class="headerlink" href="#the-stringcache-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid11StringCacheE">
 <span id="_CPPv3N10libmolgrid11StringCacheE"></span><span id="_CPPv2N10libmolgrid11StringCacheE"></span><span id="libmolgrid::StringCache"></span><span class="target" id="classlibmolgrid_1_1StringCache"></span><em class="property">class </em><code class="sig-name descname">StringCache</code><a class="headerlink" href="#_CPPv4N10libmolgrid11StringCacheE" title="Permalink to this definition">¶</a><br /></dt>
@@ -3855,6 +4014,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-subsetatommapper-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">SubsetAtomMapper</span></code> class<a class="headerlink" href="#the-subsetatommapper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid16SubsetAtomMapperE">
 <span id="_CPPv3N10libmolgrid16SubsetAtomMapperE"></span><span id="_CPPv2N10libmolgrid16SubsetAtomMapperE"></span><span id="libmolgrid::SubsetAtomMapper"></span><span class="target" id="classlibmolgrid_1_1SubsetAtomMapper"></span><em class="property">class </em><code class="sig-name descname">SubsetAtomMapper</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4N10libmolgrid19AtomIndexTypeMapperE" title="libmolgrid::AtomIndexTypeMapper">AtomIndexTypeMapper</a><a class="headerlink" href="#_CPPv4N10libmolgrid16SubsetAtomMapperE" title="Permalink to this definition">¶</a><br /></dt>
@@ -3917,6 +4079,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-subsettedelementtyper-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">SubsettedElementTyper</span></code> class<a class="headerlink" href="#the-subsettedelementtyper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid21SubsettedElementTyperE">
 <span id="_CPPv3N10libmolgrid21SubsettedElementTyperE"></span><span id="_CPPv2N10libmolgrid21SubsettedElementTyperE"></span><span id="libmolgrid::SubsettedElementTyper"></span><span class="target" id="classlibmolgrid_1_1SubsettedElementTyper"></span><em class="property">class </em><code class="sig-name descname">SubsettedElementTyper</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4I00EN10libmolgrid20MappedAtomIndexTyperE" title="libmolgrid::MappedAtomIndexTyper">MappedAtomIndexTyper</a>&lt;<a class="reference internal" href="#_CPPv4N10libmolgrid16SubsetAtomMapperE" title="libmolgrid::SubsetAtomMapper">SubsetAtomMapper</a>, <a class="reference internal" href="#_CPPv4N10libmolgrid17ElementIndexTyperE" title="libmolgrid::ElementIndexTyper">ElementIndexTyper</a>&gt;<a class="headerlink" href="#_CPPv4N10libmolgrid21SubsettedElementTyperE" title="Permalink to this definition">¶</a><br /></dt>
@@ -4012,6 +4177,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-subsettedgninatyper-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">SubsettedGninaTyper</span></code> class<a class="headerlink" href="#the-subsettedgninatyper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid19SubsettedGninaTyperE">
 <span id="_CPPv3N10libmolgrid19SubsettedGninaTyperE"></span><span id="_CPPv2N10libmolgrid19SubsettedGninaTyperE"></span><span id="libmolgrid::SubsettedGninaTyper"></span><span class="target" id="classlibmolgrid_1_1SubsettedGninaTyper"></span><em class="property">class </em><code class="sig-name descname">SubsettedGninaTyper</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4I00EN10libmolgrid20MappedAtomIndexTyperE" title="libmolgrid::MappedAtomIndexTyper">MappedAtomIndexTyper</a>&lt;<a class="reference internal" href="#_CPPv4N10libmolgrid16SubsetAtomMapperE" title="libmolgrid::SubsetAtomMapper">SubsetAtomMapper</a>, <a class="reference internal" href="#_CPPv4N10libmolgrid15GninaIndexTyperE" title="libmolgrid::GninaIndexTyper">GninaIndexTyper</a>&gt;<a class="headerlink" href="#_CPPv4N10libmolgrid19SubsettedGninaTyperE" title="Permalink to this definition">¶</a><br /></dt>
@@ -4107,6 +4275,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-transform-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">Transform</span></code> class<a class="headerlink" href="#the-transform-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid9TransformE">
 <span id="_CPPv3N10libmolgrid9TransformE"></span><span id="_CPPv2N10libmolgrid9TransformE"></span><span id="libmolgrid::Transform"></span><span class="target" id="classlibmolgrid_1_1Transform"></span><em class="property">class </em><code class="sig-name descname">Transform</code><a class="headerlink" href="#_CPPv4N10libmolgrid9TransformE" title="Permalink to this definition">¶</a><br /></dt>
@@ -4224,6 +4395,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-uniformexamplerefprovider-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">UniformExampleRefProvider</span></code> class<a class="headerlink" href="#the-uniformexamplerefprovider-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N10libmolgrid25UniformExampleRefProviderE">
 <span id="_CPPv3N10libmolgrid25UniformExampleRefProviderE"></span><span id="_CPPv2N10libmolgrid25UniformExampleRefProviderE"></span><span id="libmolgrid::UniformExampleRefProvider"></span><span class="target" id="classlibmolgrid_1_1UniformExampleRefProvider"></span><em class="property">class </em><code class="sig-name descname">UniformExampleRefProvider</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4N10libmolgrid18ExampleRefProviderE" title="libmolgrid::ExampleRefProvider">ExampleRefProvider</a><a class="headerlink" href="#_CPPv4N10libmolgrid25UniformExampleRefProviderE" title="Permalink to this definition">¶</a><br /></dt>
@@ -4310,6 +4484,9 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="the-valuestratifiedexamplerefprofider-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">ValueStratifiedExampleRefProfider</span></code> class<a class="headerlink" href="#the-valuestratifiedexamplerefprofider-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4I0EN10libmolgrid33ValueStratifiedExampleRefProfiderE">
 <span id="_CPPv3I0EN10libmolgrid33ValueStratifiedExampleRefProfiderE"></span><span id="_CPPv2I0EN10libmolgrid33ValueStratifiedExampleRefProfiderE"></span><span class="target" id="classlibmolgrid_1_1ValueStratifiedExampleRefProfider"></span>template&lt;class <code class="sig-name descname">Provider</code>&gt;<br /><em class="property">class </em><code class="sig-name descname">ValueStratifiedExampleRefProfider</code> : <em class="property">public</em> <a class="reference internal" href="#_CPPv4N10libmolgrid18ExampleRefProviderE" title="libmolgrid::ExampleRefProvider">ExampleRefProvider</a><a class="headerlink" href="#_CPPv4I0EN10libmolgrid33ValueStratifiedExampleRefProfiderE" title="Permalink to this definition">¶</a><br /></dt>
@@ -4419,6 +4596,7 @@ hide: true
 </div>
 </dd></dl>
 
+</div>
 </div>
 
 
