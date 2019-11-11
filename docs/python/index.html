@@ -81,7 +81,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference external" href="../index#://">Home</a></li>
 <li class="toctree-l1"><a class="reference external" href="../about#://">About</a></li>
-<li class="toctree-l1"><a class="reference external" href="../docs.html#://">Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="../docs.html#://">Docs Home</a></li>
 <li class="toctree-l1"><a class="reference external" href="../tutorials#://">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#python-docs">Python Docs</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-molgrid.torch_bindings">molgrid.torch_bindings module</a></li>
@@ -183,7 +183,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference external" href="../index#://">Home</a></li>
 <li class="toctree-l1"><a class="reference external" href="../about#://">About</a></li>
-<li class="toctree-l1"><a class="reference external" href="../docs.html#://">Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="../docs.html#://">Docs Home</a></li>
 <li class="toctree-l1"><a class="reference external" href="../tutorials#://">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#python-docs">Python Docs</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-molgrid.torch_bindings">molgrid.torch_bindings module</a></li>
@@ -310,7 +310,7 @@ registered hooks while the latter silently ignores them.</p>
 <dt id="molgrid.AtomTyper">
 <em class="property">class </em><code class="sig-prename descclassname">molgrid.</code><code class="sig-name descname">AtomTyper</code><a class="headerlink" href="#molgrid.AtomTyper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Boost.Python.instance</span></code></p>
-<p>Base class for all atom typers</p>
+<p>Base class for all atom typers <a href="#id1"><span class="problematic" id="id2">*</span></a>/</p>
 </dd></dl>
 
 </div>
@@ -320,8 +320,11 @@ registered hooks while the latter silently ignores them.</p>
 <dt id="molgrid.CartesianGrid">
 <em class="property">class </em><code class="sig-prename descclassname">molgrid.</code><code class="sig-name descname">CartesianGrid</code><a class="headerlink" href="#molgrid.CartesianGrid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Boost.Python.instance</span></code></p>
-<p>Wrapper around grid of type G that imposes Cartesian coordinates.
+<blockquote>
+<div><p>Wrapper around grid of type G that imposes Cartesian coordinates.
 Includes center and resolution and supports (eventually) interpolation.</p>
+</div></blockquote>
+<p>/</p>
 <dl class="method">
 <dt id="molgrid.CartesianGrid.center">
 <code class="sig-name descname">center</code><span class="sig-paren">(</span><em class="sig-param">(CartesianGrid)arg1</em><span class="sig-paren">)</span> &#x2192; float3 :<a class="headerlink" href="#molgrid.CartesianGrid.center" title="Permalink to this definition">¶</a></dt>
@@ -358,10 +361,13 @@ Includes center and resolution and supports (eventually) interpolation.</p>
 <dt id="molgrid.CoordinateSet">
 <em class="property">class </em><code class="sig-prename descclassname">molgrid.</code><code class="sig-name descname">CoordinateSet</code><a class="headerlink" href="#molgrid.CoordinateSet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Boost.Python.instance</span></code></p>
-<p>A collection of typed atomic coordinates</p>
+<blockquote>
+<div><p>A collection of typed atomic coordinates</p>
 <p>Types may be specified either as an index or a dense vector.
 Typically, only one type formated will be initialized although
-a vector one</p>
+a vector one-hot encoding of an index type can be created.</p>
+</div></blockquote>
+<p>/</p>
 <dl class="method">
 <dt id="molgrid.CoordinateSet.center">
 <code class="sig-name descname">center</code><span class="sig-paren">(</span><em class="sig-param">(CoordinateSet)arg1</em><span class="sig-paren">)</span> &#x2192; float3 :<a class="headerlink" href="#molgrid.CoordinateSet.center" title="Permalink to this definition">¶</a></dt>
@@ -440,20 +446,22 @@ a vector one</p>
 <code class="sig-name descname">make_vector_types</code><span class="sig-paren">(</span><em class="sig-param">(CoordinateSet)arg1</em><span class="optional">[</span>, <em class="sig-param">(bool)include_dummy_type=False</em><span class="optional">[</span>, <em class="sig-param">(list)type_radii=[]</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#molgrid.CoordinateSet.make_vector_types" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
 <div><blockquote>
-<div><p>convert index types to vector types in</p>
+<div><p>convert index types to vector types in-place</p>
 </div></blockquote>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void make_vector_types(libmolgrid::CoordinateSet {lvalue} [,bool=False [,boost::python::list=[]]])</p>
 </dd>
 </dl>
 </div></blockquote>
-<p>make_vector_types( (CoordinateSet)arg1 [, (bool)include_dummy_type=False [, (FloatVec)type_radii=&lt;molgrid.molgrid.FloatVec object at 0x7f84a8f0d090&gt;]]) -&gt; None :</p>
+<p>make_vector_types( (CoordinateSet)arg1 [, (bool)include_dummy_type=False [, (FloatVec)type_radii=&lt;molgrid.molgrid.FloatVec object at 0x7f0e5d3501b0&gt;]]) -&gt; None :</p>
 <blockquote>
 <div><blockquote>
-<div><p>convert index types to vector types in</p>
+<div><p>convert index types to vector types in-place</p>
 </div></blockquote>
+<p>/</p>
 <dl class="simple">
-<dt>C++ signature :</dt><dd><p>void make_vector_types(libmolgrid::CoordinateSet {lvalue} [,bool=False [,std::vector&lt;float, std::allocator&lt;float&gt; &gt;=&lt;molgrid.molgrid.FloatVec object at 0x7f84a8f0d090&gt;]])</p>
+<dt>C++ signature :</dt><dd><p>void make_vector_types(libmolgrid::CoordinateSet {lvalue} [,bool=False [,std::vector&lt;float, std::allocator&lt;float&gt; &gt;=&lt;molgrid.molgrid.FloatVec object at 0x7f0e5d3501b0&gt;]])</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -556,6 +564,9 @@ a vector one</p>
 an organic chem atom mapper that reduces to number of types.
 The type id is the atomic number.  Any element with atomic number
 greater than or equal to the specified max is assigned type zero.</p>
+<blockquote>
+<div><p><a href="#id3"><span class="problematic" id="id4">*</span></a>/</p>
+</div></blockquote>
 <dl class="method">
 <dt id="molgrid.ElementIndexTyper.get_atom_type_index">
 <code class="sig-name descname">get_atom_type_index</code><span class="sig-paren">(</span><em class="sig-param">(ElementIndexTyper)arg1</em>, <em class="sig-param">(object)arg2</em><span class="sig-paren">)</span> &#x2192; object :<a class="headerlink" href="#molgrid.ElementIndexTyper.get_atom_type_index" title="Permalink to this definition">¶</a></dt>
@@ -601,7 +612,10 @@ greater than or equal to the specified max is assigned type zero.</p>
 <dt id="molgrid.Example">
 <em class="property">class </em><code class="sig-prename descclassname">molgrid.</code><code class="sig-name descname">Example</code><a class="headerlink" href="#molgrid.Example" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Boost.Python.instance</span></code></p>
-<p>A single example represented by its typed coordinates and label(s)</p>
+<blockquote>
+<div><p>A single example represented by its typed coordinates and label(s)</p>
+</div></blockquote>
+<p>/</p>
 <dl class="method">
 <dt id="molgrid.Example.coord_sets">
 <em class="property">property </em><code class="sig-name descname">coord_sets</code><a class="headerlink" href="#molgrid.Example.coord_sets" title="Permalink to this definition">¶</a></dt>
@@ -653,6 +667,7 @@ All coordinate sets must have the same kind of typing.  The result is a copy of 
 <dd class="field-even"><p>if true, different coordinate sets will have unique, non-overlapping types</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>libmolgrid::CoordinateSet merge_coordinates(libmolgrid::Example {lvalue} [,unsigned int=0 [,bool=True]])</p>
 </dd>
@@ -681,6 +696,7 @@ All coordinate sets must have index typing</p>
 <dd class="field-odd"><p>if true, different coordinate sets will have unique, non-overlapping types</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void merge_coordinates(libmolgrid::Example {lvalue},libmolgrid::Grid&lt;float, 2ul, false&gt; {lvalue},libmolgrid::Grid&lt;float, 1ul, false&gt; {lvalue},libmolgrid::Grid&lt;float, 1ul, false&gt; {lvalue} [,unsigned int=0 [,bool=True]])</p>
 </dd>
@@ -709,6 +725,7 @@ All coordinate sets must have vector typing</p>
 <dd class="field-odd"><p>if true, different coordinate sets will have unique, non-overlapping types</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void merge_coordinates(libmolgrid::Example {lvalue},libmolgrid::Grid&lt;float, 2ul, false&gt; {lvalue},libmolgrid::Grid&lt;float, 2ul, false&gt; {lvalue},libmolgrid::Grid&lt;float, 1ul, false&gt; {lvalue} [,unsigned int=0 [,bool=True]])</p>
 </dd>
@@ -788,9 +805,12 @@ All coordinate sets must have vector typing</p>
 <dt id="molgrid.ExampleProvider">
 <em class="property">class </em><code class="sig-prename descclassname">molgrid.</code><code class="sig-name descname">ExampleProvider</code><a class="headerlink" href="#molgrid.ExampleProvider" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Boost.Python.instance</span></code></p>
-<p>Given a file of examples, provide Example classes one at a time
+<blockquote>
+<div><p>Given a file of examples, provide Example classes one at a time
 This contains an exampleref provider, which can be configured using a
 single settings object if so desired, and an example extractor.</p>
+</div></blockquote>
+<p>/</p>
 <dl class="method">
 <dt id="molgrid.ExampleProvider.get_type_names">
 <code class="sig-name descname">get_type_names</code><span class="sig-paren">(</span><em class="sig-param">(ExampleProvider)arg1</em><span class="sig-paren">)</span> &#x2192; StringVec :<a class="headerlink" href="#molgrid.ExampleProvider.get_type_names" title="Permalink to this definition">¶</a></dt>
@@ -1034,6 +1054,7 @@ single settings object if so desired, and an example extractor.</p>
 <dd class="field-odd"><p>2D grid (NxL)</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void extract_label(std::vector&lt;libmolgrid::Example, std::allocator&lt;libmolgrid::Example&gt; &gt;,int,libmolgrid::Grid&lt;float, 1ul, false&gt;)</p>
 </dd>
@@ -1055,6 +1076,7 @@ single settings object if so desired, and an example extractor.</p>
 <dd class="field-odd"><p>2D grid (NxL)</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void extract_label(std::vector&lt;libmolgrid::Example, std::allocator&lt;libmolgrid::Example&gt; &gt;,int,libmolgrid::Grid&lt;float, 1ul, true&gt;)</p>
 </dd>
@@ -1077,6 +1099,7 @@ single settings object if so desired, and an example extractor.</p>
 <dd class="field-even"><p>2D grid (NxL)</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void extract_labels(std::vector&lt;libmolgrid::Example, std::allocator&lt;libmolgrid::Example&gt; &gt;,libmolgrid::Grid&lt;float, 2ul, false&gt;)</p>
 </dd>
@@ -1095,6 +1118,7 @@ single settings object if so desired, and an example extractor.</p>
 <dd class="field-even"><p>2D grid (NxL)</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void extract_labels(std::vector&lt;libmolgrid::Example, std::allocator&lt;libmolgrid::Example&gt; &gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;)</p>
 </dd>
@@ -1129,11 +1153,14 @@ single settings object if so desired, and an example extractor.</p>
 <dt id="molgrid.FileAtomMapper">
 <em class="property">class </em><code class="sig-prename descclassname">molgrid.</code><code class="sig-name descname">FileAtomMapper</code><a class="headerlink" href="#molgrid.FileAtomMapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Boost.Python.instance</span></code></p>
-<p>Atom mappers
+<blockquote>
+<div><p>Atom mappers <strong>*************</strong>/
 Map atom types based on provided file.</p>
 <p>Each line for the provided file specifies a single type.
 Types are specified using type names.
 This class must be provided the type names properly indexed (should match get_type_names).</p>
+</div></blockquote>
+<p>/</p>
 <dl class="method">
 <dt id="molgrid.FileAtomMapper.get_new_type">
 <code class="sig-name descname">get_new_type</code><span class="sig-paren">(</span><em class="sig-param">(FileAtomMapper)arg1</em>, <em class="sig-param">(int)arg2</em><span class="sig-paren">)</span> &#x2192; int :<a class="headerlink" href="#molgrid.FileAtomMapper.get_new_type" title="Permalink to this definition">¶</a></dt>
@@ -1260,9 +1287,9 @@ This class must be provided the type names properly indexed (should match get_ty
 <dt id="molgrid.GninaIndexTyper">
 <em class="property">class </em><code class="sig-prename descclassname">molgrid.</code><code class="sig-name descname">GninaIndexTyper</code><a class="headerlink" href="#molgrid.GninaIndexTyper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">molgrid.molgrid.AtomTyper</span></code></p>
-<p>Atom typers
+<p>Atom typers <strong>*************</strong>/
 Calculate gnina types</p>
-<p>These are variants of AutoDock4 types.</p>
+<p>These are variants of AutoDock4 types. <a href="#id5"><span class="problematic" id="id6">*</span></a>/</p>
 <dl class="method">
 <dt id="molgrid.GninaIndexTyper.get_atom_type_index">
 <code class="sig-name descname">get_atom_type_index</code><span class="sig-paren">(</span><em class="sig-param">(GninaIndexTyper)arg1</em>, <em class="sig-param">(object)arg2</em><span class="sig-paren">)</span> &#x2192; object :<a class="headerlink" href="#molgrid.GninaIndexTyper.get_atom_type_index" title="Permalink to this definition">¶</a></dt>
@@ -1310,7 +1337,7 @@ Calculate gnina types</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">molgrid.molgrid.AtomTyper</span></code></p>
 <p>Decompose gnina types into elements and properties.  Result is boolean.</p>
 <p>Hydrophobic, Aromatic, Donor, Acceptor</p>
-<p>These are variants of AutoDock4 types.</p>
+<p>These are variants of AutoDock4 types. <a href="#id7"><span class="problematic" id="id8">*</span></a>/</p>
 <dl class="method">
 <dt id="molgrid.GninaVectorTyper.get_atom_type_vector">
 <code class="sig-name descname">get_atom_type_vector</code><span class="sig-paren">(</span><em class="sig-param">(GninaVectorTyper)arg1</em>, <em class="sig-param">(object)arg2</em><span class="sig-paren">)</span> &#x2192; object :<a class="headerlink" href="#molgrid.GninaVectorTyper.get_atom_type_vector" title="Permalink to this definition">¶</a></dt>
@@ -1347,13 +1374,17 @@ Calculate gnina types</p>
 <dt id="molgrid.GridMaker">
 <em class="property">class </em><code class="sig-prename descclassname">molgrid.</code><code class="sig-name descname">GridMaker</code><a class="headerlink" href="#molgrid.GridMaker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Boost.Python.instance</span></code></p>
-<p>Populates a grid with atom density values that correspond to atoms in a
+<blockquote>
+<div><p>GridMaker
+Populates a grid with atom density values that correspond to atoms in a
 CoordinateSet and accumulates atomic gradients from the grid gradients.
 It stores state about universal grid settings. In functions that map from
 atomic coordinates to grids and vice versa (e.g. forward and backward), it
 must be passed the grid_center (which may have changed due to
 transformations performed directly on the atom coordinates externally to
 this class)</p>
+</div></blockquote>
+<p>/</p>
 <dl class="method">
 <dt id="molgrid.GridMaker.backward">
 <code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param">(GridMaker)arg1</em>, <em class="sig-param">(float3)arg2</em>, <em class="sig-param">(CoordinateSet)arg3</em>, <em class="sig-param">(Grid4f)arg4</em>, <em class="sig-param">(Grid2f)arg5</em>, <em class="sig-param">(Grid2f)arg6</em><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#molgrid.GridMaker.backward" title="Permalink to this definition">¶</a></dt>
@@ -1380,6 +1411,7 @@ Vector types are required.</p>
 <dd class="field-odd"><p>only set if input has type vectors</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void backward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::CoordinateSet,libmolgrid::Grid&lt;float, 4ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt;)</p>
 </dd>
@@ -1406,6 +1438,7 @@ Index types are required</p>
 <dd class="field-even"><p>vector quantities for each atom</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void backward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::CoordinateSet,libmolgrid::Grid&lt;float, 4ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt;)</p>
 </dd>
@@ -1435,6 +1468,7 @@ Vector types are required.</p>
 <dd class="field-odd"><p>only set if input has type vectors</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void backward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::CoordinateSet,libmolgrid::Grid&lt;float, 4ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;)</p>
 </dd>
@@ -1461,6 +1495,7 @@ Index types are required.</p>
 <dd class="field-even"><p>vector quantities for each atom</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void backward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::CoordinateSet,libmolgrid::Grid&lt;float, 4ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;)</p>
 </dd>
@@ -1494,6 +1529,7 @@ Must provide atom coordinates, types, and radii that defined the original grid i
 <dd class="field-even"><p>vector quantities for each atom</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void backward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 1ul, false&gt;,libmolgrid::Grid&lt;float, 1ul, false&gt;,libmolgrid::Grid&lt;float, 4ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt;)</p>
 </dd>
@@ -1527,6 +1563,7 @@ Must provide atom coordinates, types, and radii that defined the original grid i
 <dd class="field-even"><p>vector quantities for each atom</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void backward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 1ul, true&gt;,libmolgrid::Grid&lt;float, 1ul, true&gt;,libmolgrid::Grid&lt;float, 4ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;)</p>
 </dd>
@@ -1563,6 +1600,7 @@ Must provide atom coordinates, types, and radii that defined the original grid i
 <dd class="field-odd"><p>vector quantities for each atom</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void backward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 1ul, false&gt;,libmolgrid::Grid&lt;float, 4ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt;)</p>
 </dd>
@@ -1599,6 +1637,7 @@ Must provide atom coordinates, types, and radii that defined the original grid i
 <dd class="field-odd"><p>vector quantities for each atom</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void backward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 1ul, true&gt;,libmolgrid::Grid&lt;float, 4ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;)</p>
 </dd>
@@ -1612,7 +1651,7 @@ Must provide atom coordinates, types, and radii that defined the original grid i
 <dd><blockquote>
 <div><blockquote>
 <div><p>Generate grid tensor from an example.
-Coordinates may be optionally translated
+Coordinates may be optionally translated/rotated.  Do not use this function
 if it is desirable to retain the transformation used (e.g., when backpropagating).</p>
 </div></blockquote>
 <dl class="field-list simple">
@@ -1635,6 +1674,7 @@ if it is desirable to retain the transformation used (e.g., when backpropagating
 <dd class="field-even"><p>grid center to use, if not provided will use center of the last coordinate set before transformation</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},libmolgrid::Example,libmolgrid::Grid&lt;float, 4ul, false&gt; [,float=0.0 [,bool=False]])</p>
 </dd>
@@ -1644,7 +1684,7 @@ if it is desirable to retain the transformation used (e.g., when backpropagating
 <blockquote>
 <div><blockquote>
 <div><p>Generate grid tensor from an example.
-Coordinates may be optionally translated
+Coordinates may be optionally translated/rotated.  Do not use this function
 if it is desirable to retain the transformation used (e.g., when backpropagating).</p>
 </div></blockquote>
 <dl class="field-list simple">
@@ -1667,6 +1707,7 @@ if it is desirable to retain the transformation used (e.g., when backpropagating
 <dd class="field-even"><p>grid center to use, if not provided will use center of the last coordinate set before transformation</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},libmolgrid::Example,libmolgrid::Grid&lt;float, 4ul, true&gt; [,float=0.0 [,bool=False]])</p>
 </dd>
@@ -1676,7 +1717,7 @@ if it is desirable to retain the transformation used (e.g., when backpropagating
 <blockquote>
 <div><blockquote>
 <div><p>Generate grid tensor from a vector of examples, as provided by ExampleProvider.next_batch.
-Coordinates may be optionally translated
+Coordinates may be optionally translated/rotated.  Do not use this function
 if it is desirable to retain the transformation used (e.g., when backpropagating).
 The center of the last coordinate set before transformation
 will be used as the grid center.</p>
@@ -1698,6 +1739,7 @@ will be used as the grid center.</p>
 <dd class="field-odd"><p>whether or not to randomly rotate</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},std::vector&lt;libmolgrid::Example, std::allocator&lt;libmolgrid::Example&gt; &gt;,libmolgrid::Grid&lt;float, 5ul, false&gt; [,float=0.0 [,bool=False]])</p>
 </dd>
@@ -1707,7 +1749,7 @@ will be used as the grid center.</p>
 <blockquote>
 <div><blockquote>
 <div><p>Generate grid tensor from a vector of examples, as provided by ExampleProvider.next_batch.
-Coordinates may be optionally translated
+Coordinates may be optionally translated/rotated.  Do not use this function
 if it is desirable to retain the transformation used (e.g., when backpropagating).
 The center of the last coordinate set before transformation
 will be used as the grid center.</p>
@@ -1729,6 +1771,7 @@ will be used as the grid center.</p>
 <dd class="field-odd"><p>whether or not to randomly rotate</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},std::vector&lt;libmolgrid::Example, std::allocator&lt;libmolgrid::Example&gt; &gt;,libmolgrid::Grid&lt;float, 5ul, true&gt; [,float=0.0 [,bool=False]])</p>
 </dd>
@@ -1750,6 +1793,7 @@ will be used as the grid center.</p>
 <dd class="field-odd"><p>4D grid</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::CoordinateSet,libmolgrid::Grid&lt;float, 4ul, false&gt;)</p>
 </dd>
@@ -1771,6 +1815,7 @@ will be used as the grid center.</p>
 <dd class="field-odd"><p>4D grid</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::CoordinateSet,libmolgrid::Grid&lt;float, 4ul, true&gt;)</p>
 </dd>
@@ -1793,6 +1838,7 @@ The center specified in the transform will be used as the grid center.</p>
 <dd class="field-odd"><p>a 4D grid</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},libmolgrid::Example,libmolgrid::Transform,libmolgrid::Grid&lt;float, 4ul, false&gt;)</p>
 </dd>
@@ -1815,6 +1861,7 @@ The center specified in the transform will be used as the grid center.</p>
 <dd class="field-odd"><p>a 4D grid</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},libmolgrid::Example,libmolgrid::Transform,libmolgrid::Grid&lt;float, 4ul, true&gt;)</p>
 </dd>
@@ -1844,6 +1891,7 @@ The center specified in the transform will be used as the grid center.</p>
 <dd class="field-odd"><p>4D grid</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 1ul, false&gt;,libmolgrid::Grid&lt;float, 1ul, false&gt;,libmolgrid::Grid&lt;float, 4ul, false&gt; {lvalue})</p>
 </dd>
@@ -1873,6 +1921,7 @@ The center specified in the transform will be used as the grid center.</p>
 <dd class="field-odd"><p>4D grid</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 1ul, true&gt;,libmolgrid::Grid&lt;float, 1ul, true&gt;,libmolgrid::Grid&lt;float, 4ul, true&gt; {lvalue})</p>
 </dd>
@@ -1904,6 +1953,7 @@ to select the radii.</p>
 <dd class="field-odd"><p>4D grid</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 1ul, false&gt;,libmolgrid::Grid&lt;float, 4ul, false&gt;)</p>
 </dd>
@@ -1933,6 +1983,7 @@ to select the radii.</p>
 <dd class="field-odd"><p>4D grid</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 1ul, true&gt;,libmolgrid::Grid&lt;float, 4ul, true&gt;)</p>
 </dd>
@@ -2057,7 +2108,10 @@ to select the radii.</p>
 <dt id="molgrid.NullIndexTyper">
 <em class="property">class </em><code class="sig-prename descclassname">molgrid.</code><code class="sig-name descname">NullIndexTyper</code><a class="headerlink" href="#molgrid.NullIndexTyper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">molgrid.molgrid.AtomTyper</span></code></p>
-<p>Always return an invalid type</p>
+<dl class="simple">
+<dt>Always return an invalid type</dt><dd><p><a href="#id9"><span class="problematic" id="id10">*</span></a>/</p>
+</dd>
+</dl>
 <dl class="method">
 <dt id="molgrid.NullIndexTyper.get_atom_type_index">
 <code class="sig-name descname">get_atom_type_index</code><span class="sig-paren">(</span><em class="sig-param">(NullIndexTyper)arg1</em>, <em class="sig-param">(object)arg2</em><span class="sig-paren">)</span> &#x2192; object :<a class="headerlink" href="#molgrid.NullIndexTyper.get_atom_type_index" title="Permalink to this definition">¶</a></dt>
@@ -2175,8 +2229,11 @@ to select the radii.</p>
 <dt id="molgrid.Quaternion">
 <em class="property">class </em><code class="sig-prename descclassname">molgrid.</code><code class="sig-name descname">Quaternion</code><a class="headerlink" href="#molgrid.Quaternion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Boost.Python.instance</span></code></p>
-<p>A CUDA friendly quaternion class.  Single precision only
+<blockquote>
+<div><p>A CUDA friendly quaternion class.  Single precision only
 for maximum CUDA performance.</p>
+</div></blockquote>
+<p>/</p>
 <dl class="method">
 <dt id="molgrid.Quaternion.R_component_1">
 <code class="sig-name descname">R_component_1</code><span class="sig-paren">(</span><em class="sig-param">(Quaternion)arg1</em><span class="sig-paren">)</span> &#x2192; float :<a class="headerlink" href="#molgrid.Quaternion.R_component_1" title="Permalink to this definition">¶</a></dt>
@@ -2276,7 +2333,10 @@ for maximum CUDA performance.</p>
 <dt id="molgrid.SubsetAtomMapper">
 <em class="property">class </em><code class="sig-prename descclassname">molgrid.</code><code class="sig-name descname">SubsetAtomMapper</code><a class="headerlink" href="#molgrid.SubsetAtomMapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Boost.Python.instance</span></code></p>
-<p>Map atom types onto a provided subset.</p>
+<blockquote>
+<div><p>Map atom types onto a provided subset.</p>
+</div></blockquote>
+<p>/</p>
 <dl class="method">
 <dt id="molgrid.SubsetAtomMapper.get_new_type">
 <code class="sig-name descname">get_new_type</code><span class="sig-paren">(</span><em class="sig-param">(SubsetAtomMapper)arg1</em>, <em class="sig-param">(int)arg2</em><span class="sig-paren">)</span> &#x2192; int :<a class="headerlink" href="#molgrid.SubsetAtomMapper.get_new_type" title="Permalink to this definition">¶</a></dt>
@@ -2358,12 +2418,15 @@ for maximum CUDA performance.</p>
 <dt id="molgrid.Transform">
 <em class="property">class </em><code class="sig-prename descclassname">molgrid.</code><code class="sig-name descname">Transform</code><a class="headerlink" href="#molgrid.Transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Boost.Python.instance</span></code></p>
-<p>Stateful transformation of Cartesian coordinates.</p>
+<blockquote>
+<div><p>Stateful transformation of Cartesian coordinates.</p>
 <blockquote>
 <div><p>Stores a center of rotation, quaternion, and translation.
 Can apply transformation forward or backward, with or without
 translations.</p>
 </div></blockquote>
+</div></blockquote>
+<p>/</p>
 <dl class="method">
 <dt id="molgrid.Transform.backward">
 <code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param">(Transform)arg1</em>, <em class="sig-param">(Grid2f)in</em>, <em class="sig-param">(Grid2f)out</em><span class="optional">[</span>, <em class="sig-param">(bool)dotranslate=True</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#molgrid.Transform.backward" title="Permalink to this definition">¶</a></dt>
@@ -2382,6 +2445,7 @@ translations.</p>
 <dd class="field-odd"><p>if false only the inverse rotation is applied</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void backward(libmolgrid::Transform {lvalue},libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt; [,bool=True])</p>
 </dd>
@@ -2403,6 +2467,7 @@ translations.</p>
 <dd class="field-odd"><p>if false only the inverse rotation is applied</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void backward(libmolgrid::Transform {lvalue},libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt; [,bool=True])</p>
 </dd>
@@ -2416,7 +2481,7 @@ translations.</p>
 <dd><blockquote>
 <div><blockquote>
 <div><p>Apply 3D transformation on CPU.   It is safe to transform
-a grid in</p>
+a grid in-place.</p>
 </div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">param in</dt>
@@ -2430,6 +2495,7 @@ a grid in</p>
 (This is for vector quantities such as gradients and normals).</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::Transform {lvalue},libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt; [,bool=True])</p>
 </dd>
@@ -2439,7 +2505,7 @@ a grid in</p>
 <blockquote>
 <div><blockquote>
 <div><p>Apply 3D transformation on GPU.  It is safe to transform a grid
-in</p>
+in-place.</p>
 </div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">param in</dt>
@@ -2453,6 +2519,7 @@ in</p>
 (This is for vector quantities such as gradients and normals).</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::Transform {lvalue},libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt; [,bool=True])</p>
 </dd>
@@ -2461,7 +2528,7 @@ in</p>
 <p>forward( (Transform)arg1, (CoordinateSet)in, (CoordinateSet)out [, (bool)dotranslate=True]) -&gt; None :</p>
 <blockquote>
 <div><blockquote>
-<div><p>Apply 3D transformation to CoordinateSet.   It is safe to transform in</p>
+<div><p>Apply 3D transformation to CoordinateSet.   It is safe to transform in-place</p>
 </div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">param input</dt>
@@ -2475,6 +2542,7 @@ in</p>
 (This is for vector quantities such as gradients and normals).</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::Transform {lvalue},libmolgrid::CoordinateSet,libmolgrid::CoordinateSet {lvalue} [,bool=True])</p>
 </dd>
@@ -2483,7 +2551,7 @@ in</p>
 <p>forward( (Transform)arg1, (Example)in, (Example)out [, (bool)dotranslate=True]) -&gt; None :</p>
 <blockquote>
 <div><blockquote>
-<div><p>Apply 3D transformation to Example.   It is safe to transform in</p>
+<div><p>Apply 3D transformation to Example.   It is safe to transform in-place</p>
 </div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">param input</dt>
@@ -2497,6 +2565,7 @@ in</p>
 (This is for vector quantities such as gradients and normals).</p>
 </dd>
 </dl>
+<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::Transform {lvalue},libmolgrid::Example,libmolgrid::Example {lvalue} [,bool=True])</p>
 </dd>

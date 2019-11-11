@@ -9,7 +9,7 @@ libmolgrid C++ API Documentation
 
    Home <../index#://>
    About <../about#://>
-   Docs <../docs.html#://>
+   Docs Home <../docs.html#://>
    Tutorials <../tutorials#://>
    libmolgrid C++ documentation <index>
 

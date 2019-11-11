@@ -6,7 +6,7 @@ libmolgrid Python documentation
 
    Home <../index#://>
    About <../about#://>
-   Docs <../docs.html#://>
+   Docs Home <../docs.html#://>
    Tutorials <../tutorials#://>
    molgrid Python documentation <index>
 
