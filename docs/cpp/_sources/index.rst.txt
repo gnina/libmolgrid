@@ -4,15 +4,17 @@
 libmolgrid C++ API Documentation
 ======================================
 
-* :ref:`genindex`
-* :ref:`search`
-
 .. toctree::
-   :maxdepth: 4
-   :caption: Contents:
+   :maxdepth: 3
 
-Docs
-====
+   Home <../index#://>
+   About <../about#://>
+   Docs <../docs.html#://>
+   Tutorials <../tutorials#://>
+   libmolgrid C++ documentation <index>
+
+C++ Docs
+========
 
 The ``AtomIndexTypeMapper`` class
 *********************************
@@ -342,3 +344,8 @@ The ``ValueStratifiedExampleRefProfider`` class
   :private-members:
   :undoc-members:
 
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`search`

@@ -79,21 +79,6 @@ IF(BUILD_DOCS)
 		 
     add_custom_target(Sphinx_Python ALL DEPENDS ${SPHINX_PYTHON_INDEX_FILE})
 
-    # update sphinx output to include bootstrap layout
-    set(SPHINX_CPP_HTML_OUTPUT
-      "${SPHINX_CPP_BUILD}/genindex.html;${SPHINX_CPP_BUILD}/index.html;${SPHINX_CPP_BUILD}/search.html")
-    foreach(fname ${SPHINX_CPP_HTML_OUTPUT})
-      add_custom_command(TARGET Sphinx_Cpp POST_BUILD COMMAND bash "-c" "sed -i '1s/^/---\\\\ntitle: libmolgrid C++ Documentation\\\\nlayout: default\\\\nhomepage: false\\\\nhide: true\\\\n---\\\\n/' ${fname}")
-    endforeach()
-    add_custom_command(TARGET Sphinx_Cpp POST_BUILD COMMAND bash "-c" "sed -i 's/wy-nav-side{position:fixed\;top\:0/wy-nav-side{position\:fixed\;top\:34\.25%/' ${SPHINX_CPP_BUILD}/_static/css/theme.css")
-		 
-    set(SPHINX_PYTHON_HTML_OUTPUT
-      "${SPHINX_PYTHON_BUILD}/genindex.html;${SPHINX_PYTHON_BUILD}/index.html;${SPHINX_PYTHON_BUILD}/search.html")
-    foreach(fname ${SPHINX_PYTHON_HTML_OUTPUT})
-      add_custom_command(TARGET Sphinx_Python POST_BUILD COMMAND bash "-c" "sed -i '1s/^/---\\\\ntitle: molgrid Python Documentation\\\\nlayout: default\\\\nhomepage: false\\\\nhide: true\\\\n---\\\\n/' ${fname}")
-    endforeach()
-    add_custom_command(TARGET Sphinx_Python POST_BUILD COMMAND bash "-c" "sed -i 's/wy-nav-side{position:fixed\;top\:0/wy-nav-side{position\:fixed\;top\:34\.25%/' ${SPHINX_PYTHON_BUILD}/_static/css/theme.css")
-
     # generate jekyll-compatible html from notebooks for the tutorials page
     file(GLOB NOTEBOOKS ${PROJECT_SOURCE_DIR}/docs/_tutorials/*.ipynb)
     foreach(file ${NOTEBOOKS})

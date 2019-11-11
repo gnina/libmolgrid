@@ -1,6 +1,18 @@
 libmolgrid Python documentation
 ===================================
 
+.. toctree::
+   :maxdepth: 3
+
+   Home <../index#://>
+   About <../about#://>
+   Docs <../docs.html#://>
+   Tutorials <../tutorials#://>
+   molgrid Python documentation <index>
+
+Python Docs
+===========
+
 molgrid.torch\_bindings module
 ------------------------------
 
@@ -8,6 +20,9 @@ molgrid.torch\_bindings module
    :members:
    :undoc-members:
    :show-inheritance:
+
+molgrid module classes
+----------------------
 
 The ``AtomTyper`` class
 ***********************
@@ -163,10 +178,6 @@ Module contents
    :members:
    :undoc-members:
    :show-inheritance:
-
-.. toctree::
-   :maxdepth: 4
-   :caption: Contents:
 
 Indices and tables
 ==================
