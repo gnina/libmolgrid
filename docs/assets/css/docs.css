@@ -180,6 +180,11 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#563d7c', endColorstr='#6F5499', GradientType=0)
 }
 
+.bs-docs-masthead .container {
+  width:100%;
+  height:100%
+}
+
 .bs-docs-masthead .bs-docs-booticon {
     margin: 0 auto 30px
 }
