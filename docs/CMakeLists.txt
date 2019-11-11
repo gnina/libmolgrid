@@ -39,37 +39,61 @@ IF(BUILD_DOCS)
 		 
 		add_custom_target(Doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
 		 
-		set(SPHINX_SOURCE ${PROJECT_SOURCE_DIR}/sphinx/cpp)
-		set(SPHINX_BUILD ${PROJECT_SOURCE_DIR}/docs/cpp)
-		set(SPHINX_INDEX_FILE ${SPHINX_BUILD}/index.html)
+    set(SPHINX_CPP_SOURCE ${PROJECT_SOURCE_DIR}/sphinx/cpp)
+    set(SPHINX_CPP_BUILD ${PROJECT_SOURCE_DIR}/docs/cpp)
+    set(SPHINX_CPP_INDEX_FILE ${SPHINX_CPP_BUILD}/index.html)
 		 
-		# Only regenerate Sphinx when:
+    set(SPHINX_PYTHON_SOURCE ${PROJECT_SOURCE_DIR}/sphinx/python)
+    set(SPHINX_PYTHON_BUILD ${PROJECT_SOURCE_DIR}/docs/python)
+    set(SPHINX_PYTHON_INDEX_FILE ${SPHINX_PYTHON_BUILD}/index.html)
+		 
+    # Only regenerate docs with Sphinx when:
 		# - Doxygen has rerun
 		# - Our doc files have been updated
 		# - The Sphinx config has been updated
-		add_custom_command(OUTPUT ${SPHINX_INDEX_FILE}
+    add_custom_command(OUTPUT ${SPHINX_CPP_INDEX_FILE}
 		                   COMMAND 
 		                     ${SPHINX_EXECUTABLE} -b html
 		                     # Tell Breathe where to find the Doxygen output
 		                     -Dbreathe_projects.ligmolgrid=${DOXYGEN_OUTPUT_DIR}
-		                   ${SPHINX_SOURCE} ${SPHINX_BUILD}
+                         ${SPHINX_CPP_SOURCE} ${SPHINX_CPP_BUILD}
 		                   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/docs/cpp
 		                   DEPENDS
 		                   ${PROJECT_SOURCE_DIR}/sphinx/cpp/index.rst
 		                   ${DOXYGEN_INDEX_FILE}
-		                   MAIN_DEPENDENCY ${SPHINX_SOURCE}/conf.py
+		                   MAIN_DEPENDENCY ${SPHINX_CPP_SOURCE}/conf.py
                        COMMENT "Generating C++ documentation with Sphinx")
 		 
-		add_custom_target(Sphinx ALL DEPENDS ${SPHINX_INDEX_FILE})
+    add_custom_target(Sphinx_Cpp ALL DEPENDS ${SPHINX_CPP_INDEX_FILE})
+
+    add_custom_command(OUTPUT ${SPHINX_PYTHON_INDEX_FILE}
+		                   COMMAND 
+		                     ${SPHINX_EXECUTABLE} -b html
+                         ${SPHINX_PYTHON_SOURCE} ${SPHINX_PYTHON_BUILD}
+		                   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/docs/python
+		                   DEPENDS
+		                   ${PROJECT_SOURCE_DIR}/sphinx/python/index.rst
+		                   ${DOXYGEN_INDEX_FILE}
+                       MAIN_DEPENDENCY ${SPHINX_PYTHON_SOURCE}/conf.py
+                       COMMENT "Generating Python documentation with Sphinx")
+		 
+    add_custom_target(Sphinx_Python ALL DEPENDS ${SPHINX_PYTHON_INDEX_FILE})
 
     # update sphinx output to include bootstrap layout
-    set(SPHINX_HTML_OUTPUT
-      "${SPHINX_BUILD}/genindex.html;${SPHINX_BUILD}/index.html;${SPHINX_BUILD}/search.html")
-    foreach(fname ${SPHINX_HTML_OUTPUT})
-      add_custom_command(TARGET Sphinx POST_BUILD COMMAND bash "-c" "sed -i '1s/^/---\\\\ntitle: libmolgrid C++ Documentation\\\\nlayout: default\\\\nhomepage: false\\\\nhide: true\\\\n---\\\\n/' ${fname}")
+    set(SPHINX_CPP_HTML_OUTPUT
+      "${SPHINX_CPP_BUILD}/genindex.html;${SPHINX_CPP_BUILD}/index.html;${SPHINX_CPP_BUILD}/search.html")
+    foreach(fname ${SPHINX_CPP_HTML_OUTPUT})
+      add_custom_command(TARGET Sphinx_Cpp POST_BUILD COMMAND bash "-c" "sed -i '1s/^/---\\\\ntitle: libmolgrid C++ Documentation\\\\nlayout: default\\\\nhomepage: false\\\\nhide: true\\\\n---\\\\n/' ${fname}")
     endforeach()
-    add_custom_command(TARGET Sphinx POST_BUILD COMMAND bash "-c" "sed -i 's/wy-nav-side{position:fixed\;top\:0/wy-nav-side{position\:fixed\;top\:34\.25%/' ${SPHINX_BUILD}/_static/css/theme.css")
+    add_custom_command(TARGET Sphinx_Cpp POST_BUILD COMMAND bash "-c" "sed -i 's/wy-nav-side{position:fixed\;top\:0/wy-nav-side{position\:fixed\;top\:34\.25%/' ${SPHINX_CPP_BUILD}/_static/css/theme.css")
 		 
+    set(SPHINX_PYTHON_HTML_OUTPUT
+      "${SPHINX_PYTHON_BUILD}/genindex.html;${SPHINX_PYTHON_BUILD}/index.html;${SPHINX_PYTHON_BUILD}/search.html")
+    foreach(fname ${SPHINX_PYTHON_HTML_OUTPUT})
+      add_custom_command(TARGET Sphinx_Python POST_BUILD COMMAND bash "-c" "sed -i '1s/^/---\\\\ntitle: molgrid Python Documentation\\\\nlayout: default\\\\nhomepage: false\\\\nhide: true\\\\n---\\\\n/' ${fname}")
+    endforeach()
+    add_custom_command(TARGET Sphinx_Python POST_BUILD COMMAND bash "-c" "sed -i 's/wy-nav-side{position:fixed\;top\:0/wy-nav-side{position\:fixed\;top\:34\.25%/' ${SPHINX_PYTHON_BUILD}/_static/css/theme.css")
+
     # generate jekyll-compatible html from notebooks for the tutorials page
     file(GLOB NOTEBOOKS ${PROJECT_SOURCE_DIR}/docs/_tutorials/*.ipynb)
     foreach(file ${NOTEBOOKS})
