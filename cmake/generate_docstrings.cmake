@@ -1,11 +1,12 @@
 # function to convert Doxygen-style comments into Python-style docstrings
 function(doxyToDoc DOXYSTRING)
   string(REGEX REPLACE "\\\\brief[ \t]*" "" DOXYSTRING "${DOXYSTRING}")
+  string(REGEX REPLACE "\\\\class[ \t]*" "" DOXYSTRING "${DOXYSTRING}")
   if("${DOXYSTRING}" MATCHES "@param[ \t]*(\\[[a-zA-Z0-9_]+\\]) ([A-Za-z0-9_]+)(.*)")
     set(DOXYSTRING ":param ${CMAKE_MATCH_2}: ${CMAKE_MATCH_3}")
   elseif ("${DOXYSTRING}" MATCHES "@return (.+)")
     set(DOXYSTRING ":returns: ${CMAKE_MATCH_1}")
-  elseif("${DOXYSTRING}" MATCHES "([A-Za-z0-9_ \t.,!?]*)([\\*/]*)")
+  elseif("${DOXYSTRING}" MATCHES "([\(\)A-Za-z0-9_ \t.,!?]*)([\\*/]*)")
     set(DOXYSTRING "${CMAKE_MATCH_1}")
   endif()
   set(DOCSTRING "${DOCSTRING}" "${DOXYSTRING}" PARENT_SCOPE)

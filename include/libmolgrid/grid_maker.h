@@ -20,6 +20,7 @@
 
 namespace libmolgrid {
 
+// Docstring_GridMaker
 /**
  * \class GridMaker
  * Populates a grid with atom density values that correspond to atoms in a
@@ -153,6 +154,7 @@ class GridMaker {
     template <typename Dtype, bool isCUDA>
     void forward(const Example& in, const Transform& transform, Grid<Dtype, 4, isCUDA>& out) const;
 
+    // Docstring_GridMaker_forward_4
     /* \brief Generate grid tensor from an example.
      * Coordinates may be optionally translated/rotated.  Do not use this function
      * if it is desirable to retain the transformation used (e.g., when backpropagating).
@@ -169,6 +171,7 @@ class GridMaker {
         float random_translation=0.0, bool random_rotation = false,
         const float3& center = make_float3(INFINITY, INFINITY, INFINITY)) const;
 
+    // Docstring_GridMaker_forward_5
     /* \brief Generate grid tensor from a vector of examples, as provided by ExampleProvider.next_batch.
      * Coordinates may be optionally translated/rotated.  Do not use this function
      * if it is desirable to retain the transformation used (e.g., when backpropagating).
@@ -191,6 +194,7 @@ class GridMaker {
     }
 
 
+    // Docstring_GridMaker_forward_6
     /* \brief Generate grid tensor from CPU atomic data.  Grid must be properly sized.
      * @param[in] center of grid
      * @param[in] coordinates (Nx3)
@@ -203,6 +207,7 @@ class GridMaker {
         const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
         Grid<Dtype, 4, false>& out) const;
 
+    // Docstring_GridMaker_forward_7
     /* \brief Generate grid tensor from GPU atomic data.  Grid must be properly sized.
      * @param[in] center of grid
      * @param[in] coordinates (Nx3)
@@ -216,6 +221,7 @@ class GridMaker {
         Grid<Dtype, 4, true>& out) const;
         
         
+    // Docstring_GridMaker_forward_8
     /* \brief Generate grid tensor from CPU atomic data.  Grid must be properly sized.
      * If TypesFromRadii, radii should be size of types and type information will be used
      * to select the radii.
@@ -230,6 +236,7 @@ class GridMaker {
         const Grid<float, 2, false>& type_vector, const Grid<float, 1, false>& radii,
         Grid<Dtype, 4, false>& out) const;
 
+    // Docstring_GridMaker_forward_9
     /* \brief Generate grid tensor from GPU atomic data.  Grid must be properly sized.
      * @param[in] center of grid
      * @param[in] coordinates (Nx3)
@@ -243,6 +250,7 @@ class GridMaker {
         Grid<Dtype, 4, true>& out) const;
 
 
+    // Docstring_GridMaker_backward_1
     /* \brief Generate atom and type gradients from grid gradients. (CPU)
      * Must provide atom coordinates that defined the original grid in forward
      * Vector types are required.
@@ -262,6 +270,7 @@ class GridMaker {
       }
     }
 
+    // Docstring_GridMaker_backward_2
     /* \brief Generate atom gradients from grid gradients. (CPU)
      * Must provide atom coordinates that defined the original grid in forward
      * Index types are required
@@ -280,6 +289,7 @@ class GridMaker {
       }
     }
 
+    // Docstring_GridMaker_backward_3
     /* \brief Generate atom and type gradients from grid gradients. (GPU)
      * Must provide atom coordinates that defined the original grid in forward
      * Vector types are required.
@@ -299,6 +309,7 @@ class GridMaker {
       }
     }
 
+    // Docstring_GridMaker_backward_4
     /* \brief Generate atom gradients from grid gradients. (GPU)
      * Must provide atom coordinates that defined the original grid in forward
      * Index types are required.
@@ -317,6 +328,7 @@ class GridMaker {
       }
     }
 
+    // Docstring_GridMaker_backward_5
     /* \brief Generate atom gradients from grid gradients. (CPU)
      * Must provide atom coordinates, types, and radii that defined the original grid in forward
      * @param[in] center of grid
@@ -331,6 +343,7 @@ class GridMaker {
         const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
         const Grid<Dtype, 4, false>& diff, Grid<Dtype, 2, false>& atom_gradients) const;
 
+    // Docstring_GridMaker_backward_6
     /* \brief Generate atom gradients from grid gradients. (GPU)
      * Must provide atom coordinates, types, and radii that defined the original grid in forward
      * @param[in] center of grid
@@ -345,6 +358,7 @@ class GridMaker {
         const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
         const Grid<Dtype, 4, true>& grid, Grid<Dtype, 2, true>& atom_gradients) const;
 
+    // Docstring_GridMaker_backward_7
     /* \brief Generate atom and type gradients from grid gradients. (CPU)
      * Must provide atom coordinates, types, and radii that defined the original grid in forward
      * @param[in] center of grid
@@ -361,6 +375,7 @@ class GridMaker {
         const Grid<Dtype, 4, false>& diff,
         Grid<Dtype, 2, false>& atom_gradients, Grid<Dtype, 2, false>& type_gradients) const;
 
+    // Docstring_GridMaker_backward_8
     /* \brief Generate atom gradients from grid gradients. (GPU)
      * Must provide atom coordinates, types, and radii that defined the original grid in forward
      * @param[in] center of grid

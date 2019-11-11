@@ -15,6 +15,7 @@
 
 namespace libmolgrid {
 
+  // Docstring_ExampleProvider
 /** \brief Given a file of examples, provide Example classes one at a time
  * This contains an exampleref provider, which can be configured using a
  * single settings object if so desired, and an example extractor.

@@ -17,6 +17,7 @@
 
 namespace libmolgrid {
 
+// Docstring_Transform
 /** \brief Stateful transformation of Cartesian coordinates.
  *
  *  Stores a center of rotation, quaternion, and translation.
@@ -40,7 +41,7 @@ class Transform {
         : Q(q), center(c), translate(t) {
     }
 
-    // Docstring_Transform
+    // Docstring_Transform_constructor
     /* \brief Create random transform.
      * @param[in] c  Center of rotation
      * @param[in] random_translate Amount (+/-) to randomly translte

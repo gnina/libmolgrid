@@ -174,7 +174,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/example_extractor.h" line="71" column="20" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/example_extractor.cpp" bodystart="69" bodyend="71"/>
-        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1a59b7170f88e4d8d17e9f4eb5e3d62712" compoundref="example__provider_8h" startline="78" endline="78">ExampleProvider::num_types</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1a59b7170f88e4d8d17e9f4eb5e3d62712" compoundref="example__provider_8h" startline="79" endline="79">ExampleProvider::num_types</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleExtractor_1a92e331dc0874eea72e24fad42efdddc6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>size_t</type>
@@ -206,7 +206,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/example_extractor.h" line="78" column="25" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/example_extractor.cpp" bodystart="77" bodyend="86"/>
-        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1a2babcd45f89ff67b4b4887f7ba469ae6" compoundref="example__provider_8h" startline="80" endline="80">ExampleProvider::get_type_names</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1a2babcd45f89ff67b4b4887f7ba469ae6" compoundref="example__provider_8h" startline="81" endline="81">ExampleProvider::get_type_names</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>

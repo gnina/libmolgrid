@@ -11,6 +11,7 @@
 
 namespace libmolgrid {
 
+// Docstring_CartesianGrid
 /** \brief Wrapper around grid of type G that imposes Cartesian coordinates.
  * Includes center and resolution and supports (eventually) interpolation.
  */
