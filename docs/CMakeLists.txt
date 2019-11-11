@@ -79,6 +79,10 @@ IF(BUILD_DOCS)
 		 
     add_custom_target(Sphinx_Python ALL DEPENDS ${SPHINX_PYTHON_INDEX_FILE})
 
+    # ugly probably fragile way to get rid of the redundant links Sphinx adds
+    # to the toctree
+    add_custom_command(TARGET Sphinx_Cpp POST_BUILD COMMAND bash "-c" "sed -i 's/<li class=\"toctree-l1 current\">.*<li class=\"toctree-l1\">/<li class=\"toctree-l1\">/g' ${SPHINX_CPP_BUILD}/index.html")
+
     # generate jekyll-compatible html from notebooks for the tutorials page
     file(GLOB NOTEBOOKS ${PROJECT_SOURCE_DIR}/docs/_tutorials/*.ipynb)
     foreach(file ${NOTEBOOKS})
