@@ -9,6 +9,13 @@ body {
     position: relative
 }
 
+div.horizontalgap {
+  float: left;
+  overflow: hidden;
+  height: 1px;
+  width: 0px;
+}
+
 .table code {
     font-size: 13px;
     font-weight: 400
@@ -85,8 +92,7 @@ body {
 
 .bs-docs-nav .navbar-brand, .bs-docs-nav .navbar-nav>li>a {
     color: #563d7c;
-    font-weight: 500;
-    position: relative
+    font-weight: 500
 }
 
 .bs-docs-nav .navbar-nav>li>a:hover, .bs-docs-nav .navbar-nav>.active>a, .bs-docs-nav .navbar-nav>.active>a:hover {
