@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="26" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="26" bodyend="26"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" line="26" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" bodystart="26" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1ae32c6ad6aeaeba0d2d2ab74a48a553b5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="27" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="27" bodyend="27"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" line="27" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" bodystart="27" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a134b2325787965e2ef6260960f06adfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="28" column="18"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" line="28" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a39fe489f6eb526d59b6b804a8343fe8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="29" column="18"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" line="29" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a7a953020850169224c78ac9bfda9e423" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="30" column="18"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" line="30" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a962e2830e9c2869a2ee70cd5331f815f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>unsigned</type>
@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="31" column="22"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" line="31" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a6dab7933abd006833437122f78468007" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
@@ -137,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="32" column="13" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="32" bodyend="32"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" line="32" column="13" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" bodystart="32" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="34" column="18" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="34" bodyend="34"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" line="34" column="18" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" bodystart="34" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -170,7 +170,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="35" column="18" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="35" bodyend="35"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" line="35" column="18" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" bodystart="35" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a4af792d6af8f9f676a2dc30f2262158b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>size_t</type>
@@ -191,7 +191,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="37" column="20"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" line="37" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>int</type>
@@ -213,7 +213,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="39" column="17" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/exampleref_providers.cpp" bodystart="48" bodyend="62"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" line="39" column="17" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/exampleref_providers.cpp" bodystart="48" bodyend="62"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -263,7 +263,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" line="23" column="25" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h" bodystart="23" bodyend="40"/>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" line="23" column="25" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h" bodystart="23" bodyend="40"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1ExampleRefProvider_1a134b2325787965e2ef6260960f06adfc" prot="public" virt="pure-virtual"><scope>libmolgrid::ExampleRefProvider</scope><name>addref</name></member>
       <member refid="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" prot="public" virt="virtual"><scope>libmolgrid::ExampleRefProvider</scope><name>check_batch_size</name></member>

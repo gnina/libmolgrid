@@ -14,6 +14,46 @@
     <includedby refid="example__provider_8h" local="yes">example_provider.h</includedby>
     <includedby refid="exampleref__providers_8cpp" local="yes">exampleref_providers.cpp</includedby>
     <incdepgraph>
+      <node id="15">
+        <label>libmolgrid/managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="11">
+        <label>libmolgrid/example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>cuda_runtime.h</label>
+      </node>
+      <node id="21">
+        <label>cassert</label>
+      </node>
+      <node id="14">
+        <label>openbabel/mol.h</label>
+      </node>
+      <node id="12">
+        <label>unordered_set</label>
+      </node>
+      <node id="9">
+        <label>random</label>
+      </node>
       <node id="18">
         <label>libmolgrid/grid.h</label>
         <link refid="grid_8h"/>
@@ -32,20 +72,75 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="7">
-        <label>boost/lexical_cast.hpp</label>
-      </node>
-      <node id="15">
-        <label>libmolgrid/managed_grid.h</label>
-        <link refid="managed__grid_8h"/>
+      <node id="22">
+        <label>libmolgrid/common.h</label>
+        <link refid="common_8h"/>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>libmolgrid/libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+      <node id="17">
+        <label>utility</label>
+      </node>
+      <node id="2">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>unordered_map</label>
+      </node>
+      <node id="13">
+        <label>libmolgrid/coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>cuda.h</label>
+      </node>
+      <node id="24">
+        <label>cuda_runtime_api.h</label>
+      </node>
+      <node id="20">
+        <label>boost/preprocessor/repetition.hpp</label>
+      </node>
+      <node id="5">
+        <label>type_traits</label>
+      </node>
+      <node id="19">
+        <label>boost/multi_array.hpp</label>
+      </node>
+      <node id="4">
+        <label>algorithm</label>
+      </node>
+      <node id="23">
+        <label>cstring</label>
+      </node>
+      <node id="16">
+        <label>memory</label>
       </node>
       <node id="1">
         <label>exampleref_providers.h</label>
@@ -67,103 +162,30 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="10">
-        <label>cuda_runtime.h</label>
-      </node>
-      <node id="21">
-        <label>cassert</label>
-      </node>
-      <node id="14">
-        <label>openbabel/mol.h</label>
-      </node>
-      <node id="12">
-        <label>unordered_set</label>
-      </node>
-      <node id="22">
-        <label>libmolgrid/common.h</label>
-        <link refid="common_8h"/>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>random</label>
-      </node>
-      <node id="11">
-        <label>libmolgrid/example.h</label>
-        <link refid="example_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>vector</label>
-      </node>
-      <node id="17">
-        <label>utility</label>
-      </node>
-      <node id="2">
-        <label>iostream</label>
-      </node>
-      <node id="6">
-        <label>unordered_map</label>
-      </node>
-      <node id="25">
-        <label>cuda.h</label>
-      </node>
-      <node id="24">
-        <label>cuda_runtime_api.h</label>
-      </node>
-      <node id="20">
-        <label>boost/preprocessor/repetition.hpp</label>
-      </node>
-      <node id="5">
-        <label>type_traits</label>
-      </node>
-      <node id="19">
-        <label>boost/multi_array.hpp</label>
-      </node>
-      <node id="13">
-        <label>libmolgrid/coordinateset.h</label>
-        <link refid="coordinateset_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>algorithm</label>
-      </node>
-      <node id="23">
-        <label>cstring</label>
-      </node>
-      <node id="16">
-        <label>memory</label>
-      </node>
-      <node id="8">
-        <label>libmolgrid/libmolgrid.h</label>
-        <link refid="libmolgrid_8h"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="6">
+        <label>exampleref_providers.cpp</label>
+        <link refid="exampleref__providers_8cpp"/>
+      </node>
+      <node id="4">
+        <label>example_provider.cpp</label>
+        <link refid="example__provider_8cpp"/>
+      </node>
+      <node id="3">
+        <label>example_provider.h</label>
+        <link refid="example__provider_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>example_extractor.h</label>
+        <link refid="example__extractor_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
       <node id="5">
         <label>example_extractor.cpp</label>
         <link refid="example__extractor_8cpp"/>
@@ -176,28 +198,6 @@
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>exampleref_providers.cpp</label>
-        <link refid="exampleref__providers_8cpp"/>
-      </node>
-      <node id="4">
-        <label>example_provider.cpp</label>
-        <link refid="example__provider_8cpp"/>
-      </node>
-      <node id="2">
-        <label>example_extractor.h</label>
-        <link refid="example__extractor_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>example_provider.h</label>
-        <link refid="example__provider_8h"/>
-        <childnode refid="4" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -619,6 +619,6 @@
 <codeline lineno="433"><highlight class="normal"></highlight></codeline>
 <codeline lineno="434"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>EXAMPLE_PROVIDERS_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/exampleref_providers.h"/>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/exampleref_providers.h"/>
   </compounddef>
 </doxygen>

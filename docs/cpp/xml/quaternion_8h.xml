@@ -16,6 +16,20 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="6">
+        <label>transform.cpp</label>
+        <link refid="transform_8cpp"/>
+      </node>
+      <node id="3">
+        <label>grid_maker.h</label>
+        <link refid="grid__maker_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>grid_maker.cpp</label>
+        <link refid="grid__maker_8cpp"/>
+      </node>
       <node id="2">
         <label>transform.h</label>
         <link refid="transform_8h"/>
@@ -30,25 +44,11 @@
         <label>libmolgrid.cpp</label>
         <link refid="libmolgrid_8cpp"/>
       </node>
-      <node id="3">
-        <label>grid_maker.h</label>
-        <link refid="grid__maker_8h"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
       <node id="1">
         <label>quaternion.h</label>
         <link refid="quaternion_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-      </node>
-      <node id="4">
-        <label>grid_maker.cpp</label>
-        <link refid="grid__maker_8cpp"/>
-      </node>
-      <node id="6">
-        <label>transform.cpp</label>
-        <link refid="transform_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classlibmolgrid_1_1Quaternion" prot="public">libmolgrid::Quaternion</innerclass>
@@ -205,6 +205,6 @@
 <codeline lineno="170"><highlight class="normal"></highlight></codeline>
 <codeline lineno="171"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>QUATERNION_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/quaternion.h"/>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/quaternion.h"/>
   </compounddef>
 </doxygen>

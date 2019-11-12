@@ -31,24 +31,6 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="3">
-        <label>openbabel/atom.h</label>
-      </node>
-      <node id="5">
-        <label>vector</label>
-      </node>
-      <node id="10">
-        <label>openbabel/obiter.h</label>
-      </node>
-      <node id="4">
-        <label>openbabel/elements.h</label>
-      </node>
-      <node id="7">
-        <label>iostream</label>
-      </node>
-      <node id="8">
-        <label>unordered_map</label>
-      </node>
       <node id="2">
         <label>libmolgrid/atom_typer.h</label>
         <link refid="atom__typer_8h"/>
@@ -67,6 +49,24 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
+      <node id="3">
+        <label>openbabel/atom.h</label>
+      </node>
+      <node id="5">
+        <label>vector</label>
+      </node>
+      <node id="10">
+        <label>openbabel/obiter.h</label>
+      </node>
+      <node id="4">
+        <label>openbabel/elements.h</label>
+      </node>
+      <node id="7">
+        <label>iostream</label>
+      </node>
+      <node id="8">
+        <label>unordered_map</label>
+      </node>
       <node id="6">
         <label>memory</label>
       </node>
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" line="17" column="12" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" bodystart="17" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" line="17" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="atom__typer_8cpp_1ad07fa1680b4c52f075ce19270399b935" prot="public" static="no">
         <name>GET_COVALENT_RAD</name>
@@ -94,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" line="18" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" bodystart="18" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" line="18" column="10" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="atom__typer_8cpp_1af8bca12527bac4b474e2ccb5acd8691e" prot="public" static="no">
         <name>GET_NAME</name>
@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" line="19" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" bodystart="19" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" line="19" column="10" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" bodystart="19" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -667,6 +667,6 @@
 <codeline lineno="563"><highlight class="stringliteral"></highlight></codeline>
 <codeline lineno="564"><highlight class="stringliteral">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp"/>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp"/>
   </compounddef>
 </doxygen>

@@ -746,6 +746,6 @@
 <codeline></codeline>
 <codeline><highlight class="normal">}<sp/>/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_maker.cu"/>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_maker.cu"/>
   </compounddef>
 </doxygen>

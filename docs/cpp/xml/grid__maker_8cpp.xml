@@ -7,45 +7,8 @@
     <includes local="no">vector</includes>
     <includes local="no">iomanip</includes>
     <incdepgraph>
-      <node id="26">
-        <label>libmolgrid/transform.h</label>
-        <link refid="transform_8h"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-      </node>
       <node id="30">
         <label>iomanip</label>
-      </node>
-      <node id="13">
-        <label>libmolgrid/grid.h</label>
-        <link refid="grid_8h"/>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>boost/lexical_cast.hpp</label>
       </node>
       <node id="9">
         <label>libmolgrid/managed_grid.h</label>
@@ -59,6 +22,19 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
+      <node id="12">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="24">
+        <label>libmolgrid/example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
       <node id="6">
         <label>cuda_runtime.h</label>
       </node>
@@ -67,6 +43,15 @@
       </node>
       <node id="16">
         <label>cassert</label>
+      </node>
+      <node id="27">
+        <label>stdexcept</label>
+      </node>
+      <node id="8">
+        <label>openbabel/mol.h</label>
+      </node>
+      <node id="25">
+        <label>unordered_set</label>
       </node>
       <node id="2">
         <label>libmolgrid/grid_maker.h</label>
@@ -88,20 +73,26 @@
         <childnode refid="26" relation="include">
         </childnode>
       </node>
-      <node id="27">
-        <label>stdexcept</label>
+      <node id="23">
+        <label>random</label>
       </node>
-      <node id="8">
-        <label>openbabel/mol.h</label>
-      </node>
-      <node id="28">
-        <label>libmolgrid/quaternion.h</label>
-        <link refid="quaternion_8h"/>
-        <childnode refid="6" relation="include">
+      <node id="13">
+        <label>libmolgrid/grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="14" relation="include">
         </childnode>
-      </node>
-      <node id="25">
-        <label>unordered_set</label>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
       </node>
       <node id="18">
         <label>libmolgrid/common.h</label>
@@ -113,19 +104,6 @@
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
-        </childnode>
-      </node>
-      <node id="23">
-        <label>random</label>
-      </node>
-      <node id="24">
-        <label>libmolgrid/example.h</label>
-        <link refid="example_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -140,8 +118,36 @@
         <childnode refid="30" relation="include">
         </childnode>
       </node>
+      <node id="22">
+        <label>libmolgrid/libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
       <node id="3">
         <label>vector</label>
+      </node>
+      <node id="26">
+        <label>libmolgrid/transform.h</label>
+        <link refid="transform_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
       </node>
       <node id="11">
         <label>utility</label>
@@ -151,6 +157,16 @@
       </node>
       <node id="17">
         <label>iostream</label>
+      </node>
+      <node id="7">
+        <label>libmolgrid/coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
       <node id="21">
         <label>cuda.h</label>
@@ -164,16 +180,6 @@
       <node id="14">
         <label>boost/multi_array.hpp</label>
       </node>
-      <node id="7">
-        <label>libmolgrid/coordinateset.h</label>
-        <link refid="coordinateset_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
       <node id="5">
         <label>algorithm</label>
       </node>
@@ -183,15 +189,9 @@
       <node id="10">
         <label>memory</label>
       </node>
-      <node id="22">
-        <label>libmolgrid/libmolgrid.h</label>
-        <link refid="libmolgrid_8h"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
+      <node id="28">
+        <label>libmolgrid/quaternion.h</label>
+        <link refid="quaternion_8h"/>
         <childnode refid="6" relation="include">
         </childnode>
       </node>
@@ -724,6 +724,6 @@
 <codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;double, 4, false&gt;</ref>&amp;<sp/>,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;double, 1, false&gt;</ref>&amp;<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="521"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_maker.cpp"/>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_maker.cpp"/>
   </compounddef>
 </doxygen>

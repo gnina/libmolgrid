@@ -18,6 +18,24 @@
       <node id="8">
         <label>functional</label>
       </node>
+      <node id="1">
+        <label>atom_typer.h</label>
+        <link refid="atom__typer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
       <node id="2">
         <label>openbabel/atom.h</label>
       </node>
@@ -33,24 +51,6 @@
       <node id="7">
         <label>unordered_map</label>
       </node>
-      <node id="1">
-        <label>atom_typer.h</label>
-        <link refid="atom__typer_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
       <node id="5">
         <label>memory</label>
       </node>
@@ -60,39 +60,9 @@
         <label>coord_cache.cpp</label>
         <link refid="coord__cache_8cpp"/>
       </node>
-      <node id="6">
-        <label>example_extractor.cpp</label>
-        <link refid="example__extractor_8cpp"/>
-      </node>
       <node id="8">
         <label>atom_typer.cpp</label>
         <link refid="atom__typer_8cpp"/>
-      </node>
-      <node id="5">
-        <label>example_provider.cpp</label>
-        <link refid="example__provider_8cpp"/>
-      </node>
-      <node id="3">
-        <label>example_extractor.h</label>
-        <link refid="example__extractor_8h"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>example_provider.h</label>
-        <link refid="example__provider_8h"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>coord_cache.h</label>
-        <link refid="coord__cache_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
       </node>
       <node id="1">
         <label>atom_typer.h</label>
@@ -107,6 +77,36 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
+      </node>
+      <node id="2">
+        <label>coord_cache.h</label>
+        <link refid="coord__cache_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>example_provider.cpp</label>
+        <link refid="example__provider_8cpp"/>
+      </node>
+      <node id="4">
+        <label>example_provider.h</label>
+        <link refid="example__provider_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>example_extractor.h</label>
+        <link refid="example__extractor_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>example_extractor.cpp</label>
+        <link refid="example__extractor_8cpp"/>
       </node>
       <node id="9">
         <label>coordinateset.cpp</label>
@@ -662,6 +662,6 @@
 <codeline lineno="621"><highlight class="normal"></highlight></codeline>
 <codeline lineno="622"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>ATOMTYPER_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h"/>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h"/>
   </compounddef>
 </doxygen>

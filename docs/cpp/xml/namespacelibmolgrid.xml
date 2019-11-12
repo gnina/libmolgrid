@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/libmolgrid.h" line="22" column="18" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/libmolgrid.h" bodystart="22" bodyend="22"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/libmolgrid.h" line="22" column="18" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/libmolgrid.h" bodystart="22" bodyend="22"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/cartesian_grid.h" line="41" column="1" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/cartesian_grid.h" bodystart="41" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/cartesian_grid.h" line="41" column="1" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/cartesian_grid.h" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespacelibmolgrid_1a7279d61df03794f106ab563c49049052" prot="public" static="no">
         <type>::float3</type>
@@ -110,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/libmolgrid.h" line="21" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/libmolgrid.h" bodystart="21" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/libmolgrid.h" line="21" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/libmolgrid.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -125,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" line="533" column="22" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" declline="617" declcolumn="29"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" line="533" column="22" declfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" declline="617" declcolumn="29"/>
       </memberdef>
       <memberdef kind="variable" id="namespacelibmolgrid_1a371ec05022b3d175a5b02d540f947ac2" prot="public" static="no" mutable="no">
         <type><ref refid="classlibmolgrid_1_1FileMappedGninaTyper" kindref="compound">FileMappedGninaTyper</ref></type>
@@ -138,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" line="534" column="22" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" declline="618" declcolumn="29"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" line="534" column="22" declfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" declline="618" declcolumn="29"/>
       </memberdef>
       <memberdef kind="variable" id="namespacelibmolgrid_1ae85ac8fbef92553b049a1d50afa4c183" prot="public" static="no" mutable="no">
         <type><ref refid="classlibmolgrid_1_1StringCache" kindref="compound">StringCache</ref></type>
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/example.cpp" line="20" column="13" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/example.cpp" bodystart="20" bodyend="-1" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/example.h" declline="173" declcolumn="20"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/example.cpp" line="20" column="13" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/example.cpp" bodystart="20" bodyend="-1" declfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" declline="173" declcolumn="20"/>
         <referencedby refid="classlibmolgrid_1_1CoordCache_1a30e53e7aa53be3caabe1e7b88f4c06f8" compoundref="coord__cache_8cpp" startline="25" endline="73">CoordCache::CoordCache</referencedby>
         <referencedby refid="structlibmolgrid_1_1ExampleRef_1af68ef87a6eab8ca94bd25484c273a402" compoundref="example_8cpp" startline="309" endline="354">ExampleRef::ExampleRef</referencedby>
         <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="393" endline="423">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
@@ -168,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/libmolgrid.cpp" line="11" column="32" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/libmolgrid.cpp" bodystart="11" bodyend="-1" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/libmolgrid.h" declline="19" declcolumn="39"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/libmolgrid.cpp" line="11" column="32" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/libmolgrid.cpp" bodystart="11" bodyend="-1" declfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/libmolgrid.h" declline="19" declcolumn="39"/>
         <referencedby refid="classlibmolgrid_1_1SamplingExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="126" endline="134">SamplingExampleRefProvider&lt; Provider1, Provider2 &gt;::nextref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="198" endline="216">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::nextref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8cpp" startline="17" endline="46">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::setup</referencedby>
@@ -186,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/coord_cache.cpp" line="22" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/coord_cache.cpp" bodystart="22" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/coord_cache.cpp" line="22" column="10" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coord_cache.cpp" bodystart="22" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1CoordCache_1a30e53e7aa53be3caabe1e7b88f4c06f8" compoundref="coord__cache_8cpp" startline="25" endline="73">CoordCache::CoordCache</referencedby>
       </memberdef>
       </sectiondef>
@@ -210,7 +210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid.h" line="22" column="23" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid.h" bodystart="22" bodyend="34"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid.h" line="22" column="23" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid.h" bodystart="22" bodyend="34"/>
         <referencedby refid="classlibmolgrid_1_1Grid_1ac5cd5f1c4591aa5a8d21e5babb971e99" compoundref="grid_8h" startline="201" endline="207">Grid&lt; Dtype, NumDims, true &gt;::copyFrom</referencedby>
         <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1ad3152bc9dfc67f11fa55467ac93460f8" compoundref="grid_8h" startline="317" endline="323">Grid&lt; Dtype, 1, isCUDA &gt;::copyFrom</referencedby>
         <referencedby refid="classlibmolgrid_1_1Grid_1ac2f29eb66b0b3b19ab09ecd80e3fbb35" compoundref="grid_8h" startline="188" endline="194">Grid&lt; Dtype, NumDims, true &gt;::copyTo</referencedby>
@@ -239,7 +239,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid.h" line="333" column="1" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid.h" declline="333" declcolumn="1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid.h" line="333" column="1" declfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid.h" declline="333" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1ade64fcaf6347fae87a6a41fb17a3fb31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -261,7 +261,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="70" column="15" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" bodystart="70" bodyend="90" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" declline="234" declcolumn="24"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="70" column="15" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" bodystart="70" bodyend="90" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" declline="234" declcolumn="24"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a3317b8b6adaedad592f3d47deaae373e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -284,7 +284,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="94" column="15" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" bodystart="94" bodyend="98" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" declline="236" declcolumn="24"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="94" column="15" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" bodystart="94" bodyend="98" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" declline="236" declcolumn="24"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a675a477dd7654f29009ae26ae706f39a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -311,7 +311,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="101" column="6" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" bodystart="101" bodyend="121" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid_io.h" declline="24" declcolumn="6"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="101" column="6" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" bodystart="101" bodyend="121" declfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid_io.h" declline="24" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1af18d9ef15de74734e469e0775ad38031" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -338,7 +338,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="125" column="6" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" bodystart="125" bodyend="129" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid_io.h" declline="26" declcolumn="6"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="125" column="6" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" bodystart="125" bodyend="129" declfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid_io.h" declline="26" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1aa1f03ee53c2b76327813c46eea4de9da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -365,7 +365,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid_io.h" line="30" column="6" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid_io.h" bodystart="30" bodyend="32"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid_io.h" line="30" column="6" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid_io.h" bodystart="30" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a6a20da8af322317857655e627f1e9f5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -405,7 +405,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="134" column="6" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" bodystart="134" bodyend="166" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid_io.h" declline="42" declcolumn="6"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="134" column="6" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" bodystart="134" bodyend="166" declfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid_io.h" declline="42" declcolumn="6"/>
         <referencedby refid="namespacelibmolgrid_1a96cc920e318698dad01618f1ceb8419f" compoundref="grid__io_8cpp" startline="170" endline="174">write_dx</referencedby>
         <referencedby refid="namespacelibmolgrid_1a99f7f8f546917a9c1d891fb1eb3b731b" compoundref="grid__io_8cpp" startline="177" endline="189">write_dx_grids</referencedby>
       </memberdef>
@@ -447,7 +447,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="170" column="6" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" bodystart="170" bodyend="174" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid_io.h" declline="44" declcolumn="6"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="170" column="6" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" bodystart="170" bodyend="174" declfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid_io.h" declline="44" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a99f7f8f546917a9c1d891fb1eb3b731b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -541,7 +541,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="177" column="6" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" bodystart="177" bodyend="189" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid_io.h" declline="56" declcolumn="6"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="177" column="6" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" bodystart="177" bodyend="189" declfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid_io.h" declline="56" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a480d5a45562f3cda34dbac07d1415d04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -622,7 +622,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="192" column="6" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" bodystart="192" bodyend="201" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid_io.h" declline="68" declcolumn="6"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="192" column="6" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" bodystart="192" bodyend="201" declfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid_io.h" declline="68" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a2fd3cdc3e58f538b5ae29f29654a5b2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -663,7 +663,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="205" column="6" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" bodystart="205" bodyend="221" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid_io.h" declline="73" declcolumn="6"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="205" column="6" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" bodystart="205" bodyend="221" declfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid_io.h" declline="73" declcolumn="6"/>
         <referencedby refid="namespacelibmolgrid_1a5f98c4b4e9bc1306dc43643d0f701b23" compoundref="grid__io_8cpp" startline="225" endline="229">write_map</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a5f98c4b4e9bc1306dc43643d0f701b23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -704,7 +704,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="225" column="6" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" bodystart="225" bodyend="229" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid_io.h" declline="75" declcolumn="6"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="225" column="6" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" bodystart="225" bodyend="229" declfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid_io.h" declline="75" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a618d0b859add1c20d24e684604c09b6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -730,7 +730,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid_io.h" line="79" column="6" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid_io.h" bodystart="79" bodyend="81"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid_io.h" line="79" column="6" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid_io.h" bodystart="79" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1afc56244e72d2209f03b10191d4c0fd99" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -748,7 +748,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/libmolgrid.h" line="24" column="25" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/libmolgrid.h" bodystart="24" bodyend="29"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/libmolgrid.h" line="24" column="25" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/libmolgrid.h" bodystart="24" bodyend="29"/>
         <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8h" startline="366" endline="375">GroupedExampleRefProvider&lt; Provider &gt;::addref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8cpp" startline="17" endline="46">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::setup</referencedby>
         <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8h" startline="295" endline="312">ValueStratifiedExampleRefProfider&lt; Provider &gt;::setup</referencedby>
@@ -768,7 +768,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/libmolgrid.h" line="31" column="24" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/libmolgrid.h" bodystart="31" bodyend="31"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/libmolgrid.h" line="31" column="24" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/libmolgrid.h" bodystart="31" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -785,7 +785,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/libmolgrid.h" line="32" column="24" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/libmolgrid.h" bodystart="32" bodyend="32"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/libmolgrid.h" line="32" column="24" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/libmolgrid.h" bodystart="32" bodyend="32"/>
         <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8cpp" startline="88" endline="98">BalancedExampleRefProvider::addref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a354afea429c9572094ac2c5c5ed19786" compoundref="managed__grid_8h" startline="64" endline="75">ManagedGridBase&lt; Dtype, 1 &gt;::alloc_and_set_cpu</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1aad5407e977e2f417b18ed54a0cf7730c" compoundref="managed__grid_8h" startline="78" endline="91">ManagedGridBase&lt; Dtype, 1 &gt;::alloc_and_set_gpu</referencedby>
@@ -833,7 +833,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/managed_grid.h" line="452" column="1" declfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/managed_grid.h" declline="452" declcolumn="1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="452" column="1" declfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" declline="452" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1abc1c852c354f940bb6726454a18083e2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>stringstream</type>
@@ -863,7 +863,7 @@ GenericMetal Boron Manganese Magnesium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" line="531" column="21" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" declline="531" declcolumn="21"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" line="531" column="21" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" declline="531" declcolumn="21"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1ab32fe62f692f6c16ba65f9586408e444" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>stringstream</type>
@@ -893,7 +893,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" line="532" column="21" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" declline="532" declcolumn="21"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" line="532" column="21" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" declline="532" declcolumn="21"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1afc66c747c8f9d86bf02a5c3fdc3bb02d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classlibmolgrid_1_1FileMappedGninaTyper" kindref="compound">FileMappedGninaTyper</ref></type>
@@ -909,7 +909,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" line="533" column="22" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" declline="533" declcolumn="22"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" line="533" column="22" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" declline="533" declcolumn="22"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a7a1ba159846b1049c0b7f509d51e543f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classlibmolgrid_1_1FileMappedGninaTyper" kindref="compound">FileMappedGninaTyper</ref></type>
@@ -925,7 +925,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" line="534" column="22" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/atom_typer.cpp" declline="534" declcolumn="22"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" line="534" column="22" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" declline="534" declcolumn="22"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1aafd219ed0c26b6bf36bbd792bbc4360e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
@@ -942,7 +942,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/coordinateset.cpp" line="128" column="15" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/coordinateset.cpp" bodystart="128" bodyend="131"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" line="128" column="15" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="128" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a1fca3edcd06bb699eed3954b29644ef9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -959,7 +959,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/example.cpp" line="301" column="6" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/example.cpp" bodystart="301" bodyend="307"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/example.cpp" line="301" column="6" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/example.cpp" bodystart="301" bodyend="307"/>
         <referencedby refid="structlibmolgrid_1_1ExampleRef_1af68ef87a6eab8ca94bd25484c273a402" compoundref="example_8cpp" startline="309" endline="354">ExampleRef::ExampleRef</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a10bb36f3a95760807a6c7006732bc624" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -985,7 +985,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="21" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" bodystart="21" bodyend="67"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="21" column="10" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" bodystart="21" bodyend="67"/>
         <referencedby refid="namespacelibmolgrid_1ade64fcaf6347fae87a6a41fb17a3fb31" compoundref="grid__io_8cpp" startline="70" endline="90">read_dx</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a0570278514d0b2fc1ccb54f3569edd48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1014,7 +1014,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="238" column="15" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" declline="238" declcolumn="15"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="238" column="15" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" declline="238" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1abbd0244cbbea044203ade2034974b011" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
@@ -1042,7 +1042,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="239" column="15" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" declline="239" declcolumn="15"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="239" column="15" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" declline="239" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1aceb848c3f5615d70a7cb17c7bfd6dd77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
@@ -1070,7 +1070,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="240" column="15" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" declline="240" declcolumn="15"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="240" column="15" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" declline="240" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1ac9623512babe477516e2797bcd791c8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
@@ -1098,7 +1098,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="241" column="15" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" declline="241" declcolumn="15"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="241" column="15" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" declline="241" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a5fd139cbcfd28827dd6366c7a7f3b642" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
@@ -1129,7 +1129,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="243" column="15" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" declline="243" declcolumn="15"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="243" column="15" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" declline="243" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1af343400ee12fb297dba99a7129e11c42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
@@ -1160,7 +1160,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="244" column="15" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" declline="244" declcolumn="15"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="244" column="15" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" declline="244" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a9f042ca3643e3d8a18a31052e7be9a5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
@@ -1182,7 +1182,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="246" column="15" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" declline="246" declcolumn="15"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="246" column="15" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" declline="246" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1aa8a5b39177f30a2ff53ece868bc1a2e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
@@ -1204,7 +1204,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="247" column="15" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" declline="247" declcolumn="15"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="247" column="15" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" declline="247" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a9a0999d5007feb4dfd8af58babc4e66b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
@@ -1232,7 +1232,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="249" column="15" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" declline="249" declcolumn="15"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="249" column="15" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" declline="249" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1afc651b900496b9e339d6c12a20ff914c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
@@ -1260,7 +1260,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="250" column="15" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" declline="250" declcolumn="15"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="250" column="15" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" declline="250" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a2f29c0cc60633364587eab74fae75b38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
@@ -1288,7 +1288,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="251" column="15" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" declline="251" declcolumn="15"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="251" column="15" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" declline="251" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a7ef0b82d16e8509a0aa72df3d3facc1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
@@ -1316,7 +1316,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" line="252" column="15" declfile="/home/jocelynsunseri/git/libmolgrid-fork/src/grid_io.cpp" declline="252" declcolumn="15"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" line="252" column="15" declfile="/home/jocelynsunseri/git/libmgd-docstest/src/grid_io.cpp" declline="252" declcolumn="15"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1324,6 +1324,6 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
     <detaileddescription>
 <para><ref refid="quaternion_8h" kindref="compound">quaternion.h</ref> </para>
     </detaileddescription>
-    <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/atom_typer.h" line="20" column="20"/>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="20" column="20"/>
   </compounddef>
 </doxygen>

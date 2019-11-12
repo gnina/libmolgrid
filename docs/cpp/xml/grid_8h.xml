@@ -15,6 +15,18 @@
     <includedby refid="transform_8h" local="yes">transform.h</includedby>
     <includedby refid="libmolgrid_8cpp" local="yes">libmolgrid.cpp</includedby>
     <incdepgraph>
+      <node id="4">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="14">
+        <label>cuda_runtime.h</label>
+      </node>
+      <node id="5">
+        <label>cassert</label>
+      </node>
+      <node id="13">
+        <label>random</label>
+      </node>
       <node id="1">
         <label>grid.h</label>
         <link refid="grid_8h"/>
@@ -33,15 +45,6 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="4">
-        <label>boost/lexical_cast.hpp</label>
-      </node>
-      <node id="14">
-        <label>cuda_runtime.h</label>
-      </node>
-      <node id="5">
-        <label>cassert</label>
-      </node>
       <node id="7">
         <label>libmolgrid/common.h</label>
         <link refid="common_8h"/>
@@ -54,8 +57,17 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="13">
-        <label>random</label>
+      <node id="12">
+        <label>libmolgrid/libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
       </node>
       <node id="6">
         <label>iostream</label>
@@ -78,62 +90,8 @@
       <node id="8">
         <label>memory</label>
       </node>
-      <node id="12">
-        <label>libmolgrid/libmolgrid.h</label>
-        <link refid="libmolgrid_8h"/>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="15">
-        <label>coord_cache.cpp</label>
-        <link refid="coord__cache_8cpp"/>
-      </node>
-      <node id="19">
-        <label>transform.h</label>
-        <link refid="transform_8h"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-      </node>
-      <node id="14">
-        <label>example_extractor.cpp</label>
-        <link refid="example__extractor_8cpp"/>
-      </node>
-      <node id="3">
-        <label>grid_io.h</label>
-        <link refid="grid__io_8h"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>grid.h</label>
-        <link refid="grid_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>grid_io.cpp</label>
-        <link refid="grid__io_8cpp"/>
-      </node>
       <node id="8">
         <label>managed_grid.h</label>
         <link refid="managed__grid_8h"/>
@@ -144,41 +102,9 @@
         <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="17">
-        <label>exampleref_providers.h</label>
-        <link refid="exampleref__providers_8h"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>libmolgrid.cpp</label>
-        <link refid="libmolgrid_8cpp"/>
-      </node>
-      <node id="6">
-        <label>grid_maker.h</label>
-        <link refid="grid__maker_8h"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="18">
-        <label>exampleref_providers.cpp</label>
-        <link refid="exampleref__providers_8cpp"/>
-      </node>
-      <node id="13">
-        <label>example_provider.cpp</label>
-        <link refid="example__provider_8cpp"/>
-      </node>
-      <node id="11">
-        <label>example_extractor.h</label>
-        <link refid="example__extractor_8h"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
+      <node id="15">
+        <label>coord_cache.cpp</label>
+        <link refid="coord__cache_8cpp"/>
       </node>
       <node id="16">
         <label>example.h</label>
@@ -198,19 +124,15 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>cartesian_grid.cpp</label>
-        <link refid="cartesian__grid_8cpp"/>
-      </node>
-      <node id="7">
-        <label>grid_maker.cpp</label>
-        <link refid="grid__maker_8cpp"/>
-      </node>
-      <node id="12">
-        <label>example_provider.h</label>
-        <link refid="example__provider_8h"/>
-        <childnode refid="13" relation="include">
+      <node id="3">
+        <label>grid_io.h</label>
+        <link refid="grid__io_8h"/>
+        <childnode refid="4" relation="include">
         </childnode>
+      </node>
+      <node id="21">
+        <label>transform.cpp</label>
+        <link refid="transform_8cpp"/>
       </node>
       <node id="10">
         <label>coord_cache.h</label>
@@ -220,9 +142,77 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
+      <node id="18">
+        <label>exampleref_providers.cpp</label>
+        <link refid="exampleref__providers_8cpp"/>
+      </node>
+      <node id="13">
+        <label>example_provider.cpp</label>
+        <link refid="example__provider_8cpp"/>
+      </node>
+      <node id="12">
+        <label>example_provider.h</label>
+        <link refid="example__provider_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>grid_io.cpp</label>
+        <link refid="grid__io_8cpp"/>
+      </node>
       <node id="22">
         <label>example.cpp</label>
         <link refid="example_8cpp"/>
+      </node>
+      <node id="6">
+        <label>grid_maker.h</label>
+        <link refid="grid__maker_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>example_extractor.h</label>
+        <link refid="example__extractor_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>cartesian_grid.cpp</label>
+        <link refid="cartesian__grid_8cpp"/>
+      </node>
+      <node id="7">
+        <label>grid_maker.cpp</label>
+        <link refid="grid__maker_8cpp"/>
+      </node>
+      <node id="19">
+        <label>transform.h</label>
+        <link refid="transform_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>example_extractor.cpp</label>
+        <link refid="example__extractor_8cpp"/>
       </node>
       <node id="9">
         <label>coordinateset.h</label>
@@ -246,13 +236,23 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="21">
-        <label>transform.cpp</label>
-        <link refid="transform_8cpp"/>
+      <node id="20">
+        <label>libmolgrid.cpp</label>
+        <link refid="libmolgrid_8cpp"/>
       </node>
       <node id="23">
         <label>coordinateset.cpp</label>
         <link refid="coordinateset_8cpp"/>
+      </node>
+      <node id="17">
+        <label>exampleref_providers.h</label>
+        <link refid="exampleref__providers_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="classlibmolgrid_1_1ManagedGrid" prot="public">libmolgrid::ManagedGrid</innerclass>
@@ -275,7 +275,7 @@ typedef Grid&lt;double, SIZE, true&gt; Grid##SIZE##dCUDA;</initializer>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid.h" line="327" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid.h" bodystart="327" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid.h" line="327" column="9" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid.h" bodystart="327" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -569,6 +569,6 @@ typedef Grid&lt;double, SIZE, true&gt; Grid##SIZE##dCUDA;</initializer>
 <codeline lineno="336"><highlight class="normal"></highlight></codeline>
 <codeline lineno="337"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>GRID_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/grid.h"/>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid.h"/>
   </compounddef>
 </doxygen>

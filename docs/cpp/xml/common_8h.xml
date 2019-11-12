@@ -34,48 +34,6 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="16">
-        <label>coord_cache.cpp</label>
-        <link refid="coord__cache_8cpp"/>
-      </node>
-      <node id="20">
-        <label>transform.h</label>
-        <link refid="transform_8h"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-      </node>
-      <node id="15">
-        <label>example_extractor.cpp</label>
-        <link refid="example__extractor_8cpp"/>
-      </node>
-      <node id="4">
-        <label>grid_io.h</label>
-        <link refid="grid__io_8h"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>grid.h</label>
-        <link refid="grid_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>grid_io.cpp</label>
-        <link refid="grid__io_8cpp"/>
-      </node>
       <node id="9">
         <label>managed_grid.h</label>
         <link refid="managed__grid_8h"/>
@@ -86,47 +44,9 @@
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="18">
-        <label>exampleref_providers.h</label>
-        <link refid="exampleref__providers_8h"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-      </node>
-      <node id="21">
-        <label>libmolgrid.cpp</label>
-        <link refid="libmolgrid_8cpp"/>
-      </node>
-      <node id="7">
-        <label>grid_maker.h</label>
-        <link refid="grid__maker_8h"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="19">
-        <label>exampleref_providers.cpp</label>
-        <link refid="exampleref__providers_8cpp"/>
-      </node>
-      <node id="1">
-        <label>common.h</label>
-        <link refid="common_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
-      <node id="14">
-        <label>example_provider.cpp</label>
-        <link refid="example__provider_8cpp"/>
-      </node>
-      <node id="12">
-        <label>example_extractor.h</label>
-        <link refid="example__extractor_8h"/>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
+      <node id="16">
+        <label>coord_cache.cpp</label>
+        <link refid="coord__cache_8cpp"/>
       </node>
       <node id="17">
         <label>example.h</label>
@@ -146,19 +66,15 @@
         <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="6">
-        <label>cartesian_grid.cpp</label>
-        <link refid="cartesian__grid_8cpp"/>
-      </node>
-      <node id="8">
-        <label>grid_maker.cpp</label>
-        <link refid="grid__maker_8cpp"/>
-      </node>
-      <node id="13">
-        <label>example_provider.h</label>
-        <link refid="example__provider_8h"/>
-        <childnode refid="14" relation="include">
+      <node id="4">
+        <label>grid_io.h</label>
+        <link refid="grid__io_8h"/>
+        <childnode refid="5" relation="include">
         </childnode>
+      </node>
+      <node id="22">
+        <label>transform.cpp</label>
+        <link refid="transform_8cpp"/>
       </node>
       <node id="11">
         <label>coord_cache.h</label>
@@ -168,9 +84,83 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
+      <node id="19">
+        <label>exampleref_providers.cpp</label>
+        <link refid="exampleref__providers_8cpp"/>
+      </node>
+      <node id="14">
+        <label>example_provider.cpp</label>
+        <link refid="example__provider_8cpp"/>
+      </node>
+      <node id="13">
+        <label>example_provider.h</label>
+        <link refid="example__provider_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>grid_io.cpp</label>
+        <link refid="grid__io_8cpp"/>
+      </node>
       <node id="23">
         <label>example.cpp</label>
         <link refid="example_8cpp"/>
+      </node>
+      <node id="7">
+        <label>grid_maker.h</label>
+        <link refid="grid__maker_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>example_extractor.h</label>
+        <link refid="example__extractor_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>cartesian_grid.cpp</label>
+        <link refid="cartesian__grid_8cpp"/>
+      </node>
+      <node id="8">
+        <label>grid_maker.cpp</label>
+        <link refid="grid__maker_8cpp"/>
+      </node>
+      <node id="20">
+        <label>transform.h</label>
+        <link refid="transform_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>example_extractor.cpp</label>
+        <link refid="example__extractor_8cpp"/>
       </node>
       <node id="10">
         <label>coordinateset.h</label>
@@ -194,13 +184,23 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="22">
-        <label>transform.cpp</label>
-        <link refid="transform_8cpp"/>
+      <node id="21">
+        <label>libmolgrid.cpp</label>
+        <link refid="libmolgrid_8cpp"/>
       </node>
       <node id="24">
         <label>coordinateset.cpp</label>
         <link refid="coordinateset_8cpp"/>
+      </node>
+      <node id="18">
+        <label>exampleref_providers.h</label>
+        <link refid="exampleref__providers_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">
@@ -212,7 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" line="19" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" bodystart="19" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" line="19" column="10" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" bodystart="19" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1aae0d7f428b69470abdad707078ba2acb" prot="public" static="no">
         <name>CUDA_DEVICE_MEMBER</name>
@@ -222,7 +222,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" line="20" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" bodystart="20" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" line="20" column="9" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a20904151946f0fa7480bd53aae19bd4f" prot="public" static="no">
         <name>LMG_CUDA_KERNEL_LOOP</name>
@@ -237,7 +237,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" line="24" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" bodystart="24" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" line="24" column="9" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a9e253719885e410b7c64b95d97b7f881" prot="public" static="no">
         <name>LMG_CUDA_NUM_THREADS</name>
@@ -248,7 +248,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" line="30" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" bodystart="30" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" line="30" column="9" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a30e49f29289f693fbfe768d590132652" prot="public" static="no">
         <name>LMG_CUDA_BLOCKDIM</name>
@@ -259,7 +259,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" line="31" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" bodystart="31" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" line="31" column="9" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a9f32493f7d15ce12f1924944a5ba065a" prot="public" static="no">
         <name>LOG2_WARP_SIZE</name>
@@ -270,7 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" line="32" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" bodystart="32" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" line="32" column="9" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a9ea0293fb7dcba88f071c44fd145819e" prot="public" static="no">
         <name>WARP_SIZE</name>
@@ -281,7 +281,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" line="33" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" bodystart="33" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" line="33" column="9" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1abdf19194f44a3fb9e5c12883f40b1cef" prot="public" static="no">
         <name>LMG_GET_BLOCKS</name>
@@ -293,7 +293,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" line="36" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" bodystart="36" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" line="36" column="9" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a70ddc4b6982996cbaba9ec10e864b214" prot="public" static="no">
         <name>LMG_GET_THREADS</name>
@@ -305,7 +305,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" line="38" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" bodystart="38" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" line="38" column="9" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1aa79d03c876b7392cd06c1f77d5286b59" prot="public" static="no">
         <name>LMG_CUDA_CHECK</name>
@@ -322,7 +322,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" line="41" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h" bodystart="41" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" line="41" column="9" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h" bodystart="41" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -385,6 +385,6 @@
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>COMMON_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmolgrid-fork/include/libmolgrid/common.h"/>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/common.h"/>
   </compounddef>
 </doxygen>
