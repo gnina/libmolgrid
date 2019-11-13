@@ -14,7 +14,7 @@ endif()
 option(BUILD_SHARED "Build shared library" ON)
 option(BUILD_STATIC "Build static library" ON)
 
-list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Modules)
+list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules;${PROJECT_SOURCE_DIR}/cmake")
 # get git hash
 include(cmake/git_revision.cmake)
 
@@ -79,7 +79,7 @@ include_directories(SYSTEM ${Boost_INCLUDE_DIR})
 
 add_subdirectory(src)
 add_subdirectory(python)
-add_subdirectory(doc)
+add_subdirectory(docs)
 
 # enable testing
 include(CTest)

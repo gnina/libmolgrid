@@ -18,6 +18,7 @@ namespace libmolgrid {
 
 class AtomTyper;
 
+// Docstring_CoordinateSet
 /** \brief A collection of typed atomic coordinates
  *
  * Types may be specified either as an index or a dense vector.
@@ -82,6 +83,7 @@ struct CoordinateSet {
   /// return true if vector types are available (or no atoms)
   bool has_vector_types() const { return type_vector.size() > 0 || coords.size() == 0;  }
 
+  // Docstring_CoordinateSet_make_vector_types
   /** \brief convert index types to vector types in-place
    * @param include_dummy_type - if true will create an additional type at end (has zero radii if type radii are provided is true)
    * @param type_radii - if provided, convert radii array to be type indexed,

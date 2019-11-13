@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="libmolgrid_8h" kind="file" language="C++">
+    <compoundname>libmolgrid.h</compoundname>
+    <includes local="no">random</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">boost/lexical_cast.hpp</includes>
+    <includes local="no">cuda_runtime.h</includes>
+    <includedby refid="exampleref__providers_8h" local="yes">exampleref_providers.h</includedby>
+    <includedby refid="grid_8h" local="yes">grid.h</includedby>
+    <includedby refid="transform_8h" local="yes">transform.h</includedby>
+    <includedby refid="libmolgrid_8cpp" local="yes">libmolgrid.cpp</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="5">
+        <label>cuda_runtime.h</label>
+      </node>
+      <node id="2">
+        <label>random</label>
+      </node>
+      <node id="1">
+        <label>libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="15">
+        <label>managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>coord_cache.cpp</label>
+        <link refid="coord__cache_8cpp"/>
+      </node>
+      <node id="19">
+        <label>example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>grid_io.h</label>
+        <link refid="grid__io_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>transform.cpp</label>
+        <link refid="transform_8cpp"/>
+      </node>
+      <node id="17">
+        <label>coord_cache.h</label>
+        <link refid="coord__cache_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>exampleref_providers.cpp</label>
+        <link refid="exampleref__providers_8cpp"/>
+      </node>
+      <node id="5">
+        <label>example_provider.cpp</label>
+        <link refid="example__provider_8cpp"/>
+      </node>
+      <node id="4">
+        <label>example_provider.h</label>
+        <link refid="example__provider_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>grid_io.cpp</label>
+        <link refid="grid__io_8cpp"/>
+      </node>
+      <node id="23">
+        <label>example.cpp</label>
+        <link refid="example_8cpp"/>
+      </node>
+      <node id="13">
+        <label>grid_maker.h</label>
+        <link refid="grid__maker_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>example_extractor.h</label>
+        <link refid="example__extractor_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>cartesian_grid.cpp</label>
+        <link refid="cartesian__grid_8cpp"/>
+      </node>
+      <node id="14">
+        <label>grid_maker.cpp</label>
+        <link refid="grid__maker_8cpp"/>
+      </node>
+      <node id="1">
+        <label>libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>transform.h</label>
+        <link refid="transform_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>example_extractor.cpp</label>
+        <link refid="example__extractor_8cpp"/>
+      </node>
+      <node id="16">
+        <label>coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>cartesian_grid.h</label>
+        <link refid="cartesian__grid_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>libmolgrid.cpp</label>
+        <link refid="libmolgrid_8cpp"/>
+      </node>
+      <node id="24">
+        <label>coordinateset.cpp</label>
+        <link refid="coordinateset_8cpp"/>
+      </node>
+      <node id="2">
+        <label>exampleref_providers.h</label>
+        <link refid="exampleref__providers_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespacelibmolgrid">libmolgrid</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="libmolgrid_8h_1aecdd40dd95edce99f66998b301481d75" prot="public" static="no">
+        <name>LIBMOLGRID_MAX_GRID_DIM</name>
+        <initializer>9</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/libmolgrid.h" line="16" column="9" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/libmolgrid.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Single header to include for all libmolgrid functionality. libmolgrid provides GPU accelerated routines for converting molecular data into dense grids for use in deep learning workflows. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="7"><highlight class="preprocessor">#ifndef<sp/>LIBMOLGRID_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LIBMOLGRID_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;random&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/lexical_cast.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cuda_runtime.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>dimensionalities<sp/>up<sp/>to<sp/>but<sp/>not<sp/>including<sp/>LIBMOLGRID_MAX_GRID_DIM<sp/>are<sp/>pre-instantiated</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="libmolgrid_8h_1aecdd40dd95edce99f66998b301481d75" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LIBMOLGRID_MAX_GRID_DIM<sp/>9</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelibmolgrid" kindref="compound">libmolgrid</ref><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>std::default_random_engine<sp/><ref refid="namespacelibmolgrid_1a637541cee6c830dbabb26498f6c91249" kindref="member">random_engine</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="namespacelibmolgrid_1a7279d61df03794f106ab563c49049052" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a7279d61df03794f106ab563c49049052" kindref="member">cuda_float3</ref><sp/>=<sp/>::float3;<sp/></highlight><highlight class="comment">//in<sp/>case<sp/>&quot;someone&quot;<sp/>has<sp/>redefined<sp/>float3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9" kindref="member">LogLevel</ref><sp/>{<sp/><ref refid="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806" kindref="member">INFO</ref>,<sp/><ref refid="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81" kindref="member">WARNING</ref>,<sp/><ref refid="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90" kindref="member">ERROR</ref>,<sp/><ref refid="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9a0593585da9181e972974c1274d8f2b4f" kindref="member">DEBUG</ref>};</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="namespacelibmolgrid_1afc56244e72d2209f03b10191d4c0fd99" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/><ref refid="namespacelibmolgrid_1afc56244e72d2209f03b10191d4c0fd99" kindref="member">log</ref>(<ref refid="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9" kindref="member">LogLevel</ref><sp/>level<sp/>=<sp/><ref refid="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806" kindref="member">INFO</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(level<sp/>&gt;<sp/><ref refid="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806" kindref="member">INFO</ref>)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::cerr;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::cout;<sp/></highlight><highlight class="comment">//todo,<sp/>implement<sp/>verbosity<sp/>levels</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="namespacelibmolgrid_1a57d9db38e6b5ccde0b2d5e480fdf81a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespacelibmolgrid_1a57d9db38e6b5ccde0b2d5e480fdf81a4" kindref="member">ftoa</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>v)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::lexical_cast&lt;std::string&gt;(v);<sp/>}</highlight></codeline>
+<codeline lineno="32" refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>v)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::lexical_cast&lt;std::string&gt;(v);<sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/libmolgrid.h"/>
+  </compounddef>
+</doxygen>

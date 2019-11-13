@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classlibmolgrid_1_1SubsetAtomMapper" kind="class" language="C++" prot="public">
+    <compoundname>libmolgrid::SubsetAtomMapper</compoundname>
+    <basecompoundref refid="classlibmolgrid_1_1AtomIndexTypeMapper" prot="public" virt="non-virtual">AtomIndexTypeMapper</basecompoundref>
+    <includes refid="atom__typer_8h" local="no">atom_typer.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classlibmolgrid_1_1SubsetAtomMapper_1a22c8139c583bd8549ed55d3ca4db13ab" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; int, int &gt;</type>
+        <definition>std::unordered_map&lt;int, int&gt; old2new</definition>
+        <argsstring></argsstring>
+        <name>old2new</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="505" column="24" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="505" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1SubsetAtomMapper_1a13a0fc95c51121d146263a7c52618f50" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; new_type_names</definition>
+        <argsstring></argsstring>
+        <name>new_type_names</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="506" column="17" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="506" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1SubsetAtomMapper_1af46a482e7cac1e3650b72be3281c229a" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int default_type</definition>
+        <argsstring></argsstring>
+        <name>default_type</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="507" column="9" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="507" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1SubsetAtomMapper_1a2fd112052ac414d508d2560c3d26bf6f" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned num_new_types</definition>
+        <argsstring></argsstring>
+        <name>num_new_types</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="508" column="14" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="508" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classlibmolgrid_1_1SubsetAtomMapper_1a4a83e99735e832950df79857b47d8d84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SubsetAtomMapper</definition>
+        <argsstring>(const std::vector&lt; int &gt; &amp;map, bool include_catchall=true, const std::vector&lt; std::string &gt; &amp;old_names=std::vector&lt; std::string &gt;())</argsstring>
+        <name>SubsetAtomMapper</name>
+        <param>
+          <type>const std::vector&lt; int &gt; &amp;</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>include_catchall</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>old_names</declname>
+          <defval>std::vector&lt; std::string &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Indices of map are new types, values are the old types, if include_catchall is true, the last type will be the type returned for anything not in map (otherwise -1 is returned) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="513" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" bodystart="477" bodyend="495"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1SubsetAtomMapper_1ad0d2057e289454c58a7c519a3ec977f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SubsetAtomMapper</definition>
+        <argsstring>(const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;map, bool include_catchall=true, const std::vector&lt; std::string &gt; &amp;old_names=std::vector&lt; std::string &gt;())</argsstring>
+        <name>SubsetAtomMapper</name>
+        <param>
+          <type>const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>include_catchall</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>old_names</declname>
+          <defval>std::vector&lt; std::string &gt;()</defval>
+        </param>
+        <briefdescription>
+<para>surjective mapping </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="516" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" bodystart="498" bodyend="521"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1SubsetAtomMapper_1ad493bf80b659abb6e401d7fee5c8231a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>unsigned</type>
+        <definition>virtual unsigned num_types</definition>
+        <argsstring>() const</argsstring>
+        <name>num_types</name>
+        <reimplements refid="classlibmolgrid_1_1AtomIndexTypeMapper_1ad493bf80b659abb6e401d7fee5c8231a">num_types</reimplements>
+        <briefdescription>
+<para>return number of mapped types, zero if unknown (no mapping) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="519" column="22" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="519" bodyend="519"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1SubsetAtomMapper_1a65bf8d6eed03de1b4e3d6fdde34adabd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int get_new_type</definition>
+        <argsstring>(unsigned origt) const</argsstring>
+        <name>get_new_type</name>
+        <reimplements refid="classlibmolgrid_1_1AtomIndexTypeMapper_1a84e5366fb6c4b143c6d05c51785fd6a6">get_new_type</reimplements>
+        <param>
+          <type>unsigned</type>
+          <declname>origt</declname>
+        </param>
+        <briefdescription>
+<para>return mapped type </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="522" column="17" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" bodystart="524" bodyend="529"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1SubsetAtomMapper_1aacde71a2d28fc736c3d43da006f3a1c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>virtual std::vector&lt;std::string&gt; get_type_names</definition>
+        <argsstring>() const</argsstring>
+        <name>get_type_names</name>
+        <reimplements refid="classlibmolgrid_1_1AtomIndexTypeMapper_1aedda205572fbbaa3a868181802232263">get_type_names</reimplements>
+        <briefdescription>
+<para>return vector of string representations of types </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="524" column="25" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="524" bodyend="524"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Map atom types onto a provided subset. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>AtomIndexTypeMapper</label>
+        <link refid="classlibmolgrid_1_1AtomIndexTypeMapper"/>
+      </node>
+      <node id="1">
+        <label>SubsetAtomMapper</label>
+        <link refid="classlibmolgrid_1_1SubsetAtomMapper"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>AtomIndexTypeMapper</label>
+        <link refid="classlibmolgrid_1_1AtomIndexTypeMapper"/>
+      </node>
+      <node id="1">
+        <label>SubsetAtomMapper</label>
+        <link refid="classlibmolgrid_1_1SubsetAtomMapper"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="504" column="50" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="504" bodyend="526"/>
+    <listofallmembers>
+      <member refid="classlibmolgrid_1_1AtomIndexTypeMapper_1a5d3f8f728d969e963cc44c9d3defa807" prot="public" virt="non-virtual"><scope>libmolgrid::SubsetAtomMapper</scope><name>AtomIndexTypeMapper</name></member>
+      <member refid="classlibmolgrid_1_1SubsetAtomMapper_1af46a482e7cac1e3650b72be3281c229a" prot="private" virt="non-virtual"><scope>libmolgrid::SubsetAtomMapper</scope><name>default_type</name></member>
+      <member refid="classlibmolgrid_1_1SubsetAtomMapper_1a65bf8d6eed03de1b4e3d6fdde34adabd" prot="public" virt="virtual"><scope>libmolgrid::SubsetAtomMapper</scope><name>get_new_type</name></member>
+      <member refid="classlibmolgrid_1_1SubsetAtomMapper_1aacde71a2d28fc736c3d43da006f3a1c6" prot="public" virt="virtual"><scope>libmolgrid::SubsetAtomMapper</scope><name>get_type_names</name></member>
+      <member refid="classlibmolgrid_1_1SubsetAtomMapper_1a13a0fc95c51121d146263a7c52618f50" prot="private" virt="non-virtual"><scope>libmolgrid::SubsetAtomMapper</scope><name>new_type_names</name></member>
+      <member refid="classlibmolgrid_1_1SubsetAtomMapper_1a2fd112052ac414d508d2560c3d26bf6f" prot="private" virt="non-virtual"><scope>libmolgrid::SubsetAtomMapper</scope><name>num_new_types</name></member>
+      <member refid="classlibmolgrid_1_1SubsetAtomMapper_1ad493bf80b659abb6e401d7fee5c8231a" prot="public" virt="virtual"><scope>libmolgrid::SubsetAtomMapper</scope><name>num_types</name></member>
+      <member refid="classlibmolgrid_1_1SubsetAtomMapper_1a22c8139c583bd8549ed55d3ca4db13ab" prot="private" virt="non-virtual"><scope>libmolgrid::SubsetAtomMapper</scope><name>old2new</name></member>
+      <member refid="classlibmolgrid_1_1SubsetAtomMapper_1a4a83e99735e832950df79857b47d8d84" prot="public" virt="non-virtual"><scope>libmolgrid::SubsetAtomMapper</scope><name>SubsetAtomMapper</name></member>
+      <member refid="classlibmolgrid_1_1SubsetAtomMapper_1ad0d2057e289454c58a7c519a3ec977f2" prot="public" virt="non-virtual"><scope>libmolgrid::SubsetAtomMapper</scope><name>SubsetAtomMapper</name></member>
+      <member refid="classlibmolgrid_1_1AtomIndexTypeMapper_1a9a71966fb965d0dc1c133c75f8be0359" prot="public" virt="virtual"><scope>libmolgrid::SubsetAtomMapper</scope><name>~AtomIndexTypeMapper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

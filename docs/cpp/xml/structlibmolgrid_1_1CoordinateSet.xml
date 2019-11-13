@@ -1,0 +1,897 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structlibmolgrid_1_1CoordinateSet" kind="struct" language="C++" prot="public">
+    <compoundname>libmolgrid::CoordinateSet</compoundname>
+    <includes refid="coordinateset_8h" local="no">coordinateset.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" prot="public" static="no" mutable="no">
+        <type>MGrid2f</type>
+        <definition>MGrid2f coords</definition>
+        <argsstring></argsstring>
+        <name>coords</name>
+        <initializer>{0,3}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="30" column="11" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1af08f43a3ae58eb252a6d1faafeb4827a" compoundref="grid__maker_8h" startline="264" endline="271">GridMaker::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1abd049b5c336260d2448ff1cba930d029" compoundref="grid__maker_8h" startline="405" endline="413">GridMaker::backward_relevance</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a437464eaf145c5829daa0cbb90c95dee" compoundref="coordinateset_8cpp" startline="212" endline="227">CoordinateSet::center</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a19ad80288a826f7bbcbcd8d100c3587a" compoundref="coordinateset_8h" startline="119" endline="126">CoordinateSet::clone</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a4c5326fdb5f7070c0e9eff34a793ad63" compoundref="coordinateset_8cpp" startline="73" endline="92">CoordinateSet::CoordinateSet</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a93fac00245289d84e768314d1e3f361b" compoundref="coordinateset_8cpp" startline="250" endline="259">CoordinateSet::copyInto</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a5e03f82a57c74b8044e504f82ae74fa6" compoundref="coordinateset_8cpp" startline="311" endline="317">CoordinateSet::copyTo</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a277bc85222ba9a7d0fd47fd10d44d115" compoundref="coordinateset_8cpp" startline="229" endline="241">CoordinateSet::dump</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Transform_1a528689e8c1bf63b7ec5b89c2abbed0bd" compoundref="transform_8cpp" startline="45" endline="55">Transform::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="123" endline="129">GridMaker::forward</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0383762ea62d2afd3844dea2c4a0befb" compoundref="coordinateset_8h" startline="81" endline="81">CoordinateSet::has_indexed_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1ab6edf84f5519b886ea22a9c44aef3ff5" compoundref="coordinateset_8h" startline="84" endline="84">CoordinateSet::has_vector_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1aadbf4bff47ee7557c49edcb73e404604" compoundref="example_8cpp" startline="71" endline="102">Example::merge_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1ace9805532c7567a89ac854e292a1b980" compoundref="coordinateset_8cpp" startline="261" endline="307">CoordinateSet::mergeInto</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a3407f177ad82eececcc71584fa62e0b8" compoundref="coordinateset_8h" startline="113" endline="116">CoordinateSet::operator==</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a126a73e6d140f9e2a7b795c20fa42f70" compoundref="coordinateset_8h" startline="104" endline="104">CoordinateSet::size</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a21abd5ed9a14048e25427e92766cf133" compoundref="coordinateset_8cpp" startline="243" endline="248">CoordinateSet::size_like</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a9fa092e067d02308ff2927831ea64d6a" compoundref="coordinateset_8h" startline="110" endline="110">CoordinateSet::tocpu</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a86d0fc4270857cba42078a81e98f3596" compoundref="coordinateset_8h" startline="109" endline="109">CoordinateSet::togpu</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" prot="public" static="no" mutable="no">
+        <type>MGrid1f</type>
+        <definition>MGrid1f type_index</definition>
+        <argsstring></argsstring>
+        <name>type_index</name>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="31" column="11" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1afd195c83a9bcdcb18917c25d2f5f7051" compoundref="grid__maker_8h" startline="283" endline="290">GridMaker::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1abd049b5c336260d2448ff1cba930d029" compoundref="grid__maker_8h" startline="405" endline="413">GridMaker::backward_relevance</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a19ad80288a826f7bbcbcd8d100c3587a" compoundref="coordinateset_8h" startline="119" endline="126">CoordinateSet::clone</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a4c5326fdb5f7070c0e9eff34a793ad63" compoundref="coordinateset_8cpp" startline="73" endline="92">CoordinateSet::CoordinateSet</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a93fac00245289d84e768314d1e3f361b" compoundref="coordinateset_8cpp" startline="250" endline="259">CoordinateSet::copyInto</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a5e03f82a57c74b8044e504f82ae74fa6" compoundref="coordinateset_8cpp" startline="311" endline="317">CoordinateSet::copyTo</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a277bc85222ba9a7d0fd47fd10d44d115" compoundref="coordinateset_8cpp" startline="229" endline="241">CoordinateSet::dump</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="123" endline="129">GridMaker::forward</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0383762ea62d2afd3844dea2c4a0befb" compoundref="coordinateset_8h" startline="81" endline="81">CoordinateSet::has_indexed_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0e5b397d8ab22663778fe8cf1d47f3d7" compoundref="coordinateset_8cpp" startline="185" endline="210">CoordinateSet::make_vector_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1aadbf4bff47ee7557c49edcb73e404604" compoundref="example_8cpp" startline="71" endline="102">Example::merge_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1ace9805532c7567a89ac854e292a1b980" compoundref="coordinateset_8cpp" startline="261" endline="307">CoordinateSet::mergeInto</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a3407f177ad82eececcc71584fa62e0b8" compoundref="coordinateset_8h" startline="113" endline="116">CoordinateSet::operator==</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a21abd5ed9a14048e25427e92766cf133" compoundref="coordinateset_8cpp" startline="243" endline="248">CoordinateSet::size_like</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1aa9fc4f9f4863682959d5b4df0259546a" compoundref="coordinateset_8cpp" startline="349" endline="371">CoordinateSet::sum_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a9fa092e067d02308ff2927831ea64d6a" compoundref="coordinateset_8h" startline="110" endline="110">CoordinateSet::tocpu</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a86d0fc4270857cba42078a81e98f3596" compoundref="coordinateset_8h" startline="109" endline="109">CoordinateSet::togpu</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" prot="public" static="no" mutable="no">
+        <type>MGrid2f</type>
+        <definition>MGrid2f type_vector</definition>
+        <argsstring></argsstring>
+        <name>type_vector</name>
+        <initializer>{0,0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="32" column="11" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1af08f43a3ae58eb252a6d1faafeb4827a" compoundref="grid__maker_8h" startline="264" endline="271">GridMaker::backward</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a19ad80288a826f7bbcbcd8d100c3587a" compoundref="coordinateset_8h" startline="119" endline="126">CoordinateSet::clone</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0d12f64812a930fd456f29565d3a2a6f" compoundref="coordinateset_8cpp" startline="135" endline="156">CoordinateSet::CoordinateSet</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a93fac00245289d84e768314d1e3f361b" compoundref="coordinateset_8cpp" startline="250" endline="259">CoordinateSet::copyInto</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a83a328bdae1d46ef085214c4e2908a3b" compoundref="coordinateset_8cpp" startline="325" endline="343">CoordinateSet::copyTo</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="123" endline="129">GridMaker::forward</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1ab6edf84f5519b886ea22a9c44aef3ff5" compoundref="coordinateset_8h" startline="84" endline="84">CoordinateSet::has_vector_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0e5b397d8ab22663778fe8cf1d47f3d7" compoundref="coordinateset_8cpp" startline="185" endline="210">CoordinateSet::make_vector_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1aa0927ed6ec846f2a8e7daeb64e39795d" compoundref="example_8cpp" startline="140" endline="198">Example::merge_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1ace9805532c7567a89ac854e292a1b980" compoundref="coordinateset_8cpp" startline="261" endline="307">CoordinateSet::mergeInto</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a3407f177ad82eececcc71584fa62e0b8" compoundref="coordinateset_8h" startline="113" endline="116">CoordinateSet::operator==</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a21abd5ed9a14048e25427e92766cf133" compoundref="coordinateset_8cpp" startline="243" endline="248">CoordinateSet::size_like</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1aa9fc4f9f4863682959d5b4df0259546a" compoundref="coordinateset_8cpp" startline="349" endline="371">CoordinateSet::sum_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a9fa092e067d02308ff2927831ea64d6a" compoundref="coordinateset_8h" startline="110" endline="110">CoordinateSet::tocpu</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a86d0fc4270857cba42078a81e98f3596" compoundref="coordinateset_8h" startline="109" endline="109">CoordinateSet::togpu</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" prot="public" static="no" mutable="no">
+        <type>MGrid1f</type>
+        <definition>MGrid1f radii</definition>
+        <argsstring></argsstring>
+        <name>radii</name>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="33" column="11" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" bodystart="33" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1af08f43a3ae58eb252a6d1faafeb4827a" compoundref="grid__maker_8h" startline="264" endline="271">GridMaker::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1abd049b5c336260d2448ff1cba930d029" compoundref="grid__maker_8h" startline="405" endline="413">GridMaker::backward_relevance</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a19ad80288a826f7bbcbcd8d100c3587a" compoundref="coordinateset_8h" startline="119" endline="126">CoordinateSet::clone</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a4c5326fdb5f7070c0e9eff34a793ad63" compoundref="coordinateset_8cpp" startline="73" endline="92">CoordinateSet::CoordinateSet</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a93fac00245289d84e768314d1e3f361b" compoundref="coordinateset_8cpp" startline="250" endline="259">CoordinateSet::copyInto</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a5e03f82a57c74b8044e504f82ae74fa6" compoundref="coordinateset_8cpp" startline="311" endline="317">CoordinateSet::copyTo</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="123" endline="129">GridMaker::forward</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0e5b397d8ab22663778fe8cf1d47f3d7" compoundref="coordinateset_8cpp" startline="185" endline="210">CoordinateSet::make_vector_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1aadbf4bff47ee7557c49edcb73e404604" compoundref="example_8cpp" startline="71" endline="102">Example::merge_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1ace9805532c7567a89ac854e292a1b980" compoundref="coordinateset_8cpp" startline="261" endline="307">CoordinateSet::mergeInto</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a3407f177ad82eececcc71584fa62e0b8" compoundref="coordinateset_8h" startline="113" endline="116">CoordinateSet::operator==</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a21abd5ed9a14048e25427e92766cf133" compoundref="coordinateset_8cpp" startline="243" endline="248">CoordinateSet::size_like</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a9fa092e067d02308ff2927831ea64d6a" compoundref="coordinateset_8h" startline="110" endline="110">CoordinateSet::tocpu</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a86d0fc4270857cba42078a81e98f3596" compoundref="coordinateset_8h" startline="109" endline="109">CoordinateSet::togpu</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned max_type</definition>
+        <argsstring></argsstring>
+        <name>max_type</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>radii - for type_index, indexed by atom, for type vector, indexed by type </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="34" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" bodystart="34" bodyend="-1"/>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0d12f64812a930fd456f29565d3a2a6f" compoundref="coordinateset_8cpp" startline="135" endline="156">CoordinateSet::CoordinateSet</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a93fac00245289d84e768314d1e3f361b" compoundref="coordinateset_8cpp" startline="250" endline="259">CoordinateSet::copyInto</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aca37b69a1f1f60ca9cc298584e7c2bb7" compoundref="grid__maker_8cpp" startline="104" endline="110">GridMaker::forward</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0e5b397d8ab22663778fe8cf1d47f3d7" compoundref="coordinateset_8cpp" startline="185" endline="210">CoordinateSet::make_vector_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1aadbf4bff47ee7557c49edcb73e404604" compoundref="example_8cpp" startline="71" endline="102">Example::merge_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1ace9805532c7567a89ac854e292a1b980" compoundref="coordinateset_8cpp" startline="261" endline="307">CoordinateSet::mergeInto</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a5e84ac0f1e5fbb3fd24d137b02de0a3f" compoundref="coordinateset_8h" startline="94" endline="94">CoordinateSet::num_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a3407f177ad82eececcc71584fa62e0b8" compoundref="coordinateset_8h" startline="113" endline="116">CoordinateSet::operator==</referencedby>
+        <referencedby refid="classlibmolgrid_1_1CoordCache_1a662441ec29d3f52a26ef98ad723b80a3" compoundref="coord__cache_8cpp" startline="76" endline="172">CoordCache::set_coords</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a9089849cf94e065c175238376bf18acc" compoundref="coordinateset_8h" startline="97" endline="97">CoordinateSet::set_num_types</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1CoordinateSet_1af51e37c9331049b1e3d250a7c8bc3c26" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* src</definition>
+        <argsstring></argsstring>
+        <name>src</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="35" column="14" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" bodystart="35" bodyend="-1"/>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a93fac00245289d84e768314d1e3f361b" compoundref="coordinateset_8cpp" startline="250" endline="259">CoordinateSet::copyInto</referencedby>
+        <referencedby refid="classlibmolgrid_1_1CoordCache_1a662441ec29d3f52a26ef98ad723b80a3" compoundref="coord__cache_8cpp" startline="76" endline="172">CoordCache::set_coords</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CoordinateSet</definition>
+        <argsstring>()</argsstring>
+        <name>CoordinateSet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="37" column="3" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a719045b5fd0daf9c088757c8fc472faa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CoordinateSet</definition>
+        <argsstring>(OpenBabel::OBMol *mol, const AtomTyper &amp;typer)</argsstring>
+        <name>CoordinateSet</name>
+        <param>
+          <type>OpenBabel::OBMol *</type>
+          <declname>mol</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1AtomTyper" kindref="compound">AtomTyper</ref> &amp;</type>
+          <declname>typer</declname>
+        </param>
+        <briefdescription>
+<para>initialize with obmol </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="40" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a98107b1a6afad7cf14271f71f0b019c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CoordinateSet</definition>
+        <argsstring>(OpenBabel::OBMol *mol)</argsstring>
+        <name>CoordinateSet</name>
+        <param>
+          <type>OpenBabel::OBMol *</type>
+          <declname>mol</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="41" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a4c5326fdb5f7070c0e9eff34a793ad63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CoordinateSet</definition>
+        <argsstring>(const std::vector&lt; float3 &gt; &amp;c, const std::vector&lt; int &gt; &amp;t, const std::vector&lt; float &gt; &amp;r, unsigned maxt)</argsstring>
+        <name>CoordinateSet</name>
+        <param>
+          <type>const std::vector&lt; float3 &gt; &amp;</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; int &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; float &gt; &amp;</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>maxt</declname>
+        </param>
+        <briefdescription>
+<para>initialize with indexed types </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="44" column="3" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="73" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1ac421c7c6c868e29caf32fd65ae4ac8f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CoordinateSet</definition>
+        <argsstring>(const std::vector&lt; float3 &gt; &amp;c, const std::vector&lt; float &gt; &amp;t, const std::vector&lt; float &gt; &amp;r, unsigned maxt)</argsstring>
+        <name>CoordinateSet</name>
+        <param>
+          <type>const std::vector&lt; float3 &gt; &amp;</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; float &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; float &gt; &amp;</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>maxt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="45" column="3" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="95" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a99005f3fa607768e70393978a8cac1c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CoordinateSet</definition>
+        <argsstring>(const Grid2f &amp;coords, const Grid1f &amp;t, const Grid1f &amp;radii, unsigned maxt)</argsstring>
+        <name>CoordinateSet</name>
+        <param>
+          <type>const Grid2f &amp;</type>
+          <declname>coords</declname>
+        </param>
+        <param>
+          <type>const Grid1f &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const Grid1f &amp;</type>
+          <declname>radii</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>maxt</declname>
+        </param>
+        <briefdescription>
+<para>initialize with indexed types using grids - data is copied into coordinate set </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="48" column="3" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="114" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1acdc0f7d756295891ee55a6b6a51d7cc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CoordinateSet</definition>
+        <argsstring>(const Grid2fCUDA &amp;coords, const Grid1fCUDA &amp;t, const Grid1fCUDA &amp;radii, unsigned maxt)</argsstring>
+        <name>CoordinateSet</name>
+        <param>
+          <type>const Grid2fCUDA &amp;</type>
+          <declname>coords</declname>
+        </param>
+        <param>
+          <type>const Grid1fCUDA &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const Grid1fCUDA &amp;</type>
+          <declname>radii</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>maxt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="49" column="3" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="121" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a0d12f64812a930fd456f29565d3a2a6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CoordinateSet</definition>
+        <argsstring>(const std::vector&lt; float3 &gt; &amp;c, const std::vector&lt; std::vector&lt; float &gt; &gt; &amp;t, const std::vector&lt; float &gt; &amp;r)</argsstring>
+        <name>CoordinateSet</name>
+        <param>
+          <type>const std::vector&lt; float3 &gt; &amp;</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::vector&lt; float &gt; &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; float &gt; &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+<para>initialize with vector types </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="52" column="3" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="135" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1afef7471a5b7cf9edb353f43e0ab7bd7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CoordinateSet</definition>
+        <argsstring>(const Grid2f &amp;cr, const Grid2f &amp;t, const Grid1f &amp;r)</argsstring>
+        <name>CoordinateSet</name>
+        <param>
+          <type>const Grid2f &amp;</type>
+          <declname>cr</declname>
+        </param>
+        <param>
+          <type>const Grid2f &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const Grid1f &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+<para>initialize with vector types using grids - data is copied into coordinate set </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="55" column="3" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="159" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1ad22e94bba40b6fa67632488426314973" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CoordinateSet</definition>
+        <argsstring>(const Grid2fCUDA &amp;cr, const Grid2fCUDA &amp;t, const Grid1fCUDA &amp;r)</argsstring>
+        <name>CoordinateSet</name>
+        <param>
+          <type>const Grid2fCUDA &amp;</type>
+          <declname>cr</declname>
+        </param>
+        <param>
+          <type>const Grid2fCUDA &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const Grid1fCUDA &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="56" column="3" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="166" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a0e160c086e322f69de24be62aa91f265" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CoordinateSet</definition>
+        <argsstring>(const CoordinateSet &amp;rec, const CoordinateSet &amp;lig, bool unique_index_types=true)</argsstring>
+        <name>CoordinateSet</name>
+        <param>
+          <type>const <ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref> &amp;</type>
+          <declname>rec</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref> &amp;</type>
+          <declname>lig</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>unique_index_types</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>create coordinate set from the merger of two coordinate sets if unique_index_types, the index types of the second are offset </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="60" column="3" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="174" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a5e03f82a57c74b8044e504f82ae74fa6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>bool</type>
+            <declname>isCUDA</declname>
+            <defname>isCUDA</defname>
+          </param>
+        </templateparamlist>
+        <type>size_t</type>
+        <definition>size_t copyTo</definition>
+        <argsstring>(Grid&lt; float, 2, isCUDA &gt; &amp;c, Grid&lt; float, 1, isCUDA &gt; &amp;t, Grid&lt; float, 1, isCUDA &gt; &amp;r) const</argsstring>
+        <name>copyTo</name>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; float, 2, isCUDA &gt; &amp;</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; float, 1, isCUDA &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; float, 1, isCUDA &gt; &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+<para>Copy coordinates into provided grids. If grids are too small, copy will be truncated. If grids are too large, extra elements will <emphasis>not</emphasis> be overwritten (fill with pad characters before copying). Returns the number of coordinates copied. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="69" column="10" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="311" bodyend="317"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a83a328bdae1d46ef085214c4e2908a3b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>bool</type>
+            <declname>isCUDA</declname>
+            <defname>isCUDA</defname>
+          </param>
+        </templateparamlist>
+        <type>size_t</type>
+        <definition>size_t copyTo</definition>
+        <argsstring>(Grid&lt; float, 2, isCUDA &gt; &amp;c, Grid&lt; float, 2, isCUDA &gt; &amp;t, Grid&lt; float, 1, isCUDA &gt; &amp;r) const</argsstring>
+        <name>copyTo</name>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; float, 2, isCUDA &gt; &amp;</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; float, 2, isCUDA &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; float, 1, isCUDA &gt; &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+<para>Copy coordinates into provided grids. If grids are too small, copy will be truncated. If grids are too large, extra elements will <emphasis>not</emphasis> be overwritten (fill with pad characters before copying). Returns the number of coordinates copied. Vectored types are copied a row at a time so truncation/expansion happens per-atom. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="78" column="10" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="325" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a0383762ea62d2afd3844dea2c4a0befb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool has_indexed_types</definition>
+        <argsstring>() const</argsstring>
+        <name>has_indexed_types</name>
+        <briefdescription>
+<para>return true if index types are available (or no atoms) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="81" column="8" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" bodystart="81" bodyend="81"/>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1afd195c83a9bcdcb18917c25d2f5f7051" compoundref="grid__maker_8h" startline="283" endline="290">GridMaker::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1abd049b5c336260d2448ff1cba930d029" compoundref="grid__maker_8h" startline="405" endline="413">GridMaker::backward_relevance</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a277bc85222ba9a7d0fd47fd10d44d115" compoundref="coordinateset_8cpp" startline="229" endline="241">CoordinateSet::dump</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1aadbf4bff47ee7557c49edcb73e404604" compoundref="example_8cpp" startline="71" endline="102">Example::merge_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1ace9805532c7567a89ac854e292a1b980" compoundref="coordinateset_8cpp" startline="261" endline="307">CoordinateSet::mergeInto</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1ab6edf84f5519b886ea22a9c44aef3ff5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool has_vector_types</definition>
+        <argsstring>() const</argsstring>
+        <name>has_vector_types</name>
+        <briefdescription>
+<para>return true if vector types are available (or no atoms) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="84" column="8" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" bodystart="84" bodyend="84"/>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1af08f43a3ae58eb252a6d1faafeb4827a" compoundref="grid__maker_8h" startline="264" endline="271">GridMaker::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="123" endline="129">GridMaker::forward</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1ace9805532c7567a89ac854e292a1b980" compoundref="coordinateset_8cpp" startline="261" endline="307">CoordinateSet::mergeInto</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1aa9fc4f9f4863682959d5b4df0259546a" compoundref="coordinateset_8cpp" startline="349" endline="371">CoordinateSet::sum_types</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a0e5b397d8ab22663778fe8cf1d47f3d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void make_vector_types</definition>
+        <argsstring>(bool include_dummy_type=false, const std::vector&lt; float &gt; &amp;type_radii=std::vector&lt; float &gt;())</argsstring>
+        <name>make_vector_types</name>
+        <param>
+          <type>bool</type>
+          <declname>include_dummy_type</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>const std::vector&lt; float &gt; &amp;</type>
+          <declname>type_radii</declname>
+          <defval>std::vector&lt; float &gt;()</defval>
+        </param>
+        <briefdescription>
+<para>convert index types to vector types in-place </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>include_dummy_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- if true will create an additional type at end (has zero radii if type radii are provided is true) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type_radii</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- if provided, convert radii array to be type indexed, </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="91" column="8" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="185" bodyend="210"/>
+        <referencedby refid="classlibmolgrid_1_1CoordCache_1a662441ec29d3f52a26ef98ad723b80a3" compoundref="coord__cache_8cpp" startline="76" endline="172">CoordCache::set_coords</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a5e84ac0f1e5fbb3fd24d137b02de0a3f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned num_types</definition>
+        <argsstring>() const</argsstring>
+        <name>num_types</name>
+        <briefdescription>
+<para>return number of types </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="94" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" bodystart="94" bodyend="94"/>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1aa9fc4f9f4863682959d5b4df0259546a" compoundref="coordinateset_8cpp" startline="349" endline="371">CoordinateSet::sum_types</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a9089849cf94e065c175238376bf18acc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void set_num_types</definition>
+        <argsstring>(unsigned maxt)</argsstring>
+        <name>set_num_types</name>
+        <param>
+          <type>unsigned</type>
+          <declname>maxt</declname>
+        </param>
+        <briefdescription>
+<para>set number of (indexed) types </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="97" column="8" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" bodystart="97" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1aa9fc4f9f4863682959d5b4df0259546a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sum_types</definition>
+        <argsstring>(Grid&lt; float, 1, false &gt; &amp;sum, bool zerofirst=true) const</argsstring>
+        <name>sum_types</name>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; float, 1, false &gt; &amp;</type>
+          <declname>sum</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>zerofirst</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>compute the sum of each type class across vector types for this set, if zerofirst is false, add to existing elements of sum </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="100" column="8" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="349" bodyend="371"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1abdefa3470ca1e88655974b3f462e2c4a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sum_types</definition>
+        <argsstring>(Grid&lt; float, 1, true &gt; &amp;sum, bool zerofirst=true) const</argsstring>
+        <name>sum_types</name>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; float, 1, true &gt; &amp;</type>
+          <declname>sum</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>zerofirst</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="101" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a126a73e6d140f9e2a7b795c20fa42f70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <briefdescription>
+<para>number of atoms </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="104" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" bodystart="104" bodyend="104"/>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0d12f64812a930fd456f29565d3a2a6f" compoundref="coordinateset_8cpp" startline="135" endline="156">CoordinateSet::CoordinateSet</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="123" endline="129">GridMaker::forward</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a437464eaf145c5829daa0cbb90c95dee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>float3</type>
+        <definition>float3 center</definition>
+        <argsstring>() const</argsstring>
+        <name>center</name>
+        <briefdescription>
+<para>return mean of coordinates </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="107" column="10" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="212" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a86d0fc4270857cba42078a81e98f3596" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void togpu</definition>
+        <argsstring>(bool copy=true)</argsstring>
+        <name>togpu</name>
+        <param>
+          <type>bool</type>
+          <declname>copy</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="109" column="8" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" bodystart="109" bodyend="109"/>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aca37b69a1f1f60ca9cc298584e7c2bb7" compoundref="grid__maker_8cpp" startline="104" endline="110">GridMaker::forward</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a9fa092e067d02308ff2927831ea64d6a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tocpu</definition>
+        <argsstring>(bool copy=true)</argsstring>
+        <name>tocpu</name>
+        <param>
+          <type>bool</type>
+          <declname>copy</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="110" column="8" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" bodystart="110" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a3407f177ad82eececcc71584fa62e0b8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator==</definition>
+        <argsstring>(const CoordinateSet &amp;rhs) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="113" column="8" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" bodystart="113" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a19ad80288a826f7bbcbcd8d100c3587a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref></type>
+        <definition>CoordinateSet clone</definition>
+        <argsstring>() const</argsstring>
+        <name>clone</name>
+        <briefdescription>
+<para>return deep copy </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="119" column="17" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" bodystart="119" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a21abd5ed9a14048e25427e92766cf133" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void size_like</definition>
+        <argsstring>(const CoordinateSet &amp;s)</argsstring>
+        <name>size_like</name>
+        <param>
+          <type>const <ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>size this to have the same size as s without copying data </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="129" column="8" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="243" bodyend="248"/>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a93fac00245289d84e768314d1e3f361b" compoundref="coordinateset_8cpp" startline="250" endline="259">CoordinateSet::copyInto</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a93fac00245289d84e768314d1e3f361b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void copyInto</definition>
+        <argsstring>(const CoordinateSet &amp;src)</argsstring>
+        <name>copyInto</name>
+        <param>
+          <type>const <ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+<para>copy contents of src into this, attempting to avoid reallocation if possible </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="132" column="8" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="250" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1ace9805532c7567a89ac854e292a1b980" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mergeInto</definition>
+        <argsstring>(const CoordinateSet &amp;rec, const CoordinateSet &amp;lig, bool unique_index_types=true)</argsstring>
+        <name>mergeInto</name>
+        <param>
+          <type>const <ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref> &amp;</type>
+          <declname>rec</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref> &amp;</type>
+          <declname>lig</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>unique_index_types</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>merge provided sets into this, reallocating as necessary </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="135" column="8" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="261" bodyend="307"/>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0e160c086e322f69de24be62aa91f265" compoundref="coordinateset_8cpp" startline="174" endline="181">CoordinateSet::CoordinateSet</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a277bc85222ba9a7d0fd47fd10d44d115" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void dump</definition>
+        <argsstring>(std::ostream &amp;out) const</argsstring>
+        <name>dump</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+<para>for debugging </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="138" column="8" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp" bodystart="229" bodyend="241"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A collection of typed atomic coordinates. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Types may be specified either as an index or a dense vector. Typically, only one type formated will be initialized although a vector one-hot encoding of an index type can be created. </para>
+    </detaileddescription>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" line="29" column="20" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h" bodystart="29" bodyend="139"/>
+    <listofallmembers>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a437464eaf145c5829daa0cbb90c95dee" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>center</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a19ad80288a826f7bbcbcd8d100c3587a" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>clone</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>CoordinateSet</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a719045b5fd0daf9c088757c8fc472faa" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>CoordinateSet</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a98107b1a6afad7cf14271f71f0b019c5" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>CoordinateSet</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a4c5326fdb5f7070c0e9eff34a793ad63" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>CoordinateSet</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1ac421c7c6c868e29caf32fd65ae4ac8f2" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>CoordinateSet</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a99005f3fa607768e70393978a8cac1c8" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>CoordinateSet</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1acdc0f7d756295891ee55a6b6a51d7cc8" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>CoordinateSet</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a0d12f64812a930fd456f29565d3a2a6f" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>CoordinateSet</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1afef7471a5b7cf9edb353f43e0ab7bd7f" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>CoordinateSet</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1ad22e94bba40b6fa67632488426314973" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>CoordinateSet</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a0e160c086e322f69de24be62aa91f265" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>CoordinateSet</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>coords</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a93fac00245289d84e768314d1e3f361b" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>copyInto</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a5e03f82a57c74b8044e504f82ae74fa6" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>copyTo</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a83a328bdae1d46ef085214c4e2908a3b" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>copyTo</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a277bc85222ba9a7d0fd47fd10d44d115" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>dump</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a0383762ea62d2afd3844dea2c4a0befb" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>has_indexed_types</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1ab6edf84f5519b886ea22a9c44aef3ff5" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>has_vector_types</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a0e5b397d8ab22663778fe8cf1d47f3d7" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>make_vector_types</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>max_type</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1ace9805532c7567a89ac854e292a1b980" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>mergeInto</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a5e84ac0f1e5fbb3fd24d137b02de0a3f" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>num_types</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a3407f177ad82eececcc71584fa62e0b8" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>operator==</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>radii</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a9089849cf94e065c175238376bf18acc" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>set_num_types</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a126a73e6d140f9e2a7b795c20fa42f70" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>size</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a21abd5ed9a14048e25427e92766cf133" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>size_like</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1af51e37c9331049b1e3d250a7c8bc3c26" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>src</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1aa9fc4f9f4863682959d5b4df0259546a" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>sum_types</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1abdefa3470ca1e88655974b3f462e2c4a" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>sum_types</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a9fa092e067d02308ff2927831ea64d6a" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>tocpu</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a86d0fc4270857cba42078a81e98f3596" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>togpu</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>type_index</name></member>
+      <member refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" prot="public" virt="non-virtual"><scope>libmolgrid::CoordinateSet</scope><name>type_vector</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

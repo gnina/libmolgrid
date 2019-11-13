@@ -1,0 +1,356 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="coordinateset_8h" kind="file" language="C++">
+    <compoundname>coordinateset.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">openbabel/mol.h</includes>
+    <includes refid="managed__grid_8h" local="yes">libmolgrid/managed_grid.h</includes>
+    <includedby refid="coord__cache_8h" local="yes">coord_cache.h</includedby>
+    <includedby refid="example_8h" local="yes">example.h</includedby>
+    <includedby refid="example__extractor_8h" local="yes">example_extractor.h</includedby>
+    <includedby refid="grid__maker_8h" local="yes">grid_maker.h</includedby>
+    <includedby refid="coordinateset_8cpp" local="yes">coordinateset.cpp</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>libmolgrid/managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="19">
+        <label>cuda_runtime.h</label>
+      </node>
+      <node id="11">
+        <label>cassert</label>
+      </node>
+      <node id="3">
+        <label>openbabel/mol.h</label>
+      </node>
+      <node id="18">
+        <label>random</label>
+      </node>
+      <node id="8">
+        <label>libmolgrid/grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>libmolgrid/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>libmolgrid/libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>vector</label>
+      </node>
+      <node id="6">
+        <label>utility</label>
+      </node>
+      <node id="12">
+        <label>iostream</label>
+      </node>
+      <node id="1">
+        <label>coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>cuda.h</label>
+      </node>
+      <node id="15">
+        <label>cuda_runtime_api.h</label>
+      </node>
+      <node id="10">
+        <label>boost/preprocessor/repetition.hpp</label>
+      </node>
+      <node id="9">
+        <label>boost/multi_array.hpp</label>
+      </node>
+      <node id="14">
+        <label>cstring</label>
+      </node>
+      <node id="5">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7">
+        <label>coord_cache.cpp</label>
+        <link refid="coord__cache_8cpp"/>
+      </node>
+      <node id="8">
+        <label>example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>transform.cpp</label>
+        <link refid="transform_8cpp"/>
+      </node>
+      <node id="2">
+        <label>coord_cache.h</label>
+        <link refid="coord__cache_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>exampleref_providers.cpp</label>
+        <link refid="exampleref__providers_8cpp"/>
+      </node>
+      <node id="5">
+        <label>example_provider.cpp</label>
+        <link refid="example__provider_8cpp"/>
+      </node>
+      <node id="4">
+        <label>example_provider.h</label>
+        <link refid="example__provider_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>example.cpp</label>
+        <link refid="example_8cpp"/>
+      </node>
+      <node id="11">
+        <label>grid_maker.h</label>
+        <link refid="grid__maker_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>example_extractor.h</label>
+        <link refid="example__extractor_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>grid_maker.cpp</label>
+        <link refid="grid__maker_8cpp"/>
+      </node>
+      <node id="13">
+        <label>transform.h</label>
+        <link refid="transform_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>example_extractor.cpp</label>
+        <link refid="example__extractor_8cpp"/>
+      </node>
+      <node id="1">
+        <label>coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>libmolgrid.cpp</label>
+        <link refid="libmolgrid_8cpp"/>
+      </node>
+      <node id="17">
+        <label>coordinateset.cpp</label>
+        <link refid="coordinateset_8cpp"/>
+      </node>
+      <node id="9">
+        <label>exampleref_providers.h</label>
+        <link refid="exampleref__providers_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structlibmolgrid_1_1CoordinateSet" prot="public">libmolgrid::CoordinateSet</innerclass>
+    <innernamespace refid="namespacelibmolgrid">libmolgrid</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class for holding typed atomic coordinates. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="4"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/>Created<sp/>on:<sp/>Mar<sp/>22,<sp/>2019</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>Author:<sp/>dkoes</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>COORDINATESET_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COORDINATESET_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;openbabel/mol.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="managed__grid_8h" kindref="compound">libmolgrid/managed_grid.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelibmolgrid" kindref="compound">libmolgrid</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">AtomTyper;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Docstring_CoordinateSet</highlight></codeline>
+<codeline lineno="29" refid="structlibmolgrid_1_1CoordinateSet" refkind="compound"><highlight class="comment"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref><sp/>{</highlight></codeline>
+<codeline lineno="30" refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" refkind="member"><highlight class="normal"><sp/><sp/>MGrid2f<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>{0,3};<sp/></highlight><highlight class="comment">//coordinats</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" refkind="member"><highlight class="normal"><sp/><sp/>MGrid1f<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>{0};<sp/></highlight><highlight class="comment">//this<sp/>should<sp/>be<sp/>integer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" refkind="member"><highlight class="normal"><sp/><sp/>MGrid2f<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>{0,0};</highlight></codeline>
+<codeline lineno="33" refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" refkind="member"><highlight class="normal"><sp/><sp/>MGrid1f<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>{0};<sp/></highlight></codeline>
+<codeline lineno="34" refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//for<sp/>indexed<sp/>types,<sp/>non-inclusive<sp/>max</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="structlibmolgrid_1_1CoordinateSet_1af51e37c9331049b1e3d250a7c8bc3c26" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="structlibmolgrid_1_1CoordinateSet_1af51e37c9331049b1e3d250a7c8bc3c26" kindref="member">src</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//mostly<sp/>for<sp/>debugging,<sp/>source<sp/>of<sp/>coordinates</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet</ref>(OpenBabel::OBMol<sp/>*mol,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1AtomTyper" kindref="compound">AtomTyper</ref>&amp;<sp/>typer);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet</ref>(OpenBabel::OBMol<sp/>*mol);<sp/></highlight><highlight class="comment">//use<sp/>defaultGninaLigandTypes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;float3&gt;&amp;<sp/>c,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;int&gt;&amp;<sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;float&gt;&amp;<sp/>r,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>maxt);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;float3&gt;&amp;<sp/>c,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;float&gt;&amp;<sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;float&gt;&amp;<sp/>r,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>maxt);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid2f&amp;<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid1f&amp;<sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid1f&amp;<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>maxt);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid2fCUDA&amp;<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid1fCUDA&amp;<sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid1fCUDA&amp;<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>maxt);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;float3&gt;&amp;<sp/>c,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::vector&lt;float&gt;<sp/>&gt;&amp;<sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;float&gt;&amp;<sp/>r);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid2f&amp;<sp/>cr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid2f&amp;<sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid1f&amp;<sp/>r);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid2fCUDA&amp;<sp/>cr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid2fCUDA&amp;<sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid1fCUDA&amp;<sp/>r);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref>&amp;<sp/>rec,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref>&amp;<sp/>lig,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_index_types=</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isCUDA&gt;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a5e03f82a57c74b8044e504f82ae74fa6" kindref="member">copyTo</ref>(<ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 2, isCUDA&gt;</ref>&amp;<sp/>c,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 1, isCUDA&gt;</ref>&amp;<sp/>t,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 1, isCUDA&gt;</ref>&amp;<sp/>r)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isCUDA&gt;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a5e03f82a57c74b8044e504f82ae74fa6" kindref="member">copyTo</ref>(<ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 2, isCUDA&gt;</ref>&amp;<sp/>c,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 2, isCUDA&gt;</ref>&amp;<sp/>t,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 1, isCUDA&gt;</ref>&amp;<sp/>r)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="structlibmolgrid_1_1CoordinateSet_1a0383762ea62d2afd3844dea2c4a0befb" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a0383762ea62d2afd3844dea2c4a0befb" kindref="member">has_indexed_types</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>.size()<sp/>&gt;<sp/>0<sp/>||<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.size()<sp/>==<sp/>0;<sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="structlibmolgrid_1_1CoordinateSet_1ab6edf84f5519b886ea22a9c44aef3ff5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab6edf84f5519b886ea22a9c44aef3ff5" kindref="member">has_vector_types</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>.size()<sp/>&gt;<sp/>0<sp/>||<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.size()<sp/>==<sp/>0;<sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Docstring_CoordinateSet_make_vector_types</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a0e5b397d8ab22663778fe8cf1d47f3d7" kindref="member">make_vector_types</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>include_dummy_type=</highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;float&gt;&amp;<sp/>type_radii<sp/>=<sp/>std::vector&lt;float&gt;());</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="structlibmolgrid_1_1CoordinateSet_1a5e84ac0f1e5fbb3fd24d137b02de0a3f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a5e84ac0f1e5fbb3fd24d137b02de0a3f" kindref="member">num_types</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="structlibmolgrid_1_1CoordinateSet_1a9089849cf94e065c175238376bf18acc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a9089849cf94e065c175238376bf18acc" kindref="member">set_num_types</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>maxt)<sp/>{<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref><sp/>=<sp/>maxt;<sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9fc4f9f4863682959d5b4df0259546a" kindref="member">sum_types</ref>(<ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 1, false&gt;</ref>&amp;<sp/>sum,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>zerofirst=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9fc4f9f4863682959d5b4df0259546a" kindref="member">sum_types</ref>(<ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 1, true&gt;</ref>&amp;<sp/>sum,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>zerofirst=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="structlibmolgrid_1_1CoordinateSet_1a126a73e6d140f9e2a7b795c20fa42f70" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.dimension(0);<sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>float3<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a437464eaf145c5829daa0cbb90c95dee" kindref="member">center</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="structlibmolgrid_1_1CoordinateSet_1a86d0fc4270857cba42078a81e98f3596" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a86d0fc4270857cba42078a81e98f3596" kindref="member">togpu</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>copy=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.togpu(copy);<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>.togpu(copy);<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>.togpu(copy);<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.togpu(copy);}</highlight></codeline>
+<codeline lineno="110" refid="structlibmolgrid_1_1CoordinateSet_1a9fa092e067d02308ff2927831ea64d6a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a9fa092e067d02308ff2927831ea64d6a" kindref="member">tocpu</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>copy=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.tocpu(copy);<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>.tocpu(copy);<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>.tocpu(copy);<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.tocpu(copy);}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//test<sp/>for<sp/>pointer<sp/>equality,<sp/>not<sp/>particularly<sp/>useful,<sp/>but<sp/>needed<sp/>by<sp/>boost::python</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="structlibmolgrid_1_1CoordinateSet_1a3407f177ad82eececcc71584fa62e0b8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a3407f177ad82eececcc71584fa62e0b8" kindref="member">operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref>&amp;<sp/>rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref><sp/>==<sp/>rhs.<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref><sp/>&amp;&amp;<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref><sp/>==<sp/>rhs.<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref><sp/>&amp;&amp;<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref><sp/>==<sp/>rhs.<ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref><sp/>==<sp/>rhs.<ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref><sp/>&amp;&amp;<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref><sp/>==<sp/>rhs.<ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="structlibmolgrid_1_1CoordinateSet_1a19ad80288a826f7bbcbcd8d100c3587a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a19ad80288a826f7bbcbcd8d100c3587a" kindref="member">clone</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref><sp/>ret(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref><sp/>=<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.clone();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.<ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref><sp/>=<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>.clone();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.<ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref><sp/>=<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>.clone();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.<ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref><sp/>=<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.clone();</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a21abd5ed9a14048e25427e92766cf133" kindref="member">size_like</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref>&amp;<sp/>s);<sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a93fac00245289d84e768314d1e3f361b" kindref="member">copyInto</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref>&amp;<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1af51e37c9331049b1e3d250a7c8bc3c26" kindref="member">src</ref>);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ace9805532c7567a89ac854e292a1b980" kindref="member">mergeInto</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref>&amp;<sp/>rec,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref>&amp;<sp/>lig,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_index_types=</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a277bc85222ba9a7d0fd47fd10d44d115" kindref="member">dump</ref>(std::ostream&amp;<sp/>out)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a5e03f82a57c74b8044e504f82ae74fa6" kindref="member">CoordinateSet::copyTo</ref>(Grid&lt;float,<sp/>2,<sp/>false&gt;&amp;<sp/>c,<sp/>Grid&lt;float,<sp/>1,<sp/>false&gt;&amp;<sp/>t,<sp/>Grid&lt;float,<sp/>1,<sp/>false&gt;&amp;<sp/>r)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a5e03f82a57c74b8044e504f82ae74fa6" kindref="member">CoordinateSet::copyTo</ref>(Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>c,<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>t,<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>r)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a5e03f82a57c74b8044e504f82ae74fa6" kindref="member">CoordinateSet::copyTo</ref>(Grid&lt;float,<sp/>2,<sp/>false&gt;&amp;<sp/>c,<sp/>Grid&lt;float,<sp/>2,<sp/>false&gt;&amp;<sp/>t,<sp/>Grid&lt;float,<sp/>1,<sp/>false&gt;&amp;<sp/>r)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a5e03f82a57c74b8044e504f82ae74fa6" kindref="member">CoordinateSet::copyTo</ref>(Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>c,<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>t,<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>r)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>COORDINATESET_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coordinateset.h"/>
+  </compounddef>
+</doxygen>

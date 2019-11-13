@@ -1,0 +1,751 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="grid__maker_8cu" kind="file" language="C++">
+    <compoundname>grid_maker.cu</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#include<sp/>&quot;libmolgrid/grid_maker.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;thrust/extrema.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;thrust/device_ptr.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>libmolgrid<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__shared__<sp/>uint<sp/>scanScratch[LMG_CUDA_NUM_THREADS<sp/>*<sp/>2];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__shared__<sp/>uint<sp/>scanBuffer[2][LMG_CUDA_NUM_THREADS];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__shared__<sp/>uint<sp/>scanOutput[LMG_CUDA_NUM_THREADS];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__shared__<sp/>uint<sp/>atomIndices[LMG_CUDA_NUM_THREADS];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__shared__<sp/>uint<sp/>atomMask[LMG_CUDA_NUM_THREADS];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//TODO:<sp/>warp<sp/>shuffle<sp/>version</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>__device__<sp/>uint<sp/>warpScanInclusive(int<sp/>threadIndex,<sp/>uint<sp/>idata,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>volatile<sp/>uint<sp/>*s_Data,<sp/>uint<sp/>size)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint<sp/>pos<sp/>=<sp/>2<sp/>*<sp/>threadIndex<sp/>-<sp/>(threadIndex<sp/>&amp;<sp/>(size<sp/>-<sp/>1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>s_Data[pos]<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pos<sp/>+=<sp/>size;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>s_Data[pos]<sp/>=<sp/>idata;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(uint<sp/>offset<sp/>=<sp/>1;<sp/>offset<sp/>&lt;<sp/>size;<sp/>offset<sp/>&lt;&lt;=<sp/>1)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s_Data[pos]<sp/>+=<sp/>s_Data[pos<sp/>-<sp/>offset];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>s_Data[pos];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>__device__<sp/>uint<sp/>warpScanExclusive(int<sp/>threadIndex,<sp/>uint<sp/>idata,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>volatile<sp/>uint<sp/>*sScratch,<sp/>uint<sp/>size)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>warpScanInclusive(threadIndex,<sp/>idata,<sp/>sScratch,<sp/>size)<sp/>-<sp/>idata;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__inline__<sp/>__device__<sp/>void<sp/>sharedMemExclusiveScan(int<sp/>threadIndex,<sp/>uint*<sp/>sInput,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint*<sp/>sOutput)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint<sp/>idata<sp/>=<sp/>sInput[threadIndex];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//Bottom-level<sp/>inclusive<sp/>warp<sp/>scan</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint<sp/>warpResult<sp/>=<sp/>warpScanInclusive(threadIndex,<sp/>idata,<sp/>scanScratch,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WARP_SIZE);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Save<sp/>top<sp/>elements<sp/>of<sp/>each<sp/>warp<sp/>for<sp/>exclusive<sp/>warp<sp/>scan<sp/>sync</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>to<sp/>wait<sp/>for<sp/>warp<sp/>scans<sp/>to<sp/>complete<sp/>(because<sp/>s_Data<sp/>is<sp/>being</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>overwritten)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>__syncthreads();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>((threadIndex<sp/>&amp;<sp/>(WARP_SIZE<sp/>-<sp/>1))<sp/>==<sp/>(WARP_SIZE<sp/>-<sp/>1))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scanScratch[threadIndex<sp/>&gt;&gt;<sp/>LOG2_WARP_SIZE]<sp/>=<sp/>warpResult;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>wait<sp/>for<sp/>warp<sp/>scans<sp/>to<sp/>complete</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>__syncthreads();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(threadIndex<sp/>&lt;<sp/>(LMG_CUDA_NUM_THREADS<sp/>/<sp/>WARP_SIZE))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>grab<sp/>top<sp/>warp<sp/>elements</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint<sp/>val<sp/>=<sp/>scanScratch[threadIndex];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>calculate<sp/>exclusive<sp/>scan<sp/>and<sp/>write<sp/>back<sp/>to<sp/>shared<sp/>memory</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scanScratch[threadIndex]<sp/>=<sp/>warpScanExclusive(threadIndex,<sp/>val,<sp/>scanScratch,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LMG_CUDA_NUM_THREADS<sp/>&gt;&gt;<sp/>LOG2_WARP_SIZE);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//return<sp/>updated<sp/>warp<sp/>scans<sp/>with<sp/>exclusive<sp/>scan<sp/>results</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>__syncthreads();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>sOutput[threadIndex]<sp/>=<sp/>warpResult<sp/>+<sp/>scanScratch[threadIndex<sp/>&gt;&gt;<sp/>LOG2_WARP_SIZE]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>idata;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint2<sp/>GridMaker::get_bounds_1d(const<sp/>float<sp/>grid_origin,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>coord,<sp/>float<sp/>densityrad)<sp/>const<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint2<sp/>bounds{0,<sp/>0};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>low<sp/>=<sp/>coord<sp/>-<sp/>densityrad<sp/>-<sp/>grid_origin;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(low<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bounds.x<sp/>=<sp/>floor(low<sp/>/<sp/>resolution);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>high<sp/>=<sp/>coord<sp/>+<sp/>densityrad<sp/>-<sp/>grid_origin;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(high<sp/>&gt;<sp/>0)<sp/>{<sp/>//otherwise<sp/>zero</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bounds.y<sp/>=<sp/>min(dim,<sp/>(unsigned)<sp/>ceil(high<sp/>/<sp/>resolution));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>bounds;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//return<sp/>squared<sp/>distance<sp/>between<sp/>pt<sp/>and<sp/>(x,y,z)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__host__<sp/>__device__<sp/>inline</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float<sp/>sqDistance(float3<sp/>pt,<sp/>float<sp/>x,<sp/>float<sp/>y,<sp/>float<sp/>z)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ret;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>tmp<sp/>=<sp/>pt.x<sp/>-<sp/>x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>tmp<sp/>*<sp/>tmp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tmp<sp/>=<sp/>pt.y<sp/>-<sp/>y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>+=<sp/>tmp<sp/>*<sp/>tmp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tmp<sp/>=<sp/>pt.z<sp/>-<sp/>z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>+=<sp/>tmp<sp/>*<sp/>tmp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>ret;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//non-binary,<sp/>gaussian<sp/>case</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template&lt;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float<sp/>GridMaker::calc_point&lt;false&gt;(float<sp/>ax,<sp/>float<sp/>ay,<sp/>float<sp/>az,<sp/>float<sp/>ar,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>float3&amp;<sp/>grid_coords)<sp/>const<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>rsq<sp/>=<sp/>sqDistance(grid_coords,<sp/>ax,<sp/>ay,<sp/>az);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ar<sp/>*=<sp/>radius_scale;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//For<sp/>non-binary<sp/>density<sp/>we<sp/>want<sp/>a<sp/>Gaussian<sp/>where<sp/>2<sp/>std<sp/>occurs<sp/>at<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//radius,<sp/>after<sp/>which<sp/>it<sp/>becomes<sp/>quadratic.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//The<sp/>quadratic<sp/>is<sp/>fit<sp/>to<sp/>have<sp/>both<sp/>the<sp/>same<sp/>value<sp/>and<sp/>first<sp/>derivative</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//at<sp/>the<sp/>cross<sp/>over<sp/>point<sp/>and<sp/>a<sp/>value<sp/>and<sp/>derivative<sp/>of<sp/>zero<sp/>at<sp/>fianl_radius_multiple</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>dist<sp/>=<sp/>sqrtf(rsq);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(dist<sp/>&gt;=<sp/>ar<sp/>*<sp/>final_radius_multiple)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(dist<sp/>&lt;=<sp/>ar<sp/>*<sp/>gaussian_radius_multiple)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//return<sp/>gaussian</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ex<sp/>=<sp/>-2.0<sp/>*<sp/>dist<sp/>*<sp/>dist<sp/>/<sp/>(ar*ar);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>exp(ex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{<sp/>//return<sp/>quadratic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>dr<sp/>=<sp/>dist<sp/>/<sp/>ar;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>q<sp/>=<sp/>(A<sp/>*<sp/>dr<sp/>+<sp/>B)<sp/>*<sp/>dr<sp/>+<sp/>C;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>q<sp/>&gt;<sp/>0<sp/>?<sp/>q<sp/>:<sp/>0;<sp/>//avoid<sp/>very<sp/>small<sp/>negative<sp/>numbers</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template&lt;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float<sp/>GridMaker::calc_point&lt;true&gt;(float<sp/>ax,<sp/>float<sp/>ay,<sp/>float<sp/>az,<sp/>float<sp/>ar,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>float3&amp;<sp/>grid_coords)<sp/>const<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>rsq<sp/>=<sp/>sqDistance(grid_coords,<sp/>ax,<sp/>ay,<sp/>az);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ar<sp/>*=<sp/>radius_scale;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//is<sp/>point<sp/>within<sp/>radius?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(rsq<sp/>&lt;<sp/>ar<sp/>*<sp/>ar)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>1.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>/*<sp/>\brief<sp/>The<sp/>GPU<sp/>forward<sp/>code<sp/>path<sp/>launches<sp/>a<sp/>kernel<sp/>(forward_gpu)<sp/>that</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>*<sp/>sets<sp/>the<sp/>grid<sp/>values<sp/>in<sp/>two<sp/>steps:<sp/>first<sp/>each<sp/>thread<sp/>cooperates<sp/>with<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>*<sp/>other<sp/>threads<sp/>in<sp/>its<sp/>block<sp/>to<sp/>determine<sp/>which<sp/>atoms<sp/>could<sp/>possibly</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>*<sp/>overlap<sp/>them.<sp/>Then,<sp/>working<sp/>from<sp/>this<sp/>significantly<sp/>reduced<sp/>atom<sp/>set,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>*<sp/>they<sp/>actually<sp/>check<sp/>whether<sp/>they<sp/>are<sp/>overlapped<sp/>by<sp/>an<sp/>atom<sp/>and<sp/>update</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>*<sp/>their<sp/>density<sp/>accordingly.<sp/>atomOverlapsBlock<sp/>is<sp/>a<sp/>helper<sp/>for<sp/>generating</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>*<sp/>the<sp/>reduced<sp/>array<sp/>of<sp/>possibly<sp/>relevant<sp/>atoms.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>atom<sp/>index<sp/>to<sp/>check</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>grid<sp/>origin</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>coordinates<sp/>(Nx3)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>type<sp/>indices<sp/>(N<sp/>integers<sp/>stored<sp/>as<sp/>floats)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>radii<sp/>(N)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>1<sp/>if<sp/>atom<sp/>could<sp/>overlap<sp/>block,<sp/>0<sp/>if<sp/>not</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__device__</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>unsigned<sp/>atom_overlaps_block(unsigned<sp/>aidx,<sp/>float3&amp;<sp/>grid_origin,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>resolution,<sp/>const<sp/>float3<sp/>*coords,<sp/>float<sp/>radius,<sp/>float<sp/>rmult)<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>xi<sp/>=<sp/>blockIdx.x<sp/>*<sp/>blockDim.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>yi<sp/>=<sp/>blockIdx.y<sp/>*<sp/>blockDim.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>zi<sp/>=<sp/>blockIdx.z<sp/>*<sp/>blockDim.z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//compute<sp/>corners<sp/>of<sp/>block</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>startx<sp/>=<sp/>xi<sp/>*<sp/>resolution<sp/>+<sp/>grid_origin.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>starty<sp/>=<sp/>yi<sp/>*<sp/>resolution<sp/>+<sp/>grid_origin.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>startz<sp/>=<sp/>zi<sp/>*<sp/>resolution<sp/>+<sp/>grid_origin.z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>endx<sp/>=<sp/>startx<sp/>+<sp/>resolution<sp/>*<sp/>blockDim.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>endy<sp/>=<sp/>starty<sp/>+<sp/>resolution<sp/>*<sp/>blockDim.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>endz<sp/>=<sp/>startz<sp/>+<sp/>resolution<sp/>*<sp/>blockDim.z;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>a<sp/>=<sp/>coords[aidx];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>centerx<sp/>=<sp/>a.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>centery<sp/>=<sp/>a.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>centerz<sp/>=<sp/>a.z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>r<sp/>=<sp/>radius<sp/>*<sp/>rmult;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//does<sp/>atom<sp/>overlap<sp/>box?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>!((centerx<sp/>-<sp/>r<sp/>&gt;<sp/>endx)<sp/>||<sp/>(centerx<sp/>+<sp/>r<sp/>&lt;<sp/>startx)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>(centery<sp/>-<sp/>r<sp/>&gt;<sp/>endy)<sp/>||<sp/>(centery<sp/>+<sp/>r<sp/>&lt;<sp/>starty)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>(centerz<sp/>-<sp/>r<sp/>&gt;<sp/>endz)<sp/>||<sp/>(centerz<sp/>+<sp/>r<sp/>&lt;<sp/>startz));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>&lt;typename<sp/>Dtype,<sp/>bool<sp/>Binary&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__device__<sp/>void<sp/>GridMaker::set_atoms(unsigned<sp/>rel_atoms,<sp/>float3<sp/>grid_origin,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>float3<sp/>*coord_data,<sp/>const<sp/>float<sp/>*tdata,<sp/>const<sp/>float<sp/>*radii,<sp/>Dtype<sp/>*data)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//figure<sp/>out<sp/>what<sp/>grid<sp/>point<sp/>we<sp/>are<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>xi<sp/>=<sp/>threadIdx.x<sp/>+<sp/>blockIdx.x<sp/>*<sp/>blockDim.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>yi<sp/>=<sp/>threadIdx.y<sp/>+<sp/>blockIdx.y<sp/>*<sp/>blockDim.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>zi<sp/>=<sp/>threadIdx.z<sp/>+<sp/>blockIdx.z<sp/>*<sp/>blockDim.z;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(xi<sp/>&gt;=<sp/>dim<sp/>||<sp/>yi<sp/>&gt;=<sp/>dim<sp/>||<sp/>zi<sp/>&gt;=<sp/>dim)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return;//bail<sp/>if<sp/>we&apos;re<sp/>off-grid,<sp/>this<sp/>should<sp/>not<sp/>be<sp/>common</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//compute<sp/>x,y,z<sp/>coordinate<sp/>of<sp/>grid<sp/>point</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>grid_coords;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>grid_coords.x<sp/>=<sp/>xi<sp/>*<sp/>resolution<sp/>+<sp/>grid_origin.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>grid_coords.y<sp/>=<sp/>yi<sp/>*<sp/>resolution<sp/>+<sp/>grid_origin.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>grid_coords.z<sp/>=<sp/>zi<sp/>*<sp/>resolution<sp/>+<sp/>grid_origin.z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>goffset<sp/>=<sp/>((xi*dim)+yi)*dim<sp/>+<sp/>zi;<sp/>//offset<sp/>into<sp/>channel<sp/>grid</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>chmult<sp/>=<sp/>dim*dim*dim;<sp/>//what<sp/>to<sp/>multiply<sp/>type/channel<sp/>seletion<sp/>by</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//iterate<sp/>over<sp/>all<sp/>possibly<sp/>relevant<sp/>atoms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for(unsigned<sp/>ai<sp/>=<sp/>0;<sp/>ai<sp/>&lt;<sp/>rel_atoms;<sp/>ai++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>i<sp/>=<sp/>atomIndices[ai];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>c<sp/>=<sp/>coord_data[i];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>val<sp/>=<sp/>calc_point&lt;Binary&gt;(c.x,<sp/>c.y,<sp/>c.z,<sp/>radii[i],<sp/>grid_coords);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>atype<sp/>=<sp/>int(tdata[i]);<sp/>//type<sp/>is<sp/>assumed<sp/>correct<sp/>because<sp/>atom_overlaps<sp/>at<sp/>least<sp/>gets<sp/>rid<sp/>of<sp/>neg</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(Binary)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(val<sp/>!=<sp/>0)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[atype*chmult+goffset]<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>if(val<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[atype*chmult+goffset]<sp/>+=<sp/>val;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>&lt;typename<sp/>Dtype,<sp/>bool<sp/>Binary&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__global__<sp/>void</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/><sp/>__launch_bounds__(LMG_CUDA_NUM_THREADS)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>forward_gpu(GridMaker<sp/>gmaker,<sp/>float3<sp/>grid_origin,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;<sp/>coords,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;<sp/>type_index,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;<sp/>radii,<sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;<sp/>out)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//this<sp/>is<sp/>the<sp/>thread&apos;s<sp/>index<sp/>within<sp/>its<sp/>block,<sp/>used<sp/>to<sp/>parallelize<sp/>over<sp/>atoms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>total_atoms<sp/>=<sp/>coords.dimension(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>tidx<sp/>=<sp/>((threadIdx.z<sp/>*<sp/>blockDim.y)<sp/>+<sp/>threadIdx.y)<sp/>*<sp/>blockDim.x<sp/>+<sp/>threadIdx.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>*coord_data<sp/>=<sp/>(float3*)coords.data();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>*types<sp/>=<sp/>type_index.data();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>*radii_data<sp/>=<sp/>radii.data();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Dtype<sp/>*outgrid<sp/>=<sp/>out.data();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//if<sp/>there<sp/>are<sp/>more<sp/>then<sp/>LMG_CUDA_NUM_THREADS<sp/>atoms,<sp/>chunk<sp/>them</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for(unsigned<sp/>atomoffset<sp/>=<sp/>0;<sp/>atomoffset<sp/>&lt;<sp/>total_atoms;<sp/>atomoffset<sp/>+=<sp/>LMG_CUDA_NUM_THREADS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//first<sp/>parallelize<sp/>over<sp/>atoms<sp/>to<sp/>figure<sp/>out<sp/>if<sp/>they<sp/>might<sp/>overlap<sp/>this<sp/>block</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>aidx<sp/>=<sp/>atomoffset<sp/>+<sp/>tidx;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(aidx<sp/>&lt;<sp/>total_atoms<sp/>&amp;&amp;<sp/>types[aidx]<sp/>&gt;=<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>atomMask[tidx]<sp/>=<sp/>atom_overlaps_block(aidx,<sp/>grid_origin,<sp/>gmaker.get_resolution(),<sp/>coord_data,<sp/>radii_data[aidx],<sp/>gmaker.get_radiusmultiple());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>atomMask[tidx]<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__syncthreads();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//scan<sp/>the<sp/>mask<sp/>to<sp/>get<sp/>just<sp/>relevant<sp/>indices</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sharedMemExclusiveScan(tidx,<sp/>atomMask,<sp/>scanOutput);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__syncthreads();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//do<sp/>scatter<sp/>(stream<sp/>compaction)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(atomMask[tidx])</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>atomIndices[scanOutput[tidx]]<sp/>=<sp/>tidx<sp/>+<sp/>atomoffset;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__syncthreads();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>rel_atoms<sp/>=<sp/>scanOutput[LMG_CUDA_NUM_THREADS<sp/>-<sp/>1]<sp/>+<sp/>atomMask[LMG_CUDA_NUM_THREADS<sp/>-<sp/>1];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//atomIndex<sp/>is<sp/>now<sp/>a<sp/>list<sp/>of<sp/>rel_atoms<sp/>possibly<sp/>relevant<sp/>atom<sp/>indices</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gmaker.set_atoms&lt;Dtype,<sp/>Binary&gt;(rel_atoms,<sp/>grid_origin,<sp/>coord_data,<sp/>types,<sp/>radii_data,<sp/>outgrid);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__syncthreads();//everyone<sp/>needs<sp/>to<sp/>finish<sp/>before<sp/>we<sp/>muck<sp/>with<sp/>atomIndices<sp/>again</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>&lt;typename<sp/>Dtype&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>GridMaker::forward(float3<sp/>grid_center,<sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>coords,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>type_index,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>radii,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;&amp;<sp/>out)<sp/>const<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//threads<sp/>are<sp/>laid<sp/>out<sp/>in<sp/>three<sp/>dimensions<sp/>to<sp/>match<sp/>the<sp/>voxel<sp/>grid,<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//8x8x8=512<sp/>threads<sp/>per<sp/>block</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dim3<sp/>threads(LMG_CUDA_BLOCKDIM,<sp/>LMG_CUDA_BLOCKDIM,<sp/>LMG_CUDA_BLOCKDIM);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>blocksperside<sp/>=<sp/>ceil(dim<sp/>/<sp/>float(LMG_CUDA_BLOCKDIM));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dim3<sp/>blocks(blocksperside,<sp/>blocksperside,<sp/>blocksperside);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>grid_origin<sp/>=<sp/>get_grid_origin(grid_center);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>check_index_args(coords,<sp/>type_index,<sp/>radii,<sp/>out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(radii_type_indexed)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>std::invalid_argument(&quot;Type<sp/>indexed<sp/>radii<sp/>not<sp/>supported<sp/>with<sp/>index<sp/>types.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//zero<sp/>out<sp/>grid<sp/>to<sp/>start</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>LMG_CUDA_CHECK(cudaMemset(out.data(),<sp/>0,<sp/>out.size()<sp/>*<sp/>sizeof(float)));</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(coords.dimension(0)<sp/>==<sp/>0)<sp/>return;<sp/>//no<sp/>atoms</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(binary)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>forward_gpu&lt;Dtype,<sp/>true&gt;&lt;&lt;&lt;blocks,<sp/>threads&gt;&gt;&gt;(*this,<sp/>grid_origin,<sp/>coords,<sp/>type_index,<sp/>radii,<sp/>out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>forward_gpu&lt;Dtype,<sp/>false&gt;&lt;&lt;&lt;blocks,<sp/>threads&gt;&gt;&gt;(*this,<sp/>grid_origin,<sp/>coords,<sp/>type_index,<sp/>radii,<sp/>out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>LMG_CUDA_CHECK(cudaPeekAtLastError());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>GridMaker::forward(float3<sp/>grid_center,<sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>coords,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>type_index,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>radii,<sp/>Grid&lt;float,<sp/>4,<sp/>true&gt;&amp;<sp/>out)<sp/>const;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>GridMaker::forward(float3<sp/>grid_center,<sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>coords,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>type_index,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>radii,<sp/>Grid&lt;double,<sp/>4,<sp/>true&gt;&amp;<sp/>out)<sp/>const;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>&lt;typename<sp/>Dtype,<sp/>bool<sp/>Binary,<sp/>bool<sp/>RadiiFromTypes&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__device__<sp/>void<sp/>GridMaker::set_atoms(unsigned<sp/>rel_atoms,<sp/>float3<sp/>grid_origin,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>float3<sp/>*coord_data,<sp/>const<sp/>float<sp/>*tdata,<sp/>unsigned<sp/>ntypes,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>float<sp/>*radii,<sp/>Dtype<sp/>*data)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//figure<sp/>out<sp/>what<sp/>grid<sp/>point<sp/>we<sp/>are</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>xi<sp/>=<sp/>threadIdx.x<sp/>+<sp/>blockIdx.x<sp/>*<sp/>blockDim.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>yi<sp/>=<sp/>threadIdx.y<sp/>+<sp/>blockIdx.y<sp/>*<sp/>blockDim.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>zi<sp/>=<sp/>threadIdx.z<sp/>+<sp/>blockIdx.z<sp/>*<sp/>blockDim.z;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(xi<sp/>&gt;=<sp/>dim<sp/>||<sp/>yi<sp/>&gt;=<sp/>dim<sp/>||<sp/>zi<sp/>&gt;=<sp/>dim)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return;//bail<sp/>if<sp/>we&apos;re<sp/>off-grid,<sp/>this<sp/>should<sp/>not<sp/>be<sp/>common</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//compute<sp/>x,y,z<sp/>coordinate<sp/>of<sp/>grid<sp/>point</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>grid_coords;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>grid_coords.x<sp/>=<sp/>xi<sp/>*<sp/>resolution<sp/>+<sp/>grid_origin.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>grid_coords.y<sp/>=<sp/>yi<sp/>*<sp/>resolution<sp/>+<sp/>grid_origin.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>grid_coords.z<sp/>=<sp/>zi<sp/>*<sp/>resolution<sp/>+<sp/>grid_origin.z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>goffset<sp/>=<sp/>((xi*dim)+yi)*dim<sp/>+<sp/>zi;<sp/>//offset<sp/>into<sp/>channel<sp/>grid</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>chmult<sp/>=<sp/>dim*dim*dim;<sp/>//what<sp/>to<sp/>multiply<sp/>type/channel<sp/>seletion<sp/>by</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//iterate<sp/>over<sp/>all<sp/>possibly<sp/>relevant<sp/>atoms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for(unsigned<sp/>ai<sp/>=<sp/>0;<sp/>ai<sp/>&lt;<sp/>rel_atoms;<sp/>ai++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>i<sp/>=<sp/>atomIndices[ai];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>c<sp/>=<sp/>coord_data[i];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>val<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(!RadiiFromTypes)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>calc_point&lt;Binary&gt;(c.x,<sp/>c.y,<sp/>c.z,<sp/>radii[i],<sp/>grid_coords);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(val<sp/>==<sp/>0)<sp/>continue;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>float<sp/>*atom_type_mult<sp/>=<sp/>tdata+(ntypes*i);<sp/>//type<sp/>vector<sp/>for<sp/>this<sp/>atom</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for(unsigned<sp/>atype<sp/>=<sp/>0;<sp/>atype<sp/>&lt;<sp/>ntypes;<sp/>atype++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>tmult<sp/>=<sp/>atom_type_mult[atype];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(tmult<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(RadiiFromTypes)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//need<sp/>to<sp/>wait<sp/>until<sp/>here<sp/>to<sp/>get<sp/>the<sp/>right<sp/>radius</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>calc_point&lt;Binary&gt;(c.x,<sp/>c.y,<sp/>c.z,<sp/>radii[atype],<sp/>grid_coords);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(<sp/>val<sp/>==<sp/>0)<sp/>continue;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(Binary)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[atype*chmult+goffset]<sp/>+=<sp/>tmult;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[atype*chmult+goffset]<sp/>+=<sp/>val*tmult;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>&lt;typename<sp/>Dtype,<sp/>bool<sp/>Binary,<sp/>bool<sp/>RadiiTypeIndexed&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__global__<sp/>void</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/><sp/>__launch_bounds__(LMG_CUDA_NUM_THREADS)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>forward_gpu_vec(GridMaker<sp/>gmaker,<sp/>float3<sp/>grid_origin,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;<sp/>coords,<sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;<sp/>type_vector,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;<sp/>radii,<sp/>float<sp/>maxradius,<sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;<sp/>out)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//this<sp/>is<sp/>the<sp/>thread&apos;s<sp/>index<sp/>within<sp/>its<sp/>block,<sp/>used<sp/>to<sp/>parallelize<sp/>over<sp/>atoms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>total_atoms<sp/>=<sp/>coords.dimension(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>tidx<sp/>=<sp/>((threadIdx.z<sp/>*<sp/>blockDim.y)<sp/>+<sp/>threadIdx.y)<sp/>*<sp/>blockDim.x<sp/>+<sp/>threadIdx.x;<sp/>//thread<sp/>index</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>*coord_data<sp/>=<sp/>(float3*)coords.data();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>*types<sp/>=<sp/>type_vector.data();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>ntypes<sp/>=<sp/>type_vector.dimension(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>*radii_data<sp/>=<sp/>radii.data();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Dtype<sp/>*outgrid<sp/>=<sp/>out.data();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//if<sp/>there<sp/>are<sp/>more<sp/>then<sp/>LMG_CUDA_NUM_THREADS<sp/>atoms,<sp/>chunk<sp/>them</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for(unsigned<sp/>atomoffset<sp/>=<sp/>0;<sp/>atomoffset<sp/>&lt;<sp/>total_atoms;<sp/>atomoffset<sp/>+=<sp/>LMG_CUDA_NUM_THREADS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//first<sp/>parallelize<sp/>over<sp/>atoms<sp/>to<sp/>figure<sp/>out<sp/>if<sp/>they<sp/>might<sp/>overlap<sp/>this<sp/>block</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>aidx<sp/>=<sp/>atomoffset<sp/>+<sp/>tidx;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(aidx<sp/>&lt;<sp/>total_atoms)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//assume<sp/>radii<sp/>are<sp/>about<sp/>the<sp/>same<sp/>so<sp/>can<sp/>approximate<sp/>with<sp/>maxradius</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(RadiiTypeIndexed)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>atomMask[tidx]<sp/>=<sp/>atom_overlaps_block(aidx,<sp/>grid_origin,<sp/>gmaker.get_resolution(),<sp/>coord_data,<sp/>maxradius,<sp/>gmaker.get_radiusmultiple());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>atomMask[tidx]<sp/>=<sp/>atom_overlaps_block(aidx,<sp/>grid_origin,<sp/>gmaker.get_resolution(),<sp/>coord_data,<sp/>radii[aidx],<sp/>gmaker.get_radiusmultiple());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>atomMask[tidx]<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__syncthreads();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//scan<sp/>the<sp/>mask<sp/>to<sp/>get<sp/>just<sp/>relevant<sp/>indices</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sharedMemExclusiveScan(tidx,<sp/>atomMask,<sp/>scanOutput);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__syncthreads();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//do<sp/>scatter<sp/>(stream<sp/>compaction)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(atomMask[tidx])</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>atomIndices[scanOutput[tidx]]<sp/>=<sp/>tidx<sp/>+<sp/>atomoffset;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__syncthreads();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>rel_atoms<sp/>=<sp/>scanOutput[LMG_CUDA_NUM_THREADS<sp/>-<sp/>1]<sp/>+<sp/>atomMask[LMG_CUDA_NUM_THREADS<sp/>-<sp/>1];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//atomIndex<sp/>is<sp/>now<sp/>a<sp/>list<sp/>of<sp/>rel_atoms<sp/>possibly<sp/>relevant<sp/>atom<sp/>indices</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//there<sp/>should<sp/>be<sp/>plenty<sp/>of<sp/>parallelism<sp/>just<sp/>distributing<sp/>across<sp/>grid<sp/>points,<sp/>don&apos;t<sp/>bother<sp/>across<sp/>types</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gmaker.set_atoms&lt;Dtype,<sp/>Binary,<sp/>RadiiTypeIndexed&gt;(rel_atoms,<sp/>grid_origin,<sp/>coord_data,<sp/>types,<sp/>ntypes,<sp/>radii_data,<sp/>outgrid);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__syncthreads();//everyone<sp/>needs<sp/>to<sp/>finish<sp/>before<sp/>we<sp/>muck<sp/>with<sp/>atomIndices<sp/>again</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>&lt;typename<sp/>Dtype&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>GridMaker::forward(float3<sp/>grid_center,<sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>coords,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>type_vector,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>radii,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;&amp;<sp/>out)<sp/>const<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//threads<sp/>are<sp/>laid<sp/>out<sp/>in<sp/>three<sp/>dimensions<sp/>to<sp/>match<sp/>the<sp/>voxel<sp/>grid,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//8x8x8=512<sp/>threads<sp/>per<sp/>block</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dim3<sp/>threads(LMG_CUDA_BLOCKDIM,<sp/>LMG_CUDA_BLOCKDIM,<sp/>LMG_CUDA_BLOCKDIM);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>blocksperside<sp/>=<sp/>ceil(dim<sp/>/<sp/>float(LMG_CUDA_BLOCKDIM));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dim3<sp/>blocks(blocksperside,<sp/>blocksperside,<sp/>blocksperside);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>grid_origin<sp/>=<sp/>get_grid_origin(grid_center);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>ntypes<sp/>=<sp/>type_vector.dimension(1);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>check_vector_args(coords,<sp/>type_vector,<sp/>radii,<sp/>out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//zero<sp/>out<sp/>grid<sp/>to<sp/>start</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>LMG_CUDA_CHECK(cudaMemset(out.data(),<sp/>0,<sp/>out.size()<sp/>*<sp/>sizeof(float)));</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(coords.dimension(0)<sp/>==<sp/>0)<sp/>return;<sp/>//no<sp/>atoms</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>maxr<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(radii_type_indexed)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thrust::device_ptr&lt;float&gt;<sp/>rptr<sp/>=<sp/>thrust::device_pointer_cast(radii.data());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thrust::device_ptr&lt;float&gt;<sp/>maxptr<sp/>=<sp/>thrust::max_element(rptr,<sp/>rptr+radii.size());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>maxr<sp/>=<sp/>*maxptr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(binary)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(radii_type_indexed)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>forward_gpu_vec&lt;Dtype,<sp/>true,<sp/>true&gt;&lt;&lt;&lt;blocks,<sp/>threads&gt;&gt;&gt;(*this,<sp/>grid_origin,<sp/>coords,<sp/>type_vector,<sp/>radii,<sp/>maxr,<sp/>out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>forward_gpu_vec&lt;Dtype,<sp/>true,<sp/>false&gt;&lt;&lt;&lt;blocks,<sp/>threads&gt;&gt;&gt;(*this,<sp/>grid_origin,<sp/>coords,<sp/>type_vector,<sp/>radii,<sp/>maxr,<sp/>out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(radii_type_indexed)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>forward_gpu_vec&lt;Dtype,<sp/>false,<sp/>true&gt;&lt;&lt;&lt;blocks,<sp/>threads&gt;&gt;&gt;(*this,<sp/>grid_origin,<sp/>coords,<sp/>type_vector,<sp/>radii,<sp/>maxr,<sp/>out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>forward_gpu_vec&lt;Dtype,<sp/>false,<sp/>false&gt;&lt;&lt;&lt;blocks,<sp/>threads&gt;&gt;&gt;(*this,<sp/>grid_origin,<sp/>coords,<sp/>type_vector,<sp/>radii,<sp/>maxr,<sp/>out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>LMG_CUDA_CHECK(cudaPeekAtLastError());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>GridMaker::forward(float3<sp/>grid_center,<sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>coords,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>type_vector,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>radii,<sp/>Grid&lt;float,<sp/>4,<sp/>true&gt;&amp;<sp/>out)<sp/>const;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>GridMaker::forward(float3<sp/>grid_center,<sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>coords,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>type_vector,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>radii,<sp/>Grid&lt;double,<sp/>4,<sp/>true&gt;&amp;<sp/>out)<sp/>const;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//kernel<sp/>launch<sp/>-<sp/>parallelize<sp/>across<sp/>whole<sp/>atoms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//TODO:<sp/>accelerate<sp/>this<sp/>more</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template&lt;typename<sp/>Dtype&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__global__</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>set_atom_gradients(GridMaker<sp/>G,<sp/>float3<sp/>grid_origin,<sp/>Grid2fCUDA<sp/>coords,<sp/>Grid1fCUDA<sp/>type_index,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Grid1fCUDA<sp/>radii,<sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;<sp/>grid,<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;<sp/>atom_gradients)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>idx<sp/>=<sp/>blockDim.x<sp/>*<sp/>blockIdx.x<sp/>+<sp/>threadIdx.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(idx<sp/>&gt;=<sp/>type_index.dimension(0))<sp/>return;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//calculate<sp/>gradient<sp/>for<sp/>atom<sp/>at<sp/>idx</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>agrad{0,0,0};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>a{coords(idx,0),coords(idx,1),coords(idx,2)};<sp/>//atom<sp/>coordinate</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>radius<sp/>=<sp/>radii(idx);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>r<sp/>=<sp/>radius<sp/>*<sp/>G.radius_scale<sp/>*<sp/>G.final_radius_multiple;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint2<sp/>ranges[3];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ranges[0]<sp/>=<sp/>G.get_bounds_1d(grid_origin.x,<sp/>a.x,<sp/>r);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ranges[1]<sp/>=<sp/>G.get_bounds_1d(grid_origin.y,<sp/>a.y,<sp/>r);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ranges[2]<sp/>=<sp/>G.get_bounds_1d(grid_origin.z,<sp/>a.z,<sp/>r);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>whichgrid<sp/>=<sp/>round(type_index[idx]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(whichgrid<sp/>&lt;<sp/>0)<sp/>return;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;Dtype,<sp/>3,<sp/>true&gt;<sp/>diff<sp/>=<sp/>grid[whichgrid];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//for<sp/>every<sp/>grid<sp/>point<sp/>possibly<sp/>overlapped<sp/>by<sp/>this<sp/>atom</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>i<sp/>=<sp/>ranges[0].x,<sp/>iend<sp/>=<sp/>ranges[0].y;<sp/>i<sp/>&lt;<sp/>iend;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>j<sp/>=<sp/>ranges[1].x,<sp/>jend<sp/>=<sp/>ranges[1].y;<sp/>j<sp/>&lt;<sp/>jend;<sp/>++j)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>k<sp/>=<sp/>ranges[2].x,<sp/>kend<sp/>=<sp/>ranges[2].y;<sp/>k<sp/>&lt;<sp/>kend;<sp/>++k)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//convert<sp/>grid<sp/>point<sp/>coordinates<sp/>to<sp/>angstroms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>x<sp/>=<sp/>grid_origin.x<sp/>+<sp/>i<sp/>*<sp/>G.resolution;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>y<sp/>=<sp/>grid_origin.y<sp/>+<sp/>j<sp/>*<sp/>G.resolution;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>z<sp/>=<sp/>grid_origin.z<sp/>+<sp/>k<sp/>*<sp/>G.resolution;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G.accumulate_atom_gradient(a.x,a.y,a.z,<sp/>x,y,z,<sp/>radius,<sp/>diff(i,j,k),<sp/>agrad);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>atom_gradients(idx,0)<sp/>=<sp/>agrad.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>atom_gradients(idx,1)<sp/>=<sp/>agrad.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>atom_gradients(idx,2)<sp/>=<sp/>agrad.z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//type<sp/>vector<sp/>version<sp/>block.y<sp/>is<sp/>the<sp/>type</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template&lt;typename<sp/>Dtype,<sp/>bool<sp/>RadiiFromTypes&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__global__</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>set_atom_type_gradients(GridMaker<sp/>G,<sp/>float3<sp/>grid_origin,<sp/>Grid2fCUDA<sp/>coords,<sp/>Grid2fCUDA<sp/>type_vector,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>ntypes,<sp/>Grid1fCUDA<sp/>radii,<sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;<sp/>grid,<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;<sp/>atom_gradients,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;<sp/>type_gradients)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>idx<sp/>=<sp/>blockDim.x<sp/>*<sp/>blockIdx.x<sp/>+<sp/>threadIdx.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(idx<sp/>&gt;=<sp/>coords.dimension(0))<sp/>return;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>whicht<sp/>=<sp/>blockIdx.y;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//calculate<sp/>gradient<sp/>for<sp/>atom<sp/>at<sp/>idx</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>agrad{0,0,0};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>a{coords(idx,0),coords(idx,1),coords(idx,2)};<sp/>//atom<sp/>coordinate</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>radius<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(RadiiFromTypes)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>radius<sp/>=<sp/>radii(whicht);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>radius<sp/>=<sp/>radii(idx);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>r<sp/>=<sp/>radius<sp/>*<sp/>G.radius_scale<sp/>*<sp/>G.final_radius_multiple;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint2<sp/>ranges[3];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ranges[0]<sp/>=<sp/>G.get_bounds_1d(grid_origin.x,<sp/>a.x,<sp/>r);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ranges[1]<sp/>=<sp/>G.get_bounds_1d(grid_origin.y,<sp/>a.y,<sp/>r);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ranges[2]<sp/>=<sp/>G.get_bounds_1d(grid_origin.z,<sp/>a.z,<sp/>r);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;Dtype,<sp/>3,<sp/>true&gt;<sp/>diff<sp/>=<sp/>grid[whicht];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//for<sp/>every<sp/>grid<sp/>point<sp/>possibly<sp/>overlapped<sp/>by<sp/>this<sp/>atom</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>tgrad<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>i<sp/>=<sp/>ranges[0].x,<sp/>iend<sp/>=<sp/>ranges[0].y;<sp/>i<sp/>&lt;<sp/>iend;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>j<sp/>=<sp/>ranges[1].x,<sp/>jend<sp/>=<sp/>ranges[1].y;<sp/>j<sp/>&lt;<sp/>jend;<sp/>++j)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>k<sp/>=<sp/>ranges[2].x,<sp/>kend<sp/>=<sp/>ranges[2].y;<sp/>k<sp/>&lt;<sp/>kend;<sp/>++k)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//convert<sp/>grid<sp/>point<sp/>coordinates<sp/>to<sp/>angstroms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>x<sp/>=<sp/>grid_origin.x<sp/>+<sp/>i<sp/>*<sp/>G.resolution;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>y<sp/>=<sp/>grid_origin.y<sp/>+<sp/>j<sp/>*<sp/>G.resolution;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>z<sp/>=<sp/>grid_origin.z<sp/>+<sp/>k<sp/>*<sp/>G.resolution;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G.accumulate_atom_gradient(a.x,a.y,a.z,<sp/>x,y,z,<sp/>radius,<sp/>diff(i,j,k),<sp/>agrad);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//type<sp/>gradient<sp/>is<sp/>just<sp/>some<sp/>of<sp/>density<sp/>vals</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>val;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(G.binary)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>G.calc_point&lt;true&gt;(a.x,<sp/>a.y,<sp/>a.z,<sp/>radius,<sp/>float3{x,y,z});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>G.calc_point&lt;false&gt;(a.x,<sp/>a.y,<sp/>a.z,<sp/>radius,<sp/>float3{x,y,z});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tgrad<sp/>+=<sp/>val<sp/>*<sp/>diff(i,j,k);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>tmult<sp/>=<sp/>type_vector(idx,whicht);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>agrad.x<sp/>*=<sp/>tmult;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>agrad.y<sp/>*=<sp/>tmult;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>agrad.z<sp/>*=<sp/>tmult;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>atomicAdd(&amp;atom_gradients(idx,0),<sp/>(Dtype)agrad.x);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>atomicAdd(&amp;atom_gradients(idx,1),<sp/>(Dtype)agrad.y);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>atomicAdd(&amp;atom_gradients(idx,2),<sp/>(Dtype)agrad.z);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type_gradients(idx,whicht)<sp/>=<sp/>tgrad;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//gpu<sp/>accelerated<sp/>gradient<sp/>calculation</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>&lt;typename<sp/>Dtype&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>GridMaker::backward(float3<sp/>grid_center,<sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>coords,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>type_index,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>radii,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;&amp;<sp/>grid,<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;&amp;<sp/>atom_gradients)<sp/>const<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>atom_gradients.fill_zero();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>n<sp/>=<sp/>coords.dimension(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(n<sp/>!=<sp/>type_index.size())<sp/>throw<sp/>std::invalid_argument(&quot;Type<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>coordinates.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(n<sp/>!=<sp/>radii.size())<sp/>throw<sp/>std::invalid_argument(&quot;Radii<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>coordinates&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(n<sp/>!=<sp/>atom_gradients.dimension(0))<sp/>throw<sp/>std::invalid_argument(&quot;Gradient<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>coordinates&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(coords.dimension(1)<sp/>!=<sp/>3)<sp/>throw<sp/>std::invalid_argument(&quot;Coordinates<sp/>wrong<sp/>secondary<sp/>dimension<sp/>(!=<sp/>3)&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(radii_type_indexed)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>std::invalid_argument(&quot;Type<sp/>indexed<sp/>radii<sp/>not<sp/>supported<sp/>with<sp/>index<sp/>types.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>grid_origin<sp/>=<sp/>get_grid_origin(grid_center);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>blocks<sp/>=<sp/><sp/>LMG_GET_BLOCKS(n);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>nthreads<sp/>=<sp/>LMG_GET_THREADS(n);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>set_atom_gradients&lt;&lt;&lt;blocks,<sp/>nthreads&gt;&gt;&gt;(*this,<sp/>grid_origin,<sp/>coords,<sp/>type_index,<sp/>radii,<sp/>grid,<sp/>atom_gradients);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>GridMaker::backward(float3<sp/>grid_center,<sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>coords,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>type_index,const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>radii,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>4,<sp/>true&gt;&amp;<sp/>grid,<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>atom_gradients)<sp/>const;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>GridMaker::backward(float3<sp/>grid_center,<sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>coords,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>type_index,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>radii,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;double,<sp/>4,<sp/>true&gt;&amp;<sp/>grid,<sp/>Grid&lt;double,<sp/>2,<sp/>true&gt;&amp;<sp/>atom_gradients)<sp/>const;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template&lt;typename<sp/>Dtype&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>GridMaker::backward(float3<sp/>grid_center,<sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>coords,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>type_vector,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>radii,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;&amp;<sp/>grid,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;&amp;<sp/>atom_gradients,<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;&amp;<sp/>type_gradients)<sp/>const<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>atom_gradients.fill_zero();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type_gradients.fill_zero();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>n<sp/>=<sp/>coords.dimension(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>ntypes<sp/>=<sp/>type_vector.dimension(1);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(n<sp/>!=<sp/>type_vector.dimension(0))<sp/>throw<sp/>std::invalid_argument(&quot;Type<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>coordinates.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(ntypes<sp/>!=<sp/>grid.dimension(0))<sp/>throw<sp/>std::invalid_argument(&quot;Channels<sp/>in<sp/>diff<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>types&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(n<sp/>!=<sp/>atom_gradients.dimension(0))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>std::invalid_argument(&quot;Atom<sp/>gradient<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>coordinates&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(n<sp/>!=<sp/>type_gradients.dimension(0))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>std::invalid_argument(&quot;Type<sp/>gradient<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>coordinates&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(type_gradients.dimension(1)<sp/>!=<sp/>ntypes)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>std::invalid_argument(&quot;Type<sp/>gradient<sp/>dimension<sp/>has<sp/>wrong<sp/>number<sp/>of<sp/>types&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(coords.dimension(1)<sp/>!=<sp/>3)<sp/>throw<sp/>std::invalid_argument(&quot;Need<sp/>x,y,z,r<sp/>for<sp/>coord_radius&quot;);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(radii_type_indexed)<sp/>{<sp/>//radii<sp/>should<sp/>be<sp/>size<sp/>of<sp/>types</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(ntypes<sp/>!=<sp/>radii.size())<sp/>throw<sp/>std::invalid_argument(&quot;Radii<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>types&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{<sp/>//radii<sp/>should<sp/>be<sp/>size<sp/>of<sp/>atoms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(n<sp/>!=<sp/>radii.size())<sp/>throw<sp/>std::invalid_argument(&quot;Radii<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>coordinates&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>grid_origin<sp/>=<sp/>get_grid_origin(grid_center);</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>blocks<sp/>=<sp/>LMG_GET_BLOCKS(n);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>nthreads<sp/>=<sp/>LMG_GET_THREADS(n);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(ntypes<sp/>&gt;=<sp/>1024)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>std::invalid_argument(&quot;Really?<sp/>More<sp/>than<sp/>1024<sp/>types?<sp/><sp/>The<sp/>GPU<sp/>can&apos;t<sp/>handle<sp/>that.<sp/><sp/>Are<sp/>you<sp/>sure<sp/>this<sp/>is<sp/>a<sp/>good<sp/>idea?<sp/><sp/>I&apos;m<sp/>giving<sp/>up.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dim3<sp/>B(blocks,<sp/>ntypes,<sp/>1);<sp/>//in<sp/>theory<sp/>could<sp/>support<sp/>more<sp/>1024<sp/>by<sp/>using<sp/>z,<sp/>but<sp/>really..</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(radii_type_indexed)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_atom_type_gradients&lt;Dtype,true&gt;&lt;&lt;&lt;B,<sp/>nthreads&gt;&gt;&gt;(*this,<sp/>grid_origin,<sp/>coords,<sp/>type_vector,<sp/>ntypes,<sp/>radii,<sp/>grid,<sp/>atom_gradients,<sp/>type_gradients);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_atom_type_gradients&lt;Dtype,false&gt;&lt;&lt;&lt;B,<sp/>nthreads&gt;&gt;&gt;(*this,<sp/>grid_origin,<sp/>coords,<sp/>type_vector,<sp/>ntypes,<sp/>radii,<sp/>grid,<sp/>atom_gradients,<sp/>type_gradients);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>GridMaker::backward(float3<sp/>grid_center,<sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>coords,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>type_vectors,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>radii,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>4,<sp/>true&gt;&amp;<sp/>grid,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>atom_gradients,<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>type_gradients)<sp/>const;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//atomicAdd<sp/>isn&apos;t<sp/>working<sp/>with<sp/>doubles??</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>GridMaker::accumulate_atom_gradient(float<sp/>ax,<sp/>float<sp/>ay,<sp/>float<sp/>az,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>x,<sp/>float<sp/>y,<sp/>float<sp/>z,<sp/>float<sp/>ar,<sp/>float<sp/>gridval,<sp/>float3&amp;<sp/>agrad)<sp/>const<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//sum<sp/>gradient<sp/>grid<sp/>values<sp/>overlapped<sp/>by<sp/>the<sp/>atom<sp/>times<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//derivative<sp/>of<sp/>the<sp/>atom<sp/>density<sp/>at<sp/>each<sp/>grid<sp/>point</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>dist_x<sp/>=<sp/>x<sp/>-<sp/>ax;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>dist_y<sp/>=<sp/>y<sp/>-<sp/>ay;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>dist_z<sp/>=<sp/>z<sp/>-<sp/>az;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>dist2<sp/>=<sp/>dist_x<sp/>*<sp/>dist_x<sp/>+<sp/>dist_y<sp/>*<sp/>dist_y<sp/>+<sp/>dist_z<sp/>*<sp/>dist_z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>double<sp/>dist<sp/>=<sp/>sqrt(dist2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>agrad_dist<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ar<sp/>*=<sp/>radius_scale;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(dist<sp/>&gt;=<sp/>ar<sp/>*<sp/>final_radius_multiple)<sp/>{//no<sp/>overlap</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>if<sp/>(dist<sp/>&lt;=<sp/>ar<sp/>*<sp/>gaussian_radius_multiple)<sp/>{//gaussian<sp/>derivative</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ex<sp/>=<sp/>-2.0<sp/>*<sp/>dist2<sp/>/<sp/>(ar<sp/>*<sp/>ar);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>coef<sp/>=<sp/>-4.0<sp/>*<sp/>dist<sp/>/<sp/>(ar<sp/>*<sp/>ar);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agrad_dist<sp/>=<sp/>coef<sp/>*<sp/>exp(ex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>{//quadratic<sp/>derivative</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agrad_dist<sp/>=<sp/>(D*dist/ar<sp/>+<sp/>E)/ar;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>d_loss/d_atomx<sp/>=<sp/>d_atomdist/d_atomx<sp/>*<sp/>d_gridpoint/d_atomdist<sp/>*<sp/>d_loss/d_gridpoint</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>sum<sp/>across<sp/>all<sp/>gridpoints</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//dkoes<sp/>-<sp/>the<sp/>negative<sp/>sign<sp/>is<sp/>because<sp/>we<sp/>are<sp/>considering<sp/>the<sp/>derivative<sp/>of<sp/>the<sp/>center<sp/>vs<sp/>grid</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(dist<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agrad.x<sp/>+=<sp/>-(dist_x<sp/>/<sp/>dist)<sp/>*<sp/>(agrad_dist<sp/>*<sp/>gridval);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agrad.y<sp/>+=<sp/>-(dist_y<sp/>/<sp/>dist)<sp/>*<sp/>(agrad_dist<sp/>*<sp/>gridval);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agrad.z<sp/>+=<sp/>-(dist_z<sp/>/<sp/>dist)<sp/>*<sp/>(agrad_dist<sp/>*<sp/>gridval);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//kernel<sp/>launch<sp/>-<sp/>parallelize<sp/>across<sp/>whole<sp/>atoms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template&lt;typename<sp/>Dtype&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__global__</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>set_atom_relevance(GridMaker<sp/>G,<sp/>float3<sp/>grid_origin,<sp/>Grid2fCUDA<sp/>coords,<sp/>Grid1fCUDA<sp/>type_index,<sp/><sp/>Grid1fCUDA<sp/>radii,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;<sp/>densitygrid,<sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;<sp/>diffgrid,<sp/>Grid&lt;Dtype,<sp/>1,<sp/>true&gt;<sp/>relevance)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>idx<sp/>=<sp/>blockDim.x<sp/>*<sp/>blockIdx.x<sp/>+<sp/>threadIdx.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(idx<sp/>&gt;=<sp/>type_index.dimension(0))<sp/>return;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(idx<sp/>&gt;=<sp/>radii.dimension(0))<sp/>return;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//calculate<sp/>gradient<sp/>for<sp/>atom<sp/>at<sp/>idx</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>a{coords(idx,0),coords(idx,1),coords(idx,2)};<sp/>//atom<sp/>coordinate</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>radius<sp/>=<sp/>radii(idx);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>r<sp/>=<sp/>radius<sp/>*<sp/>G.radius_scale<sp/>*<sp/>G.final_radius_multiple;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint2<sp/>ranges[3];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ranges[0]<sp/>=<sp/>G.get_bounds_1d(grid_origin.x,<sp/>a.x,<sp/>r);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ranges[1]<sp/>=<sp/>G.get_bounds_1d(grid_origin.y,<sp/>a.y,<sp/>r);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ranges[2]<sp/>=<sp/>G.get_bounds_1d(grid_origin.z,<sp/>a.z,<sp/>r);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>whichgrid<sp/>=<sp/>round(type_index[idx]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(whichgrid<sp/>&lt;<sp/>0)<sp/>return;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;Dtype,<sp/>3,<sp/>true&gt;<sp/>diff<sp/>=<sp/>diffgrid[whichgrid];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;Dtype,<sp/>3,<sp/>true&gt;<sp/>density<sp/>=<sp/>densitygrid[whichgrid];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//for<sp/>every<sp/>grid<sp/>point<sp/>possibly<sp/>overlapped<sp/>by<sp/>this<sp/>atom</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ret<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>i<sp/>=<sp/>ranges[0].x,<sp/>iend<sp/>=<sp/>ranges[0].y;<sp/>i<sp/>&lt;<sp/>iend;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>j<sp/>=<sp/>ranges[1].x,<sp/>jend<sp/>=<sp/>ranges[1].y;<sp/>j<sp/>&lt;<sp/>jend;<sp/>++j)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>k<sp/>=<sp/>ranges[2].x,<sp/>kend<sp/>=<sp/>ranges[2].y;<sp/>k<sp/>&lt;<sp/>kend;<sp/>++k)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//convert<sp/>grid<sp/>point<sp/>coordinates<sp/>to<sp/>angstroms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>x<sp/>=<sp/>grid_origin.x<sp/>+<sp/>i<sp/>*<sp/>G.resolution;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>y<sp/>=<sp/>grid_origin.y<sp/>+<sp/>j<sp/>*<sp/>G.resolution;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>z<sp/>=<sp/>grid_origin.z<sp/>+<sp/>k<sp/>*<sp/>G.resolution;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>val<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(G.get_binary())</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>G.calc_point&lt;true&gt;(a.x,<sp/>a.y,<sp/>a.z,<sp/>radius,<sp/>float3{x,y,z});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>G.calc_point&lt;false&gt;(a.x,<sp/>a.y,<sp/>a.z,<sp/>radius,<sp/>float3{x,y,z});</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(val<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>denseval<sp/>=<sp/>density(i,j,k);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>gridval<sp/>=<sp/>diff(i,j,k);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(denseval<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//weight<sp/>by<sp/>contribution<sp/>to<sp/>density<sp/>grid</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>+=<sp/>gridval*val/denseval;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>//<sp/>surely<sp/>denseval<sp/>&gt;=<sp/>val?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>relevance(idx)<sp/>=<sp/>ret;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>&lt;typename<sp/>Dtype&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>GridMaker::backward_relevance(float3<sp/>grid_center,<sp/><sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>coords,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>type_index,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>radii,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;&amp;<sp/>density,<sp/>const<sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;&amp;<sp/>diff,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;Dtype,<sp/>1,<sp/>true&gt;&amp;<sp/>relevance)<sp/>const<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>relevance.fill_zero();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>n<sp/>=<sp/>coords.dimension(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(n<sp/>!=<sp/>type_index.size())<sp/>throw<sp/>std::invalid_argument(&quot;Type<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>coordinates.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(n<sp/>!=<sp/>relevance.size())<sp/>throw<sp/>std::invalid_argument(&quot;Relevance<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>coordinates&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(n<sp/>!=<sp/>radii.size())<sp/>throw<sp/>std::invalid_argument(&quot;Radii<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>coordinates&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(coords.dimension(1)<sp/>!=<sp/>3)<sp/>throw<sp/>std::invalid_argument(&quot;Coordinates<sp/>and<sp/>radius<sp/>wrong<sp/>secondary<sp/>dimension&quot;);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>grid_origin<sp/>=<sp/>get_grid_origin(grid_center);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>blocks<sp/>=<sp/><sp/>LMG_GET_BLOCKS(n);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>nthreads<sp/>=<sp/>LMG_GET_THREADS(n);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>set_atom_relevance&lt;&lt;&lt;blocks,<sp/>nthreads&gt;&gt;&gt;(*this,<sp/>grid_origin,<sp/>coords,<sp/>type_index,<sp/>radii,<sp/>density,<sp/>diff,<sp/>relevance);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>GridMaker::backward_relevance(float3,<sp/><sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;,<sp/>const<sp/>Grid&lt;float,<sp/>4,<sp/>true&gt;&amp;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>4,<sp/>true&gt;&amp;,<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;)<sp/>const;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>GridMaker::backward_relevance(float3,<sp/><sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;,<sp/>const<sp/>Grid&lt;double,<sp/>4,<sp/>true&gt;&amp;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;double,<sp/>4,<sp/>true&gt;&amp;,<sp/>Grid&lt;double,<sp/>1,<sp/>true&gt;&amp;<sp/>)<sp/>const;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight></codeline>
+    </programlisting>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/src/grid_maker.cu"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="transform_8cu" kind="file" language="C++">
+    <compoundname>transform.cu</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">/*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\file<sp/>transform.cu</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/>CUDA<sp/>implementations<sp/>of<sp/>Transform<sp/>class.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;libmolgrid/transform.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>libmolgrid<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//kernel<sp/>for<sp/>paralel<sp/>transform<sp/>on<sp/>a<sp/>single<sp/>coordinate<sp/>set</highlight></codeline>
+<codeline><highlight class="normal">//note<sp/>the<sp/>importance<sp/>of<sp/>pass<sp/>by<sp/>value</highlight></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;typename<sp/>Dtype,<sp/>bool<sp/>dotranslate&gt;</highlight></codeline>
+<codeline><highlight class="normal">__global__<sp/>void<sp/>transform_forward_kernel(unsigned<sp/>n,<sp/>Quaternion<sp/>Q,<sp/>float3<sp/>center,<sp/>float3<sp/>translate,<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;<sp/>in,<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;<sp/>out)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>LMG_CUDA_KERNEL_LOOP(i,<sp/>n)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>x,y,z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>=<sp/>in(i,0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>=<sp/>in(i,1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>z<sp/>=<sp/>in(i,2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>newpt<sp/>=<sp/>make_float3(0,0,0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(dotranslate)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>newpt<sp/>=<sp/>Q.transform(x,y,z,<sp/>center,<sp/>translate);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>newpt<sp/>=<sp/>Q.transform(x,y,z,<sp/>center,<sp/>newpt);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>out(i,0)<sp/>=<sp/>newpt.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>out(i,1)<sp/>=<sp/>newpt.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>out(i,2)<sp/>=<sp/>newpt.z;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//kernel<sp/>for<sp/>translating<sp/>coordinates</highlight></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;typename<sp/>Dtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">__global__<sp/>void<sp/>transform_translate_kernel(unsigned<sp/>n,<sp/>float3<sp/>translate,<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;<sp/>in,<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;<sp/>out)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>LMG_CUDA_KERNEL_LOOP(i,<sp/>n)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>x,y,z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>=<sp/>in(i,0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>=<sp/>in(i,1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>z<sp/>=<sp/>in(i,2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>out(i,0)<sp/>=<sp/>x+translate.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>out(i,1)<sp/>=<sp/>y+translate.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>out(i,2)<sp/>=<sp/>z+translate.z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//kernel<sp/>for<sp/>rotating<sp/>coordinates<sp/>about<sp/>center</highlight></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;typename<sp/>Dtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">__global__<sp/>void<sp/>transform_rotate_kernel(unsigned<sp/>n,<sp/>Quaternion<sp/>Q,<sp/>float3<sp/>center,<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;<sp/>in,<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;<sp/>out)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>LMG_CUDA_KERNEL_LOOP(i,<sp/>n)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>x,y,z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>=<sp/>in(i,0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>=<sp/>in(i,1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>z<sp/>=<sp/>in(i,2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>newpt<sp/>=<sp/>Q.rotate(x-center.x,y-center.y,z-center.z);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>out(i,0)<sp/>=<sp/>newpt.x+center.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>out(i,1)<sp/>=<sp/>newpt.y+center.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>out(i,2)<sp/>=<sp/>newpt.z+center.z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;typename<sp/>Dtype&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>__host__<sp/>void<sp/>Transform::forward(const<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;&amp;<sp/>in,<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;&amp;<sp/>out,<sp/>bool<sp/>dotranslate)<sp/>const<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>checkGrids(in,out);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>unsigned<sp/>N<sp/>=<sp/>in.dimension(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if(dotranslate)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>transform_forward_kernel&lt;float,<sp/>true&gt;&lt;&lt;&lt;LMG_GET_BLOCKS(N),<sp/>LMG_GET_THREADS(N)&gt;&gt;&gt;(N,<sp/>Q,<sp/>center,<sp/>translate,<sp/>in,<sp/>out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>transform_forward_kernel&lt;float,<sp/>false&gt;&lt;&lt;&lt;LMG_GET_BLOCKS(N),<sp/>LMG_GET_THREADS(N)&gt;&gt;&gt;(N,<sp/>Q,<sp/>center,<sp/>translate,<sp/>in,<sp/>out);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>__host__<sp/>void<sp/>Transform::forward(const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;,<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;,<sp/>bool)<sp/>const;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;typename<sp/>Dtype&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>__host__<sp/><sp/>void<sp/>Transform::backward(const<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;&amp;<sp/>in,<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;&amp;<sp/>out,<sp/>bool<sp/>dotranslate)<sp/>const<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>checkGrids(in,out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>unsigned<sp/>N<sp/>=<sp/>in.dimension(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Quaternion<sp/>invQ<sp/>=<sp/>Q.inverse();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if(dotranslate)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>untranslate<sp/>=<sp/>make_float3(-translate.x,-translate.y,-translate.z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>transform_translate_kernel&lt;Dtype&gt;&lt;&lt;&lt;LMG_GET_BLOCKS(N),<sp/>LMG_GET_THREADS(N)&gt;&gt;&gt;(N,<sp/>untranslate,<sp/>in,<sp/>out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>transform_rotate_kernel&lt;Dtype&gt;&lt;&lt;&lt;LMG_GET_BLOCKS(N),<sp/>LMG_GET_THREADS(N)&gt;&gt;&gt;(N,invQ,center,out,out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>transform_rotate_kernel&lt;Dtype&gt;&lt;&lt;&lt;LMG_GET_BLOCKS(N),<sp/>LMG_GET_THREADS(N)&gt;&gt;&gt;(N,invQ,center,in,out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>LMG_CUDA_CHECK(cudaPeekAtLastError());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>__host__<sp/>void<sp/>Transform::backward(const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;,<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;,<sp/>bool)<sp/>const;</highlight></codeline>
+<codeline><highlight class="normal">template<sp/>__host__<sp/>void<sp/>Transform::backward(const<sp/>Grid&lt;double,<sp/>2,<sp/>true&gt;&amp;,<sp/>Grid&lt;double,<sp/>2,<sp/>true&gt;&amp;,<sp/>bool)<sp/>const;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/src/transform.cu"/>
+  </compounddef>
+</doxygen>

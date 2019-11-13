@@ -12,7 +12,8 @@
 
 namespace libmolgrid {
 
-/// Read in dx formatted grid and return initialized grid
+// Docstring_read_dx
+/* \brief Read in dx formatted grid and return initialized grid */
 template <typename DType>
 CartesianGrid<ManagedGrid<DType, 3> > read_dx(std::istream& in);
 template <typename DType>
@@ -33,6 +34,7 @@ void read_bin(std::istream& in, G& grid) {
 
 //output routines
 
+// Docstring_write_dx
 /** \brief output grid as dx formatted file
  * Values are multiplied by scale, which may be necessary to adjust for limited precision in the text-based format
  */
@@ -41,6 +43,7 @@ void write_dx(std::ostream& out, const Grid<DType, 3>& grid, const float3& cente
 template <typename DType>
 void write_dx(const std::string& fname, const Grid<DType, 3>& grid, const float3& center, float resolution, float scale=1.0);
 
+// Docstring_write_dx_grids
 /** \brief Output multiple grids using type names as a suffix.
  * @param[in] prefix filename will have form [prefix]_[typename].dx
  * @param[in] names must have same size as first dimension of grid
@@ -52,6 +55,7 @@ void write_dx(const std::string& fname, const Grid<DType, 3>& grid, const float3
 template <typename Dtype>
 void write_dx_grids(const std::string& prefix, const std::vector<std::string>& names, const Grid<Dtype, 4>& grid, const float3& center, float resolution, float scale=1.0);
 
+// Docstring_read_dx_grids
 /** \brief Read multiple grids using type names as a suffix.  Grids must be correctly sized
  * @param[in] prefix filename will have form [prefix]_[typename].dx
  * @param[in] names must have same size as first dimension of grid
@@ -63,7 +67,7 @@ void write_dx_grids(const std::string& prefix, const std::vector<std::string>& n
 template <typename Dtype>
 void read_dx_grids(const std::string& prefix, const std::vector<std::string>& names, Grid<Dtype, 4>& grid);
 
-
+// Docstring_write_map
 /// output grid as autodock map formatted file
 template <typename DType>
 void write_map(std::ostream& out, const Grid<DType, 3>& grid, const float3& center, float resolution, float scale=1.0);

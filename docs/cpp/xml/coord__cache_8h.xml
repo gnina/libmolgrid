@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="coord__cache_8h" kind="file" language="C++">
+    <compoundname>coord_cache.h</compoundname>
+    <includes refid="coordinateset_8h" local="yes">libmolgrid/coordinateset.h</includes>
+    <includes refid="atom__typer_8h" local="yes">libmolgrid/atom_typer.h</includes>
+    <includes refid="example_8h" local="yes">libmolgrid/example.h</includes>
+    <includes local="no">boost/iostreams/device/mapped_file.hpp</includes>
+    <includedby refid="example__extractor_8h" local="yes">example_extractor.h</includedby>
+    <includedby refid="coord__cache_8cpp" local="yes">coord_cache.cpp</includedby>
+    <incdepgraph>
+      <node id="25">
+        <label>functional</label>
+      </node>
+      <node id="5">
+        <label>libmolgrid/managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="26">
+        <label>libmolgrid/example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>cuda_runtime.h</label>
+      </node>
+      <node id="21">
+        <label>libmolgrid/atom_typer.h</label>
+        <link refid="atom__typer_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>cassert</label>
+      </node>
+      <node id="1">
+        <label>coord_cache.h</label>
+        <link refid="coord__cache_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>openbabel/mol.h</label>
+      </node>
+      <node id="27">
+        <label>unordered_set</label>
+      </node>
+      <node id="19">
+        <label>random</label>
+      </node>
+      <node id="9">
+        <label>libmolgrid/grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>libmolgrid/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>openbabel/atom.h</label>
+      </node>
+      <node id="18">
+        <label>libmolgrid/libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+      <node id="7">
+        <label>utility</label>
+      </node>
+      <node id="28">
+        <label>boost/iostreams/device/mapped_file.hpp</label>
+      </node>
+      <node id="23">
+        <label>openbabel/elements.h</label>
+      </node>
+      <node id="13">
+        <label>iostream</label>
+      </node>
+      <node id="24">
+        <label>unordered_map</label>
+      </node>
+      <node id="2">
+        <label>libmolgrid/coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>cuda.h</label>
+      </node>
+      <node id="16">
+        <label>cuda_runtime_api.h</label>
+      </node>
+      <node id="11">
+        <label>boost/preprocessor/repetition.hpp</label>
+      </node>
+      <node id="10">
+        <label>boost/multi_array.hpp</label>
+      </node>
+      <node id="15">
+        <label>cstring</label>
+      </node>
+      <node id="6">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="6">
+        <label>coord_cache.cpp</label>
+        <link refid="coord__cache_8cpp"/>
+      </node>
+      <node id="1">
+        <label>coord_cache.h</label>
+        <link refid="coord__cache_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>example_provider.cpp</label>
+        <link refid="example__provider_8cpp"/>
+      </node>
+      <node id="3">
+        <label>example_provider.h</label>
+        <link refid="example__provider_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>example_extractor.h</label>
+        <link refid="example__extractor_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>example_extractor.cpp</label>
+        <link refid="example__extractor_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classlibmolgrid_1_1CoordCache" prot="public">libmolgrid::CoordCache</innerclass>
+    <innernamespace refid="namespacelibmolgrid">libmolgrid</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><itemizedlist>
+<listitem><para>class for caching coordinates with types</para>
+</listitem></itemizedlist>
+</para>
+<para>Created on: Apr 12, 2019 Author: dkoes </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="7"><highlight class="preprocessor">#ifndef<sp/>COORD_CACHE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COORD_CACHE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="coordinateset_8h" kindref="compound">libmolgrid/coordinateset.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="atom__typer_8h" kindref="compound">libmolgrid/atom_typer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="example_8h" kindref="compound">libmolgrid/example.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/iostreams/device/mapped_file.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelibmolgrid" kindref="compound">libmolgrid</ref><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classlibmolgrid_1_1CoordCache" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1CoordCache" kindref="compound">CoordCache</ref><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>MemCache<sp/>=<sp/>std::unordered_map&lt;const<sp/>char*,<sp/>CoordinateSet&gt;;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>MemCache<sp/>memcache;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;AtomTyper&gt;<sp/>typer;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>data_root;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>molcache;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>use_cache<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//is<sp/>possible<sp/>to<sp/>disable<sp/>caching</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>addh<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>make_vector_types<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//for<sp/>memory<sp/>mapped<sp/>cache</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>boost::iostreams::mapped_file_source<sp/>cache_map;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;const<sp/>char*,<sp/>size_t&gt;<sp/>offsets;<sp/></highlight><highlight class="comment">//map<sp/>from<sp/>names<sp/>to<sp/>position<sp/>in<sp/>cache_map</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="38" refid="classlibmolgrid_1_1CoordCache_1a02363fd28a6431c1eb8a46c1340aaece" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1CoordCache_1a02363fd28a6431c1eb8a46c1340aaece" kindref="member">CoordCache</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1CoordCache_1a02363fd28a6431c1eb8a46c1340aaece" kindref="member">CoordCache</ref>(std::shared_ptr&lt;AtomTyper&gt;<sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref>&amp;<sp/>settings,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>mc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="41" refid="classlibmolgrid_1_1CoordCache_1a9cdfbc68dbe411b99f4182e7cfd14733" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1CoordCache_1a9cdfbc68dbe411b99f4182e7cfd14733" kindref="member">~CoordCache</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1CoordCache_1a662441ec29d3f52a26ef98ad723b80a3" kindref="member">set_coords</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*fname,<sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref>&amp;<sp/>coord);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classlibmolgrid_1_1CoordCache_1a59b7170f88e4d8d17e9f4eb5e3d62712" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1CoordCache_1a59b7170f88e4d8d17e9f4eb5e3d62712" kindref="member">num_types</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>typer-&gt;num_types();<sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classlibmolgrid_1_1CoordCache_1a2babcd45f89ff67b4b4887f7ba469ae6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classlibmolgrid_1_1CoordCache_1a2babcd45f89ff67b4b4887f7ba469ae6" kindref="member">get_type_names</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>typer-&gt;get_type_names();<sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>COORD_CACHE_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/coord_cache.h"/>
+  </compounddef>
+</doxygen>

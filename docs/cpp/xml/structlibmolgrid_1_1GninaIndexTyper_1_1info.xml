@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structlibmolgrid_1_1GninaIndexTyper_1_1info" kind="struct" language="C++" prot="public">
+    <compoundname>libmolgrid::GninaIndexTyper::info</compoundname>
+    <includes refid="atom__typer_8h" local="no">atom_typer.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a8d814dd57d2edee2e712cbd86a3127b1" prot="public" static="no" mutable="no">
+        <type><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2d" kindref="member">type</ref></type>
+        <definition>type sm</definition>
+        <argsstring></argsstring>
+        <name>sm</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="160" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1GninaIndexTyper_1_1info_1aa70a63947393694475dc198400e22314" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* smina_name</definition>
+        <argsstring></argsstring>
+        <name>smina_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="161" column="18" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a7ca1880f6456c8d72c3efd41b15b48a5" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* adname</definition>
+        <argsstring></argsstring>
+        <name>adname</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="162" column="18" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1GninaIndexTyper_1_1info_1ac31cb736bd9681bcba7a596b31e23541" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned anum</definition>
+        <argsstring></argsstring>
+        <name>anum</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="163" column="16" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a2bd81ddcf3b54c451533bb335a5a32a8" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ad_radius</definition>
+        <argsstring></argsstring>
+        <name>ad_radius</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="164" column="13" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1GninaIndexTyper_1_1info_1af504cf271d0020317ec1cf9a219a36aa" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ad_depth</definition>
+        <argsstring></argsstring>
+        <name>ad_depth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="165" column="13" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="165" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GninaVectorTyper_1ae665f55a8d914fa0d36e469284e2443d" compoundref="atom__typer_8cpp" startline="303" endline="392">GninaVectorTyper::get_atom_type_vector</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1GninaIndexTyper_1_1info_1af030eefb3668c4bf6c51e0184bc9652f" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ad_solvation</definition>
+        <argsstring></argsstring>
+        <name>ad_solvation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="166" column="13" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="166" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GninaVectorTyper_1ae665f55a8d914fa0d36e469284e2443d" compoundref="atom__typer_8cpp" startline="303" endline="392">GninaVectorTyper::get_atom_type_vector</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1GninaIndexTyper_1_1info_1ad47f54e927cd62d42d78ffba9047cf92" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ad_volume</definition>
+        <argsstring></argsstring>
+        <name>ad_volume</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="167" column="13" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="167" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GninaVectorTyper_1ae665f55a8d914fa0d36e469284e2443d" compoundref="atom__typer_8cpp" startline="303" endline="392">GninaVectorTyper::get_atom_type_vector</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1GninaIndexTyper_1_1info_1ad193828e93691abcbfe98341671cf90e" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float covalent_radius</definition>
+        <argsstring></argsstring>
+        <name>covalent_radius</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="168" column="13" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a71b62833de40e93190610ebdd26df937" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float xs_radius</definition>
+        <argsstring></argsstring>
+        <name>xs_radius</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="169" column="13" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="169" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GninaVectorTyper_1ad2de174aee1d2d6da3500c728ee71e23" compoundref="atom__typer_8cpp" startline="395" endline="402">GninaVectorTyper::get_vector_type_radii</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a3c8ad373784fcd045ca46a59b0672a62" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool xs_hydrophobe</definition>
+        <argsstring></argsstring>
+        <name>xs_hydrophobe</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="170" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="170" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GninaVectorTyper_1ae665f55a8d914fa0d36e469284e2443d" compoundref="atom__typer_8cpp" startline="303" endline="392">GninaVectorTyper::get_atom_type_vector</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a4d6140923dcfe9e59fe1355ecd106bd1" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool xs_donor</definition>
+        <argsstring></argsstring>
+        <name>xs_donor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="171" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="171" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GninaVectorTyper_1ae665f55a8d914fa0d36e469284e2443d" compoundref="atom__typer_8cpp" startline="303" endline="392">GninaVectorTyper::get_atom_type_vector</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a63abb2440710ff892d3e7d1e73607f66" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool xs_acceptor</definition>
+        <argsstring></argsstring>
+        <name>xs_acceptor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="172" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="172" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GninaVectorTyper_1ae665f55a8d914fa0d36e469284e2443d" compoundref="atom__typer_8cpp" startline="303" endline="392">GninaVectorTyper::get_atom_type_vector</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a1545b973b3b84e111b5983a51e0eec7e" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ad_heteroatom</definition>
+        <argsstring></argsstring>
+        <name>ad_heteroatom</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="173" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="173" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GninaVectorTyper_1ae665f55a8d914fa0d36e469284e2443d" compoundref="atom__typer_8cpp" startline="303" endline="392">GninaVectorTyper::get_atom_type_vector</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Information for an atom type. This includes many legacy fields. </para>
+    </detaileddescription>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" line="159" column="1" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/atom_typer.h" bodystart="158" bodyend="174"/>
+    <listofallmembers>
+      <member refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1af504cf271d0020317ec1cf9a219a36aa" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper::info</scope><name>ad_depth</name></member>
+      <member refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a1545b973b3b84e111b5983a51e0eec7e" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper::info</scope><name>ad_heteroatom</name></member>
+      <member refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a2bd81ddcf3b54c451533bb335a5a32a8" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper::info</scope><name>ad_radius</name></member>
+      <member refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1af030eefb3668c4bf6c51e0184bc9652f" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper::info</scope><name>ad_solvation</name></member>
+      <member refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1ad47f54e927cd62d42d78ffba9047cf92" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper::info</scope><name>ad_volume</name></member>
+      <member refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a7ca1880f6456c8d72c3efd41b15b48a5" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper::info</scope><name>adname</name></member>
+      <member refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1ac31cb736bd9681bcba7a596b31e23541" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper::info</scope><name>anum</name></member>
+      <member refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1ad193828e93691abcbfe98341671cf90e" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper::info</scope><name>covalent_radius</name></member>
+      <member refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a8d814dd57d2edee2e712cbd86a3127b1" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper::info</scope><name>sm</name></member>
+      <member refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1aa70a63947393694475dc198400e22314" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper::info</scope><name>smina_name</name></member>
+      <member refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a63abb2440710ff892d3e7d1e73607f66" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper::info</scope><name>xs_acceptor</name></member>
+      <member refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a4d6140923dcfe9e59fe1355ecd106bd1" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper::info</scope><name>xs_donor</name></member>
+      <member refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a3c8ad373784fcd045ca46a59b0672a62" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper::info</scope><name>xs_hydrophobe</name></member>
+      <member refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a71b62833de40e93190610ebdd26df937" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper::info</scope><name>xs_radius</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

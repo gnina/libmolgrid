@@ -50,6 +50,7 @@ struct ExampleProviderSettings {
 };
 
 
+// Docstring_Example
 /** \brief A single example represented by its typed coordinates and label(s)
  *
  */
@@ -71,6 +72,7 @@ struct Example {
     template<bool isCUDA>
     void sum_types(Grid<float, 1, isCUDA>& sum, bool unique_types=true) const;
 
+    // Docstring_Example_merge_coordinates_1
     /** \brief Combine all coordinate sets into one and return it.
      * All coordinate sets must have the same kind of typing.  The result is a copy of the input coordinates.
      * @param[in] start ignore coordinates sets prior to this index (default zero)
@@ -79,6 +81,7 @@ struct Example {
      */
     CoordinateSet merge_coordinates(unsigned start = 0, bool unique_index_types=true) const;
 
+    // Docstring_Example_merge_coordinates_2
     /** \brief Combine all coordinate sets into one.
      * All coordinate sets must have index typing
      * @param[out] coords  combined coordinates
@@ -90,6 +93,7 @@ struct Example {
     void merge_coordinates(Grid2f& coords, Grid1f& type_index, Grid1f& radii, unsigned start=0, bool unique_index_types=true) const;
     void merge_coordinates(std::vector<float3>& coords, std::vector<float>& type_index, std::vector<float>& radii, unsigned start=0, bool unique_index_types=true) const;
 
+    // Docstring_Example_merge_coordinates_3
     /** \brief Combine all coordinate sets into one.
      * All coordinate sets must have vector typing
      * @param[out] coords  combined coordinates
@@ -101,6 +105,7 @@ struct Example {
     void merge_coordinates(Grid2f& coords, Grid2f& type_vector, Grid1f& radii, unsigned start=0, bool unique_index_types=true) const;
     void merge_coordinates(std::vector<float3>& coords, std::vector<std::vector<float> >& type_vector, std::vector<float>& radii, unsigned start=0, bool unique_index_types=true) const;
 
+    // Docstring_Example_extract_labels
     /** \brief Extract labels from a vector of examples, as returned by ExampleProvider.next_batch.
      *
      * @param[in] examples  vector of examples
@@ -109,6 +114,7 @@ struct Example {
     template <bool isCUDA>
     static void extract_labels(const std::vector<Example>& examples, Grid<float, 2, isCUDA>& out);
 
+    // Docstring_Example_extract_label
     /** \brief Extract a specific label from a vector of examples, as returned by ExampleProvider.next_batch.
      *
      * @param[in] examples  vector of examples

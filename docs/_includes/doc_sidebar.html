@@ -1,0 +1,82 @@
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+          API Reference
+      </h1>
+    </div>
+    <nav class="sidebar-nav">
+      {% assign sorted_pages = site.docs | sort: "url" %}
+      {% assign this_path = "" %}
+      {% assign pages = site.emptyArray %}
+      {% assign paths = site.emptyArray %}
+      {% assign titles = site.emptyArray %}
+      {% assign path_sizes = site.emptyArray %}
+      {% for node in sorted_pages %}
+        {% assign path = node.url | remove: "/index.html" %}
+        {% if path contains "/dir_" or path contains "/struct" or path contains "/functions" or path contains "/namespacemembers" or path contains "graph_legend" or path contains "google" %}
+          {% continue %}
+        {% endif %}
+        {% if path contains "_source.html" %}
+          {% assign path = path | replace: "docs/","docs/source/" %}
+        {% endif %}
+        {% assign path = path | replace: "docs/class","docs/classes/" | replace: "docs/classeses","docs/classes" | remove: ".html" | replace: "_1_1","/" | replace: "_01"," " | replace: "_8","." | remove_first: "/" %}
+        {% assign psz = path | size %}
+        {% assign path_parts = path | split: '/' %}
+        {% assign path_parts_size = path_parts | size %}
+        {% assign paths = paths | push: path %}
+        {% assign pages = pages | push: node %}
+        {% assign path_sizes = path_sizes | push: path_parts_size %}
+        {% assign title = node.title | remove: " Source File" | remove: " Class Reference" %}
+        {% assign titles = titles | push: title %}
+        {% if node.url == page.url %}
+          {% assign this_path = path %}
+          {% assign this_node = node %}
+          {% assign this_index = forloop.index0 %}
+        {% endif %}
+      {% endfor %}
+      <ul>
+      {% assign menu_level = 0 %}
+      {% for node in pages %}
+        {% assign node_path = paths[forloop.index0] %}
+        {% assign node_title = titles[forloop.index0] %}
+        {% assign node_path_parts = node_path | split: '/' %}
+        {% assign node_path_parts_size = path_sizes[forloop.index0] %}
+        {% if node_title == "404" %}
+          {% continue %}
+        {% endif %}
+        {% unless node_path_parts_size == 1 %}
+          {% continue %}
+        {% endunless %}
+            <li>
+            <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %} sidebar-1" href="{{ node.url }}">{{ node_title }}</a></li>
+            {% if this_path contains node_path %}
+            {% assign pages2 = site.emptyArray %}
+              {% assign titles2 = site.emptyArray %}
+              {% for node2 in pages %}
+              {% unless path_sizes[forloop.index0] == 2 %}
+                  {% continue %}
+                {% endunless %}
+                {% assign path2 = paths[forloop.index0] %}
+                {% if path2 contains node_path and node2.url != node.url  %}
+                  {% assign pages2 = pages2 | push: node2 %}
+                  {% assign titles2 = titles2 | push: titles[forloop.index0] %}
+                {% endif %}
+              {% endfor %}
+
+              {% if pages2.size > 0 %}
+                {% assign menu_level = 1 %}
+                <ul>
+                {% for node2 in pages2 %}
+                  <li><a class="sidebar-nav-item{% if page.url == node2.url %} active{% endif %} sidebar-2" href='{{node2.url}}'>{{ titles2[forloop.index0] }}</a></li>
+                {% endfor %}
+                </ul>
+              {% endif%}
+
+            {% endif %}
+
+      {% endfor %} <!-- node in pages -->
+      </ul>
+    </nav>
+  </div>
+</div>

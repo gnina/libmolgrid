@@ -1,0 +1,411 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="example_8h" kind="file" language="C++">
+    <compoundname>example.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">unordered_set</includes>
+    <includes refid="coordinateset_8h" local="yes">libmolgrid/coordinateset.h</includes>
+    <includedby refid="coord__cache_8h" local="yes">coord_cache.h</includedby>
+    <includedby refid="example__extractor_8h" local="yes">example_extractor.h</includedby>
+    <includedby refid="example__provider_8h" local="yes">example_provider.h</includedby>
+    <includedby refid="exampleref__providers_8h" local="yes">exampleref_providers.h</includedby>
+    <includedby refid="grid__maker_8h" local="yes">grid_maker.h</includedby>
+    <includedby refid="transform_8h" local="yes">transform.h</includedby>
+    <includedby refid="example_8cpp" local="yes">example.cpp</includedby>
+    <incdepgraph>
+      <node id="6">
+        <label>libmolgrid/managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="1">
+        <label>example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>cuda_runtime.h</label>
+      </node>
+      <node id="13">
+        <label>cassert</label>
+      </node>
+      <node id="5">
+        <label>openbabel/mol.h</label>
+      </node>
+      <node id="3">
+        <label>unordered_set</label>
+      </node>
+      <node id="20">
+        <label>random</label>
+      </node>
+      <node id="10">
+        <label>libmolgrid/grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>libmolgrid/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>libmolgrid/libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>vector</label>
+      </node>
+      <node id="8">
+        <label>utility</label>
+      </node>
+      <node id="14">
+        <label>iostream</label>
+      </node>
+      <node id="4">
+        <label>libmolgrid/coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>cuda.h</label>
+      </node>
+      <node id="17">
+        <label>cuda_runtime_api.h</label>
+      </node>
+      <node id="12">
+        <label>boost/preprocessor/repetition.hpp</label>
+      </node>
+      <node id="11">
+        <label>boost/multi_array.hpp</label>
+      </node>
+      <node id="16">
+        <label>cstring</label>
+      </node>
+      <node id="7">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7">
+        <label>coord_cache.cpp</label>
+        <link refid="coord__cache_8cpp"/>
+      </node>
+      <node id="1">
+        <label>example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>transform.cpp</label>
+        <link refid="transform_8cpp"/>
+      </node>
+      <node id="2">
+        <label>coord_cache.h</label>
+        <link refid="coord__cache_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>exampleref_providers.cpp</label>
+        <link refid="exampleref__providers_8cpp"/>
+      </node>
+      <node id="5">
+        <label>example_provider.cpp</label>
+        <link refid="example__provider_8cpp"/>
+      </node>
+      <node id="4">
+        <label>example_provider.h</label>
+        <link refid="example__provider_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>example.cpp</label>
+        <link refid="example_8cpp"/>
+      </node>
+      <node id="10">
+        <label>grid_maker.h</label>
+        <link refid="grid__maker_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>example_extractor.h</label>
+        <link refid="example__extractor_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>grid_maker.cpp</label>
+        <link refid="grid__maker_8cpp"/>
+      </node>
+      <node id="12">
+        <label>transform.h</label>
+        <link refid="transform_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>example_extractor.cpp</label>
+        <link refid="example__extractor_8cpp"/>
+      </node>
+      <node id="13">
+        <label>libmolgrid.cpp</label>
+        <link refid="libmolgrid_8cpp"/>
+      </node>
+      <node id="8">
+        <label>exampleref_providers.h</label>
+        <link refid="exampleref__providers_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structlibmolgrid_1_1ExampleProviderSettings" prot="public">libmolgrid::ExampleProviderSettings</innerclass>
+    <innerclass refid="structlibmolgrid_1_1Example" prot="public">libmolgrid::Example</innerclass>
+    <innerclass refid="structlibmolgrid_1_1ExampleRef" prot="public">libmolgrid::ExampleRef</innerclass>
+    <innerclass refid="classlibmolgrid_1_1StringCache" prot="public">libmolgrid::StringCache</innerclass>
+    <innernamespace refid="namespacelibmolgrid">libmolgrid</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="example_8h_1a46739ee654a984e63ff40c4ad66e364d" prot="public" static="no">
+        <name>MAKE_SETTINGS</name>
+        <param></param>
+        <initializer><ref refid="example_8h_1a5b01d266acea74c0a163773fe8f40a13" kindref="member">EXSET</ref>(bool, shuffle, false, &quot;randomize order of examples&quot;) \
+    EXSET(bool, balanced, false, &quot;provide equal number of positive and negative examples as determined by label&quot;) \
+    EXSET(bool, stratify_receptor, false, &quot;sample uniformly across receptors (first molecule)&quot;) \
+    EXSET(int, labelpos, 0, &quot;position of binary label&quot;) \
+    EXSET(int, stratify_pos, 1, &quot;position of label for numerical stratification&quot;) \
+    EXSET(bool, stratify_abs, true, &quot;stratify based on absolute value, for cases where negative has special meaning (e.g., hinge loss indicator)&quot;) \
+    EXSET(float, stratify_min, 0, &quot;minimum range for value stratification&quot;) \
+    EXSET(float, stratify_max, 0, &quot;maximum range for value stratification&quot;) \
+    EXSET(float, stratify_step, 0, &quot;step size for value stratification, together with min and max determines number of bins&quot;) \
+    EXSET(int, group_batch_size, 1, &quot;slice time series (groups) by batches of this size&quot;) \
+    EXSET(int, max_group_size, 0, &quot;maximum group size, all groups are padded out to this size; example file must contain group number in first column&quot;) \
+    EXSET(bool, cache_structs, true, &quot;retain coordinates in memory for faster training&quot;) \
+    EXSET(bool, add_hydrogens, true, &quot;protonate read in molecule using openbabel&quot;) \
+    EXSET(bool, duplicate_first, false, &quot;clone the first coordinate set to be paired with each of the remaining (receptor-ligand pairs)&quot;) \
+    EXSET(bool, make_vector_types, false, &quot;convert index types into one-hot encoded vector types&quot;) \
+    EXSET(std::string, data_root, &quot;&quot;, &quot;prefix for data files&quot;) \
+    EXSET(std::string, recmolcache, &quot;&quot;, &quot;precalculated molcache2 file for receptor (first molecule); if doesn&apos;t exist, will look in data _root&quot;) \
+    EXSET(std::string, ligmolcache, &quot;&quot;, &quot;precalculated molcache2 file for ligand; if doesn&apos;t exist, will look in data_root&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" line="23" column="9" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="example_8h_1a5b01d266acea74c0a163773fe8f40a13" prot="public" static="no">
+        <name>EXSET</name>
+        <param><defname>TYPE</defname></param>
+        <param><defname>NAME</defname></param>
+        <param><defname>DEFAULT</defname></param>
+        <param><defname>DOC</defname></param>
+        <initializer>TYPE NAME = DEFAULT;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" line="48" column="13" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="12"><highlight class="preprocessor">#ifndef<sp/>EXAMPLE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXAMPLE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_set&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="coordinateset_8h" kindref="compound">libmolgrid/coordinateset.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelibmolgrid" kindref="compound">libmolgrid</ref><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="example_8h_1a46739ee654a984e63ff40c4ad66e364d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAKE_SETTINGS()<sp/>\</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(bool,<sp/>shuffle,<sp/>false,<sp/>&quot;randomize<sp/>order<sp/>of<sp/>examples&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="25"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(bool,<sp/>balanced,<sp/>false,<sp/>&quot;provide<sp/>equal<sp/>number<sp/>of<sp/>positive<sp/>and<sp/>negative<sp/>examples<sp/>as<sp/>determined<sp/>by<sp/>label&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="26"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(bool,<sp/>stratify_receptor,<sp/>false,<sp/>&quot;sample<sp/>uniformly<sp/>across<sp/>receptors<sp/>(first<sp/>molecule)&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="27"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(int,<sp/>labelpos,<sp/>0,<sp/>&quot;position<sp/>of<sp/>binary<sp/>label&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="28"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(int,<sp/>stratify_pos,<sp/>1,<sp/>&quot;position<sp/>of<sp/>label<sp/>for<sp/>numerical<sp/>stratification&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(bool,<sp/>stratify_abs,<sp/>true,<sp/>&quot;stratify<sp/>based<sp/>on<sp/>absolute<sp/>value,<sp/>for<sp/>cases<sp/>where<sp/>negative<sp/>has<sp/>special<sp/>meaning<sp/>(e.g.,<sp/>hinge<sp/>loss<sp/>indicator)&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(float,<sp/>stratify_min,<sp/>0,<sp/>&quot;minimum<sp/>range<sp/>for<sp/>value<sp/>stratification&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(float,<sp/>stratify_max,<sp/>0,<sp/>&quot;maximum<sp/>range<sp/>for<sp/>value<sp/>stratification&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(float,<sp/>stratify_step,<sp/>0,<sp/>&quot;step<sp/>size<sp/>for<sp/>value<sp/>stratification,<sp/>together<sp/>with<sp/>min<sp/>and<sp/>max<sp/>determines<sp/>number<sp/>of<sp/>bins&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="33"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(int,<sp/>group_batch_size,<sp/>1,<sp/>&quot;slice<sp/>time<sp/>series<sp/>(groups)<sp/>by<sp/>batches<sp/>of<sp/>this<sp/>size&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(int,<sp/>max_group_size,<sp/>0,<sp/>&quot;maximum<sp/>group<sp/>size,<sp/>all<sp/>groups<sp/>are<sp/>padded<sp/>out<sp/>to<sp/>this<sp/>size;<sp/>example<sp/>file<sp/>must<sp/>contain<sp/>group<sp/>number<sp/>in<sp/>first<sp/>column&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(bool,<sp/>cache_structs,<sp/>true,<sp/>&quot;retain<sp/>coordinates<sp/>in<sp/>memory<sp/>for<sp/>faster<sp/>training&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(bool,<sp/>add_hydrogens,<sp/>true,<sp/>&quot;protonate<sp/>read<sp/>in<sp/>molecule<sp/>using<sp/>openbabel&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(bool,<sp/>duplicate_first,<sp/>false,<sp/>&quot;clone<sp/>the<sp/>first<sp/>coordinate<sp/>set<sp/>to<sp/>be<sp/>paired<sp/>with<sp/>each<sp/>of<sp/>the<sp/>remaining<sp/>(receptor-ligand<sp/>pairs)&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(bool,<sp/>make_vector_types,<sp/>false,<sp/>&quot;convert<sp/>index<sp/>types<sp/>into<sp/>one-hot<sp/>encoded<sp/>vector<sp/>types&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="39"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(std::string,<sp/>data_root,<sp/>&quot;&quot;,<sp/>&quot;prefix<sp/>for<sp/>data<sp/>files&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(std::string,<sp/>recmolcache,<sp/>&quot;&quot;,<sp/>&quot;precalculated<sp/>molcache2<sp/>file<sp/>for<sp/>receptor<sp/>(first<sp/>molecule);<sp/>if<sp/>doesn&apos;t<sp/>exist,<sp/>will<sp/>look<sp/>in<sp/>data<sp/>_root&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>EXSET(std::string,<sp/>ligmolcache,<sp/>&quot;&quot;,<sp/>&quot;precalculated<sp/>molcache2<sp/>file<sp/>for<sp/>ligand;<sp/>if<sp/>doesn&apos;t<sp/>exist,<sp/>will<sp/>look<sp/>in<sp/>data_root&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="structlibmolgrid_1_1ExampleProviderSettings" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref><sp/>{</highlight></codeline>
+<codeline lineno="48" refid="example_8h_1a5b01d266acea74c0a163773fe8f40a13" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>EXSET(TYPE,<sp/>NAME,<sp/>DEFAULT,<sp/>DOC)<sp/>TYPE<sp/>NAME<sp/>=<sp/>DEFAULT;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="example_8h_1a46739ee654a984e63ff40c4ad66e364d" kindref="member">MAKE_SETTINGS</ref>()</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Docstring_Example</highlight></codeline>
+<codeline lineno="57" refid="structlibmolgrid_1_1Example" refkind="compound"><highlight class="comment"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//indexed<sp/><sp/>by<sp/>atom<sp/>group</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="structlibmolgrid_1_1Example_1a3034c08e7d9765b2f120d44d49d33927" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;CoordinateSet&gt;<sp/><ref refid="structlibmolgrid_1_1Example_1a3034c08e7d9765b2f120d44d49d33927" kindref="member">sets</ref>;</highlight></codeline>
+<codeline lineno="61" refid="structlibmolgrid_1_1Example_1a7ea04b60c00847d97627bc44a0a6b2f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;float&gt;<sp/><ref refid="structlibmolgrid_1_1Example_1a7ea04b60c00847d97627bc44a0a6b2f2" kindref="member">labels</ref>;</highlight></codeline>
+<codeline lineno="62" refid="structlibmolgrid_1_1Example_1a0242027ec3331f3d5793c42d21b6f4e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a0242027ec3331f3d5793c42d21b6f4e1" kindref="member">group</ref><sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="63" refid="structlibmolgrid_1_1Example_1a2d552310ef0a3f6a1daa19e5c84f3168" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a2d552310ef0a3f6a1daa19e5c84f3168" kindref="member">seqcont</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a29b5e5fcb7a177c6e0ce80c9423ff231" kindref="member">num_coordinates</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a9cdf22c0ea09d46e82c22a9e8c62f7a8" kindref="member">num_types</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_index_types=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isCUDA&gt;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1ad1f4b659e53779914a303ad373b7db79" kindref="member">sum_types</ref>(<ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 1, isCUDA&gt;</ref>&amp;<sp/>sum,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_types=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Docstring_Example_merge_coordinates_1</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref><sp/><ref refid="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" kindref="member">merge_coordinates</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>start<sp/>=<sp/>0,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_index_types=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Docstring_Example_merge_coordinates_2</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" kindref="member">merge_coordinates</ref>(Grid2f&amp;<sp/>coords,<sp/>Grid1f&amp;<sp/>type_index,<sp/>Grid1f&amp;<sp/>radii,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>start=0,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_index_types=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" kindref="member">merge_coordinates</ref>(std::vector&lt;float3&gt;&amp;<sp/>coords,<sp/>std::vector&lt;float&gt;&amp;<sp/>type_index,<sp/>std::vector&lt;float&gt;&amp;<sp/>radii,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>start=0,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_index_types=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Docstring_Example_merge_coordinates_3</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" kindref="member">merge_coordinates</ref>(Grid2f&amp;<sp/>coords,<sp/>Grid2f&amp;<sp/>type_vector,<sp/>Grid1f&amp;<sp/>radii,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>start=0,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_index_types=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" kindref="member">merge_coordinates</ref>(std::vector&lt;float3&gt;&amp;<sp/>coords,<sp/>std::vector&lt;std::vector&lt;float&gt;<sp/>&gt;&amp;<sp/>type_vector,<sp/>std::vector&lt;float&gt;&amp;<sp/>radii,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>start=0,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_index_types=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Docstring_Example_extract_labels</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isCUDA&gt;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a000f4bbd3c5453860543c5ad97be617a" kindref="member">extract_labels</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;Example&gt;&amp;<sp/>examples,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 2, isCUDA&gt;</ref>&amp;<sp/>out);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Docstring_Example_extract_label</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isCUDA&gt;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1abd2622389892168945e6f8d721072e38" kindref="member">extract_label</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;Example&gt;&amp;<sp/>examples,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>labelpos,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 1, isCUDA&gt;</ref>&amp;<sp/>out);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//pointer<sp/>equality,<sp/>implemented<sp/>for<sp/>python<sp/>vector</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="structlibmolgrid_1_1Example_1ab1e5f47c98b8b36379ea2df5e41bc40b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1ab1e5f47c98b8b36379ea2df5e41bc40b" kindref="member">operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref>&amp;<sp/>rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a3034c08e7d9765b2f120d44d49d33927" kindref="member">sets</ref><sp/>==<sp/>rhs.<ref refid="structlibmolgrid_1_1Example_1a3034c08e7d9765b2f120d44d49d33927" kindref="member">sets</ref><sp/>&amp;&amp;<sp/><ref refid="structlibmolgrid_1_1Example_1a7ea04b60c00847d97627bc44a0a6b2f2" kindref="member">labels</ref><sp/>==<sp/>rhs.<ref refid="structlibmolgrid_1_1Example_1a7ea04b60c00847d97627bc44a0a6b2f2" kindref="member">labels</ref>;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="structlibmolgrid_1_1Example_1a8ccac5491a7d8ed2d90302fd8827063d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a8ccac5491a7d8ed2d90302fd8827063d" kindref="member">togpu</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>n<sp/>=<sp/><ref refid="structlibmolgrid_1_1Example_1a3034c08e7d9765b2f120d44d49d33927" kindref="member">sets</ref>.size();<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{<sp/><ref refid="structlibmolgrid_1_1Example_1a3034c08e7d9765b2f120d44d49d33927" kindref="member">sets</ref>[i].togpu();<sp/>}<sp/>}</highlight></codeline>
+<codeline lineno="133" refid="structlibmolgrid_1_1Example_1af49e4585db4da5364523418dc95614ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1af49e4585db4da5364523418dc95614ed" kindref="member">tocpu</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>n<sp/>=<sp/><ref refid="structlibmolgrid_1_1Example_1a3034c08e7d9765b2f120d44d49d33927" kindref="member">sets</ref>.size();<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{<sp/><ref refid="structlibmolgrid_1_1Example_1a3034c08e7d9765b2f120d44d49d33927" kindref="member">sets</ref>[i].tocpu();<sp/>}<sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="structlibmolgrid_1_1Example_1a36e9b084e04133a39bd8473892702281" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a36e9b084e04133a39bd8473892702281" kindref="member">make_vector_types</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>n<sp/>=<sp/><ref refid="structlibmolgrid_1_1Example_1a3034c08e7d9765b2f120d44d49d33927" kindref="member">sets</ref>.size();<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{<sp/><ref refid="structlibmolgrid_1_1Example_1a3034c08e7d9765b2f120d44d49d33927" kindref="member">sets</ref>[i].make_vector_types();<sp/>}<sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a7503b6a47c9b4b6cc834e6a0f8415e26" kindref="member">has_vector_types</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>start<sp/>=<sp/>0)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example_1a2e1844ea21f945bfed11383c4ca32bf0" kindref="member">has_index_types</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>start<sp/>=<sp/>0)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="structlibmolgrid_1_1ExampleRef" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref><sp/>{</highlight></codeline>
+<codeline lineno="150" refid="structlibmolgrid_1_1ExampleRef_1ac821c82ea49c90f2e78434913bfbfa69" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;const<sp/>char*&gt;<sp/><ref refid="structlibmolgrid_1_1ExampleRef_1ac821c82ea49c90f2e78434913bfbfa69" kindref="member">files</ref>;</highlight></codeline>
+<codeline lineno="151" refid="structlibmolgrid_1_1ExampleRef_1a7ea04b60c00847d97627bc44a0a6b2f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;float&gt;<sp/><ref refid="structlibmolgrid_1_1ExampleRef_1a7ea04b60c00847d97627bc44a0a6b2f2" kindref="member">labels</ref>;</highlight></codeline>
+<codeline lineno="152" refid="structlibmolgrid_1_1ExampleRef_1a0242027ec3331f3d5793c42d21b6f4e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleRef_1a0242027ec3331f3d5793c42d21b6f4e1" kindref="member">group</ref><sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="153" refid="structlibmolgrid_1_1ExampleRef_1a2d552310ef0a3f6a1daa19e5c84f3168" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleRef_1a2d552310ef0a3f6a1daa19e5c84f3168" kindref="member">seqcont</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155" refid="structlibmolgrid_1_1ExampleRef_1a673e48c4d531cbc1bd304594141eadfc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlibmolgrid_1_1ExampleRef_1a673e48c4d531cbc1bd304594141eadfc" kindref="member">ExampleRef</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlibmolgrid_1_1ExampleRef_1a673e48c4d531cbc1bd304594141eadfc" kindref="member">ExampleRef</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>line,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>numlabels,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>hasgroup=</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="comment">//for<sp/>memory<sp/>efficiency,<sp/>only<sp/>store<sp/>a<sp/>given<sp/>string<sp/>once<sp/>and<sp/>use<sp/>the<sp/>const<sp/>char*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162" refid="classlibmolgrid_1_1StringCache" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1StringCache" kindref="compound">StringCache</ref><sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/>std::unordered_set&lt;std::string&gt;<sp/>strings;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="165" refid="classlibmolgrid_1_1StringCache_1ae455591e43349bd3ef26f574a6ea2ecd" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classlibmolgrid_1_1StringCache_1ae455591e43349bd3ef26f574a6ea2ecd" kindref="member">get</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>s)</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>strings.insert(s);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//we<sp/>assume<sp/>even<sp/>as<sp/>the<sp/>set<sp/>is<sp/>resized<sp/>that<sp/>strings<sp/>never<sp/>get<sp/>allocated</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>strings.find(s)-&gt;c_str();</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>StringCache<sp/><ref refid="namespacelibmolgrid_1ae85ac8fbef92553b049a1d50afa4c183" kindref="member">string_cache</ref>;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>EXAMPLE_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h"/>
+  </compounddef>
+</doxygen>

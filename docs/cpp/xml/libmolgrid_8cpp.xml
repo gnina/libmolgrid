@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="libmolgrid_8cpp" kind="file" language="C++">
+    <compoundname>libmolgrid.cpp</compoundname>
+    <includes refid="libmolgrid_8h" local="yes">libmolgrid/libmolgrid.h</includes>
+    <includes local="yes">libmolgrid/config.h</includes>
+    <includes refid="grid_8h" local="yes">libmolgrid/grid.h</includes>
+    <includes refid="managed__grid_8h" local="yes">libmolgrid/managed_grid.h</includes>
+    <includes refid="transform_8h" local="yes">libmolgrid/transform.h</includes>
+    <incdepgraph>
+      <node id="17">
+        <label>libmolgrid/managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="22">
+        <label>libmolgrid/example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>cuda_runtime.h</label>
+      </node>
+      <node id="11">
+        <label>cassert</label>
+      </node>
+      <node id="20">
+        <label>stdexcept</label>
+      </node>
+      <node id="26">
+        <label>openbabel/mol.h</label>
+      </node>
+      <node id="24">
+        <label>unordered_set</label>
+      </node>
+      <node id="3">
+        <label>random</label>
+      </node>
+      <node id="7">
+        <label>libmolgrid/config.h</label>
+      </node>
+      <node id="8">
+        <label>libmolgrid/grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>libmolgrid/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>libmolgrid/libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>vector</label>
+      </node>
+      <node id="19">
+        <label>libmolgrid/transform.h</label>
+        <link refid="transform_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>utility</label>
+      </node>
+      <node id="4">
+        <label>iostream</label>
+      </node>
+      <node id="25">
+        <label>libmolgrid/coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>cuda.h</label>
+      </node>
+      <node id="15">
+        <label>cuda_runtime_api.h</label>
+      </node>
+      <node id="10">
+        <label>boost/preprocessor/repetition.hpp</label>
+      </node>
+      <node id="1">
+        <label>libmolgrid.cpp</label>
+        <link refid="libmolgrid_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>boost/multi_array.hpp</label>
+      </node>
+      <node id="14">
+        <label>cstring</label>
+      </node>
+      <node id="13">
+        <label>memory</label>
+      </node>
+      <node id="21">
+        <label>libmolgrid/quaternion.h</label>
+        <link refid="quaternion_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacelibmolgrid">libmolgrid</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="libmolgrid_8cpp_1a1c871fa22b982781bf5303699bb07da4" prot="public" static="no">
+        <name>INSTANTIATE_GRID_DEFINITIONS</name>
+        <param><defname>SIZE</defname></param>
+        <initializer>template class Grid&lt;float, SIZE, false&gt;; \
+    template class Grid&lt;double, SIZE, false&gt;; \
+    template class Grid&lt;float, SIZE, true&gt;; \
+    template class Grid&lt;double, SIZE, true&gt;; \
+    template class ManagedGrid&lt;float, SIZE&gt;; \
+    template class ManagedGrid&lt;double, SIZE&gt;;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jocelynsunseri/git/libmgd-docstest/src/libmolgrid.cpp" line="14" column="9" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/libmolgrid.cpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Global options for libmolgrid. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="4"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="libmolgrid_8h" kindref="compound">libmolgrid/libmolgrid.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;libmolgrid/config.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="grid_8h" kindref="compound">libmolgrid/grid.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="managed__grid_8h" kindref="compound">libmolgrid/managed_grid.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="transform_8h" kindref="compound">libmolgrid/transform.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelibmolgrid" kindref="compound">libmolgrid</ref><sp/>{</highlight></codeline>
+<codeline lineno="11" refid="namespacelibmolgrid_1a637541cee6c830dbabb26498f6c91249" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::default_random_engine<sp/><ref refid="namespacelibmolgrid_1a637541cee6c830dbabb26498f6c91249" kindref="member">random_engine</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="libmolgrid_8cpp_1a1c871fa22b982781bf5303699bb07da4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INSTANTIATE_GRID_DEFINITIONS(SIZE)<sp/>\</highlight></codeline>
+<codeline lineno="15"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>class<sp/>Grid&lt;float,<sp/>SIZE,<sp/>false&gt;;<sp/>\</highlight></codeline>
+<codeline lineno="16"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>class<sp/>Grid&lt;double,<sp/>SIZE,<sp/>false&gt;;<sp/>\</highlight></codeline>
+<codeline lineno="17"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>class<sp/>Grid&lt;float,<sp/>SIZE,<sp/>true&gt;;<sp/>\</highlight></codeline>
+<codeline lineno="18"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>class<sp/>Grid&lt;double,<sp/>SIZE,<sp/>true&gt;;<sp/>\</highlight></codeline>
+<codeline lineno="19"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>class<sp/>ManagedGrid&lt;float,<sp/>SIZE&gt;;<sp/>\</highlight></codeline>
+<codeline lineno="20"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>class<sp/>ManagedGrid&lt;double,<sp/>SIZE&gt;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><ref refid="libmolgrid_8cpp_1a1c871fa22b982781bf5303699bb07da4" kindref="member">INSTANTIATE_GRID_DEFINITIONS</ref>(1)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><ref refid="libmolgrid_8cpp_1a1c871fa22b982781bf5303699bb07da4" kindref="member">INSTANTIATE_GRID_DEFINITIONS</ref>(2)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><ref refid="libmolgrid_8cpp_1a1c871fa22b982781bf5303699bb07da4" kindref="member">INSTANTIATE_GRID_DEFINITIONS</ref>(3)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><ref refid="libmolgrid_8cpp_1a1c871fa22b982781bf5303699bb07da4" kindref="member">INSTANTIATE_GRID_DEFINITIONS</ref>(4)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><ref refid="libmolgrid_8cpp_1a1c871fa22b982781bf5303699bb07da4" kindref="member">INSTANTIATE_GRID_DEFINITIONS</ref>(5)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><ref refid="libmolgrid_8cpp_1a1c871fa22b982781bf5303699bb07da4" kindref="member">INSTANTIATE_GRID_DEFINITIONS</ref>(6)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/src/libmolgrid.cpp"/>
+  </compounddef>
+</doxygen>

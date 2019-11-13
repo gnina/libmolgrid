@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_25b2ec8b9a8f5bcdcf0aa46bbf328d5a" kind="dir">
+    <compoundname>libmolgrid</compoundname>
+    <innerfile refid="atom__typer_8h">atom_typer.h</innerfile>
+    <innerfile refid="cartesian__grid_8h">cartesian_grid.h</innerfile>
+    <innerfile refid="common_8h">common.h</innerfile>
+    <innerfile refid="coord__cache_8h">coord_cache.h</innerfile>
+    <innerfile refid="coordinateset_8h">coordinateset.h</innerfile>
+    <innerfile refid="example_8h">example.h</innerfile>
+    <innerfile refid="example__extractor_8h">example_extractor.h</innerfile>
+    <innerfile refid="example__provider_8h">example_provider.h</innerfile>
+    <innerfile refid="exampleref__providers_8h">exampleref_providers.h</innerfile>
+    <innerfile refid="grid_8h">grid.h</innerfile>
+    <innerfile refid="grid__io_8h">grid_io.h</innerfile>
+    <innerfile refid="grid__maker_8h">grid_maker.h</innerfile>
+    <innerfile refid="libmolgrid_8h">libmolgrid.h</innerfile>
+    <innerfile refid="managed__grid_8h">managed_grid.h</innerfile>
+    <innerfile refid="quaternion_8h">quaternion.h</innerfile>
+    <innerfile refid="transform_8h">transform.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/"/>
+  </compounddef>
+</doxygen>

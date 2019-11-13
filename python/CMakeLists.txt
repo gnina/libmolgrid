@@ -25,6 +25,9 @@ if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
     set(CMAKE_CXX_FLAGS         "${CMAKE_CXX_FLAGS} -Wno-unused-function")
 endif()
 
+# generate Python docstrings from Cpp source
+include(generate_docstrings)
+
 set( PYMOLGRID_SOURCES
  bindings.h
  bindings.cpp
