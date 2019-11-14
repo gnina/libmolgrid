@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="namespaceOpenBabel" kind="namespace" language="C++">
     <compoundname>OpenBabel</compoundname>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/jocelynsunseri/git/libmgd-docstest/src/atom_typer.cpp" line="26" column="1"/>
+    <location file="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" line="26" column="1"/>
   </compounddef>
 </doxygen>

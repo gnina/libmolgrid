@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.17">
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.13">
   <compound refid="classlibmolgrid_1_1AtomIndexTypeMapper" kind="class"><name>libmolgrid::AtomIndexTypeMapper</name>
     <member refid="classlibmolgrid_1_1AtomIndexTypeMapper_1a5d3f8f728d969e963cc44c9d3defa807" kind="function"><name>AtomIndexTypeMapper</name></member>
     <member refid="classlibmolgrid_1_1AtomIndexTypeMapper_1a9a71966fb965d0dc1c133c75f8be0359" kind="function"><name>~AtomIndexTypeMapper</name></member>
@@ -272,13 +272,10 @@
     <member refid="classlibmolgrid_1_1FileMappedElementTyper_1a589a71c408722b354b3d770231417767" kind="function"><name>FileMappedElementTyper</name></member>
     <member refid="classlibmolgrid_1_1FileMappedElementTyper_1ac6ac951d70d468686bb8d122dd1a23b1" kind="function"><name>FileMappedElementTyper</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ad493bf80b659abb6e401d7fee5c8231a" kind="function"><name>num_types</name></member>
-    <member refid="classlibmolgrid_1_1AtomIndexTyper_1ae503ecbf9ca173356ef6e475597e2b46" kind="function"><name>num_types</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ada10bf195e09de3a351bc4a4649ac629" kind="function"><name>get_atom_type_index</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ae263d436c69186ad062ad5339d1d8727" kind="function"><name>get_int_type</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1aacde71a2d28fc736c3d43da006f3a1c6" kind="function"><name>get_type_names</name></member>
-    <member refid="classlibmolgrid_1_1AtomIndexTyper_1aedda205572fbbaa3a868181802232263" kind="function"><name>get_type_names</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2" kind="function"><name>get_type_radii</name></member>
-    <member refid="classlibmolgrid_1_1AtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2" kind="function"><name>get_type_radii</name></member>
     <member refid="classlibmolgrid_1_1AtomIndexTyper_1a4f56173834b1bf3f850e5cb9880eaeea" kind="function"><name>get_atom_type_vector</name></member>
     <member refid="classlibmolgrid_1_1AtomIndexTyper_1a38a567b5922504c0767ac0dcdff287f5" kind="function"><name>is_vector_typer</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1a12d66c8724035ce6b91afef7d5685ae2" kind="variable"><name>mapper</name></member>
@@ -292,13 +289,10 @@
     <member refid="classlibmolgrid_1_1FileMappedGninaTyper_1a9037c6e349dd27eccf31eff4314792ee" kind="function"><name>FileMappedGninaTyper</name></member>
     <member refid="classlibmolgrid_1_1FileMappedGninaTyper_1ad1dcc7134bb0ff077e729a7504cc5f88" kind="function"><name>FileMappedGninaTyper</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ad493bf80b659abb6e401d7fee5c8231a" kind="function"><name>num_types</name></member>
-    <member refid="classlibmolgrid_1_1AtomIndexTyper_1ae503ecbf9ca173356ef6e475597e2b46" kind="function"><name>num_types</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ada10bf195e09de3a351bc4a4649ac629" kind="function"><name>get_atom_type_index</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ae263d436c69186ad062ad5339d1d8727" kind="function"><name>get_int_type</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1aacde71a2d28fc736c3d43da006f3a1c6" kind="function"><name>get_type_names</name></member>
-    <member refid="classlibmolgrid_1_1AtomIndexTyper_1aedda205572fbbaa3a868181802232263" kind="function"><name>get_type_names</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2" kind="function"><name>get_type_radii</name></member>
-    <member refid="classlibmolgrid_1_1AtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2" kind="function"><name>get_type_radii</name></member>
     <member refid="classlibmolgrid_1_1AtomIndexTyper_1a4f56173834b1bf3f850e5cb9880eaeea" kind="function"><name>get_atom_type_vector</name></member>
     <member refid="classlibmolgrid_1_1AtomIndexTyper_1a38a567b5922504c0767ac0dcdff287f5" kind="function"><name>is_vector_typer</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1a12d66c8724035ce6b91afef7d5685ae2" kind="variable"><name>mapper</name></member>
@@ -407,9 +401,9 @@
     <member refid="classlibmolgrid_1_1Grid_1aa01454be2537d7eed47f8c16c82b0a23" kind="variable"><name>GPU</name></member>
     <member refid="classlibmolgrid_1_1Grid_1a8e80dadd81041247ae111d11763fc2d2" kind="function"><name>getPos</name></member>
     <member refid="classlibmolgrid_1_1Grid_1a18ec2ecbbcf47264c34b0fd73242b119" kind="function"><name>check_index</name></member>
-    <member refid="classlibmolgrid_1_1Grid_1a483b22b3df988a8a315fe4525097cd91" kind="function"><name>dimensions</name></member>
+    <member refid="classlibmolgrid_1_1Grid_1a9f86f62cd29badc89d2c72631b63264d" kind="function"><name>dimensions</name></member>
     <member refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kind="function"><name>dimension</name></member>
-    <member refid="classlibmolgrid_1_1Grid_1a99fba573ee49cb59c992f17f4cbc21bb" kind="function"><name>offsets</name></member>
+    <member refid="classlibmolgrid_1_1Grid_1a2f606ad331413ba32697c5fad87364e4" kind="function"><name>offsets</name></member>
     <member refid="classlibmolgrid_1_1Grid_1a67a4d2469cf97b1e2018d220c5992ca7" kind="function"><name>offset</name></member>
     <member refid="classlibmolgrid_1_1Grid_1acb2f16129f492fbb0aa93ae8b78402ec" kind="function"><name>size</name></member>
     <member refid="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5" kind="function"><name>data</name></member>
@@ -423,7 +417,7 @@
     <member refid="classlibmolgrid_1_1Grid_1af4c80e9d4bd3250caf327413bb7e71a7" kind="function"><name>operator()</name></member>
     <member refid="classlibmolgrid_1_1Grid_1a4c0715b6c8593be928ec306c5f943a57" kind="function"><name>operator()</name></member>
     <member refid="classlibmolgrid_1_1Grid_1a0dff89786df422b662a2be75e7517a1e" kind="function"><name>address</name></member>
-    <member refid="classlibmolgrid_1_1Grid_1ad16f3140a0985865efe01db743da33c2" kind="function"><name>address</name></member>
+    <member refid="classlibmolgrid_1_1Grid_1a82aac66e00ce6ddf2cb4638537242d77" kind="function"><name>address</name></member>
     <member refid="classlibmolgrid_1_1Grid_1ac2f29eb66b0b3b19ab09ecd80e3fbb35" kind="function"><name>copyTo</name></member>
     <member refid="classlibmolgrid_1_1Grid_1ac5cd5f1c4591aa5a8d21e5babb971e99" kind="function"><name>copyFrom</name></member>
     <member refid="classlibmolgrid_1_1Grid_1a512219066836349f65f85a0ead19ae8a" kind="function"><name>fill_zero</name></member>
@@ -440,7 +434,7 @@
     <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1ad8331653910a5a034f8238e6a8fbb9b1" kind="variable"><name>N</name></member>
     <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aa01454be2537d7eed47f8c16c82b0a23" kind="variable"><name>GPU</name></member>
     <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a18ec2ecbbcf47264c34b0fd73242b119" kind="function"><name>check_index</name></member>
-    <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a483b22b3df988a8a315fe4525097cd91" kind="function"><name>dimensions</name></member>
+    <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a9f86f62cd29badc89d2c72631b63264d" kind="function"><name>dimensions</name></member>
     <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aa9b61e8668a98c2e264339c38e74065b" kind="function"><name>dimension</name></member>
     <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1acb2f16129f492fbb0aa93ae8b78402ec" kind="function"><name>size</name></member>
     <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aaa5a68e1e5befda24cb7b3e422ba9cc5" kind="function"><name>data</name></member>
@@ -559,12 +553,58 @@
   <compound refid="classlibmolgrid_1_1ManagedGrid" kind="class"><name>libmolgrid::ManagedGrid</name>
     <member refid="classlibmolgrid_1_1ManagedGrid_1a2e6fb40ebdb1c8bd1ba55716d6bff024" kind="typedef"><name>subgrid_t</name></member>
     <member refid="classlibmolgrid_1_1ManagedGrid_1a5f65ecf59323f2fdf69c9ba72425a1a5" kind="typedef"><name>base_t</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a67f5cdb60527c14d22585550dcc3cd20" kind="typedef"><name>gpu_grid_t</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1aab951804b94d775517a3b614947401b5" kind="typedef"><name>cpu_grid_t</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a2d7497e2eb6dbb6b75ca3a4df279392b" kind="typedef"><name>type</name></member>
     <member refid="classlibmolgrid_1_1ManagedGrid_1a8e96661ffa162bb99c56ae34b11556e3" kind="variable"><name>ManagedGrid&lt; Dtype, NumDims+1 &gt;</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1acc10ace8d751619d302cbe0da8f37c6a" kind="variable"><name>gpu_grid</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a15003153752362a8e65e4b52637f44dc" kind="variable"><name>cpu_grid</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1acbdab43875a14ce91fc53eb6e18d4917" kind="variable"><name>cpu_ptr</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1ad721fc6ca6a3d6ba3bc506576622aab0" kind="variable"><name>capacity</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a640c28374bd5458e6d9d6d219c76520f" kind="variable"><name>gpu_info</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a405571fa8a8314ff906c31579d2f532a" kind="variable"><name>ManagedGridBase&lt; Dtype, NumDims-1 &gt;</name></member>
     <member refid="classlibmolgrid_1_1ManagedGrid_1a8ead5fb1d995fcaaa3a0be1e0b653b50" kind="function"><name>ManagedGrid</name></member>
     <member refid="classlibmolgrid_1_1ManagedGrid_1a450e51f93738ce2648184d4e7aa6bdde" kind="function"><name>ManagedGrid</name></member>
     <member refid="classlibmolgrid_1_1ManagedGrid_1a14458c450fbf8c804da18d80f652224a" kind="function"><name>operator[]</name></member>
     <member refid="classlibmolgrid_1_1ManagedGrid_1a7ff8e1562862acfd393839e9ef444657" kind="function"><name>clone</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1adc57df2d9d355c2c98206d8ca7ab230d" kind="function"><name>dimensions</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a4a86470b9f8e551e5a060872f9e5680e" kind="function"><name>dimension</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1ab18a0f2c17222ceecc823cdb1df6f9e2" kind="function"><name>offsets</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1ab1990983adc822e595a52ba83d689a9e" kind="function"><name>offset</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a259cb5a711406a8c3e5d937eb9350cca" kind="function"><name>size</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a512219066836349f65f85a0ead19ae8a" kind="function"><name>fill_zero</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1aa5b105cea5249d8b627dc7a9e897f0a1" kind="function"><name>operator()</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1ac469c7ee3d92be77bc38bddb26b5f695" kind="function"><name>operator()</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1aff4a416b7db91859de81b24856be632a" kind="function"><name>copyTo</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1acbc53c65c1c27667a659ec84dafbe01a" kind="function"><name>copyTo</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1afd5ca42172cc845309b01069ed3a14c2" kind="function"><name>copyTo</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a32a5cdeb67c51d9b75925d93277a1ed0" kind="function"><name>copyFrom</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1ac4d8dd20279b234e0d8c057f052c4a95" kind="function"><name>copyFrom</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a7f97a564c8b4e32c14d7b4ab58255295" kind="function"><name>copyFrom</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1ab92b52fef49a9d7440a98f567c28f168" kind="function"><name>copyInto</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a8576226e00915bc8c923e0b9c77e051e" kind="function"><name>resized</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1acc87d7aacb8f79831cae339b3039b65d" kind="function"><name>gpu</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1aa5c4b729fa4facfb55cb19b51f5797cb" kind="function"><name>gpu</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1af9baf061634fae1bd30d7abd24900263" kind="function"><name>cpu</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1abc539db90c9ad1195006ab86c772f4a3" kind="function"><name>cpu</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a18aaaed8a845f4c8ad9c30d0693e03c1" kind="function"><name>togpu</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a3e9eb84f9344f6ca4eac9975f8f61386" kind="function"><name>tocpu</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a3ffb36b58be9d3c48294d1f4e3366af8" kind="function"><name>ongpu</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a2b2ad679c12e649d9b5a0fd8f03d3237" kind="function"><name>oncpu</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a8c2b884f05b8f337cada06f5f978b588" kind="function"><name>operator cpu_grid_t</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a535df4d8926149a00163552a34596d69" kind="function"><name>operator cpu_grid_t &amp;</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a10b2f00260f2d9a097fbd7eda7bc9a4a" kind="function"><name>operator gpu_grid_t</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1ada677d2971fd6a2aad1277901804cdd2" kind="function"><name>operator gpu_grid_t &amp;</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1aa1322a8e4f3f36cfff77ca7a5ec57d97" kind="function"><name>data</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1aecdaa9892795d526d6d468e21ef3a2b2" kind="function"><name>data</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a1a93843cbf5cdc9ed0a1bf5b4d760068" kind="function"><name>operator==</name></member>
     <member refid="classlibmolgrid_1_1ManagedGrid_1af59109eec7a2269b0dd17e7497f71e01" kind="function"><name>ManagedGrid</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a354afea429c9572094ac2c5c5ed19786" kind="function"><name>alloc_and_set_cpu</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1aad5407e977e2f417b18ed54a0cf7730c" kind="function"><name>alloc_and_set_gpu</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a3ab3abfca1447e4fc0874c00c47aadff" kind="function"><name>clone_ptrs</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1a256a3dbdc150a4d491a57c920fc05c52" kind="typedef"><name>buffer_data</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1ad8331653910a5a034f8238e6a8fbb9b1" kind="variable"><name>N</name></member>
+    <member refid="classlibmolgrid_1_1ManagedGridBase_1af5dc0787a765f8e6ba44aee026795537" kind="function"><name>delete_buffer</name></member>
   </compound>
   <compound refid="classlibmolgrid_1_1ManagedGrid_3_01Dtype_00_011_01_4" kind="class"><name>libmolgrid::ManagedGrid&lt; Dtype, 1 &gt;</name>
     <member refid="classlibmolgrid_1_1ManagedGrid_3_01Dtype_00_011_01_4_1aee2fd0a001c66664abf20c3b1bbf9eee" kind="typedef"><name>subgrid_t</name></member>
@@ -748,8 +788,8 @@
     <member refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" kind="function"><name>setup</name></member>
     <member refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ae630292b50e44deb19e001f322914934" kind="function"><name>nextref</name></member>
     <member refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kind="function"><name>size</name></member>
-    <member refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" kind="function"><name>setup</name></member>
-    <member refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" kind="function"><name>setup</name></member>
+    <member refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a909e6a1cd55405d11fd6543e0ae9a582" kind="function"><name>setup</name></member>
+    <member refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a909e6a1cd55405d11fd6543e0ae9a582" kind="function"><name>setup</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028" kind="function"><name>has_group</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" kind="function"><name>check_batch_size</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" kind="function"><name>populate</name></member>
@@ -791,13 +831,10 @@
     <member refid="classlibmolgrid_1_1SubsettedElementTyper_1a3b23aa7c01654bab5b4eb0f0bb624d14" kind="function"><name>SubsettedElementTyper</name></member>
     <member refid="classlibmolgrid_1_1SubsettedElementTyper_1ab26b70999f83ecc99c91960fd1bea164" kind="function"><name>SubsettedElementTyper</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ad493bf80b659abb6e401d7fee5c8231a" kind="function"><name>num_types</name></member>
-    <member refid="classlibmolgrid_1_1AtomIndexTyper_1ae503ecbf9ca173356ef6e475597e2b46" kind="function"><name>num_types</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ada10bf195e09de3a351bc4a4649ac629" kind="function"><name>get_atom_type_index</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ae263d436c69186ad062ad5339d1d8727" kind="function"><name>get_int_type</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1aacde71a2d28fc736c3d43da006f3a1c6" kind="function"><name>get_type_names</name></member>
-    <member refid="classlibmolgrid_1_1AtomIndexTyper_1aedda205572fbbaa3a868181802232263" kind="function"><name>get_type_names</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2" kind="function"><name>get_type_radii</name></member>
-    <member refid="classlibmolgrid_1_1AtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2" kind="function"><name>get_type_radii</name></member>
     <member refid="classlibmolgrid_1_1AtomIndexTyper_1a4f56173834b1bf3f850e5cb9880eaeea" kind="function"><name>get_atom_type_vector</name></member>
     <member refid="classlibmolgrid_1_1AtomIndexTyper_1a38a567b5922504c0767ac0dcdff287f5" kind="function"><name>is_vector_typer</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1a12d66c8724035ce6b91afef7d5685ae2" kind="variable"><name>mapper</name></member>
@@ -811,13 +848,10 @@
     <member refid="classlibmolgrid_1_1SubsettedGninaTyper_1a52db7546e06d5a54afff6c5b685107db" kind="function"><name>SubsettedGninaTyper</name></member>
     <member refid="classlibmolgrid_1_1SubsettedGninaTyper_1a42a78c9d3ae26f38181020758d89116f" kind="function"><name>SubsettedGninaTyper</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ad493bf80b659abb6e401d7fee5c8231a" kind="function"><name>num_types</name></member>
-    <member refid="classlibmolgrid_1_1AtomIndexTyper_1ae503ecbf9ca173356ef6e475597e2b46" kind="function"><name>num_types</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ada10bf195e09de3a351bc4a4649ac629" kind="function"><name>get_atom_type_index</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ae263d436c69186ad062ad5339d1d8727" kind="function"><name>get_int_type</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1aacde71a2d28fc736c3d43da006f3a1c6" kind="function"><name>get_type_names</name></member>
-    <member refid="classlibmolgrid_1_1AtomIndexTyper_1aedda205572fbbaa3a868181802232263" kind="function"><name>get_type_names</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2" kind="function"><name>get_type_radii</name></member>
-    <member refid="classlibmolgrid_1_1AtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2" kind="function"><name>get_type_radii</name></member>
     <member refid="classlibmolgrid_1_1AtomIndexTyper_1a4f56173834b1bf3f850e5cb9880eaeea" kind="function"><name>get_atom_type_vector</name></member>
     <member refid="classlibmolgrid_1_1AtomIndexTyper_1a38a567b5922504c0767ac0dcdff287f5" kind="function"><name>is_vector_typer</name></member>
     <member refid="classlibmolgrid_1_1MappedAtomIndexTyper_1a12d66c8724035ce6b91afef7d5685ae2" kind="variable"><name>mapper</name></member>

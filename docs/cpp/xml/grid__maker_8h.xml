@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="grid__maker_8h" kind="file" language="C++">
     <compoundname>grid_maker.h</compoundname>
     <includes local="no">vector</includes>
@@ -12,187 +12,187 @@
     <includes refid="transform_8h" local="yes">libmolgrid/transform.h</includes>
     <includedby refid="grid__maker_8cpp" local="yes">grid_maker.cpp</includedby>
     <incdepgraph>
-      <node id="8">
-        <label>libmolgrid/managed_grid.h</label>
-        <link refid="managed__grid_8h"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>boost/lexical_cast.hpp</label>
-      </node>
-      <node id="23">
+      <node id="631">
         <label>libmolgrid/example.h</label>
         <link refid="example_8h"/>
-        <childnode refid="2" relation="include">
+        <childnode refid="610" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="632" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="614" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="619">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="613">
         <label>cuda_runtime.h</label>
       </node>
-      <node id="15">
+      <node id="623">
         <label>cassert</label>
       </node>
-      <node id="26">
+      <node id="634">
         <label>stdexcept</label>
       </node>
-      <node id="7">
-        <label>openbabel/mol.h</label>
-      </node>
-      <node id="24">
-        <label>unordered_set</label>
-      </node>
-      <node id="1">
-        <label>grid_maker.h</label>
-        <link refid="grid__maker_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-      </node>
-      <node id="22">
-        <label>random</label>
-      </node>
-      <node id="12">
+      <node id="620">
         <label>libmolgrid/grid.h</label>
         <link refid="grid_8h"/>
-        <childnode refid="13" relation="include">
+        <childnode refid="621" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="622" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="619" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="623" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="624" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="625" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>libmolgrid/common.h</label>
-        <link refid="common_8h"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="629" relation="include">
         </childnode>
       </node>
-      <node id="21">
-        <label>libmolgrid/libmolgrid.h</label>
-        <link refid="libmolgrid_8h"/>
-        <childnode refid="22" relation="include">
+      <node id="615">
+        <label>openbabel/mol.h</label>
+      </node>
+      <node id="632">
+        <label>unordered_set</label>
+      </node>
+      <node id="630">
+        <label>random</label>
+      </node>
+      <node id="609">
+        <label>grid_maker.h</label>
+        <link refid="grid__maker_8h"/>
+        <childnode refid="610" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="611" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="612" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="613" relation="include">
+        </childnode>
+        <childnode refid="614" relation="include">
+        </childnode>
+        <childnode refid="620" relation="include">
+        </childnode>
+        <childnode refid="631" relation="include">
+        </childnode>
+        <childnode refid="633" relation="include">
         </childnode>
       </node>
-      <node id="2">
+      <node id="610">
         <label>vector</label>
       </node>
-      <node id="25">
-        <label>libmolgrid/transform.h</label>
-        <link refid="transform_8h"/>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-      </node>
-      <node id="10">
+      <node id="618">
         <label>utility</label>
       </node>
-      <node id="3">
+      <node id="611">
         <label>array</label>
       </node>
-      <node id="16">
+      <node id="625">
+        <label>libmolgrid/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="617" relation="include">
+        </childnode>
+        <childnode refid="626" relation="include">
+        </childnode>
+        <childnode refid="627" relation="include">
+        </childnode>
+        <childnode refid="628" relation="include">
+        </childnode>
+      </node>
+      <node id="624">
         <label>iostream</label>
       </node>
-      <node id="6">
-        <label>libmolgrid/coordinateset.h</label>
-        <link refid="coordinateset_8h"/>
-        <childnode refid="2" relation="include">
+      <node id="633">
+        <label>libmolgrid/transform.h</label>
+        <link refid="transform_8h"/>
+        <childnode refid="630" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="634" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="629" relation="include">
+        </childnode>
+        <childnode refid="635" relation="include">
+        </childnode>
+        <childnode refid="620" relation="include">
+        </childnode>
+        <childnode refid="631" relation="include">
         </childnode>
       </node>
-      <node id="20">
+      <node id="628">
         <label>cuda.h</label>
       </node>
-      <node id="19">
+      <node id="627">
         <label>cuda_runtime_api.h</label>
       </node>
-      <node id="14">
+      <node id="622">
         <label>boost/preprocessor/repetition.hpp</label>
       </node>
-      <node id="13">
+      <node id="616">
+        <label>libmolgrid/managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="617" relation="include">
+        </childnode>
+        <childnode refid="618" relation="include">
+        </childnode>
+        <childnode refid="619" relation="include">
+        </childnode>
+        <childnode refid="620" relation="include">
+        </childnode>
+      </node>
+      <node id="621">
         <label>boost/multi_array.hpp</label>
       </node>
-      <node id="4">
-        <label>algorithm</label>
-      </node>
-      <node id="18">
-        <label>cstring</label>
-      </node>
-      <node id="9">
-        <label>memory</label>
-      </node>
-      <node id="27">
+      <node id="635">
         <label>libmolgrid/quaternion.h</label>
         <link refid="quaternion_8h"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="613" relation="include">
         </childnode>
+      </node>
+      <node id="629">
+        <label>libmolgrid/libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="630" relation="include">
+        </childnode>
+        <childnode refid="624" relation="include">
+        </childnode>
+        <childnode refid="619" relation="include">
+        </childnode>
+        <childnode refid="613" relation="include">
+        </childnode>
+      </node>
+      <node id="612">
+        <label>algorithm</label>
+      </node>
+      <node id="626">
+        <label>cstring</label>
+      </node>
+      <node id="614">
+        <label>libmolgrid/coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="610" relation="include">
+        </childnode>
+        <childnode refid="615" relation="include">
+        </childnode>
+        <childnode refid="616" relation="include">
+        </childnode>
+      </node>
+      <node id="617">
+        <label>memory</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="1">
-        <label>grid_maker.h</label>
-        <link refid="grid__maker_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
+      <node id="637">
         <label>grid_maker.cpp</label>
         <link refid="grid__maker_8cpp"/>
+      </node>
+      <node id="636">
+        <label>grid_maker.h</label>
+        <link refid="grid__maker_8h"/>
+        <childnode refid="637" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="classlibmolgrid_1_1GridMaker" prot="public">libmolgrid::GridMaker</innerclass>
@@ -251,8 +251,8 @@
 <codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
 <codeline lineno="61" refid="classlibmolgrid_1_1GridMaker_1a4f87ba432edc3a923341b56c48955533" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1GridMaker_1a4f87ba432edc3a923341b56c48955533" kindref="member">GridMaker</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>res<sp/>=<sp/>0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>d<sp/>=<sp/>0,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bin<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rti<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>rscale=1.0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>grm<sp/>=<sp/>1.0)<sp/>:</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1GridMaker_1a4333d786c60465d20826583358b2798d" kindref="member">resolution</ref>(res),<sp/><ref refid="classlibmolgrid_1_1GridMaker_1a89e0bef89186145cd5f5a1d2d1ab3b15" kindref="member">dimension</ref>(d),<sp/><ref refid="classlibmolgrid_1_1GridMaker_1a274d43680ceffb680b2edcf6fd36dd22" kindref="member">radius_scale</ref>(rscale),<sp/><ref refid="classlibmolgrid_1_1GridMaker_1a742dd8c218dd065c02d905dd69649d81" kindref="member">gaussian_radius_multiple</ref>(grm),<sp/><ref refid="classlibmolgrid_1_1GridMaker_1a780e58b160ad2d376bbd4df1dfa59ae5" kindref="member">final_radius_multiple</ref>(0),</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1GridMaker_1a07a6bb9578ba69062c2abaac7a0422ae" kindref="member">binary</ref>(bin),<sp/><ref refid="classlibmolgrid_1_1GridMaker_1a977c968e9082c04e5405c2e2091e7a5e" kindref="member">radii_type_indexed</ref>(rti)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>resolution(res),<sp/>dimension(d),<sp/>radius_scale(rscale),<sp/>gaussian_radius_multiple(grm),<sp/>final_radius_multiple(0),</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>binary(bin),<sp/>radii_type_indexed(rti)<sp/>{</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1GridMaker_1aed69b61eca6f6bd638a0049acb63a16c" kindref="member">initialize</ref>(res,<sp/>d,<sp/>bin,<sp/>rscale,<sp/>grm);</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
@@ -261,25 +261,25 @@
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1aed69b61eca6f6bd638a0049acb63a16c" kindref="member">initialize</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>res,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>d,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bin<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>rscale=1.0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>grm=1.0);</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
 <codeline lineno="79" refid="classlibmolgrid_1_1GridMaker_1a2e292f1d60ceee6ea204080aae140b46" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/><ref refid="classlibmolgrid_1_1GridMaker_1a2e292f1d60ceee6ea204080aae140b46" kindref="member">get_grid_dims</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>make_float3(<ref refid="classlibmolgrid_1_1GridMaker_1aece1bc3fff4b670afc08354a6d995a0e" kindref="member">dim</ref>,<sp/><ref refid="classlibmolgrid_1_1GridMaker_1aece1bc3fff4b670afc08354a6d995a0e" kindref="member">dim</ref>,<sp/><ref refid="classlibmolgrid_1_1GridMaker_1aece1bc3fff4b670afc08354a6d995a0e" kindref="member">dim</ref>);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>make_float3(dim,<sp/>dim,<sp/>dim);</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
 <codeline lineno="84" refid="classlibmolgrid_1_1GridMaker_1a89ed55a7eb6d9fb6a9c119f2377b235b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1a89ed55a7eb6d9fb6a9c119f2377b235b" kindref="member">get_resolution</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1a4333d786c60465d20826583358b2798d" kindref="member">resolution</ref>;<sp/>}</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87" refid="classlibmolgrid_1_1GridMaker_1afd8e9799b74142e23778dddbda02519b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1afd8e9799b74142e23778dddbda02519b" kindref="member">set_resolution</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>res)<sp/>{<sp/><ref refid="classlibmolgrid_1_1GridMaker_1a4333d786c60465d20826583358b2798d" kindref="member">resolution</ref><sp/>=<sp/>res;<sp/><ref refid="classlibmolgrid_1_1GridMaker_1aece1bc3fff4b670afc08354a6d995a0e" kindref="member">dim</ref><sp/>=<sp/>::round(<ref refid="classlibmolgrid_1_1GridMaker_1a89e0bef89186145cd5f5a1d2d1ab3b15" kindref="member">dimension</ref><sp/>/<sp/><ref refid="classlibmolgrid_1_1GridMaker_1a4333d786c60465d20826583358b2798d" kindref="member">resolution</ref>)<sp/>+<sp/>1;<sp/>}</highlight></codeline>
+<codeline lineno="87" refid="classlibmolgrid_1_1GridMaker_1afd8e9799b74142e23778dddbda02519b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1afd8e9799b74142e23778dddbda02519b" kindref="member">set_resolution</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>res)<sp/>{<sp/>resolution<sp/>=<sp/>res;<sp/>dim<sp/>=<sp/>::round(dimension<sp/>/<sp/>resolution)<sp/>+<sp/>1;<sp/>}</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
 <codeline lineno="90" refid="classlibmolgrid_1_1GridMaker_1a913c32e731985d3bf13d38da3eb8fbdc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1a913c32e731985d3bf13d38da3eb8fbdc" kindref="member">get_dimension</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1a89e0bef89186145cd5f5a1d2d1ab3b15" kindref="member">dimension</ref>;<sp/>}</highlight></codeline>
-<codeline lineno="92" refid="classlibmolgrid_1_1GridMaker_1aee2b3af3532909f14ad4cb8c923849ba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1aee2b3af3532909f14ad4cb8c923849ba" kindref="member">set_dimension</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>d)<sp/>{<sp/><ref refid="classlibmolgrid_1_1GridMaker_1a89e0bef89186145cd5f5a1d2d1ab3b15" kindref="member">dimension</ref><sp/>=<sp/>d;<sp/><ref refid="classlibmolgrid_1_1GridMaker_1aece1bc3fff4b670afc08354a6d995a0e" kindref="member">dim</ref><sp/>=<sp/>::round(<ref refid="classlibmolgrid_1_1GridMaker_1a89e0bef89186145cd5f5a1d2d1ab3b15" kindref="member">dimension</ref><sp/>/<sp/><ref refid="classlibmolgrid_1_1GridMaker_1a4333d786c60465d20826583358b2798d" kindref="member">resolution</ref>)<sp/>+<sp/>1;<sp/>}</highlight></codeline>
+<codeline lineno="92" refid="classlibmolgrid_1_1GridMaker_1aee2b3af3532909f14ad4cb8c923849ba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1aee2b3af3532909f14ad4cb8c923849ba" kindref="member">set_dimension</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>d)<sp/>{<sp/>dimension<sp/>=<sp/>d;<sp/>dim<sp/>=<sp/>::round(dimension<sp/>/<sp/>resolution)<sp/>+<sp/>1;<sp/>}</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
 <codeline lineno="94" refid="classlibmolgrid_1_1GridMaker_1a35c10485c3709bff6c3976aae006590e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1a35c10485c3709bff6c3976aae006590e" kindref="member">get_first_dim</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1aece1bc3fff4b670afc08354a6d995a0e" kindref="member">dim</ref>;<sp/>}</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
 <codeline lineno="97" refid="classlibmolgrid_1_1GridMaker_1acc9dc2f277b5ceed6789a7c959c9017c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1acc9dc2f277b5ceed6789a7c959c9017c" kindref="member">get_binary</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1a07a6bb9578ba69062c2abaac7a0422ae" kindref="member">binary</ref>;<sp/>}</highlight></codeline>
-<codeline lineno="99" refid="classlibmolgrid_1_1GridMaker_1a5b9825bf1ac9b7ab67fd6a9c300212d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1a5b9825bf1ac9b7ab67fd6a9c300212d8" kindref="member">set_binary</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>b)<sp/>{<sp/><ref refid="classlibmolgrid_1_1GridMaker_1a07a6bb9578ba69062c2abaac7a0422ae" kindref="member">binary</ref><sp/>=<sp/>b;<sp/>}</highlight></codeline>
+<codeline lineno="99" refid="classlibmolgrid_1_1GridMaker_1a5b9825bf1ac9b7ab67fd6a9c300212d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1a5b9825bf1ac9b7ab67fd6a9c300212d8" kindref="member">set_binary</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>b)<sp/>{<sp/>binary<sp/>=<sp/>b;<sp/>}</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"></highlight></codeline>
 <codeline lineno="102" refid="classlibmolgrid_1_1GridMaker_1ada33a2c215eedf1d2bdb1c74c7fb111a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1ada33a2c215eedf1d2bdb1c74c7fb111a" kindref="member">get_radii_type_indexed</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1a977c968e9082c04e5405c2e2091e7a5e" kindref="member">radii_type_indexed</ref>;<sp/>}</highlight></codeline>
-<codeline lineno="104" refid="classlibmolgrid_1_1GridMaker_1a07a5ecd13fefad2d587a4b0276f38be5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1a07a5ecd13fefad2d587a4b0276f38be5" kindref="member">set_radii_type_indexed</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>b)<sp/>{<sp/><ref refid="classlibmolgrid_1_1GridMaker_1a977c968e9082c04e5405c2e2091e7a5e" kindref="member">radii_type_indexed</ref><sp/>=<sp/>b;<sp/>}</highlight></codeline>
+<codeline lineno="104" refid="classlibmolgrid_1_1GridMaker_1a07a5ecd13fefad2d587a4b0276f38be5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1a07a5ecd13fefad2d587a4b0276f38be5" kindref="member">set_radii_type_indexed</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>b)<sp/>{<sp/>radii_type_indexed<sp/>=<sp/>b;<sp/>}</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107" refid="classlibmolgrid_1_1GridMaker_1ab252273ae1616c329c9185dba68fc1b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1ab252273ae1616c329c9185dba68fc1b1" kindref="member">get_radiusmultiple</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1a274d43680ceffb680b2edcf6fd36dd22" kindref="member">radius_scale</ref>*<ref refid="classlibmolgrid_1_1GridMaker_1a780e58b160ad2d376bbd4df1dfa59ae5" kindref="member">final_radius_multiple</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="107" refid="classlibmolgrid_1_1GridMaker_1ab252273ae1616c329c9185dba68fc1b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridMaker_1ab252273ae1616c329c9185dba68fc1b1" kindref="member">get_radiusmultiple</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>radius_scale*<ref refid="classlibmolgrid_1_1GridMaker_1a780e58b160ad2d376bbd4df1dfa59ae5" kindref="member">final_radius_multiple</ref>;<sp/>}</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight></codeline>
 <codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/>float3<sp/><ref refid="classlibmolgrid_1_1GridMaker_1ab16c65f66c2e566acc578b719c383e7b" kindref="member">get_grid_origin</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>float3&amp;<sp/>grid_center)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"></highlight></codeline>
@@ -715,6 +715,6 @@
 <codeline lineno="545"><highlight class="normal"></highlight></codeline>
 <codeline lineno="546"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>GRID_MAKER_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid_maker.h"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_maker.h"/>
   </compounddef>
 </doxygen>

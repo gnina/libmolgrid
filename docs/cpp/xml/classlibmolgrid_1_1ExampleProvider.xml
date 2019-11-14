@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="classlibmolgrid_1_1ExampleProvider" kind="class" language="C++" prot="public">
     <compoundname>libmolgrid::ExampleProvider</compoundname>
     <includes refid="example__provider_8h" local="no">example_provider.h</includes>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="24" column="21" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" bodystart="24" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="24" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1ExampleProvider_1a2fb8829b2e7a2a7ddd15f77963afe1af" prot="private" static="no" mutable="no">
         <type><ref refid="classlibmolgrid_1_1ExampleExtractor" kindref="compound">ExampleExtractor</ref></type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="25" column="22" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" bodystart="25" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="25" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1ExampleProvider_1a3720a86fa37818f1974f5b1854beef4f" prot="private" static="no" mutable="no">
         <type><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref></type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="26" column="29" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" bodystart="26" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="26" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -55,13 +55,12 @@
           <declname>settings</declname>
         </param>
         <briefdescription>
-<para>return provider as specifyed by settings </para>
-        </briefdescription>
+<para>return provider as specifyed by settings </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="30" column="28" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/example_provider.cpp" bodystart="96" bodyend="208"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="30" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/example_provider.cpp" bodystart="96" bodyend="208"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -76,13 +75,12 @@
           <defval><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref>()</defval>
         </param>
         <briefdescription>
-<para>Create provider using default gnina typing. </para>
-        </briefdescription>
+<para>Create provider using default gnina typing. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="33" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/example_provider.cpp" bodystart="15" bodyend="21"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="33" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/example_provider.cpp" bodystart="15" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1a8a2bae611b9df84ef7d3a65cb0406250" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -98,13 +96,12 @@
           <declname>t</declname>
         </param>
         <briefdescription>
-<para>Create provider/extractor according to settings with single typer. </para>
-        </briefdescription>
+<para>Create provider/extractor according to settings with single typer. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="36" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/example_provider.cpp" bodystart="24" bodyend="28"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="36" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/example_provider.cpp" bodystart="24" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1acaf924a94e0b8d14689fb68bbd01e0f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -124,13 +121,12 @@
           <declname>t2</declname>
         </param>
         <briefdescription>
-<para>Create provider/extractor according to settings with two typers. </para>
-        </briefdescription>
+<para>Create provider/extractor according to settings with two typers. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="39" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/example_provider.cpp" bodystart="30" bodyend="34"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="39" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/example_provider.cpp" bodystart="30" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1ac557999e073c14e5001137006e1affeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -151,13 +147,12 @@
           <defval>std::vector&lt; std::string &gt;()</defval>
         </param>
         <briefdescription>
-<para>Create provider/extractor according to settings. </para>
-        </briefdescription>
+<para>Create provider/extractor according to settings. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="42" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/example_provider.cpp" bodystart="36" bodyend="41"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="42" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/example_provider.cpp" bodystart="36" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1a3066f4feae60e7344e861b8560c13c2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -173,13 +168,12 @@
           <declname>e</declname>
         </param>
         <briefdescription>
-<para>use provided provider </para>
-        </briefdescription>
+<para>use provided provider </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="46" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/example_provider.cpp" bodystart="44" bodyend="48"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="46" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/example_provider.cpp" bodystart="44" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1aab34bd38942e6e3e441152bc84bd1637" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
@@ -192,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="47" column="13" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" bodystart="47" bodyend="47"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="47" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1af034c26f3c6c9d88821e1db792e4e874" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -209,13 +203,13 @@
           <defval>-1</defval>
         </param>
         <briefdescription>
-<para>load example file file fname and setup provider </para>
-        </briefdescription>
+<para>load example file file fname and setup provider </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="50" column="18" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/example_provider.cpp" bodystart="51" bodyend="56"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="50" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/example_provider.cpp" bodystart="51" bodyend="56"/>
+        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1aab34bd38942e6e3e441152bc84bd1637" compoundref="example__provider_8h" startline="47" endline="47">ExampleProvider::~ExampleProvider</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1af9aa38f73a7aa43fa0ba78d05d9c20fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -232,13 +226,12 @@
           <defval>-1</defval>
         </param>
         <briefdescription>
-<para>load multiple example files </para>
-        </briefdescription>
+<para>load multiple example files </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="52" column="18" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/example_provider.cpp" bodystart="59" bodyend="66"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="52" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/example_provider.cpp" bodystart="59" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>size_t</type>
@@ -246,14 +239,13 @@
         <argsstring>() const</argsstring>
         <name>num_labels</name>
         <briefdescription>
-<para>return number of labels for each example (computed from first example only) </para>
-        </briefdescription>
+<para>return number of labels for each example (computed from first example only) </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="55" column="20" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" bodystart="55" bodyend="55"/>
-        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1af034c26f3c6c9d88821e1db792e4e874" compoundref="example__provider_8cpp" startline="51" endline="56">ExampleProvider::populate</referencedby>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="55" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" bodystart="55" bodyend="55"/>
+        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1aab34bd38942e6e3e441152bc84bd1637" compoundref="example__provider_8h" startline="47" endline="47">ExampleProvider::~ExampleProvider</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1ad04cc9d97399f697fbc874ecfd8109b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -265,13 +257,12 @@
           <declname>ex</declname>
         </param>
         <briefdescription>
-<para>provide next example </para>
-        </briefdescription>
+<para>provide next example </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="58" column="18" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/example_provider.cpp" bodystart="69" bodyend="73"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="58" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/example_provider.cpp" bodystart="69" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1a6e452f30328eb48d0549e8e107a1327e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref></type>
@@ -284,8 +275,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="59" column="21" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" bodystart="59" bodyend="59"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="59" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" bodystart="59" bodyend="59"/>
         <referencedby refid="classlibmolgrid_1_1ExampleProvider_1a6e452f30328eb48d0549e8e107a1327e" compoundref="example__provider_8h" startline="59" endline="59">ExampleProvider::next</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="example__provider_8h" startline="55" endline="55">ExampleProvider::num_labels</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1a77aacd8e83562f61b7b39ba3444c1d25" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -297,13 +289,13 @@
           <declname>n</declname>
         </param>
         <briefdescription>
-<para>skip over the first n examples </para>
-        </briefdescription>
+<para>skip over the first n examples </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="62" column="18" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/example_provider.cpp" bodystart="88" bodyend="93"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="62" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/example_provider.cpp" bodystart="88" bodyend="93"/>
+        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1a6e452f30328eb48d0549e8e107a1327e" compoundref="example__provider_8h" startline="59" endline="59">ExampleProvider::next</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1a82e186f5abfa7cb53a59487bda88a785" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref> &amp;</type>
@@ -311,13 +303,12 @@
         <argsstring>() const</argsstring>
         <name>settings</name>
         <briefdescription>
-<para>return settings created with </para>
-        </briefdescription>
+<para>return settings created with </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="65" column="35" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" bodystart="65" bodyend="65"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="65" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" bodystart="65" bodyend="65"/>
         <referencedby refid="classlibmolgrid_1_1ExampleProvider_1af53336000ea2b0e977ac8b9378ad544f" compoundref="example__provider_8cpp" startline="96" endline="208">ExampleProvider::createProvider</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1a410cdc30c8d04e7616154a72f5136be1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -334,14 +325,14 @@
           <declname>batch_size</declname>
         </param>
         <briefdescription>
-<para>provide a batch of examples </para>
-        </briefdescription>
+<para>provide a batch of examples </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="68" column="18" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/example_provider.cpp" bodystart="76" bodyend="86"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="68" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/example_provider.cpp" bodystart="76" bodyend="86"/>
         <referencedby refid="classlibmolgrid_1_1ExampleProvider_1a1642d14c76e0d3ccc0470f21aeb4283b" compoundref="example__provider_8h" startline="69" endline="73">ExampleProvider::next_batch</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1a82e186f5abfa7cb53a59487bda88a785" compoundref="example__provider_8h" startline="65" endline="65">ExampleProvider::settings</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1a1642d14c76e0d3ccc0470f21aeb4283b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>std::vector&lt; <ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref> &gt;</type>
@@ -358,7 +349,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="69" column="25" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" bodystart="69" bodyend="73"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="69" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" bodystart="69" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1a23ca85aec357cd4b99a3ed80b70ffed7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classlibmolgrid_1_1ExampleExtractor" kindref="compound">ExampleExtractor</ref> &amp;</type>
@@ -371,7 +362,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="75" column="22" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" bodystart="75" bodyend="75"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="75" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" bodystart="75" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1a0f174b60e8abb4557df194fd0ece1610" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classlibmolgrid_1_1ExampleRefProvider" kindref="compound">ExampleRefProvider</ref> &amp;</type>
@@ -384,7 +375,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="76" column="24" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" bodystart="76" bodyend="76"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="76" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" bodystart="76" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1a59b7170f88e4d8d17e9f4eb5e3d62712" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
@@ -392,13 +383,12 @@
         <argsstring>() const</argsstring>
         <name>num_types</name>
         <briefdescription>
-<para>number of types </para>
-        </briefdescription>
+<para>number of types </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="79" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" bodystart="79" bodyend="79"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="79" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" bodystart="79" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1a2babcd45f89ff67b4b4887f7ba469ae6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -406,13 +396,12 @@
         <argsstring>() const</argsstring>
         <name>get_type_names</name>
         <briefdescription>
-<para>names of types (requires explicit typing) </para>
-        </briefdescription>
+<para>names of types (requires explicit typing) </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="81" column="17" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" bodystart="81" bodyend="81"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="81" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleProvider_1a259cb5a711406a8c3e5d937eb9350cca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
@@ -420,21 +409,19 @@
         <argsstring>() const</argsstring>
         <name>size</name>
         <briefdescription>
-<para>return number of examples </para>
-        </briefdescription>
+<para>return number of examples </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="83" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" bodystart="83" bodyend="83"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="83" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" bodystart="83" bodyend="83"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Given a file of examples, provide <ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref> classes one at a time This contains an exampleref provider, which can be configured using a single settings object if so desired, and an example extractor. </para>
-    </briefdescription>
+<para>Given a file of examples, provide <ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref> classes one at a time This contains an exampleref provider, which can be configured using a single settings object if so desired, and an example extractor. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" line="23" column="22" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example_provider.h" bodystart="23" bodyend="84"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" line="23" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_provider.h" bodystart="23" bodyend="84"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1ExampleProvider_1af53336000ea2b0e977ac8b9378ad544f" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleProvider</scope><name>createProvider</name></member>
       <member refid="classlibmolgrid_1_1ExampleProvider_1aa094561f95e431c276b49586faee2cc5" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleProvider</scope><name>ExampleProvider</name></member>

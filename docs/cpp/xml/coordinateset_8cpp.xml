@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="coordinateset_8cpp" kind="file" language="C++">
     <compoundname>coordinateset.cpp</compoundname>
     <includes local="no">cuda_runtime.h</includes>
@@ -7,155 +7,155 @@
     <includes refid="atom__typer_8h" local="yes">libmolgrid/atom_typer.h</includes>
     <includes local="no">openbabel/obiter.h</includes>
     <incdepgraph>
-      <node id="25">
+      <node id="191">
         <label>functional</label>
       </node>
-      <node id="6">
-        <label>libmolgrid/managed_grid.h</label>
-        <link refid="managed__grid_8h"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
+      <node id="175">
         <label>boost/lexical_cast.hpp</label>
       </node>
-      <node id="2">
+      <node id="168">
         <label>cuda_runtime.h</label>
       </node>
-      <node id="21">
-        <label>libmolgrid/atom_typer.h</label>
-        <link refid="atom__typer_8h"/>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
+      <node id="179">
         <label>cassert</label>
       </node>
-      <node id="5">
-        <label>openbabel/mol.h</label>
-      </node>
-      <node id="20">
-        <label>random</label>
-      </node>
-      <node id="10">
+      <node id="176">
         <label>libmolgrid/grid.h</label>
         <link refid="grid_8h"/>
-        <childnode refid="11" relation="include">
+        <childnode refid="177" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="178" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="175" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="179" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="180" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="181" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-      </node>
-      <node id="15">
-        <label>libmolgrid/common.h</label>
-        <link refid="common_8h"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="185" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="171">
+        <label>openbabel/mol.h</label>
+      </node>
+      <node id="186">
+        <label>random</label>
+      </node>
+      <node id="187">
+        <label>libmolgrid/atom_typer.h</label>
+        <link refid="atom__typer_8h"/>
+        <childnode refid="188" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+        <childnode refid="173" relation="include">
+        </childnode>
+        <childnode refid="180" relation="include">
+        </childnode>
+        <childnode refid="190" relation="include">
+        </childnode>
+        <childnode refid="191" relation="include">
+        </childnode>
+      </node>
+      <node id="188">
         <label>openbabel/atom.h</label>
       </node>
-      <node id="19">
-        <label>libmolgrid/libmolgrid.h</label>
-        <link refid="libmolgrid_8h"/>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
+      <node id="170">
         <label>vector</label>
       </node>
-      <node id="8">
+      <node id="174">
         <label>utility</label>
       </node>
-      <node id="26">
+      <node id="181">
+        <label>libmolgrid/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="173" relation="include">
+        </childnode>
+        <childnode refid="182" relation="include">
+        </childnode>
+        <childnode refid="183" relation="include">
+        </childnode>
+        <childnode refid="184" relation="include">
+        </childnode>
+      </node>
+      <node id="192">
         <label>openbabel/obiter.h</label>
       </node>
-      <node id="23">
+      <node id="189">
         <label>openbabel/elements.h</label>
       </node>
-      <node id="14">
+      <node id="180">
         <label>iostream</label>
       </node>
-      <node id="24">
+      <node id="190">
         <label>unordered_map</label>
       </node>
-      <node id="3">
-        <label>libmolgrid/coordinateset.h</label>
-        <link refid="coordinateset_8h"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="18">
+      <node id="184">
         <label>cuda.h</label>
       </node>
-      <node id="17">
+      <node id="183">
         <label>cuda_runtime_api.h</label>
       </node>
-      <node id="12">
+      <node id="178">
         <label>boost/preprocessor/repetition.hpp</label>
       </node>
-      <node id="11">
-        <label>boost/multi_array.hpp</label>
+      <node id="172">
+        <label>libmolgrid/managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="173" relation="include">
+        </childnode>
+        <childnode refid="174" relation="include">
+        </childnode>
+        <childnode refid="175" relation="include">
+        </childnode>
+        <childnode refid="176" relation="include">
+        </childnode>
       </node>
-      <node id="1">
+      <node id="167">
         <label>coordinateset.cpp</label>
         <link refid="coordinateset_8cpp"/>
-        <childnode refid="2" relation="include">
+        <childnode refid="168" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="169" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="187" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="192" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="177">
+        <label>boost/multi_array.hpp</label>
+      </node>
+      <node id="185">
+        <label>libmolgrid/libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="180" relation="include">
+        </childnode>
+        <childnode refid="175" relation="include">
+        </childnode>
+        <childnode refid="168" relation="include">
+        </childnode>
+      </node>
+      <node id="182">
         <label>cstring</label>
       </node>
-      <node id="7">
+      <node id="169">
+        <label>libmolgrid/coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="170" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="172" relation="include">
+        </childnode>
+      </node>
+      <node id="173">
         <label>memory</label>
       </node>
     </incdepgraph>
@@ -179,14 +179,14 @@
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelibmolgrid" kindref="compound">libmolgrid</ref><sp/>{</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">OpenBabel;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacestd" kindref="compound">std</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceOpenBabel" kindref="compound">OpenBabel</ref>;</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet::CoordinateSet</ref>(OBMol<sp/>*mol):<sp/>CoordinateSet(mol,<sp/><ref refid="namespacelibmolgrid_1a371ec05022b3d175a5b02d540f947ac2" kindref="member">defaultGninaLigandTyper</ref>)<sp/>{}</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//initialize<sp/>with<sp/>obmol</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet::CoordinateSet</ref>(OBMol<sp/>*mol,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>AtomTyper&amp;<sp/>typer)</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>max_type(typer.num_types())<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>max_type(typer.<ref refid="classlibmolgrid_1_1CoordCache_1a59b7170f88e4d8d17e9f4eb5e3d62712" kindref="member">num_types</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/>vector&lt;float3&gt;<sp/>c;<sp/>c.reserve(mol-&gt;NumAtoms());</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/>vector&lt;float&gt;<sp/>types;<sp/><sp/>types.reserve(mol-&gt;NumAtoms());</highlight></codeline>
@@ -225,14 +225,14 @@
 <codeline lineno="58"><highlight class="normal"><sp/><sp/>memcpy(coords.cpu().data(),<sp/>&amp;c[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float3)*N);</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"><sp/><sp/>radii<sp/>=<sp/>MGrid1f(N);</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/>memcpy(radii.cpu().data(),<sp/>&amp;rads[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*N);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>memcpy(radii.cpu().data(),<sp/>&amp;rads[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float)*N);</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(typer.is_vector_typer())<sp/>{</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>type_vector<sp/>=<sp/>MGrid2f(N,max_type);</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(type_vector.cpu().data(),<sp/>&amp;vector_types[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*N*max_type);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(type_vector.cpu().data(),<sp/>&amp;vector_types[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float)*N*max_type);</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>type_index<sp/>=<sp/>MGrid1f(N);</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(type_index.cpu().data(),<sp/>&amp;types[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*N);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(type_index.cpu().data(),<sp/>&amp;types[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float)*N);</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="70"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight></codeline>
@@ -249,7 +249,7 @@
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//copy<sp/>data</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>.tocpu();<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.tocpu();<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.tocpu();</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/>memcpy(<ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.cpu().data(),<sp/>&amp;r[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*N);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>memcpy(<ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.cpu().data(),<sp/>&amp;r[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float)*N);</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/>assert(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float3)*N<sp/>==<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.size());</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/>memcpy(<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.cpu().data(),<sp/>&amp;c[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float3)*N);</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
@@ -260,7 +260,7 @@
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
 <codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment">//initialize<sp/>with<sp/>indexed<sp/>types<sp/>(float)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="95" refid="structlibmolgrid_1_1CoordinateSet_1ac421c7c6c868e29caf32fd65ae4ac8f2" refkind="member"><highlight class="normal"><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet::CoordinateSet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;float3&gt;&amp;<sp/>c,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;float&gt;&amp;<sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;float&gt;&amp;<sp/>r,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>maxt):</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/>coords(c.size(),3),<sp/>type_index(c.size()),<sp/>radii(c.size()),<sp/>max_type(maxt)<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>(c.<ref refid="structlibmolgrid_1_1CoordinateSet_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>(),3),<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>(c.<ref refid="structlibmolgrid_1_1CoordinateSet_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>()),<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>(c.<ref refid="structlibmolgrid_1_1CoordinateSet_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>()),<sp/>max_type(maxt)<sp/>{</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>c.size();</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(N<sp/>!=<sp/>t.size())<sp/>{</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Types<sp/>and<sp/>coordinates<sp/>are<sp/>of<sp/>different<sp/>sizes&quot;</highlight><highlight class="normal">);</highlight></codeline>
@@ -271,21 +271,21 @@
 <codeline lineno="104"><highlight class="normal"></highlight></codeline>
 <codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//copy<sp/>data</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="106"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>.tocpu();<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.tocpu();<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.tocpu();</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/>memcpy(<ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>.cpu().data(),<sp/>&amp;t[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*N);</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/>memcpy(<ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.cpu().data(),<sp/>&amp;r[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*N);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>memcpy(<ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>.cpu().data(),<sp/>&amp;t[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float)*N);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>memcpy(<ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.cpu().data(),<sp/>&amp;r[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float)*N);</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/>assert(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float3)*N<sp/>==<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.size());</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/>memcpy(<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.cpu().data(),<sp/>&amp;c[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float3)*N);</highlight></codeline>
 <codeline lineno="111"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"></highlight></codeline>
 <codeline lineno="114" refid="structlibmolgrid_1_1CoordinateSet_1a99005f3fa607768e70393978a8cac1c8" refkind="member"><highlight class="normal"><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet::CoordinateSet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid2f&amp;<sp/>c,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid1f&amp;<sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid1f&amp;<sp/>r,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>maxt):</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>coords(c.dimension(0),<sp/>c.dimension(1)),<sp/>type_index(t.dimension(0)),<sp/>radii(r.dimension(0)),<sp/>max_type(maxt)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>(c.dimension(0),<sp/>c.dimension(1)),<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>(t.dimension(0)),<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>(r.dimension(0)),<sp/>max_type(maxt)<sp/>{</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.copyFrom(c);</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>.copyFrom(t);</highlight></codeline>
 <codeline lineno="118"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.copyFrom(r);</highlight></codeline>
 <codeline lineno="119"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"></highlight></codeline>
 <codeline lineno="121" refid="structlibmolgrid_1_1CoordinateSet_1acdc0f7d756295891ee55a6b6a51d7cc8" refkind="member"><highlight class="normal"><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet::CoordinateSet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid2fCUDA&amp;<sp/>c,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid1fCUDA&amp;<sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid1fCUDA&amp;<sp/>r,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>maxt):</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>coords(c.dimension(0),<sp/>c.dimension(1)),<sp/>type_index(t.dimension(0)),<sp/>radii(r.dimension(0)),<sp/>max_type(maxt)<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>(c.dimension(0),<sp/>c.dimension(1)),<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>(t.dimension(0)),<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>(r.dimension(0)),<sp/>max_type(maxt)<sp/>{</highlight></codeline>
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.copyFrom(c);</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>.copyFrom(t);</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.copyFrom(r);</highlight></codeline>
@@ -299,19 +299,19 @@
 <codeline lineno="133"><highlight class="normal"></highlight></codeline>
 <codeline lineno="134"><highlight class="normal"></highlight><highlight class="comment">//initialize<sp/>with<sp/>vector<sp/>types</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="135" refid="structlibmolgrid_1_1CoordinateSet_1a0d12f64812a930fd456f29565d3a2a6f" refkind="member"><highlight class="normal"><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet::CoordinateSet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;float3&gt;&amp;<sp/>c,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::vector&lt;float&gt;<sp/>&gt;&amp;<sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;float&gt;&amp;<sp/>r):</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/>coords(c.size(),3),<sp/>type_vector(c.size(),<ref refid="namespacelibmolgrid_1aafd219ed0c26b6bf36bbd792bbc4360e" kindref="member">typ_vec_size</ref>(t)),<sp/>radii(r.size()),<sp/>max_type(<ref refid="namespacelibmolgrid_1aafd219ed0c26b6bf36bbd792bbc4360e" kindref="member">typ_vec_size</ref>(t))<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>(c.<ref refid="structlibmolgrid_1_1CoordinateSet_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>(),3),<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>(c.<ref refid="structlibmolgrid_1_1CoordinateSet_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>(),<ref refid="namespacelibmolgrid_1aafd219ed0c26b6bf36bbd792bbc4360e" kindref="member">typ_vec_size</ref>(t)),<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>(r.<ref refid="structlibmolgrid_1_1CoordinateSet_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>()),<sp/>max_type(<ref refid="namespacelibmolgrid_1aafd219ed0c26b6bf36bbd792bbc4360e" kindref="member">typ_vec_size</ref>(t))<sp/>{</highlight></codeline>
 <codeline lineno="137"><highlight class="normal"></highlight></codeline>
 <codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>c.size();</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(N<sp/>!=<sp/>t.size())<sp/>{</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Types<sp/>and<sp/>coordinates<sp/>are<sp/>of<sp/>different<sp/>sizes&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(N<sp/>!=<sp/>r.size()<sp/>&amp;&amp;<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref><sp/>!=<sp/>r.size())<sp/>{</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Radius<sp/>and<sp/>coordinates/types<sp/>are<sp/>of<sp/>different<sp/>sizes:<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(N)+</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(r.size())+</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>));</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(N<sp/>!=<sp/>r.size()<sp/>&amp;&amp;<sp/>max_type<sp/>!=<sp/>r.size())<sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Radius<sp/>and<sp/>coordinates/types<sp/>are<sp/>of<sp/>different<sp/>sizes:<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(N)+</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(r.size())+</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(max_type));</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"></highlight></codeline>
 <codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//copy<sp/>data</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="147"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>.tocpu();<sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.tocpu();<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.tocpu();</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/>memcpy(<ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.cpu().data(),<sp/>&amp;r[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*r.size());</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/>memcpy(<ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.cpu().data(),<sp/>&amp;r[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float)*r.size());</highlight></codeline>
 <codeline lineno="149"><highlight class="normal"><sp/><sp/>assert(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float3)*N<sp/>==<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.size());</highlight></codeline>
 <codeline lineno="150"><highlight class="normal"><sp/><sp/>memcpy(<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.cpu().data(),<sp/>&amp;c[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float3)*N);</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"></highlight></codeline>
@@ -323,14 +323,14 @@
 <codeline lineno="157"><highlight class="normal"></highlight></codeline>
 <codeline lineno="158"><highlight class="normal"></highlight><highlight class="comment">//vector<sp/>types<sp/>in<sp/>grids</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="159" refid="structlibmolgrid_1_1CoordinateSet_1afef7471a5b7cf9edb353f43e0ab7bd7f" refkind="member"><highlight class="normal"><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet::CoordinateSet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid2f&amp;<sp/>c,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid2f&amp;<sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid1f&amp;<sp/>r):</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>coords(c.dimension(0),c.dimension(1)),<sp/>type_vector(t.dimension(0),<sp/>t.dimension(1)),<sp/>radii(r.dimension(0)),<sp/>max_type(t.dimension(1))<sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>(c.dimension(0),c.dimension(1)),<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>(t.dimension(0),<sp/>t.dimension(1)),<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>(r.dimension(0)),<sp/>max_type(t.dimension(1))<sp/>{</highlight></codeline>
 <codeline lineno="161"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.copyFrom(c);</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>.copyFrom(t);</highlight></codeline>
 <codeline lineno="163"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.copyFrom(r);</highlight></codeline>
 <codeline lineno="164"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="165"><highlight class="normal"></highlight></codeline>
 <codeline lineno="166" refid="structlibmolgrid_1_1CoordinateSet_1ad22e94bba40b6fa67632488426314973" refkind="member"><highlight class="normal"><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet::CoordinateSet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid2fCUDA&amp;<sp/>c,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid2fCUDA&amp;<sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid1fCUDA&amp;<sp/>r):</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>coords(c.dimension(0),c.dimension(1)),<sp/>type_vector(t.dimension(0),<sp/>t.dimension(1)),<sp/>radii(r.dimension(0)),<sp/>max_type(t.dimension(1))<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>(c.dimension(0),c.dimension(1)),<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>(t.dimension(0),<sp/>t.dimension(1)),<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>(r.dimension(0)),<sp/>max_type(t.dimension(1))<sp/>{</highlight></codeline>
 <codeline lineno="168"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.copyFrom(c);</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>.copyFrom(t);</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.copyFrom(r);</highlight></codeline>
@@ -338,10 +338,10 @@
 <codeline lineno="172"><highlight class="normal"></highlight></codeline>
 <codeline lineno="173"><highlight class="normal"></highlight></codeline>
 <codeline lineno="174" refid="structlibmolgrid_1_1CoordinateSet_1a0e160c086e322f69de24be62aa91f265" refkind="member"><highlight class="normal"><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet::CoordinateSet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref>&amp;<sp/>rec,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref>&amp;<sp/>lig,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unique_index_types):</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/>coords(rec.coords.dimension(0)+lig.coords.dimension(0),<sp/>3),</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/>type_index(rec.type_index.dimension(0)+lig.type_index.dimension(0)),</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/>type_vector(rec.type_vector.dimension(0)+lig.type_vector.dimension(0),<sp/>rec.type_vector.dimension(1)),</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/>radii(rec.radii.dimension(0)+lig.radii.dimension(0))<sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>(rec.<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.dimension(0)+lig.<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.dimension(0),<sp/>3),</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>(rec.<ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>.dimension(0)+lig.<ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>.dimension(0)),</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>(rec.<ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>.dimension(0)+lig.<ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>.dimension(0),<sp/>rec.<ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>.dimension(1)),</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>(rec.<ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.dimension(0)+lig.<ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.dimension(0))<sp/>{</highlight></codeline>
 <codeline lineno="179"><highlight class="normal"></highlight></codeline>
 <codeline lineno="180"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1ace9805532c7567a89ac854e292a1b980" kindref="member">mergeInto</ref>(rec,<sp/>lig,<sp/>unique_index_types);</highlight></codeline>
 <codeline lineno="181"><highlight class="normal">}</highlight></codeline>
@@ -351,26 +351,26 @@
 <codeline lineno="186"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>N<sp/>=<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>.size();</highlight></codeline>
 <codeline lineno="187"><highlight class="normal"></highlight></codeline>
 <codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(type_radii.size()<sp/>&gt;<sp/>0<sp/>&amp;&amp;<sp/>type_radii.size()<sp/>!=<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>invalid_argument(</highlight><highlight class="stringliteral">&quot;Type<sp/>radii<sp/>size<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(type_radii.size())<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>does<sp/>not<sp/>equal<sp/>max<sp/>type<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>));</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>invalid_argument(</highlight><highlight class="stringliteral">&quot;Type<sp/>radii<sp/>size<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(type_radii.size())<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>does<sp/>not<sp/>equal<sp/>max<sp/>type<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(max_type));</highlight></codeline>
 <codeline lineno="190"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="191"><highlight class="normal"></highlight></codeline>
 <codeline lineno="192"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(include_dummy_type)</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>++;<sp/></highlight><highlight class="comment">//add<sp/>a<sp/>type<sp/>that<sp/>doesn&apos;t<sp/>match<sp/>any<sp/>atom</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>max_type++;<sp/></highlight><highlight class="comment">//add<sp/>a<sp/>type<sp/>that<sp/>doesn&apos;t<sp/>match<sp/>any<sp/>atom</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="194"><highlight class="normal"></highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref><sp/>=<sp/>MGrid2f(N,<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>);<sp/></highlight><highlight class="comment">//grid<sp/>are<sp/>always<sp/>zero<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref><sp/>=<sp/>MGrid2f(N,<sp/>max_type);<sp/></highlight><highlight class="comment">//grid<sp/>are<sp/>always<sp/>zero<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="196"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>N;<sp/>i++)<sp/>{</highlight></codeline>
 <codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>t<sp/>=<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa1f38e257ccb35de6423f6e749ff28f3" kindref="member">type_index</ref>[i];</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(t<sp/>&lt;<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(t<sp/>&lt;<sp/>max_type)<sp/>{</highlight></codeline>
 <codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>(i,t)<sp/>=<sp/>1.0;</highlight></codeline>
 <codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="201"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="202"><highlight class="normal"></highlight></codeline>
 <codeline lineno="203"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(type_radii.size()&gt;<sp/><sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//change<sp/>radii<sp/>from<sp/>being<sp/>indexed<sp/>by<sp/>atom<sp/>to<sp/>being<sp/>indexed<sp/>by<sp/>type</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref><sp/>=<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.resized(<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref><sp/>=<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.resized(max_type);</highlight></codeline>
 <codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.tocpu();</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(include_dummy_type)<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>[<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>-1]<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(<ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.data(),<sp/>&amp;type_radii[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)*type_radii.size());</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(include_dummy_type)<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>[max_type-1]<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(<ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.data(),<sp/>&amp;type_radii[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float)*type_radii.size());</highlight></codeline>
 <codeline lineno="209"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="210"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="211"><highlight class="normal"></highlight></codeline>
@@ -419,7 +419,7 @@
 <codeline lineno="254"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>.copyFrom(s.<ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>);</highlight></codeline>
 <codeline lineno="255"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>.copyFrom(s.<ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>);</highlight></codeline>
 <codeline lineno="256"><highlight class="normal"></highlight></codeline>
-<codeline lineno="257"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref><sp/>=<sp/>s.<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/>max_type<sp/>=<sp/>s.<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>;</highlight></codeline>
 <codeline lineno="258"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1af51e37c9331049b1e3d250a7c8bc3c26" kindref="member">src</ref><sp/>=<sp/>s.<ref refid="structlibmolgrid_1_1CoordinateSet_1af51e37c9331049b1e3d250a7c8bc3c26" kindref="member">src</ref>;</highlight></codeline>
 <codeline lineno="259"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="260"><highlight class="normal"></highlight></codeline>
@@ -442,9 +442,9 @@
 <codeline lineno="277"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="278"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(rec.<ref refid="structlibmolgrid_1_1CoordinateSet_1a0383762ea62d2afd3844dea2c4a0befb" kindref="member">has_indexed_types</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(unique_index_types)</highlight></codeline>
-<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref><sp/>=<sp/>rec.<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref><sp/>+<sp/>lig.<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>max_type<sp/>=<sp/>rec.<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref><sp/>+<sp/>lig.<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>;</highlight></codeline>
 <codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref><sp/>=<sp/>max(rec.<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>,lig.<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>max_type<sp/>=<sp/>max(rec.<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>,lig.<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>);</highlight></codeline>
 <codeline lineno="283"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(rec.<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref><sp/>!=<sp/>lig.<ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref>)</highlight></codeline>
 <codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Type<sp/>vectors<sp/>are<sp/>incompatible<sp/>sizes,<sp/>weirdly&quot;</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//should<sp/>be<sp/>checked<sp/>above</highlight><highlight class="normal"></highlight></codeline>
@@ -538,6 +538,6 @@
 <codeline lineno="373"><highlight class="normal"></highlight></codeline>
 <codeline lineno="374"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmgd-docstest/src/coordinateset.cpp"/>
+    <location file="/home/dkoes/git/libmolgrid/src/coordinateset.cpp"/>
   </compounddef>
 </doxygen>

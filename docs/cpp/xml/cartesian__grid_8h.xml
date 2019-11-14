@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="cartesian__grid_8h" kind="file" language="C++">
     <compoundname>cartesian_grid.h</compoundname>
     <includes refid="grid_8h" local="yes">libmolgrid/grid.h</includes>
@@ -7,126 +7,126 @@
     <includedby refid="grid__io_8h" local="yes">grid_io.h</includedby>
     <includedby refid="cartesian__grid_8cpp" local="no">cartesian_grid.cpp</includedby>
     <incdepgraph>
-      <node id="16">
-        <label>libmolgrid/managed_grid.h</label>
-        <link refid="managed__grid_8h"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
+      <node id="53">
         <label>boost/lexical_cast.hpp</label>
       </node>
-      <node id="15">
+      <node id="63">
         <label>cuda_runtime.h</label>
       </node>
-      <node id="6">
+      <node id="54">
         <label>cassert</label>
       </node>
-      <node id="14">
-        <label>random</label>
-      </node>
-      <node id="2">
+      <node id="50">
         <label>libmolgrid/grid.h</label>
         <link refid="grid_8h"/>
-        <childnode refid="3" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="55" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="56" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>libmolgrid/common.h</label>
-        <link refid="common_8h"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="61" relation="include">
         </childnode>
       </node>
-      <node id="13">
-        <label>libmolgrid/libmolgrid.h</label>
-        <link refid="libmolgrid_8h"/>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>utility</label>
-      </node>
-      <node id="7">
-        <label>iostream</label>
-      </node>
-      <node id="12">
-        <label>cuda.h</label>
-      </node>
-      <node id="1">
+      <node id="49">
         <label>cartesian_grid.h</label>
         <link refid="cartesian__grid_8h"/>
-        <childnode refid="2" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="64" relation="include">
         </childnode>
       </node>
-      <node id="11">
+      <node id="62">
+        <label>random</label>
+      </node>
+      <node id="65">
+        <label>utility</label>
+      </node>
+      <node id="56">
+        <label>libmolgrid/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>iostream</label>
+      </node>
+      <node id="60">
+        <label>cuda.h</label>
+      </node>
+      <node id="59">
         <label>cuda_runtime_api.h</label>
       </node>
-      <node id="4">
+      <node id="52">
         <label>boost/preprocessor/repetition.hpp</label>
       </node>
-      <node id="3">
+      <node id="64">
+        <label>libmolgrid/managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
         <label>boost/multi_array.hpp</label>
       </node>
-      <node id="10">
+      <node id="61">
+        <label>libmolgrid/libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
         <label>cstring</label>
       </node>
-      <node id="9">
+      <node id="57">
         <label>memory</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2">
-        <label>grid_io.h</label>
-        <link refid="grid__io_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
+      <node id="68">
         <label>grid_io.cpp</label>
         <link refid="grid__io_8cpp"/>
       </node>
-      <node id="4">
+      <node id="69">
         <label>cartesian_grid.cpp</label>
         <link refid="cartesian__grid_8cpp"/>
       </node>
-      <node id="1">
+      <node id="67">
+        <label>grid_io.h</label>
+        <link refid="grid__io_8h"/>
+        <childnode refid="68" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
         <label>cartesian_grid.h</label>
         <link refid="cartesian__grid_8h"/>
-        <childnode refid="2" relation="include">
+        <childnode refid="67" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="69" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -135,8 +135,7 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>Wrapper around grid object that imposes Cartesian coordinates </para>
-    </detaileddescription>
+<para>Wrapper around grid object that imposes Cartesian coordinates </para>    </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
 <codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>CARTESIAN_GRID_H_</highlight><highlight class="normal"></highlight></codeline>
@@ -172,6 +171,6 @@
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>CARTESIAN_GRID_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/cartesian_grid.h"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h"/>
   </compounddef>
 </doxygen>

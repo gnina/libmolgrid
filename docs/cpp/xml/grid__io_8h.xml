@@ -1,136 +1,135 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="grid__io_8h" kind="file" language="C++">
     <compoundname>grid_io.h</compoundname>
     <includes refid="cartesian__grid_8h" local="yes">libmolgrid/cartesian_grid.h</includes>
     <includes local="no">iostream</includes>
     <includedby refid="grid__io_8cpp" local="yes">grid_io.cpp</includedby>
     <incdepgraph>
-      <node id="17">
-        <label>libmolgrid/managed_grid.h</label>
-        <link refid="managed__grid_8h"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
+      <node id="561">
         <label>boost/lexical_cast.hpp</label>
       </node>
-      <node id="1">
-        <label>grid_io.h</label>
-        <link refid="grid__io_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="16">
+      <node id="571">
         <label>cuda_runtime.h</label>
       </node>
-      <node id="7">
+      <node id="562">
         <label>cassert</label>
       </node>
-      <node id="15">
-        <label>random</label>
-      </node>
-      <node id="3">
+      <node id="558">
         <label>libmolgrid/grid.h</label>
         <link refid="grid_8h"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="559" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="560" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="561" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="562" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="563" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="564" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>libmolgrid/common.h</label>
-        <link refid="common_8h"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="569" relation="include">
         </childnode>
       </node>
-      <node id="14">
-        <label>libmolgrid/libmolgrid.h</label>
-        <link refid="libmolgrid_8h"/>
-        <childnode refid="15" relation="include">
+      <node id="556">
+        <label>grid_io.h</label>
+        <link refid="grid__io_8h"/>
+        <childnode refid="557" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="563" relation="include">
         </childnode>
       </node>
-      <node id="18">
-        <label>utility</label>
-      </node>
-      <node id="8">
-        <label>iostream</label>
-      </node>
-      <node id="13">
-        <label>cuda.h</label>
-      </node>
-      <node id="2">
+      <node id="557">
         <label>libmolgrid/cartesian_grid.h</label>
         <link refid="cartesian__grid_8h"/>
-        <childnode refid="3" relation="include">
+        <childnode refid="558" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="572" relation="include">
         </childnode>
       </node>
-      <node id="12">
+      <node id="570">
+        <label>random</label>
+      </node>
+      <node id="573">
+        <label>utility</label>
+      </node>
+      <node id="564">
+        <label>libmolgrid/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="565" relation="include">
+        </childnode>
+        <childnode refid="566" relation="include">
+        </childnode>
+        <childnode refid="567" relation="include">
+        </childnode>
+        <childnode refid="568" relation="include">
+        </childnode>
+      </node>
+      <node id="563">
+        <label>iostream</label>
+      </node>
+      <node id="568">
+        <label>cuda.h</label>
+      </node>
+      <node id="567">
         <label>cuda_runtime_api.h</label>
       </node>
-      <node id="5">
+      <node id="560">
         <label>boost/preprocessor/repetition.hpp</label>
       </node>
-      <node id="4">
+      <node id="572">
+        <label>libmolgrid/managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="565" relation="include">
+        </childnode>
+        <childnode refid="573" relation="include">
+        </childnode>
+        <childnode refid="561" relation="include">
+        </childnode>
+        <childnode refid="558" relation="include">
+        </childnode>
+      </node>
+      <node id="559">
         <label>boost/multi_array.hpp</label>
       </node>
-      <node id="11">
+      <node id="569">
+        <label>libmolgrid/libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="570" relation="include">
+        </childnode>
+        <childnode refid="563" relation="include">
+        </childnode>
+        <childnode refid="561" relation="include">
+        </childnode>
+        <childnode refid="571" relation="include">
+        </childnode>
+      </node>
+      <node id="566">
         <label>cstring</label>
       </node>
-      <node id="10">
+      <node id="565">
         <label>memory</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="1">
-        <label>grid_io.h</label>
-        <link refid="grid__io_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
+      <node id="575">
         <label>grid_io.cpp</label>
         <link refid="grid__io_8cpp"/>
+      </node>
+      <node id="574">
+        <label>grid_io.h</label>
+        <link refid="grid__io_8h"/>
+        <childnode refid="575" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innernamespace refid="namespacelibmolgrid">libmolgrid</innernamespace>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>Input/output routines for 3D grids. </para>
-    </detaileddescription>
+<para>Input/output routines for 3D grids. </para>    </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
 <codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>GRID_IO_H_</highlight><highlight class="normal"></highlight></codeline>
@@ -164,23 +163,23 @@
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Docstring_write_dx</highlight></codeline>
 <codeline lineno="41"><highlight class="comment"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DType&gt;</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a6a20da8af322317857655e627f1e9f5d" kindref="member">write_dx</ref>(std::ostream&amp;<sp/>out,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid&lt;DType,<sp/>3&gt;&amp;<sp/>grid,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>float3&amp;<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>resolution,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale=1.0);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a6a20da8af322317857655e627f1e9f5d" kindref="member">write_dx</ref>(std::ostream&amp;<sp/>out,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;DType, 3&gt;</ref>&amp;<sp/>grid,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>float3&amp;<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>resolution,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale=1.0);</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DType&gt;</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a6a20da8af322317857655e627f1e9f5d" kindref="member">write_dx</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>fname,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid&lt;DType,<sp/>3&gt;&amp;<sp/>grid,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>float3&amp;<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>resolution,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale=1.0);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a6a20da8af322317857655e627f1e9f5d" kindref="member">write_dx</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>fname,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;DType, 3&gt;</ref>&amp;<sp/>grid,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>float3&amp;<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>resolution,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale=1.0);</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Docstring_write_dx_grids</highlight></codeline>
 <codeline lineno="55"><highlight class="comment"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Dtype&gt;</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a99f7f8f546917a9c1d891fb1eb3b731b" kindref="member">write_dx_grids</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>prefix,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;&amp;<sp/>names,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid&lt;Dtype,<sp/>4&gt;&amp;<sp/>grid,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>float3&amp;<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>resolution,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale=1.0);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a99f7f8f546917a9c1d891fb1eb3b731b" kindref="member">write_dx_grids</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>prefix,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;&amp;<sp/>names,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;Dtype, 4&gt;</ref>&amp;<sp/>grid,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>float3&amp;<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>resolution,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale=1.0);</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Docstring_read_dx_grids</highlight></codeline>
 <codeline lineno="67"><highlight class="comment"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Dtype&gt;</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a480d5a45562f3cda34dbac07d1415d04" kindref="member">read_dx_grids</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>prefix,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;&amp;<sp/>names,<sp/>Grid&lt;Dtype,<sp/>4&gt;&amp;<sp/>grid);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a480d5a45562f3cda34dbac07d1415d04" kindref="member">read_dx_grids</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>prefix,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;&amp;<sp/>names,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;Dtype, 4&gt;</ref>&amp;<sp/>grid);</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Docstring_write_map</highlight></codeline>
 <codeline lineno="72"><highlight class="comment"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DType&gt;</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a2fd3cdc3e58f538b5ae29f29654a5b2c" kindref="member">write_map</ref>(std::ostream&amp;<sp/>out,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid&lt;DType,<sp/>3&gt;&amp;<sp/>grid,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>float3&amp;<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>resolution,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale=1.0);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a2fd3cdc3e58f538b5ae29f29654a5b2c" kindref="member">write_map</ref>(std::ostream&amp;<sp/>out,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;DType, 3&gt;</ref>&amp;<sp/>grid,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>float3&amp;<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>resolution,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale=1.0);</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DType&gt;</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a2fd3cdc3e58f538b5ae29f29654a5b2c" kindref="member">write_map</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>fname,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Grid&lt;DType,<sp/>3&gt;&amp;<sp/>grid,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>float3&amp;<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>resolution,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale=1.0);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a2fd3cdc3e58f538b5ae29f29654a5b2c" kindref="member">write_map</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>fname,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;DType, 3&gt;</ref>&amp;<sp/>grid,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>float3&amp;<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>resolution,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale=1.0);</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//dump<sp/>raw<sp/>data<sp/>in<sp/>binary</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>G&gt;</highlight></codeline>
@@ -194,6 +193,6 @@
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
 <codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>GRID_IO_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/grid_io.h"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h"/>
   </compounddef>
 </doxygen>

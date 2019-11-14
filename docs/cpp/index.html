@@ -1905,12 +1905,6 @@
 
 <dl class="function">
 <dt>
-<span class="target" id="classlibmolgrid_1_1AtomIndexTyper_1ae503ecbf9ca173356ef6e475597e2b46"></span><em class="property">virtual</em> unsigned <code class="sig-name descname">num_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> = 0<br /></dt>
-<dd><p>return number of types </p>
-</dd></dl>
-
-<dl class="function">
-<dt>
 <span class="target" id="classlibmolgrid_1_1MappedAtomIndexTyper_1ada10bf195e09de3a351bc4a4649ac629"></span><em class="property">virtual</em> std::pair&lt;int, float&gt; <code class="sig-name descname">get_atom_type_index</code><span class="sig-paren">(</span>OpenBabel::OBAtom *<em>a</em><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
 <dd><p>return type index of a </p>
 </dd></dl>
@@ -1928,21 +1922,9 @@
 </dd></dl>
 
 <dl class="function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1AtomIndexTyper_1aedda205572fbbaa3a868181802232263"></span><em class="property">virtual</em> std::vector&lt;std::string&gt; <code class="sig-name descname">get_type_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> = 0<br /></dt>
-<dd><p>return vector of string representations of types this isn’t expected to be particularly efficient </p>
-</dd></dl>
-
-<dl class="function">
 <dt id="_CPPv4NK14get_type_radiiEv">
 <span class="target" id="classlibmolgrid_1_1MappedAtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2"></span><em class="property">virtual</em> std::vector&lt;float&gt; <code class="sig-name descname">get_type_radii</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
 <dd><p>radii are the average of the underlying mapped types </p>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1AtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2"></span><em class="property">virtual</em> std::vector&lt;float&gt; <code class="sig-name descname">get_type_radii</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
-<dd><p>if applicable to the typer, return the standard atomic radius of each type </p>
 </dd></dl>
 
 <dl class="function">
@@ -2003,12 +1985,6 @@
 
 <dl class="function">
 <dt>
-<span class="target" id="classlibmolgrid_1_1AtomIndexTyper_1ae503ecbf9ca173356ef6e475597e2b46"></span><em class="property">virtual</em> unsigned <code class="sig-name descname">num_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> = 0<br /></dt>
-<dd><p>return number of types </p>
-</dd></dl>
-
-<dl class="function">
-<dt>
 <span class="target" id="classlibmolgrid_1_1MappedAtomIndexTyper_1ada10bf195e09de3a351bc4a4649ac629"></span><em class="property">virtual</em> std::pair&lt;int, float&gt; <code class="sig-name descname">get_atom_type_index</code><span class="sig-paren">(</span>OpenBabel::OBAtom *<em>a</em><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
 <dd><p>return type index of a </p>
 </dd></dl>
@@ -2027,20 +2003,8 @@
 
 <dl class="function">
 <dt>
-<span class="target" id="classlibmolgrid_1_1AtomIndexTyper_1aedda205572fbbaa3a868181802232263"></span><em class="property">virtual</em> std::vector&lt;std::string&gt; <code class="sig-name descname">get_type_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> = 0<br /></dt>
-<dd><p>return vector of string representations of types this isn’t expected to be particularly efficient </p>
-</dd></dl>
-
-<dl class="function">
-<dt>
 <span class="target" id="classlibmolgrid_1_1MappedAtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2"></span><em class="property">virtual</em> std::vector&lt;float&gt; <code class="sig-name descname">get_type_radii</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
 <dd><p>radii are the average of the underlying mapped types </p>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1AtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2"></span><em class="property">virtual</em> std::vector&lt;float&gt; <code class="sig-name descname">get_type_radii</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
-<dd><p>if applicable to the typer, return the standard atomic radius of each type </p>
 </dd></dl>
 
 <dl class="function">
@@ -2745,7 +2709,7 @@
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="function">
 <dt>
-<span class="target" id="classlibmolgrid_1_1Grid_1a483b22b3df988a8a315fe4525097cd91"></span><code class="sig-name descname">const CUDA_CALLABLE_MEMBER size_t* dimensions() const</code></dt>
+<span class="target" id="classlibmolgrid_1_1Grid_1a9f86f62cd29badc89d2c72631b63264d"></span><code class="sig-name descname">CUDA_CALLABLE_MEMBER const size_t* dimensions() const</code></dt>
 <dd><p>dimensions along each axis </p>
 </dd></dl>
 
@@ -2757,7 +2721,7 @@
 
 <dl class="function">
 <dt>
-<span class="target" id="classlibmolgrid_1_1Grid_1a99fba573ee49cb59c992f17f4cbc21bb"></span><code class="sig-name descname">const CUDA_CALLABLE_MEMBER size_t* offsets() const</code></dt>
+<span class="target" id="classlibmolgrid_1_1Grid_1a2f606ad331413ba32697c5fad87364e4"></span><code class="sig-name descname">CUDA_CALLABLE_MEMBER const size_t* offsets() const</code></dt>
 <dd><p>offset for each dimension, all indexing calculations use this </p>
 </dd></dl>
 
@@ -2841,7 +2805,7 @@
 
 <dl class="function">
 <dt>
-<span class="target" id="classlibmolgrid_1_1Grid_1ad16f3140a0985865efe01db743da33c2"></span><code class="sig-name descname">template&lt;typename... I&gt;const CUDA_CALLABLE_MEMBER Dtype* address(I... indices) const</code></dt>
+<span class="target" id="classlibmolgrid_1_1Grid_1a82aac66e00ce6ddf2cb4638537242d77"></span><code class="sig-name descname">template&lt;typename... I&gt;CUDA_CALLABLE_MEMBER const Dtype* address(I... indices) const</code></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -3276,7 +3240,7 @@
 <h2>The <code class="docutils literal notranslate"><span class="pre">ManagedGrid</span></code> class<a class="headerlink" href="#the-managedgrid-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4I0_NSt6size_tEEN10libmolgrid11ManagedGridE">
-<span id="_CPPv3I0_NSt6size_tEEN10libmolgrid11ManagedGridE"></span><span id="_CPPv2I0_NSt6size_tEEN10libmolgrid11ManagedGridE"></span><span class="target" id="classlibmolgrid_1_1ManagedGrid"></span>template&lt;typename <code class="sig-name descname">Dtype</code>, std::size_t <code class="sig-name descname">NumDims</code>&gt;<br /><em class="property">class </em><code class="sig-name descname">ManagedGrid</code><a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN10libmolgrid11ManagedGridE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3I0_NSt6size_tEEN10libmolgrid11ManagedGridE"></span><span id="_CPPv2I0_NSt6size_tEEN10libmolgrid11ManagedGridE"></span><span class="target" id="classlibmolgrid_1_1ManagedGrid"></span>template&lt;typename <code class="sig-name descname">Dtype</code>, std::size_t <code class="sig-name descname">NumDims</code>&gt;<br /><em class="property">class </em><code class="sig-name descname">ManagedGrid</code> : <em class="property">public</em> libmolgrid::<a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN10libmolgrid15ManagedGridBaseE" title="libmolgrid::ManagedGridBase">ManagedGridBase</a>&lt;<a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN10libmolgrid11ManagedGridE" title="libmolgrid::ManagedGrid::Dtype">Dtype</a>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tEEN10libmolgrid11ManagedGridE" title="libmolgrid::ManagedGrid::NumDims">NumDims</a>&gt;<a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN10libmolgrid11ManagedGridE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A dense grid whose memory is managed by the class. </p>
 <p>Memory is allocated as unified memory so it can be safely accessed from either the CPU or GPU. Note that while the memory is accessible on the GPU, <a class="reference internal" href="#classlibmolgrid_1_1ManagedGrid"><span class="std std-ref">ManagedGrid</span></a> objects should only be used directly on the host. Device code should use a <a class="reference internal" href="#classlibmolgrid_1_1Grid"><span class="std std-ref">Grid</span></a> view of the <a class="reference internal" href="#classlibmolgrid_1_1ManagedGrid"><span class="std std-ref">ManagedGrid</span></a>. Accessing <a class="reference internal" href="#classlibmolgrid_1_1ManagedGrid"><span class="std std-ref">ManagedGrid</span></a> data from the host while the GPU is writing to the grid will result in undefined behavior.</p>
 <p>If CUDA fails to allocate unified memory (presumably due to lack of GPUs), host-only memory will be used instead.</p>
@@ -3292,6 +3256,22 @@
 <dl class="type">
 <dt id="_CPPv46base_t">
 <span id="_CPPv36base_t"></span><span id="_CPPv26base_t"></span><span class="target" id="classlibmolgrid_1_1ManagedGrid_1a5f65ecf59323f2fdf69c9ba72425a1a5"></span><em class="property">using </em><code class="sig-name descname">base_t</code> = ManagedGridBase&lt;Dtype, NumDims&gt;<a class="headerlink" href="#_CPPv46base_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="type">
+<dt id="_CPPv410gpu_grid_t">
+<span id="_CPPv310gpu_grid_t"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a67f5cdb60527c14d22585550dcc3cd20"></span><em class="property">using </em><code class="sig-name descname">gpu_grid_t</code> = <a class="reference internal" href="#_CPPv44Gridv" title="Grid">Grid</a>&lt;Dtype, NumDims, true&gt;<br /></dt>
+<dd></dd></dl>
+
+<dl class="type">
+<dt id="_CPPv410cpu_grid_t">
+<span id="_CPPv310cpu_grid_t"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1aab951804b94d775517a3b614947401b5"></span><em class="property">using </em><code class="sig-name descname">cpu_grid_t</code> = <a class="reference internal" href="#_CPPv44Gridv" title="Grid">Grid</a>&lt;Dtype, NumDims, false&gt;<br /></dt>
+<dd><p>cuda grid type </p>
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv44type">
+<span id="_CPPv34type"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a2d7497e2eb6dbb6b75ca3a4df279392b"></span><em class="property">using </em><code class="sig-name descname">type</code> = Dtype<br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -3320,37 +3300,6 @@
 <dd><p>Return a copy of this grid. </p>
 </dd></dl>
 
-</div>
-</dd></dl>
-
-</div>
-<div class="section" id="the-managedgridbase-class">
-<h2>The <code class="docutils literal notranslate"><span class="pre">ManagedGridBase</span></code> class<a class="headerlink" href="#the-managedgridbase-class" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="_CPPv4I0_NSt6size_tEEN10libmolgrid15ManagedGridBaseE">
-<span id="_CPPv3I0_NSt6size_tEEN10libmolgrid15ManagedGridBaseE"></span><span id="_CPPv2I0_NSt6size_tEEN10libmolgrid15ManagedGridBaseE"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase"></span>template&lt;typename <code class="sig-name descname">Dtype</code>, std::size_t <code class="sig-name descname">NumDims</code>&gt;<br /><em class="property">class </em><code class="sig-name descname">ManagedGridBase</code><a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN10libmolgrid15ManagedGridBaseE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><a class="reference internal" href="#classlibmolgrid_1_1ManagedGrid"><span class="std std-ref">ManagedGrid</span></a> base class. </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
-<dl class="type">
-<dt id="_CPPv410gpu_grid_t">
-<span id="_CPPv310gpu_grid_t"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a67f5cdb60527c14d22585550dcc3cd20"></span><em class="property">using </em><code class="sig-name descname">gpu_grid_t</code> = <a class="reference internal" href="#_CPPv44Gridv" title="Grid">Grid</a>&lt;Dtype, NumDims, true&gt;<br /></dt>
-<dd></dd></dl>
-
-<dl class="type">
-<dt id="_CPPv410cpu_grid_t">
-<span id="_CPPv310cpu_grid_t"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1aab951804b94d775517a3b614947401b5"></span><em class="property">using </em><code class="sig-name descname">cpu_grid_t</code> = <a class="reference internal" href="#_CPPv44Gridv" title="Grid">Grid</a>&lt;Dtype, NumDims, false&gt;<br /></dt>
-<dd><p>cuda grid type </p>
-</dd></dl>
-
-<dl class="type">
-<dt id="_CPPv44type">
-<span id="_CPPv34type"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a2d7497e2eb6dbb6b75ca3a4df279392b"></span><em class="property">using </em><code class="sig-name descname">type</code> = Dtype<br /></dt>
-<dd></dd></dl>
-
-</div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="function">
 <dt id="_CPPv4NK10dimensionsEv">
 <span id="_CPPv3NK10dimensionsEv"></span><span id="_CPPv2NK10dimensionsEv"></span><span id="dimensionsC"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1adc57df2d9d355c2c98206d8ca7ab230d"></span><em class="property">const</em> size_t *<code class="sig-name descname">dimensions</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK10dimensionsEv" title="Permalink to this definition">¶</a><br /></dt>
@@ -3534,6 +3483,223 @@
 <dl class="member">
 <dt id="_CPPv41N">
 <span id="_CPPv31N"></span><span id="_CPPv21N"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1ad8331653910a5a034f8238e6a8fbb9b1"></span><em class="property">constexpr</em> size_t <code class="sig-name descname">N</code> = NumDims<br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="the-managedgridbase-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">ManagedGridBase</span></code> class<a class="headerlink" href="#the-managedgridbase-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv4I0_NSt6size_tEEN10libmolgrid15ManagedGridBaseE">
+<span id="_CPPv3I0_NSt6size_tEEN10libmolgrid15ManagedGridBaseE"></span><span id="_CPPv2I0_NSt6size_tEEN10libmolgrid15ManagedGridBaseE"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase"></span>template&lt;typename <code class="sig-name descname">Dtype</code>, std::size_t <code class="sig-name descname">NumDims</code>&gt;<br /><em class="property">class </em><code class="sig-name descname">ManagedGridBase</code><a class="headerlink" href="#_CPPv4I0_NSt6size_tEEN10libmolgrid15ManagedGridBaseE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#classlibmolgrid_1_1ManagedGrid"><span class="std std-ref">ManagedGrid</span></a> base class. </p>
+<p>Subclassed by <a class="reference internal" href="#classlibmolgrid_1_1ManagedGrid"><span class="std std-ref">ManagedGrid&lt; Dtype, NumDims &gt;</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Types</p>
+<dl class="type">
+<dt id="_CPPv410gpu_grid_t">
+<span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a67f5cdb60527c14d22585550dcc3cd20"></span><em class="property">using </em><code class="sig-name descname">gpu_grid_t</code> = <a class="reference internal" href="#_CPPv44Gridv" title="Grid">Grid</a>&lt;Dtype, NumDims, true&gt;<br /></dt>
+<dd></dd></dl>
+
+<dl class="type">
+<dt id="_CPPv410cpu_grid_t">
+<span class="target" id="classlibmolgrid_1_1ManagedGridBase_1aab951804b94d775517a3b614947401b5"></span><em class="property">using </em><code class="sig-name descname">cpu_grid_t</code> = <a class="reference internal" href="#_CPPv44Gridv" title="Grid">Grid</a>&lt;Dtype, NumDims, false&gt;<br /></dt>
+<dd><p>cuda grid type </p>
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv44type">
+<span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a2d7497e2eb6dbb6b75ca3a4df279392b"></span><em class="property">using </em><code class="sig-name descname">type</code> = Dtype<br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4NK10dimensionsEv">
+<span id="_CPPv3NK10dimensionsEv"></span><span id="_CPPv2NK10dimensionsEv"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1adc57df2d9d355c2c98206d8ca7ab230d"></span><em class="property">const</em> size_t *<code class="sig-name descname">dimensions</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>dimensions along each axis </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK9dimensionE6size_t">
+<span id="_CPPv3NK9dimensionE6size_t"></span><span id="_CPPv2NK9dimensionE6size_t"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a4a86470b9f8e551e5a060872f9e5680e"></span>size_t <code class="sig-name descname">dimension</code><span class="sig-paren">(</span>size_t <em>i</em><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>dimensions along specified axis </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK7offsetsEv">
+<span id="_CPPv3NK7offsetsEv"></span><span id="_CPPv2NK7offsetsEv"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1ab18a0f2c17222ceecc823cdb1df6f9e2"></span><em class="property">const</em> size_t *<code class="sig-name descname">offsets</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>offset for each dimension, all indexing calculations use this </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK6offsetE6size_t">
+<span id="_CPPv3NK6offsetE6size_t"></span><span id="_CPPv2NK6offsetE6size_t"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1ab1990983adc822e595a52ba83d689a9e"></span>size_t <code class="sig-name descname">offset</code><span class="sig-paren">(</span>size_t <em>i</em><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>offset for each dimension, all indexing calculations use this </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a259cb5a711406a8c3e5d937eb9350cca"></span>size_t <code class="sig-name descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>number of elements in grid </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv49fill_zerov">
+<span id="_CPPv39fill_zerov"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a512219066836349f65f85a0ead19ae8a"></span>void <code class="sig-name descname">fill_zero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>set contents to zero </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4IDpEclR5DtypeDp1I">
+<span id="_CPPv3IDpEclDp1I"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1aa5b105cea5249d8b627dc7a9e897f0a1"></span>template&lt;typename ...<code class="sig-name descname">I</code>&gt;<br />Dtype &amp;<code class="sig-name descname">operator()</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4IDpEclR5DtypeDp1I" title="operator()::I">I</a>... <em>indices</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>Initializer list indexing. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4IDpENKclE5DtypeDp1I">
+<span id="_CPPv3IDpENKclEDp1I"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1ac469c7ee3d92be77bc38bddb26b5f695"></span>template&lt;typename ...<code class="sig-name descname">I</code>&gt;<br />Dtype <code class="sig-name descname">operator()</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4IDpEclR5DtypeDp1I" title="operator()::I">I</a>... <em>indices</em><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK6copyToER10cpu_grid_t">
+<span id="_CPPv3NK6copyToER10cpu_grid_t"></span><span id="_CPPv2NK6copyToER10cpu_grid_t"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1aff4a416b7db91859de81b24856be632a"></span>size_t <code class="sig-name descname">copyTo</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410cpu_grid_t" title="cpu_grid_t">cpu_grid_t</a> &amp;<em>dest</em><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>Copy data into dest. Should be same size, but will narrow if needed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK6copyToER10gpu_grid_t">
+<span id="_CPPv3NK6copyToER10gpu_grid_t"></span><span id="_CPPv2NK6copyToER10gpu_grid_t"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1acbc53c65c1c27667a659ec84dafbe01a"></span>size_t <code class="sig-name descname">copyTo</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410gpu_grid_t" title="gpu_grid_t">gpu_grid_t</a> &amp;<em>dest</em><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>Copy data into dest. Should be same size, but will narrow if needed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK6copyToER15ManagedGridBaseI5Dtype7NumDimsE">
+<span id="_CPPv3NK6copyToER15ManagedGridBaseI5Dtype7NumDimsE"></span><span id="_CPPv2NK6copyToER15ManagedGridBaseI5Dtype7NumDimsE"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1afd5ca42172cc845309b01069ed3a14c2"></span>size_t <code class="sig-name descname">copyTo</code><span class="sig-paren">(</span>ManagedGridBase&lt;Dtype, NumDims&gt; &amp;<em>dest</em><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>Copy data into dest. Should be same size, but will narrow if needed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv48copyFromRK10cpu_grid_t">
+<span id="_CPPv38copyFromRK10cpu_grid_t"></span><span id="_CPPv28copyFromRK10cpu_grid_t"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a32a5cdeb67c51d9b75925d93277a1ed0"></span>size_t <code class="sig-name descname">copyFrom</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv410cpu_grid_t" title="cpu_grid_t">cpu_grid_t</a> &amp;<em>src</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>Copy data from src. Should be same size, but will narrow if needed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv48copyFromRK10gpu_grid_t">
+<span id="_CPPv38copyFromRK10gpu_grid_t"></span><span id="_CPPv28copyFromRK10gpu_grid_t"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1ac4d8dd20279b234e0d8c057f052c4a95"></span>size_t <code class="sig-name descname">copyFrom</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv410gpu_grid_t" title="gpu_grid_t">gpu_grid_t</a> &amp;<em>src</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>Copy data from src. Should be same size, but will narrow if needed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv48copyFromRK15ManagedGridBaseI5Dtype7NumDimsE">
+<span id="_CPPv38copyFromRK15ManagedGridBaseI5Dtype7NumDimsE"></span><span id="_CPPv28copyFromRK15ManagedGridBaseI5Dtype7NumDimsE"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a7f97a564c8b4e32c14d7b4ab58255295"></span>size_t <code class="sig-name descname">copyFrom</code><span class="sig-paren">(</span><em class="property">const</em> ManagedGridBase&lt;Dtype, NumDims&gt; &amp;<em>src</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>Copy data from src. Should be same size, but will narrow if needed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv48copyInto6size_tRK15ManagedGridBaseI5Dtype7NumDimsE">
+<span id="_CPPv38copyInto6size_tRK15ManagedGridBaseI5Dtype7NumDimsE"></span><span id="_CPPv28copyInto6size_tRK15ManagedGridBaseI5Dtype7NumDimsE"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1ab92b52fef49a9d7440a98f567c28f168"></span>size_t <code class="sig-name descname">copyInto</code><span class="sig-paren">(</span>size_t <em>start</em>, <em class="property">const</em> ManagedGridBase&lt;Dtype, NumDims&gt; &amp;<em>src</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>Copy data from src into this starting at start. Should be same size, but will narrow if needed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4IDp0E7resized11ManagedGridI5Dtype7NumDimsEDp1I">
+<span id="_CPPv3IDp0E7resizedDp1I"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a8576226e00915bc8c923e0b9c77e051e"></span>template&lt;typename ...<code class="sig-name descname">I</code>, typename = <em class="property">typename</em> std::enable_if&lt;sizeof...(<a class="reference internal" href="#_CPPv4IDp0E7resized11ManagedGridI5Dtype7NumDimsEDp1I" title="resized::I">I</a>) == NumDims&gt;::type&gt;<br /><a class="reference internal" href="#_CPPv411ManagedGridv" title="ManagedGrid">ManagedGrid</a>&lt;Dtype, NumDims&gt; <code class="sig-name descname">resized</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4IDp0E7resized11ManagedGridI5Dtype7NumDimsEDp1I" title="resized::I">I</a>... <em>sizes</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>Return a grid in the specified shape that attempts to reuse the memory of this grid. Memory will be allocated if needed. Data will be truncated/copied as needed. DANGER! The returned grid may or may not mirror this grid depending on the shape. This function is provided so code can be optimized to avoid unnecessary allocations and should be used carefully. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK3gpuEv">
+<span id="_CPPv3NK3gpuEv"></span><span id="_CPPv2NK3gpuEv"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1acc87d7aacb8f79831cae339b3039b65d"></span><em class="property">const</em> <a class="reference internal" href="#_CPPv410gpu_grid_t" title="gpu_grid_t">gpu_grid_t</a> &amp;<code class="sig-name descname">gpu</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>Return GPU <a class="reference internal" href="#classlibmolgrid_1_1Grid"><span class="std std-ref">Grid</span></a> view. Host code should not access the grid until the GPU code is complete. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv43gpuv">
+<span id="_CPPv33gpuv"></span><span id="_CPPv23gpuv"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1aa5c4b729fa4facfb55cb19b51f5797cb"></span><a class="reference internal" href="#_CPPv410gpu_grid_t" title="gpu_grid_t">gpu_grid_t</a> &amp;<code class="sig-name descname">gpu</code><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK3cpuEv">
+<span id="_CPPv3NK3cpuEv"></span><span id="_CPPv2NK3cpuEv"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1af9baf061634fae1bd30d7abd24900263"></span><em class="property">const</em> <a class="reference internal" href="#_CPPv410cpu_grid_t" title="cpu_grid_t">cpu_grid_t</a> &amp;<code class="sig-name descname">cpu</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>Return CPU <a class="reference internal" href="#classlibmolgrid_1_1Grid"><span class="std std-ref">Grid</span></a> view. GPU code should no longer access this memory. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv43cpuv">
+<span id="_CPPv33cpuv"></span><span id="_CPPv23cpuv"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1abc539db90c9ad1195006ab86c772f4a3"></span><a class="reference internal" href="#_CPPv410cpu_grid_t" title="cpu_grid_t">cpu_grid_t</a> &amp;<code class="sig-name descname">cpu</code><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK5togpuEb">
+<span id="_CPPv3NK5togpuEb"></span><span id="_CPPv2NK5togpuEb"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a18aaaed8a845f4c8ad9c30d0693e03c1"></span>void <code class="sig-name descname">togpu</code><span class="sig-paren">(</span>bool <em>dotransfer</em> = true<span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>Transfer data to GPU. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK5tocpuEb">
+<span id="_CPPv3NK5tocpuEb"></span><span id="_CPPv2NK5tocpuEb"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a3e9eb84f9344f6ca4eac9975f8f61386"></span>void <code class="sig-name descname">tocpu</code><span class="sig-paren">(</span>bool <em>dotransfer</em> = true<span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>Transfer data to CPU. If not dotransfer, data is not copied back. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK5ongpuEv">
+<span id="_CPPv3NK5ongpuEv"></span><span id="_CPPv2NK5ongpuEv"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a3ffb36b58be9d3c48294d1f4e3366af8"></span>bool <code class="sig-name descname">ongpu</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>Return true if memory is currently on GPU. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK5oncpuEv">
+<span id="_CPPv3NK5oncpuEv"></span><span id="_CPPv2NK5oncpuEv"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a2b2ad679c12e649d9b5a0fd8f03d3237"></span>bool <code class="sig-name descname">oncpu</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>Return true if memory is currently on CPU. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NKcv10cpu_grid_tEv">
+<span id="_CPPv3NKcv10cpu_grid_tEv"></span><span id="_CPPv2NKcv10cpu_grid_tEv"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a8c2b884f05b8f337cada06f5f978b588"></span><code class="sig-name descname">operator cpu_grid_t</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4cvR10cpu_grid_tv">
+<span id="_CPPv3cvR10cpu_grid_tv"></span><span id="_CPPv2cvR10cpu_grid_tv"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a535df4d8926149a00163552a34596d69"></span><code class="sig-name descname">operator cpu_grid_t&amp;</code><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NKcv10gpu_grid_tEv">
+<span id="_CPPv3NKcv10gpu_grid_tEv"></span><span id="_CPPv2NKcv10gpu_grid_tEv"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a10b2f00260f2d9a097fbd7eda7bc9a4a"></span><code class="sig-name descname">operator gpu_grid_t</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4cvR10gpu_grid_tv">
+<span id="_CPPv3cvR10gpu_grid_tv"></span><span id="_CPPv2cvR10gpu_grid_tv"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1ada677d2971fd6a2aad1277901804cdd2"></span><code class="sig-name descname">operator gpu_grid_t&amp;</code><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK4dataEv">
+<span id="_CPPv3NK4dataEv"></span><span id="_CPPv2NK4dataEv"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1aa1322a8e4f3f36cfff77ca7a5ec57d97"></span><em class="property">const</em> Dtype *<code class="sig-name descname">data</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>Return pointer to CPU data. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv44datav">
+<span id="_CPPv34datav"></span><span id="_CPPv24datav"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1aecdaa9892795d526d6d468e21ef3a2b2"></span>Dtype *<code class="sig-name descname">data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NKeqERK15ManagedGridBaseI5Dtype7NumDimsE">
+<span id="_CPPv3NKeqERK15ManagedGridBaseI5Dtype7NumDimsE"></span><span id="_CPPv2NKeqERK15ManagedGridBaseI5Dtype7NumDimsE"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1a1a93843cbf5cdc9ed0a1bf5b4d760068"></span>bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> ManagedGridBase&lt;Dtype, NumDims&gt; &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Static Attributes</p>
+<dl class="member">
+<dt id="_CPPv41N">
+<span id="_CPPv31N"></span><span class="target" id="classlibmolgrid_1_1ManagedGridBase_1ad8331653910a5a034f8238e6a8fbb9b1"></span><em class="property">constexpr</em> size_t <code class="sig-name descname">N</code> = NumDims<br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -3885,13 +4051,13 @@
 <dd></dd></dl>
 
 <dl class="function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d"></span>void <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dt id="_CPPv4IE5setupvv">
+<span id="_CPPv3IE5setupv"></span><span id="_CPPv2IE5setupv"></span><span class="target" id="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a909e6a1cd55405d11fd6543e0ae9a582"></span>template&lt;&gt;<br />void <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4IE5setupvv" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d"></span>void <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dt id="_CPPv4IE5setupvv">
+<span id="_CPPv3IE5setupv"></span><span class="target" id="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a909e6a1cd55405d11fd6543e0ae9a582"></span>template&lt;&gt;<br />void <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -4162,12 +4328,6 @@
 
 <dl class="function">
 <dt>
-<span class="target" id="classlibmolgrid_1_1AtomIndexTyper_1ae503ecbf9ca173356ef6e475597e2b46"></span><em class="property">virtual</em> unsigned <code class="sig-name descname">num_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> = 0<br /></dt>
-<dd><p>return number of types </p>
-</dd></dl>
-
-<dl class="function">
-<dt>
 <span class="target" id="classlibmolgrid_1_1MappedAtomIndexTyper_1ada10bf195e09de3a351bc4a4649ac629"></span><em class="property">virtual</em> std::pair&lt;int, float&gt; <code class="sig-name descname">get_atom_type_index</code><span class="sig-paren">(</span>OpenBabel::OBAtom *<em>a</em><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
 <dd><p>return type index of a </p>
 </dd></dl>
@@ -4186,20 +4346,8 @@
 
 <dl class="function">
 <dt>
-<span class="target" id="classlibmolgrid_1_1AtomIndexTyper_1aedda205572fbbaa3a868181802232263"></span><em class="property">virtual</em> std::vector&lt;std::string&gt; <code class="sig-name descname">get_type_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> = 0<br /></dt>
-<dd><p>return vector of string representations of types this isn’t expected to be particularly efficient </p>
-</dd></dl>
-
-<dl class="function">
-<dt>
 <span class="target" id="classlibmolgrid_1_1MappedAtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2"></span><em class="property">virtual</em> std::vector&lt;float&gt; <code class="sig-name descname">get_type_radii</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
 <dd><p>radii are the average of the underlying mapped types </p>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1AtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2"></span><em class="property">virtual</em> std::vector&lt;float&gt; <code class="sig-name descname">get_type_radii</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
-<dd><p>if applicable to the typer, return the standard atomic radius of each type </p>
 </dd></dl>
 
 <dl class="function">
@@ -4260,12 +4408,6 @@
 
 <dl class="function">
 <dt>
-<span class="target" id="classlibmolgrid_1_1AtomIndexTyper_1ae503ecbf9ca173356ef6e475597e2b46"></span><em class="property">virtual</em> unsigned <code class="sig-name descname">num_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> = 0<br /></dt>
-<dd><p>return number of types </p>
-</dd></dl>
-
-<dl class="function">
-<dt>
 <span class="target" id="classlibmolgrid_1_1MappedAtomIndexTyper_1ada10bf195e09de3a351bc4a4649ac629"></span><em class="property">virtual</em> std::pair&lt;int, float&gt; <code class="sig-name descname">get_atom_type_index</code><span class="sig-paren">(</span>OpenBabel::OBAtom *<em>a</em><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
 <dd><p>return type index of a </p>
 </dd></dl>
@@ -4284,20 +4426,8 @@
 
 <dl class="function">
 <dt>
-<span class="target" id="classlibmolgrid_1_1AtomIndexTyper_1aedda205572fbbaa3a868181802232263"></span><em class="property">virtual</em> std::vector&lt;std::string&gt; <code class="sig-name descname">get_type_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> = 0<br /></dt>
-<dd><p>return vector of string representations of types this isn’t expected to be particularly efficient </p>
-</dd></dl>
-
-<dl class="function">
-<dt>
 <span class="target" id="classlibmolgrid_1_1MappedAtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2"></span><em class="property">virtual</em> std::vector&lt;float&gt; <code class="sig-name descname">get_type_radii</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
 <dd><p>radii are the average of the underlying mapped types </p>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1AtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2"></span><em class="property">virtual</em> std::vector&lt;float&gt; <code class="sig-name descname">get_type_radii</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
-<dd><p>if applicable to the typer, return the standard atomic radius of each type </p>
 </dd></dl>
 
 <dl class="function">

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="structlibmolgrid_1_1ExampleRef" kind="struct" language="C++" prot="public">
     <compoundname>libmolgrid::ExampleRef</compoundname>
     <includes refid="example_8h" local="no">example.h</includes>
@@ -15,12 +15,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" line="150" column="17" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" bodystart="150" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="150" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="150" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8h" startline="161" endline="174">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::addref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="52">ExampleExtractor::extract</referencedby>
         <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="393" endline="423">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a92e331dc0874eea72e24fad42efdddc6" compoundref="example__extractor_8cpp" startline="73" endline="75">ExampleExtractor::num_types</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8cpp" startline="17" endline="46">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::setup</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a909e6a1cd55405d11fd6543e0ae9a582" compoundref="exampleref__providers_8cpp" startline="17" endline="46">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::setup</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structlibmolgrid_1_1ExampleRef_1a7ea04b60c00847d97627bc44a0a6b2f2" prot="public" static="no" mutable="no">
         <type>std::vector&lt; float &gt;</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" line="151" column="17" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" bodystart="151" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="151" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="151" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8cpp" startline="64" endline="68">UniformExampleRefProvider::addref</referencedby>
         <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8cpp" startline="88" endline="98">BalancedExampleRefProvider::addref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8h" startline="279" endline="285">ValueStratifiedExampleRefProfider&lt; Provider &gt;::addref</referencedby>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" line="152" column="9" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" bodystart="152" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="152" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="152" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8h" startline="366" endline="375">GroupedExampleRefProvider&lt; Provider &gt;::addref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="52">ExampleExtractor::extract</referencedby>
         <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="393" endline="423">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" line="153" column="10" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" bodystart="153" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="153" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="153" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="52">ExampleExtractor::extract</referencedby>
         <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="393" endline="423">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
       </memberdef>
@@ -81,13 +81,12 @@
         <argsstring>()</argsstring>
         <name>ExampleRef</name>
         <briefdescription>
-<para>true if not first frame of group </para>
-        </briefdescription>
+<para>true if not first frame of group </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" line="155" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" bodystart="155" bodyend="155"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="155" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="155" bodyend="155"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1ExampleRef_1af68ef87a6eab8ca94bd25484c273a402" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -108,39 +107,37 @@
           <defval>false</defval>
         </param>
         <briefdescription>
-<para>parse a line into an example reference - should have numlabels labels </para>
-        </briefdescription>
+<para>parse a line into an example reference - should have numlabels labels </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" line="157" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/src/example.cpp" bodystart="309" bodyend="354"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="157" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="309" bodyend="354"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>a reference to a single example - the parsed line. This is distinct from an <ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref> to enable out-of-core training (although the default should be to load all examples into memory). </para>
-    </briefdescription>
+<para>a reference to a single example - the parsed line. This is distinct from an <ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref> to enable out-of-core training (although the default should be to load all examples into memory). </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="1">
+      <node id="87">
+        <label>vector&lt; const char *&gt;</label>
+      </node>
+      <node id="86">
         <label>ExampleRef</label>
         <link refid="structlibmolgrid_1_1ExampleRef"/>
-        <childnode refid="2" relation="usage">
+        <childnode refid="87" relation="usage">
           <edgelabel>files</edgelabel>
         </childnode>
-        <childnode refid="3" relation="usage">
+        <childnode refid="88" relation="usage">
           <edgelabel>labels</edgelabel>
         </childnode>
       </node>
-      <node id="2">
-        <label>vector&lt; const char * &gt;</label>
-      </node>
-      <node id="3">
+      <node id="88">
         <label>vector&lt; float &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" line="149" column="17" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/example.h" bodystart="149" bodyend="158"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="149" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="149" bodyend="158"/>
     <listofallmembers>
       <member refid="structlibmolgrid_1_1ExampleRef_1a673e48c4d531cbc1bd304594141eadfc" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleRef</scope><name>ExampleRef</name></member>
       <member refid="structlibmolgrid_1_1ExampleRef_1af68ef87a6eab8ca94bd25484c273a402" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleRef</scope><name>ExampleRef</name></member>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="classlibmolgrid_1_1ManagedGrid_3_01Dtype_00_011_01_4" kind="class" language="C++" prot="public">
     <compoundname>libmolgrid::ManagedGrid&lt; Dtype, 1 &gt;</compoundname>
     <basecompoundref refid="classlibmolgrid_1_1ManagedGridBase" prot="public" virt="non-virtual">ManagedGridBase&lt; Dtype, 1 &gt;</basecompoundref>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="405" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="405" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="405" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="405" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classlibmolgrid_1_1ManagedGrid_3_01Dtype_00_011_01_4_1a07fd586f0921db2d99a7515f4de53c70" prot="public" static="no">
         <type><ref refid="classlibmolgrid_1_1ManagedGridBase" kindref="compound">ManagedGridBase</ref>&lt; Dtype, 1 &gt;</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="406" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="406" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="406" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="406" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classlibmolgrid_1_1ManagedGridBase_1a67f5cdb60527c14d22585550dcc3cd20" prot="public" static="no">
         <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, NumDims, true &gt;</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="33" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="33" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="33" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classlibmolgrid_1_1ManagedGridBase_1aab951804b94d775517a3b614947401b5" prot="public" static="no">
         <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, NumDims, false &gt;</type>
@@ -55,13 +55,12 @@
         <argsstring></argsstring>
         <name>cpu_grid_t</name>
         <briefdescription>
-<para>cuda grid type </para>
-        </briefdescription>
+<para>cuda grid type </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="34" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="34" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="34" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classlibmolgrid_1_1ManagedGridBase_1a2d7497e2eb6dbb6b75ca3a4df279392b" prot="public" static="no">
         <type>Dtype</type>
@@ -74,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="35" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="35" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="35" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -89,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="440" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="440" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="440" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="440" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1ManagedGridBase_1acc10ace8d751619d302cbe0da8f37c6a" prot="protected" static="no" mutable="yes">
         <type><ref refid="classlibmolgrid_1_1ManagedGridBase_1a67f5cdb60527c14d22585550dcc3cd20" kindref="member">gpu_grid_t</ref></type>
@@ -102,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="41" column="24" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="41" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="41" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1ManagedGridBase_1a15003153752362a8e65e4b52637f44dc" prot="protected" static="no" mutable="no">
         <type><ref refid="classlibmolgrid_1_1ManagedGridBase_1aab951804b94d775517a3b614947401b5" kindref="member">cpu_grid_t</ref></type>
@@ -115,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="42" column="16" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="42" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="42" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1ManagedGridBase_1acbdab43875a14ce91fc53eb6e18d4917" prot="protected" static="no" mutable="no">
         <type>std::shared_ptr&lt; Dtype &gt;</type>
@@ -128,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="43" column="21" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="43" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="43" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1ManagedGridBase_1ad721fc6ca6a3d6ba3bc506576622aab0" prot="protected" static="no" mutable="no">
         <type>size_t</type>
@@ -141,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="44" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="44" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="44" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1ManagedGridBase_1a640c28374bd5458e6d9d6d219c76520f" prot="protected" static="no" mutable="yes">
         <type><ref refid="classlibmolgrid_1_1ManagedGridBase_1a256a3dbdc150a4d491a57c920fc05c52" kindref="member">buffer_data</ref> *</type>
@@ -154,7 +153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="47" column="25" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="47" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="47" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1ManagedGridBase_1a405571fa8a8314ff906c31579d2f532a" prot="protected" static="no" mutable="no">
         <type>friend</type>
@@ -167,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="336" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="336" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="336" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="336" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -182,7 +181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="408" column="5"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="408" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGrid_3_01Dtype_00_011_01_4_1a3b6de4140da5abdd45cc065029a2e386" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -199,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="409" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="409" bodyend="410"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="409" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="409" bodyend="410"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGrid_3_01Dtype_00_011_01_4_1ada569361f39baed5fc44edff9ed2215d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Dtype &amp;</type>
@@ -216,7 +215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="412" column="18" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="412" bodyend="415"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="412" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="412" bodyend="415"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGrid_3_01Dtype_00_011_01_4_1aa9c9c223b686c7b2f66daafd40e34b60" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Dtype</type>
@@ -233,7 +232,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="417" column="18" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="417" bodyend="420"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="417" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="417" bodyend="420"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGrid_3_01Dtype_00_011_01_4_1ae358ca901023dc35845975cad12e35de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Dtype &amp;</type>
@@ -250,7 +249,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="422" column="18" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="422" bodyend="425"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="422" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="422" bodyend="425"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGrid_3_01Dtype_00_011_01_4_1a702d22411f97ff6b4818fdc4e52028ba" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Dtype</type>
@@ -267,7 +266,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="427" column="18" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="427" bodyend="430"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="427" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="427" bodyend="430"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGrid_3_01Dtype_00_011_01_4_1a5435aa93c62edc608d2c5c4ae871fb3b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classlibmolgrid_1_1ManagedGrid" kindref="compound">ManagedGrid</ref>&lt; Dtype, 1 &gt;</type>
@@ -280,7 +279,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="432" column="17" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="432" bodyend="436"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="432" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="432" bodyend="436"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1adc57df2d9d355c2c98206d8ca7ab230d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const size_t *</type>
@@ -288,13 +287,12 @@
         <argsstring>() const</argsstring>
         <name>dimensions</name>
         <briefdescription>
-<para>dimensions along each axis </para>
-        </briefdescription>
+<para>dimensions along each axis </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="124" column="26" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="124" bodyend="124"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="124" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="124" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1a4a86470b9f8e551e5a060872f9e5680e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
@@ -306,13 +304,12 @@
           <declname>i</declname>
         </param>
         <briefdescription>
-<para>dimensions along specified axis </para>
-        </briefdescription>
+<para>dimensions along specified axis </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="126" column="19" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="126" bodyend="126"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="126" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="126" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1ab18a0f2c17222ceecc823cdb1df6f9e2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const size_t *</type>
@@ -320,13 +317,12 @@
         <argsstring>() const</argsstring>
         <name>offsets</name>
         <briefdescription>
-<para>offset for each dimension, all indexing calculations use this </para>
-        </briefdescription>
+<para>offset for each dimension, all indexing calculations use this </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="129" column="26" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="129" bodyend="129"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="129" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="129" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1ab1990983adc822e595a52ba83d689a9e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
@@ -338,13 +334,12 @@
           <declname>i</declname>
         </param>
         <briefdescription>
-<para>offset for each dimension, all indexing calculations use this </para>
-        </briefdescription>
+<para>offset for each dimension, all indexing calculations use this </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="131" column="19" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="131" bodyend="131"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="131" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="131" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1a259cb5a711406a8c3e5d937eb9350cca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
@@ -352,13 +347,12 @@
         <argsstring>() const</argsstring>
         <name>size</name>
         <briefdescription>
-<para>number of elements in grid </para>
-        </briefdescription>
+<para>number of elements in grid </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="134" column="19" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="134" bodyend="134"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="134" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="134" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1a512219066836349f65f85a0ead19ae8a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -366,13 +360,12 @@
         <argsstring>()</argsstring>
         <name>fill_zero</name>
         <briefdescription>
-<para>set contents to zero </para>
-        </briefdescription>
+<para>set contents to zero </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="137" column="17" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="137" bodyend="140"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="137" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="137" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1aa5b105cea5249d8b627dc7a9e897f0a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Dtype &amp;</type>
@@ -384,13 +377,12 @@
           <declname>indices</declname>
         </param>
         <briefdescription>
-<para>Initializer list indexing. </para>
-        </briefdescription>
+<para>Initializer list indexing. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="146" column="18" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="146" bodyend="149"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="146" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="146" bodyend="149"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1ac469c7ee3d92be77bc38bddb26b5f695" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Dtype</type>
@@ -407,7 +399,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="152" column="18" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="152" bodyend="155"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="152" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="152" bodyend="155"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1aff4a416b7db91859de81b24856be632a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
@@ -419,13 +411,12 @@
           <declname>dest</declname>
         </param>
         <briefdescription>
-<para>Copy data into dest. Should be same size, but will narrow if needed. </para>
-        </briefdescription>
+<para>Copy data into dest. Should be same size, but will narrow if needed. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="158" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="158" bodyend="167"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="158" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="158" bodyend="167"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1acbc53c65c1c27667a659ec84dafbe01a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
@@ -437,13 +428,12 @@
           <declname>dest</declname>
         </param>
         <briefdescription>
-<para>Copy data into dest. Should be same size, but will narrow if needed. </para>
-        </briefdescription>
+<para>Copy data into dest. Should be same size, but will narrow if needed. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="170" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="170" bodyend="179"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="170" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="170" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1afd5ca42172cc845309b01069ed3a14c2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
@@ -455,13 +445,12 @@
           <declname>dest</declname>
         </param>
         <briefdescription>
-<para>Copy data into dest. Should be same size, but will narrow if needed. </para>
-        </briefdescription>
+<para>Copy data into dest. Should be same size, but will narrow if needed. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="182" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="182" bodyend="188"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="182" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="182" bodyend="188"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1a32a5cdeb67c51d9b75925d93277a1ed0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
@@ -473,13 +462,12 @@
           <declname>src</declname>
         </param>
         <briefdescription>
-<para>Copy data from src. Should be same size, but will narrow if needed. </para>
-        </briefdescription>
+<para>Copy data from src. Should be same size, but will narrow if needed. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="191" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="191" bodyend="200"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="191" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="191" bodyend="200"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1ac4d8dd20279b234e0d8c057f052c4a95" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
@@ -491,13 +479,12 @@
           <declname>src</declname>
         </param>
         <briefdescription>
-<para>Copy data from src. Should be same size, but will narrow if needed. </para>
-        </briefdescription>
+<para>Copy data from src. Should be same size, but will narrow if needed. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="203" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="203" bodyend="212"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="203" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="203" bodyend="212"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1a7f97a564c8b4e32c14d7b4ab58255295" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
@@ -509,13 +496,12 @@
           <declname>src</declname>
         </param>
         <briefdescription>
-<para>Copy data from src. Should be same size, but will narrow if needed. </para>
-        </briefdescription>
+<para>Copy data from src. Should be same size, but will narrow if needed. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="215" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="215" bodyend="221"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="215" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="215" bodyend="221"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1ab92b52fef49a9d7440a98f567c28f168" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
@@ -531,13 +517,12 @@
           <declname>src</declname>
         </param>
         <briefdescription>
-<para>Copy data from src into this starting at start. Should be same size, but will narrow if needed. </para>
-        </briefdescription>
+<para>Copy data from src into this starting at start. Should be same size, but will narrow if needed. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="224" column="12" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="224" bodyend="243"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="224" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="224" bodyend="243"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1a8576226e00915bc8c923e0b9c77e051e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classlibmolgrid_1_1ManagedGrid" kindref="compound">ManagedGrid</ref>&lt; Dtype, NumDims &gt;</type>
@@ -549,13 +534,12 @@
           <declname>sizes</declname>
         </param>
         <briefdescription>
-<para>Return a grid in the specified shape that attempts to reuse the memory of this grid. Memory will be allocated if needed. Data will be truncated/copied as needed. DANGER! The returned grid may or may not mirror this grid depending on the shape. This function is provided so code can be optimized to avoid unnecessary allocations and should be used carefully. </para>
-        </briefdescription>
+<para>Return a grid in the specified shape that attempts to reuse the memory of this grid. Memory will be allocated if needed. Data will be truncated/copied as needed. DANGER! The returned grid may or may not mirror this grid depending on the shape. This function is provided so code can be optimized to avoid unnecessary allocations and should be used carefully. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="252" column="17" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="252" bodyend="271"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="252" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="252" bodyend="271"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1acc87d7aacb8f79831cae339b3039b65d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="classlibmolgrid_1_1ManagedGridBase_1a67f5cdb60527c14d22585550dcc3cd20" kindref="member">gpu_grid_t</ref> &amp;</type>
@@ -563,13 +547,12 @@
         <argsstring>() const</argsstring>
         <name>gpu</name>
         <briefdescription>
-<para>Return GPU Grid view. Host code should not access the grid until the GPU code is complete. </para>
-        </briefdescription>
+<para>Return GPU Grid view. Host code should not access the grid until the GPU code is complete. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="276" column="22" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="276" bodyend="276"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="276" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="276" bodyend="276"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1aa5c4b729fa4facfb55cb19b51f5797cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classlibmolgrid_1_1ManagedGridBase_1a67f5cdb60527c14d22585550dcc3cd20" kindref="member">gpu_grid_t</ref> &amp;</type>
@@ -582,7 +565,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="277" column="16" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="277" bodyend="277"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="277" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="277" bodyend="277"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1af9baf061634fae1bd30d7abd24900263" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="classlibmolgrid_1_1ManagedGridBase_1aab951804b94d775517a3b614947401b5" kindref="member">cpu_grid_t</ref> &amp;</type>
@@ -590,13 +573,12 @@
         <argsstring>() const</argsstring>
         <name>cpu</name>
         <briefdescription>
-<para>Return CPU Grid view. GPU code should no longer access this memory. </para>
-        </briefdescription>
+<para>Return CPU Grid view. GPU code should no longer access this memory. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="281" column="22" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="281" bodyend="281"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="281" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="281" bodyend="281"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1abc539db90c9ad1195006ab86c772f4a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classlibmolgrid_1_1ManagedGridBase_1aab951804b94d775517a3b614947401b5" kindref="member">cpu_grid_t</ref> &amp;</type>
@@ -609,7 +591,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="282" column="16" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="282" bodyend="282"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="282" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="282" bodyend="282"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1a18aaaed8a845f4c8ad9c30d0693e03c1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -622,13 +604,12 @@
           <defval>true</defval>
         </param>
         <briefdescription>
-<para>Transfer data to GPU. </para>
-        </briefdescription>
+<para>Transfer data to GPU. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="285" column="10" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="285" bodyend="299"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="285" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="285" bodyend="299"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1a3e9eb84f9344f6ca4eac9975f8f61386" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -641,13 +622,12 @@
           <defval>true</defval>
         </param>
         <briefdescription>
-<para>Transfer data to CPU. If not dotransfer, data is not copied back. </para>
-        </briefdescription>
+<para>Transfer data to CPU. If not dotransfer, data is not copied back. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="302" column="10" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="302" bodyend="307"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="302" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="302" bodyend="307"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1a3ffb36b58be9d3c48294d1f4e3366af8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -655,13 +635,12 @@
         <argsstring>() const</argsstring>
         <name>ongpu</name>
         <briefdescription>
-<para>Return true if memory is currently on GPU. </para>
-        </briefdescription>
+<para>Return true if memory is currently on GPU. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="310" column="10" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="310" bodyend="314"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="310" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="310" bodyend="314"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1a2b2ad679c12e649d9b5a0fd8f03d3237" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -669,13 +648,12 @@
         <argsstring>() const</argsstring>
         <name>oncpu</name>
         <briefdescription>
-<para>Return true if memory is currently on CPU. </para>
-        </briefdescription>
+<para>Return true if memory is currently on CPU. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="317" column="10" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="317" bodyend="317"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="317" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="317" bodyend="317"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1a8c2b884f05b8f337cada06f5f978b588" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -688,7 +666,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="320" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="320" bodyend="320"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="320" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="320" bodyend="320"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1a535df4d8926149a00163552a34596d69" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -701,7 +679,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="321" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="321" bodyend="321"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="321" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="321" bodyend="321"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1a10b2f00260f2d9a097fbd7eda7bc9a4a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -714,7 +692,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="323" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="323" bodyend="323"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="323" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="323" bodyend="323"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1ada677d2971fd6a2aad1277901804cdd2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -727,7 +705,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="324" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="324" bodyend="324"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="324" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="324" bodyend="324"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1aa1322a8e4f3f36cfff77ca7a5ec57d97" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const Dtype *</type>
@@ -735,13 +713,12 @@
         <argsstring>() const</argsstring>
         <name>data</name>
         <briefdescription>
-<para>Return pointer to CPU data. </para>
-        </briefdescription>
+<para>Return pointer to CPU data. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="327" column="25" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="327" bodyend="327"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="327" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="327" bodyend="327"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1aecdaa9892795d526d6d468e21ef3a2b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Dtype *</type>
@@ -754,7 +731,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="328" column="19" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="328" bodyend="328"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="328" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="328" bodyend="328"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1a1a93843cbf5cdc9ed0a1bf5b4d760068" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -771,7 +748,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="331" column="10" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="331" bodyend="333"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="331" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="331" bodyend="333"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -794,7 +771,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="440" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="441" bodyend="442"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="440" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="441" bodyend="442"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1a354afea429c9572094ac2c5c5ed19786" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -811,7 +788,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="64" column="10" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="64" bodyend="75"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="64" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="64" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1aad5407e977e2f417b18ed54a0cf7730c" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -828,7 +805,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="78" column="10" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="78" bodyend="91"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="78" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="78" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGridBase_1a3ab3abfca1447e4fc0874c00c47aadff" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -841,7 +818,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="103" column="10" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="103" bodyend="120"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="103" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="103" bodyend="120"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-type">
@@ -856,11 +833,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="46" column="5" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="46" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="46" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-attrib">
-      <memberdef kind="variable" id="classlibmolgrid_1_1ManagedGridBase_1ad8331653910a5a034f8238e6a8fbb9b1" prot="public" static="yes" constexpr="yes" mutable="no">
+      <memberdef kind="variable" id="classlibmolgrid_1_1ManagedGridBase_1ad8331653910a5a034f8238e6a8fbb9b1" prot="public" static="yes" mutable="no">
         <type>constexpr size_t</type>
         <definition>constexpr size_t N</definition>
         <argsstring></argsstring>
@@ -871,7 +848,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="36" column="29" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="36" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="36" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-static-func">
@@ -890,7 +867,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="54" column="17" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="54" bodyend="61"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="54" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="54" bodyend="61"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -898,57 +875,60 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1">
+      <node id="158">
         <label>ManagedGrid&lt; Dtype, 1 &gt;</label>
         <link refid="classlibmolgrid_1_1ManagedGrid_3_01Dtype_00_011_01_4"/>
-        <childnode refid="2" relation="public-inheritance">
+        <childnode refid="159" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2">
+      <node id="159">
         <label>ManagedGridBase&lt; Dtype, 1 &gt;</label>
         <link refid="classlibmolgrid_1_1ManagedGridBase"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4">
-        <label>shared_ptr&lt; Dtype &gt;</label>
-      </node>
-      <node id="1">
+      <node id="160">
         <label>ManagedGrid&lt; Dtype, 1 &gt;</label>
         <link refid="classlibmolgrid_1_1ManagedGrid_3_01Dtype_00_011_01_4"/>
-        <childnode refid="2" relation="public-inheritance">
+        <childnode refid="161" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2">
+      <node id="164">
+        <label>Dtype</label>
+      </node>
+      <node id="161">
         <label>ManagedGridBase&lt; Dtype, 1 &gt;</label>
         <link refid="classlibmolgrid_1_1ManagedGridBase"/>
-        <childnode refid="3" relation="usage">
+        <childnode refid="162" relation="usage">
           <edgelabel>gpu_info</edgelabel>
         </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>cpu_ptr</edgelabel>
-        </childnode>
-        <childnode refid="5" relation="usage">
+        <childnode refid="163" relation="usage">
           <edgelabel>cpu_grid</edgelabel>
         </childnode>
-        <childnode refid="6" relation="usage">
+        <childnode refid="165" relation="usage">
           <edgelabel>gpu_grid</edgelabel>
         </childnode>
       </node>
-      <node id="5">
+      <node id="163">
         <label>Grid&lt; Dtype, NumDims, false &gt;</label>
         <link refid="classlibmolgrid_1_1Grid"/>
+        <childnode refid="164" relation="usage">
+          <edgelabel>buffer</edgelabel>
+        </childnode>
       </node>
-      <node id="3">
+      <node id="162">
         <label>mgrid_buffer_data&lt; Dtype &gt;</label>
         <link refid="structlibmolgrid_1_1mgrid__buffer__data"/>
       </node>
-      <node id="6">
+      <node id="165">
         <label>Grid&lt; Dtype, NumDims, true &gt;</label>
         <link refid="classlibmolgrid_1_1Grid"/>
+        <childnode refid="164" relation="usage">
+          <edgelabel>buffer</edgelabel>
+        </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" line="403" column="44" bodyfile="/home/jocelynsunseri/git/libmgd-docstest/include/libmolgrid/managed_grid.h" bodystart="403" bodyend="444"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="403" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="403" bodyend="444"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1ManagedGridBase_1a354afea429c9572094ac2c5c5ed19786" prot="protected" virt="non-virtual"><scope>libmolgrid::ManagedGrid&lt; Dtype, 1 &gt;</scope><name>alloc_and_set_cpu</name></member>
       <member refid="classlibmolgrid_1_1ManagedGridBase_1aad5407e977e2f417b18ed54a0cf7730c" prot="protected" virt="non-virtual"><scope>libmolgrid::ManagedGrid&lt; Dtype, 1 &gt;</scope><name>alloc_and_set_gpu</name></member>
