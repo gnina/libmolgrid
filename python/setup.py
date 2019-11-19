@@ -41,8 +41,8 @@ setup(
       'Intended Audience :: Science/Research',
       'Topic :: Scientific/Engineering :: Chemistry',
 
-      'License :: OSI Approved :: Apache License',
-      'License :: OSI Approved :: GPL3 License',
+      'License :: OSI Approved :: Apache Software License',
+      'License :: OSI Approved :: GNU General Public License v2 (GPLv2)',
   
       'Programming Language :: C++',
       'Programming Language :: Python :: 3',
