@@ -1,7 +1,7 @@
 try:
-        from setuptools import setup
+    from setuptools import setup
 except ImportError:
-        from distutils.core import setup
+    from distutils.core import setup
 import sys,os,subprocess
 
 def git_pep440_version(path):
