@@ -14,7 +14,7 @@ endif()
 option(BUILD_SHARED "Build shared library" ON)
 option(BUILD_STATIC "Build static library" ON)
 
-list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Modules)
+list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules;${PROJECT_SOURCE_DIR}/cmake")
 # get git hash
 include(cmake/git_revision.cmake)
 
@@ -30,13 +30,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 #dependencies
 find_package(CUDA REQUIRED)
 find_package(Boost REQUIRED COMPONENTS regex unit_test_framework program_options system filesystem iostreams)
-find_package(OpenBabel2)
-if(${OPENBABEL2_FOUND})
-  include_directories(SYSTEM ${OPENBABEL2_INCLUDE_DIR})
-else()
-  find_package(OpenBabel3 REQUIRED)
-  include_directories(SYSTEM ${OPENBABEL3_INCLUDE_DIR})
-endif()
+find_package(OpenBabel3 REQUIRED)
+include_directories(SYSTEM ${OPENBABEL3_INCLUDE_DIR})
 
 # configure a header file to pass some of the CMake settings
 # to the source code
@@ -79,7 +74,7 @@ include_directories(SYSTEM ${Boost_INCLUDE_DIR})
 
 add_subdirectory(src)
 add_subdirectory(python)
-add_subdirectory(doc)
+add_subdirectory(docs)
 
 # enable testing
 include(CTest)

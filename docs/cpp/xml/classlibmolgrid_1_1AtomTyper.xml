@@ -1,0 +1,331 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classlibmolgrid_1_1AtomTyper" kind="class" language="C++" prot="public">
+    <compoundname>libmolgrid::AtomTyper</compoundname>
+    <derivedcompoundref refid="classlibmolgrid_1_1AtomIndexTyper" prot="public" virt="non-virtual">AtomIndexTyper</derivedcompoundref>
+    <derivedcompoundref refid="classlibmolgrid_1_1AtomVectorTyper" prot="public" virt="non-virtual">AtomVectorTyper</derivedcompoundref>
+    <includes refid="atom__typer_8h" local="no">atom_typer.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classlibmolgrid_1_1AtomTyper_1a554d6f387f3aff6cf68c24ffddd08567" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>AtomTyper</definition>
+        <argsstring>()</argsstring>
+        <name>AtomTyper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="28" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="28" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1AtomTyper_1a7fdb3f1fa76c8e3f6fdcddea4f144541" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~AtomTyper</definition>
+        <argsstring>()</argsstring>
+        <name>~AtomTyper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="29" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="29" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1AtomTyper_1ad493bf80b659abb6e401d7fee5c8231a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>unsigned</type>
+        <definition>virtual unsigned num_types</definition>
+        <argsstring>() const</argsstring>
+        <name>num_types</name>
+        <reimplementedby refid="classlibmolgrid_1_1AtomIndexTyper_1ae503ecbf9ca173356ef6e475597e2b46">num_types</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1AtomVectorTyper_1ae503ecbf9ca173356ef6e475597e2b46">num_types</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1GninaIndexTyper_1a5e84ac0f1e5fbb3fd24d137b02de0a3f">num_types</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1ElementIndexTyper_1a5e84ac0f1e5fbb3fd24d137b02de0a3f">num_types</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1NullIndexTyper_1ad493bf80b659abb6e401d7fee5c8231a">num_types</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1CallbackIndexTyper_1ad493bf80b659abb6e401d7fee5c8231a">num_types</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ad493bf80b659abb6e401d7fee5c8231a">num_types</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ad493bf80b659abb6e401d7fee5c8231a">num_types</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ad493bf80b659abb6e401d7fee5c8231a">num_types</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ad493bf80b659abb6e401d7fee5c8231a">num_types</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ad493bf80b659abb6e401d7fee5c8231a">num_types</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1GninaVectorTyper_1a5e84ac0f1e5fbb3fd24d137b02de0a3f">num_types</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1CallbackVectorTyper_1ad493bf80b659abb6e401d7fee5c8231a">num_types</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="32" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="32" bodyend="32"/>
+        <referencedby refid="classlibmolgrid_1_1CallbackIndexTyper_1ada10bf195e09de3a351bc4a4649ac629" compoundref="atom__typer_8h" startline="287" endline="292">CallbackIndexTyper::get_atom_type_index</referencedby>
+        <referencedby refid="classlibmolgrid_1_1CallbackIndexTyper_1ae263d436c69186ad062ad5339d1d8727" compoundref="atom__typer_8h" startline="295" endline="298">CallbackIndexTyper::get_int_type</referencedby>
+        <referencedby refid="classlibmolgrid_1_1AtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2" compoundref="atom__typer_8h" startline="65" endline="65">AtomIndexTyper::get_type_radii</referencedby>
+        <referencedby refid="classlibmolgrid_1_1CallbackIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2" compoundref="atom__typer_8h" startline="303" endline="303">CallbackIndexTyper::get_type_radii</referencedby>
+        <referencedby refid="classlibmolgrid_1_1AtomVectorTyper_1a2b70b0f630b2e527f02857ad6735122f" compoundref="atom__typer_8h" startline="89" endline="89">AtomVectorTyper::get_vector_type_radii</referencedby>
+        <referencedby refid="classlibmolgrid_1_1AtomIndexTyper_1a3a023938558392b20fba9fea9971016a" compoundref="atom__typer_8h" startline="46" endline="46">AtomIndexTyper::~AtomIndexTyper</referencedby>
+        <referencedby refid="classlibmolgrid_1_1AtomVectorTyper_1ae1c414ec51b7e27172d2adaadbca7312" compoundref="atom__typer_8h" startline="78" endline="78">AtomVectorTyper::~AtomVectorTyper</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ElementIndexTyper_1ad7d3c7e60575c6faecabaa600735bb75" compoundref="atom__typer_8h" startline="223" endline="223">ElementIndexTyper::~ElementIndexTyper</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GninaIndexTyper_1a187ae086fdbb7327510642b6dd674634" compoundref="atom__typer_8h" startline="185" endline="185">GninaIndexTyper::~GninaIndexTyper</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GninaVectorTyper_1a86b9eabd4c39cba26d8f59d5840e554a" compoundref="atom__typer_8h" startline="419" endline="419">GninaVectorTyper::~GninaVectorTyper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1AtomTyper_1a831a48238388829d1fae97d002719674" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>float</type>
+        <definition>virtual float get_atom_type_vector</definition>
+        <argsstring>(OpenBabel::OBAtom *a, std::vector&lt; float &gt; &amp;typ) const</argsstring>
+        <name>get_atom_type_vector</name>
+        <reimplementedby refid="classlibmolgrid_1_1AtomIndexTyper_1a4f56173834b1bf3f850e5cb9880eaeea">get_atom_type_vector</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1AtomVectorTyper_1a2fde235edc45f68d00bde38ee8620646">get_atom_type_vector</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1GninaVectorTyper_1ae665f55a8d914fa0d36e469284e2443d">get_atom_type_vector</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1CallbackVectorTyper_1a831a48238388829d1fae97d002719674">get_atom_type_vector</reimplementedby>
+        <param>
+          <type>OpenBabel::OBAtom *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; float &gt; &amp;</type>
+          <declname>typ</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="34" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="34" bodyend="34"/>
+        <referencedby refid="classlibmolgrid_1_1AtomVectorTyper_1a4dfe192d310ab34f1ca2c4a86bcad367" compoundref="atom__typer_8h" startline="83" endline="83">AtomVectorTyper::get_atom_type_index</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GninaVectorTyper_1a86b9eabd4c39cba26d8f59d5840e554a" compoundref="atom__typer_8h" startline="419" endline="419">GninaVectorTyper::~GninaVectorTyper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1AtomTyper_1ada10bf195e09de3a351bc4a4649ac629" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::pair&lt; int, float &gt;</type>
+        <definition>virtual std::pair&lt;int,float&gt; get_atom_type_index</definition>
+        <argsstring>(OpenBabel::OBAtom *a) const</argsstring>
+        <name>get_atom_type_index</name>
+        <reimplementedby refid="classlibmolgrid_1_1AtomIndexTyper_1ad802287783424562d69b6ce6a118a7da">get_atom_type_index</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1AtomVectorTyper_1a4dfe192d310ab34f1ca2c4a86bcad367">get_atom_type_index</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1GninaIndexTyper_1afa822a9ced021828013716b9b2e99670">get_atom_type_index</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1ElementIndexTyper_1afa822a9ced021828013716b9b2e99670">get_atom_type_index</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1NullIndexTyper_1ada10bf195e09de3a351bc4a4649ac629">get_atom_type_index</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1CallbackIndexTyper_1ada10bf195e09de3a351bc4a4649ac629">get_atom_type_index</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ada10bf195e09de3a351bc4a4649ac629">get_atom_type_index</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ada10bf195e09de3a351bc4a4649ac629">get_atom_type_index</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ada10bf195e09de3a351bc4a4649ac629">get_atom_type_index</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ada10bf195e09de3a351bc4a4649ac629">get_atom_type_index</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ada10bf195e09de3a351bc4a4649ac629">get_atom_type_index</reimplementedby>
+        <param>
+          <type>OpenBabel::OBAtom *</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="35" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="35" bodyend="35"/>
+        <referencedby refid="classlibmolgrid_1_1AtomIndexTyper_1a4f56173834b1bf3f850e5cb9880eaeea" compoundref="atom__typer_8h" startline="51" endline="51">AtomIndexTyper::get_atom_type_vector</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ElementIndexTyper_1ad7d3c7e60575c6faecabaa600735bb75" compoundref="atom__typer_8h" startline="223" endline="223">ElementIndexTyper::~ElementIndexTyper</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GninaIndexTyper_1a187ae086fdbb7327510642b6dd674634" compoundref="atom__typer_8h" startline="185" endline="185">GninaIndexTyper::~GninaIndexTyper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1AtomTyper_1ae263d436c69186ad062ad5339d1d8727" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::pair&lt; int, float &gt;</type>
+        <definition>virtual std::pair&lt;int,float&gt; get_int_type</definition>
+        <argsstring>(int t) const</argsstring>
+        <name>get_int_type</name>
+        <reimplementedby refid="classlibmolgrid_1_1AtomIndexTyper_1a6b076295fcb7c38c547345e1992fe342">get_int_type</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1GninaIndexTyper_1a2f2292603513836fcc299e920d102969">get_int_type</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1ElementIndexTyper_1ad7cd781efd0d97403d12057df9cacbdb">get_int_type</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1NullIndexTyper_1ae263d436c69186ad062ad5339d1d8727">get_int_type</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1CallbackIndexTyper_1ae263d436c69186ad062ad5339d1d8727">get_int_type</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ae263d436c69186ad062ad5339d1d8727">get_int_type</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ae263d436c69186ad062ad5339d1d8727">get_int_type</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ae263d436c69186ad062ad5339d1d8727">get_int_type</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ae263d436c69186ad062ad5339d1d8727">get_int_type</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ae263d436c69186ad062ad5339d1d8727">get_int_type</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="36" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="36" bodyend="36"/>
+        <referencedby refid="classlibmolgrid_1_1AtomIndexTyper_1a4f56173834b1bf3f850e5cb9880eaeea" compoundref="atom__typer_8h" startline="51" endline="51">AtomIndexTyper::get_atom_type_vector</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ElementIndexTyper_1ad7d3c7e60575c6faecabaa600735bb75" compoundref="atom__typer_8h" startline="223" endline="223">ElementIndexTyper::~ElementIndexTyper</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GninaIndexTyper_1a187ae086fdbb7327510642b6dd674634" compoundref="atom__typer_8h" startline="185" endline="185">GninaIndexTyper::~GninaIndexTyper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1AtomTyper_1aacde71a2d28fc736c3d43da006f3a1c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>virtual std::vector&lt;std::string&gt; get_type_names</definition>
+        <argsstring>() const</argsstring>
+        <name>get_type_names</name>
+        <reimplementedby refid="classlibmolgrid_1_1AtomIndexTyper_1aedda205572fbbaa3a868181802232263">get_type_names</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1AtomVectorTyper_1aedda205572fbbaa3a868181802232263">get_type_names</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1GninaIndexTyper_1ab179299d9dc6bb3a4bfe868fd60882a6">get_type_names</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1ElementIndexTyper_1ab179299d9dc6bb3a4bfe868fd60882a6">get_type_names</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1NullIndexTyper_1aacde71a2d28fc736c3d43da006f3a1c6">get_type_names</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1CallbackIndexTyper_1aacde71a2d28fc736c3d43da006f3a1c6">get_type_names</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1aacde71a2d28fc736c3d43da006f3a1c6">get_type_names</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1aacde71a2d28fc736c3d43da006f3a1c6">get_type_names</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1aacde71a2d28fc736c3d43da006f3a1c6">get_type_names</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1aacde71a2d28fc736c3d43da006f3a1c6">get_type_names</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1aacde71a2d28fc736c3d43da006f3a1c6">get_type_names</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1GninaVectorTyper_1ab179299d9dc6bb3a4bfe868fd60882a6">get_type_names</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1CallbackVectorTyper_1aacde71a2d28fc736c3d43da006f3a1c6">get_type_names</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="38" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="38" bodyend="38"/>
+        <referencedby refid="classlibmolgrid_1_1AtomIndexTyper_1a4f56173834b1bf3f850e5cb9880eaeea" compoundref="atom__typer_8h" startline="51" endline="51">AtomIndexTyper::get_atom_type_vector</referencedby>
+        <referencedby refid="classlibmolgrid_1_1AtomIndexTypeMapper_1a84e5366fb6c4b143c6d05c51785fd6a6" compoundref="atom__typer_8h" startline="109" endline="109">AtomIndexTypeMapper::get_new_type</referencedby>
+        <referencedby refid="classlibmolgrid_1_1AtomVectorTyper_1a2b70b0f630b2e527f02857ad6735122f" compoundref="atom__typer_8h" startline="89" endline="89">AtomVectorTyper::get_vector_type_radii</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ElementIndexTyper_1ad7d3c7e60575c6faecabaa600735bb75" compoundref="atom__typer_8h" startline="223" endline="223">ElementIndexTyper::~ElementIndexTyper</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GninaIndexTyper_1a187ae086fdbb7327510642b6dd674634" compoundref="atom__typer_8h" startline="185" endline="185">GninaIndexTyper::~GninaIndexTyper</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GninaVectorTyper_1a86b9eabd4c39cba26d8f59d5840e554a" compoundref="atom__typer_8h" startline="419" endline="419">GninaVectorTyper::~GninaVectorTyper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1AtomTyper_1a38a567b5922504c0767ac0dcdff287f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool is_vector_typer</definition>
+        <argsstring>() const</argsstring>
+        <name>is_vector_typer</name>
+        <reimplementedby refid="classlibmolgrid_1_1AtomIndexTyper_1a38a567b5922504c0767ac0dcdff287f5">is_vector_typer</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1AtomVectorTyper_1a38a567b5922504c0767ac0dcdff287f5">is_vector_typer</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="39" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="39" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class for all atom typers. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="35">
+        <label>SubsettedGninaTyper</label>
+        <link refid="classlibmolgrid_1_1SubsettedGninaTyper"/>
+        <childnode refid="34" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>AtomTyper</label>
+        <link refid="classlibmolgrid_1_1AtomTyper"/>
+      </node>
+      <node id="24">
+        <label>ElementIndexTyper</label>
+        <link refid="classlibmolgrid_1_1ElementIndexTyper"/>
+        <childnode refid="22" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>NullIndexTyper</label>
+        <link refid="classlibmolgrid_1_1NullIndexTyper"/>
+        <childnode refid="22" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>MappedAtomIndexTyper&lt; Mapper, Typer &gt;</label>
+        <link refid="classlibmolgrid_1_1MappedAtomIndexTyper"/>
+        <childnode refid="22" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>MappedAtomIndexTyper&lt; FileAtomMapper, ElementIndexTyper &gt;</label>
+        <link refid="classlibmolgrid_1_1MappedAtomIndexTyper"/>
+        <childnode refid="22" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>MappedAtomIndexTyper&lt; FileAtomMapper, GninaIndexTyper &gt;</label>
+        <link refid="classlibmolgrid_1_1MappedAtomIndexTyper"/>
+        <childnode refid="22" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>FileMappedGninaTyper</label>
+        <link refid="classlibmolgrid_1_1FileMappedGninaTyper"/>
+        <childnode refid="30" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>AtomIndexTyper</label>
+        <link refid="classlibmolgrid_1_1AtomIndexTyper"/>
+        <childnode refid="21" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>MappedAtomIndexTyper&lt; SubsetAtomMapper, GninaIndexTyper &gt;</label>
+        <link refid="classlibmolgrid_1_1MappedAtomIndexTyper"/>
+        <childnode refid="22" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>CallbackVectorTyper</label>
+        <link refid="classlibmolgrid_1_1CallbackVectorTyper"/>
+        <childnode refid="36" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>CallbackIndexTyper</label>
+        <link refid="classlibmolgrid_1_1CallbackIndexTyper"/>
+        <childnode refid="22" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>FileMappedElementTyper</label>
+        <link refid="classlibmolgrid_1_1FileMappedElementTyper"/>
+        <childnode refid="28" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>SubsettedElementTyper</label>
+        <link refid="classlibmolgrid_1_1SubsettedElementTyper"/>
+        <childnode refid="32" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>AtomVectorTyper</label>
+        <link refid="classlibmolgrid_1_1AtomVectorTyper"/>
+        <childnode refid="21" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>GninaVectorTyper</label>
+        <link refid="classlibmolgrid_1_1GninaVectorTyper"/>
+        <childnode refid="36" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>GninaIndexTyper</label>
+        <link refid="classlibmolgrid_1_1GninaIndexTyper"/>
+        <childnode refid="22" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>MappedAtomIndexTyper&lt; SubsetAtomMapper, ElementIndexTyper &gt;</label>
+        <link refid="classlibmolgrid_1_1MappedAtomIndexTyper"/>
+        <childnode refid="22" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="26" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="26" bodyend="40"/>
+    <listofallmembers>
+      <member refid="classlibmolgrid_1_1AtomTyper_1a554d6f387f3aff6cf68c24ffddd08567" prot="public" virt="non-virtual"><scope>libmolgrid::AtomTyper</scope><name>AtomTyper</name></member>
+      <member refid="classlibmolgrid_1_1AtomTyper_1ada10bf195e09de3a351bc4a4649ac629" prot="public" virt="virtual"><scope>libmolgrid::AtomTyper</scope><name>get_atom_type_index</name></member>
+      <member refid="classlibmolgrid_1_1AtomTyper_1a831a48238388829d1fae97d002719674" prot="public" virt="virtual"><scope>libmolgrid::AtomTyper</scope><name>get_atom_type_vector</name></member>
+      <member refid="classlibmolgrid_1_1AtomTyper_1ae263d436c69186ad062ad5339d1d8727" prot="public" virt="virtual"><scope>libmolgrid::AtomTyper</scope><name>get_int_type</name></member>
+      <member refid="classlibmolgrid_1_1AtomTyper_1aacde71a2d28fc736c3d43da006f3a1c6" prot="public" virt="virtual"><scope>libmolgrid::AtomTyper</scope><name>get_type_names</name></member>
+      <member refid="classlibmolgrid_1_1AtomTyper_1a38a567b5922504c0767ac0dcdff287f5" prot="public" virt="virtual"><scope>libmolgrid::AtomTyper</scope><name>is_vector_typer</name></member>
+      <member refid="classlibmolgrid_1_1AtomTyper_1ad493bf80b659abb6e401d7fee5c8231a" prot="public" virt="virtual"><scope>libmolgrid::AtomTyper</scope><name>num_types</name></member>
+      <member refid="classlibmolgrid_1_1AtomTyper_1a7fdb3f1fa76c8e3f6fdcddea4f144541" prot="public" virt="virtual"><scope>libmolgrid::AtomTyper</scope><name>~AtomTyper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

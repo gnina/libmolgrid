@@ -1,0 +1,281 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="transform_8cpp" kind="file" language="C++">
+    <compoundname>transform.cpp</compoundname>
+    <includes refid="transform_8h" local="yes">libmolgrid/transform.h</includes>
+    <incdepgraph>
+      <node id="758">
+        <label>libmolgrid/example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="759" relation="include">
+        </childnode>
+        <childnode refid="760" relation="include">
+        </childnode>
+        <childnode refid="761" relation="include">
+        </childnode>
+      </node>
+      <node id="746">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="747">
+        <label>cuda_runtime.h</label>
+      </node>
+      <node id="752">
+        <label>cassert</label>
+      </node>
+      <node id="743">
+        <label>stdexcept</label>
+      </node>
+      <node id="749">
+        <label>libmolgrid/grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="750" relation="include">
+        </childnode>
+        <childnode refid="751" relation="include">
+        </childnode>
+        <childnode refid="746" relation="include">
+        </childnode>
+        <childnode refid="752" relation="include">
+        </childnode>
+        <childnode refid="745" relation="include">
+        </childnode>
+        <childnode refid="753" relation="include">
+        </childnode>
+        <childnode refid="744" relation="include">
+        </childnode>
+      </node>
+      <node id="762">
+        <label>openbabel/mol.h</label>
+      </node>
+      <node id="760">
+        <label>unordered_set</label>
+      </node>
+      <node id="742">
+        <label>random</label>
+      </node>
+      <node id="759">
+        <label>vector</label>
+      </node>
+      <node id="764">
+        <label>utility</label>
+      </node>
+      <node id="753">
+        <label>libmolgrid/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="754" relation="include">
+        </childnode>
+        <childnode refid="755" relation="include">
+        </childnode>
+        <childnode refid="756" relation="include">
+        </childnode>
+        <childnode refid="757" relation="include">
+        </childnode>
+      </node>
+      <node id="740">
+        <label>transform.cpp</label>
+        <link refid="transform_8cpp"/>
+        <childnode refid="741" relation="include">
+        </childnode>
+      </node>
+      <node id="745">
+        <label>iostream</label>
+      </node>
+      <node id="741">
+        <label>libmolgrid/transform.h</label>
+        <link refid="transform_8h"/>
+        <childnode refid="742" relation="include">
+        </childnode>
+        <childnode refid="743" relation="include">
+        </childnode>
+        <childnode refid="744" relation="include">
+        </childnode>
+        <childnode refid="748" relation="include">
+        </childnode>
+        <childnode refid="749" relation="include">
+        </childnode>
+        <childnode refid="758" relation="include">
+        </childnode>
+      </node>
+      <node id="757">
+        <label>cuda.h</label>
+      </node>
+      <node id="756">
+        <label>cuda_runtime_api.h</label>
+      </node>
+      <node id="751">
+        <label>boost/preprocessor/repetition.hpp</label>
+      </node>
+      <node id="763">
+        <label>libmolgrid/managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="754" relation="include">
+        </childnode>
+        <childnode refid="764" relation="include">
+        </childnode>
+        <childnode refid="746" relation="include">
+        </childnode>
+        <childnode refid="749" relation="include">
+        </childnode>
+      </node>
+      <node id="750">
+        <label>boost/multi_array.hpp</label>
+      </node>
+      <node id="748">
+        <label>libmolgrid/quaternion.h</label>
+        <link refid="quaternion_8h"/>
+        <childnode refid="747" relation="include">
+        </childnode>
+      </node>
+      <node id="744">
+        <label>libmolgrid/libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="742" relation="include">
+        </childnode>
+        <childnode refid="745" relation="include">
+        </childnode>
+        <childnode refid="746" relation="include">
+        </childnode>
+        <childnode refid="747" relation="include">
+        </childnode>
+      </node>
+      <node id="755">
+        <label>cstring</label>
+      </node>
+      <node id="761">
+        <label>libmolgrid/coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="759" relation="include">
+        </childnode>
+        <childnode refid="762" relation="include">
+        </childnode>
+        <childnode refid="763" relation="include">
+        </childnode>
+      </node>
+      <node id="754">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacelibmolgrid">libmolgrid</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>transform.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/><sp/>Created<sp/>on:<sp/>Jan<sp/>10,<sp/>2019</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>Author:<sp/>dkoes</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="transform_8h" kindref="compound">libmolgrid/transform.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelibmolgrid" kindref="compound">libmolgrid</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classlibmolgrid_1_1Transform_1a0efff6c41e09c88c91cb11d281e1b1ed" refkind="member"><highlight class="normal"><ref refid="classlibmolgrid_1_1Transform_1a9de68ec1c9b7809129814a3233ae4655" kindref="member">Transform::Transform</ref>(float3<sp/>c,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>random_translate<sp/></highlight><highlight class="comment">/*=<sp/>0.0*/</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>random_rotate<sp/></highlight><highlight class="comment">/*=<sp/>false*/</highlight><highlight class="normal">):<sp/>center(c)<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::uniform_real_distribution&lt;double&gt;<sp/>R(-1.0,1);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>translate.x<sp/>=<sp/>R(<ref refid="namespacelibmolgrid_1a637541cee6c830dbabb26498f6c91249" kindref="member">random_engine</ref>)*random_translate;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>translate.y<sp/>=<sp/>R(<ref refid="namespacelibmolgrid_1a637541cee6c830dbabb26498f6c91249" kindref="member">random_engine</ref>)*random_translate;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>translate.z<sp/>=<sp/>R(<ref refid="namespacelibmolgrid_1a637541cee6c830dbabb26498f6c91249" kindref="member">random_engine</ref>)*random_translate;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(random_rotate)<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::uniform_real_distribution&lt;double&gt;<sp/>unit_sample(0,1);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>u1<sp/>=<sp/>unit_sample(<ref refid="namespacelibmolgrid_1a637541cee6c830dbabb26498f6c91249" kindref="member">random_engine</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>u2<sp/>=<sp/>unit_sample(<ref refid="namespacelibmolgrid_1a637541cee6c830dbabb26498f6c91249" kindref="member">random_engine</ref>);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>u3<sp/>=<sp/>unit_sample(<ref refid="namespacelibmolgrid_1a637541cee6c830dbabb26498f6c91249" kindref="member">random_engine</ref>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sq1<sp/>=<sp/>sqrt(1-u1);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sqr<sp/>=<sp/>sqrt(u1);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>r1<sp/>=<sp/>sq1*sin(2*M_PI*u2);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>r2<sp/>=<sp/>sq1*cos(2*M_PI*u2);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>r3<sp/>=<sp/>sqr*sin(2*M_PI*u3);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>r4<sp/>=<sp/>sqr*cos(2*M_PI*u3);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Q<sp/>=<sp/><ref refid="classlibmolgrid_1_1Quaternion" kindref="compound">Quaternion</ref>(r1,r2,r3,r4);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//else<sp/>Quaternion<sp/>constructor<sp/>is<sp/>identity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classlibmolgrid_1_1Transform_1a0a9ab0c16c128621044b64543e87806b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Transform_1a00ddce88bd65b5128951517a5bc7f57a" kindref="member">Transform::forward</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref>&amp;<sp/>in,<sp/><ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref>&amp;<sp/>out,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>dotranslate)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//transform<sp/>each<sp/>coordset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(in.<ref refid="structlibmolgrid_1_1Example_1a3034c08e7d9765b2f120d44d49d33927" kindref="member">sets</ref>.size()<sp/>!=<sp/>out.<ref refid="structlibmolgrid_1_1Example_1a3034c08e7d9765b2f120d44d49d33927" kindref="member">sets</ref>.size())<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Incompatible<sp/>example<sp/>sizes&quot;</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//todo,<sp/>resize<sp/>out</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>n<sp/>=<sp/>in.<ref refid="structlibmolgrid_1_1Example_1a3034c08e7d9765b2f120d44d49d33927" kindref="member">sets</ref>.size();<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Transform_1a00ddce88bd65b5128951517a5bc7f57a" kindref="member">forward</ref>(in.<ref refid="structlibmolgrid_1_1Example_1a3034c08e7d9765b2f120d44d49d33927" kindref="member">sets</ref>[i],out.<ref refid="structlibmolgrid_1_1Example_1a3034c08e7d9765b2f120d44d49d33927" kindref="member">sets</ref>[i],dotranslate);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classlibmolgrid_1_1Transform_1a528689e8c1bf63b7ec5b89c2abbed0bd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Transform_1a00ddce88bd65b5128951517a5bc7f57a" kindref="member">Transform::forward</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref>&amp;<sp/>in,<sp/><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref>&amp;<sp/>out,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>dotranslate)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(in.<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.dimension(0)<sp/>!=<sp/>out.<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.dimension(0))<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Incompatible<sp/>coordinateset<sp/>sizes&quot;</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//todo,<sp/>resize<sp/>out</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(in.<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.ongpu())<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Transform_1a00ddce88bd65b5128951517a5bc7f57a" kindref="member">forward</ref>(in.<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.gpu(),<sp/>out.<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.gpu(),<sp/>dotranslate);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Transform_1a00ddce88bd65b5128951517a5bc7f57a" kindref="member">forward</ref>(in.<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.cpu(),<sp/>out.<ref refid="structlibmolgrid_1_1CoordinateSet_1ab07880806114807e7acf5d65926daa63" kindref="member">coords</ref>.cpu(),<sp/>dotranslate);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Dtype&gt;</highlight></codeline>
+<codeline lineno="58" refid="classlibmolgrid_1_1Transform_1a00ddce88bd65b5128951517a5bc7f57a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Transform_1a00ddce88bd65b5128951517a5bc7f57a" kindref="member">Transform::forward</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;Dtype, 2, false&gt;</ref>&amp;<sp/>in,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;Dtype, 2, false&gt;</ref>&amp;<sp/>out,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>dotranslate<sp/></highlight><highlight class="comment">/*=true*/</highlight><highlight class="normal">)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>checkGrids(in,out);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>in.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(0);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>N;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>x,y,z;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>=<sp/>in(i,0);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>=<sp/>in(i,1);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>z<sp/>=<sp/>in(i,2);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>newpt<sp/>=<sp/>make_float3(0,0,0);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(dotranslate)<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>newpt<sp/>=<sp/>Q.<ref refid="classlibmolgrid_1_1Quaternion_1ad07f19ca8585a6047d7fbb6a215f08aa" kindref="member">transform</ref>(x,y,z,center,<sp/>translate);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>newpt<sp/>=<sp/>Q.<ref refid="classlibmolgrid_1_1Quaternion_1ad07f19ca8585a6047d7fbb6a215f08aa" kindref="member">transform</ref>(x,y,z,center,<sp/>newpt);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][0]<sp/>=<sp/>newpt.x;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][1]<sp/>=<sp/>newpt.y;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][2]<sp/>=<sp/>newpt.z;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Transform_1a00ddce88bd65b5128951517a5bc7f57a" kindref="member">Transform::forward</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 2, false&gt;</ref>&amp;<sp/>in,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 2, false&gt;</ref>&amp;,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Transform_1a00ddce88bd65b5128951517a5bc7f57a" kindref="member">Transform::forward</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;double, 2, false&gt;</ref>&amp;<sp/>in,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;double, 2, false&gt;</ref>&amp;,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//inverse,<sp/>translate,<sp/>then<sp/>unrotate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Dtype&gt;</highlight></codeline>
+<codeline lineno="86" refid="classlibmolgrid_1_1Transform_1acfada39f4f16531f4289971bd29ce946" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Transform_1acfada39f4f16531f4289971bd29ce946" kindref="member">Transform::backward</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;Dtype, 2, false&gt;</ref>&amp;<sp/>in,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;Dtype, 2, false&gt;</ref>&amp;<sp/>out,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>dotranslate<sp/></highlight><highlight class="comment">/*=true*/</highlight><highlight class="normal">)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>checkGrids(in,out);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>in.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(0);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1Quaternion" kindref="compound">Quaternion</ref><sp/>invQ<sp/>=<sp/>Q.<ref refid="classlibmolgrid_1_1Quaternion_1a40e59f1b2dc5d2131dc5048c2459206f" kindref="member">inverse</ref>();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/>float3<sp/>untranslate;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(dotranslate)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>untranslate<sp/>=<sp/>make_float3(-translate.x<sp/>-<sp/>center.x,<sp/>-translate.y<sp/>-<sp/>center.y,<sp/>-translate.z<sp/>-<sp/>center.z);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>untranslate<sp/>=<sp/>make_float3(-center.x,<sp/>-center.y,<sp/>-center.z);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>N;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>x,y,z;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>=<sp/>in[i][0]<sp/>+<sp/>untranslate.x;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>=<sp/>in[i][1]<sp/>+<sp/>untranslate.y;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>z<sp/>=<sp/>in[i][2]<sp/>+<sp/>untranslate.z;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>newpt<sp/>=<sp/>invQ.<ref refid="classlibmolgrid_1_1Quaternion_1aa4e402e2cf35dd2ea523414b42878a18" kindref="member">rotate</ref>(x,y,z);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][0]<sp/>=<sp/>newpt.x<sp/>+<sp/>center.x;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][1]<sp/>=<sp/>newpt.y<sp/>+<sp/>center.y;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][2]<sp/>=<sp/>newpt.z<sp/>+<sp/>center.z;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Transform_1acfada39f4f16531f4289971bd29ce946" kindref="member">Transform::backward</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 2, false&gt;</ref>&amp;,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 2, false&gt;</ref>&amp;,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Transform_1acfada39f4f16531f4289971bd29ce946" kindref="member">Transform::backward</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;double, 2, false&gt;</ref>&amp;,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;double, 2, false&gt;</ref>&amp;,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dkoes/git/libmolgrid/src/transform.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classlibmolgrid_1_1StringCache" kind="class" language="C++" prot="public">
+    <compoundname>libmolgrid::StringCache</compoundname>
+    <includes refid="example_8h" local="no">example.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classlibmolgrid_1_1StringCache_1a0f0c8f33554e4df84d6856d57bce7295" prot="private" static="no" mutable="no">
+        <type>std::unordered_set&lt; std::string &gt;</type>
+        <definition>std::unordered_set&lt;std::string&gt; strings</definition>
+        <argsstring></argsstring>
+        <name>strings</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="163" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classlibmolgrid_1_1StringCache_1ae455591e43349bd3ef26f574a6ea2ecd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char* get</definition>
+        <argsstring>(const std::string &amp;s)</argsstring>
+        <name>get</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="165" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="165" bodyend="170"/>
+        <referencedby refid="classlibmolgrid_1_1CoordCache_1a30e53e7aa53be3caabe1e7b88f4c06f8" compoundref="coord__cache_8cpp" startline="25" endline="73">CoordCache::CoordCache</referencedby>
+        <referencedby refid="structlibmolgrid_1_1ExampleRef_1af68ef87a6eab8ca94bd25484c273a402" compoundref="example_8cpp" startline="309" endline="354">ExampleRef::ExampleRef</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="393" endline="423">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="162" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="162" bodyend="171"/>
+    <listofallmembers>
+      <member refid="classlibmolgrid_1_1StringCache_1ae455591e43349bd3ef26f574a6ea2ecd" prot="public" virt="non-virtual"><scope>libmolgrid::StringCache</scope><name>get</name></member>
+      <member refid="classlibmolgrid_1_1StringCache_1a0f0c8f33554e4df84d6856d57bce7295" prot="private" virt="non-virtual"><scope>libmolgrid::StringCache</scope><name>strings</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

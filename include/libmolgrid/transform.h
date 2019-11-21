@@ -17,6 +17,7 @@
 
 namespace libmolgrid {
 
+// Docstring_Transform
 /** \brief Stateful transformation of Cartesian coordinates.
  *
  *  Stores a center of rotation, quaternion, and translation.
@@ -40,6 +41,7 @@ class Transform {
         : Q(q), center(c), translate(t) {
     }
 
+    // Docstring_Transform_constructor
     /* \brief Create random transform.
      * @param[in] c  Center of rotation
      * @param[in] random_translate Amount (+/-) to randomly translte
@@ -47,6 +49,7 @@ class Transform {
      */
     Transform(float3 c, float random_translate = 0.0, bool random_rotate = false);
 
+    // Docstring_Transform_forward_1
     /* \brief Apply 3D transformation on CPU.   It is safe to transform
      * a grid in-place.
      *
@@ -58,6 +61,7 @@ class Transform {
     template <typename Dtype>
     void forward(const Grid<Dtype, 2, false>& in, Grid<Dtype, 2, false>& out, bool dotranslate=true) const;
 
+    // Docstring_Transform_forward_2
     /* \brief Apply 3D transformation to Example.   It is safe to transform in-place
      *
      * @param[in] input example
@@ -67,6 +71,7 @@ class Transform {
      */
     void forward(const Example& in, Example& out, bool dotranslate=true) const;
 
+    // Docstring_Transform_forward_3
     /* \brief Apply 3D transformation to CoordinateSet.   It is safe to transform in-place
      *
      * @param[in] input coords
@@ -76,11 +81,19 @@ class Transform {
      */
     void forward(const CoordinateSet& in, CoordinateSet& out, bool dotranslate=true) const;
 
-    /* \brief Apply 3D transformation on GPU.  Same requirements as CPU version.
+    // Docstring_Transform_forward_4
+    /* \brief Apply 3D transformation on GPU.  It is safe to transform a grid
+     * in-place.
+     *
+     * @param[in] in Nx3 input grid
+     * @param[out] out Nx3 output grid (will be overwritten)
+     * @param[in] dotranslate if false only a rotation around the origin is applied.
+     * (This is for vector quantities such as gradients and normals).
      */
     template <typename Dtype>
     __host__ void forward(const Grid<Dtype, 2, true>& in, Grid<Dtype, 2, true>& out, bool dotranslate=true) const;
 
+    // Docstring_Transform_backward_1
     /* \brief Apply inverse of 3D transformation on CPU.
      * @param[in] in Nx3 input grid
      * @param[out] out Nx3 output grid (will be overwritten)
@@ -89,7 +102,11 @@ class Transform {
     template <typename Dtype>
     void backward(const Grid<Dtype, 2, false>& in, Grid<Dtype, 2, false>& out, bool dotranslate=true) const;
 
-    /* \brief Apply 3D transformation on GPU.  Same requirements as CPU version.
+    // Docstring_Transform_backward_2
+    /* \brief Apply inverse of 3D transformation on GPU.
+     * @param[in] in Nx3 input grid
+     * @param[out] out Nx3 output grid (will be overwritten)
+     * @param[in] dotranslate if false only the inverse rotation is applied
      */
     template <typename Dtype>
     __host__ void backward(const Grid<Dtype, 2, true>& in, Grid<Dtype, 2, true>& out, bool dotranslate=true) const;

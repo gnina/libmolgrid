@@ -1,0 +1,70 @@
+title: "libmolgrid: Grid-based molecular modeling"
+email: "dkoes@pitt.edu"
+description: >- 
+  libmolgrid is a C++ library with Python bindings that generates tensors from molecular structures that are optimized for machine learning workflows
+baseurl: "/libmolgrid"
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+
+plugins:
+
+# name of the software
+name: libmolgrid
+
+project:
+    version: "1.0"
+    download_url: https://github.com/gnina/libmolgrid
+
+license:
+    software: "Apache 2.0"
+    software_url:  "http://www.apache.org/licenses/"
+
+    docs: CC BY 3.0
+    docs_url: http://creativecommons.org/licenses/by/3.0/
+
+links:
+    header:
+    footer:
+      - title: GitHub
+        url: https://github.com/gnina/libmolgrid
+      - title: Issues
+        url: https://github.com/gnina/libmolgrid/issues?state=open
+
+# documentation and tutorials are special
+collections:
+    tutorials:
+      output: true
+
+ui:
+    header:
+        color1: "#ffd91c"
+        color2: "#080331"
+        trianglify: false
+
+social:
+    github:
+        user: dkoes
+        repo: gnina/libmolgrid
+    twitter:
+        enabled: false
+        via:
+        hash:
+        account:
+    facebook:
+        enabled: false
+        profileUrl:
+
+analytics:
+    google: 
+
+# Build settings
+markdown: kramdown
+exclude:
+    - Gemfile
+    - Gemfile.lock
+
+# sphinx stores stylesheets etc in a directory named _static
+include:
+  - _static
+
+# store empty array to use as a convenience
+emptyArray: []

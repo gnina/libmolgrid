@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structlibmolgrid_1_1ExampleProviderSettings" kind="struct" language="C++" prot="public">
+    <compoundname>libmolgrid::ExampleProviderSettings</compoundname>
+    <includes refid="example_8h" local="no">example.h</includes>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Description of how examples should be provided This provides configuration to example refs, extractors, and the provider itself as a declarative syntax. </para>    </detaileddescription>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="47" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="47" bodyend="50"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

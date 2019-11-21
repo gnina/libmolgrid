@@ -10,6 +10,7 @@
 
 namespace libmolgrid {
 
+// Docstring_Quaternion
 /** \brief A CUDA friendly quaternion class.  Single precision only
  * for maximum CUDA performance.
  */

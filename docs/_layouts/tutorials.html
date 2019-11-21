@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<div class="container">
+    <div class="bs-docs-container row">
+        <div class="col-md-9" role="main">
+            <div class="bs-docs-section">{{ content }}</div>
+        </div>
+        <div class="col-md-3" role="complementary">
+          <div class="sidebar-about">
+            <h1>
+                Tutorials
+            </h1>
+          </div>
+          <nav class="sidebar-nav">
+          <ul>
+          {% assign sorted = site.tutorials | sort: "title" %}
+          {% for page in sorted %}
+            <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a></li>
+          {% endfor %}
+          </ul>
+          </nav>
+        </div>
+  </div>
+</div>

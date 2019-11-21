@@ -21,6 +21,7 @@ namespace libmolgrid {
 
 /***** Base classes **********/
 
+// Docstring_AtomTyper
 /** \brief Base class for all atom typers */
 class AtomTyper {
   public:
@@ -112,6 +113,7 @@ class AtomIndexTypeMapper {
 };
 
 
+// Docstring_GninaIndexTyper
 /*********** Atom typers *****************/
 
 /** \brief Calculate gnina types
@@ -205,6 +207,7 @@ class GninaIndexTyper: public AtomIndexTyper {
     static std::string gnina_type_name(int t);
 };
 
+// Docstring_ElementIndexTyper
 /** \brief Calculate element types
  *
  * There are quite a few elements, so should probably run this through
@@ -235,6 +238,7 @@ class ElementIndexTyper: public AtomIndexTyper {
     virtual std::vector<float> get_type_radii() const;
 };
 
+// Docstring_NullIndexTyper
 /** \brief Always return an invalid type
  *  */
 class NullIndexTyper: public AtomIndexTyper {
@@ -371,6 +375,7 @@ class MappedAtomIndexTyper: public AtomIndexTyper {
 
 };
 
+// Docstring_GninaVectorTyper
 /** \brief Decompose gnina types into elements and properties.  Result is boolean.
  *
  * Hydrophobic, Aromatic, Donor, Acceptor
@@ -454,6 +459,7 @@ class CallbackVectorTyper: public AtomVectorTyper {
 };
 
 
+// Docstring_FileAtomMapper
 /*********** Atom mappers *****************/
 
 /** \brief Map atom types based on provided file.
@@ -492,6 +498,7 @@ class FileAtomMapper : public AtomIndexTypeMapper {
 
 };
 
+// Docstring_SubsetAtomMapper
 /** \brief Map atom types onto a provided subset.
  */
 class SubsetAtomMapper: public AtomIndexTypeMapper {
@@ -518,6 +525,7 @@ class SubsetAtomMapper: public AtomIndexTypeMapper {
 
 };
 
+// Docstring_SubsettedElementTyper
 /// subsetting element types, derived class for convenient initialization
 class SubsettedElementTyper: public MappedAtomIndexTyper<SubsetAtomMapper, ElementIndexTyper> {
   public:

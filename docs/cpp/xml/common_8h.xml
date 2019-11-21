@@ -1,0 +1,407 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="common_8h" kind="file" language="C++">
+    <compoundname>common.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">cstring</includes>
+    <includes local="no">cuda_runtime_api.h</includes>
+    <includes local="no">cuda.h</includes>
+    <includedby refid="grid_8h" local="yes">grid.h</includedby>
+    <incdepgraph>
+      <node id="70">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>cuda.h</label>
+      </node>
+      <node id="73">
+        <label>cuda_runtime_api.h</label>
+      </node>
+      <node id="72">
+        <label>cstring</label>
+      </node>
+      <node id="71">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="86">
+        <label>example_extractor.h</label>
+        <link refid="example__extractor_8h"/>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+      </node>
+      <node id="91">
+        <label>example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>grid_io.cpp</label>
+        <link refid="grid__io_8cpp"/>
+      </node>
+      <node id="80">
+        <label>cartesian_grid.cpp</label>
+        <link refid="cartesian__grid_8cpp"/>
+      </node>
+      <node id="89">
+        <label>example_extractor.cpp</label>
+        <link refid="example__extractor_8cpp"/>
+      </node>
+      <node id="76">
+        <label>grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>grid_io.h</label>
+        <link refid="grid__io_8h"/>
+        <childnode refid="79" relation="include">
+        </childnode>
+      </node>
+      <node id="82">
+        <label>grid_maker.cpp</label>
+        <link refid="grid__maker_8cpp"/>
+      </node>
+      <node id="92">
+        <label>exampleref_providers.h</label>
+        <link refid="exampleref__providers_8h"/>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>cartesian_grid.h</label>
+        <link refid="cartesian__grid_8h"/>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+      </node>
+      <node id="85">
+        <label>coord_cache.h</label>
+        <link refid="coord__cache_8h"/>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>grid_maker.h</label>
+        <link refid="grid__maker_8h"/>
+        <childnode refid="82" relation="include">
+        </childnode>
+      </node>
+      <node id="95">
+        <label>libmolgrid.cpp</label>
+        <link refid="libmolgrid_8cpp"/>
+      </node>
+      <node id="87">
+        <label>example_provider.h</label>
+        <link refid="example__provider_8h"/>
+        <childnode refid="88" relation="include">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="96">
+        <label>transform.cpp</label>
+        <link refid="transform_8cpp"/>
+      </node>
+      <node id="93">
+        <label>exampleref_providers.cpp</label>
+        <link refid="exampleref__providers_8cpp"/>
+      </node>
+      <node id="94">
+        <label>transform.h</label>
+        <link refid="transform_8h"/>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+      </node>
+      <node id="88">
+        <label>example_provider.cpp</label>
+        <link refid="example__provider_8cpp"/>
+      </node>
+      <node id="83">
+        <label>managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+      </node>
+      <node id="90">
+        <label>coord_cache.cpp</label>
+        <link refid="coord__cache_8cpp"/>
+      </node>
+      <node id="98">
+        <label>coordinateset.cpp</label>
+        <link refid="coordinateset_8cpp"/>
+      </node>
+      <node id="97">
+        <label>example.cpp</label>
+        <link refid="example_8cpp"/>
+      </node>
+      <node id="84">
+        <label>coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" prot="public" static="no">
+        <name>CUDA_CALLABLE_MEMBER</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="19" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="19" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a9841643c7664f940378c3f1a068b19b4" compoundref="grid__maker_8h" startline="424" endline="432">GridMaker::backward_relevance</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1a512219066836349f65f85a0ead19ae8a" compoundref="grid_8h" startline="212" endline="215">Grid&lt; Dtype, NumDims, true &gt;::fill_zero</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a512219066836349f65f85a0ead19ae8a" compoundref="grid_8h" startline="296" endline="299">Grid&lt; Dtype, 1, isCUDA &gt;::fill_zero</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1ab252273ae1616c329c9185dba68fc1b1" compoundref="grid__maker_8h" startline="107" endline="107">GridMaker::get_radiusmultiple</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="common_8h_1aae0d7f428b69470abdad707078ba2acb" prot="public" static="no">
+        <name>CUDA_DEVICE_MEMBER</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="20" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="20" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a9841643c7664f940378c3f1a068b19b4" compoundref="grid__maker_8h" startline="424" endline="432">GridMaker::backward_relevance</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="common_8h_1a20904151946f0fa7480bd53aae19bd4f" prot="public" static="no">
+        <name>LMG_CUDA_KERNEL_LOOP</name>
+        <param><defname>i</defname></param>
+        <param><defname>n</defname></param>
+        <initializer>for (int i = blockIdx.x * blockDim.x + threadIdx.x; \
+       i &lt; (n); \
+       i += blockDim.x * gridDim.x)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="24" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="common_8h_1a9e253719885e410b7c64b95d97b7f881" prot="public" static="no">
+        <name>LMG_CUDA_NUM_THREADS</name>
+        <initializer>512</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="30" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="common_8h_1a30e49f29289f693fbfe768d590132652" prot="public" static="no">
+        <name>LMG_CUDA_BLOCKDIM</name>
+        <initializer>8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="31" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="common_8h_1a9f32493f7d15ce12f1924944a5ba065a" prot="public" static="no">
+        <name>LOG2_WARP_SIZE</name>
+        <initializer>5U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="32" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="common_8h_1a9ea0293fb7dcba88f071c44fd145819e" prot="public" static="no">
+        <name>WARP_SIZE</name>
+        <initializer>(1U &lt;&lt; LOG2_WARP_SIZE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="33" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="common_8h_1abdf19194f44a3fb9e5c12883f40b1cef" prot="public" static="no">
+        <name>LMG_GET_BLOCKS</name>
+        <param><defname>N</defname></param>
+        <initializer>((unsigned(N) + <ref refid="common_8h_1a9e253719885e410b7c64b95d97b7f881" kindref="member">LMG_CUDA_NUM_THREADS</ref> - 1) / <ref refid="common_8h_1a9e253719885e410b7c64b95d97b7f881" kindref="member">LMG_CUDA_NUM_THREADS</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="36" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="common_8h_1a70ddc4b6982996cbaba9ec10e864b214" prot="public" static="no">
+        <name>LMG_GET_THREADS</name>
+        <param><defname>N</defname></param>
+        <initializer>min(N,<ref refid="common_8h_1a9e253719885e410b7c64b95d97b7f881" kindref="member">LMG_CUDA_NUM_THREADS</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="38" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="common_8h_1aa79d03c876b7392cd06c1f77d5286b59" prot="public" static="no">
+        <name>LMG_CUDA_CHECK</name>
+        <param><defname>condition</defname></param>
+        <initializer>/* Code block avoids redefinition of cudaError_t error */ \
+  do { \
+    cudaError_t error = condition; \
+    if(error != cudaSuccess) {                                          \
+        std::cerr &lt;&lt; __FILE__ &lt;&lt; &quot;:&quot; &lt;&lt; __LINE__ &lt;&lt; &quot;: &quot; &lt;&lt; cudaGetErrorString(error); throw std::runtime_error(std::string(&quot;CUDA Error: &quot;)+cudaGetErrorString(error)); } \
+  } while (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="41" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="41" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a3ab3abfca1447e4fc0874c00c47aadff" compoundref="managed__grid_8h" startline="103" endline="120">ManagedGridBase&lt; Dtype, 1 &gt;::clone_ptrs</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a32a5cdeb67c51d9b75925d93277a1ed0" compoundref="managed__grid_8h" startline="191" endline="200">ManagedGridBase&lt; Dtype, 1 &gt;::copyFrom</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1ac5cd5f1c4591aa5a8d21e5babb971e99" compoundref="grid_8h" startline="201" endline="207">Grid&lt; Dtype, NumDims, true &gt;::copyFrom</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1ad3152bc9dfc67f11fa55467ac93460f8" compoundref="grid_8h" startline="317" endline="323">Grid&lt; Dtype, 1, isCUDA &gt;::copyFrom</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1ab92b52fef49a9d7440a98f567c28f168" compoundref="managed__grid_8h" startline="224" endline="243">ManagedGridBase&lt; Dtype, 1 &gt;::copyInto</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1aff4a416b7db91859de81b24856be632a" compoundref="managed__grid_8h" startline="158" endline="167">ManagedGridBase&lt; Dtype, 1 &gt;::copyTo</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1ac2f29eb66b0b3b19ab09ecd80e3fbb35" compoundref="grid_8h" startline="188" endline="194">Grid&lt; Dtype, NumDims, true &gt;::copyTo</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a3e983133f9cb7d0571557580480ece9b" compoundref="grid_8h" startline="308" endline="314">Grid&lt; Dtype, 1, isCUDA &gt;::copyTo</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1abd2622389892168945e6f8d721072e38" compoundref="example_8cpp" startline="277" endline="295">Example::extract_label</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1a000f4bbd3c5453860543c5ad97be617a" compoundref="example_8cpp" startline="255" endline="270">Example::extract_labels</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a3e9eb84f9344f6ca4eac9975f8f61386" compoundref="managed__grid_8h" startline="302" endline="307">ManagedGridBase&lt; Dtype, 1 &gt;::tocpu</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a18aaaed8a845f4c8ad9c30d0693e03c1" compoundref="managed__grid_8h" startline="285" endline="299">ManagedGridBase&lt; Dtype, 1 &gt;::togpu</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>common.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Utility<sp/>functions<sp/>and<sp/>definitions</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>COMMON_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COMMON_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cuda_runtime_api.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cuda.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__CUDACC__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CUDA_CALLABLE_MEMBER<sp/>__host__<sp/>__device__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CUDA_DEVICE_MEMBER<sp/>__device__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CUDA_CALLABLE_MEMBER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="common_8h_1aae0d7f428b69470abdad707078ba2acb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CUDA_DEVICE_MEMBER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//called<sp/>in<sp/>device<sp/>code<sp/>to<sp/>perform<sp/>a<sp/>parallel<sp/>operation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="common_8h_1a20904151946f0fa7480bd53aae19bd4f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_CUDA_KERNEL_LOOP(i,<sp/>n)<sp/>\</highlight></codeline>
+<codeline lineno="25"><highlight class="preprocessor"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>blockIdx.x<sp/>*<sp/>blockDim.x<sp/>+<sp/>threadIdx.x;<sp/>\</highlight></codeline>
+<codeline lineno="26"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i<sp/>&lt;<sp/>(n);<sp/>\</highlight></codeline>
+<codeline lineno="27"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i<sp/>+=<sp/>blockDim.x<sp/>*<sp/>gridDim.x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CUDA:<sp/>use<sp/>512<sp/>threads<sp/>per<sp/>block</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="common_8h_1a9e253719885e410b7c64b95d97b7f881" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_CUDA_NUM_THREADS<sp/>512</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="common_8h_1a30e49f29289f693fbfe768d590132652" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_CUDA_BLOCKDIM<sp/>8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="common_8h_1a9f32493f7d15ce12f1924944a5ba065a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG2_WARP_SIZE<sp/>5U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="common_8h_1a9ea0293fb7dcba88f071c44fd145819e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WARP_SIZE<sp/>(1U<sp/>&lt;&lt;<sp/>LOG2_WARP_SIZE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CUDA:<sp/>number<sp/>of<sp/>blocks<sp/>for<sp/>threads.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="common_8h_1abdf19194f44a3fb9e5c12883f40b1cef" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_GET_BLOCKS(N)<sp/>((unsigned(N)<sp/>+<sp/>LMG_CUDA_NUM_THREADS<sp/>-<sp/>1)<sp/>/<sp/>LMG_CUDA_NUM_THREADS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CUDA:<sp/>combined<sp/>with<sp/>GET_BLOCKS,<sp/>number<sp/>of<sp/>threads</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="common_8h_1a70ddc4b6982996cbaba9ec10e864b214" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_GET_THREADS(N)<sp/>min(N,LMG_CUDA_NUM_THREADS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__CUDA_ARCH__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="common_8h_1aa79d03c876b7392cd06c1f77d5286b59" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_CUDA_CHECK(condition)<sp/>\</highlight></codeline>
+<codeline lineno="42"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Code<sp/>block<sp/>avoids<sp/>redefinition<sp/>of<sp/>cudaError_t<sp/>error<sp/>*/</highlight><highlight class="preprocessor"><sp/>\</highlight></codeline>
+<codeline lineno="43"><highlight class="preprocessor"><sp/><sp/>do<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>cudaError_t<sp/>error<sp/>=<sp/>condition;<sp/>\</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>if(error<sp/>!=<sp/>cudaSuccess)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>__FILE__<sp/>&lt;&lt;<sp/>&quot;:&quot;<sp/>&lt;&lt;<sp/>__LINE__<sp/>&lt;&lt;<sp/>&quot;:<sp/>&quot;<sp/>&lt;&lt;<sp/>cudaGetErrorString(error);<sp/>throw<sp/>std::runtime_error(std::string(&quot;CUDA<sp/>Error:<sp/>&quot;)+cudaGetErrorString(error));<sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"><sp/><sp/>}<sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>probably<sp/>don&apos;t<sp/>want<sp/>to<sp/>make<sp/>API<sp/>calls<sp/>on<sp/>the<sp/>device.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_CUDA_CHECK(condition)<sp/>condition</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>COMMON_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h"/>
+  </compounddef>
+</doxygen>

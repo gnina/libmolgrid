@@ -1,0 +1,17 @@
+{% if page.homepage %}
+    <div class="bs-docs-masthead" id="jumbotron-header">
+        <div class="container">
+            <p class="lead">{{ page.description }}</p>
+            <p class="lead">
+                <img width="100%" style="position:relative;top:0;left:0;border:0;max-width:800px" src="images/jumbotron.png">
+                <a href="https://github.com/gnina/libmolgrid"><img width="149" height="149" style="position:absolute;top:0;right:0;border:0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+        </div>
+    </div>
+{% else %}
+    <div class="bs-docs-header" id="jumbotron-header">
+        <div class="container">
+            <h1>{{ page.title }}</h1>
+            <p>{{ page.description }}</p>
+        </div>
+    </div>
+{% endif %}

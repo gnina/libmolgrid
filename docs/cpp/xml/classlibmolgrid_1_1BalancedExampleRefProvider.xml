@@ -1,0 +1,340 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classlibmolgrid_1_1BalancedExampleRefProvider" kind="class" language="C++" prot="public">
+    <compoundname>libmolgrid::BalancedExampleRefProvider</compoundname>
+    <basecompoundref refid="classlibmolgrid_1_1ExampleRefProvider" prot="public" virt="non-virtual">ExampleRefProvider</basecompoundref>
+    <includes refid="exampleref__providers_8h" local="no">exampleref_providers.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a9c3c599a57ae155012056d9db86ad08d" prot="private" static="no" mutable="no">
+        <type><ref refid="classlibmolgrid_1_1UniformExampleRefProvider" kindref="compound">UniformExampleRefProvider</ref></type>
+        <definition>UniformExampleRefProvider actives</definition>
+        <argsstring></argsstring>
+        <name>actives</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="69" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a794ba353d3e0e644569a7178f94f2673" prot="private" static="no" mutable="no">
+        <type><ref refid="classlibmolgrid_1_1UniformExampleRefProvider" kindref="compound">UniformExampleRefProvider</ref></type>
+        <definition>UniformExampleRefProvider decoys</definition>
+        <argsstring></argsstring>
+        <name>decoys</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="70" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a2cb51d0acda029b457eba211467c2cca" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t current</definition>
+        <argsstring></argsstring>
+        <name>current</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="71" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1BalancedExampleRefProvider_1ae15d102ceae49cf5f3fd098f45df674b" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned labelpos</definition>
+        <argsstring></argsstring>
+        <name>labelpos</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="72" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a3404d7dfaebdfca4e2762c78acd81ecb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>BalancedExampleRefProvider</definition>
+        <argsstring>()</argsstring>
+        <name>BalancedExampleRefProvider</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="75" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1abf08cb5085ecca8f2f7d6bca860e8d08" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>BalancedExampleRefProvider</definition>
+        <argsstring>(const ExampleProviderSettings &amp;settings)</argsstring>
+        <name>BalancedExampleRefProvider</name>
+        <param>
+          <type>const <ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref> &amp;</type>
+          <declname>settings</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="76" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="76" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void addref</definition>
+        <argsstring>(const ExampleRef &amp;ex)</argsstring>
+        <name>addref</name>
+        <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a134b2325787965e2ef6260960f06adfc">addref</reimplements>
+        <param>
+          <type>const <ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref> &amp;</type>
+          <declname>ex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="81" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/exampleref_providers.cpp" bodystart="88" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>virtual size_t num_labels</definition>
+        <argsstring>() const</argsstring>
+        <name>num_labels</name>
+        <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a4af792d6af8f9f676a2dc30f2262158b">num_labels</reimplements>
+        <briefdescription>
+<para>return number of labels in <emphasis>an</emphasis> example </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="84" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="84" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void setup</definition>
+        <argsstring>()</argsstring>
+        <name>setup</name>
+        <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a39fe489f6eb526d59b6b804a8343fe8c">setup</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="85" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/exampleref_providers.cpp" bodystart="100" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1ae630292b50e44deb19e001f322914934" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void nextref</definition>
+        <argsstring>(ExampleRef &amp;ex)</argsstring>
+        <name>nextref</name>
+        <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a7a953020850169224c78ac9bfda9e423">nextref</reimplements>
+        <param>
+          <type><ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref> &amp;</type>
+          <declname>ex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="86" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/exampleref_providers.cpp" bodystart="107" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>unsigned</type>
+        <definition>unsigned size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a962e2830e9c2869a2ee70cd5331f815f">size</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="87" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="87" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a3ed1c22bbf408a692ff4c997769639f6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned num_actives</definition>
+        <argsstring>() const</argsstring>
+        <name>num_actives</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="88" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a12e19cfe7fd4a4d5b9d5d7d01840cfd7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned num_decoys</definition>
+        <argsstring>() const</argsstring>
+        <name>num_decoys</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="89" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="89" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1aba8517b4134d5ddaa29f9b5b3c7654f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void next_active</definition>
+        <argsstring>(ExampleRef &amp;ex)</argsstring>
+        <name>next_active</name>
+        <param>
+          <type><ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref> &amp;</type>
+          <declname>ex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="91" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="91" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1aaec2eeecfd8138a25cc093a24afb75f4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void next_decoy</definition>
+        <argsstring>(ExampleRef &amp;ex)</argsstring>
+        <name>next_decoy</name>
+        <param>
+          <type><ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref> &amp;</type>
+          <declname>ex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="92" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="92" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool has_group</definition>
+        <argsstring>() const</argsstring>
+        <name>has_group</name>
+        <reimplementedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028">has_group</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="34" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void check_batch_size</definition>
+        <argsstring>(unsigned bsize) const</argsstring>
+        <name>check_batch_size</name>
+        <reimplementedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a">check_batch_size</reimplementedby>
+        <param>
+          <type>unsigned</type>
+          <declname>bsize</declname>
+        </param>
+        <briefdescription>
+<para>has group field </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="35" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int populate</definition>
+        <argsstring>(std::istream &amp;lines, int numlabels)</argsstring>
+        <name>populate</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>lines</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>numlabels</declname>
+        </param>
+        <briefdescription>
+<para>read in all the example refs from lines, but does not setup </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="39" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/exampleref_providers.cpp" bodystart="48" bodyend="62"/>
+        <referencedby refid="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" compoundref="exampleref__providers_8h" startline="35" endline="35">ExampleRefProvider::check_batch_size</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>sample uniformly from actives and decoys </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="47">
+        <label>ExampleRefProvider</label>
+        <link refid="classlibmolgrid_1_1ExampleRefProvider"/>
+      </node>
+      <node id="46">
+        <label>BalancedExampleRefProvider</label>
+        <link refid="classlibmolgrid_1_1BalancedExampleRefProvider"/>
+        <childnode refid="47" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="49">
+        <label>ExampleRefProvider</label>
+        <link refid="classlibmolgrid_1_1ExampleRefProvider"/>
+      </node>
+      <node id="48">
+        <label>BalancedExampleRefProvider</label>
+        <link refid="classlibmolgrid_1_1BalancedExampleRefProvider"/>
+        <childnode refid="49" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="68" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="67" bodyend="93"/>
+    <listofallmembers>
+      <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a9c3c599a57ae155012056d9db86ad08d" prot="private" virt="non-virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>actives</name></member>
+      <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" prot="public" virt="virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>addref</name></member>
+      <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a3404d7dfaebdfca4e2762c78acd81ecb" prot="public" virt="non-virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>BalancedExampleRefProvider</name></member>
+      <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1abf08cb5085ecca8f2f7d6bca860e8d08" prot="public" virt="non-virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>BalancedExampleRefProvider</name></member>
+      <member refid="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" prot="public" virt="virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>check_batch_size</name></member>
+      <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a2cb51d0acda029b457eba211467c2cca" prot="private" virt="non-virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>current</name></member>
+      <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a794ba353d3e0e644569a7178f94f2673" prot="private" virt="non-virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>decoys</name></member>
+      <member refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" prot="public" virt="non-virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>ExampleRefProvider</name></member>
+      <member refid="classlibmolgrid_1_1ExampleRefProvider_1ae32c6ad6aeaeba0d2d2ab74a48a553b5" prot="public" virt="non-virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>ExampleRefProvider</name></member>
+      <member refid="classlibmolgrid_1_1ExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028" prot="public" virt="virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>has_group</name></member>
+      <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ae15d102ceae49cf5f3fd098f45df674b" prot="private" virt="non-virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>labelpos</name></member>
+      <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1aba8517b4134d5ddaa29f9b5b3c7654f3" prot="public" virt="non-virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>next_active</name></member>
+      <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1aaec2eeecfd8138a25cc093a24afb75f4" prot="public" virt="non-virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>next_decoy</name></member>
+      <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ae630292b50e44deb19e001f322914934" prot="public" virt="virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>nextref</name></member>
+      <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a3ed1c22bbf408a692ff4c997769639f6" prot="public" virt="non-virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>num_actives</name></member>
+      <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a12e19cfe7fd4a4d5b9d5d7d01840cfd7" prot="public" virt="non-virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>num_decoys</name></member>
+      <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" prot="public" virt="virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>num_labels</name></member>
+      <member refid="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" prot="public" virt="virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>populate</name></member>
+      <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" prot="public" virt="virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>setup</name></member>
+      <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" prot="public" virt="virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>size</name></member>
+      <member refid="classlibmolgrid_1_1ExampleRefProvider_1a6dab7933abd006833437122f78468007" prot="public" virt="virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>~ExampleRefProvider</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

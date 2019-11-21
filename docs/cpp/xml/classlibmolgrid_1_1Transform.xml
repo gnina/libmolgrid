@@ -1,0 +1,462 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classlibmolgrid_1_1Transform" kind="class" language="C++" prot="public">
+    <compoundname>libmolgrid::Transform</compoundname>
+    <includes refid="transform_8h" local="no">transform.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classlibmolgrid_1_1Transform_1a8a750ded4f6eb72805026780b7d993f4" prot="private" static="no" mutable="no">
+        <type><ref refid="classlibmolgrid_1_1Quaternion" kindref="compound">Quaternion</ref></type>
+        <definition>Quaternion Q</definition>
+        <argsstring></argsstring>
+        <name>Q</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="28" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1Transform_1ae6640dffce5073d38fa0161f26947f2a" prot="private" static="no" mutable="no">
+        <type>float3</type>
+        <definition>float3 center</definition>
+        <argsstring></argsstring>
+        <name>center</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="29" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1Transform_1a9e15220092a129a830bf3778c7f55f4f" prot="private" static="no" mutable="no">
+        <type>float3</type>
+        <definition>float3 translate</definition>
+        <argsstring></argsstring>
+        <name>translate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="30" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classlibmolgrid_1_1Transform_1a9de68ec1c9b7809129814a3233ae4655" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Transform</definition>
+        <argsstring>()</argsstring>
+        <name>Transform</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="33" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" bodystart="33" bodyend="36"/>
+        <referencedby refid="classlibmolgrid_1_1Transform_1a9297cddcfa3ce722db2b9d947faf5fc1" compoundref="transform_8h" startline="38" endline="42">Transform::Transform</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Transform_1a9297cddcfa3ce722db2b9d947faf5fc1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Transform</definition>
+        <argsstring>(const Quaternion &amp;q, float3 c=make_float3(0, 0, 0), float3 t=make_float3(0, 0, 0))</argsstring>
+        <name>Transform</name>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Quaternion" kindref="compound">Quaternion</ref> &amp;</type>
+          <declname>q</declname>
+        </param>
+        <param>
+          <type>float3</type>
+          <declname>c</declname>
+          <defval>make_float3(0, 0, 0)</defval>
+        </param>
+        <param>
+          <type>float3</type>
+          <declname>t</declname>
+          <defval>make_float3(0, 0, 0)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="38" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" bodystart="38" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Transform_1a0efff6c41e09c88c91cb11d281e1b1ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Transform</definition>
+        <argsstring>(float3 c, float random_translate=0.0, bool random_rotate=false)</argsstring>
+        <name>Transform</name>
+        <param>
+          <type>float3</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>random_translate</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>random_rotate</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="50" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/transform.cpp" bodystart="13" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Transform_1a00ddce88bd65b5128951517a5bc7f57a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Dtype</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void forward</definition>
+        <argsstring>(const Grid&lt; Dtype, 2, false &gt; &amp;in, Grid&lt; Dtype, 2, false &gt; &amp;out, bool dotranslate=true) const</argsstring>
+        <name>forward</name>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 2, false &gt; &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 2, false &gt; &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>dotranslate</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="62" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/transform.cpp" bodystart="58" bodyend="79"/>
+        <referencedby refid="classlibmolgrid_1_1Transform_1a0a9ab0c16c128621044b64543e87806b" compoundref="transform_8cpp" startline="35" endline="43">Transform::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aca37b69a1f1f60ca9cc298584e7c2bb7" compoundref="grid__maker_8cpp" startline="104" endline="110">GridMaker::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Transform_1a9297cddcfa3ce722db2b9d947faf5fc1" compoundref="transform_8h" startline="38" endline="42">Transform::Transform</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Transform_1a0a9ab0c16c128621044b64543e87806b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void forward</definition>
+        <argsstring>(const Example &amp;in, Example &amp;out, bool dotranslate=true) const</argsstring>
+        <name>forward</name>
+        <param>
+          <type>const <ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type><ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref> &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>dotranslate</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="72" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/transform.cpp" bodystart="35" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Transform_1a528689e8c1bf63b7ec5b89c2abbed0bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void forward</definition>
+        <argsstring>(const CoordinateSet &amp;in, CoordinateSet &amp;out, bool dotranslate=true) const</argsstring>
+        <name>forward</name>
+        <param>
+          <type>const <ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref> &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>dotranslate</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="82" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/transform.cpp" bodystart="45" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Transform_1a02a7b99aacab34a6f1e7133f90b1c5cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Dtype</type>
+          </param>
+        </templateparamlist>
+        <type>__host__ void</type>
+        <definition>__host__ void forward</definition>
+        <argsstring>(const Grid&lt; Dtype, 2, true &gt; &amp;in, Grid&lt; Dtype, 2, true &gt; &amp;out, bool dotranslate=true) const</argsstring>
+        <name>forward</name>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 2, true &gt; &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 2, true &gt; &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>dotranslate</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="94" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Transform_1acfada39f4f16531f4289971bd29ce946" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Dtype</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void backward</definition>
+        <argsstring>(const Grid&lt; Dtype, 2, false &gt; &amp;in, Grid&lt; Dtype, 2, false &gt; &amp;out, bool dotranslate=true) const</argsstring>
+        <name>backward</name>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 2, false &gt; &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 2, false &gt; &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>dotranslate</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="103" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/transform.cpp" bodystart="86" bodyend="108"/>
+        <referencedby refid="classlibmolgrid_1_1Transform_1a9297cddcfa3ce722db2b9d947faf5fc1" compoundref="transform_8h" startline="38" endline="42">Transform::Transform</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Transform_1ae727e7895d2679acb5ed248e28fca99f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Dtype</type>
+          </param>
+        </templateparamlist>
+        <type>__host__ void</type>
+        <definition>__host__ void backward</definition>
+        <argsstring>(const Grid&lt; Dtype, 2, true &gt; &amp;in, Grid&lt; Dtype, 2, true &gt; &amp;out, bool dotranslate=true) const</argsstring>
+        <name>backward</name>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 2, true &gt; &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 2, true &gt; &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>dotranslate</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="112" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Transform_1a820d00aca5ffb38b12e30dd732895d84" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classlibmolgrid_1_1Quaternion" kindref="compound">Quaternion</ref> &amp;</type>
+        <definition>const Quaternion&amp; get_quaternion</definition>
+        <argsstring>() const</argsstring>
+        <name>get_quaternion</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="114" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" bodystart="114" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Transform_1a8295f46fb38138ea671d17c1f0eb96db" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float3</type>
+        <definition>float3 get_rotation_center</definition>
+        <argsstring>() const</argsstring>
+        <name>get_rotation_center</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="115" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" bodystart="115" bodyend="115"/>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aca37b69a1f1f60ca9cc298584e7c2bb7" compoundref="grid__maker_8cpp" startline="104" endline="110">GridMaker::forward</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Transform_1a440d5c632b85f365f998eb5de1145417" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float3</type>
+        <definition>float3 get_translation</definition>
+        <argsstring>() const</argsstring>
+        <name>get_translation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="116" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" bodystart="116" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Transform_1a9e38010f3139c44bade78285ff2592fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void set_quaternion</definition>
+        <argsstring>(const Quaternion &amp;q)</argsstring>
+        <name>set_quaternion</name>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Quaternion" kindref="compound">Quaternion</ref> &amp;</type>
+          <declname>q</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="118" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" bodystart="118" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Transform_1af6e35c966d85215c4de841c5a7a56fb5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void set_rotation_center</definition>
+        <argsstring>(float3 c)</argsstring>
+        <name>set_rotation_center</name>
+        <param>
+          <type>float3</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="119" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" bodystart="119" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Transform_1a91aa6efe3a2d9198c193ac42b2a3a42d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void set_translation</definition>
+        <argsstring>(float3 t)</argsstring>
+        <name>set_translation</name>
+        <param>
+          <type>float3</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="120" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" bodystart="120" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Transform_1a91ad0596c60b63bca9cea696e377a2d6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool is_identity</definition>
+        <argsstring>() const</argsstring>
+        <name>is_identity</name>
+        <briefdescription>
+<para>transformation does not change inputs </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="123" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" bodystart="123" bodyend="125"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classlibmolgrid_1_1Transform_1a7fdaab395dcced8aaa593873bfe85cfd" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Dtype</type>
+          </param>
+          <param>
+            <type>bool</type>
+            <declname>isCUDA</declname>
+            <defname>isCUDA</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void checkGrids</definition>
+        <argsstring>(const Grid&lt; Dtype, 2, isCUDA &gt; &amp;in, const Grid&lt; Dtype, 2, isCUDA &gt; &amp;out) const</argsstring>
+        <name>checkGrids</name>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 2, isCUDA &gt; &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 2, isCUDA &gt; &amp;</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="131" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" bodystart="131" bodyend="147"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Stateful transformation of Cartesian coordinates. </para>    </briefdescription>
+    <detaileddescription>
+<para>Stores a center of rotation, quaternion, and translation. Can apply transformation forward or backward, with or without translations. </para>    </detaileddescription>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" line="27" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/transform.h" bodystart="27" bodyend="150"/>
+    <listofallmembers>
+      <member refid="classlibmolgrid_1_1Transform_1acfada39f4f16531f4289971bd29ce946" prot="public" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>backward</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1ae727e7895d2679acb5ed248e28fca99f" prot="public" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>backward</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1ae6640dffce5073d38fa0161f26947f2a" prot="private" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>center</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1a7fdaab395dcced8aaa593873bfe85cfd" prot="private" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>checkGrids</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1a00ddce88bd65b5128951517a5bc7f57a" prot="public" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>forward</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1a0a9ab0c16c128621044b64543e87806b" prot="public" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>forward</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1a528689e8c1bf63b7ec5b89c2abbed0bd" prot="public" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>forward</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1a02a7b99aacab34a6f1e7133f90b1c5cc" prot="public" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>forward</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1a820d00aca5ffb38b12e30dd732895d84" prot="public" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>get_quaternion</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1a8295f46fb38138ea671d17c1f0eb96db" prot="public" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>get_rotation_center</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1a440d5c632b85f365f998eb5de1145417" prot="public" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>get_translation</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1a91ad0596c60b63bca9cea696e377a2d6" prot="public" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>is_identity</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1a8a750ded4f6eb72805026780b7d993f4" prot="private" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>Q</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1a9e38010f3139c44bade78285ff2592fc" prot="public" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>set_quaternion</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1af6e35c966d85215c4de841c5a7a56fb5" prot="public" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>set_rotation_center</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1a91aa6efe3a2d9198c193ac42b2a3a42d" prot="public" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>set_translation</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1a9de68ec1c9b7809129814a3233ae4655" prot="public" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>Transform</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1a9297cddcfa3ce722db2b9d947faf5fc1" prot="public" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>Transform</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1a0efff6c41e09c88c91cb11d281e1b1ed" prot="public" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>Transform</name></member>
+      <member refid="classlibmolgrid_1_1Transform_1a9e15220092a129a830bf3778c7f55f4f" prot="private" virt="non-virtual"><scope>libmolgrid::Transform</scope><name>translate</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
