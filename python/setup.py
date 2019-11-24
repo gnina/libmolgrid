@@ -50,7 +50,7 @@ setup(
   url = 'https://github.com/gnina/libmolgrid',
   project_urls = {'Documentation': 'http://gnina.github.io/libmolgrid'},
   install_requires = [
-                 'numpy',
+                 'numpy>=1.16.2',
                  'pytest',
                  'pyquaternion'
       ],
