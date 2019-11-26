@@ -376,7 +376,7 @@
 <codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>coord.<ref refid="structlibmolgrid_1_1CoordinateSet_1a0e5b397d8ab22663778fe8cf1d47f3d7" kindref="member">make_vector_types</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>ityper-&gt;<ref refid="classlibmolgrid_1_1AtomIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2" kindref="member">get_type_radii</ref>());</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(use_cache)<sp/>{<sp/></highlight><highlight class="comment">//save<sp/>coord</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>memcache[fname]<sp/>=<sp/>coord;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>memcache[fname]<sp/>=<sp/>coord.<ref refid="structlibmolgrid_1_1CoordinateSet_1a19ad80288a826f7bbcbcd8d100c3587a" kindref="member">clone</ref>();<sp/></highlight><highlight class="comment">//save<sp/>a<sp/>copy<sp/>in<sp/>case<sp/>the<sp/>returned<sp/>set<sp/>is<sp/>modified</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="172"><highlight class="normal">}</highlight></codeline>

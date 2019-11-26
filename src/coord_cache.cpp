@@ -166,7 +166,7 @@ void CoordCache::set_coords(const char *fname, CoordinateSet& coord) {
       coord.make_vector_types(false, ityper->get_type_radii());
     }
     if(use_cache) { //save coord
-      memcache[fname] = coord;
+      memcache[fname] = coord.clone(); //save a copy in case the returned set is modified
     }
   }
 }
