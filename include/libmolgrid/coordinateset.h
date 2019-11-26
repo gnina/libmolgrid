@@ -27,7 +27,7 @@ class AtomTyper;
  *
  */
 struct CoordinateSet {
-  MGrid2f coords{0,3}; //coordinats
+  MGrid2f coords{0,3}; //coordinates
   MGrid1f type_index{0}; //this should be integer
   MGrid2f type_vector{0,0};
   MGrid1f radii{0}; ///radii - for type_index, indexed by atom, for type vector, indexed by type
