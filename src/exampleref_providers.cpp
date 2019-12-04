@@ -78,7 +78,16 @@ void UniformExampleRefProvider::nextref(ExampleRef& ex)
 {
   assert(current < all.size());
   ex = all[current];
-  current++;
+
+  if(ncopies > 1) {
+    current_copy++;
+    if(current_copy >= ncopies) {
+      current++;
+      current_copy = 0;
+    }
+  } else { //always increment
+    current++;
+  }
   if(current >= all.size())
   {
     setup(); //reset current and shuffle if necessary

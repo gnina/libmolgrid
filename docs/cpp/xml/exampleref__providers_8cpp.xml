@@ -252,45 +252,54 @@
 <codeline lineno="78"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/>assert(current<sp/>&lt;<sp/>all.size());</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/>ex<sp/>=<sp/>all[current];</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/>current++;</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(current<sp/>&gt;=<sp/>all.size())</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>setup();<sp/></highlight><highlight class="comment">//reset<sp/>current<sp/>and<sp/>shuffle<sp/>if<sp/>necessary</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" kindref="member">BalancedExampleRefProvider::addref</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref>&amp;<sp/>ex)</highlight></codeline>
-<codeline lineno="89"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(labelpos<sp/>&lt;<sp/>ex.<ref refid="structlibmolgrid_1_1ExampleRef_1a7ea04b60c00847d97627bc44a0a6b2f2" kindref="member">labels</ref>.size())<sp/>{</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ex.<ref refid="structlibmolgrid_1_1ExampleRef_1a7ea04b60c00847d97627bc44a0a6b2f2" kindref="member">labels</ref>[labelpos])</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>actives.addref(ex);</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>decoys.addref(ex);</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Example<sp/>has<sp/>no<sp/>label<sp/>at<sp/>position<sp/>&quot;</highlight><highlight class="normal">+<sp/><ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(labelpos)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;.<sp/><sp/>There<sp/>are<sp/>only<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(ex.<ref refid="structlibmolgrid_1_1ExampleRef_1a7ea04b60c00847d97627bc44a0a6b2f2" kindref="member">labels</ref>.size())+</highlight><highlight class="stringliteral">&quot;<sp/>labels&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" kindref="member">BalancedExampleRefProvider::setup</ref>()</highlight></codeline>
-<codeline lineno="101"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/>current<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/>actives.setup();</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/>decoys.setup();</highlight></codeline>
-<codeline lineno="105"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ae630292b50e44deb19e001f322914934" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ae630292b50e44deb19e001f322914934" kindref="member">BalancedExampleRefProvider::nextref</ref>(<ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref>&amp;<sp/>ex)</highlight></codeline>
-<codeline lineno="108"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//alternate<sp/>between<sp/>actives<sp/>and<sp/>decoys</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(current<sp/>%<sp/>2<sp/>==<sp/>0)</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>actives.nextref(ex);</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>decoys.nextref(ex);</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/>current++;</highlight></codeline>
-<codeline lineno="116"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ncopies<sp/>&gt;<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>current_copy++;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(current_copy<sp/>&gt;=<sp/>ncopies)<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>current++;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>current_copy<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="comment">//always<sp/>increment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>current++;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(current<sp/>&gt;=<sp/>all.size())</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>setup();<sp/></highlight><highlight class="comment">//reset<sp/>current<sp/>and<sp/>shuffle<sp/>if<sp/>necessary</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" kindref="member">BalancedExampleRefProvider::addref</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref>&amp;<sp/>ex)</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(labelpos<sp/>&lt;<sp/>ex.<ref refid="structlibmolgrid_1_1ExampleRef_1a7ea04b60c00847d97627bc44a0a6b2f2" kindref="member">labels</ref>.size())<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ex.<ref refid="structlibmolgrid_1_1ExampleRef_1a7ea04b60c00847d97627bc44a0a6b2f2" kindref="member">labels</ref>[labelpos])</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>actives.addref(ex);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>decoys.addref(ex);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Example<sp/>has<sp/>no<sp/>label<sp/>at<sp/>position<sp/>&quot;</highlight><highlight class="normal">+<sp/><ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(labelpos)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;.<sp/><sp/>There<sp/>are<sp/>only<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(ex.<ref refid="structlibmolgrid_1_1ExampleRef_1a7ea04b60c00847d97627bc44a0a6b2f2" kindref="member">labels</ref>.size())+</highlight><highlight class="stringliteral">&quot;<sp/>labels&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" kindref="member">BalancedExampleRefProvider::setup</ref>()</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/>current<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/>actives.setup();</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/>decoys.setup();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ae630292b50e44deb19e001f322914934" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ae630292b50e44deb19e001f322914934" kindref="member">BalancedExampleRefProvider::nextref</ref>(<ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref>&amp;<sp/>ex)</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//alternate<sp/>between<sp/>actives<sp/>and<sp/>decoys</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(current<sp/>%<sp/>2<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>actives.nextref(ex);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>decoys.nextref(ex);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/>current++;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/dkoes/git/libmolgrid/src/exampleref_providers.cpp"/>
   </compounddef>

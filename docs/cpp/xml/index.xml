@@ -884,8 +884,10 @@
   <compound refid="classlibmolgrid_1_1UniformExampleRefProvider" kind="class"><name>libmolgrid::UniformExampleRefProvider</name>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1abc218ecac4fd64c0dd2b9949a9086ed1" kind="variable"><name>all</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a2cb51d0acda029b457eba211467c2cca" kind="variable"><name>current</name></member>
+    <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1ac7ef53ed84fcaddbb0cfb7531cda107d" kind="variable"><name>current_copy</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a25537b2f335dc2c2ffb4807fe99ee98f" kind="variable"><name>nlabels</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a7a24e4455c51460f9504bab5a850ea74" kind="variable"><name>randomize</name></member>
+    <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a0d7036b6a3771a52de28c0fcf43159a8" kind="variable"><name>ncopies</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a659da4b8d412bb412c8cf3a17bf1a8a6" kind="function"><name>UniformExampleRefProvider</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a9005e0db83b8ea9c7fd04206bb3a7f9a" kind="function"><name>UniformExampleRefProvider</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" kind="function"><name>addref</name></member>

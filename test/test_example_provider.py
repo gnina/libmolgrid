@@ -255,3 +255,32 @@ def test_vector_sum_types():
     np.testing.assert_allclose(sum[0].tonumpy(), [ 2., 3., 0.,
        0., 0., 0., 0., 0., 2., 2., 1., 0., 0., 0.], atol=1e-5)
 
+def test_copied_examples():
+    fname = datadir+"/ligonly.types"
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs")
+    e.populate(fname)
+    batch_size = 10
+    b = e.next_batch(batch_size)
+    for i in range(1,batch_size):
+        sqsum = np.square(b[0].coord_sets[1].coords.tonumpy() - b[i].coord_sets[1].coords.tonumpy()).sum()
+        assert sqsum > 0
+        
+    #now with duplicates
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs",num_copies=batch_size)
+    e.populate(fname)
+    b = e.next_batch(batch_size)
+    for i in range(1,batch_size):
+        sqsum = np.square(b[0].coord_sets[1].coords.tonumpy() - b[i].coord_sets[1].coords.tonumpy()).sum()
+        assert sqsum == 0    
+        
+    #transforming one of the duplicates should not effect the others
+    orig = b[0].coord_sets[1].coords.tonumpy()
+    lig = b[1].coord_sets[1]
+    t = molgrid.Transform(lig.center(), 2,random_rotation=True)
+    t.forward(lig,lig)
+    new0 = b[0].coord_sets[1].coords.tonumpy()
+    new1 = b[1].coord_sets[1].coords.tonumpy()
+    
+    np.testing.assert_allclose(orig,new0)
+    sqsum = np.square(new1-orig).sum()
+    assert sqsum > 0
