@@ -40,19 +40,21 @@ class ExampleRefProvider {
 };
 
 
-///single array of examples, possibly shuffled
+///single array of examples, possibly shuffled or copied
 class UniformExampleRefProvider: public ExampleRefProvider
 {
   std::vector<ExampleRef> all;
   size_t current = 0;
+  size_t current_copy = 0;
   size_t nlabels = 0;
 
   bool randomize = false;
+  size_t ncopies = 1;
 
 public:
   UniformExampleRefProvider() {}
   UniformExampleRefProvider(const ExampleProviderSettings& settings): ExampleRefProvider(settings),
-      current(0), randomize(settings.shuffle) {
+      current(0), current_copy(0), randomize(settings.shuffle), ncopies(settings.num_copies) {
   }
 
   void addref(const ExampleRef& ex);

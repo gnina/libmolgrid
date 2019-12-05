@@ -62,9 +62,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="28" column="1"/>
-        <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1abf08cb5085ecca8f2f7d6bca860e8d08" compoundref="exampleref__providers_8h" startline="76" endline="79">BalancedExampleRefProvider::BalancedExampleRefProvider</referencedby>
+        <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1abf08cb5085ecca8f2f7d6bca860e8d08" compoundref="exampleref__providers_8h" startline="78" endline="81">BalancedExampleRefProvider::BalancedExampleRefProvider</referencedby>
         <referencedby refid="classlibmolgrid_1_1ExampleRefProvider_1ae32c6ad6aeaeba0d2d2ab74a48a553b5" compoundref="exampleref__providers_8h" startline="27" endline="27">ExampleRefProvider::ExampleRefProvider</referencedby>
-        <referencedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1a9005e0db83b8ea9c7fd04206bb3a7f9a" compoundref="exampleref__providers_8h" startline="54" endline="56">UniformExampleRefProvider::UniformExampleRefProvider</referencedby>
+        <referencedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1a9005e0db83b8ea9c7fd04206bb3a7f9a" compoundref="exampleref__providers_8h" startline="56" endline="58">UniformExampleRefProvider::UniformExampleRefProvider</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a39fe489f6eb526d59b6b804a8343fe8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -87,8 +87,8 @@
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="29" column="1"/>
         <referencedby refid="classlibmolgrid_1_1ExampleRefProvider_1ae32c6ad6aeaeba0d2d2ab74a48a553b5" compoundref="exampleref__providers_8h" startline="27" endline="27">ExampleRefProvider::ExampleRefProvider</referencedby>
-        <referencedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="exampleref__providers_8h" startline="59" endline="59">UniformExampleRefProvider::num_labels</referencedby>
-        <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="exampleref__providers_8h" startline="84" endline="84">BalancedExampleRefProvider::num_labels</referencedby>
+        <referencedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="exampleref__providers_8h" startline="61" endline="61">UniformExampleRefProvider::num_labels</referencedby>
+        <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="exampleref__providers_8h" startline="86" endline="86">BalancedExampleRefProvider::num_labels</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a7a953020850169224c78ac9bfda9e423" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -113,8 +113,8 @@
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="30" column="1"/>
         <referencedby refid="classlibmolgrid_1_1ExampleRefProvider_1ae32c6ad6aeaeba0d2d2ab74a48a553b5" compoundref="exampleref__providers_8h" startline="27" endline="27">ExampleRefProvider::ExampleRefProvider</referencedby>
-        <referencedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="exampleref__providers_8h" startline="59" endline="59">UniformExampleRefProvider::num_labels</referencedby>
-        <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="exampleref__providers_8h" startline="84" endline="84">BalancedExampleRefProvider::num_labels</referencedby>
+        <referencedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="exampleref__providers_8h" startline="61" endline="61">UniformExampleRefProvider::num_labels</referencedby>
+        <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="exampleref__providers_8h" startline="86" endline="86">BalancedExampleRefProvider::num_labels</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a962e2830e9c2869a2ee70cd5331f815f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>unsigned</type>
@@ -134,12 +134,12 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="31" column="1"/>
-        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8h" startline="366" endline="375">GroupedExampleRefProvider&lt; Provider &gt;::addref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8h" startline="368" endline="377">GroupedExampleRefProvider&lt; Provider &gt;::addref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ExampleRefProvider_1ae32c6ad6aeaeba0d2d2ab74a48a553b5" compoundref="exampleref__providers_8h" startline="27" endline="27">ExampleRefProvider::ExampleRefProvider</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="198" endline="216">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::nextref</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="exampleref__providers_8h" startline="176" endline="182">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::num_labels</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="exampleref__providers_8h" startline="287" endline="293">ValueStratifiedExampleRefProfider&lt; Provider &gt;::num_labels</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8h" startline="295" endline="312">ValueStratifiedExampleRefProfider&lt; Provider &gt;::setup</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="200" endline="218">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::nextref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="exampleref__providers_8h" startline="178" endline="184">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::num_labels</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="exampleref__providers_8h" startline="289" endline="295">ValueStratifiedExampleRefProfider&lt; Provider &gt;::num_labels</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8h" startline="297" endline="314">ValueStratifiedExampleRefProfider&lt; Provider &gt;::setup</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a6dab7933abd006833437122f78468007" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
@@ -205,8 +205,8 @@
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="37" column="1"/>
         <referencedby refid="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" compoundref="exampleref__providers_8h" startline="35" endline="35">ExampleRefProvider::check_batch_size</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="exampleref__providers_8h" startline="176" endline="182">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::num_labels</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="exampleref__providers_8h" startline="287" endline="293">ValueStratifiedExampleRefProfider&lt; Provider &gt;::num_labels</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="exampleref__providers_8h" startline="178" endline="184">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::num_labels</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" compoundref="exampleref__providers_8h" startline="289" endline="295">ValueStratifiedExampleRefProfider&lt; Provider &gt;::num_labels</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>int</type>

@@ -35,6 +35,7 @@ namespace libmolgrid {
     EXSET(bool, cache_structs, true, "retain coordinates in memory for faster training") \
     EXSET(bool, add_hydrogens, true, "protonate read in molecule using openbabel") \
     EXSET(bool, duplicate_first, false, "clone the first coordinate set to be paired with each of the remaining (receptor-ligand pairs)") \
+    EXSET(size_t, num_copies, 1, "number of times to repeatedly produce an example") \
     EXSET(bool, make_vector_types, false, "convert index types into one-hot encoded vector types") \
     EXSET(std::string, data_root, "", "prefix for data files") \
     EXSET(std::string, recmolcache, "", "precalculated molcache2 file for receptor (first molecule); if doesn't exist, will look in data _root") \

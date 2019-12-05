@@ -7,7 +7,7 @@
     </briefdescription>
     <detaileddescription>
 <para>Description of how examples should be provided This provides configuration to example refs, extractors, and the provider itself as a declarative syntax. </para>    </detaileddescription>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="47" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="47" bodyend="50"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="48" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="48" bodyend="51"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>
