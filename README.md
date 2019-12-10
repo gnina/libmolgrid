@@ -3,7 +3,9 @@ libmolgrid
 
 libmolgrid is under active development, but should be suitable for use by early adopters.
 
-## [Documentation](https://gnina.github.io/libmolgrid/)
+## Documentation
+
+[https://gnina.github.io/libmolgrid/](https://gnina.github.io/libmolgrid/)
 
 ## Installation
 
