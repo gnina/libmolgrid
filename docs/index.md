@@ -15,6 +15,14 @@ It's implemented in C++/CUDA with Python bindings, with first-class integration 
 
 # Installation
 
+  Recommended:
+
+  ```bash
+  pip install molgrid
+  ```
+
+  Alternatively, you can build from source:
+
   ```bash
   pip3 install numpy pytest pyquaternion
   ```
