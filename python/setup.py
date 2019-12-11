@@ -8,7 +8,7 @@ def git_pep440_version(path):
     def git_command(args):
         prefix = ['git', '-C', path]
         return subprocess.check_output(prefix + args).decode().strip()
-    version_full = git_command(['describe', '--tags', '--dirty=.dirty'])
+    version_full = git_command(['describe', '--tags'])
     version_tag = git_command(['describe', '--tags', '--abbrev=0'])
     version_tail = version_full[len(version_tag):]
     return version_tag + version_tail.replace('-', '.dev', 1).replace('-', '+', 1)
