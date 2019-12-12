@@ -3,7 +3,17 @@ libmolgrid
 
 libmolgrid is under active development, but should be suitable for use by early adopters.
 
+## Documentation
+
+[https://gnina.github.io/libmolgrid/](https://gnina.github.io/libmolgrid/)
+
 ## Installation
+
+### PIP
+
+```pip install molgrid```
+
+### Build from Source
 
 ```apt install git build-essential libboost-all-dev python3-pip rapidjson-dev
 pip3 install numpy pytest pyquaternion
@@ -13,7 +23,7 @@ pip3 install numpy pytest pyquaternion
 
 [Install CUDA.](https://developer.nvidia.com/cuda-downloads)
 
-Install OpenBabel 3.0 (Not yet released, build from master)
+[Install OpenBabel 3.0.](https://github.com/openbabel/openbabel)
 
 ```git clone https://github.com/gnina/libmolgrid.git
 cd libmolgrid
