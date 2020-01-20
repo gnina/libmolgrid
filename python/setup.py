@@ -61,5 +61,6 @@ setup(
   },
   package_data = {
     '': ['molgrid.so',]
-  }
+  },
+  zip_safe = False
 )
