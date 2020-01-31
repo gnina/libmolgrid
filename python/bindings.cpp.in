@@ -704,7 +704,7 @@ MAKE_ALL_GRIDS()
   //there is quite a lot of functionality in the C++ api for example providers, but keep it simple in python for now
   class_<ExampleProvider>("ExampleProvider", "@Docstring_ExampleProvider@")
       .def("__init__", raw_constructor(&create_ex_provider,0),"Construct an ExampleProvider using an ExampleSettings object "
-          "and the desired AtomTypers for each molecule.  Alternatively, specify individual settings using keyword arguments")
+          "and the desired AtomTypers for each molecule.  Alternatively, specify individual settings using keyword arguments, where the keys correspond to properties of the ExampleProviderSettings class (please see that class for complete documentation of available settings).")
       .def("populate",
           static_cast<void (ExampleProvider::*)(const std::string&, int)>(&ExampleProvider::populate),
           (arg("file_name"), arg("num_labels")=-1))
