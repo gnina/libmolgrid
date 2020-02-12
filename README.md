@@ -91,7 +91,7 @@ def test_train_torch_cnn():
     e.populate(fname)
 
     gmaker = molgrid.GridMaker()
-    dims = gmaker.grid_dimensions(e.type_size())
+    dims = gmaker.grid_dimensions(e.num_types())
     tensor_shape = (batch_size,)+dims
 
     model = Net(dims).to('cuda')
