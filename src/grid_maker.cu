@@ -272,7 +272,9 @@ namespace libmolgrid {
       if(radii_type_indexed) {
         throw std::invalid_argument("Type indexed radii not supported with index types.");
       }
-
+      if(blocksperside == 0) {
+	throw std::invalid_argument("Zero sized grid.");
+      }
       //zero out grid to start
       LMG_CUDA_CHECK(cudaMemset(out.data(), 0, out.size() * sizeof(float)));
 
