@@ -13,6 +13,9 @@ libmolgrid is under active development, but should be suitable for use by early 
 
 ```pip install molgrid```
 
+### conda
+```conda install -c jsunseri molgrid```
+
 ### Build from Source
 
 ```apt install git build-essential libboost-all-dev python3-pip rapidjson-dev
