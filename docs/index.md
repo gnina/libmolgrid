@@ -21,6 +21,12 @@ It's implemented in C++/CUDA with Python bindings, with first-class integration 
   pip install molgrid
   ```
 
+  Install via conda is also supported:
+
+  ```bash
+  conda install -c jsunseri molgrid
+  ```
+
   Alternatively, you can build from source:
 
   ```bash
