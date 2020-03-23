@@ -1,4 +1,4 @@
-/*
+/* @THIS_IS_THE_SOURCE_FILE@
  * bindings.cpp
  *
  *  Python bindings for libmolgrid
@@ -723,8 +723,9 @@ MAKE_ALL_GRIDS()
       .def("get_type_names", &ExampleProvider::get_type_names)
       .def("next", static_cast<Example (ExampleProvider::*)()>(&ExampleProvider::next))
       .def("next_batch", static_cast< std::vector<Example> (ExampleProvider::*)(unsigned)>(&ExampleProvider::next_batch),
-          (arg("batch_size")));
-
+          (arg("batch_size")=0))
+      .def("__iter__", +[](object self) { return self;})
+      .def("__next__", +[](ExampleProvider& self) -> std::vector<Example> { return self.next_batch();});
 
   //grid maker
   class_<GridMaker>("GridMaker", "@Docstring_GridMaker@",

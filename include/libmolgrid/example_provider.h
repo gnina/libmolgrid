@@ -64,9 +64,9 @@ class ExampleProvider {
     ///return settings created with
     const ExampleProviderSettings& settings() const { return init_settings; }
 
-    ///provide a batch of examples
-    virtual void next_batch(std::vector<Example>& ex, unsigned batch_size);
-    virtual std::vector<Example> next_batch(unsigned batch_size) {
+    ///provide a batch of examples, unspecified or 0 batch_size uses default batch size
+    virtual void next_batch(std::vector<Example>& ex, unsigned batch_size=0);
+    virtual std::vector<Example> next_batch(unsigned batch_size=0) {
       std::vector<Example> ex;
       next_batch(ex, batch_size);
       return ex;
