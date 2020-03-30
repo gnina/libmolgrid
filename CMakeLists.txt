@@ -43,6 +43,10 @@ configure_file (
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CUDA_STANDARD 14)
 
+if(${BUILD_CONTAINED_PYTHON}) 
+   set(BUILD_STATIC ON)
+endif()
+
 if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
     set(CMAKE_CXX_FLAGS         "${CMAKE_CXX_FLAGS} -Wall -Wno-unknown-pragmas -Werror")
     set(CMAKE_CXX_FLAGS_DEBUG   "-O0 -g3")
