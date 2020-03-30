@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="common_8h" kind="file" language="C++">
     <compoundname>common.h</compoundname>
     <includes local="no">memory</includes>
@@ -8,198 +8,198 @@
     <includes local="no">cuda.h</includes>
     <includedby refid="grid_8h" local="yes">grid.h</includedby>
     <incdepgraph>
-      <node id="70">
+      <node id="1">
         <label>common.h</label>
         <link refid="common_8h"/>
-        <childnode refid="71" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="72" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="74">
+      <node id="5">
         <label>cuda.h</label>
       </node>
-      <node id="73">
+      <node id="4">
         <label>cuda_runtime_api.h</label>
       </node>
-      <node id="72">
+      <node id="3">
         <label>cstring</label>
       </node>
-      <node id="71">
+      <node id="2">
         <label>memory</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="86">
-        <label>example_extractor.h</label>
-        <link refid="example__extractor_8h"/>
-        <childnode refid="87" relation="include">
-        </childnode>
-        <childnode refid="89" relation="include">
-        </childnode>
-      </node>
-      <node id="91">
-        <label>example.h</label>
-        <link refid="example_8h"/>
-        <childnode refid="85" relation="include">
-        </childnode>
-        <childnode refid="86" relation="include">
-        </childnode>
-        <childnode refid="87" relation="include">
-        </childnode>
-        <childnode refid="92" relation="include">
-        </childnode>
-        <childnode refid="81" relation="include">
-        </childnode>
-        <childnode refid="94" relation="include">
-        </childnode>
-        <childnode refid="97" relation="include">
-        </childnode>
-      </node>
-      <node id="79">
-        <label>grid_io.cpp</label>
-        <link refid="grid__io_8cpp"/>
-      </node>
-      <node id="80">
-        <label>cartesian_grid.cpp</label>
-        <link refid="cartesian__grid_8cpp"/>
-      </node>
-      <node id="89">
-        <label>example_extractor.cpp</label>
-        <link refid="example__extractor_8cpp"/>
-      </node>
-      <node id="76">
-        <label>grid.h</label>
-        <link refid="grid_8h"/>
-        <childnode refid="77" relation="include">
-        </childnode>
-        <childnode refid="81" relation="include">
-        </childnode>
-        <childnode refid="83" relation="include">
-        </childnode>
-        <childnode refid="94" relation="include">
-        </childnode>
-        <childnode refid="95" relation="include">
-        </childnode>
-      </node>
-      <node id="78">
-        <label>grid_io.h</label>
-        <link refid="grid__io_8h"/>
-        <childnode refid="79" relation="include">
-        </childnode>
-      </node>
-      <node id="82">
-        <label>grid_maker.cpp</label>
-        <link refid="grid__maker_8cpp"/>
-      </node>
-      <node id="92">
-        <label>exampleref_providers.h</label>
-        <link refid="exampleref__providers_8h"/>
-        <childnode refid="86" relation="include">
-        </childnode>
-        <childnode refid="87" relation="include">
-        </childnode>
-        <childnode refid="93" relation="include">
-        </childnode>
-      </node>
-      <node id="77">
-        <label>cartesian_grid.h</label>
-        <link refid="cartesian__grid_8h"/>
-        <childnode refid="78" relation="include">
-        </childnode>
-        <childnode refid="80" relation="include">
-        </childnode>
-      </node>
-      <node id="85">
-        <label>coord_cache.h</label>
-        <link refid="coord__cache_8h"/>
-        <childnode refid="86" relation="include">
-        </childnode>
-        <childnode refid="90" relation="include">
-        </childnode>
-      </node>
-      <node id="81">
-        <label>grid_maker.h</label>
-        <link refid="grid__maker_8h"/>
-        <childnode refid="82" relation="include">
-        </childnode>
-      </node>
-      <node id="95">
+      <node id="21">
         <label>libmolgrid.cpp</label>
         <link refid="libmolgrid_8cpp"/>
       </node>
-      <node id="87">
-        <label>example_provider.h</label>
-        <link refid="example__provider_8h"/>
-        <childnode refid="88" relation="include">
-        </childnode>
-      </node>
-      <node id="75">
-        <label>common.h</label>
-        <link refid="common_8h"/>
-        <childnode refid="76" relation="include">
-        </childnode>
-      </node>
-      <node id="96">
-        <label>transform.cpp</label>
-        <link refid="transform_8cpp"/>
-      </node>
-      <node id="93">
-        <label>exampleref_providers.cpp</label>
-        <link refid="exampleref__providers_8cpp"/>
-      </node>
-      <node id="94">
+      <node id="20">
         <label>transform.h</label>
         <link refid="transform_8h"/>
-        <childnode refid="81" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="95" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="96" relation="include">
-        </childnode>
-      </node>
-      <node id="88">
-        <label>example_provider.cpp</label>
-        <link refid="example__provider_8cpp"/>
-      </node>
-      <node id="83">
-        <label>managed_grid.h</label>
-        <link refid="managed__grid_8h"/>
-        <childnode refid="77" relation="include">
-        </childnode>
-        <childnode refid="84" relation="include">
-        </childnode>
-        <childnode refid="95" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="90">
-        <label>coord_cache.cpp</label>
-        <link refid="coord__cache_8cpp"/>
+      <node id="6">
+        <label>cartesian_grid.cpp</label>
+        <link refid="cartesian__grid_8cpp"/>
       </node>
-      <node id="98">
-        <label>coordinateset.cpp</label>
-        <link refid="coordinateset_8cpp"/>
+      <node id="17">
+        <label>example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
       </node>
-      <node id="97">
+      <node id="23">
         <label>example.cpp</label>
         <link refid="example_8cpp"/>
       </node>
-      <node id="84">
+      <node id="24">
+        <label>coordinateset.cpp</label>
+        <link refid="coordinateset_8cpp"/>
+      </node>
+      <node id="14">
+        <label>example_provider.cpp</label>
+        <link refid="example__provider_8cpp"/>
+      </node>
+      <node id="4">
+        <label>grid_io.h</label>
+        <link refid="grid__io_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>grid_io.cpp</label>
+        <link refid="grid__io_8cpp"/>
+      </node>
+      <node id="8">
+        <label>grid_maker.cpp</label>
+        <link refid="grid__maker_8cpp"/>
+      </node>
+      <node id="3">
+        <label>cartesian_grid.h</label>
+        <link refid="cartesian__grid_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>example_provider.h</label>
+        <link refid="example__provider_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>transform.cpp</label>
+        <link refid="transform_8cpp"/>
+      </node>
+      <node id="15">
+        <label>example_extractor.cpp</label>
+        <link refid="example__extractor_8cpp"/>
+      </node>
+      <node id="10">
         <label>coordinateset.h</label>
         <link refid="coordinateset_8h"/>
-        <childnode refid="85" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="91" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="86" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="81" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="98" relation="include">
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>exampleref_providers.h</label>
+        <link refid="exampleref__providers_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>coord_cache.cpp</label>
+        <link refid="coord__cache_8cpp"/>
+      </node>
+      <node id="19">
+        <label>exampleref_providers.cpp</label>
+        <link refid="exampleref__providers_8cpp"/>
+      </node>
+      <node id="1">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>coord_cache.h</label>
+        <link refid="coord__cache_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>example_extractor.h</label>
+        <link refid="example__extractor_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>grid_maker.h</label>
+        <link refid="grid__maker_8h"/>
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -212,11 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="19" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="19" bodyend="-1"/>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1a9841643c7664f940378c3f1a068b19b4" compoundref="grid__maker_8h" startline="424" endline="432">GridMaker::backward_relevance</referencedby>
-        <referencedby refid="classlibmolgrid_1_1Grid_1a512219066836349f65f85a0ead19ae8a" compoundref="grid_8h" startline="212" endline="215">Grid&lt; Dtype, NumDims, true &gt;::fill_zero</referencedby>
-        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a512219066836349f65f85a0ead19ae8a" compoundref="grid_8h" startline="296" endline="299">Grid&lt; Dtype, 1, isCUDA &gt;::fill_zero</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1ab252273ae1616c329c9185dba68fc1b1" compoundref="grid__maker_8h" startline="107" endline="107">GridMaker::get_radiusmultiple</referencedby>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" line="19" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" bodystart="19" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1aae0d7f428b69470abdad707078ba2acb" prot="public" static="no">
         <name>CUDA_DEVICE_MEMBER</name>
@@ -226,8 +222,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="20" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="20" bodyend="-1"/>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1a9841643c7664f940378c3f1a068b19b4" compoundref="grid__maker_8h" startline="424" endline="432">GridMaker::backward_relevance</referencedby>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" line="20" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a20904151946f0fa7480bd53aae19bd4f" prot="public" static="no">
         <name>LMG_CUDA_KERNEL_LOOP</name>
@@ -242,7 +237,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="24" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="24" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" line="24" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a9e253719885e410b7c64b95d97b7f881" prot="public" static="no">
         <name>LMG_CUDA_NUM_THREADS</name>
@@ -253,7 +248,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="30" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="30" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" line="30" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a30e49f29289f693fbfe768d590132652" prot="public" static="no">
         <name>LMG_CUDA_BLOCKDIM</name>
@@ -264,7 +259,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="31" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="31" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" line="31" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a9f32493f7d15ce12f1924944a5ba065a" prot="public" static="no">
         <name>LOG2_WARP_SIZE</name>
@@ -275,18 +270,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="32" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="32" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" line="32" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a9ea0293fb7dcba88f071c44fd145819e" prot="public" static="no">
         <name>WARP_SIZE</name>
-        <initializer>(1U &lt;&lt; LOG2_WARP_SIZE)</initializer>
+        <initializer>(1U &lt;&lt; <ref refid="common_8h_1a9f32493f7d15ce12f1924944a5ba065a" kindref="member">LOG2_WARP_SIZE</ref>)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="33" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="33" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" line="33" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1abdf19194f44a3fb9e5c12883f40b1cef" prot="public" static="no">
         <name>LMG_GET_BLOCKS</name>
@@ -298,7 +293,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="36" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="36" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" line="36" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a70ddc4b6982996cbaba9ec10e864b214" prot="public" static="no">
         <name>LMG_GET_THREADS</name>
@@ -310,7 +305,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="38" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="38" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" line="38" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1aa79d03c876b7392cd06c1f77d5286b59" prot="public" static="no">
         <name>LMG_CUDA_CHECK</name>
@@ -327,19 +322,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="41" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="41" bodyend="-1"/>
-        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a3ab3abfca1447e4fc0874c00c47aadff" compoundref="managed__grid_8h" startline="103" endline="120">ManagedGridBase&lt; Dtype, 1 &gt;::clone_ptrs</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a32a5cdeb67c51d9b75925d93277a1ed0" compoundref="managed__grid_8h" startline="191" endline="200">ManagedGridBase&lt; Dtype, 1 &gt;::copyFrom</referencedby>
-        <referencedby refid="classlibmolgrid_1_1Grid_1ac5cd5f1c4591aa5a8d21e5babb971e99" compoundref="grid_8h" startline="201" endline="207">Grid&lt; Dtype, NumDims, true &gt;::copyFrom</referencedby>
-        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1ad3152bc9dfc67f11fa55467ac93460f8" compoundref="grid_8h" startline="317" endline="323">Grid&lt; Dtype, 1, isCUDA &gt;::copyFrom</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1ab92b52fef49a9d7440a98f567c28f168" compoundref="managed__grid_8h" startline="224" endline="243">ManagedGridBase&lt; Dtype, 1 &gt;::copyInto</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1aff4a416b7db91859de81b24856be632a" compoundref="managed__grid_8h" startline="158" endline="167">ManagedGridBase&lt; Dtype, 1 &gt;::copyTo</referencedby>
-        <referencedby refid="classlibmolgrid_1_1Grid_1ac2f29eb66b0b3b19ab09ecd80e3fbb35" compoundref="grid_8h" startline="188" endline="194">Grid&lt; Dtype, NumDims, true &gt;::copyTo</referencedby>
-        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a3e983133f9cb7d0571557580480ece9b" compoundref="grid_8h" startline="308" endline="314">Grid&lt; Dtype, 1, isCUDA &gt;::copyTo</referencedby>
-        <referencedby refid="structlibmolgrid_1_1Example_1abd2622389892168945e6f8d721072e38" compoundref="example_8cpp" startline="277" endline="295">Example::extract_label</referencedby>
-        <referencedby refid="structlibmolgrid_1_1Example_1a000f4bbd3c5453860543c5ad97be617a" compoundref="example_8cpp" startline="255" endline="270">Example::extract_labels</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a3e9eb84f9344f6ca4eac9975f8f61386" compoundref="managed__grid_8h" startline="302" endline="307">ManagedGridBase&lt; Dtype, 1 &gt;::tocpu</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a18aaaed8a845f4c8ad9c30d0693e03c1" compoundref="managed__grid_8h" startline="285" endline="299">ManagedGridBase&lt; Dtype, 1 &gt;::togpu</referencedby>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" line="41" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h" bodystart="41" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -402,6 +385,6 @@
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>COMMON_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h"/>
+    <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/common.h"/>
   </compounddef>
 </doxygen>

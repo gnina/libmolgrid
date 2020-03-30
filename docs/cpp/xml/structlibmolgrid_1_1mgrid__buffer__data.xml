@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="structlibmolgrid_1_1mgrid__buffer__data" kind="struct" language="C++" prot="public">
     <compoundname>libmolgrid::mgrid_buffer_data</compoundname>
     <includes refid="managed__grid_8h" local="no">managed_grid.h</includes>
@@ -20,11 +20,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="25" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="25" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" line="25" column="11" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="25" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a354afea429c9572094ac2c5c5ed19786" compoundref="managed__grid_8h" startline="64" endline="75">ManagedGridBase&lt; Dtype, 1 &gt;::alloc_and_set_cpu</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1aad5407e977e2f417b18ed54a0cf7730c" compoundref="managed__grid_8h" startline="78" endline="91">ManagedGridBase&lt; Dtype, 1 &gt;::alloc_and_set_gpu</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a3ab3abfca1447e4fc0874c00c47aadff" compoundref="managed__grid_8h" startline="103" endline="120">ManagedGridBase&lt; Dtype, 1 &gt;::clone_ptrs</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1af5dc0787a765f8e6ba44aee026795537" compoundref="managed__grid_8h" startline="54" endline="61">ManagedGridBase&lt; Dtype, 1 &gt;::delete_buffer</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a8576226e00915bc8c923e0b9c77e051e" compoundref="managed__grid_8h" startline="252" endline="271">ManagedGridBase&lt; Dtype, 1 &gt;::resized</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a3e9eb84f9344f6ca4eac9975f8f61386" compoundref="managed__grid_8h" startline="302" endline="307">ManagedGridBase&lt; Dtype, 1 &gt;::tocpu</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a18aaaed8a845f4c8ad9c30d0693e03c1" compoundref="managed__grid_8h" startline="285" endline="299">ManagedGridBase&lt; Dtype, 1 &gt;::togpu</referencedby>
@@ -40,7 +39,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="26" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="26" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" line="26" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="26" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a354afea429c9572094ac2c5c5ed19786" compoundref="managed__grid_8h" startline="64" endline="75">ManagedGridBase&lt; Dtype, 1 &gt;::alloc_and_set_cpu</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a3ab3abfca1447e4fc0874c00c47aadff" compoundref="managed__grid_8h" startline="103" endline="120">ManagedGridBase&lt; Dtype, 1 &gt;::clone_ptrs</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1af8fd252961332be4d6b9f71a5e418186" compoundref="managed__grid_8h" startline="94" endline="100">ManagedGridBase&lt; Dtype, 1 &gt;::ManagedGridBase</referencedby>
@@ -54,7 +53,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="24" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="24" bodyend="27"/>
+    <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" line="24" column="24" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="24" bodyend="27"/>
     <listofallmembers>
       <member refid="structlibmolgrid_1_1mgrid__buffer__data_1adf32db11f40e4262951eabf20cf264a8" prot="public" virt="non-virtual"><scope>libmolgrid::mgrid_buffer_data</scope><name>gpu_ptr</name></member>
       <member refid="structlibmolgrid_1_1mgrid__buffer__data_1a8b2dea69bfa574c3fc5c573f37c9ec1e" prot="public" virt="non-virtual"><scope>libmolgrid::mgrid_buffer_data</scope><name>sent_to_gpu</name></member>

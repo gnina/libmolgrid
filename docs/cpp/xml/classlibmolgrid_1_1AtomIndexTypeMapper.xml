@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="classlibmolgrid_1_1AtomIndexTypeMapper" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>libmolgrid::AtomIndexTypeMapper</compoundname>
     <derivedcompoundref refid="classlibmolgrid_1_1FileAtomMapper" prot="public" virt="non-virtual">FileAtomMapper</derivedcompoundref>
@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="102" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="102" bodyend="102"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="102" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="102" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomIndexTypeMapper_1a9a71966fb965d0dc1c133c75f8be0359" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="103" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="103" bodyend="103"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="103" column="13" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="103" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomIndexTypeMapper_1ad493bf80b659abb6e401d7fee5c8231a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>unsigned</type>
@@ -40,12 +40,13 @@
         <reimplementedby refid="classlibmolgrid_1_1FileAtomMapper_1ad493bf80b659abb6e401d7fee5c8231a">num_types</reimplementedby>
         <reimplementedby refid="classlibmolgrid_1_1SubsetAtomMapper_1ad493bf80b659abb6e401d7fee5c8231a">num_types</reimplementedby>
         <briefdescription>
-<para>return number of mapped types, zero if unknown (no mapping) </para>        </briefdescription>
+<para>return number of mapped types, zero if unknown (no mapping) </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="106" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="106" bodyend="106"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="106" column="22" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="106" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomIndexTypeMapper_1a84e5366fb6c4b143c6d05c51785fd6a6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>int</type>
@@ -59,12 +60,13 @@
           <declname>origt</declname>
         </param>
         <briefdescription>
-<para>return mapped type </para>        </briefdescription>
+<para>return mapped type </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="109" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="109" bodyend="109"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="109" column="17" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="109" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomIndexTypeMapper_1aedda205572fbbaa3a868181802232263" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -74,37 +76,39 @@
         <reimplementedby refid="classlibmolgrid_1_1FileAtomMapper_1aacde71a2d28fc736c3d43da006f3a1c6">get_type_names</reimplementedby>
         <reimplementedby refid="classlibmolgrid_1_1SubsetAtomMapper_1aacde71a2d28fc736c3d43da006f3a1c6">get_type_names</reimplementedby>
         <briefdescription>
-<para>return vector of string representations of types </para>        </briefdescription>
+<para>return vector of string representations of types </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="112" column="1"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="112" column="25"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Base class for mapping between type indices. </para>    </briefdescription>
+<para>Base class for mapping between type indices. </para>
+    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="0">
+      <node id="1">
         <label>AtomIndexTypeMapper</label>
         <link refid="classlibmolgrid_1_1AtomIndexTypeMapper"/>
       </node>
-      <node id="2">
+      <node id="3">
         <label>SubsetAtomMapper</label>
         <link refid="classlibmolgrid_1_1SubsetAtomMapper"/>
-        <childnode refid="0" relation="public-inheritance">
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1">
+      <node id="2">
         <label>FileAtomMapper</label>
         <link refid="classlibmolgrid_1_1FileAtomMapper"/>
-        <childnode refid="0" relation="public-inheritance">
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="100" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="100" bodyend="113"/>
+    <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="100" column="26" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="100" bodyend="113"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1AtomIndexTypeMapper_1a5d3f8f728d969e963cc44c9d3defa807" prot="public" virt="non-virtual"><scope>libmolgrid::AtomIndexTypeMapper</scope><name>AtomIndexTypeMapper</name></member>
       <member refid="classlibmolgrid_1_1AtomIndexTypeMapper_1a84e5366fb6c4b143c6d05c51785fd6a6" prot="public" virt="virtual"><scope>libmolgrid::AtomIndexTypeMapper</scope><name>get_new_type</name></member>

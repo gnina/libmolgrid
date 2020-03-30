@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="atom__typer_8cpp" kind="file" language="C++">
     <compoundname>atom_typer.cpp</compoundname>
     <includes refid="atom__typer_8h" local="yes">libmolgrid/atom_typer.h</includes>
@@ -8,20 +8,9 @@
     <includes local="no">boost/lexical_cast.hpp</includes>
     <includes local="no">openbabel/elements.h</includes>
     <incdepgraph>
-      <node id="10">
-        <label>boost/algorithm/string.hpp</label>
-      </node>
-      <node id="8">
-        <label>functional</label>
-      </node>
-      <node id="11">
-        <label>boost/lexical_cast.hpp</label>
-      </node>
-      <node id="1">
+      <node id="2">
         <label>libmolgrid/atom_typer.h</label>
         <link refid="atom__typer_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
@@ -34,40 +23,51 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
-      <node id="2">
-        <label>openbabel/atom.h</label>
-      </node>
-      <node id="4">
-        <label>vector</label>
+      <node id="11">
+        <label>boost/algorithm/string.hpp</label>
       </node>
       <node id="9">
-        <label>openbabel/obiter.h</label>
+        <label>functional</label>
       </node>
-      <node id="3">
-        <label>openbabel/elements.h</label>
+      <node id="12">
+        <label>boost/lexical_cast.hpp</label>
       </node>
-      <node id="6">
-        <label>iostream</label>
-      </node>
-      <node id="7">
-        <label>unordered_map</label>
-      </node>
-      <node id="0">
+      <node id="1">
         <label>atom_typer.cpp</label>
         <link refid="atom__typer_8cpp"/>
-        <childnode refid="1" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
         </childnode>
       </node>
+      <node id="3">
+        <label>openbabel/atom.h</label>
+      </node>
       <node id="5">
+        <label>vector</label>
+      </node>
+      <node id="10">
+        <label>openbabel/obiter.h</label>
+      </node>
+      <node id="4">
+        <label>openbabel/elements.h</label>
+      </node>
+      <node id="7">
+        <label>iostream</label>
+      </node>
+      <node id="8">
+        <label>unordered_map</label>
+      </node>
+      <node id="6">
         <label>memory</label>
       </node>
     </incdepgraph>
@@ -83,8 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" line="17" column="12" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="17" bodyend="-1"/>
-        <referencedby refid="classlibmolgrid_1_1GninaIndexTyper_1afa822a9ced021828013716b9b2e99670" compoundref="atom__typer_8cpp" startline="80" endline="164">GninaIndexTyper::get_atom_type_index</referencedby>
+        <location file="/home/jocelynsunseri/git/libmolgrid/src/atom_typer.cpp" line="17" column="12" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/atom_typer.cpp" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="atom__typer_8cpp_1ad07fa1680b4c52f075ce19270399b935" prot="public" static="no">
         <name>GET_COVALENT_RAD</name>
@@ -95,10 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" line="18" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="18" bodyend="-1"/>
-        <referencedby refid="classlibmolgrid_1_1ElementIndexTyper_1afa822a9ced021828013716b9b2e99670" compoundref="atom__typer_8cpp" startline="209" endline="214">ElementIndexTyper::get_atom_type_index</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ElementIndexTyper_1ad7cd781efd0d97403d12057df9cacbdb" compoundref="atom__typer_8cpp" startline="217" endline="221">ElementIndexTyper::get_int_type</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ElementIndexTyper_1adc0b9aacfdd83b3b868ab09424d3c04b" compoundref="atom__typer_8cpp" startline="234" endline="242">ElementIndexTyper::get_type_radii</referencedby>
+        <location file="/home/jocelynsunseri/git/libmolgrid/src/atom_typer.cpp" line="18" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/atom_typer.cpp" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="atom__typer_8cpp_1af8bca12527bac4b474e2ccb5acd8691e" prot="public" static="no">
         <name>GET_NAME</name>
@@ -109,8 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" line="19" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="19" bodyend="-1"/>
-        <referencedby refid="classlibmolgrid_1_1ElementIndexTyper_1ab179299d9dc6bb3a4bfe868fd60882a6" compoundref="atom__typer_8cpp" startline="224" endline="231">ElementIndexTyper::get_type_names</referencedby>
+        <location file="/home/jocelynsunseri/git/libmolgrid/src/atom_typer.cpp" line="19" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/atom_typer.cpp" bodystart="19" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -143,8 +138,8 @@
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>GET_NAME<sp/>etab.GetName</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceOpenBabel" kindref="compound">OpenBabel</ref>;</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacestd" kindref="compound">std</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">OpenBabel;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelibmolgrid" kindref="compound">libmolgrid</ref><sp/>{</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
@@ -411,12 +406,12 @@
 <codeline lineno="296" refid="classlibmolgrid_1_1GninaVectorTyper_1a5e84ac0f1e5fbb3fd24d137b02de0a3f" refkind="member"><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a5e84ac0f1e5fbb3fd24d137b02de0a3f" kindref="member">GninaVectorTyper::num_types</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="297"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//there&apos;s<sp/>the<sp/>supported<sp/>gnina<sp/>elements<sp/>plus<sp/>the<sp/>properties</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="298"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ad_depth,<sp/>ad_solvation,<sp/>ad_volume,<sp/>xs_hydrophobe,<sp/>xs_donor,<sp/>xs_acceptor,<sp/>ad_heteroatom</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="299"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NumTypes;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58aac64c8922ff64ae0d88ad358421d026f" kindref="member">NumTypes</ref>;</highlight></codeline>
 <codeline lineno="300"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="301"><highlight class="normal"></highlight></codeline>
 <codeline lineno="303" refid="classlibmolgrid_1_1GninaVectorTyper_1ae665f55a8d914fa0d36e469284e2443d" refkind="member"><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1ae665f55a8d914fa0d36e469284e2443d" kindref="member">GninaVectorTyper::get_atom_type_vector</ref>(OpenBabel::OBAtom*<sp/>a,<sp/>std::vector&lt;float&gt;&amp;<sp/>typ)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="304"><highlight class="normal"><sp/><sp/>typ.assign(NumTypes,<sp/>0);</highlight></codeline>
-<codeline lineno="305"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>t_r<sp/>=<sp/>ityper.get_atom_type_index(a);</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/>typ.assign(<ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58aac64c8922ff64ae0d88ad358421d026f" kindref="member">NumTypes</ref>,<sp/>0);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>t_r<sp/>=<sp/>ityper.<ref refid="classlibmolgrid_1_1GninaIndexTyper_1afa822a9ced021828013716b9b2e99670" kindref="member">get_atom_type_index</ref>(a);</highlight></codeline>
 <codeline lineno="306"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>t<sp/>=<sp/>t_r.first;</highlight></codeline>
 <codeline lineno="307"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radius<sp/>=<sp/>t_r.second;</highlight></codeline>
 <codeline lineno="308"><highlight class="normal"></highlight></codeline>
@@ -424,91 +419,91 @@
 <codeline lineno="310"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(t)<sp/>{<sp/></highlight><highlight class="comment">//convert<sp/>to<sp/>element<sp/>index</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="311"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da20fa2720571344499f799d2839b23c7e" kindref="member">GninaIndexTyper::Hydrogen</ref>:</highlight></codeline>
 <codeline lineno="312"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2daa3d3ec6d4feccb909e375261fc5e747a" kindref="member">GninaIndexTyper::PolarHydrogen</ref>:</highlight></codeline>
-<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>Hydrogen;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a20fa2720571344499f799d2839b23c7e" kindref="member">Hydrogen</ref>;</highlight></codeline>
 <codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="315"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da1ea7ee189d41ec98ed6592d7e07cbe01" kindref="member">GninaIndexTyper::AliphaticCarbonXSHydrophobe</ref>:</highlight></codeline>
 <codeline lineno="316"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da9b66ff931740ae4be675a9fa83f9c130" kindref="member">GninaIndexTyper::AliphaticCarbonXSNonHydrophobe</ref>:</highlight></codeline>
 <codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2daf3113296791638a80d64ba33c5fd4427" kindref="member">GninaIndexTyper::AromaticCarbonXSHydrophobe</ref>:</highlight></codeline>
 <codeline lineno="318"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da0bd3db5b7e161ee0ebb624494e30af85" kindref="member">GninaIndexTyper::AromaticCarbonXSNonHydrophobe</ref>:</highlight></codeline>
-<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>Carbon;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a29aed61cddc081ff18d77c441b9fedb2" kindref="member">Carbon</ref>;</highlight></codeline>
 <codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="321"><highlight class="normal"></highlight></codeline>
 <codeline lineno="322"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2daf766de68d927b08d86af09a7aadbe81b" kindref="member">GninaIndexTyper::Nitrogen</ref>:</highlight></codeline>
 <codeline lineno="323"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da6abe6c6a3e353efda94a61eec0bc6e1c" kindref="member">GninaIndexTyper::NitrogenXSDonor</ref>:</highlight></codeline>
 <codeline lineno="324"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da5739855eaaa648af57dc0188e3698743" kindref="member">GninaIndexTyper::NitrogenXSDonorAcceptor</ref>:</highlight></codeline>
 <codeline lineno="325"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da99a9bbcbf26abb65fafcebd4ee38b1cc" kindref="member">GninaIndexTyper::NitrogenXSAcceptor</ref>:</highlight></codeline>
-<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>Nitrogen;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58af766de68d927b08d86af09a7aadbe81b" kindref="member">Nitrogen</ref>;</highlight></codeline>
 <codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="328"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dae54b22e3be885eb43db3925118a89f02" kindref="member">GninaIndexTyper::Oxygen</ref>:</highlight></codeline>
 <codeline lineno="329"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dae139a25d0b4fda3f0a87918043c19640" kindref="member">GninaIndexTyper::OxygenXSDonor</ref>:</highlight></codeline>
 <codeline lineno="330"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da5a0891509ad2a1599770d76eac6f11b6" kindref="member">GninaIndexTyper::OxygenXSDonorAcceptor</ref>:</highlight></codeline>
 <codeline lineno="331"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da0de17bde588e82e1aed388dd71381026" kindref="member">GninaIndexTyper::OxygenXSAcceptor</ref>:</highlight></codeline>
-<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>Oxygen;</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58ae54b22e3be885eb43db3925118a89f02" kindref="member">Oxygen</ref>;</highlight></codeline>
 <codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="334"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dadfc4f003c99e8ae202fa0bbe5433e37d" kindref="member">GninaIndexTyper::Sulfur</ref>:</highlight></codeline>
 <codeline lineno="335"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dab0aaebb4b47401db206171bcbf5f83ff" kindref="member">GninaIndexTyper::SulfurAcceptor</ref>:</highlight></codeline>
-<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>Sulfur;</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58adfc4f003c99e8ae202fa0bbe5433e37d" kindref="member">Sulfur</ref>;</highlight></codeline>
 <codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="338"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dafb6902001cce5e4c30fbf6ff798d14ff" kindref="member">GninaIndexTyper::Phosphorus</ref>:</highlight></codeline>
-<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>Phosphorus;</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58afb6902001cce5e4c30fbf6ff798d14ff" kindref="member">Phosphorus</ref>;</highlight></codeline>
 <codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="341"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da720bc1d5b753af7cf738a52d4b390004" kindref="member">GninaIndexTyper::Fluorine</ref>:</highlight></codeline>
-<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>Fluorine;</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a720bc1d5b753af7cf738a52d4b390004" kindref="member">Fluorine</ref>;</highlight></codeline>
 <codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="344"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da8b6a342c70d3df3c2927e8a07b798170" kindref="member">GninaIndexTyper::Chlorine</ref>:</highlight></codeline>
-<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>Chlorine;</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a8b6a342c70d3df3c2927e8a07b798170" kindref="member">Chlorine</ref>;</highlight></codeline>
 <codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="347"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da0aa79218b633c599741632eb7393d2fe" kindref="member">GninaIndexTyper::Bromine</ref>:</highlight></codeline>
-<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>Bromine;</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a0aa79218b633c599741632eb7393d2fe" kindref="member">Bromine</ref>;</highlight></codeline>
 <codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="350"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2daf293af144ce688a9a2e0a43a9af4e279" kindref="member">GninaIndexTyper::Iodine</ref>:</highlight></codeline>
-<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>Iodine;</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58af293af144ce688a9a2e0a43a9af4e279" kindref="member">Iodine</ref>;</highlight></codeline>
 <codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="353"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2daff5ab7e500a1c16d48b11aa93bb60439" kindref="member">GninaIndexTyper::Magnesium</ref>:</highlight></codeline>
-<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>Magnesium;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58aff5ab7e500a1c16d48b11aa93bb60439" kindref="member">Magnesium</ref>;</highlight></codeline>
 <codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="356"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da2481971aeae9ed91247d0e6c69447bcf" kindref="member">GninaIndexTyper::Manganese</ref>:</highlight></codeline>
-<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>Manganese;</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a2481971aeae9ed91247d0e6c69447bcf" kindref="member">Manganese</ref>;</highlight></codeline>
 <codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="359"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da64391040c4d0c382ba484cfc7dc24cce" kindref="member">GninaIndexTyper::Zinc</ref>:</highlight></codeline>
-<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>Zinc;</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a64391040c4d0c382ba484cfc7dc24cce" kindref="member">Zinc</ref>;</highlight></codeline>
 <codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="362"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da40f67c18f45fbcb3396df8fb55e41145" kindref="member">GninaIndexTyper::Calcium</ref>:</highlight></codeline>
-<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>Calcium;</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a40f67c18f45fbcb3396df8fb55e41145" kindref="member">Calcium</ref>;</highlight></codeline>
 <codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="365"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da8750950e70ba4037061ecd568a56b944" kindref="member">GninaIndexTyper::Iron</ref>:</highlight></codeline>
-<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>Iron;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a8750950e70ba4037061ecd568a56b944" kindref="member">Iron</ref>;</highlight></codeline>
 <codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="368"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2dad89b17a8892a5bd6aac5579a777515e0" kindref="member">GninaIndexTyper::GenericMetal</ref>:</highlight></codeline>
-<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>GenericAtom;</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a102c874da8d58e697153b870836f97d7" kindref="member">GenericAtom</ref>;</highlight></codeline>
 <codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="371"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da3a2170e4ebad18bd68d1cd7ebd73bd3d" kindref="member">GninaIndexTyper::Boron</ref>:</highlight></codeline>
-<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>Boron;</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a3a2170e4ebad18bd68d1cd7ebd73bd3d" kindref="member">Boron</ref>;</highlight></codeline>
 <codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="374"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/>GenericAtom;</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/>elemtyp<sp/>=<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a102c874da8d58e697153b870836f97d7" kindref="member">GenericAtom</ref>;</highlight></codeline>
 <codeline lineno="376"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="377"><highlight class="normal"></highlight></codeline>
 <codeline lineno="378"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//set<sp/>one-hot<sp/>element</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="379"><highlight class="normal"><sp/><sp/>typ[elemtyp]<sp/>=<sp/>1.0;</highlight></codeline>
 <codeline lineno="380"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//set<sp/>properties</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="381"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info" kindref="compound">GninaIndexTyper::info</ref>&amp;<sp/>info<sp/>=<sp/>ityper.get_info(t);</highlight></codeline>
-<codeline lineno="382"><highlight class="normal"><sp/><sp/>typ[AD_depth]<sp/>=<sp/>info.<ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1af504cf271d0020317ec1cf9a219a36aa" kindref="member">ad_depth</ref>;</highlight></codeline>
-<codeline lineno="383"><highlight class="normal"><sp/><sp/>typ[AD_solvation]<sp/>=<sp/>info.<ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1af030eefb3668c4bf6c51e0184bc9652f" kindref="member">ad_solvation</ref>;</highlight></codeline>
-<codeline lineno="384"><highlight class="normal"><sp/><sp/>typ[AD_volume]<sp/>=<sp/>info.<ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1ad47f54e927cd62d42d78ffba9047cf92" kindref="member">ad_volume</ref>;</highlight></codeline>
-<codeline lineno="385"><highlight class="normal"><sp/><sp/>typ[XS_hydrophobe]<sp/>=<sp/>info.<ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a3c8ad373784fcd045ca46a59b0672a62" kindref="member">xs_hydrophobe</ref>;</highlight></codeline>
-<codeline lineno="386"><highlight class="normal"><sp/><sp/>typ[XS_donor]<sp/>=<sp/>info.<ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a4d6140923dcfe9e59fe1355ecd106bd1" kindref="member">xs_donor</ref>;</highlight></codeline>
-<codeline lineno="387"><highlight class="normal"><sp/><sp/>typ[XS_acceptor]<sp/>=<sp/>info.<ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a63abb2440710ff892d3e7d1e73607f66" kindref="member">xs_acceptor</ref>;</highlight></codeline>
-<codeline lineno="388"><highlight class="normal"><sp/><sp/>typ[AD_heteroatom]<sp/>=<sp/>info.<ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a1545b973b3b84e111b5983a51e0eec7e" kindref="member">ad_heteroatom</ref>;</highlight></codeline>
-<codeline lineno="389"><highlight class="normal"><sp/><sp/>typ[OB_partialcharge]<sp/>=<sp/>a-&gt;GetPartialCharge();</highlight></codeline>
-<codeline lineno="390"><highlight class="normal"><sp/><sp/>typ[Aromatic]<sp/>=<sp/>a-&gt;IsAromatic();</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info" kindref="compound">GninaIndexTyper::info</ref>&amp;<sp/>info<sp/>=<sp/>ityper.<ref refid="classlibmolgrid_1_1GninaIndexTyper_1aef23b5c76e723f1fa66e56819225126b" kindref="member">get_info</ref>(t);</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/>typ[<ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a66071ce81eacf279caeb6181d2b4af77" kindref="member">AD_depth</ref>]<sp/>=<sp/>info.<ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1af504cf271d0020317ec1cf9a219a36aa" kindref="member">ad_depth</ref>;</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/>typ[<ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a94dadc9171990acbc734ebc7b964c24e" kindref="member">AD_solvation</ref>]<sp/>=<sp/>info.<ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1af030eefb3668c4bf6c51e0184bc9652f" kindref="member">ad_solvation</ref>;</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/>typ[<ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58ae946596d3b2f7916326449e286a24d86" kindref="member">AD_volume</ref>]<sp/>=<sp/>info.<ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1ad47f54e927cd62d42d78ffba9047cf92" kindref="member">ad_volume</ref>;</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/>typ[<ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a6fa0bccf04cddf72b9a36f9189e6f826" kindref="member">XS_hydrophobe</ref>]<sp/>=<sp/>info.<ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a3c8ad373784fcd045ca46a59b0672a62" kindref="member">xs_hydrophobe</ref>;</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/>typ[<ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58adf29561d776262734af9b550a4084d99" kindref="member">XS_donor</ref>]<sp/>=<sp/>info.<ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a4d6140923dcfe9e59fe1355ecd106bd1" kindref="member">xs_donor</ref>;</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/>typ[<ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a495ab511fe9d4de716f17c16b88c8381" kindref="member">XS_acceptor</ref>]<sp/>=<sp/>info.<ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a63abb2440710ff892d3e7d1e73607f66" kindref="member">xs_acceptor</ref>;</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/>typ[<ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a17742e560aabc21a282511133d1d6051" kindref="member">AD_heteroatom</ref>]<sp/>=<sp/>info.<ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a1545b973b3b84e111b5983a51e0eec7e" kindref="member">ad_heteroatom</ref>;</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/>typ[<ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a47dac740f8d42f2a95b945a0ca69578d" kindref="member">OB_partialcharge</ref>]<sp/>=<sp/>a-&gt;GetPartialCharge();</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/>typ[<ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58a64c607937ff8cf2e2d5c22b8b4052b4c" kindref="member">Aromatic</ref>]<sp/>=<sp/>a-&gt;IsAromatic();</highlight></codeline>
 <codeline lineno="391"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>radius;</highlight></codeline>
 <codeline lineno="392"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="393"><highlight class="normal"></highlight></codeline>
 <codeline lineno="395" refid="classlibmolgrid_1_1GninaVectorTyper_1ad2de174aee1d2d6da3500c728ee71e23" refkind="member"><highlight class="normal">std::vector&lt;float&gt;<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1ad2de174aee1d2d6da3500c728ee71e23" kindref="member">GninaVectorTyper::get_vector_type_radii</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="396"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>ret;</highlight></codeline>
-<codeline lineno="397"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>NumTypes;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info" kindref="compound">GninaIndexTyper::info</ref>&amp;<sp/>info<sp/>=<sp/>ityper.get_info(i);</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="classlibmolgrid_1_1GninaVectorTyper_1a21bf59de2ac4232bcda03cf34a11ac58aac64c8922ff64ae0d88ad358421d026f" kindref="member">NumTypes</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info" kindref="compound">GninaIndexTyper::info</ref>&amp;<sp/>info<sp/>=<sp/>ityper.<ref refid="classlibmolgrid_1_1GninaIndexTyper_1aef23b5c76e723f1fa66e56819225126b" kindref="member">get_info</ref>(i);</highlight></codeline>
 <codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.push_back(info.<ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a71b62833de40e93190610ebdd26df937" kindref="member">xs_radius</ref>);</highlight></codeline>
 <codeline lineno="400"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="401"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
@@ -529,7 +524,7 @@
 <codeline lineno="416"><highlight class="normal"></highlight><highlight class="comment">/***********<sp/>FileAtomMapper<sp/>*****************/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="417"><highlight class="normal"></highlight></codeline>
 <codeline lineno="419"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>FileAtomMapper::setup(std::istream&amp;<sp/>in)<sp/>{</highlight></codeline>
-<codeline lineno="420"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceboost_1_1algorithm" kindref="compound">boost::algorithm</ref>;</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">boost::algorithm;</highlight></codeline>
 <codeline lineno="421"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//first<sp/>create<sp/>reverse<sp/>map<sp/>from<sp/>old<sp/>names<sp/>to<sp/>old<sp/>types</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="422"><highlight class="normal"><sp/><sp/>unordered_map&lt;string,<sp/>int&gt;<sp/>old_name_to_old_type;</highlight></codeline>
 <codeline lineno="423"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>n<sp/>=<sp/>old_type_names.size();<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
@@ -667,11 +662,11 @@
 <codeline lineno="558"><highlight class="stringliteral">Phosphorus</highlight></codeline>
 <codeline lineno="559"><highlight class="stringliteral">GenericMetal<sp/>Boron<sp/>Manganese<sp/>Magnesium<sp/>Zinc<sp/>Calcium<sp/>Iron</highlight></codeline>
 <codeline lineno="560"><highlight class="stringliteral">)&quot;);</highlight></codeline>
-<codeline lineno="561"><highlight class="stringliteral"><ref refid="classlibmolgrid_1_1FileMappedGninaTyper" kindref="compound">FileMappedGninaTyper</ref><sp/><ref refid="namespacelibmolgrid_1aed6bc2269142acee6e4fdd214209c175" kindref="member">defaultGninaReceptorTyper</ref>(recmap);</highlight></codeline>
-<codeline lineno="562"><highlight class="stringliteral"><ref refid="classlibmolgrid_1_1FileMappedGninaTyper" kindref="compound">FileMappedGninaTyper</ref><sp/><ref refid="namespacelibmolgrid_1a371ec05022b3d175a5b02d540f947ac2" kindref="member">defaultGninaLigandTyper</ref>(ligmap);</highlight></codeline>
+<codeline lineno="561"><highlight class="stringliteral"><ref refid="classlibmolgrid_1_1FileMappedGninaTyper" kindref="compound">FileMappedGninaTyper</ref><sp/><ref refid="namespacelibmolgrid_1aed6bc2269142acee6e4fdd214209c175" kindref="member">defaultGninaReceptorTyper</ref>(<ref refid="namespacelibmolgrid_1abc1c852c354f940bb6726454a18083e2" kindref="member">recmap</ref>);</highlight></codeline>
+<codeline lineno="562"><highlight class="stringliteral"><ref refid="classlibmolgrid_1_1FileMappedGninaTyper" kindref="compound">FileMappedGninaTyper</ref><sp/><ref refid="namespacelibmolgrid_1a371ec05022b3d175a5b02d540f947ac2" kindref="member">defaultGninaLigandTyper</ref>(<ref refid="namespacelibmolgrid_1ab32fe62f692f6c16ba65f9586408e444" kindref="member">ligmap</ref>);</highlight></codeline>
 <codeline lineno="563"><highlight class="stringliteral"></highlight></codeline>
 <codeline lineno="564"><highlight class="stringliteral">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/dkoes/git/libmolgrid/src/atom_typer.cpp"/>
+    <location file="/home/jocelynsunseri/git/libmolgrid/src/atom_typer.cpp"/>
   </compounddef>
 </doxygen>

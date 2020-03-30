@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="grid__maker_8cu" kind="file" language="C++">
     <compoundname>grid_maker.cu</compoundname>
     <briefdescription>
@@ -281,7 +281,9 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(radii_type_indexed)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>std::invalid_argument(&quot;Type<sp/>indexed<sp/>radii<sp/>not<sp/>supported<sp/>with<sp/>index<sp/>types.&quot;);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(blocksperside<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>std::invalid_argument(&quot;Zero<sp/>sized<sp/>grid.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//zero<sp/>out<sp/>grid<sp/>to<sp/>start</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>LMG_CUDA_CHECK(cudaMemset(out.data(),<sp/>0,<sp/>out.size()<sp/>*<sp/>sizeof(float)));</highlight></codeline>
 <codeline></codeline>
@@ -746,6 +748,6 @@
 <codeline></codeline>
 <codeline><highlight class="normal">}<sp/>/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight></codeline>
     </programlisting>
-    <location file="/home/dkoes/git/libmolgrid/src/grid_maker.cu"/>
+    <location file="/home/jocelynsunseri/git/libmolgrid/src/grid_maker.cu"/>
   </compounddef>
 </doxygen>
