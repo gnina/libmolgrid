@@ -48,7 +48,7 @@ endif()
 
 if(BUILD_STATIC)
     add_library(libmolgrid_static STATIC ${LIBMOLGRID_HEADERS} ${LIBMOLGRID_SOURCES})
-    SET_TARGET_PROPERTIES(libmolgrid_static PROPERTIES OUTPUT_NAME molgrid CUDA_SEPARABLE_COMPILATION OFF)
+    SET_TARGET_PROPERTIES(libmolgrid_static PROPERTIES OUTPUT_NAME molgrid CUDA_SEPARABLE_COMPILATION OFF POSITION_INDEPENDENT_CODE ON )
     target_link_libraries(libmolgrid_static ${OPENBABEL3_LIBRARIES} ${Boost_LIBRARIES})
     #install libs
     install(TARGETS libmolgrid_static DESTINATION lib)

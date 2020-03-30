@@ -14,6 +14,12 @@ endif()
 option(BUILD_SHARED "Build shared library" ON)
 option(BUILD_STATIC "Build static library" ON)
 
+if(${BUILD_CONTAINED_PYTHON}) 
+  #if make a mostly statically linked python module, use static boost
+   set(BUILD_STATIC ON)
+   set(Boost_USE_STATIC_LIBS ON)
+endif()
+
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules;${PROJECT_SOURCE_DIR}/cmake")
 # get git hash
 include(cmake/git_revision.cmake)

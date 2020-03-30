@@ -5,13 +5,17 @@ if (NOT PYTHONLIBS_FOUND)
   message(STATUS "Python libraries NOT found")
 endif()
  
+if(BUILD_CONTAINED_PYTHON)
+  # create a python library with as few runtime dependencies as possible
+  set(Boost_USE_STATIC_LIBS ON)
+endif()
+
 if(${CMAKE_VERSION} VERSION_LESS "3.13.0") 
 	find_package( Boost COMPONENTS system filesystem python${PYTHON_VERSION_MAJOR} REQUIRED )
 else()
 #minor version numbers requires newer (3.13?) version of cmake   
   find_package( Boost COMPONENTS system filesystem python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR} REQUIRED )
 endif()
-#find_package( Boost COMPONENTS system filesystem python REQUIRED )
 
 find_package( NumPy )
 
@@ -40,18 +44,28 @@ set( PYMOLGRID_PY
  torch_bindings.py
 )
 
-# create the lib
-add_library(molgrid SHARED ${PYMOLGRID_SOURCES})
+
 
 file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/molgrid/")
+
+# link
+if(BUILD_CONTAINED_PYTHON)
+  # create a python library with as few runtime dependencies as possible
+  add_library(molgrid SHARED ${PYMOLGRID_SOURCES})
+  SET_TARGET_PROPERTIES(molgrid PROPERTIES CUDA_SEPARABLE_COMPILATION OFF)
+  target_link_libraries(molgrid ${Boost_LIBRARIES} ${CUDA_LIBRARIES} libmolgrid_static )
+else()
+# create the lib
+  add_library(molgrid SHARED ${PYMOLGRID_SOURCES})
+  target_link_libraries(molgrid ${Boost_LIBRARIES} ${CUDA_LIBRARIES} libmolgrid_shared)
+endif()
+
 # Suppress prefix "lib" because Python does not allow this prefix
 set_target_properties(molgrid PROPERTIES 
 									PREFIX ""
 									LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/molgrid/")
 									
-# link
-target_link_libraries(molgrid ${Boost_LIBRARIES} ${CUDA_LIBRARIES} libmolgrid_shared)
-
+                  
 # copy module code
 foreach(file ${PYMOLGRID_PY})
  configure_file(${file}  ${CMAKE_CURRENT_BINARY_DIR}/molgrid/)
