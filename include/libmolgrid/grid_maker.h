@@ -159,8 +159,7 @@ class GridMaker {
      * Coordinates may be optionally translated/rotated.  Do not use this function
      * if it is desirable to retain the transformation used (e.g., when backpropagating).
      *
-     * @param[in] ex example
-     * @param[in] transform transformation to apply
+     * @param[in] in example
      * @param[out] out a 4D grid
      * @param[in] random_translation  maximum amount to randomly translate each coordinate (+/-)
      * @param[in] random_rotation whether or not to randomly rotate
@@ -178,8 +177,7 @@ class GridMaker {
      * The center of the last coordinate set before transformation
      * will be used as the grid center.
      *
-     * @param[in] ex example
-     * @param[in] transform transformation to apply
+     * @param[in] in example
      * @param[out] out a 4D grid
      * @param[in] random_translation  maximum amount to randomly translate each coordinate (+/-)
      * @param[in] random_rotation whether or not to randomly rotate
@@ -196,11 +194,11 @@ class GridMaker {
 
     // Docstring_GridMaker_forward_6
     /* \brief Generate grid tensor from CPU atomic data.  Grid must be properly sized.
-     * @param[in] center of grid
-     * @param[in] coordinates (Nx3)
-     * @param[in] type indices (N integers stored as floats)
+     * @param[in] grid_center center of grid
+     * @param[in] coords coordinates (Nx3)
+     * @param[in] type_index indices (N integers stored as floats)
      * @param[in] radii (N)
-     * @param[out] a 4D grid
+     * @param[out] out a 4D grid
      */
     template <typename Dtype>
     void forward(float3 grid_center, const Grid<float, 2, false>& coords,
@@ -209,11 +207,11 @@ class GridMaker {
 
     // Docstring_GridMaker_forward_7
     /* \brief Generate grid tensor from GPU atomic data.  Grid must be properly sized.
-     * @param[in] center of grid
-     * @param[in] coordinates (Nx3)
-     * @param[in] type indices (N integers stored as floats)
+     * @param[in] grid_center center of grid
+     * @param[in] coords coordinates (Nx3)
+     * @param[in] type_index indices (N integers stored as floats)
      * @param[in] radii (N)
-     * @param[out] a 4D grid
+     * @param[out] out a 4D grid
      */
     template <typename Dtype>
     void forward(float3 grid_center, const Grid<float, 2, true>& coords,
@@ -225,11 +223,11 @@ class GridMaker {
     /* \brief Generate grid tensor from CPU atomic data.  Grid must be properly sized.
      * If TypesFromRadii, radii should be size of types and type information will be used
      * to select the radii.
-     * @param[in] center of grid
-     * @param[in] coordinates (Nx3)
-     * @param[in] type vectors (NxT)
+     * @param[in] grid_center center of grid
+     * @param[in] coords coordinates (Nx3)
+     * @param[in] type_vector vectors (NxT)
      * @param[in] radii (N) or (T)
-     * @param[out] a 4D grid
+     * @param[out] out a 4D grid
      */
     template <typename Dtype, bool TypesFromRadii = false>
     void forward(float3 grid_center, const Grid<float, 2, false>& coords,
@@ -238,11 +236,11 @@ class GridMaker {
 
     // Docstring_GridMaker_forward_9
     /* \brief Generate grid tensor from GPU atomic data.  Grid must be properly sized.
-     * @param[in] center of grid
-     * @param[in] coordinates (Nx3)
-     * @param[in] type indices (NxT)
+     * @param[in] grid_center center of grid
+     * @param[in] coords coordinates (Nx3)
+     * @param[in] type_vector indices (NxT)
      * @param[in] radii (N) or (T) depending on if radii_type_indexed is set
-     * @param[out] a 4D grid
+     * @param[out] out a 4D grid
      */
     template <typename Dtype>
     void forward(float3 grid_center, const Grid<float, 2, true>& coords,
@@ -254,7 +252,7 @@ class GridMaker {
     /* \brief Generate atom and type gradients from grid gradients. (CPU)
      * Must provide atom coordinates that defined the original grid in forward
      * Vector types are required.
-     * @param[in] center of grid
+     * @param[in] grid_center center of grid
      * @param[in] in coordinate set
      * @param[in] diff a 4D grid of gradients
      * @param[out] atomic_gradients vector quantities for each atom
@@ -274,7 +272,7 @@ class GridMaker {
     /* \brief Generate atom gradients from grid gradients. (CPU)
      * Must provide atom coordinates that defined the original grid in forward
      * Index types are required
-     * @param[in] center of grid
+     * @param[in] grid_center center of grid
      * @param[in] in coordinate set
      * @param[in] diff a 4D grid of gradients
      * @param[out] atomic_gradients vector quantities for each atom
@@ -293,7 +291,7 @@ class GridMaker {
     /* \brief Generate atom and type gradients from grid gradients. (GPU)
      * Must provide atom coordinates that defined the original grid in forward
      * Vector types are required.
-     * @param[in] center of grid
+     * @param[in] grid_center center of grid
      * @param[in] in coordinate set
      * @param[in] diff a 4D grid of gradients
      * @param[out] atomic_gradients vector quantities for each atom
@@ -313,7 +311,7 @@ class GridMaker {
     /* \brief Generate atom gradients from grid gradients. (GPU)
      * Must provide atom coordinates that defined the original grid in forward
      * Index types are required.
-     * @param[in] center of grid
+     * @param[in] grid_center center of grid
      * @param[in] in coordinate set
      * @param[in] diff a 4D grid of gradients
      * @param[out] atomic_gradients vector quantities for each atom
@@ -331,9 +329,9 @@ class GridMaker {
     // Docstring_GridMaker_backward_5
     /* \brief Generate atom gradients from grid gradients. (CPU)
      * Must provide atom coordinates, types, and radii that defined the original grid in forward
-     * @param[in] center of grid
-     * @param[in] coordinates (Nx3)
-     * @param[in] type indices (N integers stored as floats)
+     * @param[in] grid_center center of grid
+     * @param[in] coord coordinates (Nx3)
+     * @param[in] type_index type indices (N integers stored as floats)
      * @param[in] radii (N)
      * @param[in] diff a 4D grid of gradients
      * @param[out] atomic_gradients vector quantities for each atom
@@ -346,11 +344,11 @@ class GridMaker {
     // Docstring_GridMaker_backward_6
     /* \brief Generate atom gradients from grid gradients. (GPU)
      * Must provide atom coordinates, types, and radii that defined the original grid in forward
-     * @param[in] center of grid
-     * @param[in] coordinates(Nx3)
-     * @param[in] type indices (N integers stored as floats)
+     * @param[in] grid_center center of grid
+     * @param[in] coords coordinates(Nx3)
+     * @param[in] type_index indices (N integers stored as floats)
      * @param[in] radii (N)
-     * @param[in] diff a 4D grid of gradients
+     * @param[in] grid a 4D grid of gradients
      * @param[out] atomic_gradients vector quantities for each atom
      */
     template <typename Dtype>
@@ -361,9 +359,9 @@ class GridMaker {
     // Docstring_GridMaker_backward_7
     /* \brief Generate atom and type gradients from grid gradients. (CPU)
      * Must provide atom coordinates, types, and radii that defined the original grid in forward
-     * @param[in] center of grid
-     * @param[in] coordinates  (Nx3)
-     * @param[in] type vectors (NxT)
+     * @param[in] grid_center center of grid
+     * @param[in] coords coordinates  (Nx3)
+     * @param[in] type_vectors vectors (NxT)
      * @param[in] radii (N)
      * @param[in] diff a 4D grid of gradients
      * @param[out] atomic_gradients vector quantities for each atom
@@ -378,11 +376,11 @@ class GridMaker {
     // Docstring_GridMaker_backward_8
     /* \brief Generate atom gradients from grid gradients. (GPU)
      * Must provide atom coordinates, types, and radii that defined the original grid in forward
-     * @param[in] center of grid
-     * @param[in] coordinates (Nx3)
-     * @param[in] type vectors (NxT)
+     * @param[in] grid_center center of grid
+     * @param[in] coords coordinates (Nx3)
+     * @param[in] type_vectors (NxT)
      * @param[in] radii (N)
-     * @param[in] diff a 4D grid of gradients
+     * @param[in] grid a 4D grid of gradients
      * @param[out] atomic_gradients vector quantities for each atom
      * @param[out] type_gradients vector quantities for each atom
      *
@@ -395,7 +393,7 @@ class GridMaker {
 
     /* \brief Propagate relevance (in diff) onto atoms. (CPU)
      * Index types are required.
-     * @param[in] center of grid
+     * @param[in] grid_center center of grid
      * @param[in] in coordinate set
      * @param[in] density a 4D grid of densities (used in forward)
      * @param[in] diff a 4D grid of relevance
@@ -414,7 +412,7 @@ class GridMaker {
 
     /* \brief Propagate relevance (in diff) onto atoms. (GPU)
      * Index types are required.
-     * @param[in] center of grid
+     * @param[in] grid_center center of grid
      * @param[in] in coordinate set
      * @param[in] density a 4D grid of densities (used in forward)
      * @param[in] diff a 4D grid of relevance
@@ -433,7 +431,7 @@ class GridMaker {
 
     /* \brief Propagate relevance (in diff) onto atoms. (CPU)
      * Index types are required.
-     * @param[in] center of grid
+     * @param[in] grid_center center of grid
      * @param[in] coords coordinates
      * @param[in] type_index
      * @param[in] radii
@@ -449,7 +447,7 @@ class GridMaker {
 
     /* \brief Propagate relevance (in diff) onto atoms. (GPU)
      * Index types are required.
-     * @param[in] center of grid
+     * @param[in] grid_center center of grid
      * @param[in] coords coordinates
      * @param[in] type_index
      * @param[in] radii
@@ -465,25 +463,25 @@ class GridMaker {
 
 
     /* \brief The function that actually updates the voxel density values.
-     * @param[in] number of possibly relevant atoms
-     * @param[in] grid origin
-     * @param[in] coordinates
-     * @param[in] type indices (N integers stored as floats)
+     * @param[in] natoms number of possibly relevant atoms
+     * @param[in] grid_origin grid origin
+     * @param[in] coords coordinates
+     * @param[in] tindex type indices (N integers stored as floats)
      * @param[in] radii (N)
-     * @param[out] a 4D grid
+     * @param[out] out a 4D grid
      */
     template <typename Dtype, bool Binary>
     CUDA_DEVICE_MEMBER void set_atoms(unsigned natoms, float3 grid_origin,
         const float3 *coords, const float *tindex, const float *radii, Dtype* out);
 
     /* \brief The function that actually updates the voxel density values.
-     * @param[in] number of possibly relevant atoms
-     * @param[in] grid origin
-     * @param[in] coordinates
-     * @param[in] type vector (NxT)
+     * @param[in] natoms number of possibly relevant atoms
+     * @param[in] grid_origin
+     * @param[in] coords coordinates
+     * @param[in] type_vec type vector (NxT)
      * @param[in] ntypes number of types
      * @param[in] radii (N)
-     * @param[out] a 4D grid
+     * @param[out] out a 4D grid
      */
     template <typename Dtype, bool Binary, bool RadiiFromTypes>
     CUDA_DEVICE_MEMBER void set_atoms(unsigned natoms, float3 grid_origin,
@@ -506,9 +504,9 @@ class GridMaker {
     float calc_atom_relevance_cpu(const float3& grid_origin, const Grid1f& coord,  const Grid<Dtype, 3, false>& density, const Grid<Dtype, 3, false>& diff, float radius) const;
 
     /* \brief Find grid indices in one dimension that bound an atom's density.
-     * @param[in] grid min coordinate in a given dimension
-     * @param[in] atom coordinate in the same dimension
-     * @param[in] atomic density radius (N.B. this is not the atomic radius)
+     * @param[in] grid_origin grid min coordinate in a given dimension
+     * @param[in] coord atom coordinate in the same dimension
+     * @param[in] densityrad atomic density radius (N.B. this is not the atomic radius)
      * @param[out] indices of grid points in the same dimension that could
      * possibly overlap atom density
      */
@@ -516,9 +514,11 @@ class GridMaker {
         float densityrad)  const;
 
     /* \brief Calculate atom density at a grid point.
-     * @param[in] atomic coords
-     * @param[in] atomic radius
-     * @param[in] grid point coords
+     * @param[in] ax atomic coord x
+     * @param[in] ay atomic coord y 
+     * @param[in] az atomic coord z
+     * @param[in] ar atomic radius
+     * @param[in] grid_coords grid point coords
      * @param[out] atom density
      */
     template <bool Binary>
