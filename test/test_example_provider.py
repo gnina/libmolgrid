@@ -284,3 +284,26 @@ def test_copied_examples():
     np.testing.assert_allclose(orig,new0)
     sqsum = np.square(new1-orig).sum()
     assert sqsum > 0
+    
+def test_example_provider_iterator_interface():
+    fname = datadir+"/small.types"
+    BSIZE=25
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs",default_batch_size=BSIZE)
+    e.populate(fname)
+    
+    e2 = molgrid.ExampleProvider(data_root=datadir+"/structs",default_batch_size=BSIZE)
+    e2.populate(fname)
+
+    nlabels = e.num_labels()
+    labels = molgrid.MGrid2f(BSIZE,nlabels)
+    labels2 = molgrid.MGrid2f(BSIZE,nlabels)
+
+    for (i, b) in enumerate(e):
+        b2 = e2.next_batch()
+        b.extract_labels(labels.cpu())
+        b2.extract_labels(labels2.cpu())
+        np.testing.assert_allclose(labels,labels2)
+        if i > 10:
+            break
+        
+        

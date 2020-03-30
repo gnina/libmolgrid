@@ -16,27 +16,28 @@ ExampleProvider::ExampleProvider(const ExampleProviderSettings& settings) :
     provider(createProvider(settings)),
         extractor(settings,
             make_shared < FileMappedGninaTyper > (defaultGninaReceptorTyper),
-            make_shared < FileMappedGninaTyper > (defaultGninaLigandTyper)) {
+            make_shared < FileMappedGninaTyper > (defaultGninaLigandTyper)),
+        init_settings(settings) {
 
 }
 
 /// Create provider/extractor according to settings with single typer
 ExampleProvider::ExampleProvider(const ExampleProviderSettings& settings,
     std::shared_ptr<AtomTyper> t) :
-    provider(createProvider(settings)), extractor(settings, t) {
+    provider(createProvider(settings)), extractor(settings, t), init_settings(settings) {
 
 }
 
 ExampleProvider::ExampleProvider(const ExampleProviderSettings& settings,
     std::shared_ptr<AtomTyper> t1, std::shared_ptr<AtomTyper> t2) :
-    provider(createProvider(settings)), extractor(settings, t1, t2) {
+    provider(createProvider(settings)), extractor(settings, t1, t2), init_settings(settings) {
 
 }
 
 ExampleProvider::ExampleProvider(const ExampleProviderSettings& settings,
     const std::vector<std::shared_ptr<AtomTyper> >& typrs, const std::vector<std::string>& molcaches)
 :
-    provider(createProvider(settings)), extractor(settings, typrs, molcaches) {
+    provider(createProvider(settings)), extractor(settings, typrs, molcaches), init_settings(settings) {
 
 }
 
@@ -75,6 +76,9 @@ void ExampleProvider::next(Example& ex) {
 ///provide a batch of examples
 void ExampleProvider::next_batch(std::vector<Example>& ex, unsigned batch_size) {
   static vector<ExampleRef> refs;
+  if(batch_size == 0) {
+    batch_size = init_settings.default_batch_size;
+  }
   ex.resize(batch_size);
   refs.resize(batch_size);
   provider->check_batch_size(batch_size);

@@ -1,3 +1,5 @@
+# generate Python docstrings from Cpp source
+set(PROJECT_SOURCE_DIR "..")
 # function to convert Doxygen-style comments into Python-style docstrings
 function(doxyToDoc DOXYSTRING)
   string(REGEX REPLACE "\\\\brief[ \t]*" "" DOXYSTRING "${DOXYSTRING}")
@@ -41,5 +43,6 @@ foreach(fname ${HEADERS})
   endforeach()
 endforeach()
 
+set("THIS_IS_THE_SOURCE_FILE" "\n\n  WARNING WARNING WARNING\n  This file is generated from bindings.in.cpp\n\nDO NOT EDIT\n\n")
 # insert docstrings into bindings
-configure_file("${PROJECT_SOURCE_DIR}/python/bindings.cpp.in" "${PROJECT_SOURCE_DIR}/python/bindings.cpp" @ONLY)
+configure_file("${PROJECT_SOURCE_DIR}/python/bindings.in.cpp" "${PROJECT_SOURCE_DIR}/python/bindings.cpp" @ONLY)
