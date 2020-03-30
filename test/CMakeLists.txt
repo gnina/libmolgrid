@@ -1,6 +1,7 @@
 
 
 #Prep ourselves for compiling boost
+set(Boost_USE_STATIC_LIBS OFF) #unit_test_framework has to be shared
 find_package(Boost COMPONENTS unit_test_framework system REQUIRED)
 include_directories (${Boost_INCLUDE_DIRS})
 
