@@ -51,9 +51,9 @@ file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/molgrid/")
 # link
 if(BUILD_CONTAINED_PYTHON)
   # create a python library with as few runtime dependencies as possible
+  add_link_options("LINKER:--exclude-libs,ALL")  # avoid exporting stdc++ symbols
   add_library(molgrid SHARED ${PYMOLGRID_SOURCES})
-  SET_TARGET_PROPERTIES(molgrid PROPERTIES CUDA_SEPARABLE_COMPILATION OFF)
-  target_link_libraries(molgrid ${Boost_LIBRARIES} ${CUDA_LIBRARIES} libmolgrid_static )
+  target_link_libraries(molgrid ${Boost_LIBRARIES} ${CUDA_LIBRARIES} libmolgrid_static  -static-libstdc++ -static-libgcc)
 else()
 # create the lib
   add_library(molgrid SHARED ${PYMOLGRID_SOURCES})
