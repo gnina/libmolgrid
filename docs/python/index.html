@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -524,14 +524,14 @@ a vector one-hot encoding of an index type can be created.</p>
 </dd>
 </dl>
 </div></blockquote>
-<p>make_vector_types( (CoordinateSet)arg1 [, (bool)include_dummy_type=False [, (FloatVec)type_radii=&lt;molgrid.molgrid.FloatVec object at 0x7f5ad8ad8690&gt;]]) -&gt; None :</p>
+<p>make_vector_types( (CoordinateSet)arg1 [, (bool)include_dummy_type=False [, (FloatVec)type_radii=&lt;molgrid.molgrid.FloatVec object at 0x7feebe942510&gt;]]) -&gt; None :</p>
 <blockquote>
 <div><blockquote>
 <div><p>convert index types to vector types in-place</p>
 </div></blockquote>
 <p>/</p>
 <dl class="simple">
-<dt>C++ signature :</dt><dd><p>void make_vector_types(libmolgrid::CoordinateSet {lvalue} [,bool=False [,std::vector&lt;float, std::allocator&lt;float&gt; &gt;=&lt;molgrid.molgrid.FloatVec object at 0x7f5ad8ad8690&gt;]])</p>
+<dt>C++ signature :</dt><dd><p>void make_vector_types(libmolgrid::CoordinateSet {lvalue} [,bool=False [,std::vector&lt;float, std::allocator&lt;float&gt; &gt;=&lt;molgrid.molgrid.FloatVec object at 0x7feebe942510&gt;]])</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -932,9 +932,9 @@ single settings object if so desired, and an example extractor.</p>
 
 <dl class="method">
 <dt id="molgrid.ExampleProvider.next_batch">
-<code class="sig-name descname">next_batch</code><span class="sig-paren">(</span><em class="sig-param">(ExampleProvider)arg1</em>, <em class="sig-param">(int)batch_size</em><span class="sig-paren">)</span> &#x2192; ExampleVec :<a class="headerlink" href="#molgrid.ExampleProvider.next_batch" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">next_batch</code><span class="sig-paren">(</span><em class="sig-param">(ExampleProvider)arg1</em><span class="optional">[</span>, <em class="sig-param">(int)batch_size=0</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; ExampleVec :<a class="headerlink" href="#molgrid.ExampleProvider.next_batch" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
-<dt>C++ signature :</dt><dd><p>std::vector&lt;libmolgrid::Example, std::allocator&lt;libmolgrid::Example&gt; &gt; next_batch(libmolgrid::ExampleProvider {lvalue},unsigned int)</p>
+<dt>C++ signature :</dt><dd><p>std::vector&lt;libmolgrid::Example, std::allocator&lt;libmolgrid::Example&gt; &gt; next_batch(libmolgrid::ExampleProvider {lvalue} [,unsigned int=0])</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1028,6 +1028,12 @@ single settings object if so desired, and an example extractor.</p>
 <dt id="molgrid.ExampleProviderSettings.data_root">
 <em class="property">property </em><code class="sig-name descname">data_root</code><a class="headerlink" href="#molgrid.ExampleProviderSettings.data_root" title="Permalink to this definition">¶</a></dt>
 <dd><p>prefix for data files</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="molgrid.ExampleProviderSettings.default_batch_size">
+<em class="property">property </em><code class="sig-name descname">default_batch_size</code><a class="headerlink" href="#molgrid.ExampleProviderSettings.default_batch_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>default batch size</p>
 </dd></dl>
 
 <dl class="method">
@@ -1555,11 +1561,11 @@ Vector types are required.</p>
 <dt class="field-odd">param center</dt>
 <dd class="field-odd"><p>of grid</p>
 </dd>
-<dt class="field-even">param in</dt>
-<dd class="field-even"><p>coordinate set</p>
+<dt class="field-even">param coordinate</dt>
+<dd class="field-even"><p>set</p>
 </dd>
-<dt class="field-odd">param diff</dt>
-<dd class="field-odd"><p>a 4D grid of gradients</p>
+<dt class="field-odd">param a</dt>
+<dd class="field-odd"><p>4D grid of gradients</p>
 </dd>
 <dt class="field-even">param atomic_gradients</dt>
 <dd class="field-even"><p>vector quantities for each atom</p>
@@ -1585,11 +1591,11 @@ Index types are required</p>
 <dt class="field-odd">param center</dt>
 <dd class="field-odd"><p>of grid</p>
 </dd>
-<dt class="field-even">param in</dt>
-<dd class="field-even"><p>coordinate set</p>
+<dt class="field-even">param coordinate</dt>
+<dd class="field-even"><p>set</p>
 </dd>
-<dt class="field-odd">param diff</dt>
-<dd class="field-odd"><p>a 4D grid of gradients</p>
+<dt class="field-odd">param a</dt>
+<dd class="field-odd"><p>4D grid of gradients</p>
 </dd>
 <dt class="field-even">param atomic_gradients</dt>
 <dd class="field-even"><p>vector quantities for each atom</p>
@@ -1612,11 +1618,11 @@ Vector types are required.</p>
 <dt class="field-odd">param center</dt>
 <dd class="field-odd"><p>of grid</p>
 </dd>
-<dt class="field-even">param in</dt>
-<dd class="field-even"><p>coordinate set</p>
+<dt class="field-even">param coordinate</dt>
+<dd class="field-even"><p>set</p>
 </dd>
-<dt class="field-odd">param diff</dt>
-<dd class="field-odd"><p>a 4D grid of gradients</p>
+<dt class="field-odd">param a</dt>
+<dd class="field-odd"><p>4D grid of gradients</p>
 </dd>
 <dt class="field-even">param atomic_gradients</dt>
 <dd class="field-even"><p>vector quantities for each atom</p>
@@ -1642,8 +1648,8 @@ Index types are required.</p>
 <dt class="field-odd">param center</dt>
 <dd class="field-odd"><p>of grid</p>
 </dd>
-<dt class="field-even">param in</dt>
-<dd class="field-even"><p>coordinate set</p>
+<dt class="field-even">param coordinate</dt>
+<dd class="field-even"><p>set</p>
 </dd>
 <dt class="field-odd">param diff</dt>
 <dd class="field-odd"><p>a 4D grid of gradients</p>
@@ -1679,8 +1685,8 @@ Must provide atom coordinates, types, and radii that defined the original grid i
 <li></li>
 </ol>
 </dd>
-<dt class="field-odd">param diff</dt>
-<dd class="field-odd"><p>a 4D grid of gradients</p>
+<dt class="field-odd">param a</dt>
+<dd class="field-odd"><p>4D grid of gradients</p>
 </dd>
 <dt class="field-even">param atomic_gradients</dt>
 <dd class="field-even"><p>vector quantities for each atom</p>
@@ -1713,8 +1719,8 @@ Must provide atom coordinates, types, and radii that defined the original grid i
 <li></li>
 </ol>
 </dd>
-<dt class="field-odd">param diff</dt>
-<dd class="field-odd"><p>a 4D grid of gradients</p>
+<dt class="field-odd">param a</dt>
+<dd class="field-odd"><p>4D grid of gradients</p>
 </dd>
 <dt class="field-even">param atomic_gradients</dt>
 <dd class="field-even"><p>vector quantities for each atom</p>
@@ -1747,8 +1753,8 @@ Must provide atom coordinates, types, and radii that defined the original grid i
 <li></li>
 </ol>
 </dd>
-<dt class="field-odd">param diff</dt>
-<dd class="field-odd"><p>a 4D grid of gradients</p>
+<dt class="field-odd">param a</dt>
+<dd class="field-odd"><p>4D grid of gradients</p>
 </dd>
 <dt class="field-even">param atomic_gradients</dt>
 <dd class="field-even"><p>vector quantities for each atom</p>
@@ -1784,8 +1790,8 @@ Must provide atom coordinates, types, and radii that defined the original grid i
 <li></li>
 </ol>
 </dd>
-<dt class="field-odd">param diff</dt>
-<dd class="field-odd"><p>a 4D grid of gradients</p>
+<dt class="field-odd">param a</dt>
+<dd class="field-odd"><p>4D grid of gradients</p>
 </dd>
 <dt class="field-even">param atomic_gradients</dt>
 <dd class="field-even"><p>vector quantities for each atom</p>
@@ -1807,31 +1813,26 @@ Must provide atom coordinates, types, and radii that defined the original grid i
 <code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">(GridMaker)arg1</em>, <em class="sig-param">(Example)example</em>, <em class="sig-param">(Grid4f)grid</em><span class="optional">[</span>, <em class="sig-param">(float)random_translation=0.0</em><span class="optional">[</span>, <em class="sig-param">(bool)random_rotation=False</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#molgrid.GridMaker.forward" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
 <div><blockquote>
-<div><p>Generate grid tensor from an example.
+<div><p>Generate CPU grid tensor from an example.
 Coordinates may be optionally translated/rotated.  Do not use this function
-if it is desirable to retain the transformation used (e.g., when backpropagating).</p>
+if it is desirable to retain the transformation used (e.g., when backpropagating).
+The center of the last coordinate set before transformation
+will be used as the grid center.</p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">param ex</dt>
+<dt class="field-odd">param in</dt>
 <dd class="field-odd"><p>example</p>
 </dd>
-<dt class="field-even">param transform</dt>
-<dd class="field-even"><p>transformation to apply</p>
+<dt class="field-even">param out</dt>
+<dd class="field-even"><p>a 4D grid</p>
 </dd>
-<dt class="field-odd">param out</dt>
-<dd class="field-odd"><p>a 4D grid</p>
+<dt class="field-odd">param random_translation</dt>
+<dd class="field-odd"><p>maximum amount to randomly translate each coordinate (+/-)</p>
 </dd>
-<dt class="field-even">param random_translation</dt>
-<dd class="field-even"><p>maximum amount to randomly translate each coordinate (+/-)</p>
-</dd>
-<dt class="field-odd">param random_rotation</dt>
-<dd class="field-odd"><p>whether or not to randomly rotate</p>
-</dd>
-<dt class="field-even">param center</dt>
-<dd class="field-even"><p>grid center to use, if not provided will use center of the last coordinate set before transformation</p>
+<dt class="field-even">param random_rotation</dt>
+<dd class="field-even"><p>whether or not to randomly rotate</p>
 </dd>
 </dl>
-<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},libmolgrid::Example,libmolgrid::Grid&lt;float, 4ul, false&gt; [,float=0.0 [,bool=False]])</p>
 </dd>
@@ -1840,31 +1841,26 @@ if it is desirable to retain the transformation used (e.g., when backpropagating
 <p>forward( (GridMaker)arg1, (Example)example, (Grid4fCUDA)grid [, (float)random_translation=0.0 [, (bool)random_rotation=False]]) -&gt; None :</p>
 <blockquote>
 <div><blockquote>
-<div><p>Generate grid tensor from an example.
+<div><p>Generate GPU grid tensor from an example.
 Coordinates may be optionally translated/rotated.  Do not use this function
-if it is desirable to retain the transformation used (e.g., when backpropagating).</p>
+if it is desirable to retain the transformation used (e.g., when backpropagating).
+The center of the last coordinate set before transformation
+will be used as the grid center.</p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">param ex</dt>
+<dt class="field-odd">param in</dt>
 <dd class="field-odd"><p>example</p>
 </dd>
-<dt class="field-even">param transform</dt>
-<dd class="field-even"><p>transformation to apply</p>
+<dt class="field-even">param out</dt>
+<dd class="field-even"><p>a 4D grid</p>
 </dd>
-<dt class="field-odd">param out</dt>
-<dd class="field-odd"><p>a 4D grid</p>
+<dt class="field-odd">param random_translation</dt>
+<dd class="field-odd"><p>maximum amount to randomly translate each coordinate (+/-)</p>
 </dd>
-<dt class="field-even">param random_translation</dt>
-<dd class="field-even"><p>maximum amount to randomly translate each coordinate (+/-)</p>
-</dd>
-<dt class="field-odd">param random_rotation</dt>
-<dd class="field-odd"><p>whether or not to randomly rotate</p>
-</dd>
-<dt class="field-even">param center</dt>
-<dd class="field-even"><p>grid center to use, if not provided will use center of the last coordinate set before transformation</p>
+<dt class="field-even">param random_rotation</dt>
+<dd class="field-even"><p>whether or not to randomly rotate</p>
 </dd>
 </dl>
-<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},libmolgrid::Example,libmolgrid::Grid&lt;float, 4ul, true&gt; [,float=0.0 [,bool=False]])</p>
 </dd>
@@ -1880,20 +1876,16 @@ The center of the last coordinate set before transformation
 will be used as the grid center.</p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">param ex</dt>
-<dd class="field-odd"><p>example</p>
+<dt class="field-odd">param example</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">param a</dt>
+<dd class="field-even"><p>4D grid</p>
 </dd>
-<dt class="field-even">param transform</dt>
-<dd class="field-even"><p>transformation to apply</p>
+<dt class="field-odd">param maximum</dt>
+<dd class="field-odd"><p>amount to randomly translate each coordinate (+/-)</p>
 </dd>
-<dt class="field-odd">param out</dt>
-<dd class="field-odd"><p>a 4D grid</p>
-</dd>
-<dt class="field-even">param random_translation</dt>
-<dd class="field-even"><p>maximum amount to randomly translate each coordinate (+/-)</p>
-</dd>
-<dt class="field-odd">param random_rotation</dt>
-<dd class="field-odd"><p>whether or not to randomly rotate</p>
+<dt class="field-even">param whether</dt>
+<dd class="field-even"><p>or not to randomly rotate</p>
 </dd>
 </dl>
 <p>/</p>
@@ -1912,20 +1904,16 @@ The center of the last coordinate set before transformation
 will be used as the grid center.</p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">param ex</dt>
-<dd class="field-odd"><p>example</p>
+<dt class="field-odd">param example</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">param a</dt>
+<dd class="field-even"><p>4D grid</p>
 </dd>
-<dt class="field-even">param transform</dt>
-<dd class="field-even"><p>transformation to apply</p>
+<dt class="field-odd">param maximum</dt>
+<dd class="field-odd"><p>amount to randomly translate each coordinate (+/-)</p>
 </dd>
-<dt class="field-odd">param out</dt>
-<dd class="field-odd"><p>a 4D grid</p>
-</dd>
-<dt class="field-even">param random_translation</dt>
-<dd class="field-even"><p>maximum amount to randomly translate each coordinate (+/-)</p>
-</dd>
-<dt class="field-odd">param random_rotation</dt>
-<dd class="field-odd"><p>whether or not to randomly rotate</p>
+<dt class="field-even">param whether</dt>
+<dd class="field-even"><p>or not to randomly rotate</p>
 </dd>
 </dl>
 <p>/</p>
@@ -1985,14 +1973,13 @@ will be used as the grid center.</p>
 The center specified in the transform will be used as the grid center.</p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">param ex</dt>
-<dd class="field-odd"><p>example</p>
+<dt class="field-odd">param example</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">param transformation</dt>
+<dd class="field-even"><p>to apply</p>
 </dd>
-<dt class="field-even">param transform</dt>
-<dd class="field-even"><p>transformation to apply</p>
-</dd>
-<dt class="field-odd">param out</dt>
-<dd class="field-odd"><p>a 4D grid</p>
+<dt class="field-odd">param a</dt>
+<dd class="field-odd"><p>4D grid</p>
 </dd>
 </dl>
 <p>/</p>
@@ -2008,14 +1995,13 @@ The center specified in the transform will be used as the grid center.</p>
 The center specified in the transform will be used as the grid center.</p>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">param ex</dt>
-<dd class="field-odd"><p>example</p>
+<dt class="field-odd">param example</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">param transformation</dt>
+<dd class="field-even"><p>to apply</p>
 </dd>
-<dt class="field-even">param transform</dt>
-<dd class="field-even"><p>transformation to apply</p>
-</dd>
-<dt class="field-odd">param out</dt>
-<dd class="field-odd"><p>a 4D grid</p>
+<dt class="field-odd">param a</dt>
+<dd class="field-odd"><p>4D grid</p>
 </dd>
 </dl>
 <p>/</p>
@@ -2036,8 +2022,8 @@ The center specified in the transform will be used as the grid center.</p>
 <dt class="field-even">param coordinates</dt>
 <dd class="field-even"><p>(Nx3)</p>
 </dd>
-<dt class="field-odd">param type</dt>
-<dd class="field-odd"><p>indices (N integers stored as floats)</p>
+<dt class="field-odd">param indices</dt>
+<dd class="field-odd"><p>(N integers stored as floats)</p>
 </dd>
 <dt class="field-even">param radii</dt>
 <dd class="field-even"><ol class="upperalpha simple" start="14">
@@ -2066,8 +2052,8 @@ The center specified in the transform will be used as the grid center.</p>
 <dt class="field-even">param coordinates</dt>
 <dd class="field-even"><p>(Nx3)</p>
 </dd>
-<dt class="field-odd">param type</dt>
-<dd class="field-odd"><p>indices (N integers stored as floats)</p>
+<dt class="field-odd">param indices</dt>
+<dd class="field-odd"><p>(N integers stored as floats)</p>
 </dd>
 <dt class="field-even">param radii</dt>
 <dd class="field-even"><ol class="upperalpha simple" start="14">
@@ -2098,8 +2084,8 @@ to select the radii.</p>
 <dt class="field-even">param coordinates</dt>
 <dd class="field-even"><p>(Nx3)</p>
 </dd>
-<dt class="field-odd">param type</dt>
-<dd class="field-odd"><p>vectors (NxT)</p>
+<dt class="field-odd">param vectors</dt>
+<dd class="field-odd"><p>(NxT)</p>
 </dd>
 <dt class="field-even">param radii</dt>
 <dd class="field-even"><ol class="upperalpha simple" start="14">
@@ -2128,7 +2114,7 @@ to select the radii.</p>
 <dt class="field-even">param coordinates</dt>
 <dd class="field-even"><p>(Nx3)</p>
 </dd>
-<dt class="field-odd">param type</dt>
+<dt class="field-odd">param vector</dt>
 <dd class="field-odd"><p>indices (NxT)</p>
 </dd>
 <dt class="field-even">param radii</dt>
@@ -2544,10 +2530,10 @@ for maximum CUDA performance.</p>
 </dd>
 </dl>
 </div></blockquote>
-<p>__init__( (object)arg1, (list)map [, (bool)catchall=True [, (StringVec)old_names=&lt;molgrid.molgrid.StringVec object at 0x7f5ad8ad8630&gt;]]) -&gt; object :</p>
+<p>__init__( (object)arg1, (list)map [, (bool)catchall=True [, (StringVec)old_names=&lt;molgrid.molgrid.StringVec object at 0x7feebe9424b0&gt;]]) -&gt; object :</p>
 <blockquote>
 <div><dl class="simple">
-<dt>C++ signature :</dt><dd><p>void* __init__(boost::python::api::object,boost::python::list [,bool=True [,std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;=&lt;molgrid.molgrid.StringVec object at 0x7f5ad8ad8630&gt;]])</p>
+<dt>C++ signature :</dt><dd><p>void* __init__(boost::python::api::object,boost::python::list [,bool=True [,std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;=&lt;molgrid.molgrid.StringVec object at 0x7feebe9424b0&gt;]])</p>
 </dd>
 </dl>
 </div></blockquote>

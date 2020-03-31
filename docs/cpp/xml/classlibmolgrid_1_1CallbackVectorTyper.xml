@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="classlibmolgrid_1_1CallbackVectorTyper" kind="class" language="C++" prot="public">
     <compoundname>libmolgrid::CallbackVectorTyper</compoundname>
     <basecompoundref refid="classlibmolgrid_1_1AtomVectorTyper" prot="public" virt="non-virtual">AtomVectorTyper</basecompoundref>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="440" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="440" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="440" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="440" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="443" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="443" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="443" column="25" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="443" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1CallbackVectorTyper_1a358563efd1eb0ca5cafa36f3891b6c1d" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="444" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="444" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="444" column="17" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="444" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -68,12 +68,13 @@
           <defval>std::vector&lt; std::string &gt;()</defval>
         </param>
         <briefdescription>
-<para>iniitalize callbacktyper, if names are not provided, numerical names will be generated </para>        </briefdescription>
+<para>iniitalize callbacktyper, if names are not provided, numerical names will be generated </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="449" column="1" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="410" bodyend="413"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="449" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/atom_typer.cpp" bodystart="410" bodyend="413"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CallbackVectorTyper_1ad493bf80b659abb6e401d7fee5c8231a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>unsigned</type>
@@ -82,12 +83,13 @@
         <name>num_types</name>
         <reimplements refid="classlibmolgrid_1_1AtomVectorTyper_1ae503ecbf9ca173356ef6e475597e2b46">num_types</reimplements>
         <briefdescription>
-<para>return number of types </para>        </briefdescription>
+<para>return number of types </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="452" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="452" bodyend="452"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="452" column="22" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="452" bodyend="452"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CallbackVectorTyper_1a831a48238388829d1fae97d002719674" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>float</type>
@@ -104,12 +106,13 @@
           <declname>typ</declname>
         </param>
         <briefdescription>
-<para>set type vector and return radius for a </para>        </briefdescription>
+<para>set type vector and return radius for a </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="455" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="455" bodyend="455"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="455" column="19" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="455" bodyend="455"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CallbackVectorTyper_1aacde71a2d28fc736c3d43da006f3a1c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -123,7 +126,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="458" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="458" bodyend="458"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="458" column="25" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="458" bodyend="458"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomVectorTyper_1a4dfe192d310ab34f1ca2c4a86bcad367" prot="public" static="no" const="yes" explicit="no" inline="yes" final="yes" virt="virtual">
         <type>std::pair&lt; int, float &gt;</type>
@@ -141,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="83" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="83" bodyend="83"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="83" column="23" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomVectorTyper_1a2b70b0f630b2e527f02857ad6735122f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -150,12 +153,13 @@
         <name>get_vector_type_radii</name>
         <reimplementedby refid="classlibmolgrid_1_1GninaVectorTyper_1ad2de174aee1d2d6da3500c728ee71e23">get_vector_type_radii</reimplementedby>
         <briefdescription>
-<para>return radii of types </para>        </briefdescription>
+<para>return radii of types </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="89" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="89" bodyend="89"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="89" column="25" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="89" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomVectorTyper_1a38a567b5922504c0767ac0dcdff287f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -169,14 +173,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="94" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="94" bodyend="94"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="94" column="18" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="94" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomTyper_1ae263d436c69186ad062ad5339d1d8727" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::pair&lt; int, float &gt;</type>
         <definition>virtual std::pair&lt;int,float&gt; get_int_type</definition>
         <argsstring>(int t) const</argsstring>
         <name>get_int_type</name>
-        <reimplementedby refid="classlibmolgrid_1_1AtomIndexTyper_1a6b076295fcb7c38c547345e1992fe342">get_int_type</reimplementedby>
         <reimplementedby refid="classlibmolgrid_1_1GninaIndexTyper_1a2f2292603513836fcc299e920d102969">get_int_type</reimplementedby>
         <reimplementedby refid="classlibmolgrid_1_1ElementIndexTyper_1ad7cd781efd0d97403d12057df9cacbdb">get_int_type</reimplementedby>
         <reimplementedby refid="classlibmolgrid_1_1NullIndexTyper_1ae263d436c69186ad062ad5339d1d8727">get_int_type</reimplementedby>
@@ -186,6 +189,7 @@
         <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ae263d436c69186ad062ad5339d1d8727">get_int_type</reimplementedby>
         <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ae263d436c69186ad062ad5339d1d8727">get_int_type</reimplementedby>
         <reimplementedby refid="classlibmolgrid_1_1MappedAtomIndexTyper_1ae263d436c69186ad062ad5339d1d8727">get_int_type</reimplementedby>
+        <reimplementedby refid="classlibmolgrid_1_1AtomIndexTyper_1a6b076295fcb7c38c547345e1992fe342">get_int_type</reimplementedby>
         <param>
           <type>int</type>
           <declname>t</declname>
@@ -196,53 +200,51 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="36" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="36" bodyend="36"/>
-        <referencedby refid="classlibmolgrid_1_1AtomIndexTyper_1a4f56173834b1bf3f850e5cb9880eaeea" compoundref="atom__typer_8h" startline="51" endline="51">AtomIndexTyper::get_atom_type_vector</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ElementIndexTyper_1ad7d3c7e60575c6faecabaa600735bb75" compoundref="atom__typer_8h" startline="223" endline="223">ElementIndexTyper::~ElementIndexTyper</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GninaIndexTyper_1a187ae086fdbb7327510642b6dd674634" compoundref="atom__typer_8h" startline="185" endline="185">GninaIndexTyper::~GninaIndexTyper</referencedby>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="36" column="23" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="36" bodyend="36"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Use user-provided callback to do vector typing Must provide the number of types and their names. </para>    </briefdescription>
+<para>Use user-provided callback to do vector typing Must provide the number of types and their names. </para>
+    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="58">
+      <node id="3">
         <label>AtomTyper</label>
         <link refid="classlibmolgrid_1_1AtomTyper"/>
       </node>
-      <node id="56">
+      <node id="1">
         <label>CallbackVectorTyper</label>
         <link refid="classlibmolgrid_1_1CallbackVectorTyper"/>
-        <childnode refid="57" relation="public-inheritance">
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="57">
+      <node id="2">
         <label>AtomVectorTyper</label>
         <link refid="classlibmolgrid_1_1AtomVectorTyper"/>
-        <childnode refid="58" relation="public-inheritance">
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="61">
+      <node id="3">
         <label>AtomTyper</label>
         <link refid="classlibmolgrid_1_1AtomTyper"/>
       </node>
-      <node id="59">
+      <node id="1">
         <label>CallbackVectorTyper</label>
         <link refid="classlibmolgrid_1_1CallbackVectorTyper"/>
-        <childnode refid="60" relation="public-inheritance">
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="60">
+      <node id="2">
         <label>AtomVectorTyper</label>
         <link refid="classlibmolgrid_1_1AtomVectorTyper"/>
-        <childnode refid="61" relation="public-inheritance">
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="438" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="438" bodyend="459"/>
+    <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="438" column="49" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="438" bodyend="459"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1AtomTyper_1a554d6f387f3aff6cf68c24ffddd08567" prot="public" virt="non-virtual"><scope>libmolgrid::CallbackVectorTyper</scope><name>AtomTyper</name></member>
       <member refid="classlibmolgrid_1_1AtomVectorTyper_1a7ed73ccec80b6ea1c07199ca32d9beb9" prot="public" virt="non-virtual"><scope>libmolgrid::CallbackVectorTyper</scope><name>AtomVectorTyper</name></member>
