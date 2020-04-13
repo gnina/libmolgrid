@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="grid_8h" kind="file" language="C++">
     <compoundname>grid.h</compoundname>
     <includes local="no">boost/multi_array.hpp</includes>
@@ -15,243 +15,243 @@
     <includedby refid="transform_8h" local="yes">transform.h</includedby>
     <includedby refid="libmolgrid_8cpp" local="yes">libmolgrid.cpp</includedby>
     <incdepgraph>
-      <node id="499">
+      <node id="4">
         <label>boost/lexical_cast.hpp</label>
       </node>
-      <node id="509">
+      <node id="14">
         <label>cuda_runtime.h</label>
       </node>
-      <node id="500">
+      <node id="5">
         <label>cassert</label>
       </node>
-      <node id="496">
-        <label>grid.h</label>
-        <link refid="grid_8h"/>
-        <childnode refid="497" relation="include">
-        </childnode>
-        <childnode refid="498" relation="include">
-        </childnode>
-        <childnode refid="499" relation="include">
-        </childnode>
-        <childnode refid="500" relation="include">
-        </childnode>
-        <childnode refid="501" relation="include">
-        </childnode>
-        <childnode refid="502" relation="include">
-        </childnode>
-        <childnode refid="507" relation="include">
-        </childnode>
-      </node>
-      <node id="508">
+      <node id="13">
         <label>random</label>
       </node>
-      <node id="502">
+      <node id="7">
         <label>libmolgrid/common.h</label>
         <link refid="common_8h"/>
-        <childnode refid="503" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="504" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="505" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="506" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="501">
+      <node id="6">
         <label>iostream</label>
       </node>
-      <node id="506">
+      <node id="11">
         <label>cuda.h</label>
       </node>
-      <node id="505">
+      <node id="1">
+        <label>grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
         <label>cuda_runtime_api.h</label>
       </node>
-      <node id="498">
+      <node id="3">
         <label>boost/preprocessor/repetition.hpp</label>
       </node>
-      <node id="497">
+      <node id="2">
         <label>boost/multi_array.hpp</label>
       </node>
-      <node id="507">
+      <node id="12">
         <label>libmolgrid/libmolgrid.h</label>
         <link refid="libmolgrid_8h"/>
-        <childnode refid="508" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="501" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="499" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="509" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="504">
+      <node id="9">
         <label>cstring</label>
       </node>
-      <node id="503">
+      <node id="8">
         <label>memory</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="520">
-        <label>example_extractor.h</label>
-        <link refid="example__extractor_8h"/>
-        <childnode refid="521" relation="include">
-        </childnode>
-        <childnode refid="523" relation="include">
-        </childnode>
-      </node>
-      <node id="525">
-        <label>example.h</label>
-        <link refid="example_8h"/>
-        <childnode refid="519" relation="include">
-        </childnode>
-        <childnode refid="520" relation="include">
-        </childnode>
-        <childnode refid="521" relation="include">
-        </childnode>
-        <childnode refid="526" relation="include">
-        </childnode>
-        <childnode refid="515" relation="include">
-        </childnode>
-        <childnode refid="528" relation="include">
-        </childnode>
-        <childnode refid="531" relation="include">
-        </childnode>
-      </node>
-      <node id="513">
-        <label>grid_io.cpp</label>
-        <link refid="grid__io_8cpp"/>
-      </node>
-      <node id="514">
-        <label>cartesian_grid.cpp</label>
-        <link refid="cartesian__grid_8cpp"/>
-      </node>
-      <node id="523">
-        <label>example_extractor.cpp</label>
-        <link refid="example__extractor_8cpp"/>
-      </node>
-      <node id="510">
-        <label>grid.h</label>
-        <link refid="grid_8h"/>
-        <childnode refid="511" relation="include">
-        </childnode>
-        <childnode refid="515" relation="include">
-        </childnode>
-        <childnode refid="517" relation="include">
-        </childnode>
-        <childnode refid="528" relation="include">
-        </childnode>
-        <childnode refid="529" relation="include">
-        </childnode>
-      </node>
-      <node id="512">
-        <label>grid_io.h</label>
-        <link refid="grid__io_8h"/>
-        <childnode refid="513" relation="include">
-        </childnode>
-      </node>
-      <node id="516">
-        <label>grid_maker.cpp</label>
-        <link refid="grid__maker_8cpp"/>
-      </node>
-      <node id="526">
-        <label>exampleref_providers.h</label>
-        <link refid="exampleref__providers_8h"/>
-        <childnode refid="520" relation="include">
-        </childnode>
-        <childnode refid="521" relation="include">
-        </childnode>
-        <childnode refid="527" relation="include">
-        </childnode>
-      </node>
-      <node id="511">
-        <label>cartesian_grid.h</label>
-        <link refid="cartesian__grid_8h"/>
-        <childnode refid="512" relation="include">
-        </childnode>
-        <childnode refid="514" relation="include">
-        </childnode>
-      </node>
-      <node id="519">
-        <label>coord_cache.h</label>
-        <link refid="coord__cache_8h"/>
-        <childnode refid="520" relation="include">
-        </childnode>
-        <childnode refid="524" relation="include">
-        </childnode>
-      </node>
-      <node id="515">
-        <label>grid_maker.h</label>
-        <link refid="grid__maker_8h"/>
-        <childnode refid="516" relation="include">
-        </childnode>
-      </node>
-      <node id="529">
+      <node id="20">
         <label>libmolgrid.cpp</label>
         <link refid="libmolgrid_8cpp"/>
       </node>
-      <node id="521">
-        <label>example_provider.h</label>
-        <link refid="example__provider_8h"/>
-        <childnode refid="522" relation="include">
-        </childnode>
-      </node>
-      <node id="530">
-        <label>transform.cpp</label>
-        <link refid="transform_8cpp"/>
-      </node>
-      <node id="527">
-        <label>exampleref_providers.cpp</label>
-        <link refid="exampleref__providers_8cpp"/>
-      </node>
-      <node id="528">
+      <node id="19">
         <label>transform.h</label>
         <link refid="transform_8h"/>
-        <childnode refid="515" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="529" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="530" relation="include">
-        </childnode>
-      </node>
-      <node id="522">
-        <label>example_provider.cpp</label>
-        <link refid="example__provider_8cpp"/>
-      </node>
-      <node id="517">
-        <label>managed_grid.h</label>
-        <link refid="managed__grid_8h"/>
-        <childnode refid="511" relation="include">
-        </childnode>
-        <childnode refid="518" relation="include">
-        </childnode>
-        <childnode refid="529" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="524">
-        <label>coord_cache.cpp</label>
-        <link refid="coord__cache_8cpp"/>
+      <node id="5">
+        <label>cartesian_grid.cpp</label>
+        <link refid="cartesian__grid_8cpp"/>
       </node>
-      <node id="532">
-        <label>coordinateset.cpp</label>
-        <link refid="coordinateset_8cpp"/>
+      <node id="16">
+        <label>example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
       </node>
-      <node id="531">
+      <node id="22">
         <label>example.cpp</label>
         <link refid="example_8cpp"/>
       </node>
-      <node id="518">
+      <node id="23">
+        <label>coordinateset.cpp</label>
+        <link refid="coordinateset_8cpp"/>
+      </node>
+      <node id="13">
+        <label>example_provider.cpp</label>
+        <link refid="example__provider_8cpp"/>
+      </node>
+      <node id="3">
+        <label>grid_io.h</label>
+        <link refid="grid__io_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>grid_io.cpp</label>
+        <link refid="grid__io_8cpp"/>
+      </node>
+      <node id="7">
+        <label>grid_maker.cpp</label>
+        <link refid="grid__maker_8cpp"/>
+      </node>
+      <node id="2">
+        <label>cartesian_grid.h</label>
+        <link refid="cartesian__grid_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>example_provider.h</label>
+        <link refid="example__provider_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>transform.cpp</label>
+        <link refid="transform_8cpp"/>
+      </node>
+      <node id="14">
+        <label>example_extractor.cpp</label>
+        <link refid="example__extractor_8cpp"/>
+      </node>
+      <node id="9">
         <label>coordinateset.h</label>
         <link refid="coordinateset_8h"/>
-        <childnode refid="519" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="525" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="520" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="515" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="532" relation="include">
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>exampleref_providers.h</label>
+        <link refid="exampleref__providers_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>coord_cache.cpp</label>
+        <link refid="coord__cache_8cpp"/>
+      </node>
+      <node id="18">
+        <label>exampleref_providers.cpp</label>
+        <link refid="exampleref__providers_8cpp"/>
+      </node>
+      <node id="1">
+        <label>grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>coord_cache.h</label>
+        <link refid="coord__cache_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>example_extractor.h</label>
+        <link refid="example__extractor_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>grid_maker.h</label>
+        <link refid="grid__maker_8h"/>
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -275,13 +275,14 @@ typedef Grid&lt;double, SIZE, true&gt; Grid##SIZE##dCUDA;</initializer>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="327" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="327" bodyend="-1"/>
+        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="327" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="327" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>Wrapper classes for holding dense, multi-dimensional arrays of data. </para>    </detaileddescription>
+<para>Wrapper classes for holding dense, multi-dimensional arrays of data. </para>
+    </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
 <codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>GRID_H_</highlight><highlight class="normal"></highlight></codeline>
@@ -331,7 +332,7 @@ typedef Grid&lt;double, SIZE, true&gt; Grid##SIZE##dCUDA;</initializer>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pos<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/>#pragma<sp/>unroll</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>NumDims;<sp/>i++)<sp/>{<sp/></highlight><highlight class="comment">//surely<sp/>the<sp/>compiler<sp/>will<sp/>unroll<sp/>this...</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pos<sp/>+=<sp/>idx[i]*offs[i];</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pos<sp/>+=<sp/>idx[i]*<ref refid="classlibmolgrid_1_1Grid_1a8cc20beaeb20694fea94498420db09c0" kindref="member">offs</ref>[i];</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pos;</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -356,76 +357,76 @@ typedef Grid&lt;double, SIZE, true&gt; Grid##SIZE##dCUDA;</initializer>
 <codeline lineno="82" refid="classlibmolgrid_1_1Grid_1ad8331653910a5a034f8238e6a8fbb9b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1ad8331653910a5a034f8238e6a8fbb9b1" kindref="member">N</ref><sp/>=<sp/>NumDims;</highlight></codeline>
 <codeline lineno="83" refid="classlibmolgrid_1_1Grid_1aa01454be2537d7eed47f8c16c82b0a23" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1aa01454be2537d7eed47f8c16c82b0a23" kindref="member">GPU</ref><sp/>=<sp/>isCUDA;</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
-<codeline lineno="86" refid="classlibmolgrid_1_1Grid_1a9f86f62cd29badc89d2c72631b63264d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*<sp/><ref refid="classlibmolgrid_1_1Grid_1a9f86f62cd29badc89d2c72631b63264d" kindref="member">dimensions</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>;<sp/>}</highlight></codeline>
-<codeline lineno="88" refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/><ref refid="classlibmolgrid_1_1Grid_1a18ec2ecbbcf47264c34b0fd73242b119" kindref="member">check_index</ref>(i,NumDims);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>dims[i];<sp/>}</highlight></codeline>
+<codeline lineno="86" refid="classlibmolgrid_1_1Grid_1a483b22b3df988a8a315fe4525097cd91" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*<sp/><ref refid="classlibmolgrid_1_1Grid_1a483b22b3df988a8a315fe4525097cd91" kindref="member">dimensions</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="88" refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/><ref refid="classlibmolgrid_1_1Grid_1a18ec2ecbbcf47264c34b0fd73242b119" kindref="member">check_index</ref>(i,NumDims);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>[i];<sp/>}</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="91" refid="classlibmolgrid_1_1Grid_1a2f606ad331413ba32697c5fad87364e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*<sp/><ref refid="classlibmolgrid_1_1Grid_1a2f606ad331413ba32697c5fad87364e4" kindref="member">offsets</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1a8cc20beaeb20694fea94498420db09c0" kindref="member">offs</ref>;<sp/>}</highlight></codeline>
-<codeline lineno="93" refid="classlibmolgrid_1_1Grid_1a67a4d2469cf97b1e2018d220c5992ca7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1a67a4d2469cf97b1e2018d220c5992ca7" kindref="member">offset</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>offs[i];<sp/>}</highlight></codeline>
+<codeline lineno="91" refid="classlibmolgrid_1_1Grid_1a99fba573ee49cb59c992f17f4cbc21bb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*<sp/><ref refid="classlibmolgrid_1_1Grid_1a99fba573ee49cb59c992f17f4cbc21bb" kindref="member">offsets</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1a8cc20beaeb20694fea94498420db09c0" kindref="member">offs</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="93" refid="classlibmolgrid_1_1Grid_1a67a4d2469cf97b1e2018d220c5992ca7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1a67a4d2469cf97b1e2018d220c5992ca7" kindref="member">offset</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1a8cc20beaeb20694fea94498420db09c0" kindref="member">offs</ref>[i];<sp/>}</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"></highlight></codeline>
 <codeline lineno="96" refid="classlibmolgrid_1_1Grid_1acb2f16129f492fbb0aa93ae8b78402ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1acb2f16129f492fbb0aa93ae8b78402ec" kindref="member">size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>1;</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>NumDims;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>*=<sp/>dims[i];</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>*=<sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>[i];</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"></highlight></codeline>
 <codeline lineno="105" refid="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>Dtype<sp/>*<sp/><ref refid="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5" kindref="member">data</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>;<sp/>}</highlight></codeline>
 <codeline lineno="106"><highlight class="normal"></highlight></codeline>
-<codeline lineno="108" refid="classlibmolgrid_1_1Grid_1a440d5fdb2fea4e01b2d7ca58720e6f9a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1a440d5fdb2fea4e01b2d7ca58720e6f9a" kindref="member">set_buffer</ref>(Dtype<sp/>*ptr)<sp/>{<sp/>buffer<sp/>=<sp/>ptr;<sp/>}</highlight></codeline>
+<codeline lineno="108" refid="classlibmolgrid_1_1Grid_1a440d5fdb2fea4e01b2d7ca58720e6f9a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1a440d5fdb2fea4e01b2d7ca58720e6f9a" kindref="member">set_buffer</ref>(Dtype<sp/>*ptr)<sp/>{<sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref><sp/>=<sp/>ptr;<sp/>}</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111" refid="classlibmolgrid_1_1Grid_1a0a335d0339fe70071fcdf4cd5b1c7b5f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a0a335d0339fe70071fcdf4cd5b1c7b5f" kindref="member">Grid</ref>():<sp/>buffer(nullptr),<sp/>dims{0},<sp/>offs{0}<sp/>{</highlight></codeline>
+<codeline lineno="111" refid="classlibmolgrid_1_1Grid_1a0a335d0339fe70071fcdf4cd5b1c7b5f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a0a335d0339fe70071fcdf4cd5b1c7b5f" kindref="member">Grid</ref>():<sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>(nullptr),<sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>{0},<sp/><ref refid="classlibmolgrid_1_1Grid_1a8cc20beaeb20694fea94498420db09c0" kindref="member">offs</ref>{0}<sp/>{</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"></highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight></codeline>
 <codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>I&gt;</highlight></codeline>
 <codeline lineno="120" refid="classlibmolgrid_1_1Grid_1ac6ad9f59dfa866852e61b9cc945b565e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1ac6ad9f59dfa866852e61b9cc945b565e" kindref="member">Grid</ref>(Dtype<sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>d,<sp/>I...<sp/>sizes):</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>buffer(d),<sp/>dims{<sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(sizes)...}<sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>(d),<sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>{<sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(sizes)...}<sp/>{</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>static_assert(NumDims<sp/>==<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(sizes),</highlight><highlight class="stringliteral">&quot;Incorrect<sp/>number<sp/>of<sp/>grid<sp/>dimensions&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>offs[NumDims-1]<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a8cc20beaeb20694fea94498420db09c0" kindref="member">offs</ref>[NumDims-1]<sp/>=<sp/>1;</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/>#pragma<sp/>unroll</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>NumDims-1;<sp/>i<sp/>&gt;<sp/>0;<sp/>i--)<sp/>{</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>offs[i-1]<sp/>=<sp/>dims[i]*offs[i];</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a8cc20beaeb20694fea94498420db09c0" kindref="member">offs</ref>[i-1]<sp/>=<sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>[i]*<ref refid="classlibmolgrid_1_1Grid_1a8cc20beaeb20694fea94498420db09c0" kindref="member">offs</ref>[i];</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"></highlight></codeline>
 <codeline lineno="134" refid="classlibmolgrid_1_1Grid_1ad43904e4e167c271e4c9ea21136a3f19" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1ad43904e4e167c271e4c9ea21136a3f19" kindref="member">Grid</ref>(Dtype<sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>d,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*sizes):</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>buffer(d)<sp/>{</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>offs[NumDims-1]<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>(d)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a8cc20beaeb20694fea94498420db09c0" kindref="member">offs</ref>[NumDims-1]<sp/>=<sp/>1;</highlight></codeline>
 <codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/>#pragma<sp/>unroll</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>NumDims-1;<sp/>i<sp/>&gt;<sp/>0;<sp/>i--)<sp/>{</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dims[i]<sp/>=<sp/>sizes[i];</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>offs[i-1]<sp/>=<sp/>dims[i]*offs[i];</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>[i]<sp/>=<sp/>sizes[i];</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a8cc20beaeb20694fea94498420db09c0" kindref="member">offs</ref>[i-1]<sp/>=<sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>[i]*<ref refid="classlibmolgrid_1_1Grid_1a8cc20beaeb20694fea94498420db09c0" kindref="member">offs</ref>[i];</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dims[0]<sp/>=<sp/>sizes[0];</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>[0]<sp/>=<sp/>sizes[0];</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"></highlight></codeline>
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a0a335d0339fe70071fcdf4cd5b1c7b5f" kindref="member">Grid</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a87382f290ed3feb1f2aecdc76e08f555" kindref="member">~Grid</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="147"><highlight class="normal"></highlight></codeline>
 <codeline lineno="154" refid="classlibmolgrid_1_1Grid_1a8e2e9f0033132d21a5dc0d81f29f4da4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">subgrid_t</ref><sp/><ref refid="classlibmolgrid_1_1Grid_1a8e2e9f0033132d21a5dc0d81f29f4da4" kindref="member">operator[]</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a18ec2ecbbcf47264c34b0fd73242b119" kindref="member">check_index</ref>(i,<sp/>dims[0]);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a18ec2ecbbcf47264c34b0fd73242b119" kindref="member">check_index</ref>(i,<sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>[0]);</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt;Dtype,NumDims-1,isCUDA&gt;(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>i);</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"></highlight></codeline>
 <codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>I&gt;</highlight></codeline>
 <codeline lineno="163" refid="classlibmolgrid_1_1Grid_1af4c80e9d4bd3250caf327413bb7e71a7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>Dtype&amp;<sp/><ref refid="classlibmolgrid_1_1Grid_1af4c80e9d4bd3250caf327413bb7e71a7" kindref="member">operator()</ref>(I...<sp/>indices)<sp/>{</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>buffer[<ref refid="classlibmolgrid_1_1Grid_1a8e80dadd81041247ae111d11763fc2d2" kindref="member">getPos</ref>(indices...)];</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>[<ref refid="classlibmolgrid_1_1Grid_1a8e80dadd81041247ae111d11763fc2d2" kindref="member">getPos</ref>(indices...)];</highlight></codeline>
 <codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="166"><highlight class="normal"></highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>I&gt;</highlight></codeline>
 <codeline lineno="168" refid="classlibmolgrid_1_1Grid_1a4c0715b6c8593be928ec306c5f943a57" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>Dtype<sp/><ref refid="classlibmolgrid_1_1Grid_1a4c0715b6c8593be928ec306c5f943a57" kindref="member">operator()</ref>(I...<sp/>indices)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>buffer[<ref refid="classlibmolgrid_1_1Grid_1a8e80dadd81041247ae111d11763fc2d2" kindref="member">getPos</ref>(indices...)];</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>[<ref refid="classlibmolgrid_1_1Grid_1a8e80dadd81041247ae111d11763fc2d2" kindref="member">getPos</ref>(indices...)];</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"></highlight></codeline>
 <codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>I&gt;</highlight></codeline>
 <codeline lineno="174" refid="classlibmolgrid_1_1Grid_1a0dff89786df422b662a2be75e7517a1e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>Dtype*<sp/><ref refid="classlibmolgrid_1_1Grid_1a0dff89786df422b662a2be75e7517a1e" kindref="member">address</ref>(I...<sp/>indices)<sp/>{</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;buffer[<ref refid="classlibmolgrid_1_1Grid_1a8e80dadd81041247ae111d11763fc2d2" kindref="member">getPos</ref>(indices...)];</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>[<ref refid="classlibmolgrid_1_1Grid_1a8e80dadd81041247ae111d11763fc2d2" kindref="member">getPos</ref>(indices...)];</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="177"><highlight class="normal"></highlight></codeline>
 <codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>I&gt;</highlight></codeline>
-<codeline lineno="179" refid="classlibmolgrid_1_1Grid_1a82aac66e00ce6ddf2cb4638537242d77" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Dtype*<sp/><ref refid="classlibmolgrid_1_1Grid_1a82aac66e00ce6ddf2cb4638537242d77" kindref="member">address</ref>(I...<sp/>indices)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;buffer[<ref refid="classlibmolgrid_1_1Grid_1a8e80dadd81041247ae111d11763fc2d2" kindref="member">getPos</ref>(indices...)];</highlight></codeline>
+<codeline lineno="179" refid="classlibmolgrid_1_1Grid_1ad16f3140a0985865efe01db743da33c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Dtype*<sp/><ref refid="classlibmolgrid_1_1Grid_1ad16f3140a0985865efe01db743da33c2" kindref="member">address</ref>(I...<sp/>indices)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>[<ref refid="classlibmolgrid_1_1Grid_1a8e80dadd81041247ae111d11763fc2d2" kindref="member">getPos</ref>(indices...)];</highlight></codeline>
 <codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="182"><highlight class="normal"></highlight></codeline>
 <codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>destCUDA&gt;</highlight></codeline>
@@ -453,11 +454,11 @@ typedef Grid&lt;double, SIZE, true&gt; Grid##SIZE##dCUDA;</initializer>
 <codeline lineno="216"><highlight class="normal"></highlight></codeline>
 <codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>constructor<sp/>used<sp/>by<sp/>operator[],<sp/>create<sp/>a<sp/>subgrid,<sp/>assuming<sp/>memory<sp/>is<sp/>allocated</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref></highlight></codeline>
-<codeline lineno="219" refid="classlibmolgrid_1_1Grid_1a213a3ffc821285325de3b96cee1d025a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1a213a3ffc821285325de3b96cee1d025a" kindref="member">Grid</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;Dtype,NumDims+1,isCUDA&gt;</ref>&amp;<sp/>G,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i):<sp/>buffer(G.<ref refid="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5" kindref="member">data</ref>()<sp/>?<sp/>&amp;G.<ref refid="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5" kindref="member">data</ref>()[i*G.<ref refid="classlibmolgrid_1_1Grid_1a67a4d2469cf97b1e2018d220c5992ca7" kindref="member">offset</ref>(0)]<sp/>:<sp/>nullptr)<sp/>{</highlight></codeline>
+<codeline lineno="219" refid="classlibmolgrid_1_1Grid_1a213a3ffc821285325de3b96cee1d025a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1a213a3ffc821285325de3b96cee1d025a" kindref="member">Grid</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;Dtype,NumDims+1,isCUDA&gt;</ref>&amp;<sp/>G,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i):<sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>(G.<ref refid="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5" kindref="member">data</ref>()<sp/>?<sp/>&amp;G.<ref refid="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5" kindref="member">data</ref>()[i*G.<ref refid="classlibmolgrid_1_1Grid_1a67a4d2469cf97b1e2018d220c5992ca7" kindref="member">offset</ref>(0)]<sp/>:<sp/>nullptr)<sp/>{</highlight></codeline>
 <codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//slice<sp/>off<sp/>first<sp/>dimension</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>NumDims;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dims[i]<sp/>=<sp/>G.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(i+1);</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>offs[i]<sp/>=<sp/>G.<ref refid="classlibmolgrid_1_1Grid_1a67a4d2469cf97b1e2018d220c5992ca7" kindref="member">offset</ref>(i+1);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>[i]<sp/>=<sp/>G.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(i+1);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a8cc20beaeb20694fea94498420db09c0" kindref="member">offs</ref>[i]<sp/>=<sp/>G.<ref refid="classlibmolgrid_1_1Grid_1a67a4d2469cf97b1e2018d220c5992ca7" kindref="member">offset</ref>(i+1);</highlight></codeline>
 <codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="226"><highlight class="normal"></highlight></codeline>
@@ -491,38 +492,38 @@ typedef Grid&lt;double, SIZE, true&gt; Grid##SIZE##dCUDA;</initializer>
 <codeline lineno="254" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1ad8331653910a5a034f8238e6a8fbb9b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1ad8331653910a5a034f8238e6a8fbb9b1" kindref="member">N</ref><sp/>=<sp/>1;</highlight></codeline>
 <codeline lineno="255" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aa01454be2537d7eed47f8c16c82b0a23" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1aa01454be2537d7eed47f8c16c82b0a23" kindref="member">GPU</ref><sp/>=<sp/>isCUDA;</highlight></codeline>
 <codeline lineno="256"><highlight class="normal"></highlight></codeline>
-<codeline lineno="258" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a9f86f62cd29badc89d2c72631b63264d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*<sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a9f86f62cd29badc89d2c72631b63264d" kindref="member">dimensions</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>;<sp/>}</highlight></codeline>
-<codeline lineno="260" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aa9b61e8668a98c2e264339c38e74065b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/><ref refid="classlibmolgrid_1_1Grid_1a18ec2ecbbcf47264c34b0fd73242b119" kindref="member">check_index</ref>(i,<sp/>1);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>dims[i];<sp/>}</highlight></codeline>
+<codeline lineno="258" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a483b22b3df988a8a315fe4525097cd91" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*<sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a483b22b3df988a8a315fe4525097cd91" kindref="member">dimensions</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="260" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aa9b61e8668a98c2e264339c38e74065b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/><ref refid="classlibmolgrid_1_1Grid_1a18ec2ecbbcf47264c34b0fd73242b119" kindref="member">check_index</ref>(i,<sp/>1);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>[i];<sp/>}</highlight></codeline>
 <codeline lineno="261"><highlight class="normal"></highlight></codeline>
-<codeline lineno="263" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1acb2f16129f492fbb0aa93ae8b78402ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1acb2f16129f492fbb0aa93ae8b78402ec" kindref="member">size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>dims[0];<sp/>}</highlight></codeline>
+<codeline lineno="263" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1acb2f16129f492fbb0aa93ae8b78402ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1acb2f16129f492fbb0aa93ae8b78402ec" kindref="member">size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>[0];<sp/>}</highlight></codeline>
 <codeline lineno="264"><highlight class="normal"></highlight></codeline>
 <codeline lineno="266" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aaa5a68e1e5befda24cb7b3e422ba9cc5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>Dtype<sp/>*<sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aaa5a68e1e5befda24cb7b3e422ba9cc5" kindref="member">data</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>;<sp/>}</highlight></codeline>
 <codeline lineno="267"><highlight class="normal"></highlight></codeline>
 <codeline lineno="268" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a67a4d2469cf97b1e2018d220c5992ca7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a67a4d2469cf97b1e2018d220c5992ca7" kindref="member">offset</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;<sp/>}</highlight></codeline>
 <codeline lineno="269"><highlight class="normal"></highlight></codeline>
-<codeline lineno="271" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a440d5fdb2fea4e01b2d7ca58720e6f9a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a440d5fdb2fea4e01b2d7ca58720e6f9a" kindref="member">set_buffer</ref>(Dtype<sp/>*ptr)<sp/>{<sp/>buffer<sp/>=<sp/>ptr;<sp/>}</highlight></codeline>
+<codeline lineno="271" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a440d5fdb2fea4e01b2d7ca58720e6f9a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a440d5fdb2fea4e01b2d7ca58720e6f9a" kindref="member">set_buffer</ref>(Dtype<sp/>*ptr)<sp/>{<sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref><sp/>=<sp/>ptr;<sp/>}</highlight></codeline>
 <codeline lineno="272"><highlight class="normal"></highlight></codeline>
-<codeline lineno="273" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0a335d0339fe70071fcdf4cd5b1c7b5f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0a335d0339fe70071fcdf4cd5b1c7b5f" kindref="member">Grid</ref>():<sp/>buffer(nullptr),<sp/>dims{0}<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="273" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0a335d0339fe70071fcdf4cd5b1c7b5f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0a335d0339fe70071fcdf4cd5b1c7b5f" kindref="member">Grid</ref>():<sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>(nullptr),<sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>{0}<sp/>{<sp/>}</highlight></codeline>
 <codeline lineno="274"><highlight class="normal"></highlight></codeline>
 <codeline lineno="275" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aef69ac40c00f38f7d637f1af03f8d63a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aef69ac40c00f38f7d637f1af03f8d63a" kindref="member">Grid</ref>(Dtype*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>d,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>sz):</highlight></codeline>
-<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>buffer(d),<sp/>dims{sz}<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>(d),<sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>{sz}<sp/>{<sp/>}</highlight></codeline>
 <codeline lineno="277"><highlight class="normal"></highlight></codeline>
 <codeline lineno="278" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a267a07557e1dd6b7a0ed10e276afd2f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>Dtype&amp;<sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a267a07557e1dd6b7a0ed10e276afd2f0" kindref="member">operator[]</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i)<sp/>{</highlight></codeline>
-<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a18ec2ecbbcf47264c34b0fd73242b119" kindref="member">check_index</ref>(i,dims[0]);</highlight></codeline>
-<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>buffer[i];</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a18ec2ecbbcf47264c34b0fd73242b119" kindref="member">check_index</ref>(i,<ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>[0]);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>[i];</highlight></codeline>
 <codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="282"><highlight class="normal"></highlight></codeline>
 <codeline lineno="283" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a4fd87ea12567337969e0d30b1c4a51ad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>Dtype<sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a4fd87ea12567337969e0d30b1c4a51ad" kindref="member">operator[]</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a18ec2ecbbcf47264c34b0fd73242b119" kindref="member">check_index</ref>(i,dims[0]);</highlight></codeline>
-<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>buffer[i];</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a18ec2ecbbcf47264c34b0fd73242b119" kindref="member">check_index</ref>(i,<ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>[0]);</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>[i];</highlight></codeline>
 <codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="287"><highlight class="normal"></highlight></codeline>
 <codeline lineno="288" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a8ad9fc847771943373c0ece05f3761a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>Dtype&amp;<sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a8ad9fc847771943373c0ece05f3761a6" kindref="member">operator()</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>a)<sp/>{</highlight></codeline>
-<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>buffer[a];</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>[a];</highlight></codeline>
 <codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="291"><highlight class="normal"></highlight></codeline>
 <codeline lineno="292" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a7b8e84d93f65b9c3714f0acd8c7cd5c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>Dtype<sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a7b8e84d93f65b9c3714f0acd8c7cd5c5" kindref="member">operator()</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>a)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>buffer[a];</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>[a];</highlight></codeline>
 <codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="295"><highlight class="normal"></highlight></codeline>
 <codeline lineno="296" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a512219066836349f65f85a0ead19ae8a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a512219066836349f65f85a0ead19ae8a" kindref="member">fill_zero</ref>()<sp/>{</highlight></codeline>
@@ -533,7 +534,7 @@ typedef Grid&lt;double, SIZE, true&gt; Grid##SIZE##dCUDA;</initializer>
 <codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//only<sp/>called<sp/>from<sp/>regular<sp/>Grid</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref></highlight></codeline>
 <codeline lineno="303" refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a133c18fbd775019548ec10f171ec157a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4" kindref="compound">Grid&lt;Dtype,1,isCUDA&gt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;Dtype,2,isCUDA&gt;</ref>&amp;<sp/>G,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i):</highlight></codeline>
-<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>(&amp;G.<ref refid="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5" kindref="member">data</ref>()[i*G.<ref refid="classlibmolgrid_1_1Grid_1a67a4d2469cf97b1e2018d220c5992ca7" kindref="member">offset</ref>(0)]),<sp/>dims{G.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(1)}<sp/>{}</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Grid_1a268477dcc97a377d747ac8d87c9e4832" kindref="member">buffer</ref>(&amp;G.<ref refid="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5" kindref="member">data</ref>()[i*G.<ref refid="classlibmolgrid_1_1Grid_1a67a4d2469cf97b1e2018d220c5992ca7" kindref="member">offset</ref>(0)]),<sp/><ref refid="classlibmolgrid_1_1Grid_1aba11d68699b34a67478459c6d4a01753" kindref="member">dims</ref>{G.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(1)}<sp/>{}</highlight></codeline>
 <codeline lineno="305"><highlight class="normal"></highlight></codeline>
 <codeline lineno="306"><highlight class="normal"></highlight></codeline>
 <codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>destCUDA&gt;</highlight></codeline>
@@ -568,6 +569,6 @@ typedef Grid&lt;double, SIZE, true&gt; Grid##SIZE##dCUDA;</initializer>
 <codeline lineno="336"><highlight class="normal"></highlight></codeline>
 <codeline lineno="337"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>GRID_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h"/>
+    <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h"/>
   </compounddef>
 </doxygen>

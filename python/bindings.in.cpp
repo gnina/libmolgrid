@@ -1,4 +1,4 @@
-/*
+/* @THIS_IS_THE_SOURCE_FILE@
  * bindings.cpp
  *
  *  Python bindings for libmolgrid
@@ -723,8 +723,9 @@ MAKE_ALL_GRIDS()
       .def("get_type_names", &ExampleProvider::get_type_names)
       .def("next", static_cast<Example (ExampleProvider::*)()>(&ExampleProvider::next))
       .def("next_batch", static_cast< std::vector<Example> (ExampleProvider::*)(unsigned)>(&ExampleProvider::next_batch),
-          (arg("batch_size")));
-
+          (arg("batch_size")=0))
+      .def("__iter__", +[](object self) { return self;})
+      .def("__next__", +[](ExampleProvider& self) -> std::vector<Example> { return self.next_batch();});
 
   //grid maker
   class_<GridMaker>("GridMaker", "@Docstring_GridMaker@",
@@ -742,10 +743,10 @@ MAKE_ALL_GRIDS()
       //grids need to be passed by value
       .def("forward", +[](GridMaker& self, const Example& ex, Grid<float, 4, false> g, float random_translate, bool random_rotate){
             self.forward(ex, g, random_translate, random_rotate); },
-            (arg("example"),arg("grid"),arg("random_translation")=0.0,arg("random_rotation")=false), "@Docstring_GridMaker_forward_4@")
+            (arg("example"),arg("grid"),arg("random_translation")=0.0,arg("random_rotation")=false), "\n Generate CPU grid tensor from an example.\n Coordinates may be optionally translated/rotated.  Do not use this function\n if it is desirable to retain the transformation used (e.g., when backpropagating).\n The center of the last coordinate set before transformation\n will be used as the grid center.\n\n:param in:  example\n:param out:  a 4D grid\n:param random_translation:   maximum amount to randomly translate each coordinate (+/-)\n:param random_rotation:  whether or not to randomly rotate\n")           
       .def("forward", +[](GridMaker& self, const Example& ex, Grid<float, 4, true> g, float random_translate, bool random_rotate){
             self.forward(ex, g, random_translate, random_rotate); },
-            (arg("example"),arg("grid"),arg("random_translation")=0.0,arg("random_rotation")=false), "@Docstring_GridMaker_forward_4@")
+            (arg("example"),arg("grid"),arg("random_translation")=0.0,arg("random_rotation")=false), "\n Generate GPU grid tensor from an example.\n Coordinates may be optionally translated/rotated.  Do not use this function\n if it is desirable to retain the transformation used (e.g., when backpropagating).\n The center of the last coordinate set before transformation\n will be used as the grid center.\n\n:param in:  example\n:param out:  a 4D grid\n:param random_translation:   maximum amount to randomly translate each coordinate (+/-)\n:param random_rotation:  whether or not to randomly rotate\n")           
       .def("forward", +[](GridMaker& self, const std::vector<Example>& in, Grid<float, 5, false> g, float random_translate, bool random_rotate){
             self.forward(in, g, random_translate, random_rotate); },
             (arg("examplevec"),arg("grid"),arg("random_translation")=0.0,arg("random_rotation")=false), "@Docstring_GridMaker_forward_5@")

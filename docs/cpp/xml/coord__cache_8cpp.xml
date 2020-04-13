@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="coord__cache_8cpp" kind="file" language="C++">
     <compoundname>coord_cache.cpp</compoundname>
     <includes refid="coord__cache_8h" local="yes">libmolgrid/coord_cache.h</includes>
@@ -9,196 +9,196 @@
     <includes local="no">openbabel/obconversion.h</includes>
     <includes local="no">cuda_runtime.h</includes>
     <incdepgraph>
-      <node id="128">
-        <label>boost/algorithm/string.hpp</label>
-      </node>
-      <node id="124">
-        <label>functional</label>
-      </node>
-      <node id="125">
-        <label>libmolgrid/example.h</label>
-        <link refid="example_8h"/>
-        <childnode refid="102" relation="include">
-        </childnode>
-        <childnode refid="126" relation="include">
-        </childnode>
-        <childnode refid="101" relation="include">
-        </childnode>
-      </node>
-      <node id="107">
-        <label>boost/lexical_cast.hpp</label>
-      </node>
-      <node id="119">
-        <label>cuda_runtime.h</label>
-      </node>
-      <node id="111">
-        <label>cassert</label>
-      </node>
-      <node id="108">
-        <label>libmolgrid/grid.h</label>
-        <link refid="grid_8h"/>
-        <childnode refid="109" relation="include">
-        </childnode>
-        <childnode refid="110" relation="include">
-        </childnode>
-        <childnode refid="107" relation="include">
-        </childnode>
-        <childnode refid="111" relation="include">
-        </childnode>
-        <childnode refid="112" relation="include">
-        </childnode>
-        <childnode refid="113" relation="include">
-        </childnode>
-        <childnode refid="117" relation="include">
-        </childnode>
-      </node>
-      <node id="103">
-        <label>openbabel/mol.h</label>
-      </node>
-      <node id="126">
-        <label>unordered_set</label>
-      </node>
-      <node id="100">
-        <label>libmolgrid/coord_cache.h</label>
-        <link refid="coord__cache_8h"/>
-        <childnode refid="101" relation="include">
-        </childnode>
-        <childnode refid="120" relation="include">
-        </childnode>
-        <childnode refid="125" relation="include">
-        </childnode>
-        <childnode refid="127" relation="include">
-        </childnode>
-      </node>
-      <node id="118">
-        <label>random</label>
-      </node>
-      <node id="120">
+      <node id="22">
         <label>libmolgrid/atom_typer.h</label>
         <link refid="atom__typer_8h"/>
-        <childnode refid="121" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="122" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="102" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="105" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="112" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="123" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="124" relation="include">
-        </childnode>
-      </node>
-      <node id="129">
-        <label>boost/filesystem/path.hpp</label>
-      </node>
-      <node id="121">
-        <label>openbabel/atom.h</label>
-      </node>
-      <node id="131">
-        <label>openbabel/obconversion.h</label>
-      </node>
-      <node id="102">
-        <label>vector</label>
-      </node>
-      <node id="130">
-        <label>boost/filesystem.hpp</label>
-      </node>
-      <node id="106">
-        <label>utility</label>
-      </node>
-      <node id="127">
-        <label>boost/iostreams/device/mapped_file.hpp</label>
-      </node>
-      <node id="113">
-        <label>libmolgrid/common.h</label>
-        <link refid="common_8h"/>
-        <childnode refid="105" relation="include">
-        </childnode>
-        <childnode refid="114" relation="include">
-        </childnode>
-        <childnode refid="115" relation="include">
-        </childnode>
-        <childnode refid="116" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
-      <node id="122">
-        <label>openbabel/elements.h</label>
+      <node id="30">
+        <label>boost/algorithm/string.hpp</label>
       </node>
-      <node id="112">
-        <label>iostream</label>
+      <node id="26">
+        <label>functional</label>
       </node>
-      <node id="123">
-        <label>unordered_map</label>
+      <node id="9">
+        <label>boost/lexical_cast.hpp</label>
       </node>
-      <node id="116">
-        <label>cuda.h</label>
-      </node>
-      <node id="115">
-        <label>cuda_runtime_api.h</label>
-      </node>
-      <node id="110">
-        <label>boost/preprocessor/repetition.hpp</label>
-      </node>
-      <node id="104">
-        <label>libmolgrid/managed_grid.h</label>
-        <link refid="managed__grid_8h"/>
-        <childnode refid="105" relation="include">
+      <node id="27">
+        <label>libmolgrid/example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="106" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="107" relation="include">
-        </childnode>
-        <childnode refid="108" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="99">
-        <label>coord_cache.cpp</label>
-        <link refid="coord__cache_8cpp"/>
-        <childnode refid="100" relation="include">
-        </childnode>
-        <childnode refid="128" relation="include">
-        </childnode>
-        <childnode refid="129" relation="include">
-        </childnode>
-        <childnode refid="130" relation="include">
-        </childnode>
-        <childnode refid="131" relation="include">
-        </childnode>
-        <childnode refid="119" relation="include">
-        </childnode>
+      <node id="21">
+        <label>cuda_runtime.h</label>
       </node>
-      <node id="109">
-        <label>boost/multi_array.hpp</label>
+      <node id="13">
+        <label>cassert</label>
       </node>
-      <node id="117">
-        <label>libmolgrid/libmolgrid.h</label>
-        <link refid="libmolgrid_8h"/>
-        <childnode refid="118" relation="include">
-        </childnode>
-        <childnode refid="112" relation="include">
-        </childnode>
-        <childnode refid="107" relation="include">
-        </childnode>
-        <childnode refid="119" relation="include">
-        </childnode>
+      <node id="5">
+        <label>openbabel/mol.h</label>
       </node>
-      <node id="114">
-        <label>cstring</label>
+      <node id="28">
+        <label>unordered_set</label>
       </node>
-      <node id="101">
+      <node id="20">
+        <label>random</label>
+      </node>
+      <node id="3">
         <label>libmolgrid/coordinateset.h</label>
         <link refid="coordinateset_8h"/>
-        <childnode refid="102" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="103" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="104" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="105">
+      <node id="31">
+        <label>boost/filesystem/path.hpp</label>
+      </node>
+      <node id="23">
+        <label>openbabel/atom.h</label>
+      </node>
+      <node id="33">
+        <label>openbabel/obconversion.h</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+      <node id="1">
+        <label>coord_cache.cpp</label>
+        <link refid="coord__cache_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>boost/filesystem.hpp</label>
+      </node>
+      <node id="8">
+        <label>utility</label>
+      </node>
+      <node id="29">
+        <label>boost/iostreams/device/mapped_file.hpp</label>
+      </node>
+      <node id="24">
+        <label>openbabel/elements.h</label>
+      </node>
+      <node id="15">
+        <label>libmolgrid/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>iostream</label>
+      </node>
+      <node id="25">
+        <label>unordered_map</label>
+      </node>
+      <node id="18">
+        <label>cuda.h</label>
+      </node>
+      <node id="10">
+        <label>libmolgrid/grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>cuda_runtime_api.h</label>
+      </node>
+      <node id="12">
+        <label>boost/preprocessor/repetition.hpp</label>
+      </node>
+      <node id="6">
+        <label>libmolgrid/managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>boost/multi_array.hpp</label>
+      </node>
+      <node id="2">
+        <label>libmolgrid/coord_cache.h</label>
+        <link refid="coord__cache_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>libmolgrid/libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>cstring</label>
+      </node>
+      <node id="7">
         <label>memory</label>
       </node>
     </incdepgraph>
@@ -226,8 +226,8 @@
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelibmolgrid" kindref="compound">libmolgrid</ref><sp/>{</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacestd" kindref="compound">std</ref>;</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceOpenBabel" kindref="compound">OpenBabel</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">OpenBabel;</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
 <codeline lineno="22" refid="namespacelibmolgrid_1a401744b5615cec1da80925318db02c90" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a401744b5615cec1da80925318db02c90" kindref="member">do_not_optimize_away</ref>;</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
@@ -277,7 +277,7 @@
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>n<sp/>=<sp/>cache_map.size();<sp/>i<sp/>&lt;<sp/>n;<sp/>i<sp/>+=<sp/>1024)<sp/>{</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>sum<sp/>+=<sp/>cache_map.data()[i];</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>do_not_optimize_away<sp/>=<sp/>sum;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacelibmolgrid_1a401744b5615cec1da80925318db02c90" kindref="member">do_not_optimize_away</ref><sp/>=<sp/>sum;</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal">}</highlight></codeline>
@@ -318,7 +318,7 @@
 <codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>coord.<ref refid="structlibmolgrid_1_1CoordinateSet_1af51e37c9331049b1e3d250a7c8bc3c26" kindref="member">src</ref><sp/>=<sp/>fname;</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(memcache.count(fname))<sp/>{</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>coord<sp/>=<sp/>memcache[fname].<ref refid="structlibmolgrid_1_1CoordinateSet_1a19ad80288a826f7bbcbcd8d100c3587a" kindref="member">clone</ref>();<sp/></highlight><highlight class="comment">//always<sp/>copy<sp/>out<sp/>of<sp/>cache</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>coord<sp/>=<sp/>memcache[fname].clone();<sp/></highlight><highlight class="comment">//always<sp/>copy<sp/>out<sp/>of<sp/>cache</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>fullname<sp/>=<sp/>fname;</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(data_root.length())<sp/>{</highlight></codeline>
@@ -384,6 +384,6 @@
 <codeline lineno="174"><highlight class="normal"></highlight></codeline>
 <codeline lineno="175"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/dkoes/git/libmolgrid/src/coord_cache.cpp"/>
+    <location file="/home/jocelynsunseri/git/libmolgrid/src/coord_cache.cpp"/>
   </compounddef>
 </doxygen>
