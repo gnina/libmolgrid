@@ -46,11 +46,23 @@ class ExampleExtractor {
       coord_caches.push_back(CoordCache(t2, settings, settings.ligmolcache));
     }
 
+    ///setup an extract according to settings, types and molcaches
+    ///if not present, will get molcaches from settings if there, repeating ligand if necessary
     ExampleExtractor(const ExampleProviderSettings& settings,
         const std::vector<std::shared_ptr<AtomTyper> >& typrs,
-        const std::vector<std::string>& molcaches = std::vector<std::string>()) {
+        std::vector<std::string> molcaches = std::vector<std::string>()) {
       coord_caches.reserve(typrs.size());
       if(typrs.size() == 0) throw std::invalid_argument("Need at least one atom typer for example extractor");
+      //if molcaches not provided, get them from settings
+      if(molcaches.size() == 0) {
+        if(settings.recmolcache.length() > 0) molcaches.push_back(settings.recmolcache);
+        if(settings.ligmolcache.length() > 0) {
+          while(molcaches.size() < typrs.size()) {
+            molcaches.push_back(settings.ligmolcache);
+          }
+        }
+      }
+
       for(unsigned i = 0, n = typrs.size(); i < n; i++) {
         if(i < molcaches.size()) {
           coord_caches.push_back(CoordCache(typrs[i], settings, molcaches[i]));

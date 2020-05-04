@@ -139,6 +139,16 @@ def test_cached_example_provider():
     assert clig.radii[9] == approx(1.8)        
     assert list(clig.type_index) == [8.0, 1.0, 1.0, 9.0, 10.0, 0.0, 0.0, 1.0, 9.0, 8.0]
 
+def test_cached_with_typer_example_provider():
+    fname = datadir+"/ligonly.types"
+    t = molgrid.ElementIndexTyper(80)
+    e = molgrid.ExampleProvider(t,ligmolcache=datadir+'/lig.molcache2')
+    e.populate(fname)
+    batch = e.next_batch(10)
+    c = batch[0].coord_sets[1]
+    assert c.max_type == 80
+    assert c.type_index[0] == 7
+
 def test_grouped_example_provider():
     fname = datadir+"/grouped.types"
     batch_size = 3
