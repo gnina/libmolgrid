@@ -3,6 +3,23 @@ libmolgrid
 
 libmolgrid is under active development, but should be suitable for use by early adopters.
 
+If you use libmolgrid in your research, please cite:
+
+**libmolgrid: Graphics Processing Unit Accelerated Molecular Gridding for Deep Learning Applications.** J Sunseri, DR Koes. *Journal of Chemical Information and Modeling*, 2020 [arxiv](https://arxiv.org/pdf/1912.04822.pdf)
+
+```
+@article{sunseri2020libmolgrid,
+  title={libmolgrid: Graphics Processing Unit Accelerated Molecular Gridding for Deep Learning Applications},
+  author={Sunseri, Jocelyn and Koes, David R},
+  journal={Journal of Chemical Information and Modeling},
+  volume={60},
+  number={3},
+  pages={1079--1084},
+  year={2020},
+  publisher={ACS Publications}
+}
+```
+
 ## Documentation
 
 [https://gnina.github.io/libmolgrid/](https://gnina.github.io/libmolgrid/)
