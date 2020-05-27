@@ -551,7 +551,7 @@ namespace libmolgrid {
     template<typename Dtype>
     __global__
     void set_grid_gradients(GridMaker G, float3 grid_origin, Grid2fCUDA coords, Grid1fCUDA type_index,
-                            Grid1fCUDA radii, Grid<Dtype, 2, true> atom_gradients, Grid<Dtype, 2, true> true_gradients, unsigned n, Grid<Dtype, 4, true> grid) {
+                            Grid1fCUDA radii, Grid<Dtype, 2, true> atom_gradients, Grid<Dtype, 2, true> true_gradients, unsigned n,bool cossim, Grid<Dtype, 4, true> grid) {
         int idx = blockDim.x * blockIdx.x + threadIdx.x;
         if(idx >= type_index.dimension(0)) return;
 
@@ -590,7 +590,7 @@ namespace libmolgrid {
                     float z = grid_origin.z + k * G.resolution;
                     size_t offset = ((((whichgrid * G.dim) + i) * G.dim) + j) * G.dim + k;
 
-                    G.accumulate_grid_gradient(a.x, a.y, a.z, x, y, z, radius, agrad, tgrad, n, (grid.data()+offset));
+                    G.accumulate_grid_gradient(a.x, a.y, a.z, x, y, z, radius, agrad, tgrad, n,cossim, (grid.data()+offset));
                 }
             }
         }
@@ -707,7 +707,7 @@ namespace libmolgrid {
     }
     template<typename Dtype>
     void GridMaker::accumulate_grid_gradient(float ax, float ay, float az,
-            float x, float y, float z, float ar, float3& agrad, float3& tgrad,unsigned n,Dtype* gridval) const {
+            float x, float y, float z, float ar, float3& agrad, float3& tgrad,unsigned n,bool cossim,Dtype* gridval) const {
         //calculate higher order gradient grid values overlapped by the atom for it's gradient loss.
         float dist_x = x - ax;
         float dist_y = y - ay;
@@ -729,17 +729,37 @@ namespace libmolgrid {
         }
         // d_loss_gradient/d_grid_gradient = d_loss_gradient/d_atom_gradient * d_atom_gradient/d_grid_gradient
         // d_atom_gradient/d_grid_gradient = d_atomdist/d_atomx * d_gridpoint/d_atomdist (from backward)
-        // implemented mean square error loss, negatives get cancelled out
         if(dist > 0) {
-            *gridval += 2.0/n * (tgrad.x - agrad.x) *  (dist_x / dist) * (agrad_dist);
-            *gridval += 2.0/n * (tgrad.y - agrad.y) *  (dist_y / dist) * (agrad_dist);
-            *gridval += 2.0/n * (tgrad.z - agrad.z) *  (dist_z / dist) * (agrad_dist);
+            if (cossim) {
+                float agrad_vec2 = agrad.x * agrad.x + agrad.y * agrad.y + agrad.z * agrad.z;
+                float tgrad_vec2 = tgrad.x * tgrad.x + tgrad.y * tgrad.y + tgrad.z * tgrad.z;
+                if (agrad_vec2 > 0 && tgrad_vec2 > 0) {
+                    float agrad_vec = sqrt(agrad_vec2);
+                    float tgrad_vec = sqrt(tgrad_vec2);
+                    float cosine = (agrad.x * tgrad.x + agrad.y * tgrad.y + agrad.z * tgrad.z) /
+                                   (agrad_vec * tgrad_vec);
+                    //1-cossim() loss
+
+                    *gridval += 1.0f / n * ((tgrad.x / (agrad_vec * tgrad_vec)) -
+                            (cosine * agrad.x / (agrad_vec2 ))) * (dist_x / dist) * (agrad_dist);
+                    *gridval += 1.0f / n * ((tgrad.y / (agrad_vec * tgrad_vec)) -
+                            (cosine * agrad.y / (agrad_vec2 ))) * (dist_y / dist) * (agrad_dist);
+                    *gridval += 1.0f / n * ((tgrad.z / (agrad_vec * tgrad_vec)) -
+                            (cosine * agrad.z / (agrad_vec2 ))) * (dist_z / dist) * (agrad_dist);
+                }
+            }
+            else {
+                // implemented mean square error loss, negatives get cancelled out
+                *gridval += 2.0f / n * (tgrad.x - agrad.x) * (dist_x / dist) * (agrad_dist);
+                *gridval += 2.0f / n * (tgrad.y - agrad.y) * (dist_y / dist) * (agrad_dist);
+                *gridval += 2.0f / n * (tgrad.z - agrad.z) * (dist_z / dist) * (agrad_dist);
+            }
         }
     }
     template void GridMaker::accumulate_grid_gradient(float ax, float ay, float az,
-                                                      float x, float y, float z, float ar,  float3& agrad, float3& tgrad, unsigned n,float* gridval) const;
+                                                      float x, float y, float z, float ar,  float3& agrad, float3& tgrad, unsigned n,bool cossim,float* gridval) const;
     template void GridMaker::accumulate_grid_gradient(float ax, float ay, float az,
-                             float x, float y, float z, float ar,  float3& agrad, float3& tgrad, unsigned n,double* gridval) const;
+                                                      float x, float y, float z, float ar,  float3& agrad, float3& tgrad, unsigned n,bool cossim,double* gridval) const;
 
     //kernel launch - parallelize across whole atoms
     template<typename Dtype>
@@ -824,7 +844,7 @@ namespace libmolgrid {
     template <typename Dtype>
     void GridMaker::backward_grad(float3 grid_center, const Grid<float, 2, true>& coords,
                              const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
-                             const Grid<Dtype, 2, true>& atom_gradients,const Grid<Dtype, 2, true>& true_gradients, Grid<Dtype, 4, true>& grid) const {
+                             const Grid<Dtype, 2, true>& atom_gradients,const Grid<Dtype, 2, true>& true_gradients,bool cossim, Grid<Dtype, 4, true>& grid) const {
         grid.fill_zero();
         unsigned n = coords.dimension(0);
         if(n != type_index.size()) throw std::invalid_argument("Type dimension doesn't equal number of coordinates.");
@@ -839,15 +859,15 @@ namespace libmolgrid {
 
         unsigned blocks =  LMG_GET_BLOCKS(n);
         unsigned nthreads = LMG_GET_THREADS(n);
-        set_grid_gradients<<<blocks, nthreads>>>(*this, grid_origin, coords, type_index, radii, atom_gradients, true_gradients,n,grid);
+        set_grid_gradients<<<blocks, nthreads>>>(*this, grid_origin, coords, type_index, radii, atom_gradients, true_gradients,n,cossim,grid);
     }
 
     template void GridMaker::backward_grad(float3 grid_center, const Grid<float, 2, true>& coords,
                                       const Grid<float, 1, true>& type_index,const Grid<float, 1, true>& radii,
-                                      const Grid<float, 2, true>& atom_gradients,const Grid<float, 2, true>& true_gradients, Grid<float, 4, true>& grid) const;
+                                      const Grid<float, 2, true>& atom_gradients,const Grid<float, 2, true>& true_gradients,bool cossim, Grid<float, 4, true>& grid) const;
     template void GridMaker::backward_grad(float3 grid_center, const Grid<float, 2, true>& coords,
                                       const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
-                                      const Grid<double, 2, true>& atom_gradients,const Grid<double, 2, true>& true_gradients,Grid<double, 4, true>& grid) const;
+                                      const Grid<double, 2, true>& atom_gradients,const Grid<double, 2, true>& true_gradients,bool cossim,Grid<double, 4, true>& grid) const;
 
 
 

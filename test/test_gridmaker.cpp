@@ -219,8 +219,16 @@ BOOST_AUTO_TEST_CASE(backward_grad) {
     MGrid2f atomgrad(1, 3);
     MGrid2f truegrad(1, 3);
 
-    g.backward_grad(float3 { 0, 0, 0 }, coords, atomgrad.cpu(), truegrad.cpu(), diff_cpu.cpu());
-    g.backward_grad(float3 { 0, 0, 0 }, coords, atomgrad.gpu(), truegrad.gpu(), diff_gpu.gpu());
+    atomgrad(0,0)=-10.0f;
+    atomgrad(0,1)=-1.0f;
+    atomgrad(0,2)=-7.0f;
+    //zero loss
+    truegrad(0,0)=-10.0f;
+    truegrad(0,1)=-1.0f;
+    truegrad(0,2)=-7.0f;
+    //No loss for cossimilarity
+    g.backward_grad(float3 { 0, 0, 0 }, coords, atomgrad.cpu(), truegrad.cpu(),true, diff_cpu.cpu());
+    g.backward_grad(float3 { 0, 0, 0 }, coords, atomgrad.gpu(), truegrad.gpu(),true, diff_gpu.gpu());
 
     for (unsigned i = 0; i < 30; i++){
         for (unsigned j = 0; j < 30; j++){
@@ -239,20 +247,49 @@ BOOST_AUTO_TEST_CASE(backward_grad) {
     BOOST_CHECK_SMALL(diff_gpu(0, 30,30,30), TOL);
 
     //Provide loss
-    truegrad(0,0)=1.0;
-    truegrad(0,1)=1.0;
-    truegrad(0,2)=1.0;
+    truegrad(0,0)=4.0f;
+    truegrad(0,1)=3.5f;
+    truegrad(0,2)=2.0f;
+    //cossim loss
+    g.backward_grad(float3 { 0, 0, 0 }, coords, atomgrad.cpu(), truegrad.cpu(),true, diff_cpu.cpu());
+    g.backward_grad(float3 { 0, 0, 0 }, coords, atomgrad.gpu(), truegrad.gpu(),true, diff_gpu.gpu());
 
-    g.backward_grad(float3 { 0, 0, 0 }, coords, atomgrad.cpu(), truegrad.cpu(), diff_cpu.cpu());
-    g.backward_grad(float3 { 0, 0, 0 }, coords, atomgrad.gpu(), truegrad.gpu(), diff_gpu.gpu());
+    //Check for not all zeros
+    BOOST_CHECK_GT(diff_cpu(0, 29,29,29), TOL);
+    BOOST_CHECK_LT(diff_cpu(0, 31,31,31), -TOL);
+    float cossim_val1=diff_gpu(0, 29,29,29);
+    float cossim_val2=diff_cpu(0, 31,31,31);
+
+    for (unsigned i =0; i < 30; i++){
+        for (unsigned j = 0; j < 30; j++){
+            for (unsigned k = 0; k < 30; k++){
+                // GPU-CPU=0
+                BOOST_CHECK_SMALL(diff_gpu(0, i,j,k)-diff_cpu(0, i,j,k), TOL);
+                BOOST_CHECK_SMALL(diff_gpu(0, 60-i,60-j,60-k)-diff_cpu(0, 60-i,60-j,60-k), TOL);
+                //Symmetry check
+                BOOST_CHECK_SMALL(diff_cpu(0, i,j,k)+diff_cpu(0, 60-i,60-j,60-k), TOL);
+            }
+        }
+    }
+    //check origin
+    BOOST_CHECK_SMALL(diff_cpu(0, 30,30,30), TOL);
+    BOOST_CHECK_SMALL(diff_gpu(0, 30,30,30), TOL);
+
+    //MSE loss
+    g.backward_grad(float3 { 0, 0, 0 }, coords, atomgrad.cpu(), truegrad.cpu(),false, diff_cpu.cpu());
+    g.backward_grad(float3 { 0, 0, 0 }, coords, atomgrad.gpu(), truegrad.gpu(),false, diff_gpu.gpu());
 
     //Check for not all zeros
     BOOST_CHECK_GT(diff_cpu(0, 29,29,29), TOL);
     BOOST_CHECK_LT(diff_cpu(0, 31,31,31), -TOL);
 
-    for (unsigned i = 11; i < 30; i++){
-        for (unsigned j = 11; j < 30; j++){
-            for (unsigned k = 11; k < 30; k++){
+    //Check if different from cossim loss
+    BOOST_CHECK_GT(abs(cossim_val1 - diff_cpu(0, 29,29,29)), TOL);
+    BOOST_CHECK_GT(abs(cossim_val2 - diff_cpu(0, 31,31,31)), TOL);
+
+    for (unsigned i =0; i < 30; i++){
+        for (unsigned j = 0; j < 30; j++){
+            for (unsigned k = 0; k < 30; k++){
                 // >= 0
                 BOOST_CHECK_GT(diff_cpu(0, i,j,k), -TOL);
                 // <=0
@@ -265,6 +302,7 @@ BOOST_AUTO_TEST_CASE(backward_grad) {
             }
         }
     }
+
     //check origin
     BOOST_CHECK_SMALL(diff_cpu(0, 30,30,30), TOL);
     BOOST_CHECK_SMALL(diff_gpu(0, 30,30,30), TOL);
