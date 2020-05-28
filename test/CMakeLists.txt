@@ -57,9 +57,9 @@ else()
 
 	add_test(NAME pymolgrid COMMAND ${PYTHON_EXECUTABLE} -m pytest -m "not slow" -rsv WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 	set_tests_properties(pymolgrid PROPERTIES ENVIRONMENT
-			"PYTHONPATH=${CMAKE_BINARY_DIR}/python:$PYTHONPATH")
+		"PYTHONPATH=${CMAKE_BINARY_DIR}/python:$ENV{PYTHONPATH}")
 
   add_test(NAME slowpymolgridtests COMMAND ${PYTHON_EXECUTABLE} -m pytest -m "slow" -rsv WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 	set_tests_properties(slowpymolgridtests PROPERTIES ENVIRONMENT
-			"PYTHONPATH=${CMAKE_BINARY_DIR}/python:$PYTHONPATH")
+		"PYTHONPATH=${CMAKE_BINARY_DIR}/python:$ENV{PYTHONPATH}")
 endif()
