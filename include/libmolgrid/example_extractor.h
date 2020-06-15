@@ -37,11 +37,11 @@ class ExampleExtractor {
     size_t count_types(unsigned n) const;
   public:
 
-    ExampleExtractor(const ExampleProviderSettings& settings, std::shared_ptr<AtomTyper> t) {
+    ExampleExtractor(const ExampleProviderSettings& settings, std::shared_ptr<AtomTyper> t) : duplicate_poses(settings.duplicate_first) {
       coord_caches.push_back(CoordCache(t, settings, settings.recmolcache));
     }
 
-    ExampleExtractor(const ExampleProviderSettings& settings, std::shared_ptr<AtomTyper> t1, std::shared_ptr<AtomTyper> t2) {
+    ExampleExtractor(const ExampleProviderSettings& settings, std::shared_ptr<AtomTyper> t1, std::shared_ptr<AtomTyper> t2) : duplicate_poses(settings.duplicate_first) {
       coord_caches.push_back(CoordCache(t1, settings, settings.recmolcache));
       coord_caches.push_back(CoordCache(t2, settings, settings.ligmolcache));
     }
@@ -50,7 +50,7 @@ class ExampleExtractor {
     ///if not present, will get molcaches from settings if there, repeating ligand if necessary
     ExampleExtractor(const ExampleProviderSettings& settings,
         const std::vector<std::shared_ptr<AtomTyper> >& typrs,
-        std::vector<std::string> molcaches = std::vector<std::string>()) {
+        std::vector<std::string> molcaches = std::vector<std::string>()) : duplicate_poses(settings.duplicate_first) {
       coord_caches.reserve(typrs.size());
       if(typrs.size() == 0) throw std::invalid_argument("Need at least one atom typer for example extractor");
       //if molcaches not provided, get them from settings
