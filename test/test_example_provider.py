@@ -316,4 +316,27 @@ def test_example_provider_iterator_interface():
         if i > 10:
             break
         
+def test_duplicated_examples():
+    '''This is for files with multiple ligands'''
+    fname = datadir+"/multilig.types"
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs")
+    e.populate(fname)
+    batch_size = 10
+    b = e.next_batch(batch_size)
+    for i in range(1,batch_size):
+        assert len(b[i].coord_sets) == 3 #one rec and two ligands
+        #ligands should be different
+        sqsum = np.square(b[i].coord_sets[1].coords.tonumpy() - b[i].coord_sets[2].coords.tonumpy()).sum()
+        assert sqsum > 0    
         
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs",duplicate_first=True)
+    e.populate(fname)
+    batch_size = 10
+    b = e.next_batch(batch_size)
+    for i in range(1,batch_size):
+        assert len(b[i].coord_sets) == 4 #rec lig rec lig
+        #ligands should be different
+        sqsum = np.square(b[i].coord_sets[1].coords.tonumpy() - b[i].coord_sets[3].coords.tonumpy()).sum()
+        assert sqsum > 0
+        #receptors should be the same
+        sqsum = np.square(b[i].coord_sets[0].coords.tonumpy() - b[i].coord_sets[2].coords.tonumpy()).sum()        
