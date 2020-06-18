@@ -439,6 +439,60 @@ class GridMaker {
         Grid<Dtype, 4, true>& diffdiff,
         Grid<Dtype, 2, true>& atom_diffdiff, Grid<Dtype, 2, true>& type_diffdiff);
 
+    // Docstring_GridMaker_backward_gradients_3
+    /* \brief Generate gradients of atom/type gradients. (CPU)
+     * Must provide CoordinateSet that defined the original grid in forward
+     * and grid gradients from backward.
+     * @param[in] in coordinate set
+     * @param[in] a 4D grid of gradients
+     * @param[in] atomic_gradients vector quantities for each atom
+     * @param[in] type_gradients vector quantities for each atom
+     * @param[out] diffdiff a 4D grid of gradients of gradients
+     * @param[out] atom_diffdiff vector quantities for each atom
+     * @param[out] type_diffdiff vector quantities for each atom*
+     *
+     */
+    template <typename Dtype>
+    void backward_gradients(float3 grid_center,   const CoordinateSet& in,
+        const Grid<Dtype, 4, false>& diff,
+        const Grid<Dtype, 2, false>& atom_gradients, const Grid<Dtype, 2, false>& type_gradients,
+        Grid<Dtype, 4, false>& diffdiff,
+        Grid<Dtype, 2, false>& atom_diffdiff, Grid<Dtype, 2, false>& type_diffdiff) {
+      if(in.has_vector_types()) {
+        backward_gradients(grid_center, in.coords.cpu(), in.type_vector.cpu(), in.radii.cpu(), diff,
+            atom_gradients, type_gradients, diffdiff, atom_diffdiff, type_diffdiff);
+      } else {
+        throw std::invalid_argument("Vector types missing from coordinate set");
+      }
+    }
+
+    // Docstring_GridMaker_backward_gradients_4
+    /* \brief Generate gradients of atom/type gradients. (GPU)
+     * Must provide CoordinateSet that defined the original grid in forward
+     * and grid gradients from backward.
+     * @param[in] in coordinate set
+     * @param[in] a 4D grid of gradients
+     * @param[in] atomic_gradients vector quantities for each atom
+     * @param[in] type_gradients vector quantities for each atom
+     * @param[out] diffdiff a 4D grid of gradients of gradients
+     * @param[out] atom_diffdiff vector quantities for each atom
+     * @param[out] type_diffdiff vector quantities for each atom
+     *
+     */
+    template <typename Dtype>
+    void backward_gradients(float3 grid_center,   const CoordinateSet& in,
+        const Grid<Dtype, 4, true>& diff,
+        const Grid<Dtype, 2, true>& atom_gradients, const Grid<Dtype, 2, true>& type_gradients,
+        Grid<Dtype, 4, true>& diffdiff,
+        Grid<Dtype, 2, true>& atom_diffdiff, Grid<Dtype, 2, true>& type_diffdiff) {
+      if(in.has_vector_types()) {
+        backward_gradients(grid_center, in.coords.gpu(), in.type_vector.gpu(), in.radii.gpu(), diff,
+            atom_gradients, type_gradients, diffdiff, atom_diffdiff, type_diffdiff);
+      } else {
+        throw std::invalid_argument("Vector types missing from coordinate set");
+      }
+    }
+
 
     /* \brief Propagate relevance (in diff) onto atoms. (CPU)
      * Index types are required.

@@ -690,12 +690,14 @@ namespace libmolgrid {
             //in backwards did
             // agrad.x += -(dist_x / dist) * (agrad_dist * gridval)
             // differentiate with respect to gridval
-            float gval = 0.0;
-            if(dist > 0 && agrad_dist != NAN) { //overlapping grid position
-              gval += -(dist_x / dist) * (agrad_dist * agrad.x);
-              gval += -(dist_y / dist) * (agrad_dist * agrad.y);
-              gval += -(dist_z / dist) * (agrad_dist * agrad.z);
-              gval *= tmult;
+            if(isfinite(agrad_dist)) { //overlapping grid position
+              float gval = 0.0;
+              if(dist > 0) {
+                gval += -(dist_x / dist) * (agrad_dist * agrad.x);
+                gval += -(dist_y / dist) * (agrad_dist * agrad.y);
+                gval += -(dist_z / dist) * (agrad_dist * agrad.z);
+                gval *= tmult;
+              }
 
               //type backwards was just the density value
               float val = G.calc_point<false>(ax, ay, az, radius, float3{x,y,z});
@@ -858,7 +860,7 @@ namespace libmolgrid {
       float agrad_dist = 0.0;
       float dist2 = dist*dist;
       if (dist >= ar * final_radius_multiple) {//no overlap
-        return 0;
+        return NAN;
       }
       else if (dist <= ar * gaussian_radius_multiple) {//gaussian derivative
         float ex = -2.0 * dist2 / (ar * ar);
@@ -887,7 +889,7 @@ namespace libmolgrid {
       // d_loss/d_atomx = d_atomdist/d_atomx * d_gridpoint/d_atomdist * d_loss/d_gridpoint
       // sum across all gridpoints
       //dkoes - the negative sign is because we are considering the derivative of the center vs grid
-      if(dist > 0 && agrad_dist != 0) {
+      if(dist > 0 && isfinite(agrad_dist)) {
         agrad.x += -(dist_x / dist) * (agrad_dist * gridval);
         agrad.y += -(dist_y / dist) * (agrad_dist * gridval);
         agrad.z += -(dist_z / dist) * (agrad_dist * gridval);

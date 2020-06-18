@@ -798,18 +798,27 @@ MAKE_ALL_GRIDS()
            const Grid<float, 4, true>& diff, Grid<float, 2, true> atom_gradients, Grid<float, 2, true> type_gradients) {
               self.backward(grid_center, coords, type_vectors, radii, diff, atom_gradients, type_gradients);}, "@Docstring_GridMaker_backward_8@")
        .def("backward_gradients", +[](GridMaker& self, float3 grid_center,  const Grid<float, 2, false>& coords,
-                      const Grid<float, 2, false>& type_vectors, const Grid<float, 1, false>& radii, const Grid<Dtype, 4, false>& diff,
-                      const Grid<Dtype, 2, false>& atom_gradients, const Grid<Dtype, 2, false>& type_gradients,
-                      Grid<Dtype, 4, false>& diffdiff, Grid<Dtype, 2, false>& atom_diffdiff, Grid<Dtype, 2, false>& type_diffdiff) {
+                      const Grid<float, 2, false>& type_vectors, const Grid<float, 1, false>& radii, const Grid<float, 4, false>& diff,
+                      const Grid<float, 2, false>& atom_gradients, const Grid<float, 2, false>& type_gradients,
+                      Grid<float, 4, false>& diffdiff, Grid<float, 2, false>& atom_diffdiff, Grid<float, 2, false>& type_diffdiff) {
               self.backward_gradients(grid_center, coords, type_vectors, radii, diff, atom_gradients, type_gradients,
                   diffdiff, atom_diffdiff, type_diffdiff); }, "@Docstring_GridMaker_backward_gradients_1@")
        .def("backward_gradients", +[](GridMaker& self, float3 grid_center,  const Grid<float, 2, true>& coords,
-                       const Grid<float, 2, true>& type_vectors, const Grid<float, 1, true>& radii, const Grid<Dtype, 4, true>& diff,
-                       const Grid<Dtype, 2, true>& atom_gradients, const Grid<Dtype, 2, true>& type_gradients,
-                       Grid<Dtype, 4, true>& diffdiff, Grid<Dtype, 2, true>& atom_diffdiff, Grid<Dtype, 2, true>& type_diffdiff) {
+                       const Grid<float, 2, true>& type_vectors, const Grid<float, 1, true>& radii, const Grid<float, 4, true>& diff,
+                       const Grid<float, 2, true>& atom_gradients, const Grid<float, 2, true>& type_gradients,
+                       Grid<float, 4, true>& diffdiff, Grid<float, 2, true>& atom_diffdiff, Grid<float, 2, true>& type_diffdiff) {
                self.backward_gradients(grid_center, coords, type_vectors, radii, diff, atom_gradients, type_gradients,
-                   diffdiff, atom_diffdiff, type_diffdiff); }, "@Docstring_GridMaker_backward_gradients_2@");
-  }
+                   diffdiff, atom_diffdiff, type_diffdiff); }, "@Docstring_GridMaker_backward_gradients_2@")
+       .def("backward_gradients", +[](GridMaker& self, float3 grid_center,  const CoordinateSet& in, const Grid<float, 4, false>& diff,
+                      const Grid<float, 2, false>& atom_gradients, const Grid<float, 2, false>& type_gradients,
+                      Grid<float, 4, false>& diffdiff, Grid<float, 2, false>& atom_diffdiff, Grid<float, 2, false>& type_diffdiff) {
+              self.backward_gradients(grid_center, in, diff, atom_gradients, type_gradients,
+                  diffdiff, atom_diffdiff, type_diffdiff); }, "@Docstring_GridMaker_backward_gradients_3@")
+       .def("backward_gradients", +[](GridMaker& self, float3 grid_center,  const CoordinateSet& in, const Grid<float, 4, true>& diff,
+                       const Grid<float, 2, true>& atom_gradients, const Grid<float, 2, true>& type_gradients,
+                       Grid<float, 4, true>& diffdiff, Grid<float, 2, true>& atom_diffdiff, Grid<float, 2, true>& type_diffdiff) {
+               self.backward_gradients(grid_center, in, diff, atom_gradients, type_gradients,
+                   diffdiff, atom_diffdiff, type_diffdiff); }, "@Docstring_GridMaker_backward_gradients_4@");
 
 
 

@@ -583,13 +583,14 @@ void GridMaker::backward_gradients(float3 grid_center,  const Grid<float, 2, fal
               //in backwards did
               // agrad.x += -(dist_x / dist) * (agrad_dist * gridval)
               // differentiate with respect to gridval
-              float gval = 0.0;
-              if(dist > 0 && agrad_dist != NAN) { //overlapping grid position
-                gval += -(dist_x / dist) * (agrad_dist * agrad.x);
-                gval += -(dist_y / dist) * (agrad_dist * agrad.y);
-                gval += -(dist_z / dist) * (agrad_dist * agrad.z);
-                gval *= tmult;
-
+              if(isfinite(agrad_dist)) { //overlapping grid position
+                float gval = 0.0;
+                if(dist > 0) {
+                  gval += -(dist_x / dist) * (agrad_dist * agrad.x);
+                  gval += -(dist_y / dist) * (agrad_dist * agrad.y);
+                  gval += -(dist_z / dist) * (agrad_dist * agrad.z);
+                  gval *= tmult;
+                }
                 //type backwards was just the density value
                 float val = calc_point<false>(ax, ay, az, radius, float3{x,y,z});
                 gval += val*tgrad;

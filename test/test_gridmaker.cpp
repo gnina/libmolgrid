@@ -88,14 +88,35 @@ BOOST_AUTO_TEST_CASE(forward_cpu) {
 //boost assert equality between to sets of coordinates
 static void same_coords(MGrid2f& a, MGrid2f& b) {
   BOOST_CHECK_EQUAL(a.dimension(0),b.dimension(0));
-  BOOST_CHECK_EQUAL(a.dimension(1),3);
-  BOOST_CHECK_EQUAL(b.dimension(1),3);
+  BOOST_CHECK_EQUAL(a.dimension(1),b.dimension(1)); //should be 3 for coords
   for(unsigned i = 0, n = a.dimension(0); i < n; i++) {
-    for (unsigned j = 0; j < 3; j++) {
+    for (unsigned j = 0; j < a.dimension(1); j++) {
       BOOST_CHECK_SMALL(a(i,j) - b(i,j), TOL);
     }
   }
 }
+
+//compare two grids
+static void same_grids(MGrid4f& a, MGrid4f& b) {
+  BOOST_CHECK_EQUAL(a.dimension(0),b.dimension(0));
+  BOOST_CHECK_EQUAL(a.dimension(1),b.dimension(1));
+  BOOST_CHECK_EQUAL(a.dimension(2),b.dimension(2));
+  BOOST_CHECK_EQUAL(a.dimension(3),b.dimension(3));
+  a.tocpu();
+  b.tocpu();
+  for(unsigned i = 0, n = a.dimension(0); i < n; i++) {
+    for (unsigned j = 0; j < a.dimension(1); j++) {
+      for (unsigned k = 0; k < a.dimension(2); k++) {
+        for (unsigned m = 0; m < a.dimension(3); m++) {
+          if(fabs(a(i,j,k,m) - b(i,j,k,m)) > TOL)
+            std::cerr << i << "," << j << "," << k << "," << m << "  " << a(i,j,k,m) << " " << b(i,j,k,m) << "\n";
+          BOOST_CHECK_SMALL(a(i,j,k,m) - b(i,j,k,m), TOL);
+        }
+      }
+    }
+  }
+}
+
 
 BOOST_AUTO_TEST_CASE(backward) {
   using namespace std;
@@ -202,8 +223,71 @@ BOOST_AUTO_TEST_CASE(backward_relevance) {
 
 }
 
+static float sum_g2(MGrid2f& a) {
+  float ret = 0;
+  for(unsigned i = 0, n = a.dimension(0); i < n; i++) {
+    for (unsigned j = 0; j < a.dimension(1); j++) {
+      ret += a(i,j);
+    }
+  }
+  return ret;
+}
+
+static float sum_g4(MGrid4f& a) {
+  a.tocpu();
+  float ret = 0;
+  for(unsigned i = 0, n = a.dimension(0); i < n; i++) {
+    for (unsigned j = 0; j < a.dimension(1); j++) {
+      for (unsigned k = 0; k < a.dimension(2); k++) {
+        for (unsigned m = 0; m < a.dimension(3); m++) {
+          ret += a(i,j,k,m);
+        }
+      }
+    }
+  }
+  return ret;
+}
+
+
 BOOST_AUTO_TEST_CASE(backward_gradients) {
- //IMPLEMENT
+  //make sure cpu matches gpu
+  using namespace std;
+  GridMaker g(0.1, 6.0);
+
+  vector<float3> c { make_float3(0, 0, 0) };
+  vector<vector<float> > t { vector<float>{0,1.0} };
+  vector<float> r { 2.0 };
+
+  CoordinateSet coords(c, t, r);
+  float dim = g.get_grid_dims().x;
+  MGrid4f diff(2, dim, dim, dim);
+  diff(0, 32, 34, 36) = 1.0;
+  diff(1, 32, 34, 36) = -1.0;
+
+  MGrid2f cpuatoms(1, 3);
+  MGrid2f cputypes(1, 2);
+  g.backward(float3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu(), cputypes.cpu());
+
+  MGrid4f diffdiff(2, dim,dim,dim);
+  MGrid2f add(1,3);
+  MGrid2f tdd(1,2);
+
+  g.backward_gradients(float3{0,0,0}, coords, diff.cpu(), cpuatoms.cpu(), cputypes.cpu(), diffdiff.cpu(), add.cpu(), tdd.cpu());
+
+  MGrid4f gpu_diffdiff(2, dim,dim,dim);
+  MGrid2f gpu_add(1,3);
+  MGrid2f gpu_tdd(1,2);
+
+  std::cerr << "DIFF "<< diff(1,30,30,30) << "\n";
+  g.backward_gradients(float3{0,0,0}, coords, diff.gpu(), cpuatoms.gpu(), cputypes.gpu(), gpu_diffdiff.gpu(), gpu_add.gpu(), gpu_tdd.gpu());
+
+  same_grids(gpu_diffdiff,diffdiff);
+  same_coords(add,gpu_add);
+  BOOST_CHECK_EQUAL(sum_g2(tdd),0);
+  BOOST_CHECK_EQUAL(sum_g2(gpu_tdd),0);
+  BOOST_CHECK_NE(sum_g2(add),0);
+  BOOST_CHECK_NE(sum_g4(diffdiff),0);
+
 }
 
 BOOST_AUTO_TEST_CASE(backward_vec) {
