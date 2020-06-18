@@ -202,72 +202,8 @@ BOOST_AUTO_TEST_CASE(backward_relevance) {
 
 }
 
-BOOST_AUTO_TEST_CASE(backward_grad) {
-    using namespace std;
-    GridMaker g(0.1, 6.0);
-
-    vector<float3> c{make_float3(0, 0, 0)};
-    vector<int> t{0};
-    vector<float> r{2.0};
-
-    CoordinateSet coords(c, t, r, 1);
-    float dim = g.get_grid_dims().x;
-
-    MGrid4f diff_cpu(1, dim, dim, dim);
-    MGrid4f diff_gpu(1, dim, dim, dim);
-
-    MGrid2f atomgrad(1, 3);
-    MGrid2f truegrad(1, 3);
-
-    g.backward_grad(float3 { 0, 0, 0 }, coords, atomgrad.cpu(), truegrad.cpu(), diff_cpu.cpu());
-    g.backward_grad(float3 { 0, 0, 0 }, coords, atomgrad.gpu(), truegrad.gpu(), diff_gpu.gpu());
-
-    for (unsigned i = 0; i < 30; i++){
-        for (unsigned j = 0; j < 30; j++){
-            for (unsigned k = 0; k < 30; k++){
-                //all values should be zero
-                BOOST_CHECK_SMALL(diff_cpu(0, i,j,k), TOL);
-                BOOST_CHECK_SMALL(diff_cpu(0, 60-i,60-j,60-k), TOL);
-                BOOST_CHECK_SMALL(diff_gpu(0, i,j,k), TOL);
-                BOOST_CHECK_SMALL(diff_gpu(0, 60-i,60-j,60-k), TOL);
-            }
-        }
-    }
-
-    //check origin
-    BOOST_CHECK_SMALL(diff_cpu(0, 30,30,30), TOL);
-    BOOST_CHECK_SMALL(diff_gpu(0, 30,30,30), TOL);
-
-    //Provide loss
-    truegrad(0,0)=1.0;
-    truegrad(0,1)=1.0;
-    truegrad(0,2)=1.0;
-
-    g.backward_grad(float3 { 0, 0, 0 }, coords, atomgrad.cpu(), truegrad.cpu(), diff_cpu.cpu());
-    g.backward_grad(float3 { 0, 0, 0 }, coords, atomgrad.gpu(), truegrad.gpu(), diff_gpu.gpu());
-
-    //Check for not all zeros
-    BOOST_CHECK_GT(diff_cpu(0, 29,29,29), TOL);
-    BOOST_CHECK_LT(diff_cpu(0, 31,31,31), -TOL);
-
-    for (unsigned i = 11; i < 30; i++){
-        for (unsigned j = 11; j < 30; j++){
-            for (unsigned k = 11; k < 30; k++){
-                // >= 0
-                BOOST_CHECK_GT(diff_cpu(0, i,j,k), -TOL);
-                // <=0
-                BOOST_CHECK_LT(diff_cpu(0, 60-i,60-j,60-k), TOL);
-                // GPU-CPU=0
-                BOOST_CHECK_SMALL(diff_gpu(0, i,j,k)-diff_cpu(0, i,j,k), TOL);
-                BOOST_CHECK_SMALL(diff_gpu(0, 60-i,60-j,60-k)-diff_cpu(0, 60-i,60-j,60-k), TOL);
-                //Symmetry check
-                BOOST_CHECK_SMALL(diff_cpu(0, i,j,k)+diff_cpu(0, 60-i,60-j,60-k), TOL);
-            }
-        }
-    }
-    //check origin
-    BOOST_CHECK_SMALL(diff_cpu(0, 30,30,30), TOL);
-    BOOST_CHECK_SMALL(diff_gpu(0, 30,30,30), TOL);
+BOOST_AUTO_TEST_CASE(backward_gradients) {
+ //IMPLEMENT
 }
 
 BOOST_AUTO_TEST_CASE(backward_vec) {

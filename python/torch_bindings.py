@@ -36,6 +36,36 @@ def make_grid_tensor(gridmaker, center, c):
 
 mg.GridMaker.make_tensor = make_grid_tensor
     
+class Grid2CoordsGradientFunction(torch.autograd.Function):
+    '''Backwards pass of grid generation so can create graph of gradient calculation'''
+    
+    @staticmethod
+    def forward(ctx, gmaker, center, coords, types, radii, grid_gradient):
+        '''Return Nx3 coordinate gradient and NxT type gradient'''
+        ctx.save_for_backward(coords, types, radii, grid_gradient)
+        ctx.gmaker = gmaker
+        ctx.center = center
+        grad_coords = torch.empty(*coords.shape,dtype=coords.dtype,device=coords.device)
+        grad_types = torch.empty(*types.shape,dtype=types.dtype,device=types.device)
+        #radii are fixed
+        gmaker.backward(center, coords, types, radii, grid_gradient, grad_coords, grad_types)
+        return grad_coords, grad_types
+        
+    @staticmethod
+    def backward(ctx, grad_coords, grad_types):
+        '''Return second order grid gradient'''
+        coords, types, radii, grid_gradient = ctx.saved_tensors
+        gmaker = ctx.gmaker
+        center = ctx.center
+                
+        ddcoords = torch.empty(*coords.shape,dtype=coords.dtype,device=coords.device)
+        ddtypes = torch.empty(*types.shape,dtype=types.dtype,device=types.device)
+        ddG = torch.empty(*grid_gradient.shape,dtype=grid_gradient.dtype,device=grid_gradient.device)
+        
+        gmaker.backward_gradients(center, coords, types, radii, grid_gradient, grad_coords, grad_types, ddG, ddcoords, ddtypes)
+
+        return None, None, ddcoords, ddtypes, None, ddG 
+    
 class Coords2GridFunction(torch.autograd.Function):
     '''Layer for converting from coordinate and type tensors to a molecular grid'''
     
@@ -51,16 +81,21 @@ class Coords2GridFunction(torch.autograd.Function):
         return output
         
     @staticmethod
-    def backward(ctx, grid_gradient):
+    def backward(ctx, grid_gradient, create_graph=False):
         '''Return Nx3 coordinate gradient and NxT type gradient'''
         coords, types, radii = ctx.saved_tensors
         gmaker = ctx.gmaker
         center = ctx.center
-        grad_coords = torch.empty(*coords.shape,dtype=coords.dtype,device=coords.device)
-        grad_types = torch.empty(*types.shape,dtype=types.dtype,device=types.device)
+
         #radii are fixed
-        gmaker.backward(center, coords, types, radii, grid_gradient, grad_coords, grad_types)
-        return None, None, grad_coords, grad_types, None
+        if create_graph:
+            return Grid2CoordsGradientFunction.apply(ctx, grid_gradient, gmaker, center, coords, types, radii)
+        else:
+            grad_coords = torch.empty(*coords.shape,dtype=coords.dtype,device=coords.device)
+            grad_types = torch.empty(*types.shape,dtype=types.dtype,device=types.device)
+            gmaker.backward(center, coords, types, radii, grid_gradient, grad_coords, grad_types)
+            return None, None, grad_coords, grad_types, None
+            
         
 class BatchedCoords2GridFunction(torch.autograd.Function):
     '''Layer for converting from coordinate and type tensors to a molecular grid using batched input'''
