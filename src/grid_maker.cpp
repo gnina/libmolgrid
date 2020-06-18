@@ -17,7 +17,13 @@ void GridMaker::initialize(float res, float d, bool bin, float rscale, float grm
   dimension = d;
   radius_scale = rscale;
   gaussian_radius_multiple = grm;
-  final_radius_multiple = (1+2*grm*grm)/(2*grm);
+  if(gaussian_radius_multiple < 0) {
+    //try to interpret this is requesting a truncated gradient - no quadratic term
+    gaussian_radius_multiple *= -1;
+    final_radius_multiple = gaussian_radius_multiple;
+  } else {
+    final_radius_multiple = (1+2*grm*grm)/(2*grm);
+  }
   dim = ::round(dimension / resolution) + 1;
   binary = bin;
 
