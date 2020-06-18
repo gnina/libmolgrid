@@ -384,3 +384,51 @@ def test_type_radii():
     np.testing.assert_allclose(gpuatoms.tonumpy(),cpuatoms.tonumpy(),atol=1e-5)
     np.testing.assert_allclose(gputypes.tonumpy(),cputypes.tonumpy(),atol=1e-5)
 
+def test_backward_gradients():
+    #test that we have the right value along a single dimension
+    gmaker = molgrid.GridMaker(resolution=0.5,dimension=6.0,gaussian_radius_multiple=-2.0) #use full truncated gradient    
+    xvals = np.arange(-0.9,3,.1)
+    
+    for device in ('cuda','cpu'):
+        types = torch.ones(1,1,dtype=torch.float32,device=device)
+        radii = torch.ones(1,dtype=torch.float32,device=device)
+        for i in range(3): #test along each axis
+            coords = torch.zeros(1,3,dtype=torch.float32,requires_grad=True,device=device)            
+            for x in xvals:
+                coords[0][i] = x
+                outgrid = molgrid.Coords2GridFunction.apply(gmaker, (0,0,0), coords, types, radii)
+                if i == 0:
+                    gp = outgrid[0][8][6][6]
+                elif i == 1:
+                    gp = outgrid[0][6][8][6]
+                else:
+                    gp = outgrid[0][6][6][8]                    
+                Lg = torch.autograd.grad(gp,coords,create_graph=True)[0]
+                fancyL = torch.sum(Lg**2) 
+                val = float(torch.autograd.grad(fancyL,coords)[0][0][i])
+                d = x-1
+                correct = -128*d**3*np.exp(-4*d**2) + 32*d*np.exp(-4*d**2)  #formulate based on distance
+                assert val == approx(correct,abs=1e-4)
+        
+    #check that diagonal is symmetric and decreases at this range
+    for device in ('cuda','cpu'):
+        types = torch.ones(1,1,dtype=torch.float32,device=device)
+        radii = torch.ones(1,dtype=torch.float32,device=device)
+        coords = torch.zeros(1,3,dtype=torch.float32,requires_grad=True,device=device)    
+        
+        outgrid = molgrid.Coords2GridFunction.apply(gmaker, (0,0,0), coords, types, radii)
+        gp = outgrid[0][7][7][7]                               
+        Lg = torch.autograd.grad(gp,coords,create_graph=True)[0]
+        fancyL = torch.sum(Lg**2) 
+        fL1 = torch.autograd.grad(fancyL,coords)[0][0]
+        
+        gp2 = outgrid[0][8][8][8]                               
+        Lg = torch.autograd.grad(gp2,coords,create_graph=True)[0]
+        fancyL = torch.sum(Lg**2) 
+        fL2 = torch.autograd.grad(fancyL,coords)[0][0]
+        
+        assert fL1[0] == fL1[1]
+        assert fL1[2] == fL1[1]
+        assert fL2[0] == fL2[1]
+        assert fL2[2] == fL2[1]    
+        assert fL2[0] < fL1[0]    

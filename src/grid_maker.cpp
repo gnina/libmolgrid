@@ -605,9 +605,13 @@ void GridMaker::backward_gradients(float3 grid_center,  const Grid<float, 2, fal
 
                 //now accumulate gradient with respect to atom positions
                 adiffdiff.x += atom_density_grad_grad(ax, x, dist, ar)*G*tmult*agrad.x;
+                if(G != 0) std::cerr << " " << adiffdiff.x << "\n";
                 adiffdiff.x += atom_density_grad_grad_other(ax, x, ay, y, dist, ar)*G*tmult*agrad.y;
+                if(G != 0) std::cerr << " " << adiffdiff.x << "\n";
                 adiffdiff.x += atom_density_grad_grad_other(ax, x, az, z, dist, ar)*G*tmult*agrad.z;
+                if(G != 0) std::cerr << " " << adiffdiff.x << "\n";
                 adiffdiff.x += type_grad_grad(ax, x, dist, ar)*G*tgrad;
+                if(G != 0) std::cerr << " " << adiffdiff.x << "\n";
 
                 adiffdiff.y += atom_density_grad_grad_other(ay, y, ax, x, dist, ar)*G*tmult*agrad.x;
                 adiffdiff.y += atom_density_grad_grad(ay, y, dist, ar)*G*tmult*agrad.y;
@@ -618,6 +622,10 @@ void GridMaker::backward_gradients(float3 grid_center,  const Grid<float, 2, fal
                 adiffdiff.z += atom_density_grad_grad_other(az, z, ay, y, dist, ar)*G*tmult*agrad.y;
                 adiffdiff.z += atom_density_grad_grad(az, z, dist, ar)*G*tmult*agrad.z;
                 adiffdiff.z += type_grad_grad(az, z, dist, ar)*G*tgrad;
+
+                if(G != 0) {
+                  std::cerr << "G " << G << "  " << adiffdiff.x <<","<<adiffdiff.y << ","<<adiffdiff.z<<"  " << agrad.x<<","<<agrad.y<<","<<agrad.z << "\n";
+                }
               } //if valid grid point
             } //k
           } //j

@@ -102,7 +102,7 @@ namespace libmolgrid {
       //The quadratic is fit to have both the same value and first derivative
       //at the cross over point and a value and derivative of zero at fianl_radius_multiple
       float dist = sqrtf(rsq);
-      if (dist >= ar * final_radius_multiple) {
+      if (dist > ar * final_radius_multiple) {
         return 0.0;
       } else
       if (dist <= ar * gaussian_radius_multiple) {
@@ -790,7 +790,7 @@ namespace libmolgrid {
     float GridMaker::type_grad_grad(float a, float x, float dist, float r) {
       float ret = 0.0;
       float dist2 = dist*dist;
-      if (dist >= r * final_radius_multiple) {//no overlap
+      if (dist > r * final_radius_multiple) {//no overlap
         return 0;
       }
       else if (dist <= r * gaussian_radius_multiple) {//gaussian derivative
@@ -813,7 +813,7 @@ namespace libmolgrid {
     float GridMaker::atom_density_grad_grad(float a, float x, float dist, float r) {
       float ret = 0.0;
       float dist2 = dist*dist;
-      if (dist >= r * final_radius_multiple) {//no overlap
+      if (dist > r * final_radius_multiple) {//no overlap
         return 0;
       }
       else if (dist <= r * gaussian_radius_multiple) {//gaussian derivative
@@ -837,7 +837,7 @@ namespace libmolgrid {
     float GridMaker::atom_density_grad_grad_other(float a, float x, float b, float y, float dist, float r) {
       float ret = 0.0;
       float dist2 = dist*dist;
-      if (dist >= r * final_radius_multiple) {//no overlap
+      if (dist > r * final_radius_multiple) {//no overlap
         return 0;
       }
       else if (dist <= r * gaussian_radius_multiple) {//gaussian derivative
@@ -859,7 +859,7 @@ namespace libmolgrid {
     float GridMaker::density_grad_dist(float dist, float ar) const {
       float agrad_dist = 0.0;
       float dist2 = dist*dist;
-      if (dist >= ar * final_radius_multiple) {//no overlap
+      if (dist > ar * final_radius_multiple) {//no overlap
         return NAN;
       }
       else if (dist <= ar * gaussian_radius_multiple) {//gaussian derivative

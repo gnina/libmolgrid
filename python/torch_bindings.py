@@ -81,20 +81,15 @@ class Coords2GridFunction(torch.autograd.Function):
         return output
         
     @staticmethod
-    def backward(ctx, grid_gradient, create_graph=False):
+    def backward(ctx, grid_gradient):
         '''Return Nx3 coordinate gradient and NxT type gradient'''
         coords, types, radii = ctx.saved_tensors
         gmaker = ctx.gmaker
         center = ctx.center
 
         #radii are fixed
-        if create_graph:
-            return Grid2CoordsGradientFunction.apply(ctx, grid_gradient, gmaker, center, coords, types, radii)
-        else:
-            grad_coords = torch.empty(*coords.shape,dtype=coords.dtype,device=coords.device)
-            grad_types = torch.empty(*types.shape,dtype=types.dtype,device=types.device)
-            gmaker.backward(center, coords, types, radii, grid_gradient, grad_coords, grad_types)
-            return None, None, grad_coords, grad_types, None
+        grad_coords, grad_types = Grid2CoordsGradientFunction.apply(gmaker, center, coords, types, radii, grid_gradient)
+        return None, None, grad_coords, grad_types, None
             
         
 class BatchedCoords2GridFunction(torch.autograd.Function):
