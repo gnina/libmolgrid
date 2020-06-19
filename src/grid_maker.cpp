@@ -17,7 +17,13 @@ void GridMaker::initialize(float res, float d, bool bin, float rscale, float grm
   dimension = d;
   radius_scale = rscale;
   gaussian_radius_multiple = grm;
-  final_radius_multiple = (1+2*grm*grm)/(2*grm);
+  if(gaussian_radius_multiple < 0) {
+    //try to interpret this is requesting a truncated gradient - no quadratic term
+    gaussian_radius_multiple *= -1;
+    final_radius_multiple = gaussian_radius_multiple;
+  } else {
+    final_radius_multiple = (1+2*grm*grm)/(2*grm);
+  }
   dim = ::round(dimension / resolution) + 1;
   binary = bin;
 
@@ -61,7 +67,7 @@ template void GridMaker::check_index_args(const Grid<float, 2, true>& coords,
 template<typename Dtype, bool isCUDA>
 void GridMaker::check_vector_args(const Grid<float, 2, isCUDA>& coords,
     const Grid<float, 2, isCUDA>& type_vector, const Grid<float, 1, isCUDA>& radii,
-    Grid<Dtype, 4, isCUDA>& out) const {
+    const Grid<Dtype, 4, isCUDA>& out) const {
 
   size_t N = coords.dimension(0);
   size_t T = type_vector.dimension(1);
@@ -83,13 +89,13 @@ void GridMaker::check_vector_args(const Grid<float, 2, isCUDA>& coords,
 }
 
 template void GridMaker::check_vector_args(const Grid<float, 2, false>& coords,
-    const Grid<float, 2, false>& type_vec, const Grid<float, 1, false>& radii, Grid<float, 4, false>& out) const;
+    const Grid<float, 2, false>& type_vec, const Grid<float, 1, false>& radii, const Grid<float, 4, false>& out) const;
 template void GridMaker::check_vector_args(const Grid<float, 2, true>& coords,
-    const Grid<float, 2, true>& type_vec, const Grid<float, 1, true>& radii, Grid<float, 4, true>& out) const;
+    const Grid<float, 2, true>& type_vec, const Grid<float, 1, true>& radii, const Grid<float, 4, true>& out) const;
 template void GridMaker::check_vector_args(const Grid<float, 2, false>& coords,
-    const Grid<float, 2, false>& type_vec, const Grid<float, 1, false>& radii, Grid<double, 4, false>& out) const;
+    const Grid<float, 2, false>& type_vec, const Grid<float, 1, false>& radii, const Grid<double, 4, false>& out) const;
 template void GridMaker::check_vector_args(const Grid<float, 2, true>& coords,
-    const Grid<float, 2, true>& type_vec, const Grid<float, 1, true>& radii, Grid<double, 4, true>& out) const;
+    const Grid<float, 2, true>& type_vec, const Grid<float, 1, true>& radii, const Grid<double, 4, true>& out) const;
 
 float3 GridMaker::get_grid_origin(const float3& grid_center) const {
   float half = dimension / 2.0;
@@ -395,46 +401,6 @@ float GridMaker::calc_atom_relevance_cpu(const float3& grid_origin, const Grid1f
   return ret;
 }
 
-// set corresponding higher order grid gradient values for a single atom
-    template <typename Dtype>
-    void GridMaker::calc_grid_gradient_cpu(const float3& grid_origin, const Grid1f& coordr, float radius,const Grid<Dtype, 1, false>& atom_gradient,const Grid<Dtype, 1, false>& true_gradient, const unsigned n, Dtype* gridptr) const {
-
-        //get atomic gradient for atom at idx
-        float3 agrad{0,0,0};
-        agrad.x = atom_gradient(0);
-        agrad.y = atom_gradient(1);
-        agrad.z = atom_gradient(2);
-
-        //get true gradient for atom at idx
-        float3 tgrad{0,0,0};
-        tgrad.x = true_gradient(0);
-        tgrad.y = true_gradient(1);
-        tgrad.z = true_gradient(2);
-
-        float r = radius * radius_scale * final_radius_multiple;
-        float3 a{coordr(0),coordr(1),coordr(2)}; //atom coordinate
-
-        uint2 ranges[3];
-        ranges[0] = get_bounds_1d(grid_origin.x, a.x, r);
-        ranges[1] = get_bounds_1d(grid_origin.y, a.y, r);
-        ranges[2] = get_bounds_1d(grid_origin.z, a.z, r);
-
-
-        //for every grid point possibly overlapped by this atom
-        for (unsigned i = ranges[0].x, iend = ranges[0].y; i < iend;
-             ++i) {
-            for (unsigned j = ranges[1].x, jend = ranges[1].y; j < jend; ++j) {
-                for (unsigned k = ranges[2].x, kend = ranges[2].y; k < kend; ++k) {
-                    //convert grid point coordinates to angstroms
-                    float x = grid_origin.x + i * resolution;
-                    float y = grid_origin.y + j * resolution;
-                    float z = grid_origin.z + k * resolution;
-                    size_t offset = (((i) * dim) + j) * dim + k;
-                    accumulate_grid_gradient(a.x, a.y, a.z, x, y, z, radius, agrad, tgrad, n, (gridptr+offset)) ;
-                }
-            }
-        }
-    }
 //cpu backwards
 template <typename Dtype>
 void GridMaker::backward(float3 grid_center, const Grid<float, 2, false>& coords,
@@ -530,6 +496,161 @@ template void GridMaker::backward(float3 grid_center, const Grid<float, 2, false
 
 
 template <typename Dtype>
+void GridMaker::backward_gradients(float3 grid_center,  const Grid<float, 2, false>& coords,
+    const Grid<float, 2, false>& type_vector, const Grid<float, 1, false>& radii,
+    const Grid<Dtype, 4, false>& diff,
+    const Grid<Dtype, 2, false>& atom_gradients, const Grid<Dtype, 2, false>& type_gradients,
+    Grid<Dtype, 4, false>& diffdiff,
+    Grid<Dtype, 2, false>& atom_diffdiff, Grid<Dtype, 2, false>& type_diffdiff) {
+
+  unsigned n = coords.dimension(0);
+  unsigned ntypes = type_vector.dimension(1);
+  check_vector_args(coords, type_vector, radii, diff);
+
+  if(n != type_vector.dimension(0)) throw std::invalid_argument("Type dimension doesn't equal number of coordinates.");
+  if(ntypes != diff.dimension(0)) throw std::invalid_argument("Channels in diff doesn't equal number of types");
+  if(n != atom_gradients.dimension(0)) throw std::invalid_argument("Atom gradient dimension doesn't equal number of coordinates");
+  if(n != type_gradients.dimension(0)) throw std::invalid_argument("Type gradient dimension doesn't equal number of coordinates");
+  if(n != atom_diffdiff.dimension(0)) throw std::invalid_argument("Atom gradient gradients dimension doesn't equal number of coordinates");
+  if(n != type_diffdiff.dimension(0)) throw std::invalid_argument("Type gradient gradients dimension doesn't equal number of coordinates");
+
+  if(type_gradients.dimension(1) != ntypes) throw std::invalid_argument("Type gradient dimension has wrong number of types");
+  if(type_diffdiff.dimension(1) != ntypes) throw std::invalid_argument("Type gradient dimension has wrong number of types");
+  if(coords.dimension(1) != 3) throw std::invalid_argument("Need x,y,z,r for coord_radius");
+
+  if(radii_type_indexed) { //radii should be size of types
+    if(ntypes != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of types");
+  } else { //radii should be size of atoms
+    if(n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
+  }
+
+  if(binary) throw std::invalid_argument("Binary densities not supported");
+
+  atom_diffdiff.fill_zero();
+  type_diffdiff.fill_zero(); //note this is the right answer - density is a linear function of amount of type
+  diffdiff.fill_zero();
+
+  float3 grid_origin = get_grid_origin(grid_center);
+
+  //there are actually three gradients we need to compute
+  //the backward pass is a function of the coordinates, types, and grid gradient G' (everything else is constant)
+  // g'(c,t,G') -> (c',t')
+  //with respect to the G', this is just the previous multiplier
+
+  //iterate over all atoms
+  for (size_t aidx = 0; aidx < n; ++aidx) {
+    for (size_t tidx = 0; tidx < ntypes; tidx++) {
+      Dtype tmult = type_vector(aidx, tidx); //amount of type for this atom
+      if (tmult != 0) {
+        Grid<Dtype, 3, false> diffG = diff[tidx];
+
+        float ax = coords(aidx, 0);
+        float ay = coords(aidx, 1);
+        float az = coords(aidx, 2);
+
+        float3 agrad; //cartesian gradient
+        agrad.x = atom_gradients(aidx, 0);
+        agrad.y = atom_gradients(aidx, 1);
+        agrad.z = atom_gradients(aidx, 2);
+
+        float tgrad = type_gradients(aidx, tidx);
+
+        float radius = 0;
+        if(radii_type_indexed) radius = radii(tidx);
+        else radius = radii(aidx);
+
+        float ar = radius*radius_scale;
+        float densityrad = radius * radius_scale * final_radius_multiple;
+
+        uint2 bounds[3];
+        bounds[0] = get_bounds_1d(grid_origin.x, ax, densityrad);
+        bounds[1] = get_bounds_1d(grid_origin.y, ay, densityrad);
+        bounds[2] = get_bounds_1d(grid_origin.z, az, densityrad);
+
+        float3 adiffdiff{0,0,0};
+
+        //for every grid point possibly overlapped by this atom
+        for (size_t i = bounds[0].x, iend = bounds[0].y; i < iend; i++) {
+          for (size_t j = bounds[1].x, jend = bounds[1].y; j < jend; j++) {
+            for (size_t k = bounds[2].x, kend = bounds[2].y; k < kend; k++) {
+              float x = grid_origin.x + i * resolution;
+              float y = grid_origin.y + j * resolution;
+              float z = grid_origin.z + k * resolution;
+              float G = diffG(i,j,k);
+              size_t offset = ((((tidx * dim) + i) * dim) + j) * dim + k;
+
+              float dist_x = x - ax;
+              float dist_y = y - ay;
+              float dist_z = z - az;
+              float dist2 = dist_x * dist_x + dist_y * dist_y + dist_z * dist_z;
+              double dist = sqrt(dist2);
+
+              float agrad_dist = density_grad_dist(dist,ar);
+              //in backwards did
+              // agrad.x += -(dist_x / dist) * (agrad_dist * gridval)
+              // differentiate with respect to gridval
+              if(isfinite(agrad_dist)) { //overlapping grid position
+                float gval = 0.0;
+                if(dist > 0) {
+                  gval += -(dist_x / dist) * (agrad_dist * agrad.x);
+                  gval += -(dist_y / dist) * (agrad_dist * agrad.y);
+                  gval += -(dist_z / dist) * (agrad_dist * agrad.z);
+                  gval *= tmult;
+                }
+                //type backwards was just the density value
+                float val = calc_point<false>(ax, ay, az, radius, float3{x,y,z});
+                gval += val*tgrad;
+
+                *(diffdiff.data() + offset) += gval;
+
+                //now accumulate gradient with respect to atom positions
+                adiffdiff.x += atom_density_grad_grad(ax, x, dist, ar)*G*tmult*agrad.x;
+                if(G != 0) std::cerr << " " << adiffdiff.x << "\n";
+                adiffdiff.x += atom_density_grad_grad_other(ax, x, ay, y, dist, ar)*G*tmult*agrad.y;
+                if(G != 0) std::cerr << " " << adiffdiff.x << "\n";
+                adiffdiff.x += atom_density_grad_grad_other(ax, x, az, z, dist, ar)*G*tmult*agrad.z;
+                if(G != 0) std::cerr << " " << adiffdiff.x << "\n";
+                adiffdiff.x += type_grad_grad(ax, x, dist, ar)*G*tgrad;
+                if(G != 0) std::cerr << " " << adiffdiff.x << "\n";
+
+                adiffdiff.y += atom_density_grad_grad_other(ay, y, ax, x, dist, ar)*G*tmult*agrad.x;
+                adiffdiff.y += atom_density_grad_grad(ay, y, dist, ar)*G*tmult*agrad.y;
+                adiffdiff.y += atom_density_grad_grad_other(ay, y, az, z, dist, ar)*G*tmult*agrad.z;
+                adiffdiff.y += type_grad_grad(ay, y, dist, ar)*G*tgrad;
+
+                adiffdiff.z += atom_density_grad_grad_other(az, z, ax, x, dist, ar)*G*tmult*agrad.x;
+                adiffdiff.z += atom_density_grad_grad_other(az, z, ay, y, dist, ar)*G*tmult*agrad.y;
+                adiffdiff.z += atom_density_grad_grad(az, z, dist, ar)*G*tmult*agrad.z;
+                adiffdiff.z += type_grad_grad(az, z, dist, ar)*G*tgrad;
+
+                if(G != 0) {
+                  std::cerr << "G " << G << "  " << adiffdiff.x <<","<<adiffdiff.y << ","<<adiffdiff.z<<"  " << agrad.x<<","<<agrad.y<<","<<agrad.z << "\n";
+                }
+              } //if valid grid point
+            } //k
+          } //j
+        } //i
+        atom_diffdiff(aidx,0) += adiffdiff.x;
+        atom_diffdiff(aidx,1) += adiffdiff.y;
+        atom_diffdiff(aidx,2) += adiffdiff.z;
+
+      } //tmult != 0
+    } //tidx
+  } //aidx
+
+}
+
+template void GridMaker::backward_gradients(float3,  const Grid<float, 2, false>&,
+    const Grid<float, 2, false>&, const Grid<float, 1, false>&, const Grid<float, 4, false>&,
+    const Grid<float, 2, false>&, const Grid<float, 2, false>&, Grid<float, 4, false>&,
+    Grid<float, 2, false>&, Grid<float, 2, false>&);
+template void GridMaker::backward_gradients(float3 grid_center,  const Grid<float, 2, false>&,
+    const Grid<float, 2, false>&, const Grid<float, 1, false>&, const Grid<double, 4, false>&,
+    const Grid<double, 2, false>&, const Grid<double, 2, false>&, Grid<double, 4, false>&,
+    Grid<double, 2, false>&, Grid<double, 2, false>&);
+
+
+template <typename Dtype>
 void GridMaker::backward_relevance(float3 grid_center,  const Grid<float, 2, false>& coords,
     const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
     const Grid<Dtype, 4, false>& density, const Grid<Dtype, 4, false>& diff,
@@ -557,44 +678,5 @@ template void GridMaker::backward_relevance(float3,  const Grid<float, 2, false>
 template void GridMaker::backward_relevance(float3,  const Grid<float, 2, false>&,
     const Grid<float, 1, false>&, const Grid<float, 1, false>&, const Grid<double, 4, false>&,
     const Grid<double, 4, false>& , Grid<double, 1, false>& ) const;
-
-    template <typename Dtype>
-    void GridMaker::backward_grad(float3 grid_center, const Grid<float, 2, false>& coords,
-                                  const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
-                                  const Grid<Dtype, 2, false>& atom_gradients,const Grid<Dtype, 2, false>& true_gradients, Grid<Dtype, 4, false>& diff) const {
-
-        diff.fill_zero();
-        unsigned n = coords.dimension(0);
-        if(radii_type_indexed) {
-            throw std::invalid_argument("Type indexed radii not supported with index types.");
-        }
-        if(n != type_index.size()) throw std::invalid_argument("Type dimension doesn't equal number of coordinates.");
-        if(n != atom_gradients.dimension(0)) throw std::invalid_argument("Gradient dimension doesn't equal number of coordinates");
-        if(n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
-        if(coords.dimension(1) != 3) throw std::invalid_argument("Need x,y,z,r for coord_radius");
-        for(unsigned i = 1; i <= 3; i++) {
-            if(diff.dimension(i) != dim)
-                throw std::invalid_argument("diff does not have correct dimension "+itoa(i)+": "+itoa(diff.dimension(i))+" vs "+itoa(dim));
-        }
-        float3 grid_origin = get_grid_origin(grid_center);
-
-        for (unsigned i = 0; i < n; ++i) {
-            int whichgrid = round(type_index[i]); // this is which atom-type channel of the grid to look at
-            if (whichgrid >= 0) {
-                if((unsigned)whichgrid >= diff.dimension(0)) {
-                    throw std::invalid_argument("Incorrect channel size for diff: "+itoa(whichgrid)+" vs "+itoa(diff.dimension(0)));
-                }
-                //offset = ((((whichgrid * G.dim) + i) * G.dim) + j) * G.dim + k; (thus power of 3)
-                size_t offset = (whichgrid * pow(dim,3.0));
-                calc_grid_gradient_cpu(grid_origin, coords[i], radii[i], atom_gradients[i],true_gradients[i], n, (diff.data()+offset));
-            }
-        }
-    }
-
-    template void GridMaker::backward_grad(float3 grid_center, const Grid<float, 2, false>& coords,
-                                           const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
-                                           const Grid<float, 2, false>& atom_gradients,const Grid<float, 2, false>& true_gradients, Grid<float, 4, false>& diff) const;
-    template void GridMaker::backward_grad(float3 grid_center, const Grid<float, 2, false>& coords,
-                                           const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,const Grid<double, 2, false>& atom_gradients,const Grid<double, 2, false>& true_gradients,Grid<double, 4, false>& diff) const;
 
 }

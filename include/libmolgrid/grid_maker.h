@@ -55,7 +55,7 @@ class GridMaker {
     template<typename Dtype, bool isCUDA>
     void check_vector_args(const Grid<float, 2, isCUDA>& coords,
         const Grid<float, 2, isCUDA>& type_vector, const Grid<float, 1, isCUDA>& radii,
-        Grid<Dtype, 4, isCUDA>& out) const;
+        const Grid<Dtype, 4, isCUDA>& out) const;
   public:
 
     GridMaker(float res = 0, float d = 0, bool bin = false, bool rti = false, float rscale=1.0, float grm = 1.0) :
@@ -391,6 +391,109 @@ class GridMaker {
         const Grid<Dtype, 4, true>& grid,
         Grid<Dtype, 2, true>& atom_gradients,  Grid<Dtype, 2, true>& type_gradients) const;
 
+    // Docstring_GridMaker_backward_gradients_1
+    /* \brief Generate gradients of atom/type gradients. (CPU)
+     * Must provide atom coordinates, types, and radii that defined the original grid in forward
+     * and grid gradients from backward.
+     * @param[in] center of grid
+     * @param[in] coordinates (Nx3)
+     * @param[in] type vectors (NxT)
+     * @param[in] radii (N)
+     * @param[in] a 4D grid of gradients
+     * @param[in] atomic_gradients vector quantities for each atom
+     * @param[in] type_gradients vector quantities for each atom
+     * @param[out] diffdiff a 4D grid of gradients of gradients
+     * @param[out] atom_diffdiff vector quantities for each atom
+     * @param[out] type_diffdiff vector quantities for each atom*
+     *
+     */
+    template <typename Dtype>
+    void backward_gradients(float3 grid_center,  const Grid<float, 2, false>& coords,
+        const Grid<float, 2, false>& type_vectors, const Grid<float, 1, false>& radii,
+        const Grid<Dtype, 4, false>& diff,
+        const Grid<Dtype, 2, false>& atom_gradients, const Grid<Dtype, 2, false>& type_gradients,
+        Grid<Dtype, 4, false>& diffdiff,
+        Grid<Dtype, 2, false>& atom_diffdiff, Grid<Dtype, 2, false>& type_diffdiff);
+
+    // Docstring_GridMaker_backward_gradients_2
+    /* \brief Generate gradients of atom/type gradients. (GPU)
+     * Must provide atom coordinates, types, and radii that defined the original grid in forward
+     * and grid gradients from backward.
+     * @param[in] center of grid
+     * @param[in] coordinates (Nx3)
+     * @param[in] type vectors (NxT)
+     * @param[in] radii (N)
+     * @param[in] a 4D grid of gradients
+     * @param[in] atomic_gradients vector quantities for each atom
+     * @param[in] type_gradients vector quantities for each atom
+     * @param[out] diffdiff a 4D grid of gradients of gradients
+     * @param[out] atom_diffdiff vector quantities for each atom
+     * @param[out] type_diffdiff vector quantities for each atom*
+     *
+     */
+    template <typename Dtype>
+    void backward_gradients(float3 grid_center,  const Grid<float, 2, true>& coords,
+        const Grid<float, 2, true>& type_vectors, const Grid<float, 1, true>& radii,
+        const Grid<Dtype, 4, true>& diff,
+        const Grid<Dtype, 2, true>& atom_gradients, const Grid<Dtype, 2, true>& type_gradients,
+        Grid<Dtype, 4, true>& diffdiff,
+        Grid<Dtype, 2, true>& atom_diffdiff, Grid<Dtype, 2, true>& type_diffdiff);
+
+    // Docstring_GridMaker_backward_gradients_3
+    /* \brief Generate gradients of atom/type gradients. (CPU)
+     * Must provide CoordinateSet that defined the original grid in forward
+     * and grid gradients from backward.
+     * @param[in] in coordinate set
+     * @param[in] a 4D grid of gradients
+     * @param[in] atomic_gradients vector quantities for each atom
+     * @param[in] type_gradients vector quantities for each atom
+     * @param[out] diffdiff a 4D grid of gradients of gradients
+     * @param[out] atom_diffdiff vector quantities for each atom
+     * @param[out] type_diffdiff vector quantities for each atom*
+     *
+     */
+    template <typename Dtype>
+    void backward_gradients(float3 grid_center,   const CoordinateSet& in,
+        const Grid<Dtype, 4, false>& diff,
+        const Grid<Dtype, 2, false>& atom_gradients, const Grid<Dtype, 2, false>& type_gradients,
+        Grid<Dtype, 4, false>& diffdiff,
+        Grid<Dtype, 2, false>& atom_diffdiff, Grid<Dtype, 2, false>& type_diffdiff) {
+      if(in.has_vector_types()) {
+        backward_gradients(grid_center, in.coords.cpu(), in.type_vector.cpu(), in.radii.cpu(), diff,
+            atom_gradients, type_gradients, diffdiff, atom_diffdiff, type_diffdiff);
+      } else {
+        throw std::invalid_argument("Vector types missing from coordinate set");
+      }
+    }
+
+    // Docstring_GridMaker_backward_gradients_4
+    /* \brief Generate gradients of atom/type gradients. (GPU)
+     * Must provide CoordinateSet that defined the original grid in forward
+     * and grid gradients from backward.
+     * @param[in] in coordinate set
+     * @param[in] a 4D grid of gradients
+     * @param[in] atomic_gradients vector quantities for each atom
+     * @param[in] type_gradients vector quantities for each atom
+     * @param[out] diffdiff a 4D grid of gradients of gradients
+     * @param[out] atom_diffdiff vector quantities for each atom
+     * @param[out] type_diffdiff vector quantities for each atom
+     *
+     */
+    template <typename Dtype>
+    void backward_gradients(float3 grid_center,   const CoordinateSet& in,
+        const Grid<Dtype, 4, true>& diff,
+        const Grid<Dtype, 2, true>& atom_gradients, const Grid<Dtype, 2, true>& type_gradients,
+        Grid<Dtype, 4, true>& diffdiff,
+        Grid<Dtype, 2, true>& atom_diffdiff, Grid<Dtype, 2, true>& type_diffdiff) {
+      if(in.has_vector_types()) {
+        backward_gradients(grid_center, in.coords.gpu(), in.type_vector.gpu(), in.radii.gpu(), diff,
+            atom_gradients, type_gradients, diffdiff, atom_diffdiff, type_diffdiff);
+      } else {
+        throw std::invalid_argument("Vector types missing from coordinate set");
+      }
+    }
+
+
     /* \brief Propagate relevance (in diff) onto atoms. (CPU)
      * Index types are required.
      * @param[in] center of grid
@@ -462,78 +565,6 @@ class GridMaker {
         Grid<Dtype, 1, true>& relevance) const;
 
 
-    // Docstring_GridMaker_backward_grad_1
-    /* \brief Generate higher order grid gradients from atomic gradient loss. (CPU)
-     * Must provide atom coordinates that defined the original grid in forward
-     * Index types are required
-     * @param[in] center of grid
-     * @param[in] coordinate set
-     * @param[in] atomic_gradients vector quantities for each atom
-     * @param[in] true_gradients vector quantities for each atom
-     * @param[out] a 4D grid of higher order gradients
-     */
-    template <typename Dtype>
-    void backward_grad(float3 grid_center, const CoordinateSet& in,
-                  const Grid<Dtype, 2, false>& atomic_gradients,const Grid<Dtype, 2, false>& true_gradients,Grid<Dtype, 4, false>& diff) const {
-        if(in.has_indexed_types()) {
-            backward_grad(grid_center, in.coords.cpu(), in.type_index.cpu(), in.radii.cpu(),  atomic_gradients, true_gradients,diff);
-        } else {
-            throw std::invalid_argument("Index types missing from coordinate set"); //could setup dummy types here
-        }
-    }
-
-    // Docstring_GridMaker_backward_grad_2
-    /* \brief Generate higher order grid gradients from atomic gradient loss. (GPU)
-     * Must provide atom coordinates that defined the original grid in forward
-     * Index types are required.
-     * @param[in] center of grid
-     * @param[in] coordinate set
-     * @param[in] atomic_gradients vector quantities for each atom
-     * @param[in] true_gradients vector quantities for each atom
-     * @param[out] diff a 4D grid of higher order gradients
-     */
-    template <typename Dtype>
-    void backward_grad(float3 grid_center, const CoordinateSet& in,
-                  const Grid<Dtype, 2, true>& atomic_gradients, const Grid<Dtype, 2, true>& true_gradients,Grid<Dtype, 4, true>& diff ) const {
-        if(in.has_indexed_types()) {
-            backward_grad(grid_center, in.coords.gpu(), in.type_index.gpu(), in.radii.gpu(), atomic_gradients, true_gradients, diff);
-        } else {
-            throw std::invalid_argument("Index types missing from coordinate set");
-        }
-    }
-
-    // Docstring_GridMaker_backward_3
-    /* \brief Generate higher order grid gradients from atomic gradient loss. (CPU)
-     * Must provide atom coordinates, types, and radii that defined the original grid in forward
-     * @param[in] center of grid
-     * @param[in] coordinates (Nx3)
-     * @param[in] type indices (N integers stored as floats)
-     * @param[in] radii (N)
-     * @param[in] atomic_gradients vector quantities for each atom
-     * @param[in] true_gradients vector quantities for each atom
-     * @param[out]a 4D grid of higher order gradients
-     */
-    template <typename Dtype>
-    void backward_grad(float3 grid_center, const Grid<float, 2, false>& coords,
-                  const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
-                  const Grid<Dtype, 2, false>& atom_gradients,const Grid<Dtype, 2, false>& true_gradients,Grid<Dtype, 4, false>& diff) const;
-
-    // Docstring_GridMaker_backward_4
-    /* \brief Generate higher order grid gradients from atomic gradient loss. (GPU)
-     * Must provide atom coordinates, types, and radii that defined the original grid in forward
-     * @param[in] center of grid
-     * @param[in] coordinates(Nx3)
-     * @param[in] type indices (N integers stored as floats)
-     * @param[in] radii (N)
-     * @param[in] atomic_gradients vector quantities for each atom
-     * @param[in] true_gradients vector quantities for each atom
-     * @param[out]a 4D grid of higher order gradients
-     */
-    template <typename Dtype>
-    void backward_grad(float3 grid_center, const Grid<float, 2, true>& coords,
-                  const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
-                  const Grid<Dtype, 2, true>& atom_gradients,const Grid<Dtype, 2, true>& true_gradients, Grid<Dtype, 4, true>& grid ) const;
-
     /* \brief The function that actually updates the voxel density values.
      * @param[in] natoms number of possibly relevant atoms
      * @param[in] grid origin
@@ -575,10 +606,6 @@ class GridMaker {
     template <typename Dtype>
     float calc_atom_relevance_cpu(const float3& grid_origin, const Grid1f& coord,  const Grid<Dtype, 3, false>& density, const Grid<Dtype, 3, false>& diff, float radius) const;
 
-    //calculate higher order grid gradient for single atom - cpu
-    template <typename Dtype>
-    void calc_grid_gradient_cpu(const float3& grid_origin, const Grid1f& coord, float radius, const Grid<Dtype, 1, false>& atom_gradient, const Grid<Dtype, 1, false>& true_gradient,const unsigned n, Dtype* gridptr)const;
-
     /* \brief Find grid indices in one dimension that bound an atom's density.
      * @param[in] grid_origin grid min coordinate in a given dimension
      * @param[in] coord atom coordinate in the same dimension
@@ -601,14 +628,22 @@ class GridMaker {
     CUDA_CALLABLE_MEMBER float calc_point(float ax, float ay, float az, float ar,
         const float3& grid_coords) const;
 
+    //derivative of density with respect to distance
+    CUDA_CALLABLE_MEMBER float density_grad_dist(float dist, float ar) const;
+
+
+    //derivative of density type grad with respect to coord
+    CUDA_CALLABLE_MEMBER float type_grad_grad(float a, float x, float dist, float r);
+
+    //derivative of density_grad_dist - does not include tmult or G
+    CUDA_CALLABLE_MEMBER float atom_density_grad_grad(float a, float x, float dist, float r);
+
+    //derivative of density_grad_dist with respect to different coord
+    CUDA_CALLABLE_MEMBER float atom_density_grad_grad_other(float a, float x, float b, float y, float dist, float r);
+
     //accumulate gradient from grid point x,y,z for provided atom at ax,ay,az
     CUDA_CALLABLE_MEMBER void accumulate_atom_gradient(float ax, float ay, float az,
             float x, float y, float z, float radius, float gridval, float3& agrad) const;
-
-    //accumulate higher order gradient from provided atom at ax,ay,az for grid point x,y,z
-    template <typename Dtype>
-    CUDA_CALLABLE_MEMBER void accumulate_grid_gradient(float ax, float ay, float az,
-                                                       float x, float y, float z, float radius, float3& agrad, float3& tgrad,unsigned n,Dtype* gridval) const;
 
     template<typename Dtype> __global__ friend //member functions don't kernel launch
     void set_atom_gradients(GridMaker G, float3 grid_center, Grid2fCUDA coords, Grid1fCUDA type_index,
@@ -617,12 +652,14 @@ class GridMaker {
     void set_atom_type_gradients(GridMaker G, float3 grid_origin, Grid2fCUDA coords, Grid2fCUDA type_vector,
         unsigned ntypes, Grid1fCUDA radii, Grid<Dtype, 4, true> grid, Grid<Dtype, 2, true> atom_gradients,
         Grid<Dtype, 2, true> type_gradients);
+    template<typename Dtype, bool RadiiFromTypes> __global__ friend
+    void set_atom_type_grad_grad(GridMaker G, float3 grid_origin, Grid2fCUDA coords, Grid2fCUDA type_vector,
+        unsigned ntypes, Grid1fCUDA radii, Grid<Dtype, 4, true> diff, Grid<Dtype, 2, true> atom_gradients,
+        Grid<Dtype, 2, true> type_gradients, Grid<Dtype, 4, true> diffdiff, Grid<Dtype, 2, true> atom_diffdiff,
+        Grid<Dtype, 2, true> type_diffdiff);
     template<typename Dtype> __global__ friend
     void set_atom_relevance(GridMaker G, float3 grid_origin, Grid2fCUDA coords, Grid1fCUDA type_index,
         Grid1fCUDA radii, Grid<Dtype, 4, true> densitygrid, Grid<Dtype, 4, true> diffgrid, Grid<Dtype, 1, true> relevance);
-    template<typename Dtype> __global__ friend
-    void set_grid_gradients(GridMaker G, float3 grid_center, Grid2fCUDA coords, Grid1fCUDA type_index,
-                            Grid1fCUDA radii, Grid<Dtype, 2, true> atom_gradients, Grid<Dtype, 2, true> true_gradients, unsigned n,Grid<Dtype, 4, true> grid);
 };
 
 } /* namespace libmolgrid */
