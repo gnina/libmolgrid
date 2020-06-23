@@ -378,6 +378,7 @@ def test_example_provider_epoch_iteration():
         cnt += 1
     assert cnt == 12   
     
+    values = set()
     e = molgrid.ExampleProvider(data_root=datadir+"/structs",default_batch_size=8,balanced=True,stratify_receptor=True,iteration_scheme=molgrid.IterationScheme.SmallEpoch)
     e.populate(fname)
     
@@ -388,6 +389,11 @@ def test_example_provider_epoch_iteration():
     small = 0
     large = 0
     for batch in e:
+        for ex in batch:
+            key = ex.coord_sets[0].src+":"+ex.coord_sets[1].src
+            #small epoch should see an example at _most_ once
+            assert key not in values
+            values.add(key)
         cnt += 1
         s = e.get_small_epoch_num()
         assert s >= small
@@ -407,10 +413,14 @@ def test_example_provider_epoch_iteration():
     assert e.small_epoch_size() == 112
     assert e.large_epoch_size() == 2240
     
+    values = set()
     cnt = 0
     small = 0
     large = 0
     for batch in e:
+        for ex in batch:
+            key = ex.coord_sets[0].src+":"+ex.coord_sets[1].src
+            values.add(key)
         cnt += 1
         s = e.get_small_epoch_num()
         assert s >= small
@@ -423,3 +433,4 @@ def test_example_provider_epoch_iteration():
             assert l == large+1
             large = l            
     assert cnt == 224   
+    assert len(values) == e.size() #large epoch should see everything at least once
