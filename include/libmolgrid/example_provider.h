@@ -24,6 +24,8 @@ class ExampleProvider {
     std::shared_ptr<ExampleRefProvider> provider;
     ExampleExtractor extractor;
     ExampleProviderSettings init_settings; //save settings created with
+    size_t last_epoch = 0;
+
   public:
 
     /// return provider as specifyed by settings
@@ -58,18 +60,64 @@ class ExampleProvider {
     virtual void next(Example& ex);
     virtual Example next() { Example ex; next(ex); return ex; }
 
+    /** \brief Return current small epoch number
+     *  A small epoch occurs once every training example has been
+     *  seen at MOST once.  For example, when providing a balanced
+     *  view of unbalanced data, a small epoch will complete once the
+     *  less common class has been iterated over.
+     *  Note this is the epoch of the next example to be provided, not the previous.
+     */
+    virtual size_t get_small_epoch_num() const { return provider->get_small_epoch_num(); }
+
+    /** \brief Return current large epoch number
+     *  A large epoch occurs once every training example has been
+     *  seen at LEAST once.  For example, when providing a balanced
+     *  view of unbalanced data, a large epoch will complete once the
+     *  more common class has been iterated over.
+     *  Note this is the epoch of the next example to be provided, not the previous.
+     */
+    virtual size_t get_large_epoch_num() const { return provider->get_large_epoch_num(); }
+
+    /// Return number of example in small epoch
+    virtual size_t small_epoch_size() const { return provider->small_epoch_size(); }
+
+    /// Return number of example in large epoch
+    virtual size_t large_epoch_size() const { return provider->large_epoch_size(); }
+
     ///skip over the first n examples
     virtual void skip(unsigned n);
 
     ///return settings created with
     const ExampleProviderSettings& settings() const { return init_settings; }
 
-    ///provide a batch of examples, unspecified or 0 batch_size uses default batch size
+
     virtual void next_batch(std::vector<Example>& ex, unsigned batch_size=0);
+
+    ///provide a batch of examples, unspecified or 0 batch_size uses default batch size
     virtual std::vector<Example> next_batch(unsigned batch_size=0) {
       std::vector<Example> ex;
       next_batch(ex, batch_size);
       return ex;
+    }
+
+    ///return true if we have crossed into a new epoch (or are about to)
+    ///Note that once this returns true once, it won't again until the next
+    ///epoch has been consumed.
+    bool at_new_epoch() {
+      if(init_settings.iteration_scheme == LargeEpoch) {
+        size_t e = provider->get_large_epoch_num();
+        if(e != last_epoch) {
+          last_epoch = e;
+          return true;
+        }
+      } else if(init_settings.iteration_scheme == SmallEpoch) {
+        size_t e = provider->get_small_epoch_num();
+        if(e != last_epoch) {
+          last_epoch = e;
+          return true;
+        }
+      }
+      return false;
     }
 
     ExampleExtractor& get_extractor() { return extractor; }

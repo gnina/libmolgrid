@@ -339,4 +339,87 @@ def test_duplicated_examples():
         sqsum = np.square(b[i].coord_sets[1].coords.tonumpy() - b[i].coord_sets[3].coords.tonumpy()).sum()
         assert sqsum > 0
         #receptors should be the same
-        sqsum = np.square(b[i].coord_sets[0].coords.tonumpy() - b[i].coord_sets[2].coords.tonumpy()).sum()        
+        sqsum = np.square(b[i].coord_sets[0].coords.tonumpy() - b[i].coord_sets[2].coords.tonumpy()).sum()
+        
+        
+def test_example_provider_epoch_iteration():
+    fname = datadir+"/small.types"
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs",default_batch_size=10,iteration_scheme=molgrid.IterationScheme.LargeEpoch)
+    e.populate(fname)
+    
+    assert e.small_epoch_size() == 1000
+    assert e.large_epoch_size() == 1000
+    
+    cnt = 0
+    for batch in e:
+        cnt += 1
+    assert cnt == 100
+    
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs",default_batch_size=10,balanced=True,iteration_scheme=molgrid.IterationScheme.LargeEpoch)
+    e.populate(fname)
+    
+    assert e.small_epoch_size() == 326
+    assert e.large_epoch_size() == 1674
+    
+    cnt = 0
+    for batch in e:
+        cnt += 1
+    assert cnt == 168
+    
+    
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs",default_batch_size=10,balanced=False,stratify_receptor=True,iteration_scheme=molgrid.IterationScheme.SmallEpoch)
+    e.populate(fname)
+    
+    assert e.small_epoch_size() == 120
+    assert e.large_epoch_size() == 1260
+    
+    cnt = 0
+    for batch in e:
+        cnt += 1
+    assert cnt == 12   
+    
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs",default_batch_size=8,balanced=True,stratify_receptor=True,iteration_scheme=molgrid.IterationScheme.SmallEpoch)
+    e.populate(fname)
+    
+    assert e.small_epoch_size() == 112
+    assert e.large_epoch_size() == 2240
+    
+    cnt = 0
+    small = 0
+    large = 0
+    for batch in e:
+        cnt += 1
+        s = e.get_small_epoch_num()
+        assert s >= small
+        if s > small:
+            assert s == small+1
+            small = s
+        l = e.get_large_epoch_num()
+        assert l >= large
+        if l > large:
+            assert l == large+1
+            large = l            
+    assert cnt == 14      
+    
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs",default_batch_size=10,balanced=True,stratify_receptor=True,iteration_scheme=molgrid.IterationScheme.LargeEpoch)
+    e.populate(fname)
+    
+    assert e.small_epoch_size() == 112
+    assert e.large_epoch_size() == 2240
+    
+    cnt = 0
+    small = 0
+    large = 0
+    for batch in e:
+        cnt += 1
+        s = e.get_small_epoch_num()
+        assert s >= small
+        if s > small:
+            assert s == small+1
+            small = s
+        l = e.get_large_epoch_num()
+        assert l >= large
+        if l > large:
+            assert l == large+1
+            large = l            
+    assert cnt == 224   
