@@ -684,6 +684,11 @@ MAKE_ALL_GRIDS()
   class_<ExampleProviderSettings>("ExampleProviderSettings")
       MAKE_SETTINGS();
 
+  enum_<IterationScheme>("IterationScheme")
+      .value("Continuous",Continuous)
+      .value("LargeEpoch",LargeEpoch)
+      .value("SmallEpoch",SmallEpoch);
+
   class_<Example>("Example", "@Docstring_Example@")
     .def("num_coordinates", &Example::num_coordinates)
     .def("num_types", &Example::num_types, (arg("unique_index_type")=true))
@@ -724,8 +729,21 @@ MAKE_ALL_GRIDS()
       .def("next", static_cast<Example (ExampleProvider::*)()>(&ExampleProvider::next))
       .def("next_batch", static_cast< std::vector<Example> (ExampleProvider::*)(unsigned)>(&ExampleProvider::next_batch),
           (arg("batch_size")=0))
+      .def("get_small_epoch_num", &ExampleProvider::get_small_epoch_num,"Return small epoch number, where an epoch means every example has been seen at MOST once.")
+      .def("get_large_epoch_num", &ExampleProvider::get_large_epoch_num, "Return large epoch number, where an epoch means every example has been seen at LEAST once.")
+      .def("small_epoch_size", &ExampleProvider::small_epoch_size,"Return size of small epoch")
+      .def("large_epoch_size", &ExampleProvider::large_epoch_size,"Return size of large epoch")
       .def("__iter__", +[](object self) { return self;})
-      .def("__next__", +[](ExampleProvider& self) -> std::vector<Example> { return self.next_batch();});
+      .def("__next__", +[](ExampleProvider& self) -> std::vector<Example> {
+            if(self.at_new_epoch()) {
+              PyErr_SetString(PyExc_StopIteration, "End of epoch.");
+              boost::python::throw_error_already_set();
+              return std::vector<Example>();
+            } else {
+              return self.next_batch();
+            }
+          });
+
 
   //grid maker
   class_<GridMaker>("GridMaker", "@Docstring_GridMaker@",

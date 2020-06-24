@@ -91,7 +91,9 @@ void UniformExampleRefProvider::nextref(ExampleRef& ex)
   if(current >= all.size())
   {
     setup(); //reset current and shuffle if necessary
+    epoch++;
   }
+  cnt++;
 }
 
 void BalancedExampleRefProvider::addref(const ExampleRef& ex)
@@ -116,12 +118,14 @@ void BalancedExampleRefProvider::setup()
 void BalancedExampleRefProvider::nextref(ExampleRef& ex)
 {
   //alternate between actives and decoys
-  if(current % 2 == 0)
+  if(current % 2 == 0) {
     actives.nextref(ex);
-  else
+  } else {
     decoys.nextref(ex);
+  }
 
   current++;
+  cnt++;
 }
 
 

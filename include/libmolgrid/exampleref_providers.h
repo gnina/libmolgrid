@@ -21,6 +21,8 @@ namespace libmolgrid {
 
 /// abstract class for storing training example references
 class ExampleRefProvider {
+  protected:
+    size_t cnt = 1; // for epoch calculations, want epoch of _next_ example
 
   public:
     ExampleRefProvider() {}
@@ -37,6 +39,18 @@ class ExampleRefProvider {
     virtual size_t num_labels() const = 0;  
     ///read in all the example refs from lines, but does not setup
     virtual int populate(std::istream& lines, int numlabels);
+
+    /// Return current small epoch number
+    virtual size_t get_small_epoch_num() const { return cnt/small_epoch_size(); }
+
+    /// Return current large epoch number
+    virtual size_t get_large_epoch_num() const { return cnt/large_epoch_size(); }
+
+    /// Return number of example in small epoch
+    virtual size_t small_epoch_size() const = 0;
+
+    /// Return number of example in large epoch
+    virtual size_t large_epoch_size() const = 0;
 };
 
 
@@ -47,6 +61,7 @@ class UniformExampleRefProvider: public ExampleRefProvider
   size_t current = 0;
   size_t current_copy = 0;
   size_t nlabels = 0;
+  size_t epoch = 0;
 
   bool randomize = false;
   size_t ncopies = 1;
@@ -62,6 +77,12 @@ public:
   void setup();
   void nextref(ExampleRef& ex);
   unsigned size() const { return all.size(); }
+
+  virtual size_t get_small_epoch_num() const { return epoch; }
+  virtual size_t get_large_epoch_num() const { return epoch; }
+
+  virtual size_t small_epoch_size() const { return size(); }
+  virtual size_t large_epoch_size() const { return size(); }
 };
 
 
@@ -92,6 +113,9 @@ public:
 
   void next_active(ExampleRef& ex) {  actives.nextref(ex); }
   void next_decoy(ExampleRef& ex) { decoys.nextref(ex); }
+
+  virtual size_t small_epoch_size() const { return 2*std::min(actives.size(),decoys.size()); }
+  virtual size_t large_epoch_size() const { return 2*std::max(actives.size(),decoys.size()); }
 };
 
 
@@ -133,9 +157,22 @@ public:
       p1.nextref(ex);
     else
       p2.nextref(ex);
+    cnt++;
   }
 
   unsigned size() const { return p1.size()+p2.size(); }
+
+  /// this is the expected size of the epoch
+  virtual size_t small_epoch_size() const
+  {
+    return std::min(p1.get_small_epoch_num()/sample_rate, p2.get_small_epoch_num()/(1.0-sample_rate));
+  }
+
+  virtual size_t large_epoch_size() const
+  {
+    return std::max(p1.get_large_epoch_num()/sample_rate, p2.get_large_epoch_num()/(1.0-sample_rate));
+  }
+
 };
 
 
@@ -208,13 +245,13 @@ public:
     if(currenti >= examples.size())
     {
       currenti = 0;
-      if(currentk != 0) std::logic_error("Invalid indices");
+      if(currentk != 0) throw std::logic_error("Invalid indices");
       if(randomize) shuffle(examples.begin(), examples.end(), random_engine);
     }
-
     if(examples[currenti].size() == 0) throw std::logic_error("No valid sub-stratified examples.");
     examples[currenti].nextref(ex);
     currentk++;
+    cnt++;
   }
 
   unsigned size() const
@@ -226,6 +263,27 @@ public:
       ret += examples[i].size();
     }
     return ret;
+  }
+
+  virtual size_t small_epoch_size() const
+  {
+    if(examples.size() == 0)  throw std::invalid_argument("No valid stratified examples.");
+
+    size_t smallest = examples[0].small_epoch_size();
+    for(unsigned i = 1, n = examples.size(); i < n; i++) {
+      smallest = std::min(smallest, examples[i].small_epoch_size());
+    }
+    return smallest*examples.size();
+  }
+
+  virtual size_t large_epoch_size() const
+  {
+    if(examples.size() == 0)  throw std::invalid_argument("No valid stratified examples.");
+    size_t largest = 0;
+    for(unsigned i = 0, n = examples.size(); i < n; i++) {
+      largest = std::max(largest, examples[i].large_epoch_size());
+    }
+    return largest*examples.size();
   }
 };
 
@@ -317,6 +375,7 @@ public:
   {
     examples[currenti].nextref(ex);
     currenti = (currenti+1)%examples.size();
+    cnt++;
   }
 
   unsigned size() const
@@ -328,6 +387,27 @@ public:
       ret += examples[i].size();
     }
     return ret;
+  }
+
+  virtual size_t small_epoch_size() const
+  {
+    if(examples.size() == 0)  throw std::invalid_argument("No valid stratified examples.");
+
+    size_t smallest = examples[0].small_epoch_size();
+    for(unsigned i = 1, n = examples.size(); i < n; i++) {
+      smallest = std::min(smallest, examples[i].small_epoch_size());
+    }
+    return smallest*examples.size();
+  }
+
+  virtual size_t large_epoch_size() const
+  {
+    if(examples.size() == 0)  throw std::invalid_argument("No valid stratified examples.");
+    size_t largest = 0;
+    for(unsigned i = 0, n = examples.size(); i < n; i++) {
+      largest = std::max(largest, examples[i].large_epoch_size());
+    }
+    return largest*examples.size();
   }
 };
 
@@ -422,12 +502,24 @@ public:
     ex.group = group;
     ex.seqcont = current_ts > 0;
     current_group_index++; //read from next group next
+    cnt++;
   }
 
   //return number of groups
   unsigned size() const
   {
     return examples.size();
+  }
+
+  //each group counts once
+  virtual size_t small_epoch_size() const
+  {
+    return examples.small_epoch_size();
+  }
+  //each group counts once
+  virtual size_t large_epoch_size() const
+  {
+    return examples.large_epoch_size();
   }
 };
 
