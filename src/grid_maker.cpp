@@ -589,7 +589,7 @@ void GridMaker::backward_gradients(float3 grid_center,  const Grid<float, 2, fal
               //in backwards did
               // agrad.x += -(dist_x / dist) * (agrad_dist * gridval)
               // differentiate with respect to gridval
-              if(isfinite(agrad_dist)) { //overlapping grid position
+              if(std::isfinite(agrad_dist)) { //overlapping grid position
                 float gval = 0.0;
                 if(dist > 0) {
                   gval += -(dist_x / dist) * (agrad_dist * agrad.x);
