@@ -91,6 +91,10 @@ def test_gnina_example_provider():
     assert list(clig.coords[9]) == approx([27.0536, 3.2453, 32.4511])
     assert list(clig.type_index) == [8.0, 1.0, 1.0, 9.0, 10.0, 0.0, 0.0, 1.0, 9.0, 8.0]
 
+    batch = e.next_batch(1)
+    a = np.array([0],dtype=np.float32)
+    batch.extract_label(1,a)
+
 
 def test_cached_example_provider():
     fname = datadir+"/small.types"
