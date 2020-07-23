@@ -284,7 +284,7 @@ void Example::extract_label(const std::vector<Example>& examples, unsigned label
   //unpack into a single vector
   vector<float> labels(N);
   for(unsigned i = 0; i < N; i++) {
-    if(labelpos >= examples[i].labels.size()) throw std::out_of_range("labelpos invalid (nonuniform labels): " +itoa(labelpos) + " >= " + itoa(labels.size()));
+    if(labelpos >= examples[i].labels.size()) throw std::out_of_range("labelpos invalid (nonuniform labels): " +itoa(labelpos) + " >= " + itoa(examples[i].labels.size()));
     labels[i] = examples[i].labels[labelpos];
   }
    if(isCUDA) {
