@@ -15,6 +15,7 @@ for name in dir(molgrid):
     if (name.startswith('Grid') or name.startswith('MGrid')):
         if inspect.isclass(C) and C.__module__.startswith('molgrid'):
             setattr(C,'tonumpy',tonumpy)
+            setattr(C, '__array__',tonumpy)
 
 #extend gridmaker to generate new numpy arrays
 #extend grid maker to create pytorch Tensor

@@ -45,6 +45,7 @@ def test_train_torch_cnn():
     def weights_init(m):
         if isinstance(m, nn.Conv3d) or isinstance(m, nn.Linear):
             init.xavier_uniform_(m.weight.data)
+            init.constant_(m.bias.data, 0)
 
     batch_size = 50
     e = molgrid.ExampleProvider(data_root=datadir+"/structs",balanced=True,shuffle=True)

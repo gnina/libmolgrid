@@ -284,7 +284,7 @@ void Example::extract_label(const std::vector<Example>& examples, unsigned label
   //unpack into a single vector
   vector<float> labels(N);
   for(unsigned i = 0; i < N; i++) {
-    if(labelpos >= labels.size()) throw std::out_of_range("labelpos invalid (nonuniform labels): " +itoa(labelpos) + " >= " + itoa(labels.size()));
+    if(labelpos >= examples[i].labels.size()) throw std::out_of_range("labelpos invalid (nonuniform labels): " +itoa(labelpos) + " >= " + itoa(examples[i].labels.size()));
     labels[i] = examples[i].labels[labelpos];
   }
    if(isCUDA) {
@@ -301,7 +301,7 @@ template void Example::extract_label(const vector<Example>&, unsigned, Grid<floa
 bool is_numeric(const string& number)
 {
     char* end = nullptr;
-    strtod(number.c_str(), &end);  //if entire string is number, end will be set to end of string
+    strtold(number.c_str(), &end);  //if entire string is number, end will be set to end of string
 
     return end != nullptr && *end == 0;  //could also check end != number.c_str() if whole string doesn't need to be numerical
 }
