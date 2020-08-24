@@ -62,7 +62,9 @@ CoordinateSet::CoordinateSet(OBMol *mol, const AtomTyper& typer)
 
   if(typer.is_vector_typer()) {
     type_vector = MGrid2f(N,max_type);
-    memcpy(type_vector.cpu().data(), &vector_types[0], sizeof(float)*N*max_type);
+    for(unsigned i = 0; i < N; i++) {
+        memcpy(type_vector[i].cpu().data(), &vector_types[i][0], sizeof(float)*max_type);
+    }
   } else {
     type_index = MGrid1f(N);
     memcpy(type_index.cpu().data(), &types[0], sizeof(float)*N);

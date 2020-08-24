@@ -1,0 +1,6 @@
+1 3.3747 187l/187l_rec.pdb 187l/187l_ligand.sdf 187l/187l_ligand_uff.sdf # 0.699523 -6.26731  Note these labels aren't right
+1 6.0000 1ado/1ado_rec.pdb 1ado/1ado_ligand.sdf  1ado/1ado_ligand_uff.sdf  # 1.36452 -5.14354
+1 3.8697 1aj7/1aj7_rec.pdb 1aj7/1aj7_ligand.sdf 1aj7/1aj7_ligand_uff.sdf # 1.7792 
+0 -6.6990 1b3g/1b3g_rec.pdb 1b3g/1b3g_ligand.sdf 1b3g/1b3g_ligand_uff.sdf 
+0 -4.3010 1a30/1a30_rec.pdb 1a30/1a30_ligand.sdf 1a30/1a30_ligand_uff.sdf 
+0 -9.0000 1apv/1apv_rec.pdb 1apv/1apv_ligand.mol2 1apv/1apv_ligand_uff.sdf # 8.62435 -8.17803
