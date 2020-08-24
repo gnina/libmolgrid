@@ -51,6 +51,6 @@ BOOST_AUTO_TEST_CASE(vectortyper) {
             if(vec(i,j) > maxval) maxval = vec(i,j);
         }
     }
-    BOOST_CHECK_LT(maxval, 1.9);
+    BOOST_CHECK_LT(maxval, 34);
 
 }
