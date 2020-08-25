@@ -6,8 +6,8 @@
 #include <iostream>
 #include <iomanip>
 #include <vector>
-#include <openbabel3/openbabel/obconversion.h>
-#include <openbabel3/openbabel/mol.h>
+#include <openbabel/obconversion.h>
+#include <openbabel/mol.h>
 
 #define TOL 0.0001f
 using namespace libmolgrid;
