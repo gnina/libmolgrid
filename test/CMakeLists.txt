@@ -4,6 +4,8 @@
 set(Boost_USE_STATIC_LIBS OFF) #unit_test_framework has to be shared
 find_package(Boost COMPONENTS unit_test_framework system REQUIRED)
 include_directories (${Boost_INCLUDE_DIRS})
+find_package(OpenBabel3 REQUIRED)
+include_directories(SYSTEM ${OPENBABEL3_INCLUDE_DIR})
 
 #get all cpp files
 set( TEST_SRCS

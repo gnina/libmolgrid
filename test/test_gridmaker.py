@@ -307,7 +307,27 @@ def test_vector_types_mol():
     np.testing.assert_allclose(vbackcoordscpu.tonumpy(),vbackcoordsgpu.tonumpy(),atol=1e-4)
     np.testing.assert_allclose(vbacktypescpu.tonumpy(),vbacktypesgpu.tonumpy(),atol=1e-4)
 
+def test_vector_types_duplicate():
+    fname = datadir+"/smalldup.types"
+
+    teste = molgrid.ExampleProvider(molgrid.GninaVectorTyper(),shuffle=False, duplicate_first=True,data_root=datadir+"/structs")
+    teste.populate(fname)
+    batch_size = 1
+    gmaker = molgrid.GridMaker()
+    dims = gmaker.grid_dimensions(molgrid.GninaVectorTyper().num_types()*4)
     
+    tensor_shape = (batch_size,)+dims
+    input_tensor_1 = torch.zeros(tensor_shape, dtype=torch.float32, device='cuda')
+    
+    batch_1 = teste.next_batch(batch_size)
+    gmaker.forward(batch_1, input_tensor_1,random_translation=0.0, random_rotation=False)
+    
+    input_tensor_2 = torch.zeros(tensor_shape, dtype=torch.float32, device='cpu')
+    
+    gmaker.forward(batch_1, input_tensor_2,random_translation=0.0, random_rotation=False)   
+    
+    np.testing.assert_allclose(input_tensor_1.cpu().detach().numpy(),input_tensor_2.detach().numpy(),atol=1e-4)
+    assert input_tensor_1.cpu().detach().numpy().max() < 75
         
 def test_backward_vec():
     g1 = molgrid.GridMaker(resolution=.1,dimension=6.0)

@@ -10,10 +10,10 @@ if(BUILD_CONTAINED_PYTHON)
   set(Boost_USE_STATIC_LIBS ON)
 endif()
 
-if(${CMAKE_VERSION} VERSION_LESS "3.13.0") 
+if(${CMAKE_VERSION} VERSION_LESS "3.12.0") 
 	find_package( Boost COMPONENTS system filesystem python${PYTHON_VERSION_MAJOR} REQUIRED )
 else()
-#minor version numbers requires newer (3.13?) version of cmake   
+#minor version numbers requires newer (3.12?) version of cmake   
   find_package( Boost COMPONENTS system filesystem python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR} REQUIRED )
 endif()
 
