@@ -34,6 +34,7 @@ set( LIBMOLGRID_HEADERS
  ../include/libmolgrid/common.h
  ../include/libmolgrid/grid_io.h
  ../include/libmolgrid/cartesian_grid.h
+ PARENT_SCOPE
 )
 
 #include_directories (${Boost_INCLUDE_DIRS})

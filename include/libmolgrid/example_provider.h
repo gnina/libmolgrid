@@ -17,8 +17,10 @@ namespace libmolgrid {
 
   // Docstring_ExampleProvider
 /** \brief Given a file of examples, provide Example classes one at a time
- * This contains an exampleref provider, which can be configured using a
+ * This contains an ExampleRefProvider, which can be configured using a
  * single settings object if so desired, and an example extractor.
+ * Note that cache_structs is true by default which will load the entirety
+ * of the dataset into memory.
  */
 class ExampleProvider {
     std::shared_ptr<ExampleRefProvider> provider;
