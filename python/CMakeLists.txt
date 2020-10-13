@@ -30,7 +30,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
 endif()
 
 add_custom_command(OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/bindings.cpp COMMAND ${CMAKE_COMMAND} -P set_docstrings.cmake 
-  DEPENDS bindings.in.cpp COMMENT "Inserting docstrings binding.cpp"
+  DEPENDS bindings.in.cpp ${LIBMOLGRID_HEADERS} COMMENT "Inserting docstrings binding.cpp"
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
 set( PYMOLGRID_SOURCES
