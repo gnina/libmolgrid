@@ -37,8 +37,8 @@ class GridMaker {
     float dimension = 0; /// grid side length in Angstroms
     float radius_scale = 1.0; ///pre-multiplier for radius; simplest way to change size of atoms
     float gaussian_radius_multiple = 1.0; /// multiple of atomic radius that gaussian function extends to
-    ///this is not set by the user, for G=gaussian_radius_multiple this is
-    /// $\frac{1+2G^2}{2G}$
+    //this is not set by the user, for G=gaussian_radius_multiple this is
+    // $\frac{1+2G^2}{2G}$
     float final_radius_multiple = 1.5;
 
     float A,B,C; //precalculated coefficients for density

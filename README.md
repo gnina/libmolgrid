@@ -45,6 +45,8 @@ pip3 install numpy pytest pyquaternion
 
 [Install OpenBabel 3.0.](https://github.com/openbabel/openbabel)
 
+`apt install libeigen3-dev libboost-all-dev`
+
 ```git clone https://github.com/gnina/libmolgrid.git
 cd libmolgrid
 mkdir build

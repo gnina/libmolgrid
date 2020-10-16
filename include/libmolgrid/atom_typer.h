@@ -614,7 +614,40 @@ class FileMappedGninaTyper: public MappedAtomIndexTyper<FileAtomMapper, GninaInd
     }
 };
 
+/** \brief default types for receptor
+AliphaticCarbonXSHydrophobe
+AliphaticCarbonXSNonHydrophobe
+AromaticCarbonXSHydrophobe
+AromaticCarbonXSNonHydrophobe
+Bromine Iodine Chlorine Fluorine
+Nitrogen NitrogenXSAcceptor
+NitrogenXSDonor NitrogenXSDonorAcceptor
+Oxygen OxygenXSAcceptor
+OxygenXSDonorAcceptor OxygenXSDonor
+Sulfur SulfurAcceptor
+Phosphorus
+Calcium
+Zinc
+GenericMetal Boron Manganese Magnesium Iron
+ */
 extern FileMappedGninaTyper defaultGninaReceptorTyper;
+
+/** \brief default types for ligand
+AliphaticCarbonXSHydrophobe
+AliphaticCarbonXSNonHydrophobe
+AromaticCarbonXSHydrophobe
+AromaticCarbonXSNonHydrophobe
+Bromine Iodine
+Chlorine
+Fluorine
+Nitrogen NitrogenXSAcceptor
+NitrogenXSDonor NitrogenXSDonorAcceptor
+Oxygen OxygenXSAcceptor
+OxygenXSDonorAcceptor OxygenXSDonor
+Sulfur SulfurAcceptor
+Phosphorus
+GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
+ */
 extern FileMappedGninaTyper defaultGninaLigandTyper;
 
 } /* namespace libmolgrid */
