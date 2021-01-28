@@ -38,6 +38,7 @@ find_package(CUDA REQUIRED)
 find_package(Boost REQUIRED COMPONENTS regex unit_test_framework program_options system filesystem iostreams)
 find_package(OpenBabel3 REQUIRED)
 include_directories(SYSTEM ${OPENBABEL3_INCLUDE_DIR})
+find_package(ZLIB)
 
 # configure a header file to pass some of the CMake settings
 # to the source code

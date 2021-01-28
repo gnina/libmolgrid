@@ -104,7 +104,7 @@ void BalancedExampleRefProvider::addref(const ExampleRef& ex)
   else
     decoys.addref(ex);
   } else {
-    throw std::invalid_argument("Example has no label at position "+ itoa(labelpos) + ".  There are only "+itoa(ex.labels.size())+" labels");
+    throw std::invalid_argument("Example has no label at position "+ itoa(labelpos) + " but a label is required to balance batches.  There are only "+itoa(ex.labels.size())+" labels");
   }
 }
 

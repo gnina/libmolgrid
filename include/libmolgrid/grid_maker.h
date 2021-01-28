@@ -37,7 +37,7 @@ class GridMaker {
     float dimension = 0; /// grid side length in Angstroms
     float radius_scale = 1.0; ///pre-multiplier for radius; simplest way to change size of atoms
     float gaussian_radius_multiple = 1.0; /// multiple of atomic radius that gaussian function extends to
-    //this is not set by the user, for G=gaussian_radius_multiple this is
+    //final_radius_multiple is not set by the user, for G=gaussian_radius_multiple this is
     // $\frac{1+2G^2}{2G}$
     float final_radius_multiple = 1.5;
 
@@ -71,7 +71,7 @@ class GridMaker {
      * @param[in] d dimension of cubic grid side in Angstroms
      * @param[in] bin boolean indicating if binary density should be used
      * @param[in] rscale scaling factor to be uniformly applied to all input radii
-     * @param[in] grm gaussian radius multiplier - cutoff point for switching from Gaussian density to quadratic
+     * @param[in] grm gaussian radius multiplier - cutoff point for switching from Gaussian density to quadratic.  If negative no quadratic component is included and gradient is truncated at this ratio (-1.5 recommended)
      */
     void initialize(float res, float d, bool bin = false, float rscale=1.0, float grm=1.0);
 
