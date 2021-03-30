@@ -163,7 +163,7 @@ class GridMaker {
      * @param[out] a 4D grid
      * @param[in] maximum amount to randomly translate each coordinate (+/-)
      * @param[in] whether or not to randomly rotate
-     * @param[in] grid center to use, if not provided will use center of the last coordinate set before transformation
+     * @param[in] grid center to use, if not provided will use center of the last non-empty coordinate set before transformation
      */
     template <typename Dtype, bool isCUDA>
     void forward(const Example& in, Grid<Dtype, 4, isCUDA>& out,

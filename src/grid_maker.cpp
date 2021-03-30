@@ -127,7 +127,14 @@ void GridMaker::forward(const Example& in, Grid<Dtype, 4, isCUDA>& out,
     float random_translation, bool random_rotation, const float3& center) const {
   float3 c = center;
   if(std::isinf(c.x)) {
-    c = in.sets.back().center();
+      for(int i = (int)in.sets.size()-1; i >= 0; i--) {
+          //last non-empty coordinate set
+          c = float3{0,0,0};
+          if(in.sets[i].size()) {
+              c = in.sets.back().center();
+              break;
+          }
+      }
   }
   Transform t(c, random_translation, random_rotation);
   forward(in, t, out);

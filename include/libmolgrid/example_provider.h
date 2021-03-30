@@ -86,6 +86,9 @@ class ExampleProvider {
     /// Return number of example in large epoch
     virtual size_t large_epoch_size() const { return provider->large_epoch_size(); }
 
+    /// Reset to beginning
+    virtual void reset() { provider->reset(); }
+
     ///skip over the first n examples
     virtual void skip(unsigned n);
 

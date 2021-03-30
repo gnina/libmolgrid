@@ -733,6 +733,7 @@ MAKE_ALL_GRIDS()
       .def("get_large_epoch_num", &ExampleProvider::get_large_epoch_num, "Return large epoch number, where an epoch means every example has been seen at LEAST once.")
       .def("small_epoch_size", &ExampleProvider::small_epoch_size,"Return size of small epoch")
       .def("large_epoch_size", &ExampleProvider::large_epoch_size,"Return size of large epoch")
+      .def("reset", &ExampleProvider::reset, "Reset iterator to beginning")
       .def("__iter__", +[](object self) { return self;})
       .def("__next__", +[](ExampleProvider& self) -> std::vector<Example> {
             if(self.at_new_epoch()) {

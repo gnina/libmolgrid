@@ -51,6 +51,9 @@ class ExampleRefProvider {
 
     /// Return number of example in large epoch
     virtual size_t large_epoch_size() const = 0;
+
+    /// Reset iterators to start
+    virtual void reset() = 0;
 };
 
 
@@ -83,6 +86,8 @@ public:
 
   virtual size_t small_epoch_size() const { return size(); }
   virtual size_t large_epoch_size() const { return size(); }
+
+  virtual void reset() { cnt = 0; current = 0; current_copy = 0; }
 };
 
 
@@ -116,6 +121,8 @@ public:
 
   virtual size_t small_epoch_size() const { return 2*std::min(actives.size(),decoys.size()); }
   virtual size_t large_epoch_size() const { return 2*std::max(actives.size(),decoys.size()); }
+
+  virtual void reset() { actives.reset(); decoys.reset(); current = 0; cnt = 0; }
 };
 
 
@@ -173,6 +180,7 @@ public:
     return std::max(p1.get_large_epoch_num()/sample_rate, p2.get_large_epoch_num()/(1.0-sample_rate));
   }
 
+  virtual void reset() { p1.reset(); p2.reset(); cnt = 0;}
 };
 
 
@@ -284,6 +292,16 @@ public:
       largest = std::max(largest, examples[i].large_epoch_size());
     }
     return largest*examples.size();
+  }
+
+  virtual void reset()
+  {
+      currenti = 0;
+      currentk = 0;
+      cnt = 0;
+      for(unsigned i = 0, n = examples.size(); i < n; i++) {
+        examples[i].reset();
+      }
   }
 };
 
@@ -409,6 +427,15 @@ public:
     }
     return largest*examples.size();
   }
+
+  virtual void reset()
+  {
+      cnt = 0;
+      currenti = 0;
+      for(unsigned i = 0, n = examples.size(); i < n; i++) {
+        examples[i].reset();
+      }
+  }
 };
 
 /** \brief group multiple grids into a single example
@@ -520,6 +547,14 @@ public:
   virtual size_t large_epoch_size() const
   {
     return examples.large_epoch_size();
+  }
+
+  virtual void reset()
+  {
+      cnt = 0;
+      current_ts = 0;
+      current_group_index = 0;
+      examples.reset();
   }
 };
 
