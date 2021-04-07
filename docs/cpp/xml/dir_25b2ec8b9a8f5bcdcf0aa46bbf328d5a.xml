@@ -12,6 +12,7 @@
     <innerfile refid="example__provider_8h">example_provider.h</innerfile>
     <innerfile refid="exampleref__providers_8h">exampleref_providers.h</innerfile>
     <innerfile refid="grid_8h">grid.h</innerfile>
+    <innerfile refid="grid__interpolater_8h">grid_interpolater.h</innerfile>
     <innerfile refid="grid__io_8h">grid_io.h</innerfile>
     <innerfile refid="grid__maker_8h">grid_maker.h</innerfile>
     <innerfile refid="libmolgrid_8h">libmolgrid.h</innerfile>
@@ -22,6 +23,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/"/>
   </compounddef>
 </doxygen>

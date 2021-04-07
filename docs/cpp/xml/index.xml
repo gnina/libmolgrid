@@ -56,9 +56,15 @@
     <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a12e19cfe7fd4a4d5b9d5d7d01840cfd7" kind="function"><name>num_decoys</name></member>
     <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1aba8517b4134d5ddaa29f9b5b3c7654f3" kind="function"><name>next_active</name></member>
     <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1aaec2eeecfd8138a25cc093a24afb75f4" kind="function"><name>next_decoy</name></member>
+    <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a9c66646cb491b4c4620dcfe627f5451d" kind="function"><name>small_epoch_size</name></member>
+    <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ac2a4bfd5fd0579c2377a181a7bae1395" kind="function"><name>large_epoch_size</name></member>
+    <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" kind="function"><name>reset</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028" kind="function"><name>has_group</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" kind="function"><name>check_batch_size</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" kind="function"><name>populate</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1a5edd8a3461f4aa311675b712ae2e1d20" kind="function"><name>get_small_epoch_num</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1ac881e6a758225142e37f3811184b156c" kind="function"><name>get_large_epoch_num</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1adc9bb9be55d353ea973698ff2e50e213" kind="variable"><name>cnt</name></member>
   </compound>
   <compound refid="classlibmolgrid_1_1CallbackIndexTyper" kind="class"><name>libmolgrid::CallbackIndexTyper</name>
     <member refid="classlibmolgrid_1_1CallbackIndexTyper_1aae8b96fe407c4b9b3d4d6488f382b579" kind="typedef"><name>AtomIndexTyperFunc</name></member>
@@ -198,7 +204,7 @@
     <member refid="classlibmolgrid_1_1ExampleExtractor_1a5421a698349e82ca0640e45fa6d35429" kind="function"><name>count_types</name></member>
     <member refid="classlibmolgrid_1_1ExampleExtractor_1ab7d66331e008ab169c9db0f34d441187" kind="function"><name>ExampleExtractor</name></member>
     <member refid="classlibmolgrid_1_1ExampleExtractor_1a553fedda20a9ad9f854140456750e118" kind="function"><name>ExampleExtractor</name></member>
-    <member refid="classlibmolgrid_1_1ExampleExtractor_1abb58def576c5e21833796029c110db75" kind="function"><name>ExampleExtractor</name></member>
+    <member refid="classlibmolgrid_1_1ExampleExtractor_1a53ec0aa6cb7614769917a652f98302bf" kind="function"><name>ExampleExtractor</name></member>
     <member refid="classlibmolgrid_1_1ExampleExtractor_1ab6df92373d981fbc87c81346cf8af157" kind="function"><name>~ExampleExtractor</name></member>
     <member refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" kind="function"><name>extract</name></member>
     <member refid="classlibmolgrid_1_1ExampleExtractor_1a59b7170f88e4d8d17e9f4eb5e3d62712" kind="function"><name>num_types</name></member>
@@ -209,6 +215,7 @@
     <member refid="classlibmolgrid_1_1ExampleProvider_1a1ec12f6bc38d48f2ebd31cd136d7ce07" kind="variable"><name>provider</name></member>
     <member refid="classlibmolgrid_1_1ExampleProvider_1a2fb8829b2e7a2a7ddd15f77963afe1af" kind="variable"><name>extractor</name></member>
     <member refid="classlibmolgrid_1_1ExampleProvider_1a3720a86fa37818f1974f5b1854beef4f" kind="variable"><name>init_settings</name></member>
+    <member refid="classlibmolgrid_1_1ExampleProvider_1a5a204a763731fc6af022857da52a4d64" kind="variable"><name>last_epoch</name></member>
     <member refid="classlibmolgrid_1_1ExampleProvider_1af53336000ea2b0e977ac8b9378ad544f" kind="function"><name>createProvider</name></member>
     <member refid="classlibmolgrid_1_1ExampleProvider_1aa094561f95e431c276b49586faee2cc5" kind="function"><name>ExampleProvider</name></member>
     <member refid="classlibmolgrid_1_1ExampleProvider_1a8a2bae611b9df84ef7d3a65cb0406250" kind="function"><name>ExampleProvider</name></member>
@@ -221,10 +228,16 @@
     <member refid="classlibmolgrid_1_1ExampleProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" kind="function"><name>num_labels</name></member>
     <member refid="classlibmolgrid_1_1ExampleProvider_1ad04cc9d97399f697fbc874ecfd8109b9" kind="function"><name>next</name></member>
     <member refid="classlibmolgrid_1_1ExampleProvider_1a6e452f30328eb48d0549e8e107a1327e" kind="function"><name>next</name></member>
+    <member refid="classlibmolgrid_1_1ExampleProvider_1a5edd8a3461f4aa311675b712ae2e1d20" kind="function"><name>get_small_epoch_num</name></member>
+    <member refid="classlibmolgrid_1_1ExampleProvider_1ac881e6a758225142e37f3811184b156c" kind="function"><name>get_large_epoch_num</name></member>
+    <member refid="classlibmolgrid_1_1ExampleProvider_1a9c66646cb491b4c4620dcfe627f5451d" kind="function"><name>small_epoch_size</name></member>
+    <member refid="classlibmolgrid_1_1ExampleProvider_1ac2a4bfd5fd0579c2377a181a7bae1395" kind="function"><name>large_epoch_size</name></member>
+    <member refid="classlibmolgrid_1_1ExampleProvider_1a7b0e029102ad38f4b814c6523aedb53d" kind="function"><name>reset</name></member>
     <member refid="classlibmolgrid_1_1ExampleProvider_1a77aacd8e83562f61b7b39ba3444c1d25" kind="function"><name>skip</name></member>
     <member refid="classlibmolgrid_1_1ExampleProvider_1a82e186f5abfa7cb53a59487bda88a785" kind="function"><name>settings</name></member>
     <member refid="classlibmolgrid_1_1ExampleProvider_1adb4bb0435e9db0c63c1c7938385939a0" kind="function"><name>next_batch</name></member>
     <member refid="classlibmolgrid_1_1ExampleProvider_1ab2babf03d01c24c15a476d1e200a2de4" kind="function"><name>next_batch</name></member>
+    <member refid="classlibmolgrid_1_1ExampleProvider_1aa8f9b78a17a8e8cd4662da2901fc77af" kind="function"><name>at_new_epoch</name></member>
     <member refid="classlibmolgrid_1_1ExampleProvider_1a23ca85aec357cd4b99a3ed80b70ffed7" kind="function"><name>get_extractor</name></member>
     <member refid="classlibmolgrid_1_1ExampleProvider_1a0f174b60e8abb4557df194fd0ece1610" kind="function"><name>get_provider</name></member>
     <member refid="classlibmolgrid_1_1ExampleProvider_1a59b7170f88e4d8d17e9f4eb5e3d62712" kind="function"><name>num_types</name></member>
@@ -242,6 +255,7 @@
     <member refid="structlibmolgrid_1_1ExampleRef_1af68ef87a6eab8ca94bd25484c273a402" kind="function"><name>ExampleRef</name></member>
   </compound>
   <compound refid="classlibmolgrid_1_1ExampleRefProvider" kind="class"><name>libmolgrid::ExampleRefProvider</name>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1adc9bb9be55d353ea973698ff2e50e213" kind="variable"><name>cnt</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" kind="function"><name>ExampleRefProvider</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1ae32c6ad6aeaeba0d2d2ab74a48a553b5" kind="function"><name>ExampleRefProvider</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a134b2325787965e2ef6260960f06adfc" kind="function"><name>addref</name></member>
@@ -253,6 +267,11 @@
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" kind="function"><name>check_batch_size</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a4af792d6af8f9f676a2dc30f2262158b" kind="function"><name>num_labels</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" kind="function"><name>populate</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1a5edd8a3461f4aa311675b712ae2e1d20" kind="function"><name>get_small_epoch_num</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1ac881e6a758225142e37f3811184b156c" kind="function"><name>get_large_epoch_num</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1ac7d5c78d78fc4ae893f25e5dfdf261cc" kind="function"><name>small_epoch_size</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1a8a7602870f7be094fa3955de5fba5aca" kind="function"><name>large_epoch_size</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1a20dcbdfbd0ec77afc802522bb7e379c1" kind="function"><name>reset</name></member>
   </compound>
   <compound refid="classlibmolgrid_1_1FileAtomMapper" kind="class"><name>libmolgrid::FileAtomMapper</name>
     <member refid="classlibmolgrid_1_1FileAtomMapper_1ad66bc71cd5fd2316bcb5143e48f0044c" kind="variable"><name>old_type_names</name></member>
@@ -457,6 +476,26 @@
     <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a3e983133f9cb7d0571557580480ece9b" kind="function"><name>copyTo</name></member>
     <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1ad3152bc9dfc67f11fa55467ac93460f8" kind="function"><name>copyFrom</name></member>
   </compound>
+  <compound refid="classlibmolgrid_1_1GridInterpolater" kind="class"><name>libmolgrid::GridInterpolater</name>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1a445217310e7609927f1440fb3cfcb84c" kind="variable"><name>in_resolution</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1a6e95c2286ec4a0e13025d6d22e462eab" kind="variable"><name>in_dimension</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1af63129db61e0a37f852594276827a946" kind="variable"><name>out_resolution</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1a07021960a6559f9f20de793a184e37ec" kind="variable"><name>out_dimension</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1aba9cfbb86bbf5b3f82d9030488496967" kind="variable"><name>pad_value</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1a21ad76e4c930d3cf5dab77e4f9f41c97" kind="function"><name>GridInterpolater</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1aec1c636721028d75e98f9b57288a326f" kind="function"><name>~GridInterpolater</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1afa8559f73788fd07d2e52407ff526bef" kind="function"><name>get_in_resolution</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1af511eaea6a733f0882f7d58dc73d86ad" kind="function"><name>get_out_resolution</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1ae1db6f66081fc63563e3cc9b0a82edbf" kind="function"><name>set_in_resolution</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1a11881d9b8255ea907c8ecc444c571199" kind="function"><name>set_out_resolution</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1ad8ca94fd56b98339ca9fb9293a1d384d" kind="function"><name>get_in_dimension</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1a5f9108cf7a16617867e1802cf8e0e1fa" kind="function"><name>get_out_dimension</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1a92d139b1f580836cfccfa9ee5ac9e9fd" kind="function"><name>set_in_dimension</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1abbfd3a76810ef02a76af6aac0a2173bf" kind="function"><name>set_out_dimension</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1a1a9c3def7f585a62547d0abf3f535b1b" kind="function"><name>forward</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1a1f6f6b83ea2c46f5dc13480b902feb90" kind="function"><name>forward</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1acad3dc75e3f27649e1de5d52c063e98d" kind="function"><name>forward</name></member>
+  </compound>
   <compound refid="classlibmolgrid_1_1GridMaker" kind="class"><name>libmolgrid::GridMaker</name>
     <member refid="classlibmolgrid_1_1GridMaker_1a4333d786c60465d20826583358b2798d" kind="variable"><name>resolution</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1a89e0bef89186145cd5f5a1d2d1ab3b15" kind="variable"><name>dimension</name></member>
@@ -472,7 +511,7 @@
     <member refid="classlibmolgrid_1_1GridMaker_1a977c968e9082c04e5405c2e2091e7a5e" kind="variable"><name>radii_type_indexed</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1aece1bc3fff4b670afc08354a6d995a0e" kind="variable"><name>dim</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1abe03e795cf5097fd746c9d649de88053" kind="function"><name>check_index_args</name></member>
-    <member refid="classlibmolgrid_1_1GridMaker_1a39acd91a35e7ab40d440da6a7d8eb76b" kind="function"><name>check_vector_args</name></member>
+    <member refid="classlibmolgrid_1_1GridMaker_1a76f7b7e78b9bbc969d49cf78c2b976e4" kind="function"><name>check_vector_args</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1a4f87ba432edc3a923341b56c48955533" kind="function"><name>GridMaker</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1a54fa13dfd001613833b671405187f74b" kind="function"><name>~GridMaker</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1aed69b61eca6f6bd638a0049acb63a16c" kind="function"><name>initialize</name></member>
@@ -505,6 +544,10 @@
     <member refid="classlibmolgrid_1_1GridMaker_1a8e5f02ebf9ddcd49efa83ff97d2d4292" kind="function"><name>backward</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1a295ce148c4e19395e708faea12c75277" kind="function"><name>backward</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1a9983c8842c0a051af69c9bfa2b71d62d" kind="function"><name>backward</name></member>
+    <member refid="classlibmolgrid_1_1GridMaker_1af457a155904998fbe8c13975da3e5621" kind="function"><name>backward_gradients</name></member>
+    <member refid="classlibmolgrid_1_1GridMaker_1ae05af91cad9785fc671c57c1488d6934" kind="function"><name>backward_gradients</name></member>
+    <member refid="classlibmolgrid_1_1GridMaker_1aa84965150fcdef1913fdc8a2c9d59e39" kind="function"><name>backward_gradients</name></member>
+    <member refid="classlibmolgrid_1_1GridMaker_1a9a8f55a322c422a1d1328fd518e03af4" kind="function"><name>backward_gradients</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1abd049b5c336260d2448ff1cba930d029" kind="function"><name>backward_relevance</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1a9841643c7664f940378c3f1a068b19b4" kind="function"><name>backward_relevance</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1ae89253196f881023269e4b9b26cf9098" kind="function"><name>backward_relevance</name></member>
@@ -516,9 +559,14 @@
     <member refid="classlibmolgrid_1_1GridMaker_1a0a20208c4e6fa5a78246cde3ab49bc9e" kind="function"><name>calc_atom_relevance_cpu</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1ae721daa109c679340ca12adfffe025b0" kind="function"><name>get_bounds_1d</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1a40637d5466c6816cc0a6975f40bc6302" kind="function"><name>calc_point</name></member>
+    <member refid="classlibmolgrid_1_1GridMaker_1a8bc3b4646b82d504a7153b3107a59a5d" kind="function"><name>density_grad_dist</name></member>
+    <member refid="classlibmolgrid_1_1GridMaker_1adee1cf18ef5d11f91b77cff05e864f5f" kind="function"><name>type_grad_grad</name></member>
+    <member refid="classlibmolgrid_1_1GridMaker_1a91df66765739dee62901169541cb783f" kind="function"><name>atom_density_grad_grad</name></member>
+    <member refid="classlibmolgrid_1_1GridMaker_1af8321ed53835f95eb2d00a7d84248076" kind="function"><name>atom_density_grad_grad_other</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1a891c950dd3b8e06ed6f4305d39f412aa" kind="function"><name>accumulate_atom_gradient</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1a78e5d71de887018422348e93cb5b23aa" kind="friend"><name>set_atom_gradients</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1a0f8e4c693386a6b58e6214dbf5d6bc24" kind="friend"><name>set_atom_type_gradients</name></member>
+    <member refid="classlibmolgrid_1_1GridMaker_1a946f6c876cf2f5c56798d87eb0064826" kind="friend"><name>set_atom_type_grad_grad</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1a444de74b426b899118ea5e869b0387c6" kind="friend"><name>set_atom_relevance</name></member>
   </compound>
   <compound refid="classlibmolgrid_1_1GroupedExampleRefProvider" kind="class"><name>libmolgrid::GroupedExampleRefProvider</name>
@@ -538,7 +586,13 @@
     <member refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" kind="function"><name>check_batch_size</name></member>
     <member refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" kind="function"><name>nextref</name></member>
     <member refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kind="function"><name>size</name></member>
+    <member refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a9c66646cb491b4c4620dcfe627f5451d" kind="function"><name>small_epoch_size</name></member>
+    <member refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ac2a4bfd5fd0579c2377a181a7bae1395" kind="function"><name>large_epoch_size</name></member>
+    <member refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" kind="function"><name>reset</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" kind="function"><name>populate</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1a5edd8a3461f4aa311675b712ae2e1d20" kind="function"><name>get_small_epoch_num</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1ac881e6a758225142e37f3811184b156c" kind="function"><name>get_large_epoch_num</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1adc9bb9be55d353ea973698ff2e50e213" kind="variable"><name>cnt</name></member>
   </compound>
   <compound refid="structlibmolgrid_1_1GninaIndexTyper_1_1info" kind="struct"><name>libmolgrid::GninaIndexTyper::info</name>
     <member refid="structlibmolgrid_1_1GninaIndexTyper_1_1info_1a8d814dd57d2edee2e712cbd86a3127b1" kind="variable"><name>sm</name></member>
@@ -748,11 +802,17 @@
     <member refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" kind="function"><name>setup</name></member>
     <member refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ae630292b50e44deb19e001f322914934" kind="function"><name>nextref</name></member>
     <member refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kind="function"><name>size</name></member>
+    <member refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a9c66646cb491b4c4620dcfe627f5451d" kind="function"><name>small_epoch_size</name></member>
+    <member refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ac2a4bfd5fd0579c2377a181a7bae1395" kind="function"><name>large_epoch_size</name></member>
+    <member refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" kind="function"><name>reset</name></member>
     <member refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" kind="function"><name>setup</name></member>
     <member refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" kind="function"><name>setup</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028" kind="function"><name>has_group</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" kind="function"><name>check_batch_size</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" kind="function"><name>populate</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1a5edd8a3461f4aa311675b712ae2e1d20" kind="function"><name>get_small_epoch_num</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1ac881e6a758225142e37f3811184b156c" kind="function"><name>get_large_epoch_num</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1adc9bb9be55d353ea973698ff2e50e213" kind="variable"><name>cnt</name></member>
   </compound>
   <compound refid="classlibmolgrid_1_1SamplingExampleRefProvider" kind="class"><name>libmolgrid::SamplingExampleRefProvider</name>
     <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1a22e67ba1d3c40843e68d55e79f9d4e29" kind="variable"><name>p1</name></member>
@@ -766,9 +826,15 @@
     <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" kind="function"><name>num_labels</name></member>
     <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1ae630292b50e44deb19e001f322914934" kind="function"><name>nextref</name></member>
     <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kind="function"><name>size</name></member>
+    <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1a9c66646cb491b4c4620dcfe627f5451d" kind="function"><name>small_epoch_size</name></member>
+    <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1ac2a4bfd5fd0579c2377a181a7bae1395" kind="function"><name>large_epoch_size</name></member>
+    <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" kind="function"><name>reset</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028" kind="function"><name>has_group</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" kind="function"><name>check_batch_size</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" kind="function"><name>populate</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1a5edd8a3461f4aa311675b712ae2e1d20" kind="function"><name>get_small_epoch_num</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1ac881e6a758225142e37f3811184b156c" kind="function"><name>get_large_epoch_num</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1adc9bb9be55d353ea973698ff2e50e213" kind="variable"><name>cnt</name></member>
   </compound>
   <compound refid="classlibmolgrid_1_1StringCache" kind="class"><name>libmolgrid::StringCache</name>
     <member refid="classlibmolgrid_1_1StringCache_1a0f0c8f33554e4df84d6856d57bce7295" kind="variable"><name>strings</name></member>
@@ -852,6 +918,7 @@
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a2cb51d0acda029b457eba211467c2cca" kind="variable"><name>current</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1ac7ef53ed84fcaddbb0cfb7531cda107d" kind="variable"><name>current_copy</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a25537b2f335dc2c2ffb4807fe99ee98f" kind="variable"><name>nlabels</name></member>
+    <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a8635c6532e6f3713d63dc83bc8961b63" kind="variable"><name>epoch</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a7a24e4455c51460f9504bab5a850ea74" kind="variable"><name>randomize</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a0d7036b6a3771a52de28c0fcf43159a8" kind="variable"><name>ncopies</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a659da4b8d412bb412c8cf3a17bf1a8a6" kind="function"><name>UniformExampleRefProvider</name></member>
@@ -861,9 +928,15 @@
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" kind="function"><name>setup</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1ae630292b50e44deb19e001f322914934" kind="function"><name>nextref</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kind="function"><name>size</name></member>
+    <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a5edd8a3461f4aa311675b712ae2e1d20" kind="function"><name>get_small_epoch_num</name></member>
+    <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1ac881e6a758225142e37f3811184b156c" kind="function"><name>get_large_epoch_num</name></member>
+    <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a9c66646cb491b4c4620dcfe627f5451d" kind="function"><name>small_epoch_size</name></member>
+    <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1ac2a4bfd5fd0579c2377a181a7bae1395" kind="function"><name>large_epoch_size</name></member>
+    <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" kind="function"><name>reset</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028" kind="function"><name>has_group</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" kind="function"><name>check_batch_size</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" kind="function"><name>populate</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1adc9bb9be55d353ea973698ff2e50e213" kind="variable"><name>cnt</name></member>
   </compound>
   <compound refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider" kind="class"><name>libmolgrid::ValueStratifiedExampleRefProfider</name>
     <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a6679797ca81af02c9ba75e65ccf4c836" kind="variable"><name>examples</name></member>
@@ -881,15 +954,25 @@
     <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a4fc01d736fe50cf5b977f755b675f11d" kind="function"><name>setup</name></member>
     <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ae630292b50e44deb19e001f322914934" kind="function"><name>nextref</name></member>
     <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a126a73e6d140f9e2a7b795c20fa42f70" kind="function"><name>size</name></member>
+    <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a9c66646cb491b4c4620dcfe627f5451d" kind="function"><name>small_epoch_size</name></member>
+    <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ac2a4bfd5fd0579c2377a181a7bae1395" kind="function"><name>large_epoch_size</name></member>
+    <member refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a7b0e029102ad38f4b814c6523aedb53d" kind="function"><name>reset</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028" kind="function"><name>has_group</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" kind="function"><name>check_batch_size</name></member>
     <member refid="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" kind="function"><name>populate</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1a5edd8a3461f4aa311675b712ae2e1d20" kind="function"><name>get_small_epoch_num</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1ac881e6a758225142e37f3811184b156c" kind="function"><name>get_large_epoch_num</name></member>
+    <member refid="classlibmolgrid_1_1ExampleRefProvider_1adc9bb9be55d353ea973698ff2e50e213" kind="variable"><name>cnt</name></member>
   </compound>
   <compound refid="namespaceboost" kind="namespace"><name>boost</name>
   </compound>
   <compound refid="namespaceboost_1_1algorithm" kind="namespace"><name>boost::algorithm</name>
   </compound>
   <compound refid="namespacelibmolgrid" kind="namespace"><name>libmolgrid</name>
+    <member refid="namespacelibmolgrid_1a7b0a2a4d965f9a6c2aaaec9cf37ed979" kind="enum"><name>IterationScheme</name></member>
+    <member refid="namespacelibmolgrid_1a7b0a2a4d965f9a6c2aaaec9cf37ed979a6cb140948cbeedb9f7182dd4027e5e37" kind="enumvalue"><name>Continuous</name></member>
+    <member refid="namespacelibmolgrid_1a7b0a2a4d965f9a6c2aaaec9cf37ed979ad3a968bec5e354aeb80f8cabccc217bc" kind="enumvalue"><name>LargeEpoch</name></member>
+    <member refid="namespacelibmolgrid_1a7b0a2a4d965f9a6c2aaaec9cf37ed979addfac8fdd5983a95c0cf43ffbcacef4f" kind="enumvalue"><name>SmallEpoch</name></member>
     <member refid="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9" kind="enum"><name>LogLevel</name></member>
     <member refid="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806" kind="enumvalue"><name>INFO</name></member>
     <member refid="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81" kind="enumvalue"><name>WARNING</name></member>
@@ -997,6 +1080,8 @@
   </compound>
   <compound refid="grid_8h" kind="file"><name>grid.h</name>
     <member refid="grid_8h_1aebe964ed887245ed1b6ae46d72674763" kind="define"><name>EXPAND_GRID_DEFINITIONS</name></member>
+  </compound>
+  <compound refid="grid__interpolater_8h" kind="file"><name>grid_interpolater.h</name>
   </compound>
   <compound refid="grid__io_8cpp" kind="file"><name>grid_io.cpp</name>
   </compound>

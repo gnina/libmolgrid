@@ -67,6 +67,6 @@
 <codeline></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmolgrid/src/coordinateset.cu"/>
+    <location file="/home/dkoes/git/libmolgrid/src/coordinateset.cu"/>
   </compounddef>
 </doxygen>

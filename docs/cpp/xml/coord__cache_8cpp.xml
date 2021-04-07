@@ -9,32 +9,11 @@
     <includes local="no">openbabel/obconversion.h</includes>
     <includes local="no">cuda_runtime.h</includes>
     <incdepgraph>
-      <node id="22">
-        <label>libmolgrid/atom_typer.h</label>
-        <link refid="atom__typer_8h"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-      </node>
       <node id="30">
         <label>boost/algorithm/string.hpp</label>
       </node>
       <node id="26">
         <label>functional</label>
-      </node>
-      <node id="9">
-        <label>boost/lexical_cast.hpp</label>
       </node>
       <node id="27">
         <label>libmolgrid/example.h</label>
@@ -46,91 +25,14 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
+      <node id="9">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
       <node id="21">
         <label>cuda_runtime.h</label>
       </node>
       <node id="13">
         <label>cassert</label>
-      </node>
-      <node id="5">
-        <label>openbabel/mol.h</label>
-      </node>
-      <node id="28">
-        <label>unordered_set</label>
-      </node>
-      <node id="20">
-        <label>random</label>
-      </node>
-      <node id="3">
-        <label>libmolgrid/coordinateset.h</label>
-        <link refid="coordinateset_8h"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="31">
-        <label>boost/filesystem/path.hpp</label>
-      </node>
-      <node id="23">
-        <label>openbabel/atom.h</label>
-      </node>
-      <node id="33">
-        <label>openbabel/obconversion.h</label>
-      </node>
-      <node id="4">
-        <label>vector</label>
-      </node>
-      <node id="1">
-        <label>coord_cache.cpp</label>
-        <link refid="coord__cache_8cpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-      </node>
-      <node id="32">
-        <label>boost/filesystem.hpp</label>
-      </node>
-      <node id="8">
-        <label>utility</label>
-      </node>
-      <node id="29">
-        <label>boost/iostreams/device/mapped_file.hpp</label>
-      </node>
-      <node id="24">
-        <label>openbabel/elements.h</label>
-      </node>
-      <node id="15">
-        <label>libmolgrid/common.h</label>
-        <link refid="common_8h"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="14">
-        <label>iostream</label>
-      </node>
-      <node id="25">
-        <label>unordered_map</label>
-      </node>
-      <node id="18">
-        <label>cuda.h</label>
       </node>
       <node id="10">
         <label>libmolgrid/grid.h</label>
@@ -150,6 +52,90 @@
         <childnode refid="19" relation="include">
         </childnode>
       </node>
+      <node id="5">
+        <label>openbabel/mol.h</label>
+      </node>
+      <node id="28">
+        <label>unordered_set</label>
+      </node>
+      <node id="2">
+        <label>libmolgrid/coord_cache.h</label>
+        <link refid="coord__cache_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>random</label>
+      </node>
+      <node id="22">
+        <label>libmolgrid/atom_typer.h</label>
+        <link refid="atom__typer_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>boost/filesystem/path.hpp</label>
+      </node>
+      <node id="23">
+        <label>openbabel/atom.h</label>
+      </node>
+      <node id="33">
+        <label>openbabel/obconversion.h</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+      <node id="32">
+        <label>boost/filesystem.hpp</label>
+      </node>
+      <node id="8">
+        <label>utility</label>
+      </node>
+      <node id="29">
+        <label>boost/iostreams/device/mapped_file.hpp</label>
+      </node>
+      <node id="15">
+        <label>libmolgrid/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>openbabel/elements.h</label>
+      </node>
+      <node id="14">
+        <label>iostream</label>
+      </node>
+      <node id="25">
+        <label>unordered_map</label>
+      </node>
+      <node id="18">
+        <label>cuda.h</label>
+      </node>
       <node id="17">
         <label>cuda_runtime_api.h</label>
       </node>
@@ -168,20 +154,24 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
+      <node id="1">
+        <label>coord_cache.cpp</label>
+        <link refid="coord__cache_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
       <node id="11">
         <label>boost/multi_array.hpp</label>
-      </node>
-      <node id="2">
-        <label>libmolgrid/coord_cache.h</label>
-        <link refid="coord__cache_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
       </node>
       <node id="19">
         <label>libmolgrid/libmolgrid.h</label>
@@ -197,6 +187,16 @@
       </node>
       <node id="16">
         <label>cstring</label>
+      </node>
+      <node id="3">
+        <label>libmolgrid/coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
       </node>
       <node id="7">
         <label>memory</label>
@@ -384,6 +384,6 @@
 <codeline lineno="174"><highlight class="normal"></highlight></codeline>
 <codeline lineno="175"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmolgrid/src/coord_cache.cpp"/>
+    <location file="/home/dkoes/git/libmolgrid/src/coord_cache.cpp"/>
   </compounddef>
 </doxygen>

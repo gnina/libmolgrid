@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" line="24" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="24" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" line="24" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" line="25" column="14" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="25" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" line="25" column="14" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1CoordCache_1af489b1d6f17e2bd12442449d6b0ca3bd" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classlibmolgrid_1_1AtomTyper" kindref="compound">AtomTyper</ref> &gt;</type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" line="26" column="21" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="26" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" line="26" column="21" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1CoordCache_1abb743f7f7739cfa25cddacf8af4e88ad" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" line="27" column="17" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="27" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" line="27" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1CoordCache_1ac78c3236bcb6d2c440bb97dc8b24f22e" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" line="28" column="17" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="28" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" line="28" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1CoordCache_1ae7232526e932edeec381ff9ec2eae547" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" line="29" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="29" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" line="29" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1CoordCache_1acbd9d097d09a1b9a03e798011313ca03" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" line="30" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="30" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" line="30" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1CoordCache_1aea8c668320e357453dc83820f452c993" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -112,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" line="31" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="31" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" line="31" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1CoordCache_1aa6ddc769fa0c9b0505306497a9421d5b" prot="private" static="no" mutable="no">
         <type>boost::iostreams::mapped_file_source</type>
@@ -126,7 +126,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" line="34" column="42" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="34" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" line="34" column="42" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1CoordCache_1a67d8a5ef81433ec9e7406661d0cfb85f" prot="private" static="no" mutable="no">
         <type>std::unordered_map&lt; const char *, size_t &gt;</type>
@@ -139,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" line="35" column="24" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="35" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" line="35" column="24" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -154,7 +154,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" line="38" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="38" bodyend="38"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" line="38" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="38" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CoordCache_1a30e53e7aa53be3caabe1e7b88f4c06f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -180,7 +180,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" line="39" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/coord_cache.cpp" bodystart="25" bodyend="73"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" line="39" column="5" bodyfile="/home/dkoes/git/libmolgrid/src/coord_cache.cpp" bodystart="25" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CoordCache_1a9cdfbc68dbe411b99f4182e7cfd14733" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -193,7 +193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" line="41" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="41" bodyend="41"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" line="41" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CoordCache_1a662441ec29d3f52a26ef98ad723b80a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -233,7 +233,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" line="47" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/coord_cache.cpp" bodystart="76" bodyend="172"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" line="47" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/coord_cache.cpp" bodystart="76" bodyend="172"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CoordCache_1a59b7170f88e4d8d17e9f4eb5e3d62712" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
@@ -247,7 +247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" line="50" column="12" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="50" bodyend="50"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" line="50" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CoordCache_1a2babcd45f89ff67b4b4887f7ba469ae6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -260,7 +260,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" line="52" column="17" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="52" bodyend="52"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" line="52" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="52" bodyend="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -269,7 +269,7 @@
     <detaileddescription>
 <para>Precalculated molcache2 files are supported and are memory mapped for efficient memory usage when running multiple training runs. </para>
     </detaileddescription>
-    <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" line="23" column="17" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="23" bodyend="53"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" line="23" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coord_cache.h" bodystart="23" bodyend="53"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1CoordCache_1acbd9d097d09a1b9a03e798011313ca03" prot="private" virt="non-virtual"><scope>libmolgrid::CoordCache</scope><name>addh</name></member>
       <member refid="classlibmolgrid_1_1CoordCache_1aa6ddc769fa0c9b0505306497a9421d5b" prot="private" virt="non-virtual"><scope>libmolgrid::CoordCache</scope><name>cache_map</name></member>

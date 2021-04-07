@@ -13,9 +13,6 @@
       <node id="6">
         <label>boost/algorithm/string.hpp</label>
       </node>
-      <node id="15">
-        <label>boost/lexical_cast.hpp</label>
-      </node>
       <node id="8">
         <label>libmolgrid/example.h</label>
         <link refid="example_8h"/>
@@ -26,29 +23,32 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="1">
-        <label>example.cpp</label>
-        <link refid="example_8cpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
+      <node id="15">
+        <label>boost/lexical_cast.hpp</label>
       </node>
       <node id="7">
         <label>cuda_runtime.h</label>
       </node>
       <node id="19">
         <label>cassert</label>
+      </node>
+      <node id="16">
+        <label>libmolgrid/grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
       </node>
       <node id="11">
         <label>openbabel/mol.h</label>
@@ -64,16 +64,6 @@
       </node>
       <node id="25">
         <label>random</label>
-      </node>
-      <node id="10">
-        <label>libmolgrid/coordinateset.h</label>
-        <link refid="coordinateset_8h"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
       </node>
       <node id="9">
         <label>vector</label>
@@ -98,24 +88,6 @@
       </node>
       <node id="23">
         <label>cuda.h</label>
-      </node>
-      <node id="16">
-        <label>libmolgrid/grid.h</label>
-        <link refid="grid_8h"/>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
       </node>
       <node id="22">
         <label>cuda_runtime_api.h</label>
@@ -150,8 +122,36 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
+      <node id="1">
+        <label>example.cpp</label>
+        <link refid="example_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
       <node id="21">
         <label>cstring</label>
+      </node>
+      <node id="10">
+        <label>libmolgrid/coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
       </node>
       <node id="13">
         <label>memory</label>
@@ -449,7 +449,7 @@
 <codeline lineno="284"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//unpack<sp/>into<sp/>a<sp/>single<sp/>vector</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="285"><highlight class="normal"><sp/><sp/>vector&lt;float&gt;<sp/>labels(N);</highlight></codeline>
 <codeline lineno="286"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>N;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(labelpos<sp/>&gt;=<sp/>labels.size())<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::out_of_range(</highlight><highlight class="stringliteral">&quot;labelpos<sp/>invalid<sp/>(nonuniform<sp/>labels):<sp/>&quot;</highlight><highlight class="normal"><sp/>+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(labelpos)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&gt;=<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(labels.size()));</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(labelpos<sp/>&gt;=<sp/>examples[i].labels.size())<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::out_of_range(</highlight><highlight class="stringliteral">&quot;labelpos<sp/>invalid<sp/>(nonuniform<sp/>labels):<sp/>&quot;</highlight><highlight class="normal"><sp/>+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(labelpos)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&gt;=<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(examples[i].labels.size()));</highlight></codeline>
 <codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/>labels[i]<sp/>=<sp/>examples[i].labels[labelpos];</highlight></codeline>
 <codeline lineno="289"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(isCUDA)<sp/>{</highlight></codeline>
@@ -466,7 +466,7 @@
 <codeline lineno="301" refid="namespacelibmolgrid_1a1fca3edcd06bb699eed3954b29644ef9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a1fca3edcd06bb699eed3954b29644ef9" kindref="member">is_numeric</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&amp;<sp/>number)</highlight></codeline>
 <codeline lineno="302"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>end<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>strtod(number.c_str(),<sp/>&amp;end);<sp/><sp/></highlight><highlight class="comment">//if<sp/>entire<sp/>string<sp/>is<sp/>number,<sp/>end<sp/>will<sp/>be<sp/>set<sp/>to<sp/>end<sp/>of<sp/>string</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>strtold(number.c_str(),<sp/>&amp;end);<sp/><sp/></highlight><highlight class="comment">//if<sp/>entire<sp/>string<sp/>is<sp/>number,<sp/>end<sp/>will<sp/>be<sp/>set<sp/>to<sp/>end<sp/>of<sp/>string</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="305"><highlight class="normal"></highlight></codeline>
 <codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>end<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>*end<sp/>==<sp/>0;<sp/><sp/></highlight><highlight class="comment">//could<sp/>also<sp/>check<sp/>end<sp/>!=<sp/>number.c_str()<sp/>if<sp/>whole<sp/>string<sp/>doesn&apos;t<sp/>need<sp/>to<sp/>be<sp/>numerical</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="307"><highlight class="normal">}</highlight></codeline>
@@ -547,6 +547,6 @@
 <codeline lineno="382"><highlight class="normal"></highlight></codeline>
 <codeline lineno="383"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmolgrid/src/example.cpp"/>
+    <location file="/home/dkoes/git/libmolgrid/src/example.cpp"/>
   </compounddef>
 </doxygen>

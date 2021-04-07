@@ -15,14 +15,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="61" column="17" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" bodystart="61" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="63" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="63" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="52">ExampleExtractor::extract</referencedby>
         <referencedby refid="classlibmolgrid_1_1Transform_1a0a9ab0c16c128621044b64543e87806b" compoundref="transform_8cpp" startline="35" endline="43">Transform::forward</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1a828a9cde89c68646dbc222bfc3046c74" compoundref="grid__maker_8cpp" startline="120" endline="128">GridMaker::forward</referencedby>
-        <referencedby refid="structlibmolgrid_1_1Example_1a36e9b084e04133a39bd8473892702281" compoundref="example_8h" startline="137" endline="137">Example::make_vector_types</referencedby>
-        <referencedby refid="structlibmolgrid_1_1Example_1ab1e5f47c98b8b36379ea2df5e41bc40b" compoundref="example_8h" startline="129" endline="131">Example::operator==</referencedby>
-        <referencedby refid="structlibmolgrid_1_1Example_1af49e4585db4da5364523418dc95614ed" compoundref="example_8h" startline="134" endline="134">Example::tocpu</referencedby>
-        <referencedby refid="structlibmolgrid_1_1Example_1a8ccac5491a7d8ed2d90302fd8827063d" compoundref="example_8h" startline="133" endline="133">Example::togpu</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a828a9cde89c68646dbc222bfc3046c74" compoundref="grid__maker_8cpp" startline="126" endline="141">GridMaker::forward</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1a36e9b084e04133a39bd8473892702281" compoundref="example_8h" startline="139" endline="139">Example::make_vector_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1ab1e5f47c98b8b36379ea2df5e41bc40b" compoundref="example_8h" startline="131" endline="133">Example::operator==</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1af49e4585db4da5364523418dc95614ed" compoundref="example_8h" startline="136" endline="136">Example::tocpu</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1a8ccac5491a7d8ed2d90302fd8827063d" compoundref="example_8h" startline="135" endline="135">Example::togpu</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structlibmolgrid_1_1Example_1a7ea04b60c00847d97627bc44a0a6b2f2" prot="public" static="no" mutable="no">
         <type>std::vector&lt; float &gt;</type>
@@ -35,9 +35,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="62" column="17" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" bodystart="62" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="64" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="64" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="52">ExampleExtractor::extract</referencedby>
-        <referencedby refid="structlibmolgrid_1_1Example_1ab1e5f47c98b8b36379ea2df5e41bc40b" compoundref="example_8h" startline="129" endline="131">Example::operator==</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1ab1e5f47c98b8b36379ea2df5e41bc40b" compoundref="example_8h" startline="131" endline="133">Example::operator==</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structlibmolgrid_1_1Example_1a0242027ec3331f3d5793c42d21b6f4e1" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="63" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" bodystart="63" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="65" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="65" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="52">ExampleExtractor::extract</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structlibmolgrid_1_1Example_1a2d552310ef0a3f6a1daa19e5c84f3168" prot="public" static="no" mutable="no">
@@ -66,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="64" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" bodystart="64" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="66" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="66" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="52">ExampleExtractor::extract</referencedby>
       </memberdef>
       </sectiondef>
@@ -84,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="67" column="12" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/example.cpp" bodystart="22" bodyend="28"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="69" column="12" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="22" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1a9cdf22c0ea09d46e82c22a9e8c62f7a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -103,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="70" column="12" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/example.cpp" bodystart="30" bodyend="39"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="72" column="12" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="30" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1ad1f4b659e53779914a303ad373b7db79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -133,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="74" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/example.cpp" bodystart="357" bodyend="376"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="76" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="357" bodyend="376"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref></type>
@@ -175,8 +175,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="83" column="19" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/example.cpp" bodystart="200" bodyend="230"/>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1aca37b69a1f1f60ca9cc298584e7c2bb7" compoundref="grid__maker_8cpp" startline="104" endline="110">GridMaker::forward</referencedby>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="85" column="19" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="200" bodyend="230"/>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aca37b69a1f1f60ca9cc298584e7c2bb7" compoundref="grid__maker_8cpp" startline="110" endline="116">GridMaker::forward</referencedby>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1aaf8ff3176b68cb7987d5ec8c95612180" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -254,7 +254,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="94" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/example.cpp" bodystart="42" bodyend="69"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="96" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="42" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1aadbf4bff47ee7557c49edcb73e404604" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -289,7 +289,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="95" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/example.cpp" bodystart="71" bodyend="102"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="97" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="71" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1ad44ab023ef81acc53befe9741066de55" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -367,7 +367,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="106" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/example.cpp" bodystart="105" bodyend="138"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="108" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="105" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1aa0927ed6ec846f2a8e7daeb64e39795d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -402,7 +402,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="107" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/example.cpp" bodystart="140" bodyend="198"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="109" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="140" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1ab1e5f47c98b8b36379ea2df5e41bc40b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -419,7 +419,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="129" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" bodystart="129" bodyend="131"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="131" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="131" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1a8ccac5491a7d8ed2d90302fd8827063d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -432,7 +432,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="133" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" bodystart="133" bodyend="133"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="135" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="135" bodyend="135"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1af49e4585db4da5364523418dc95614ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -445,7 +445,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="134" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" bodystart="134" bodyend="134"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="136" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="136" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1a36e9b084e04133a39bd8473892702281" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -459,7 +459,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="137" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" bodystart="137" bodyend="137"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="139" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="139" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1a7503b6a47c9b4b6cc834e6a0f8415e26" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -478,7 +478,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="140" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/example.cpp" bodystart="232" bodyend="241"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="142" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="232" bodyend="241"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1a2e1844ea21f945bfed11383c4ca32bf0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -497,7 +497,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="143" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/example.cpp" bodystart="243" bodyend="252"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="145" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="243" bodyend="252"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -546,7 +546,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="116" column="17" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/example.cpp" bodystart="255" bodyend="270"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="118" column="17" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="255" bodyend="270"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1abd2622389892168945e6f8d721072e38" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -605,7 +605,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="126" column="17" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/example.cpp" bodystart="277" bodyend="295"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="128" column="17" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="277" bodyend="295"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -638,7 +638,7 @@
         <label>vector&lt; float &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" line="58" column="14" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/example.h" bodystart="58" bodyend="144"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="60" column="14" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="60" bodyend="146"/>
     <listofallmembers>
       <member refid="structlibmolgrid_1_1Example_1abd2622389892168945e6f8d721072e38" prot="public" virt="non-virtual"><scope>libmolgrid::Example</scope><name>extract_label</name></member>
       <member refid="structlibmolgrid_1_1Example_1a000f4bbd3c5453860543c5ad97be617a" prot="public" virt="non-virtual"><scope>libmolgrid::Example</scope><name>extract_labels</name></member>

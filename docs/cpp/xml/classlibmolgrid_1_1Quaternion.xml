@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="19" column="19" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="19" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="19" column="19" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="19" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="22" column="8" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="22" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="22" column="8" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="22" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1ad0b622b3561a3b6be03e9660571a4c3d" compoundref="quaternion_8h" startline="129" endline="131">Quaternion::conj</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1a40e59f1b2dc5d2131dc5048c2459206f" compoundref="quaternion_8h" startline="163" endline="166">Quaternion::inverse</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1aebb38f345c0f605a02e5f077cec9809a" compoundref="quaternion_8h" startline="140" endline="142">Quaternion::norm</referencedby>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="23" column="8" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="23" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="23" column="8" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="23" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1ad0b622b3561a3b6be03e9660571a4c3d" compoundref="quaternion_8h" startline="129" endline="131">Quaternion::conj</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1a40e59f1b2dc5d2131dc5048c2459206f" compoundref="quaternion_8h" startline="163" endline="166">Quaternion::inverse</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1aebb38f345c0f605a02e5f077cec9809a" compoundref="quaternion_8h" startline="140" endline="142">Quaternion::norm</referencedby>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="24" column="8" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="24" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="24" column="8" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="24" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1ad0b622b3561a3b6be03e9660571a4c3d" compoundref="quaternion_8h" startline="129" endline="131">Quaternion::conj</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1a40e59f1b2dc5d2131dc5048c2459206f" compoundref="quaternion_8h" startline="163" endline="166">Quaternion::inverse</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1aebb38f345c0f605a02e5f077cec9809a" compoundref="quaternion_8h" startline="140" endline="142">Quaternion::norm</referencedby>
@@ -96,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="25" column="8" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="25" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="25" column="8" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="25" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1ad0b622b3561a3b6be03e9660571a4c3d" compoundref="quaternion_8h" startline="129" endline="131">Quaternion::conj</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1a40e59f1b2dc5d2131dc5048c2459206f" compoundref="quaternion_8h" startline="163" endline="166">Quaternion::inverse</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1aebb38f345c0f605a02e5f077cec9809a" compoundref="quaternion_8h" startline="140" endline="142">Quaternion::norm</referencedby>
@@ -120,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="28" column="25" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="28" bodyend="30"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="28" column="25" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="28" bodyend="30"/>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1ad0b622b3561a3b6be03e9660571a4c3d" compoundref="quaternion_8h" startline="129" endline="131">Quaternion::conj</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1a40e59f1b2dc5d2131dc5048c2459206f" compoundref="quaternion_8h" startline="163" endline="166">Quaternion::inverse</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1a343462424e357bc086ffe88bbcdbc2a0" compoundref="quaternion_8h" startline="82" endline="91">Quaternion::operator*</referencedby>
@@ -154,7 +154,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="33" column="25" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="33" bodyend="35"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="33" column="25" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="33" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Quaternion_1a467deb37a0efc7b604796e8a41c908c1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>__host__ __device__ <ref refid="classlibmolgrid_1_1Quaternion_1afee6b27aade9515867e43f1ad5d04661" kindref="member">fl</ref></type>
@@ -168,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="38" column="35" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="38" bodyend="40"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="38" column="35" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="38" bodyend="40"/>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1a343462424e357bc086ffe88bbcdbc2a0" compoundref="quaternion_8h" startline="82" endline="91">Quaternion::operator*</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1a62281f3ef1e7605f510b889919fa4302" compoundref="quaternion_8h" startline="106" endline="120">Quaternion::operator/</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1a02fc5e7cd27f6408663e21c7d13e24b9" compoundref="quaternion_8h" startline="134" endline="136">Quaternion::real</referencedby>
@@ -185,7 +185,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="43" column="35" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="43" bodyend="45"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="43" column="35" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="43" bodyend="45"/>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1a343462424e357bc086ffe88bbcdbc2a0" compoundref="quaternion_8h" startline="82" endline="91">Quaternion::operator*</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1a62281f3ef1e7605f510b889919fa4302" compoundref="quaternion_8h" startline="106" endline="120">Quaternion::operator/</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1aa4e402e2cf35dd2ea523414b42878a18" compoundref="quaternion_8h" startline="145" endline="149">Quaternion::rotate</referencedby>
@@ -202,7 +202,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="48" column="35" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="48" bodyend="50"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="48" column="35" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="48" bodyend="50"/>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1a343462424e357bc086ffe88bbcdbc2a0" compoundref="quaternion_8h" startline="82" endline="91">Quaternion::operator*</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1a62281f3ef1e7605f510b889919fa4302" compoundref="quaternion_8h" startline="106" endline="120">Quaternion::operator/</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1aa4e402e2cf35dd2ea523414b42878a18" compoundref="quaternion_8h" startline="145" endline="149">Quaternion::rotate</referencedby>
@@ -219,7 +219,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="53" column="35" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="53" bodyend="55"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="53" column="35" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="53" bodyend="55"/>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1a343462424e357bc086ffe88bbcdbc2a0" compoundref="quaternion_8h" startline="82" endline="91">Quaternion::operator*</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1a62281f3ef1e7605f510b889919fa4302" compoundref="quaternion_8h" startline="106" endline="120">Quaternion::operator/</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1aa4e402e2cf35dd2ea523414b42878a18" compoundref="quaternion_8h" startline="145" endline="149">Quaternion::rotate</referencedby>
@@ -240,7 +240,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="58" column="36" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="58" bodyend="64"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="58" column="36" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="58" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Quaternion_1a8af81f03ca5aef87ad4a7c7b79ae3531" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>__host__ __device__ <ref refid="classlibmolgrid_1_1Quaternion" kindref="compound">Quaternion</ref> &amp;</type>
@@ -258,7 +258,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="67" column="36" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="67" bodyend="73"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="67" column="36" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="67" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Quaternion_1a72d0afd408f658a49ee8e14341f9d46e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>__host__ __device__ <ref refid="classlibmolgrid_1_1Quaternion" kindref="compound">Quaternion</ref></type>
@@ -276,7 +276,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="76" column="37" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="76" bodyend="78"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="76" column="37" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="76" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Quaternion_1a343462424e357bc086ffe88bbcdbc2a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>__host__ __device__ <ref refid="classlibmolgrid_1_1Quaternion" kindref="compound">Quaternion</ref></type>
@@ -294,7 +294,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="82" column="24" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="82" bodyend="91"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="82" column="24" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="82" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Quaternion_1aac6f15d6f3fc4a9f1fd23e05ebb67306" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>__host__ __device__ <ref refid="classlibmolgrid_1_1Quaternion" kindref="compound">Quaternion</ref> &amp;</type>
@@ -312,7 +312,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="94" column="36" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="94" bodyend="97"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="94" column="36" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="94" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Quaternion_1a561a6e2f591f226f12faf8a025fa20f0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>__host__ __device__ bool</type>
@@ -330,7 +330,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="100" column="30" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="100" bodyend="102"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="100" column="30" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="100" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Quaternion_1a62281f3ef1e7605f510b889919fa4302" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>__host__ __device__ <ref refid="classlibmolgrid_1_1Quaternion" kindref="compound">Quaternion</ref></type>
@@ -348,7 +348,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="106" column="23" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="106" bodyend="120"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="106" column="23" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="106" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Quaternion_1a4142e5f08ee438946d003c2eb5cf959f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>__host__ __device__ <ref refid="classlibmolgrid_1_1Quaternion" kindref="compound">Quaternion</ref></type>
@@ -366,7 +366,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="123" column="36" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="123" bodyend="126"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="123" column="36" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="123" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Quaternion_1ad0b622b3561a3b6be03e9660571a4c3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>__host__ __device__ <ref refid="classlibmolgrid_1_1Quaternion" kindref="compound">Quaternion</ref></type>
@@ -380,7 +380,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="129" column="43" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="129" bodyend="131"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="129" column="43" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="129" bodyend="131"/>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1aa4e402e2cf35dd2ea523414b42878a18" compoundref="quaternion_8h" startline="145" endline="149">Quaternion::rotate</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Quaternion_1a02fc5e7cd27f6408663e21c7d13e24b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -394,7 +394,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="134" column="11" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="134" bodyend="136"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="134" column="11" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="134" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Quaternion_1aebb38f345c0f605a02e5f077cec9809a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>__host__ __device__ float</type>
@@ -408,7 +408,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="140" column="18" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="140" bodyend="142"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="140" column="18" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="140" bodyend="142"/>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1aa4e402e2cf35dd2ea523414b42878a18" compoundref="quaternion_8h" startline="145" endline="149">Quaternion::rotate</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Quaternion_1aa4e402e2cf35dd2ea523414b42878a18" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -435,7 +435,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="145" column="35" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="145" bodyend="149"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="145" column="35" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="145" bodyend="149"/>
         <referencedby refid="classlibmolgrid_1_1Transform_1acfada39f4f16531f4289971bd29ce946" compoundref="transform_8cpp" startline="86" endline="108">Transform::backward</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1ad07f19ca8585a6047d7fbb6a215f08aa" compoundref="quaternion_8h" startline="152" endline="159">Quaternion::transform</referencedby>
       </memberdef>
@@ -471,7 +471,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="152" column="39" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="152" bodyend="159"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="152" column="39" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="152" bodyend="159"/>
         <referencedby refid="classlibmolgrid_1_1Transform_1a00ddce88bd65b5128951517a5bc7f57a" compoundref="transform_8cpp" startline="58" endline="79">Transform::forward</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Quaternion_1a40e59f1b2dc5d2131dc5048c2459206f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -486,7 +486,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="163" column="36" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="163" bodyend="166"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="163" column="36" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="163" bodyend="166"/>
         <referencedby refid="classlibmolgrid_1_1Transform_1acfada39f4f16531f4289971bd29ce946" compoundref="transform_8cpp" startline="86" endline="108">Transform::backward</referencedby>
       </memberdef>
       </sectiondef>
@@ -495,7 +495,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" line="17" column="17" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="17" bodyend="167"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="17" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="17" bodyend="167"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1Quaternion_1a5f66f997dc06b4904ad8b5635556bb22" prot="protected" virt="non-virtual"><scope>libmolgrid::Quaternion</scope><name>a</name></member>
       <member refid="classlibmolgrid_1_1Quaternion_1af2895ebe4a01560bc76631e8f3220f43" prot="protected" virt="non-virtual"><scope>libmolgrid::Quaternion</scope><name>b</name></member>

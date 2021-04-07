@@ -111,7 +111,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//The<sp/>quadratic<sp/>is<sp/>fit<sp/>to<sp/>have<sp/>both<sp/>the<sp/>same<sp/>value<sp/>and<sp/>first<sp/>derivative</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//at<sp/>the<sp/>cross<sp/>over<sp/>point<sp/>and<sp/>a<sp/>value<sp/>and<sp/>derivative<sp/>of<sp/>zero<sp/>at<sp/>fianl_radius_multiple</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>dist<sp/>=<sp/>sqrtf(rsq);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(dist<sp/>&gt;=<sp/>ar<sp/>*<sp/>final_radius_multiple)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(dist<sp/>&gt;<sp/>ar<sp/>*<sp/>final_radius_multiple)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>0.0;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(dist<sp/>&lt;=<sp/>ar<sp/>*<sp/>gaussian_radius_multiple)<sp/>{</highlight></codeline>
@@ -557,6 +557,8 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type_gradients(idx,whicht)<sp/>=<sp/>tgrad;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//gpu<sp/>accelerated<sp/>gradient<sp/>calculation</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>&lt;typename<sp/>Dtype&gt;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>GridMaker::backward(float3<sp/>grid_center,<sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>coords,</highlight></codeline>
@@ -624,15 +626,261 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_atom_type_gradients&lt;Dtype,true&gt;&lt;&lt;&lt;B,<sp/>nthreads&gt;&gt;&gt;(*this,<sp/>grid_origin,<sp/>coords,<sp/>type_vector,<sp/>ntypes,<sp/>radii,<sp/>grid,<sp/>atom_gradients,<sp/>type_gradients);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_atom_type_gradients&lt;Dtype,false&gt;&lt;&lt;&lt;B,<sp/>nthreads&gt;&gt;&gt;(*this,<sp/>grid_origin,<sp/>coords,<sp/>type_vector,<sp/>ntypes,<sp/>radii,<sp/>grid,<sp/>atom_gradients,<sp/>type_gradients);</highlight></codeline>
-<codeline></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>GridMaker::backward(float3<sp/>grid_center,<sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>coords,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>type_vectors,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>radii,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>4,<sp/>true&gt;&amp;<sp/>grid,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>atom_gradients,<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>type_gradients)<sp/>const;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//atomic<sp/>add<sp/>doesn&apos;t<sp/>work<sp/>with<sp/>double</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//atomicAdd<sp/>isn&apos;t<sp/>working<sp/>with<sp/>doubles??</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//proces<sp/>grad_grad<sp/>calculation<sp/>for<sp/>a<sp/>specific<sp/>atom<sp/>and<sp/>type</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>template&lt;typename<sp/>Dtype,<sp/>bool<sp/>RadiiFromTypes&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>__global__</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>void<sp/>set_atom_type_grad_grad(GridMaker<sp/>G,<sp/>float3<sp/>grid_origin,<sp/>Grid2fCUDA<sp/>coords,<sp/>Grid2fCUDA<sp/>type_vector,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>ntypes,<sp/>Grid1fCUDA<sp/>radii,<sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;<sp/>diff,<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;<sp/>atom_gradients,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;<sp/>type_gradients,<sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;<sp/>diffdiff,<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;<sp/>atom_diffdiff,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;<sp/>type_diffdiff)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>aidx<sp/>=<sp/>blockDim.x<sp/>*<sp/>blockIdx.x<sp/>+<sp/>threadIdx.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(aidx<sp/>&gt;=<sp/>coords.dimension(0))<sp/>return;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>tidx<sp/>=<sp/>blockIdx.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Dtype<sp/>tmult<sp/>=<sp/>type_vector(aidx,<sp/>tidx);<sp/>//amount<sp/>of<sp/>type<sp/>for<sp/>this<sp/>atom</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(tmult<sp/>==<sp/>0)<sp/>return;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>radius<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(RadiiFromTypes)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>radius<sp/>=<sp/>radii(tidx);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>radius<sp/>=<sp/>radii(aidx);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ar<sp/>=<sp/>radius*G.radius_scale;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;Dtype,<sp/>3,<sp/>true&gt;<sp/>diffG<sp/>=<sp/>diff[tidx];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ax<sp/>=<sp/>coords(aidx,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ay<sp/>=<sp/>coords(aidx,<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>az<sp/>=<sp/>coords(aidx,<sp/>2);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>agrad;<sp/>//cartesian<sp/>gradient</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>agrad.x<sp/>=<sp/>atom_gradients(aidx,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>agrad.y<sp/>=<sp/>atom_gradients(aidx,<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>agrad.z<sp/>=<sp/>atom_gradients(aidx,<sp/>2);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>tgrad<sp/>=<sp/>type_gradients(aidx,<sp/>tidx);</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>densityr<sp/>=<sp/>radius<sp/>*<sp/>G.radius_scale<sp/>*<sp/>G.final_radius_multiple;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint2<sp/>bounds[3];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>bounds[0]<sp/>=<sp/>G.get_bounds_1d(grid_origin.x,<sp/>ax,<sp/>densityr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>bounds[1]<sp/>=<sp/>G.get_bounds_1d(grid_origin.y,<sp/>ay,<sp/>densityr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>bounds[2]<sp/>=<sp/>G.get_bounds_1d(grid_origin.z,<sp/>az,<sp/>densityr);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>adiffdiff{0,0,0};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//for<sp/>every<sp/>grid<sp/>point<sp/>possibly<sp/>overlapped<sp/>by<sp/>this<sp/>atom</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(size_t<sp/>i<sp/>=<sp/>bounds[0].x,<sp/>iend<sp/>=<sp/>bounds[0].y;<sp/>i<sp/>&lt;<sp/>iend;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(size_t<sp/>j<sp/>=<sp/>bounds[1].x,<sp/>jend<sp/>=<sp/>bounds[1].y;<sp/>j<sp/>&lt;<sp/>jend;<sp/>j++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(size_t<sp/>k<sp/>=<sp/>bounds[2].x,<sp/>kend<sp/>=<sp/>bounds[2].y;<sp/>k<sp/>&lt;<sp/>kend;<sp/>k++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>x<sp/>=<sp/>grid_origin.x<sp/>+<sp/>i<sp/>*<sp/>G.resolution;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>y<sp/>=<sp/>grid_origin.y<sp/>+<sp/>j<sp/>*<sp/>G.resolution;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>z<sp/>=<sp/>grid_origin.z<sp/>+<sp/>k<sp/>*<sp/>G.resolution;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>Gp<sp/>=<sp/>diffG(i,j,k);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>offset<sp/>=<sp/>((((tidx<sp/>*<sp/>G.dim)<sp/>+<sp/>i)<sp/>*<sp/>G.dim)<sp/>+<sp/>j)<sp/>*<sp/>G.dim<sp/>+<sp/>k;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>dist_x<sp/>=<sp/>x<sp/>-<sp/>ax;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>dist_y<sp/>=<sp/>y<sp/>-<sp/>ay;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>dist_z<sp/>=<sp/>z<sp/>-<sp/>az;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>dist2<sp/>=<sp/>dist_x<sp/>*<sp/>dist_x<sp/>+<sp/>dist_y<sp/>*<sp/>dist_y<sp/>+<sp/>dist_z<sp/>*<sp/>dist_z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double<sp/>dist<sp/>=<sp/>sqrt(dist2);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>agrad_dist<sp/>=<sp/>G.density_grad_dist(dist,ar);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//in<sp/>backwards<sp/>did</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>agrad.x<sp/>+=<sp/>-(dist_x<sp/>/<sp/>dist)<sp/>*<sp/>(agrad_dist<sp/>*<sp/>gridval)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>differentiate<sp/>with<sp/>respect<sp/>to<sp/>gridval</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(isfinite(agrad_dist))<sp/>{<sp/>//overlapping<sp/>grid<sp/>position</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>gval<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(dist<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gval<sp/>+=<sp/>-(dist_x<sp/>/<sp/>dist)<sp/>*<sp/>(agrad_dist<sp/>*<sp/>agrad.x);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gval<sp/>+=<sp/>-(dist_y<sp/>/<sp/>dist)<sp/>*<sp/>(agrad_dist<sp/>*<sp/>agrad.y);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gval<sp/>+=<sp/>-(dist_z<sp/>/<sp/>dist)<sp/>*<sp/>(agrad_dist<sp/>*<sp/>agrad.z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gval<sp/>*=<sp/>tmult;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//type<sp/>backwards<sp/>was<sp/>just<sp/>the<sp/>density<sp/>value</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>val<sp/>=<sp/>G.calc_point&lt;false&gt;(ax,<sp/>ay,<sp/>az,<sp/>radius,<sp/>float3{x,y,z});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gval<sp/>+=<sp/>val*tgrad;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>atomicAdd((diffdiff.data()<sp/>+<sp/>offset),<sp/>(Dtype)<sp/>gval);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//now<sp/>accumulate<sp/>gradient<sp/>with<sp/>respect<sp/>to<sp/>atom<sp/>positions</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>adiffdiff.x<sp/>+=<sp/>G.atom_density_grad_grad(ax,<sp/>x,<sp/>dist,<sp/>ar)*Gp*tmult*agrad.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>adiffdiff.x<sp/>+=<sp/>G.atom_density_grad_grad_other(ax,<sp/>x,<sp/>ay,<sp/>y,<sp/>dist,<sp/>ar)*Gp*tmult*agrad.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>adiffdiff.x<sp/>+=<sp/>G.atom_density_grad_grad_other(ax,<sp/>x,<sp/>az,<sp/>z,<sp/>dist,<sp/>ar)*Gp*tmult*agrad.z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>adiffdiff.x<sp/>+=<sp/>G.type_grad_grad(ax,<sp/>x,<sp/>dist,<sp/>ar)*Gp*tgrad;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>adiffdiff.y<sp/>+=<sp/>G.atom_density_grad_grad_other(ay,<sp/>y,<sp/>ax,<sp/>x,<sp/>dist,<sp/>ar)*Gp*tmult*agrad.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>adiffdiff.y<sp/>+=<sp/>G.atom_density_grad_grad(ay,<sp/>y,<sp/>dist,<sp/>ar)*Gp*tmult*agrad.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>adiffdiff.y<sp/>+=<sp/>G.atom_density_grad_grad_other(ay,<sp/>y,<sp/>az,<sp/>z,<sp/>dist,<sp/>ar)*Gp*tmult*agrad.z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>adiffdiff.y<sp/>+=<sp/>G.type_grad_grad(ay,<sp/>y,<sp/>dist,<sp/>ar)*Gp*tgrad;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>adiffdiff.z<sp/>+=<sp/>G.atom_density_grad_grad_other(az,<sp/>z,<sp/>ax,<sp/>x,<sp/>dist,<sp/>ar)*Gp*tmult*agrad.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>adiffdiff.z<sp/>+=<sp/>G.atom_density_grad_grad_other(az,<sp/>z,<sp/>ay,<sp/>y,<sp/>dist,<sp/>ar)*Gp*tmult*agrad.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>adiffdiff.z<sp/>+=<sp/>G.atom_density_grad_grad(az,<sp/>z,<sp/>dist,<sp/>ar)*Gp*tmult*agrad.z;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>adiffdiff.z<sp/>+=<sp/>G.type_grad_grad(az,<sp/>z,<sp/>dist,<sp/>ar)*Gp*tgrad;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>//if<sp/>valid<sp/>grid<sp/>point</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>//k</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>//j</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>//i</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>atomicAdd(&amp;atom_diffdiff(aidx,0),<sp/>(Dtype)<sp/>adiffdiff.x);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>atomicAdd(&amp;atom_diffdiff(aidx,1),<sp/>(Dtype)<sp/>adiffdiff.y);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>atomicAdd(&amp;atom_diffdiff(aidx,2),<sp/>(Dtype)<sp/>adiffdiff.z);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>&lt;typename<sp/>Dtype&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>GridMaker::backward_gradients(float3<sp/>grid_center,<sp/><sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>coords,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;<sp/>type_vector,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;<sp/>radii,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;&amp;<sp/>diff,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;&amp;<sp/>atom_gradients,<sp/>const<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;&amp;<sp/>type_gradients,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;&amp;<sp/>diffdiff,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;&amp;<sp/>atom_diffdiff,<sp/>Grid&lt;Dtype,<sp/>2,<sp/>true&gt;&amp;<sp/>type_diffdiff)<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>n<sp/>=<sp/>coords.dimension(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>ntypes<sp/>=<sp/>type_vector.dimension(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>check_vector_args(coords,<sp/>type_vector,<sp/>radii,<sp/>diff);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(n<sp/>!=<sp/>type_vector.dimension(0))<sp/>throw<sp/>std::invalid_argument(&quot;Type<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>coordinates.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(ntypes<sp/>!=<sp/>diff.dimension(0))<sp/>throw<sp/>std::invalid_argument(&quot;Channels<sp/>in<sp/>diff<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>types&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(n<sp/>!=<sp/>atom_gradients.dimension(0))<sp/>throw<sp/>std::invalid_argument(&quot;Atom<sp/>gradient<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>coordinates&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(n<sp/>!=<sp/>type_gradients.dimension(0))<sp/>throw<sp/>std::invalid_argument(&quot;Type<sp/>gradient<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>coordinates&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(n<sp/>!=<sp/>atom_diffdiff.dimension(0))<sp/>throw<sp/>std::invalid_argument(&quot;Atom<sp/>gradient<sp/>gradients<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>coordinates&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(n<sp/>!=<sp/>type_diffdiff.dimension(0))<sp/>throw<sp/>std::invalid_argument(&quot;Type<sp/>gradient<sp/>gradients<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>coordinates&quot;);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(type_gradients.dimension(1)<sp/>!=<sp/>ntypes)<sp/>throw<sp/>std::invalid_argument(&quot;Type<sp/>gradient<sp/>dimension<sp/>has<sp/>wrong<sp/>number<sp/>of<sp/>types&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(type_diffdiff.dimension(1)<sp/>!=<sp/>ntypes)<sp/>throw<sp/>std::invalid_argument(&quot;Type<sp/>gradient<sp/>dimension<sp/>has<sp/>wrong<sp/>number<sp/>of<sp/>types&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(coords.dimension(1)<sp/>!=<sp/>3)<sp/>throw<sp/>std::invalid_argument(&quot;Need<sp/>x,y,z,r<sp/>for<sp/>coord_radius&quot;);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(radii_type_indexed)<sp/>{<sp/>//radii<sp/>should<sp/>be<sp/>size<sp/>of<sp/>types</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(ntypes<sp/>!=<sp/>radii.size())<sp/>throw<sp/>std::invalid_argument(&quot;Radii<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>types&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{<sp/>//radii<sp/>should<sp/>be<sp/>size<sp/>of<sp/>atoms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(n<sp/>!=<sp/>radii.size())<sp/>throw<sp/>std::invalid_argument(&quot;Radii<sp/>dimension<sp/>doesn&apos;t<sp/>equal<sp/>number<sp/>of<sp/>coordinates&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(binary)<sp/>throw<sp/>std::invalid_argument(&quot;Binary<sp/>densities<sp/>not<sp/>supported&quot;);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>atom_diffdiff.fill_zero();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type_diffdiff.fill_zero();<sp/>//note<sp/>this<sp/>is<sp/>the<sp/>right<sp/>answer<sp/>-<sp/>density<sp/>is<sp/>a<sp/>linear<sp/>function<sp/>of<sp/>amount<sp/>of<sp/>type</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>diffdiff.fill_zero();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>grid_origin<sp/>=<sp/>get_grid_origin(grid_center);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>blocks<sp/>=<sp/>LMG_GET_BLOCKS(n);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>nthreads<sp/>=<sp/>LMG_GET_THREADS(n);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(ntypes<sp/>&gt;=<sp/>1024)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>std::invalid_argument(&quot;Really?<sp/>More<sp/>than<sp/>1024<sp/>types?<sp/><sp/>The<sp/>GPU<sp/>can&apos;t<sp/>handle<sp/>that.<sp/><sp/>Are<sp/>you<sp/>sure<sp/>this<sp/>is<sp/>a<sp/>good<sp/>idea?<sp/><sp/>I&apos;m<sp/>giving<sp/>up.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dim3<sp/>B(blocks,<sp/>ntypes,<sp/>1);<sp/>//in<sp/>theory<sp/>could<sp/>support<sp/>more<sp/>1024<sp/>by<sp/>using<sp/>z,<sp/>but<sp/>really..</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(radii_type_indexed)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_atom_type_grad_grad&lt;Dtype,true&gt;&lt;&lt;&lt;B,<sp/>nthreads&gt;&gt;&gt;(*this,<sp/>grid_origin,<sp/>coords,<sp/>type_vector,<sp/>ntypes,<sp/>radii,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>diff,<sp/>atom_gradients,<sp/>type_gradients,<sp/>diffdiff,<sp/>atom_diffdiff,<sp/>type_diffdiff);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_atom_type_grad_grad&lt;Dtype,false&gt;&lt;&lt;&lt;B,<sp/>nthreads&gt;&gt;&gt;(*this,<sp/>grid_origin,<sp/>coords,<sp/>type_vector,<sp/>ntypes,<sp/>radii,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>diff,<sp/>atom_gradients,<sp/>type_gradients,<sp/>diffdiff,<sp/>atom_diffdiff,<sp/>type_diffdiff);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>GridMaker::backward_gradients(float3,<sp/><sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;,<sp/>const<sp/>Grid&lt;float,<sp/>4,<sp/>true&gt;&amp;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;,<sp/>const<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;,<sp/>Grid&lt;float,<sp/>4,<sp/>true&gt;&amp;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;,<sp/>Grid&lt;float,<sp/>2,<sp/>true&gt;&amp;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//atomicadd<sp/>doesn&apos;t<sp/>work<sp/>with<sp/>double</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//derivative<sp/>of<sp/>density<sp/>type<sp/>grad<sp/>with<sp/>respect<sp/>to<sp/>coord</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float<sp/>GridMaker::type_grad_grad(float<sp/>a,<sp/>float<sp/>x,<sp/>float<sp/>dist,<sp/>float<sp/>r)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ret<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>dist2<sp/>=<sp/>dist*dist;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(dist<sp/>&gt;<sp/>r<sp/>*<sp/>final_radius_multiple)<sp/>{//no<sp/>overlap</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>if<sp/>(dist<sp/>&lt;=<sp/>r<sp/>*<sp/>gaussian_radius_multiple)<sp/>{//gaussian<sp/>derivative</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>r2<sp/>=<sp/>r*r;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ex<sp/>=<sp/>-2.0<sp/>*<sp/>dist2<sp/>/<sp/>r2;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>16*(a-x)*(a-x)*exp(ex)/(r2*r2)<sp/>-<sp/>4*exp(ex)/(r2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>{//quadratic<sp/>derivative</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ax<sp/>=<sp/>a-x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ax2<sp/>=<sp/>ax*ax;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>term1<sp/>=<sp/>-(E+D*dist/r)*ax2/(pow(dist2,1.5)*r);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>term2<sp/>=<sp/>D*ax2/(dist2*r*r);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>term3<sp/>=<sp/>(E+D*dist/r)/(dist*r);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>term1+term2+term3;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>ret;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//derivative<sp/>of<sp/>density_grad_dist<sp/>-<sp/>does<sp/>not<sp/>include<sp/>tmult<sp/>or<sp/>G;<sp/>r<sp/>should<sp/>include<sp/>radius_scale</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float<sp/>GridMaker::atom_density_grad_grad(float<sp/>a,<sp/>float<sp/>x,<sp/>float<sp/>dist,<sp/>float<sp/>r)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ret<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>dist2<sp/>=<sp/>dist*dist;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(dist<sp/>&gt;<sp/>r<sp/>*<sp/>final_radius_multiple)<sp/>{//no<sp/>overlap</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>if<sp/>(dist<sp/>&lt;=<sp/>r<sp/>*<sp/>gaussian_radius_multiple)<sp/>{//gaussian<sp/>derivative</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>r2<sp/>=<sp/>r*r;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ex<sp/>=<sp/>-2.0<sp/>*<sp/>dist2<sp/>/<sp/>r2;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>16*(a-x)*(a-x)*exp(ex)/(r2*r2)<sp/>-<sp/>4*exp(ex)/(r2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>{//quadratic<sp/>derivative</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ax<sp/>=<sp/>a-x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ax2<sp/>=<sp/>ax*ax;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>term1<sp/>=<sp/>-(E+D*dist/r)*ax2/(pow(dist2,1.5)*r);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>term2<sp/>=<sp/>D*ax2/(dist2*r*r);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>term3<sp/>=<sp/>(E+D*dist/r)/(dist*r);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>term1+term2+term3;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>ret;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//derivative<sp/>of<sp/>desnity_grad_dist<sp/>-<sp/>does<sp/>not<sp/>include<sp/>tmult<sp/>or<sp/>G</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//a<sp/>and<sp/>x<sp/>are<sp/>what<sp/>we<sp/>are<sp/>diff&apos;ign<sp/>with<sp/>respect<sp/>to</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float<sp/>GridMaker::atom_density_grad_grad_other(float<sp/>a,<sp/>float<sp/>x,<sp/>float<sp/>b,<sp/>float<sp/>y,<sp/>float<sp/>dist,<sp/>float<sp/>r)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ret<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>dist2<sp/>=<sp/>dist*dist;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(dist<sp/>&gt;<sp/>r<sp/>*<sp/>final_radius_multiple)<sp/>{//no<sp/>overlap</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>if<sp/>(dist<sp/>&lt;=<sp/>r<sp/>*<sp/>gaussian_radius_multiple)<sp/>{//gaussian<sp/>derivative</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>r2<sp/>=<sp/>r*r;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ex<sp/>=<sp/>-2.0<sp/>*<sp/>dist2<sp/>/<sp/>r2;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>16*(a-x)*(b-y)*exp(ex)/(r2*r2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>{//quadratic<sp/>derivative</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ax<sp/>=<sp/>a-x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>by<sp/>=<sp/>b-y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>term1<sp/>=<sp/>-(E+D*dist/r)*ax*by/(pow(dist2,1.5)*r);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>term2<sp/>=<sp/>D*ax*by/(dist2*r*r);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>term1+term2;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>ret;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//ar<sp/>must<sp/>include<sp/>radius<sp/>scale</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float<sp/>GridMaker::density_grad_dist(float<sp/>dist,<sp/>float<sp/>ar)<sp/>const<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>agrad_dist<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>dist2<sp/>=<sp/>dist*dist;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(dist<sp/>&gt;<sp/>ar<sp/>*<sp/>final_radius_multiple)<sp/>{//no<sp/>overlap</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>NAN;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>if<sp/>(dist<sp/>&lt;=<sp/>ar<sp/>*<sp/>gaussian_radius_multiple)<sp/>{//gaussian<sp/>derivative</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ex<sp/>=<sp/>-2.0<sp/>*<sp/>dist2<sp/>/<sp/>(ar<sp/>*<sp/>ar);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>coef<sp/>=<sp/>-4.0<sp/>*<sp/>dist<sp/>/<sp/>(ar<sp/>*<sp/>ar);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agrad_dist<sp/>=<sp/>coef<sp/>*<sp/>exp(ex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>{//quadratic<sp/>derivative</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agrad_dist<sp/>=<sp/>(D*dist/ar<sp/>+<sp/>E)/ar;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>agrad_dist;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>GridMaker::accumulate_atom_gradient(float<sp/>ax,<sp/>float<sp/>ay,<sp/>float<sp/>az,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>x,<sp/>float<sp/>y,<sp/>float<sp/>z,<sp/>float<sp/>ar,<sp/>float<sp/>gridval,<sp/>float3&amp;<sp/>agrad)<sp/>const<sp/>{</highlight></codeline>
@@ -643,23 +891,14 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>dist_z<sp/>=<sp/>z<sp/>-<sp/>az;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>dist2<sp/>=<sp/>dist_x<sp/>*<sp/>dist_x<sp/>+<sp/>dist_y<sp/>*<sp/>dist_y<sp/>+<sp/>dist_z<sp/>*<sp/>dist_z;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>double<sp/>dist<sp/>=<sp/>sqrt(dist2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>agrad_dist<sp/>=<sp/>0.0;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ar<sp/>*=<sp/>radius_scale;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(dist<sp/>&gt;=<sp/>ar<sp/>*<sp/>final_radius_multiple)<sp/>{//no<sp/>overlap</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>if<sp/>(dist<sp/>&lt;=<sp/>ar<sp/>*<sp/>gaussian_radius_multiple)<sp/>{//gaussian<sp/>derivative</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>ex<sp/>=<sp/>-2.0<sp/>*<sp/>dist2<sp/>/<sp/>(ar<sp/>*<sp/>ar);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>coef<sp/>=<sp/>-4.0<sp/>*<sp/>dist<sp/>/<sp/>(ar<sp/>*<sp/>ar);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agrad_dist<sp/>=<sp/>coef<sp/>*<sp/>exp(ex);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>{//quadratic<sp/>derivative</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agrad_dist<sp/>=<sp/>(D*dist/ar<sp/>+<sp/>E)/ar;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>agrad_dist<sp/>=<sp/>density_grad_dist(dist,ar);</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>d_loss/d_atomx<sp/>=<sp/>d_atomdist/d_atomx<sp/>*<sp/>d_gridpoint/d_atomdist<sp/>*<sp/>d_loss/d_gridpoint</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>sum<sp/>across<sp/>all<sp/>gridpoints</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//dkoes<sp/>-<sp/>the<sp/>negative<sp/>sign<sp/>is<sp/>because<sp/>we<sp/>are<sp/>considering<sp/>the<sp/>derivative<sp/>of<sp/>the<sp/>center<sp/>vs<sp/>grid</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(dist<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if(dist<sp/>&gt;<sp/>0<sp/>&amp;&amp;<sp/>isfinite(agrad_dist))<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agrad.x<sp/>+=<sp/>-(dist_x<sp/>/<sp/>dist)<sp/>*<sp/>(agrad_dist<sp/>*<sp/>gridval);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agrad.y<sp/>+=<sp/>-(dist_y<sp/>/<sp/>dist)<sp/>*<sp/>(agrad_dist<sp/>*<sp/>gridval);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agrad.z<sp/>+=<sp/>-(dist_z<sp/>/<sp/>dist)<sp/>*<sp/>(agrad_dist<sp/>*<sp/>gridval);</highlight></codeline>
@@ -746,8 +985,9 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;,<sp/>const<sp/>Grid&lt;float,<sp/>1,<sp/>true&gt;&amp;,<sp/>const<sp/>Grid&lt;double,<sp/>4,<sp/>true&gt;&amp;,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Grid&lt;double,<sp/>4,<sp/>true&gt;&amp;,<sp/>Grid&lt;double,<sp/>1,<sp/>true&gt;&amp;<sp/>)<sp/>const;</highlight></codeline>
 <codeline></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">}<sp/>/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmolgrid/src/grid_maker.cu"/>
+    <location file="/home/dkoes/git/libmolgrid/src/grid_maker.cu"/>
   </compounddef>
 </doxygen>

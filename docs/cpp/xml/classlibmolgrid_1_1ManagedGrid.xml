@@ -25,7 +25,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" line="364" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="364" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="364" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="364" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classlibmolgrid_1_1ManagedGrid_1a5f65ecf59323f2fdf69c9ba72425a1a5" prot="public" static="no">
         <type><ref refid="classlibmolgrid_1_1ManagedGridBase" kindref="compound">ManagedGridBase</ref>&lt; Dtype, NumDims &gt;</type>
@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" line="365" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="365" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="365" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="365" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -53,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" line="394" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="394" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="394" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="394" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" line="368" column="5"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="368" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGrid_1a450e51f93738ce2648184d4e7aa6bdde" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -96,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" line="371" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="371" bodyend="372"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="371" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="371" bodyend="372"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGrid_1a14458c450fbf8c804da18d80f652224a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classlibmolgrid_1_1ManagedGrid_1a2e6fb40ebdb1c8bd1ba55716d6bff024" kindref="member">subgrid_t</ref></type>
@@ -115,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" line="380" column="15" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="380" bodyend="384"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="380" column="15" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="380" bodyend="384"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ManagedGrid_1a7ff8e1562862acfd393839e9ef444657" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classlibmolgrid_1_1ManagedGrid" kindref="compound">ManagedGrid</ref>&lt; Dtype, NumDims &gt;</type>
@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" line="387" column="17" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="387" bodyend="391"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="387" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="387" bodyend="391"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -152,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" line="394" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="395" bodyend="396"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="394" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" bodystart="395" bodyend="396"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -164,7 +164,7 @@
 <para><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref> is a container class of <ref refid="classlibmolgrid_1_1ManagedGrid" kindref="compound">ManagedGrid</ref> instead of a base class. Explicit transformation to a <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref> view is required to clearly indicate how the memory should be accessed. This can be done with cpu and gpu methods or by an explicit cast to <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>.</para>
 <para>There are two class specialization to support bracket indexing. </para>
     </detaileddescription>
-    <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="20" column="13" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="20" bodyend="-1"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="20" column="13" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="20" bodyend="-1"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1ManagedGrid_1a5f65ecf59323f2fdf69c9ba72425a1a5" prot="public" virt="non-virtual"><scope>libmolgrid::ManagedGrid</scope><name>base_t</name></member>
       <member refid="classlibmolgrid_1_1ManagedGrid_1a7ff8e1562862acfd393839e9ef444657" prot="public" virt="non-virtual"><scope>libmolgrid::ManagedGrid</scope><name>clone</name></member>

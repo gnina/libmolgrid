@@ -15,6 +15,9 @@
     <includedby refid="example__extractor_8cpp" local="yes">example_extractor.cpp</includedby>
     <includedby refid="example__provider_8cpp" local="yes">example_provider.cpp</includedby>
     <incdepgraph>
+      <node id="8">
+        <label>functional</label>
+      </node>
       <node id="1">
         <label>atom_typer.h</label>
         <link refid="atom__typer_8h"/>
@@ -32,9 +35,6 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-      </node>
-      <node id="8">
-        <label>functional</label>
       </node>
       <node id="2">
         <label>openbabel/atom.h</label>
@@ -56,6 +56,26 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="3">
+        <label>example_extractor.h</label>
+        <link refid="example__extractor_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>example_extractor.cpp</label>
+        <link refid="example__extractor_8cpp"/>
+      </node>
+      <node id="2">
+        <label>coord_cache.h</label>
+        <link refid="coord__cache_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
       <node id="1">
         <label>atom_typer.h</label>
         <link refid="atom__typer_8h"/>
@@ -70,47 +90,27 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>atom_typer.cpp</label>
-        <link refid="atom__typer_8cpp"/>
-      </node>
-      <node id="9">
-        <label>coordinateset.cpp</label>
-        <link refid="coordinateset_8cpp"/>
-      </node>
-      <node id="5">
-        <label>example_provider.cpp</label>
-        <link refid="example__provider_8cpp"/>
-      </node>
       <node id="4">
         <label>example_provider.h</label>
         <link refid="example__provider_8h"/>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="6">
-        <label>example_extractor.cpp</label>
-        <link refid="example__extractor_8cpp"/>
+      <node id="8">
+        <label>atom_typer.cpp</label>
+        <link refid="atom__typer_8cpp"/>
+      </node>
+      <node id="5">
+        <label>example_provider.cpp</label>
+        <link refid="example__provider_8cpp"/>
       </node>
       <node id="7">
         <label>coord_cache.cpp</label>
         <link refid="coord__cache_8cpp"/>
       </node>
-      <node id="2">
-        <label>coord_cache.h</label>
-        <link refid="coord__cache_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>example_extractor.h</label>
-        <link refid="example__extractor_8h"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
+      <node id="9">
+        <label>coordinateset.cpp</label>
+        <link refid="coordinateset_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classlibmolgrid_1_1AtomTyper" prot="public">libmolgrid::AtomTyper</innerclass>
@@ -655,13 +655,14 @@
 <codeline lineno="614"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="615"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="616"><highlight class="normal"></highlight></codeline>
-<codeline lineno="617"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>FileMappedGninaTyper<sp/><ref refid="namespacelibmolgrid_1aed6bc2269142acee6e4fdd214209c175" kindref="member">defaultGninaReceptorTyper</ref>;</highlight></codeline>
-<codeline lineno="618"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>FileMappedGninaTyper<sp/><ref refid="namespacelibmolgrid_1a371ec05022b3d175a5b02d540f947ac2" kindref="member">defaultGninaLigandTyper</ref>;</highlight></codeline>
-<codeline lineno="619"><highlight class="normal"></highlight></codeline>
-<codeline lineno="620"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="621"><highlight class="normal"></highlight></codeline>
-<codeline lineno="622"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>ATOMTYPER_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="633"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>FileMappedGninaTyper<sp/><ref refid="namespacelibmolgrid_1aed6bc2269142acee6e4fdd214209c175" kindref="member">defaultGninaReceptorTyper</ref>;</highlight></codeline>
+<codeline lineno="634"><highlight class="normal"></highlight></codeline>
+<codeline lineno="651"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>FileMappedGninaTyper<sp/><ref refid="namespacelibmolgrid_1a371ec05022b3d175a5b02d540f947ac2" kindref="member">defaultGninaLigandTyper</ref>;</highlight></codeline>
+<codeline lineno="652"><highlight class="normal"></highlight></codeline>
+<codeline lineno="653"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="654"><highlight class="normal"></highlight></codeline>
+<codeline lineno="655"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>ATOMTYPER_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h"/>
   </compounddef>
 </doxygen>

@@ -8,39 +8,6 @@
     <includes refid="managed__grid_8h" local="yes">libmolgrid/managed_grid.h</includes>
     <includes refid="transform_8h" local="yes">libmolgrid/transform.h</includes>
     <incdepgraph>
-      <node id="1">
-        <label>libmolgrid.cpp</label>
-        <link refid="libmolgrid_8cpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-      </node>
-      <node id="19">
-        <label>libmolgrid/transform.h</label>
-        <link refid="transform_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>boost/lexical_cast.hpp</label>
-      </node>
       <node id="22">
         <label>libmolgrid/example.h</label>
         <link refid="example_8h"/>
@@ -51,6 +18,9 @@
         <childnode refid="25" relation="include">
         </childnode>
       </node>
+      <node id="5">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
       <node id="6">
         <label>cuda_runtime.h</label>
       </node>
@@ -59,6 +29,24 @@
       </node>
       <node id="20">
         <label>stdexcept</label>
+      </node>
+      <node id="8">
+        <label>libmolgrid/grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
       </node>
       <node id="26">
         <label>openbabel/mol.h</label>
@@ -72,14 +60,18 @@
       <node id="7">
         <label>libmolgrid/config.h</label>
       </node>
-      <node id="25">
-        <label>libmolgrid/coordinateset.h</label>
-        <link refid="coordinateset_8h"/>
-        <childnode refid="23" relation="include">
+      <node id="1">
+        <label>libmolgrid.cpp</label>
+        <link refid="libmolgrid_8cpp"/>
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
       <node id="23">
@@ -103,26 +95,24 @@
       <node id="4">
         <label>iostream</label>
       </node>
-      <node id="16">
-        <label>cuda.h</label>
-      </node>
-      <node id="8">
-        <label>libmolgrid/grid.h</label>
-        <link refid="grid_8h"/>
-        <childnode refid="9" relation="include">
+      <node id="19">
+        <label>libmolgrid/transform.h</label>
+        <link refid="transform_8h"/>
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>cuda.h</label>
       </node>
       <node id="15">
         <label>cuda_runtime_api.h</label>
@@ -145,6 +135,12 @@
       <node id="9">
         <label>boost/multi_array.hpp</label>
       </node>
+      <node id="21">
+        <label>libmolgrid/quaternion.h</label>
+        <link refid="quaternion_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
       <node id="2">
         <label>libmolgrid/libmolgrid.h</label>
         <link refid="libmolgrid_8h"/>
@@ -157,14 +153,18 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="21">
-        <label>libmolgrid/quaternion.h</label>
-        <link refid="quaternion_8h"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
       <node id="14">
         <label>cstring</label>
+      </node>
+      <node id="25">
+        <label>libmolgrid/coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
       </node>
       <node id="13">
         <label>memory</label>
@@ -175,7 +175,7 @@
       <memberdef kind="define" id="libmolgrid_8cpp_1a1c871fa22b982781bf5303699bb07da4" prot="public" static="no">
         <name>INSTANTIATE_GRID_DEFINITIONS</name>
         <param><defname>SIZE</defname></param>
-        <initializer>template class Grid&lt;float, SIZE, false&gt;; \
+        <initializer>    template class Grid&lt;float, SIZE, false&gt;; \
     template class Grid&lt;double, SIZE, false&gt;; \
     template class Grid&lt;float, SIZE, true&gt;; \
     template class Grid&lt;double, SIZE, true&gt;; \
@@ -187,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/src/libmolgrid.cpp" line="14" column="9" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/libmolgrid.cpp" bodystart="14" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/src/libmolgrid.cpp" line="14" column="9" bodyfile="/home/dkoes/git/libmolgrid/src/libmolgrid.cpp" bodystart="14" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -224,6 +224,6 @@
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmolgrid/src/libmolgrid.cpp"/>
+    <location file="/home/dkoes/git/libmolgrid/src/libmolgrid.cpp"/>
   </compounddef>
 </doxygen>

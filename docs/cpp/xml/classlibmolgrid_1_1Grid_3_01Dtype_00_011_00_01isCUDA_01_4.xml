@@ -25,7 +25,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="248" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="248" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="248" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="248" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aee2fd0a001c66664abf20c3b1bbf9eee" prot="public" static="no">
         <type>Dtype</type>
@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="249" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="249" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="249" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="249" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1adc980d1b902f6a14af98e1ec10e2c96c" prot="public" static="no">
         <type><ref refid="classlibmolgrid_1_1ManagedGrid" kindref="compound">ManagedGrid</ref>&lt; Dtype, 1 &gt;</type>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="250" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="250" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="250" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="250" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a32ca1fb679900a650a8f7ab6a128117a" prot="public" static="no">
         <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 1, false &gt;</type>
@@ -64,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="251" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="251" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="251" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="251" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a2177fcb80495c85151de7dad3d566744" prot="public" static="no">
         <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 1, true &gt;</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="252" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="252" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="252" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="252" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="235" column="12" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="235" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="235" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="235" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a7af99c1e30f9f637316dab96f03c4b3d" prot="protected" static="no" mutable="no">
         <type>size_t</type>
@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="236" column="12" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="236" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="236" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="236" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-attrib">
@@ -121,7 +121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="254" column="29" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="254" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="254" column="29" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="254" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aa01454be2537d7eed47f8c16c82b0a23" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr bool</type>
@@ -135,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="255" column="27" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="255" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="255" column="27" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="255" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -159,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="238" column="31" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="238" bodyend="246"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="238" column="31" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="238" bodyend="246"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -175,7 +175,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="258" column="47" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="258" bodyend="258"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="258" column="47" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="258" bodyend="258"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aa9b61e8668a98c2e264339c38e74065b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> size_t</type>
@@ -193,7 +193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="260" column="40" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="260" bodyend="260"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="260" column="40" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="260" bodyend="260"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1acb2f16129f492fbb0aa93ae8b78402ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> size_t</type>
@@ -207,7 +207,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="263" column="40" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="263" bodyend="263"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="263" column="40" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="263" bodyend="263"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aaa5a68e1e5befda24cb7b3e422ba9cc5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> Dtype *</type>
@@ -221,7 +221,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="266" column="40" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="266" bodyend="266"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="266" column="40" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="266" bodyend="266"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a67a4d2469cf97b1e2018d220c5992ca7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> size_t</type>
@@ -238,7 +238,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="268" column="40" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="268" bodyend="268"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="268" column="40" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="268" bodyend="268"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a440d5fdb2fea4e01b2d7ca58720e6f9a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> void</type>
@@ -256,7 +256,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="271" column="38" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="271" bodyend="271"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="271" column="38" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="271" bodyend="271"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0a335d0339fe70071fcdf4cd5b1c7b5f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -269,7 +269,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="273" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="273" bodyend="273"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="273" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="273" bodyend="273"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aef69ac40c00f38f7d637f1af03f8d63a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -290,7 +290,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="275" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="275" bodyend="276"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="275" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="275" bodyend="276"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a267a07557e1dd6b7a0ed10e276afd2f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> Dtype &amp;</type>
@@ -307,7 +307,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="278" column="39" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="278" bodyend="281"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="278" column="39" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="278" bodyend="281"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a4fd87ea12567337969e0d30b1c4a51ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> Dtype</type>
@@ -324,7 +324,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="283" column="39" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="283" bodyend="286"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="283" column="39" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="283" bodyend="286"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a8ad9fc847771943373c0ece05f3761a6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> Dtype &amp;</type>
@@ -341,7 +341,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="288" column="39" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="288" bodyend="290"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="288" column="39" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="288" bodyend="290"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a7b8e84d93f65b9c3714f0acd8c7cd5c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> Dtype</type>
@@ -358,7 +358,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="292" column="39" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="292" bodyend="294"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="292" column="39" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="292" bodyend="294"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a512219066836349f65f85a0ead19ae8a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -371,7 +371,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="296" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="296" bodyend="299"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="296" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="296" bodyend="299"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a133c18fbd775019548ec10f171ec157a" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref></type>
@@ -392,7 +392,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="302" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="303" bodyend="304"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="302" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="303" bodyend="304"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a3e983133f9cb7d0571557580480ece9b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -416,7 +416,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="308" column="12" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="308" bodyend="314"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="308" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="308" bodyend="314"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1ad3152bc9dfc67f11fa55467ac93460f8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -440,14 +440,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="317" column="12" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="317" bodyend="323"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="317" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="317" bodyend="323"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" line="233" column="12" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/grid.h" bodystart="233" bodyend="325"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="233" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="233" bodyend="325"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a268477dcc97a377d747ac8d87c9e4832" prot="protected" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>buffer</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a18ec2ecbbcf47264c34b0fd73242b119" prot="protected" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>check_index</name></member>

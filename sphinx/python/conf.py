@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.abspath('../../build/python'))
 # -- Project information -----------------------------------------------------
 
 project = 'molgrid'
-copyright = '2019, David Koes and Jocelyn Sunseri'
+copyright = '2019-2021, David Koes and Jocelyn Sunseri'
 author = 'David Koes and Jocelyn Sunseri'
 
 

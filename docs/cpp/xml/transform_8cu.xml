@@ -107,6 +107,6 @@
 <codeline></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/jocelynsunseri/git/libmolgrid/src/transform.cu"/>
+    <location file="/home/dkoes/git/libmolgrid/src/transform.cu"/>
   </compounddef>
 </doxygen>

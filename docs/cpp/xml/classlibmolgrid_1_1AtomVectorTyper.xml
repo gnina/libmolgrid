@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="77" column="5" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="77" bodyend="77"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="77" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="77" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomVectorTyper_1ae1c414ec51b7e27172d2adaadbca7312" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="78" column="13" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="78" bodyend="78"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="78" column="13" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="78" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomVectorTyper_1ae503ecbf9ca173356ef6e475597e2b46" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>unsigned</type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="81" column="22"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="81" column="22"/>
         <referencedby refid="classlibmolgrid_1_1AtomVectorTyper_1a2b70b0f630b2e527f02857ad6735122f" compoundref="atom__typer_8h" startline="89" endline="89">AtomVectorTyper::get_vector_type_radii</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomVectorTyper_1a4dfe192d310ab34f1ca2c4a86bcad367" prot="public" static="no" const="yes" explicit="no" inline="yes" final="yes" virt="virtual">
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="83" column="23" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="83" bodyend="83"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="83" column="23" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomVectorTyper_1a2fde235edc45f68d00bde38ee8620646" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>float</type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="86" column="19"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="86" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomVectorTyper_1a2b70b0f630b2e527f02857ad6735122f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="89" column="25" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="89" bodyend="89"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="89" column="25" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="89" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomVectorTyper_1aedda205572fbbaa3a868181802232263" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -123,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="93" column="25"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="93" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomVectorTyper_1a38a567b5922504c0767ac0dcdff287f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -137,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="94" column="18" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="94" bodyend="94"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="94" column="18" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="94" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomTyper_1ae263d436c69186ad062ad5339d1d8727" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::pair&lt; int, float &gt;</type>
@@ -164,7 +164,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="36" column="23" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="36" bodyend="36"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="36" column="23" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="36" bodyend="36"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -208,7 +208,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" line="75" column="39" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="75" bodyend="97"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="75" column="39" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="75" bodyend="97"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1AtomTyper_1a554d6f387f3aff6cf68c24ffddd08567" prot="public" virt="non-virtual"><scope>libmolgrid::AtomVectorTyper</scope><name>AtomTyper</name></member>
       <member refid="classlibmolgrid_1_1AtomVectorTyper_1a7ed73ccec80b6ea1c07199ca32d9beb9" prot="public" virt="non-virtual"><scope>libmolgrid::AtomVectorTyper</scope><name>AtomVectorTyper</name></member>

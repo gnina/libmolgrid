@@ -24,7 +24,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="102" column="13" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="102" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="133" column="13" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="133" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1SamplingExampleRefProvider_1a5d2b03520ca6e4ca89cb6913a445297c" prot="private" static="no" mutable="no">
         <type>Provider2</type>
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="103" column="13" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="103" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="134" column="13" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="134" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1SamplingExampleRefProvider_1a5cd2077a80052e0e93450f6259fa5f92" prot="private" static="no" mutable="no">
         <type>double</type>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="104" column="10" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="104" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="135" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="135" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1SamplingExampleRefProvider_1aa67a53b752d991d01964c5b57022d462" prot="private" static="no" mutable="no">
         <type>std::uniform_real_distribution&lt; double &gt;</type>
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="105" column="34" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="105" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="136" column="34" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="136" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="108" column="3" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="108" bodyend="108"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="139" column="3" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="139" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1SamplingExampleRefProvider_1adb841b0ff27a95b871944779c5201234" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -109,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="109" column="3" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="109" bodyend="111"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="140" column="3" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="140" bodyend="142"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1SamplingExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -127,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="113" column="8" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="113" bodyend="116"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="144" column="8" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="144" bodyend="147"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1SamplingExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -141,7 +141,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="118" column="8" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="118" bodyend="122"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="149" column="8" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="149" bodyend="153"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1SamplingExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>size_t</type>
@@ -157,7 +157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="124" column="18" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="124" bodyend="126"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="155" column="18" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="155" bodyend="157"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1SamplingExampleRefProvider_1ae630292b50e44deb19e001f322914934" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -175,7 +175,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="128" column="8" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="128" bodyend="136"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="159" column="8" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="159" bodyend="168"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1SamplingExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>unsigned</type>
@@ -189,7 +189,52 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="138" column="12" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="138" bodyend="138"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="170" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="170" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1SamplingExampleRefProvider_1a9c66646cb491b4c4620dcfe627f5451d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>virtual size_t small_epoch_size</definition>
+        <argsstring>() const</argsstring>
+        <name>small_epoch_size</name>
+        <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1ac7d5c78d78fc4ae893f25e5dfdf261cc">small_epoch_size</reimplements>
+        <briefdescription>
+<para>this is the expected size of the epoch </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="173" column="18" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="173" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1SamplingExampleRefProvider_1ac2a4bfd5fd0579c2377a181a7bae1395" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>virtual size_t large_epoch_size</definition>
+        <argsstring>() const</argsstring>
+        <name>large_epoch_size</name>
+        <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a8a7602870f7be094fa3955de5fba5aca">large_epoch_size</reimplements>
+        <briefdescription>
+<para>Return number of example in large epoch. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="178" column="18" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="178" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1SamplingExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a20dcbdfbd0ec77afc802522bb7e379c1">reset</reimplements>
+        <briefdescription>
+<para>Reset iterators to start. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="183" column="16" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="183" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -203,7 +248,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="34" column="18" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="34" bodyend="34"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="36" column="18" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="36" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -222,7 +267,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="35" column="18" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="35" bodyend="35"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="37" column="18" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="37" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>int</type>
@@ -244,7 +289,65 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="39" column="17" bodyfile="/home/jocelynsunseri/git/libmolgrid/src/exampleref_providers.cpp" bodystart="48" bodyend="62"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="41" column="17" bodyfile="/home/dkoes/git/libmolgrid/src/exampleref_providers.cpp" bodystart="48" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a5edd8a3461f4aa311675b712ae2e1d20" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>virtual size_t get_small_epoch_num</definition>
+        <argsstring>() const</argsstring>
+        <name>get_small_epoch_num</name>
+        <reimplementedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1a5edd8a3461f4aa311675b712ae2e1d20">get_small_epoch_num</reimplementedby>
+        <briefdescription>
+<para>Return current small epoch number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="44" column="20" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1ac881e6a758225142e37f3811184b156c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>virtual size_t get_large_epoch_num</definition>
+        <argsstring>() const</argsstring>
+        <name>get_large_epoch_num</name>
+        <reimplementedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1ac881e6a758225142e37f3811184b156c">get_large_epoch_num</reimplementedby>
+        <briefdescription>
+<para>Return current large epoch number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="47" column="20" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="47" bodyend="47"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classlibmolgrid_1_1ExampleRefProvider_1adc9bb9be55d353ea973698ff2e50e213" prot="protected" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t cnt</definition>
+        <argsstring></argsstring>
+        <name>cnt</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="25" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1ExampleRefProvider_1ac881e6a758225142e37f3811184b156c" compoundref="exampleref__providers_8h" startline="47" endline="47">ExampleRefProvider::get_large_epoch_num</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ExampleRefProvider_1a5edd8a3461f4aa311675b712ae2e1d20" compoundref="exampleref__providers_8h" startline="44" endline="44">ExampleRefProvider::get_small_epoch_num</referencedby>
+        <referencedby refid="classlibmolgrid_1_1SamplingExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="159" endline="168">SamplingExampleRefProvider&lt; Provider1, Provider2 &gt;::nextref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="245" endline="263">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::nextref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="392" endline="397">ValueStratifiedExampleRefProfider&lt; Provider &gt;::nextref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="502" endline="533">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" compoundref="exampleref__providers_8h" startline="90" endline="90">UniformExampleRefProvider::reset</referencedby>
+        <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" compoundref="exampleref__providers_8h" startline="125" endline="125">BalancedExampleRefProvider::reset</referencedby>
+        <referencedby refid="classlibmolgrid_1_1SamplingExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" compoundref="exampleref__providers_8h" startline="183" endline="183">SamplingExampleRefProvider&lt; Provider1, Provider2 &gt;::reset</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" compoundref="exampleref__providers_8h" startline="297" endline="305">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::reset</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a7b0e029102ad38f4b814c6523aedb53d" compoundref="exampleref__providers_8h" startline="431" endline="438">ValueStratifiedExampleRefProfider&lt; Provider &gt;::reset</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" compoundref="exampleref__providers_8h" startline="552" endline="558">GroupedExampleRefProvider&lt; Provider &gt;::reset</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -276,24 +379,30 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="101" column="1" bodyfile="/home/jocelynsunseri/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="100" bodyend="139"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="132" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="131" bodyend="184"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" prot="public" virt="virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>addref</name></member>
       <member refid="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" prot="public" virt="virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>check_batch_size</name></member>
+      <member refid="classlibmolgrid_1_1ExampleRefProvider_1adc9bb9be55d353ea973698ff2e50e213" prot="protected" virt="non-virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>cnt</name></member>
       <member refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" prot="public" virt="non-virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>ExampleRefProvider</name></member>
       <member refid="classlibmolgrid_1_1ExampleRefProvider_1ae32c6ad6aeaeba0d2d2ab74a48a553b5" prot="public" virt="non-virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>ExampleRefProvider</name></member>
+      <member refid="classlibmolgrid_1_1ExampleRefProvider_1ac881e6a758225142e37f3811184b156c" prot="public" virt="virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>get_large_epoch_num</name></member>
+      <member refid="classlibmolgrid_1_1ExampleRefProvider_1a5edd8a3461f4aa311675b712ae2e1d20" prot="public" virt="virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>get_small_epoch_num</name></member>
       <member refid="classlibmolgrid_1_1ExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028" prot="public" virt="virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>has_group</name></member>
+      <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1ac2a4bfd5fd0579c2377a181a7bae1395" prot="public" virt="virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>large_epoch_size</name></member>
       <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1ae630292b50e44deb19e001f322914934" prot="public" virt="virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>nextref</name></member>
       <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" prot="public" virt="virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>num_labels</name></member>
       <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1a22e67ba1d3c40843e68d55e79f9d4e29" prot="private" virt="non-virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>p1</name></member>
       <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1a5d2b03520ca6e4ca89cb6913a445297c" prot="private" virt="non-virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>p2</name></member>
       <member refid="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" prot="public" virt="virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>populate</name></member>
       <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1aa67a53b752d991d01964c5b57022d462" prot="private" virt="non-virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>R</name></member>
+      <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" prot="public" virt="virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>reset</name></member>
       <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1a5cd2077a80052e0e93450f6259fa5f92" prot="private" virt="non-virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>sample_rate</name></member>
       <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1af1c7606e9224207259160331d6873775" prot="public" virt="non-virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>SamplingExampleRefProvider</name></member>
       <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1adb841b0ff27a95b871944779c5201234" prot="public" virt="non-virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>SamplingExampleRefProvider</name></member>
       <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" prot="public" virt="virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>setup</name></member>
       <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" prot="public" virt="virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>size</name></member>
+      <member refid="classlibmolgrid_1_1SamplingExampleRefProvider_1a9c66646cb491b4c4620dcfe627f5451d" prot="public" virt="virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>small_epoch_size</name></member>
       <member refid="classlibmolgrid_1_1ExampleRefProvider_1a6dab7933abd006833437122f78468007" prot="public" virt="virtual"><scope>libmolgrid::SamplingExampleRefProvider</scope><name>~ExampleRefProvider</name></member>
     </listofallmembers>
   </compounddef>
