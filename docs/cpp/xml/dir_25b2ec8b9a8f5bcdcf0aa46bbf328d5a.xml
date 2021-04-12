@@ -8,6 +8,7 @@
     <innerfile refid="coord__cache_8h">coord_cache.h</innerfile>
     <innerfile refid="coordinateset_8h">coordinateset.h</innerfile>
     <innerfile refid="example_8h">example.h</innerfile>
+    <innerfile refid="example__dataset_8h">example_dataset.h</innerfile>
     <innerfile refid="example__extractor_8h">example_extractor.h</innerfile>
     <innerfile refid="example__provider_8h">example_provider.h</innerfile>
     <innerfile refid="exampleref__providers_8h">exampleref_providers.h</innerfile>

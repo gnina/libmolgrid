@@ -13,3 +13,4 @@ vendor/
 
 # Ignore editors
 .vscode
+/.pytest_cache/

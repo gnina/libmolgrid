@@ -14,6 +14,7 @@
     <innerclass refid="structlibmolgrid_1_1CoordinateSet" prot="public">libmolgrid::CoordinateSet</innerclass>
     <innerclass refid="classlibmolgrid_1_1ElementIndexTyper" prot="public">libmolgrid::ElementIndexTyper</innerclass>
     <innerclass refid="structlibmolgrid_1_1Example" prot="public">libmolgrid::Example</innerclass>
+    <innerclass refid="classlibmolgrid_1_1ExampleDataset" prot="public">libmolgrid::ExampleDataset</innerclass>
     <innerclass refid="classlibmolgrid_1_1ExampleExtractor" prot="public">libmolgrid::ExampleExtractor</innerclass>
     <innerclass refid="classlibmolgrid_1_1ExampleProvider" prot="public">libmolgrid::ExampleProvider</innerclass>
     <innerclass refid="structlibmolgrid_1_1ExampleProviderSettings" prot="public">libmolgrid::ExampleProviderSettings</innerclass>
@@ -192,7 +193,7 @@
         <location file="/home/dkoes/git/libmolgrid/src/example.cpp" line="20" column="13" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="20" bodyend="-1" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" declline="176" declcolumn="20"/>
         <referencedby refid="classlibmolgrid_1_1CoordCache_1a30e53e7aa53be3caabe1e7b88f4c06f8" compoundref="coord__cache_8cpp" startline="25" endline="73">CoordCache::CoordCache</referencedby>
         <referencedby refid="structlibmolgrid_1_1ExampleRef_1af68ef87a6eab8ca94bd25484c273a402" compoundref="example_8cpp" startline="309" endline="354">ExampleRef::ExampleRef</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="502" endline="533">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="505" endline="536">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespacelibmolgrid_1a637541cee6c830dbabb26498f6c91249" prot="public" static="no" mutable="no">
         <type>std::default_random_engine</type>
@@ -207,8 +208,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/src/libmolgrid.cpp" line="11" column="32" bodyfile="/home/dkoes/git/libmolgrid/src/libmolgrid.cpp" bodystart="11" bodyend="-1" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/libmolgrid.h" declline="19" declcolumn="39"/>
-        <referencedby refid="classlibmolgrid_1_1SamplingExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="159" endline="168">SamplingExampleRefProvider&lt; Provider1, Provider2 &gt;::nextref</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="245" endline="263">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::nextref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1SamplingExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="162" endline="171">SamplingExampleRefProvider&lt; Provider1, Provider2 &gt;::nextref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="248" endline="266">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::nextref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8cpp" startline="17" endline="46">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::setup</referencedby>
         <referencedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8cpp" startline="70" endline="75">UniformExampleRefProvider::setup</referencedby>
         <referencedby refid="classlibmolgrid_1_1Transform_1a0efff6c41e09c88c91cb11d281e1b1ed" compoundref="transform_8cpp" startline="13" endline="33">Transform::Transform</referencedby>
@@ -787,9 +788,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/libmolgrid.h" line="24" column="25" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/libmolgrid.h" bodystart="24" bodyend="29"/>
-        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8h" startline="475" endline="484">GroupedExampleRefProvider&lt; Provider &gt;::addref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8h" startline="478" endline="487">GroupedExampleRefProvider&lt; Provider &gt;::addref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8cpp" startline="17" endline="46">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::setup</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8h" startline="373" endline="390">ValueStratifiedExampleRefProfider&lt; Provider &gt;::setup</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8h" startline="376" endline="393">ValueStratifiedExampleRefProfider&lt; Provider &gt;::setup</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a57d9db38e6b5ccde0b2d5e480fdf81a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -824,11 +825,11 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/libmolgrid.h" line="32" column="24" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/libmolgrid.h" bodystart="32" bodyend="32"/>
-        <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8cpp" startline="99" endline="109">BalancedExampleRefProvider::addref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8cpp" startline="107" endline="117">BalancedExampleRefProvider::addref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a354afea429c9572094ac2c5c5ed19786" compoundref="managed__grid_8h" startline="64" endline="75">ManagedGridBase&lt; Dtype, 1 &gt;::alloc_and_set_cpu</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1aad5407e977e2f417b18ed54a0cf7730c" compoundref="managed__grid_8h" startline="78" endline="91">ManagedGridBase&lt; Dtype, 1 &gt;::alloc_and_set_gpu</referencedby>
         <referencedby refid="classlibmolgrid_1_1GridMaker_1a2c462d84c2b3da4f21cd34bf090ca082" compoundref="grid__maker_8cpp" startline="413" endline="443">GridMaker::backward</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" compoundref="exampleref__providers_8h" startline="496" endline="500">GroupedExampleRefProvider&lt; Provider &gt;::check_batch_size</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" compoundref="exampleref__providers_8h" startline="499" endline="503">GroupedExampleRefProvider&lt; Provider &gt;::check_batch_size</referencedby>
         <referencedby refid="classlibmolgrid_1_1Grid_1a18ec2ecbbcf47264c34b0fd73242b119" compoundref="grid_8h" startline="65" endline="73">Grid&lt; Dtype, NumDims, true &gt;::check_index</referencedby>
         <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a18ec2ecbbcf47264c34b0fd73242b119" compoundref="grid_8h" startline="238" endline="246">Grid&lt; Dtype, 1, isCUDA &gt;::check_index</referencedby>
         <referencedby refid="classlibmolgrid_1_1GridMaker_1abe03e795cf5097fd746c9d649de88053" compoundref="grid__maker_8cpp" startline="40" endline="54">GridMaker::check_index_args</referencedby>
@@ -841,6 +842,7 @@
         <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1ab179299d9dc6bb3a4bfe868fd60882a6" compoundref="example__extractor_8cpp" startline="77" endline="86">ExampleExtractor::get_type_names</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0e5b397d8ab22663778fe8cf1d47f3d7" compoundref="coordinateset_8cpp" startline="187" endline="212">CoordinateSet::make_vector_types</referencedby>
         <referencedby refid="structlibmolgrid_1_1Example_1aaf8ff3176b68cb7987d5ec8c95612180" compoundref="example_8cpp" startline="42" endline="69">Example::merge_coordinates</referencedby>
+        <referencedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1a8100f1f3e6e934f1400566e80d971f8d" compoundref="exampleref__providers_8cpp" startline="99" endline="105">UniformExampleRefProvider::operator[]</referencedby>
         <referencedby refid="namespacelibmolgrid_1ade64fcaf6347fae87a6a41fb17a3fb31" compoundref="grid__io_8cpp" startline="70" endline="90">read_dx</referencedby>
         <referencedby refid="namespacelibmolgrid_1a480d5a45562f3cda34dbac07d1415d04" compoundref="grid__io_8cpp" startline="192" endline="201">read_dx_grids</referencedby>
         <referencedby refid="namespacelibmolgrid_1a10bb36f3a95760807a6c7006732bc624" compoundref="grid__io_8cpp" startline="21" endline="67">read_dx_helper</referencedby>

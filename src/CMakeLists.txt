@@ -6,6 +6,7 @@ set( LIBMOLGRID_SOURCES
  exampleref_providers.cpp
  example_extractor.cpp
  example_provider.cpp
+ example_dataset.cpp
  grid_maker.cpp
  grid_maker.cu
  coordinateset.cpp
@@ -29,6 +30,7 @@ set( LIBMOLGRID_HEADERS
  ../include/libmolgrid/exampleref_providers.h
  ../include/libmolgrid/example_extractor.h
  ../include/libmolgrid/example_provider.h
+ ../include/libmolgrid/example_dataset.h
  ../include/libmolgrid/grid_maker.h
  ../include/libmolgrid/coord_cache.h
  ../include/libmolgrid/common.h

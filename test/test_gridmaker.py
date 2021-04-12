@@ -418,10 +418,11 @@ def test_backward_gradients():
     for device in ('cuda','cpu'):
         types = torch.ones(1,1,dtype=torch.float32,device=device)
         radii = torch.ones(1,dtype=torch.float32,device=device)
-        for i in range(3): #test along each axis
-            coords = torch.zeros(1,3,dtype=torch.float32,requires_grad=True,device=device)            
+        for i in range(3): #test along each axis                        
             for x in xvals:
+                coords = torch.zeros(1,3,dtype=torch.float32,device=device)
                 coords[0][i] = x
+                coords.requires_grad=True
                 outgrid = molgrid.Coords2GridFunction.apply(gmaker, (0,0,0), coords, types, radii)
                 if i == 0:
                     gp = outgrid[0][8][6][6]

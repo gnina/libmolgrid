@@ -100,25 +100,29 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
       </node>
-      <node id="17">
+      <node id="19">
         <label>example.h</label>
         <link refid="example_8h"/>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -133,7 +137,7 @@
         <label>cartesian_grid.cpp</label>
         <link refid="cartesian__grid_8cpp"/>
       </node>
-      <node id="15">
+      <node id="17">
         <label>example_extractor.cpp</label>
         <link refid="example__extractor_8cpp"/>
       </node>
@@ -148,9 +152,9 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -163,14 +167,16 @@
         <label>grid_maker.cpp</label>
         <link refid="grid__maker_8cpp"/>
       </node>
-      <node id="18">
+      <node id="20">
         <label>exampleref_providers.h</label>
         <link refid="exampleref__providers_8h"/>
-        <childnode refid="12" relation="include">
-        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -186,7 +192,13 @@
         <link refid="coord__cache_8h"/>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>example_dataset.h</label>
+        <link refid="example__dataset_8h"/>
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="7">
@@ -195,37 +207,37 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="23">
         <label>libmolgrid.cpp</label>
         <link refid="libmolgrid_8cpp"/>
       </node>
-      <node id="13">
+      <node id="15">
         <label>example_provider.h</label>
         <link refid="example__provider_8h"/>
-        <childnode refid="14" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="24">
         <label>transform.cpp</label>
         <link refid="transform_8cpp"/>
       </node>
-      <node id="19">
+      <node id="21">
         <label>exampleref_providers.cpp</label>
         <link refid="exampleref__providers_8cpp"/>
       </node>
-      <node id="20">
+      <node id="22">
         <label>transform.h</label>
         <link refid="transform_8h"/>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="14">
+      <node id="16">
         <label>example_provider.cpp</label>
         <link refid="example__provider_8cpp"/>
       </node>
@@ -236,18 +248,22 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="18">
         <label>coord_cache.cpp</label>
         <link refid="coord__cache_8cpp"/>
       </node>
-      <node id="24">
+      <node id="26">
         <label>coordinateset.cpp</label>
         <link refid="coordinateset_8cpp"/>
       </node>
-      <node id="23">
+      <node id="14">
+        <label>example_dataset.cpp</label>
+        <link refid="example__dataset_8cpp"/>
+      </node>
+      <node id="25">
         <label>example.cpp</label>
         <link refid="example_8cpp"/>
       </node>
@@ -256,7 +272,7 @@
         <link refid="coordinateset_8h"/>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
@@ -264,7 +280,7 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

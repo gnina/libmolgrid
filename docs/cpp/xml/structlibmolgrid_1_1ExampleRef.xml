@@ -16,9 +16,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="153" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="153" bodyend="-1"/>
-        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8h" startline="208" endline="221">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::addref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8h" startline="211" endline="224">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::addref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="52">ExampleExtractor::extract</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="502" endline="533">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="505" endline="536">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a92e331dc0874eea72e24fad42efdddc6" compoundref="example__extractor_8cpp" startline="73" endline="75">ExampleExtractor::num_types</referencedby>
         <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8cpp" startline="17" endline="46">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::setup</referencedby>
       </memberdef>
@@ -35,10 +35,10 @@
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="154" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="154" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8cpp" startline="64" endline="68">UniformExampleRefProvider::addref</referencedby>
-        <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8cpp" startline="99" endline="109">BalancedExampleRefProvider::addref</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8h" startline="357" endline="363">ValueStratifiedExampleRefProfider&lt; Provider &gt;::addref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8cpp" startline="107" endline="117">BalancedExampleRefProvider::addref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8h" startline="360" endline="366">ValueStratifiedExampleRefProfider&lt; Provider &gt;::addref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="52">ExampleExtractor::extract</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="502" endline="533">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="505" endline="536">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structlibmolgrid_1_1ExampleRef_1a0242027ec3331f3d5793c42d21b6f4e1" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -53,9 +53,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="155" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="155" bodyend="-1"/>
-        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8h" startline="475" endline="484">GroupedExampleRefProvider&lt; Provider &gt;::addref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8h" startline="478" endline="487">GroupedExampleRefProvider&lt; Provider &gt;::addref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="52">ExampleExtractor::extract</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="502" endline="533">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="505" endline="536">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structlibmolgrid_1_1ExampleRef_1a2d552310ef0a3f6a1daa19e5c84f3168" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -71,7 +71,7 @@
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="156" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="156" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="52">ExampleExtractor::extract</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="502" endline="533">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="505" endline="536">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">

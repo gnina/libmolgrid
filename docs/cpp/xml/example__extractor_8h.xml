@@ -9,6 +9,7 @@
     <includes refid="exampleref__providers_8h" local="yes">libmolgrid/exampleref_providers.h</includes>
     <includes refid="coordinateset_8h" local="yes">libmolgrid/coordinateset.h</includes>
     <includes refid="coord__cache_8h" local="yes">libmolgrid/coord_cache.h</includes>
+    <includedby refid="example__dataset_8h" local="yes">example_dataset.h</includedby>
     <includedby refid="example__provider_8h" local="yes">example_provider.h</includedby>
     <includedby refid="example__extractor_8cpp" local="yes">example_extractor.cpp</includedby>
     <incdepgraph>
@@ -229,20 +230,32 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
       </node>
-      <node id="4">
+      <node id="6">
         <label>example_extractor.cpp</label>
         <link refid="example__extractor_8cpp"/>
       </node>
       <node id="2">
-        <label>example_provider.h</label>
-        <link refid="example__provider_8h"/>
+        <label>example_dataset.h</label>
+        <link refid="example__dataset_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="3">
+      <node id="4">
+        <label>example_provider.h</label>
+        <link refid="example__provider_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
         <label>example_provider.cpp</label>
         <link refid="example__provider_8cpp"/>
+      </node>
+      <node id="3">
+        <label>example_dataset.cpp</label>
+        <link refid="example__dataset_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classlibmolgrid_1_1ExampleExtractor" prot="public">libmolgrid::ExampleExtractor</innerclass>

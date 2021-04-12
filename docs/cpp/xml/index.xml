@@ -198,6 +198,24 @@
     <member refid="structlibmolgrid_1_1Example_1a000f4bbd3c5453860543c5ad97be617a" kind="function"><name>extract_labels</name></member>
     <member refid="structlibmolgrid_1_1Example_1abd2622389892168945e6f8d721072e38" kind="function"><name>extract_label</name></member>
   </compound>
+  <compound refid="classlibmolgrid_1_1ExampleDataset" kind="class"><name>libmolgrid::ExampleDataset</name>
+    <member refid="classlibmolgrid_1_1ExampleDataset_1ac052d871fcac9e679855543cc0fd72fd" kind="variable"><name>provider</name></member>
+    <member refid="classlibmolgrid_1_1ExampleDataset_1a2fb8829b2e7a2a7ddd15f77963afe1af" kind="variable"><name>extractor</name></member>
+    <member refid="classlibmolgrid_1_1ExampleDataset_1a3720a86fa37818f1974f5b1854beef4f" kind="variable"><name>init_settings</name></member>
+    <member refid="classlibmolgrid_1_1ExampleDataset_1afa04504316547cab15d591ef77d05311" kind="function"><name>ExampleDataset</name></member>
+    <member refid="classlibmolgrid_1_1ExampleDataset_1a665d391f6484d8613be1f50fc1a82b0d" kind="function"><name>ExampleDataset</name></member>
+    <member refid="classlibmolgrid_1_1ExampleDataset_1ae54328bb30fea9334dcd6630f5197184" kind="function"><name>ExampleDataset</name></member>
+    <member refid="classlibmolgrid_1_1ExampleDataset_1adce540f282d1ca6938ffe7c70c53ff4f" kind="function"><name>ExampleDataset</name></member>
+    <member refid="classlibmolgrid_1_1ExampleDataset_1ad38c22bd6d165cf0d195069279a30da9" kind="function"><name>~ExampleDataset</name></member>
+    <member refid="classlibmolgrid_1_1ExampleDataset_1af034c26f3c6c9d88821e1db792e4e874" kind="function"><name>populate</name></member>
+    <member refid="classlibmolgrid_1_1ExampleDataset_1af9aa38f73a7aa43fa0ba78d05d9c20fe" kind="function"><name>populate</name></member>
+    <member refid="classlibmolgrid_1_1ExampleDataset_1a3cfefbb6aa29709d7db0bdaebb8c7338" kind="function"><name>operator[]</name></member>
+    <member refid="classlibmolgrid_1_1ExampleDataset_1ad61784c785dd62f4d4e1d1fec3cf2f6e" kind="function"><name>num_labels</name></member>
+    <member refid="classlibmolgrid_1_1ExampleDataset_1a82e186f5abfa7cb53a59487bda88a785" kind="function"><name>settings</name></member>
+    <member refid="classlibmolgrid_1_1ExampleDataset_1a59b7170f88e4d8d17e9f4eb5e3d62712" kind="function"><name>num_types</name></member>
+    <member refid="classlibmolgrid_1_1ExampleDataset_1a2babcd45f89ff67b4b4887f7ba469ae6" kind="function"><name>get_type_names</name></member>
+    <member refid="classlibmolgrid_1_1ExampleDataset_1a259cb5a711406a8c3e5d937eb9350cca" kind="function"><name>size</name></member>
+  </compound>
   <compound refid="classlibmolgrid_1_1ExampleExtractor" kind="class"><name>libmolgrid::ExampleExtractor</name>
     <member refid="classlibmolgrid_1_1ExampleExtractor_1a54c779513bcd7e412018cbe0bf0321ff" kind="variable"><name>coord_caches</name></member>
     <member refid="classlibmolgrid_1_1ExampleExtractor_1a15f56a006f5ce29d6ae2a8d42a57aed7" kind="variable"><name>duplicate_poses</name></member>
@@ -928,6 +946,7 @@
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" kind="function"><name>setup</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1ae630292b50e44deb19e001f322914934" kind="function"><name>nextref</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kind="function"><name>size</name></member>
+    <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a8100f1f3e6e934f1400566e80d971f8d" kind="function"><name>operator[]</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a5edd8a3461f4aa311675b712ae2e1d20" kind="function"><name>get_small_epoch_num</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1ac881e6a758225142e37f3811184b156c" kind="function"><name>get_large_epoch_num</name></member>
     <member refid="classlibmolgrid_1_1UniformExampleRefProvider_1a9c66646cb491b4c4620dcfe627f5451d" kind="function"><name>small_epoch_size</name></member>
@@ -1065,6 +1084,10 @@
   <compound refid="example_8h" kind="file"><name>example.h</name>
     <member refid="example_8h_1a46739ee654a984e63ff40c4ad66e364d" kind="define"><name>MAKE_SETTINGS</name></member>
     <member refid="example_8h_1a5b01d266acea74c0a163773fe8f40a13" kind="define"><name>EXSET</name></member>
+  </compound>
+  <compound refid="example__dataset_8cpp" kind="file"><name>example_dataset.cpp</name>
+  </compound>
+  <compound refid="example__dataset_8h" kind="file"><name>example_dataset.h</name>
   </compound>
   <compound refid="example__extractor_8cpp" kind="file"><name>example_extractor.cpp</name>
   </compound>

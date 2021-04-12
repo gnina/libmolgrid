@@ -1,0 +1,300 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="example__dataset_8h" kind="file" language="C++">
+    <compoundname>example_dataset.h</compoundname>
+    <includes refid="example_8h" local="yes">libmolgrid/example.h</includes>
+    <includes refid="exampleref__providers_8h" local="yes">libmolgrid/exampleref_providers.h</includes>
+    <includes refid="example__extractor_8h" local="yes">libmolgrid/example_extractor.h</includes>
+    <includedby refid="example__dataset_8cpp" local="yes">example_dataset.cpp</includedby>
+    <incdepgraph>
+      <node id="32">
+        <label>functional</label>
+      </node>
+      <node id="27">
+        <label>libmolgrid/example_extractor.h</label>
+        <link refid="example__extractor_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>libmolgrid/example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="22">
+        <label>cuda_runtime.h</label>
+      </node>
+      <node id="14">
+        <label>cassert</label>
+      </node>
+      <node id="11">
+        <label>libmolgrid/grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>openbabel/mol.h</label>
+      </node>
+      <node id="4">
+        <label>unordered_set</label>
+      </node>
+      <node id="23">
+        <label>libmolgrid/exampleref_providers.h</label>
+        <link refid="exampleref__providers_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>libmolgrid/coord_cache.h</label>
+        <link refid="coord__cache_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>random</label>
+      </node>
+      <node id="1">
+        <label>example_dataset.h</label>
+        <link refid="example__dataset_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>libmolgrid/atom_typer.h</label>
+        <link refid="atom__typer_8h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>openbabel/atom.h</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+      <node id="9">
+        <label>utility</label>
+      </node>
+      <node id="33">
+        <label>boost/iostreams/device/mapped_file.hpp</label>
+      </node>
+      <node id="16">
+        <label>libmolgrid/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>openbabel/elements.h</label>
+      </node>
+      <node id="15">
+        <label>iostream</label>
+      </node>
+      <node id="26">
+        <label>unordered_map</label>
+      </node>
+      <node id="19">
+        <label>cuda.h</label>
+      </node>
+      <node id="18">
+        <label>cuda_runtime_api.h</label>
+      </node>
+      <node id="13">
+        <label>boost/preprocessor/repetition.hpp</label>
+      </node>
+      <node id="7">
+        <label>libmolgrid/managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>type_traits</label>
+      </node>
+      <node id="12">
+        <label>boost/multi_array.hpp</label>
+      </node>
+      <node id="24">
+        <label>algorithm</label>
+      </node>
+      <node id="20">
+        <label>libmolgrid/libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>cstring</label>
+      </node>
+      <node id="5">
+        <label>libmolgrid/coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>example_dataset.h</label>
+        <link refid="example__dataset_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>example_dataset.cpp</label>
+        <link refid="example__dataset_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classlibmolgrid_1_1ExampleDataset" prot="public">libmolgrid::ExampleDataset</innerclass>
+    <innernamespace refid="namespacelibmolgrid">libmolgrid</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Main class for accessing examples as mappable dataset.</para>
+<para>Created on: Apr 12, 2021 Author: dkoes </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="preprocessor">#ifndef<sp/>EXAMPLE_DATASET_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXAMPLE_DATASET_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="example_8h" kindref="compound">libmolgrid/example.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="exampleref__providers_8h" kindref="compound">libmolgrid/exampleref_providers.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="example__extractor_8h" kindref="compound">libmolgrid/example_extractor.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelibmolgrid" kindref="compound">libmolgrid</ref><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Docstring_ExampleDataset</highlight></codeline>
+<codeline lineno="26" refid="classlibmolgrid_1_1ExampleDataset" refkind="compound"><highlight class="comment"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1ExampleDataset" kindref="compound">ExampleDataset</ref><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1UniformExampleRefProvider" kindref="compound">UniformExampleRefProvider</ref><sp/>provider;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleExtractor" kindref="compound">ExampleExtractor</ref><sp/>extractor;<sp/></highlight><highlight class="comment">//mutable<sp/>because<sp/>can<sp/>cache</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref><sp/>init_settings;<sp/></highlight><highlight class="comment">//save<sp/>settings<sp/>created<sp/>with</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1afa04504316547cab15d591ef77d05311" kindref="member">ExampleDataset</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref>&amp;<sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1a82e186f5abfa7cb53a59487bda88a785" kindref="member">settings</ref>=<ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref>());</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1afa04504316547cab15d591ef77d05311" kindref="member">ExampleDataset</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref>&amp;<sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1a82e186f5abfa7cb53a59487bda88a785" kindref="member">settings</ref>,<sp/>std::shared_ptr&lt;AtomTyper&gt;<sp/>t);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1afa04504316547cab15d591ef77d05311" kindref="member">ExampleDataset</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref>&amp;<sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1a82e186f5abfa7cb53a59487bda88a785" kindref="member">settings</ref>,<sp/>std::shared_ptr&lt;AtomTyper&gt;<sp/>t1,<sp/>std::shared_ptr&lt;AtomTyper&gt;<sp/>t2);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1afa04504316547cab15d591ef77d05311" kindref="member">ExampleDataset</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref>&amp;<sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1a82e186f5abfa7cb53a59487bda88a785" kindref="member">settings</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::shared_ptr&lt;AtomTyper&gt;<sp/>&gt;&amp;<sp/>typrs,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;&amp;<sp/>molcaches<sp/>=<sp/>std::vector&lt;std::string&gt;());</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classlibmolgrid_1_1ExampleDataset_1ad38c22bd6d165cf0d195069279a30da9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1ad38c22bd6d165cf0d195069279a30da9" kindref="member">~ExampleDataset</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1af034c26f3c6c9d88821e1db792e4e874" kindref="member">populate</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>fname,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1ad61784c785dd62f4d4e1d1fec3cf2f6e" kindref="member">num_labels</ref>=-1);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1af034c26f3c6c9d88821e1db792e4e874" kindref="member">populate</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;&amp;<sp/>fnames,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1ad61784c785dd62f4d4e1d1fec3cf2f6e" kindref="member">num_labels</ref>=-1);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref><sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1a3cfefbb6aa29709d7db0bdaebb8c7338" kindref="member">operator[]</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>idx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classlibmolgrid_1_1ExampleDataset_1ad61784c785dd62f4d4e1d1fec3cf2f6e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1ad61784c785dd62f4d4e1d1fec3cf2f6e" kindref="member">num_labels</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>provider.<ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" kindref="member">num_labels</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61" refid="classlibmolgrid_1_1ExampleDataset_1a82e186f5abfa7cb53a59487bda88a785" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref>&amp;<sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1a82e186f5abfa7cb53a59487bda88a785" kindref="member">settings</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>init_settings;<sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classlibmolgrid_1_1ExampleDataset_1a59b7170f88e4d8d17e9f4eb5e3d62712" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1a59b7170f88e4d8d17e9f4eb5e3d62712" kindref="member">num_types</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>extractor.<ref refid="classlibmolgrid_1_1ExampleExtractor_1a59b7170f88e4d8d17e9f4eb5e3d62712" kindref="member">num_types</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="66" refid="classlibmolgrid_1_1ExampleDataset_1a2babcd45f89ff67b4b4887f7ba469ae6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1a2babcd45f89ff67b4b4887f7ba469ae6" kindref="member">get_type_names</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>extractor.<ref refid="classlibmolgrid_1_1ExampleExtractor_1ab179299d9dc6bb3a4bfe868fd60882a6" kindref="member">get_type_names</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="68" refid="classlibmolgrid_1_1ExampleDataset_1a259cb5a711406a8c3e5d937eb9350cca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleDataset_1a259cb5a711406a8c3e5d937eb9350cca" kindref="member">size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>provider.<ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>EXAMPLE_DATASET_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h"/>
+  </compounddef>
+</doxygen>

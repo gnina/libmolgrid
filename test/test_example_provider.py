@@ -320,6 +320,17 @@ def test_example_provider_iterator_interface():
         if i > 10:
             break
         
+def test_pytorch_dataset():
+    fname = datadir+"/small.types"
+    
+    e = molgrid.MolDataset(fname,data_root=datadir+"/structs")
+    
+    assert len(e) == 1000
+    assert e[1].labels[0] == 1
+    np.testing.assert_allclose(e[1].labels[1],6.05)
+    assert e[-1].labels[0] == 0
+    np.testing.assert_allclose(e[-1].labels[1], -10.3)    
+        
 def test_duplicated_examples():
     '''This is for files with multiple ligands'''
     fname = datadir+"/multilig.types"

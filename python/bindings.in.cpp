@@ -9,6 +9,7 @@
 #include "libmolgrid/transform.h"
 #include "libmolgrid/atom_typer.h"
 #include "libmolgrid/example_provider.h"
+#include "libmolgrid/example_dataset.h"
 #include "libmolgrid/grid_maker.h"
 #include "libmolgrid/grid_io.h"
 
@@ -327,9 +328,10 @@ static void set_settings_form_kwargs(dict kwargs, ExampleProviderSettings& setti
   }
 }
 
-//raw constructor for example provider, args should be typers and kwargs
+//raw constructor for example provider/dataset, args should be typers and kwargs
 //settings in exampleprovidersettings
-std::shared_ptr<ExampleProvider> create_ex_provider(tuple args, dict kwargs) {
+template <typename T>
+std::shared_ptr<T> create_ex_provider(tuple args, dict kwargs) {
   using namespace std;
   ExampleProviderSettings settings;
 
@@ -355,11 +357,11 @@ std::shared_ptr<ExampleProvider> create_ex_provider(tuple args, dict kwargs) {
   }
 
   if(N == 0)
-    return std::make_shared<ExampleProvider>(settings);
+    return std::make_shared<T>(settings);
   else
-    return std::make_shared<ExampleProvider>(settings, typers);
-
+    return std::make_shared<T>(settings, typers);
 }
+
 
 //register a vector of the specified type using name, but only if it isn't already registered
 template <typename T>
@@ -708,7 +710,7 @@ MAKE_ALL_GRIDS()
 
   //there is quite a lot of functionality in the C++ api for example providers, but keep it simple in python for now
   class_<ExampleProvider>("ExampleProvider", "@Docstring_ExampleProvider@")
-      .def("__init__", raw_constructor(&create_ex_provider,0),"Construct an ExampleProvider using an ExampleSettings object "
+      .def("__init__", raw_constructor(&create_ex_provider<ExampleProvider>,0),"Construct an ExampleProvider using an ExampleSettings object "
           "and the desired AtomTypers for each molecule.  Alternatively, specify individual settings using keyword arguments, where the keys correspond to properties of the ExampleProviderSettings class (please see that class for complete documentation of available settings).")
       .def("populate",
           static_cast<void (ExampleProvider::*)(const std::string&, int)>(&ExampleProvider::populate),
@@ -720,7 +722,7 @@ MAKE_ALL_GRIDS()
                 throw std::invalid_argument("Need list of file names for ExampleProvider");
               }
           },
-          (arg("file_name"), arg("num_labels")=-1, arg("has_group")=false))
+          (arg("file_names"), arg("num_labels")=-1))
       .def("num_labels", &ExampleProvider::num_labels)
       .def("settings", &ExampleProvider::settings,return_value_policy<copy_const_reference>())
       .def("num_types", &ExampleProvider::num_types)
@@ -745,6 +747,31 @@ MAKE_ALL_GRIDS()
             }
           });
 
+
+  class_<ExampleDataset>("ExampleDataset", "@Docstring_ExampleDataset@")
+      .def("__init__", raw_constructor(&create_ex_provider<ExampleDataset>,0),"Construct an ExampleDataset using an ExampleSettings object "
+          "and the desired AtomTypers for each molecule.  Alternatively, specify individual settings using keyword arguments, where the keys correspond to properties of the ExampleProviderSettings class. Settings related to iteration are ignored.")
+      .def("populate",
+          static_cast<void (ExampleDataset::*)(const std::string&, int)>(&ExampleDataset::populate),
+          (arg("file_name"), arg("num_labels")=-1))
+      .def("populate", +[](ExampleDataset& self, list l, int num_labels=-1) {
+            if(list_is_vec<std::string>(l)) {
+                self.populate(list_to_vec<std::string>(l), num_labels);
+              } else {
+                throw std::invalid_argument("Need list of file names for ExampleProvider");
+              }
+          },
+          (arg("file_names"), arg("num_labels")=-1))
+      .def("num_labels", &ExampleDataset::num_labels)
+      .def("settings", &ExampleDataset::settings,return_value_policy<copy_const_reference>())
+      .def("num_types", &ExampleDataset::num_types)
+      .def("size", &ExampleDataset::size)
+      .def("__len__",&ExampleDataset::size)
+      .def("get_type_names", &ExampleDataset::get_type_names)
+      .def("__getitem__", +[](const ExampleDataset& D, int i) {
+          if(i < 0) i = D.size()+i; //index from back
+          return D[i];
+          });
 
   //grid maker
   class_<GridMaker>("GridMaker", "@Docstring_GridMaker@",

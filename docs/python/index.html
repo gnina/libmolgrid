@@ -336,6 +336,24 @@ registered hooks while the latter silently ignores them.</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt id="molgrid.torch_bindings.MolDataset">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">molgrid.torch_bindings.</span></code><code class="sig-name descname"><span class="pre">MolDataset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.torch_bindings.MolDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.utils.data.dataset.T_co</span></code>]</p>
+<p>A pytorch mappable dataset for molgrid training files.</p>
+<p>Initialize mappable MolGridDataset.
+:param input(s): File name(s) of training example files
+:param typers: A tuple of AtomTypers to use
+:type typers: tuple
+:param cache_structs: retain coordinates in memory for faster training
+:param add_hydrogens: protonate molecules read using openbabel
+:param duplicate_first: clone the first coordinate set to be paired with each of the remaining (receptor-ligand pairs)
+:param make_vector_types: convert index types into one-hot encoded vector types
+:param data_root: prefix for data files
+:param recmolcache: precalculated molcache2 file for receptor (first molecule); if doesn’t exist, will look in data _root
+:param ligmolcache: precalculated molcache2 file for ligand; if doesn’t exist, will look in data_root</p>
+</dd></dl>
+
 <dl class="py function">
 <dt id="molgrid.torch_bindings.make_grid_tensor">
 <code class="sig-prename descclassname"><span class="pre">molgrid.torch_bindings.</span></code><code class="sig-name descname"><span class="pre">make_grid_tensor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gridmaker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.torch_bindings.make_grid_tensor" title="Permalink to this definition">¶</a></dt>
@@ -555,14 +573,14 @@ a vector one-hot encoding of an index type can be created.</p>
 </dd>
 </dl>
 </div></blockquote>
-<p>make_vector_types( (CoordinateSet)arg1 [, (bool)include_dummy_type=False [, (FloatVec)type_radii=&lt;molgrid.molgrid.FloatVec object at 0x7f8ac6cdc990&gt;]]) -&gt; None :</p>
+<p>make_vector_types( (CoordinateSet)arg1 [, (bool)include_dummy_type=False [, (FloatVec)type_radii=&lt;molgrid.molgrid.FloatVec object at 0x7feee3930990&gt;]]) -&gt; None :</p>
 <blockquote>
 <div><blockquote>
 <div><p>convert index types to vector types in-place</p>
 </div></blockquote>
 <p>/</p>
 <dl class="simple">
-<dt>C++ signature :</dt><dd><p>void make_vector_types(libmolgrid::CoordinateSet {lvalue} [,bool=False [,std::vector&lt;float, std::allocator&lt;float&gt; &gt;=&lt;molgrid.molgrid.FloatVec object at 0x7f8ac6cdc990&gt;]])</p>
+<dt>C++ signature :</dt><dd><p>void make_vector_types(libmolgrid::CoordinateSet {lvalue} [,bool=False [,std::vector&lt;float, std::allocator&lt;float&gt; &gt;=&lt;molgrid.molgrid.FloatVec object at 0x7feee3930990&gt;]])</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -2789,10 +2807,10 @@ for maximum CUDA performance.</p>
 </dd>
 </dl>
 </div></blockquote>
-<p>__init__( (object)arg1, (list)map [, (bool)catchall=True [, (StringVec)old_names=&lt;molgrid.molgrid.StringVec object at 0x7f8ac6cdc870&gt;]]) -&gt; object :</p>
+<p>__init__( (object)arg1, (list)map [, (bool)catchall=True [, (StringVec)old_names=&lt;molgrid.molgrid.StringVec object at 0x7feee3930870&gt;]]) -&gt; object :</p>
 <blockquote>
 <div><dl class="simple">
-<dt>C++ signature :</dt><dd><p>void* __init__(boost::python::api::object,boost::python::list [,bool=True [,std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;=&lt;molgrid.molgrid.StringVec object at 0x7f8ac6cdc870&gt;]])</p>
+<dt>C++ signature :</dt><dd><p>void* __init__(boost::python::api::object,boost::python::list [,bool=True [,std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;=&lt;molgrid.molgrid.StringVec object at 0x7feee3930870&gt;]])</p>
 </dd>
 </dl>
 </div></blockquote>

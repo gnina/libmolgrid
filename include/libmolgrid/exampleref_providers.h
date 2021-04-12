@@ -81,6 +81,9 @@ public:
   void nextref(ExampleRef& ex);
   unsigned size() const { return all.size(); }
 
+  /// Provide ExampleRef at position idx
+  const ExampleRef& operator[](size_t idx) const;
+
   virtual size_t get_small_epoch_num() const { return epoch; }
   virtual size_t get_large_epoch_num() const { return epoch; }
 

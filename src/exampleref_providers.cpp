@@ -96,6 +96,14 @@ void UniformExampleRefProvider::nextref(ExampleRef& ex)
   cnt++;
 }
 
+const ExampleRef& UniformExampleRefProvider::operator[](size_t idx) const
+{
+    if(idx >= all.size()) {
+        throw std::invalid_argument("Invalid index: "+itoa(idx)+" > "+itoa(all.size()));
+    }
+    return all[idx];
+}
+
 void BalancedExampleRefProvider::addref(const ExampleRef& ex)
 {
   if(labelpos < ex.labels.size()) {
