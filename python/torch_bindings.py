@@ -182,25 +182,23 @@ class MolDataset(torch.utils.data.Dataset):
             self.rand_trans = kwargs['random_translation']
         if 'random_rotation' in kwargs:
             self.rand_rot = kwargs['random_rotation']
-        dims = self.gmaker.grid_dimensions(self.examples[0].num_types())
+        self.dims = self.gmaker.grid_dimensions(self.examples[0].num_types())
 
         self.num_labels = self.examples.num_labels()
 
-        dtype, device = None, None
+        self.dtype, self.device = None, None
         if 'device' in kwargs:
-            device = kwargs['device']
+            self.device = kwargs['device']
         if 'dtype' in kwargs:
-            dtype = kwargs['dtype']
-        self.output_tensor = torch.zeros(dims, dtype=dtype, device=device)
-
-        self.label_tensor = torch.zeros(1, dtype=dtype, device=device)
+            self.dtype = kwargs['dtype']
         
     def __len__(self):
         return len(self.examples)
     
     def __getitem__(self, idx):
-        self.gmaker.forward(self.examples[idx], self.output_tensor, random_translation=self.rand_trans, random_rotation=self.rand_rot)
+        output_tensor = torch.zeros(self.dims, dtype=self.dtype, device=self.device)
+        self.gmaker.forward(self.examples[idx], output_tensor, random_translation=self.rand_trans, random_rotation=self.rand_rot)
         labels = [self.examples[idx].labels[lab] for lab in range(self.num_labels)]
-        return self.output_tensor, labels
+        return output_tensor, labels
     
         
