@@ -167,6 +167,20 @@ class MolDataset(torch.utils.data.Dataset):
         :param ligmolcache: precalculated molcache2 file for ligand; if doesn't exist, will look in data_root
         '''
 
+        self.dtype, self.device = None, None
+        if 'device' in kwargs:
+            self.device = kwargs['device']
+            del kwargs['device']
+        if 'dtype' in kwargs:
+            self.dtype = kwargs['dtype']
+            del kwargs['dtype']
+        self.rand_trans, self.rand_rot = 0, False
+        if 'random_translation' in kwargs:
+            self.rand_trans = kwargs['random_translation']
+            del kwargs['random_translation']
+        if 'random_rotation' in kwargs:
+            self.rand_rot = kwargs['random_rotation']
+            del kwargs['random_rotation']
         if 'typers' in kwargs:
             typers = kwargs['typers']
             del kwargs['typers']
@@ -177,20 +191,10 @@ class MolDataset(torch.utils.data.Dataset):
             
         # Setup the gridmaker so can return torch tensor
         self.gmaker = mg.GridMaker()
-        self.rand_trans, self.rand_rot = 0, False
-        if 'random_translation' in kwargs:
-            self.rand_trans = kwargs['random_translation']
-        if 'random_rotation' in kwargs:
-            self.rand_rot = kwargs['random_rotation']
         self.dims = self.gmaker.grid_dimensions(self.examples[0].num_types())
 
         self.num_labels = self.examples.num_labels()
 
-        self.dtype, self.device = None, None
-        if 'device' in kwargs:
-            self.device = kwargs['device']
-        if 'dtype' in kwargs:
-            self.dtype = kwargs['dtype']
         
     def __len__(self):
         return len(self.examples)
