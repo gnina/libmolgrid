@@ -166,19 +166,41 @@ class MolDataset(torch.utils.data.Dataset):
         :param recmolcache: precalculated molcache2 file for receptor (first molecule); if doesn't exist, will look in data _root
         :param ligmolcache: precalculated molcache2 file for ligand; if doesn't exist, will look in data_root
         '''
+
         if 'typers' in kwargs:
             typers = kwargs['typers']
             del kwargs['typers']
             self.examples = mg.ExampleDataset(typers,**kwargs)
         else:
             self.examples = mg.ExampleDataset(**kwargs)
-            
         self.examples.populate(list(args))
+            
+        # Setup the gridmaker so can return torch tensor
+        self.gmaker = mg.GridMaker()
+        self.rand_trans, self.rand_rot = 0, False
+        if 'random_translation' in kwargs:
+            self.rand_trans = kwargs['random_translation']
+        if 'random_rotation' in kwargs:
+            self.rand_rot = kwargs['random_rotation']
+        dims = self.gmaker.grid_dimensions(self.examples[0].num_types())
+
+        self.num_labels = self.examples.num_labels()
+
+        dtype, device = None, None
+        if 'device' in kwargs:
+            device = kwargs['device']
+        if 'dtype' in kwargs:
+            dtype = kwargs['dtype']
+        self.output_tensor = torch.zeros(dims, dtype=dtype, device=device)
+
+        self.label_tensor = torch.zeros(1, dtype=dtype, device=device)
         
     def __len__(self):
         return len(self.examples)
     
     def __getitem__(self, idx):
-        return self.examples[idx]
+        self.gmaker.forward(self.examples[idx], self.output_tensor, random_translation=self.rand_trans, random_rotation=self.rand_rot)
+        labels = [self.examples[idx].labels[lab] for lab in range(self.num_labels)]
+        return self.output_tensor, labels
     
         

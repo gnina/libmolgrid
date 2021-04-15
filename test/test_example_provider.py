@@ -324,12 +324,27 @@ def test_pytorch_dataset():
     fname = datadir+"/small.types"
     
     e = molgrid.MolDataset(fname,data_root=datadir+"/structs")
+    ert = molgrid.MolDataset(fname,data_root=datadir+"/structs",random_rotation=True,random_translation=2.0)
     
     assert len(e) == 1000
-    assert e[1].labels[0] == 1
-    np.testing.assert_allclose(e[1].labels[1],6.05)
-    assert e[-1].labels[0] == 0
-    np.testing.assert_allclose(e[-1].labels[1], -10.3)    
+    assert len(ert) == 1000
+
+    grid, labels = e[1]
+    gridrt, labelsrt = ert[1]
+
+    assert grid.shape[0] == molgrid.defaultGninaReceptorTyper.num_types() + molgrid.defaultGninaLigandTyper.num_types()
+    assert sum(grid.shape[1:]) == 48*3
+    assert (grid.sum(axis=[1,2,3]).nonzero() == gridrt.sum(axis=[1,2,3]).nonzero()).all()
+
+    assert len(labels) == 3
+    assert labels[0] == 1
+    np.testing.assert_allclose(labels[1],6.05)
+    np.testing.assert_allclose(labels[-1],0.162643)
+    assert labels == labelsrt
+
+    grids, labels =e[-1]
+    assert labels[0] == 0
+    np.testing.assert_allclose(labels[1], -10.3)    
         
 def test_duplicated_examples():
     '''This is for files with multiple ligands'''
