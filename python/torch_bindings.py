@@ -174,6 +174,7 @@ class MolDataset(torch.utils.data.Dataset):
         if 'dtype' in kwargs:
             self.dtype = kwargs['dtype']
             del kwargs['dtype']
+        
         self.rand_trans, self.rand_rot = 0, False
         if 'random_translation' in kwargs:
             self.rand_trans = kwargs['random_translation']
@@ -181,13 +182,17 @@ class MolDataset(torch.utils.data.Dataset):
         if 'random_rotation' in kwargs:
             self.rand_rot = kwargs['random_rotation']
             del kwargs['random_rotation']
+ 
         if 'typers' in kwargs:
             typers = kwargs['typers']
             del kwargs['typers']
-            self.examples = mg.ExampleDataset(typers,**kwargs)
+            self.examples = mg.ExampleDataset(*typers,**kwargs)
+            self.typers = typers
         else:
             self.examples = mg.ExampleDataset(**kwargs)
-        self.examples.populate(list(args))
+            self.typers = None
+        self.types_files = list(args)
+        self.examples.populate(self.types_files)
             
         # Setup the gridmaker so can return torch tensor
         self.gmaker = mg.GridMaker()
@@ -205,4 +210,47 @@ class MolDataset(torch.utils.data.Dataset):
         labels = [self.examples[idx].labels[lab] for lab in range(self.num_labels)]
         return output_tensor, labels
     
+    def __getstate__(self):
+        settings = self.examples.settings()
+        keyword_dict = {sett: getattr(settings,sett) for sett in dir(settings) if not sett.startswith('__')}
+        keyword_dict['random_translation'] = self.rand_trans
+        keyword_dict['random_rotation'] = self.rand_rot
+        if self.typers is not None:
+            keyword_dict['typers'] = self.typers
+        return keyword_dict, self.types_files
+
+    def __setstate__(self,state):
+        kwargs=state[0]
+
+        self.dtype, self.device = None, None
+        if 'device' in kwargs:
+            self.device = kwargs['device']
+            del kwargs['device']
+        if 'dtype' in kwargs:
+            self.dtype = kwargs['dtype']
+            del kwargs['dtype']
         
+        self.rand_trans, self.rand_rot = 0, False
+        if 'random_translation' in kwargs:
+            self.rand_trans = kwargs['random_translation']
+            del kwargs['random_translation']
+        if 'random_rotation' in kwargs:
+            self.rand_rot = kwargs['random_rotation']
+            del kwargs['random_rotation']
+ 
+        if 'typers' in kwargs:
+            typers = kwargs['typers']
+            del kwargs['typers']
+            self.examples = mg.ExampleDataset(*typers,**kwargs)
+            self.typers = typers
+        else:
+            self.examples = mg.ExampleDataset(**kwargs)
+            self.typers = None
+        self.types_files = list(state[1])
+        self.examples.populate(self.types_files)
+
+        # Setup the gridmaker so can return torch tensor
+        self.gmaker = mg.GridMaker()
+        self.dims = self.gmaker.grid_dimensions(self.examples[0].num_types())
+
+        self.num_labels = self.examples.num_labels()
