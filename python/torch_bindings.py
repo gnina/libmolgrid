@@ -167,32 +167,17 @@ class MolDataset(torch.utils.data.Dataset):
         :param ligmolcache: precalculated molcache2 file for ligand; if doesn't exist, will look in data_root
         '''
 
-        self.dtype, self.device = None, None
-        if 'device' in kwargs:
-            self.device = kwargs['device']
-            del kwargs['device']
-        if 'dtype' in kwargs:
-            self.dtype = kwargs['dtype']
-            del kwargs['dtype']
-        self.rand_trans, self.rand_rot = 0, False
-        if 'random_translation' in kwargs:
-            self.rand_trans = kwargs['random_translation']
-            del kwargs['random_translation']
-        if 'random_rotation' in kwargs:
-            self.rand_rot = kwargs['random_rotation']
-            del kwargs['random_rotation']
         if 'typers' in kwargs:
             typers = kwargs['typers']
             del kwargs['typers']
-            self.examples = mg.ExampleDataset(typers,**kwargs)
+            self.examples = mg.ExampleDataset(*typers,**kwargs)
+            self.typers = typers
         else:
             self.examples = mg.ExampleDataset(**kwargs)
-        self.examples.populate(list(args))
+            self.typers = None
+        self.types_files = list(args)
+        self.examples.populate(self.types_files)
             
-        # Setup the gridmaker so can return torch tensor
-        self.gmaker = mg.GridMaker()
-        self.dims = self.gmaker.grid_dimensions(self.examples[0].num_types())
-
         self.num_labels = self.examples.num_labels()
 
         
@@ -200,9 +185,38 @@ class MolDataset(torch.utils.data.Dataset):
         return len(self.examples)
     
     def __getitem__(self, idx):
-        output_tensor = torch.zeros(self.dims, dtype=self.dtype, device=self.device)
-        self.gmaker.forward(self.examples[idx], output_tensor, random_translation=self.rand_trans, random_rotation=self.rand_rot)
-        labels = [self.examples[idx].labels[lab] for lab in range(self.num_labels)]
-        return output_tensor, labels
+        ex = self.examples[idx]
+        center = torch.tensor([i for i in ex.coord_sets[-1].center()])
+        coordinates = ex.merge_coordinates()
+        if coordinates.has_vector_types() and coordinates.size() > 0:
+            atomtypes = torch.tensor(coordinates.type_vector.tonumpy(),dtype=torch.long).type('torch.FloatTensor')
+        else:
+            atomtypes = torch.tensor(coordinates.type_index.tonumpy(),dtype=torch.long).type('torch.FloatTensor')
+        coords = torch.tensor(coordinates.coords.tonumpy())
+        radii = torch.tensor(coordinates.radii.tonumpy())
+        labels = [ex.labels[lab] for lab in range(self.num_labels)]
+        return center, coords, atomtypes, radii, labels
     
+    def __getstate__(self):
+        settings = self.examples.settings()
+        keyword_dict = {sett: getattr(settings, sett) for sett in dir(settings) if not sett.startswith('__')}
+        if self.typers is not None: ## This will fail if self.typers is not none, need a way to pickle AtomTypers
+            raise NotImplementedError('MolDataset does not support pickling when not using the default Gnina atom typers, this uses %s'.format(str(self.typers)))
+            keyword_dict['typers'] = self.typers
+        return keyword_dict, self.types_files
+
+    def __setstate__(self,state):
+        kwargs=state[0]
         
+        if 'typers' in kwargs:
+            typers = kwargs['typers']
+            del kwargs['typers']
+            self.examples = mg.ExampleDataset(*typers, **kwargs)
+            self.typers = typers
+        else:
+            self.examples = mg.ExampleDataset(**kwargs)
+            self.typers = None
+        self.types_files = list(state[1])
+        self.examples.populate(self.types_files)
+
+        self.num_labels = self.examples.num_labels()
