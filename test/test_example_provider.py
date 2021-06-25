@@ -323,13 +323,30 @@ def test_example_provider_iterator_interface():
 def test_pytorch_dataset():
     fname = datadir+"/small.types"
     
-    e = molgrid.MolDataset(fname,data_root=datadir+"/structs")
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs")
+    e.populate(fname)
+    m = molgrid.MolDataset(fname,data_root=datadir+"/structs")
     
-    assert len(e) == 1000
-    assert e[1].labels[0] == 1
-    np.testing.assert_allclose(e[1].labels[1],6.05)
-    assert e[-1].labels[0] == 0
-    np.testing.assert_allclose(e[-1].labels[1], -10.3)    
+    assert len(m) == 1000
+
+    ex = e.next()
+    coordinates = ex.merge_coordinates()
+
+    center, coords, types, radii, labels = e[0]
+
+    assert center.shape == (1,3)
+    assert (coords == coordinates.coords.tonumpy()).all().item()
+    assert (types == coordinates.types_index.tonumpy()).all().item()
+    assert (radii == coordinates.radii.tonumpy()).all().item()
+
+    assert len(labels) == 3
+    assert labels[0] == 1
+    np.testing.assert_allclose(labels[1],6.05)
+    np.testing.assert_allclose(labels[-1],0.162643)
+
+    center, coords, types, radii, labels =e[-1]
+    assert labels[0] == 0
+    np.testing.assert_allclose(labels[1], -10.3)    
         
 def test_duplicated_examples():
     '''This is for files with multiple ligands'''
