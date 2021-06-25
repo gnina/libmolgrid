@@ -52,7 +52,8 @@ setup(
   install_requires = [
                  'numpy>=1.16.2',
                  'pytest',
-                 'pyquaternion'
+                 'pyquaternion',
+                 'importlib-metadata >= 1.0 ; python_version < "3.8"'
       ],
   python_requires = '>=3',
   packages    = ['molgrid'],
