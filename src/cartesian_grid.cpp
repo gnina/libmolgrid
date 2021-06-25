@@ -9,12 +9,13 @@
 
 namespace libmolgrid {
 
-template class CartesianGrid< Grid<float, 3, false> >;
-template class CartesianGrid< Grid<float, 3, true> >;
-template class CartesianGrid< Grid<double, 3, false> >;
-template class CartesianGrid< Grid<double, 3, true> >;
+template class CartesianGrid< Grid<float, 4, false> >;
+template class CartesianGrid< Grid<float, 4, true> >;
+template class CartesianGrid< Grid<double, 4, false> >;
+template class CartesianGrid< Grid<double, 4, true> >;
 
-template class CartesianGrid< ManagedGrid<float, 3> >;
-template class CartesianGrid< ManagedGrid<double, 3> >;
+template class CartesianGrid< ManagedGrid<float, 4> >;
+template class CartesianGrid< ManagedGrid<double, 4> >;
+
 
 } /* namespace libmolgrid */

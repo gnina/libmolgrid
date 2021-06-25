@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="271" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="271" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="273" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="273" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="274" column="24" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="274" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="276" column="24" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="276" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1CallbackIndexTyper_1a358563efd1eb0ca5cafa36f3891b6c1d" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="275" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="275" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="277" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="277" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1CallbackIndexTyper_1a7b801ee2a06101cb9459999adc6def0f" prot="private" static="no" mutable="no">
         <type>const float</type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="276" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="276" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="278" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="278" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -88,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="281" column="5" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="257" bodyend="260"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="283" column="5" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="257" bodyend="260"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CallbackIndexTyper_1ad493bf80b659abb6e401d7fee5c8231a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>unsigned</type>
@@ -103,10 +103,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="284" column="22" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="284" bodyend="284"/>
-        <referencedby refid="classlibmolgrid_1_1CallbackIndexTyper_1ada10bf195e09de3a351bc4a4649ac629" compoundref="atom__typer_8h" startline="287" endline="292">CallbackIndexTyper::get_atom_type_index</referencedby>
-        <referencedby refid="classlibmolgrid_1_1CallbackIndexTyper_1ae263d436c69186ad062ad5339d1d8727" compoundref="atom__typer_8h" startline="295" endline="298">CallbackIndexTyper::get_int_type</referencedby>
-        <referencedby refid="classlibmolgrid_1_1CallbackIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2" compoundref="atom__typer_8h" startline="303" endline="303">CallbackIndexTyper::get_type_radii</referencedby>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="286" column="22" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="286" bodyend="286"/>
+        <referencedby refid="classlibmolgrid_1_1CallbackIndexTyper_1ada10bf195e09de3a351bc4a4649ac629" compoundref="atom__typer_8h" startline="289" endline="294">CallbackIndexTyper::get_atom_type_index</referencedby>
+        <referencedby refid="classlibmolgrid_1_1CallbackIndexTyper_1ae263d436c69186ad062ad5339d1d8727" compoundref="atom__typer_8h" startline="297" endline="300">CallbackIndexTyper::get_int_type</referencedby>
+        <referencedby refid="classlibmolgrid_1_1CallbackIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2" compoundref="atom__typer_8h" startline="305" endline="305">CallbackIndexTyper::get_type_radii</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CallbackIndexTyper_1ada10bf195e09de3a351bc4a4649ac629" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::pair&lt; int, float &gt;</type>
@@ -125,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="287" column="23" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="287" bodyend="292"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="289" column="23" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="289" bodyend="294"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CallbackIndexTyper_1ae263d436c69186ad062ad5339d1d8727" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::pair&lt; int, float &gt;</type>
@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="295" column="23" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="295" bodyend="298"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="297" column="23" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="297" bodyend="300"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CallbackIndexTyper_1aacde71a2d28fc736c3d43da006f3a1c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -159,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="301" column="25" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="301" bodyend="301"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="303" column="25" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="303" bodyend="303"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CallbackIndexTyper_1a4e0b27a6f69f970eeb4d5eb4793ebbe2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -174,7 +174,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="303" column="25" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="303" bodyend="303"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="305" column="25" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="305" bodyend="305"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomIndexTyper_1a4f56173834b1bf3f850e5cb9880eaeea" prot="public" static="no" const="yes" explicit="no" inline="yes" final="yes" virt="virtual">
         <type>float</type>
@@ -283,7 +283,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="269" column="47" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="269" bodyend="305"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="271" column="47" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="271" bodyend="307"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1AtomIndexTyper_1ae7dde92cf35e2c63afde3176cafcbda3" prot="public" virt="non-virtual"><scope>libmolgrid::CallbackIndexTyper</scope><name>AtomIndexTyper</name></member>
       <member refid="classlibmolgrid_1_1CallbackIndexTyper_1aae8b96fe407c4b9b3d4d6488f382b579" prot="public" virt="non-virtual"><scope>libmolgrid::CallbackIndexTyper</scope><name>AtomIndexTyperFunc</name></member>

@@ -125,7 +125,7 @@ template <typename Dtype>
 void read_dx(const std::string& fname, Grid<Dtype, 3>& grid) {
   std::ifstream f(fname.c_str());
   if(!f) throw invalid_argument("Could not read file "+fname);
-  return read_dx<Dtype>(f, grid);
+  read_dx<Dtype>(f, grid);
 }
 
 
@@ -170,7 +170,7 @@ template <typename DType>
 void write_dx(const std::string& fname, const Grid<DType, 3>& grid, const float3& center, float resolution, float scale) {
   std::ofstream f(fname.c_str());
   if(!f) throw invalid_argument("Could not open file "+fname);
-  return write_dx(f, grid, center, resolution, scale);
+  write_dx(f, grid, center, resolution, scale);
 }
 
 template <typename Dtype>
@@ -225,7 +225,7 @@ template <typename DType>
 void write_map(const std::string& fname, const Grid<DType, 3>& grid, const float3& center, float resolution, float scale) {
   std::ofstream f(fname.c_str());
   if(!f) throw invalid_argument("Could not open file "+fname);
-  return write_map(f, grid, center, resolution, scale);
+  write_map(f, grid, center, resolution, scale);
 }
 
 

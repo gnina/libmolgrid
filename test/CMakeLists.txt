@@ -14,6 +14,7 @@ set( TEST_SRCS
  test_grid.cu
  test_gridmaker.cpp
  test_gridmaker.cu
+ test_gridinterp.cpp
  test_mgrid.cpp
  test_mgrid.cu
  test_quaternion.cpp

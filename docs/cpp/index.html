@@ -847,8 +847,20 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK10libmolgrid13CartesianGrid11interpolateEfff">
-<span id="_CPPv3NK10libmolgrid13CartesianGrid11interpolateEfff"></span><span id="_CPPv2NK10libmolgrid13CartesianGrid11interpolateEfff"></span><span id="libmolgrid::CartesianGrid::interpolate__float.float.floatC"></span><span class="target" id="classlibmolgrid_1_1CartesianGrid_1a3ef1ef5f853c412b04b760ef0f88cf0c"></span><a class="reference internal" href="#_CPPv4I0EN10libmolgrid13CartesianGridE" title="libmolgrid::CartesianGrid::G"><span class="pre">G</span></a><span class="pre">::</span><span class="pre">type</span> <code class="sig-name descname"><span class="pre">interpolate</span></code><span class="sig-paren">(</span><span class="pre">float</span> <em><span class="pre">x</span></em>, <span class="pre">float</span> <em><span class="pre">y</span></em>, <span class="pre">float</span> <em><span class="pre">z</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid13CartesianGrid11interpolateEfff" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4NK10libmolgrid13CartesianGrid9cart2gridEfff">
+<span id="_CPPv3NK10libmolgrid13CartesianGrid9cart2gridEfff"></span><span id="_CPPv2NK10libmolgrid13CartesianGrid9cart2gridEfff"></span><span id="libmolgrid::CartesianGrid::cart2grid__float.float.floatC"></span><span class="target" id="classlibmolgrid_1_1CartesianGrid_1a144b75f1b21a1e9e702250d41a548f1c"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">float3</span> <code class="sig-name descname"><span class="pre">cart2grid</span></code><span class="sig-paren">(</span><span class="pre">float</span> <em><span class="pre">x</span></em>, <span class="pre">float</span> <em><span class="pre">y</span></em>, <span class="pre">float</span> <em><span class="pre">z</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid13CartesianGrid9cart2gridEfff" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>return grid coordinates (not rounded) for Cartesian coordinates </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK10libmolgrid13CartesianGrid9grid2cartEjjj">
+<span id="_CPPv3NK10libmolgrid13CartesianGrid9grid2cartEjjj"></span><span id="_CPPv2NK10libmolgrid13CartesianGrid9grid2cartEjjj"></span><span id="libmolgrid::CartesianGrid::grid2cart__unsigned.unsigned.unsignedC"></span><span class="target" id="classlibmolgrid_1_1CartesianGrid_1ab7e803fb08ab8bab9b81c5bcd0639948"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">float3</span> <code class="sig-name descname"><span class="pre">grid2cart</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <em><span class="pre">i</span></em>, <span class="pre">unsigned</span> <em><span class="pre">j</span></em>, <span class="pre">unsigned</span> <em><span class="pre">k</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid13CartesianGrid9grid2cartEjjj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>return Cartesian coordinates of provided grid position </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK10libmolgrid13CartesianGrid11interpolateE6size_tfff">
+<span id="_CPPv3NK10libmolgrid13CartesianGrid11interpolateE6size_tfff"></span><span id="_CPPv2NK10libmolgrid13CartesianGrid11interpolateE6size_tfff"></span><span id="libmolgrid::CartesianGrid::interpolate__s.float.float.floatC"></span><span class="target" id="classlibmolgrid_1_1CartesianGrid_1acfb03269ae382bdcc5f772a53fc3a73e"></span><a class="reference internal" href="#_CPPv4I0EN10libmolgrid13CartesianGridE" title="libmolgrid::CartesianGrid::G"><span class="pre">G</span></a><span class="pre">::</span><span class="pre">type</span> <code class="sig-name descname"><span class="pre">interpolate</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">channel</span></em>, <span class="pre">float</span> <em><span class="pre">x</span></em>, <span class="pre">float</span> <em><span class="pre">y</span></em>, <span class="pre">float</span> <em><span class="pre">z</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid13CartesianGrid11interpolateE6size_tfff" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return linear interpolation of value at specify position </p>
 </dd></dl>
 
@@ -861,8 +873,18 @@
 <dd></dd></dl>
 
 <dl class="cpp var">
+<dt id="_CPPv4N10libmolgrid13CartesianGrid10dimensionsE">
+<span id="_CPPv3N10libmolgrid13CartesianGrid10dimensionsE"></span><span id="_CPPv2N10libmolgrid13CartesianGrid10dimensionsE"></span><span id="libmolgrid::CartesianGrid::dimensions__sA"></span><span class="target" id="classlibmolgrid_1_1CartesianGrid_1a546c29bca4900c88a8e3274a4cc56664"></span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">dimensions</span></code><span class="pre">[</span><span class="pre">3</span><span class="pre">]</span> <span class="pre">=</span> <span class="pre">{</span><span class="pre">0</span><span class="pre">,</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N10libmolgrid13CartesianGrid10dimensionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
 <dt id="_CPPv4N10libmolgrid13CartesianGrid7center_E">
 <span id="_CPPv3N10libmolgrid13CartesianGrid7center_E"></span><span id="_CPPv2N10libmolgrid13CartesianGrid7center_E"></span><span id="libmolgrid::CartesianGrid::center___float3"></span><span class="target" id="classlibmolgrid_1_1CartesianGrid_1a99accc8fa8fe9f2b1b71b26d2c133979"></span><span class="pre">float3</span> <code class="sig-name descname"><span class="pre">center_</span></code> <span class="pre">=</span> <span class="pre">{</span><span class="pre">0</span><span class="pre">,</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N10libmolgrid13CartesianGrid7center_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N10libmolgrid13CartesianGrid7origin_E">
+<span id="_CPPv3N10libmolgrid13CartesianGrid7origin_E"></span><span id="_CPPv2N10libmolgrid13CartesianGrid7origin_E"></span><span id="libmolgrid::CartesianGrid::origin___float3"></span><span class="target" id="classlibmolgrid_1_1CartesianGrid_1a622682dd155a8ca7b848248f8c8b8728"></span><span class="pre">float3</span> <code class="sig-name descname"><span class="pre">origin_</span></code> <span class="pre">=</span> <span class="pre">{</span><span class="pre">0</span><span class="pre">,</span><span class="pre">}</span><a class="headerlink" href="#_CPPv4N10libmolgrid13CartesianGrid7origin_E" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
@@ -1556,6 +1578,7 @@
 <dt id="_CPPv4N10libmolgrid15ExampleProviderE">
 <span id="_CPPv3N10libmolgrid15ExampleProviderE"></span><span id="_CPPv2N10libmolgrid15ExampleProviderE"></span><span id="libmolgrid::ExampleProvider"></span><span class="target" id="classlibmolgrid_1_1ExampleProvider"></span><em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">libmolgrid</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">ExampleProvider</span></code><a class="headerlink" href="#_CPPv4N10libmolgrid15ExampleProviderE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Given a file of examples, provide <a class="reference internal" href="#structlibmolgrid_1_1Example"><span class="std std-ref">Example</span></a> classes one at a time This contains an <a class="reference internal" href="#classlibmolgrid_1_1ExampleRefProvider"><span class="std std-ref">ExampleRefProvider</span></a>, which can be configured using a single settings object if so desired, and an example extractor. Note that cache_structs is true by default which will load the entirety of the dataset into memory. </p>
+<p>An example files contains a single example on each line where an example consists of some number of numerical labels (num_labels, will be auto-detected if not specified) followed by file paths to molecular data, all space separated. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -2341,7 +2364,14 @@
 <dl class="cpp function">
 <dt id="_CPPv4N10libmolgrid15GninaIndexTyper15GninaIndexTyperEbPK4info">
 <span id="_CPPv3N10libmolgrid15GninaIndexTyper15GninaIndexTyperEbPK4info"></span><span id="_CPPv2N10libmolgrid15GninaIndexTyper15GninaIndexTyperEbPK4info"></span><span id="libmolgrid::GninaIndexTyper::GninaIndexTyper__b.infoCP"></span><span class="target" id="classlibmolgrid_1_1GninaIndexTyper_1a683729a67c4252fdfa71f23d0810a7ab"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">GninaIndexTyper</span></code><span class="sig-paren">(</span><span class="pre">bool</span> <em><span class="pre">usec</span></em> <span class="pre">=</span> <span class="pre">false</span>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid15GninaIndexTyper4infoE" title="libmolgrid::GninaIndexTyper::info"><span class="pre">info</span></a> <span class="pre">*</span><em><span class="pre">d</span></em> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4N10libmolgrid15GninaIndexTyper12default_dataE" title="libmolgrid::GninaIndexTyper::default_data"><span class="pre">default_data</span></a><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid15GninaIndexTyper15GninaIndexTyperEbPK4info" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Create a gnina typer. <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">usec</span></code>: use the gnina determined covalent radius. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N10libmolgrid15GninaIndexTyperD0Ev">

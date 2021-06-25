@@ -285,10 +285,20 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para>Create a gnina typer. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">usec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>use the gnina determined covalent radius. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="184" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="184" bodyend="184"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="186" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="186" bodyend="186"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1GninaIndexTyper_1a187ae086fdbb7327510642b6dd674634" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
@@ -301,7 +311,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="185" column="13" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="185" bodyend="185"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="187" column="13" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="187" bodyend="187"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1GninaIndexTyper_1a5e84ac0f1e5fbb3fd24d137b02de0a3f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>unsigned</type>
@@ -316,7 +326,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="188" column="22" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="67" bodyend="69"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="190" column="22" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="67" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1GninaIndexTyper_1afa822a9ced021828013716b9b2e99670" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::pair&lt; int, float &gt;</type>
@@ -336,7 +346,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="191" column="23" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="80" bodyend="164"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="193" column="23" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="80" bodyend="164"/>
         <referencedby refid="classlibmolgrid_1_1GninaVectorTyper_1ae665f55a8d914fa0d36e469284e2443d" compoundref="atom__typer_8cpp" startline="303" endline="392">GninaVectorTyper::get_atom_type_vector</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1GninaIndexTyper_1a2f2292603513836fcc299e920d102969" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -356,7 +366,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="194" column="23" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="167" bodyend="177"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="196" column="23" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="167" bodyend="177"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1GninaIndexTyper_1ab179299d9dc6bb3a4bfe868fd60882a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -371,7 +381,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="197" column="25" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="180" bodyend="186"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="199" column="25" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="180" bodyend="186"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1GninaIndexTyper_1adc0b9aacfdd83b3b868ab09424d3c04b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -386,7 +396,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="200" column="25" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="189" bodyend="199"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="202" column="25" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="189" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1GninaIndexTyper_1aef23b5c76e723f1fa66e56819225126b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="structlibmolgrid_1_1GninaIndexTyper_1_1info" kindref="compound">info</ref> &amp;</type>
@@ -404,7 +414,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="204" column="16" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="204" bodyend="204"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="206" column="16" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="206" bodyend="206"/>
         <referencedby refid="classlibmolgrid_1_1GninaVectorTyper_1ae665f55a8d914fa0d36e469284e2443d" compoundref="atom__typer_8cpp" startline="303" endline="392">GninaVectorTyper::get_atom_type_vector</referencedby>
         <referencedby refid="classlibmolgrid_1_1GninaVectorTyper_1ad2de174aee1d2d6da3500c728ee71e23" compoundref="atom__typer_8cpp" startline="395" endline="402">GninaVectorTyper::get_vector_type_radii</referencedby>
       </memberdef>
@@ -462,7 +472,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="207" column="24" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="71" bodyend="76"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="209" column="24" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="71" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomIndexTyper_1a50bdca9ea03cabe38347121b8ef98cad" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -534,7 +544,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="122" column="44" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="122" bodyend="208"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="122" column="44" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="122" bodyend="210"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da1ea7ee189d41ec98ed6592d7e07cbe01" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>AliphaticCarbonXSHydrophobe</name></member>
       <member refid="classlibmolgrid_1_1GninaIndexTyper_1a7aead736a07eaf25623ad7bfa1f0ee2da9b66ff931740ae4be675a9fa83f9c130" prot="public" virt="non-virtual"><scope>libmolgrid::GninaIndexTyper</scope><name>AliphaticCarbonXSNonHydrophobe</name></member>

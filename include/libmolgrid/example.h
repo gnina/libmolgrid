@@ -1,4 +1,4 @@
-/** \file Example.h
+/** \file example.h
  *
  *  Class for storing a single example as atomic coordinates with their associated
  *  atom types and labels.  An example consists of one or more atom sets.  Each

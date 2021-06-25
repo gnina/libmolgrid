@@ -19,6 +19,7 @@ endif()
 
 find_package( NumPy )
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${PROJECT_SOURCE_DIR}/src)
 include_directories(${PYTHON_INCLUDE_DIRS})
 include_directories(${Boost_INCLUDE_DIRS})
@@ -29,13 +30,13 @@ if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
     set(CMAKE_CXX_FLAGS         "${CMAKE_CXX_FLAGS} -Wno-unused-function")
 endif()
 
-add_custom_command(OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/bindings.cpp COMMAND ${CMAKE_COMMAND} -P set_docstrings.cmake 
+add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/bindings.cpp COMMAND ${CMAKE_COMMAND} -DOUTNAME=${CMAKE_CURRENT_BINARY_DIR}/bindings.cpp -P set_docstrings.cmake
   DEPENDS bindings.in.cpp ${LIBMOLGRID_HEADERS} COMMENT "Inserting docstrings binding.cpp"
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
 set( PYMOLGRID_SOURCES
  bindings.h
- bindings.cpp
+ ${CMAKE_CURRENT_BINARY_DIR}/bindings.cpp
  bindings_grids.cpp
 )
 

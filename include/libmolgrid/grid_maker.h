@@ -84,12 +84,12 @@ class GridMaker {
     CUDA_CALLABLE_MEMBER float get_resolution() const { return resolution; }
 
     ///set resolution in Angstroms
-    CUDA_CALLABLE_MEMBER void set_resolution(float res) { resolution = res; dim = ::round(dimension / resolution) + 1; }
+    CUDA_CALLABLE_MEMBER void set_resolution(float res) { resolution = res; dim = std::round(dimension / resolution) + 1; }
 
     ///get dimension in Angstroms
     CUDA_CALLABLE_MEMBER float get_dimension() const { return dimension; }
     ///set dimension in Angstroms
-    CUDA_CALLABLE_MEMBER void set_dimension(float d) { dimension = d; dim = ::round(dimension / resolution) + 1; }
+    CUDA_CALLABLE_MEMBER void set_dimension(float d) { dimension = d; dim = std::round(dimension / resolution) + 1; }
 
     CUDA_CALLABLE_MEMBER unsigned get_first_dim() const { return dim; }
 

@@ -24,7 +24,7 @@ void GridMaker::initialize(float res, float d, bool bin, float rscale, float grm
   } else {
     final_radius_multiple = (1+2*grm*grm)/(2*grm);
   }
-  dim = ::round(dimension / resolution) + 1;
+  dim = std::round(dimension / resolution) + 1;
   binary = bin;
 
   A = exp(-2*grm*grm)*4*grm*grm; // *d^2/r^2

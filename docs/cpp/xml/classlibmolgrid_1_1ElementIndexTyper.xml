@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="219" column="14" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="219" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="221" column="14" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="221" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1ElementIndexTyper_1a7b801ee2a06101cb9459999adc6def0f" prot="private" static="no" mutable="no">
         <type>const float</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="220" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="220" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="222" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="222" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="222" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="222" bodyend="222"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="224" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="224" bodyend="224"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ElementIndexTyper_1ad7d3c7e60575c6faecabaa600735bb75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="223" column="13" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="223" bodyend="223"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="225" column="13" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="225" bodyend="225"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ElementIndexTyper_1a5e84ac0f1e5fbb3fd24d137b02de0a3f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>unsigned</type>
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="226" column="22" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="204" bodyend="206"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="228" column="22" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="204" bodyend="206"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ElementIndexTyper_1afa822a9ced021828013716b9b2e99670" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::pair&lt; int, float &gt;</type>
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="229" column="23" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="209" bodyend="214"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="231" column="23" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="209" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ElementIndexTyper_1ad7cd781efd0d97403d12057df9cacbdb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::pair&lt; int, float &gt;</type>
@@ -116,7 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="232" column="23" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="217" bodyend="221"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="234" column="23" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="217" bodyend="221"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ElementIndexTyper_1ab179299d9dc6bb3a4bfe868fd60882a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -131,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="235" column="25" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="224" bodyend="231"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="237" column="25" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="224" bodyend="231"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ElementIndexTyper_1adc0b9aacfdd83b3b868ab09424d3c04b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -146,7 +146,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="238" column="25" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="234" bodyend="242"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="240" column="25" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="234" bodyend="242"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1AtomIndexTyper_1a4f56173834b1bf3f850e5cb9880eaeea" prot="public" static="no" const="yes" explicit="no" inline="yes" final="yes" virt="virtual">
         <type>float</type>
@@ -256,7 +256,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="218" column="46" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="218" bodyend="239"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="220" column="46" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="220" bodyend="241"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1AtomIndexTyper_1ae7dde92cf35e2c63afde3176cafcbda3" prot="public" virt="non-virtual"><scope>libmolgrid::ElementIndexTyper</scope><name>AtomIndexTyper</name></member>
       <member refid="classlibmolgrid_1_1AtomTyper_1a554d6f387f3aff6cf68c24ffddd08567" prot="public" virt="non-virtual"><scope>libmolgrid::ElementIndexTyper</scope><name>AtomTyper</name></member>
