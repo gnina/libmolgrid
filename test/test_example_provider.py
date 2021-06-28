@@ -332,19 +332,19 @@ def test_pytorch_dataset():
     ex = e.next()
     coordinates = ex.merge_coordinates()
 
-    center, coords, types, radii, labels = e[0]
+    center, coords, types, radii, labels = m[0]
 
-    assert center.shape == (1,3)
-    assert (coords == coordinates.coords.tonumpy()).all().item()
-    assert (types == coordinates.types_index.tonumpy()).all().item()
-    assert (radii == coordinates.radii.tonumpy()).all().item()
+    assert list(center.shape) == [3]
+    np.testing.assert_allclose(coords, coordinates.coords.tonumpy())
+    np.testing.assert_allclose(types, coordinates.type_index.tonumpy())
+    np.testing.assert_allclose(radii, coordinates.radii.tonumpy())
 
     assert len(labels) == 3
     assert labels[0] == 1
     np.testing.assert_allclose(labels[1],6.05)
     np.testing.assert_allclose(labels[-1],0.162643)
 
-    center, coords, types, radii, labels =e[-1]
+    center, coords, types, radii, labels = m[-1]
     assert labels[0] == 0
     np.testing.assert_allclose(labels[1], -10.3)    
         
