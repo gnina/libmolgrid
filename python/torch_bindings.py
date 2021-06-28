@@ -220,3 +220,32 @@ class MolDataset(torch.utils.data.Dataset):
         self.examples.populate(self.types_files)
 
         self.num_labels = self.examples.num_labels()
+
+    @staticmethod
+    def collateMolDataset(batch):
+        '''collate_fn for use in torch.utils.data.Dataloader when using the MolDataset.
+        Returns lengths, centers, coords, types, radii, labels all padded to fit maximum size of batch'''
+        lens = []
+        centers = []
+        lcoords = []
+        ltypes = []
+        lradii = []
+        labels = []
+        for center,coords,types,radii,label in batch:
+            lens.append(coords.shape[0])
+            centers.append(center)
+            lcoords.append(coords)
+            ltypes.append(types)
+            lradii.append(radii.unsqueeze(1))
+            labels.append(torch.tensor(label))
+
+
+        lengths = torch.tensor(lens)
+        lcoords = torch.nn.utils.rnn.pad_sequence(lcoords, batch_first=True)
+        ltypes = torch.nn.utils.rnn.pad_sequence(ltypes, batch_first=True)
+        lradii = torch.nn.utils.rnn.pad_sequence(lradii, batch_first=True)
+
+        centers = torch.stack(centers,dim=0)
+        labels = torch.stack(labels,dim=0)
+
+        return lengths, centers, lcoords, ltypes, lradii, labels

@@ -347,6 +347,29 @@ def test_pytorch_dataset():
     center, coords, types, radii, labels = m[-1]
     assert labels[0] == 0
     np.testing.assert_allclose(labels[1], -10.3)    
+
+    '''Testing out the collate_fn when used with torch.utils.data.DataLoader'''
+    torch_loader = torch.utils.data.DataLoader(      
+        m, batch_size=8,collate_fn=molgrid.MolDataset.collateMolDataset)
+    iterator = iter(torch_loader)
+    next(iterator)
+    lengths, center, coords, types, radii, labels = next(iterator)
+    assert len(lengths) == 8
+    assert center.shape[0] == 8
+    assert coords.shape[0] == 8
+    assert types.shape[0] == 8
+    assert radii.shape[0] == 8
+    assert radii.shape[0] == 8
+    assert labels.shape[0] == 8
+
+    mcenter, mcoords, mtypes, mradii, mlabels = m[10]
+    np.testing.assert_allclose(center[2],mcenter) 
+    np.testing.assert_allclose(coords[2][:lengths[2]],mcoords)
+    np.testing.assert_allclose(types[2][:lengths[2]],mtypes)
+    np.testing.assert_allclose(radii[2][:lengths[2]],mradii.unsqueeze(1))
+    assert len(labels[2]) == len(mlabels)
+    assert labels[2][0] == mlabels[0]
+    assert labels[2][1] == mlabels[1]
         
 def test_duplicated_examples():
     '''This is for files with multiple ligands'''
