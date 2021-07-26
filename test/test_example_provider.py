@@ -332,21 +332,44 @@ def test_pytorch_dataset():
     ex = e.next()
     coordinates = ex.merge_coordinates()
 
-    center, coords, types, radii, labels = e[0]
+    center, coords, types, radii, labels = m[0]
 
-    assert center.shape == (1,3)
-    assert (coords == coordinates.coords.tonumpy()).all().item()
-    assert (types == coordinates.types_index.tonumpy()).all().item()
-    assert (radii == coordinates.radii.tonumpy()).all().item()
+    assert list(center.shape) == [3]
+    np.testing.assert_allclose(coords, coordinates.coords.tonumpy())
+    np.testing.assert_allclose(types, coordinates.type_index.tonumpy())
+    np.testing.assert_allclose(radii, coordinates.radii.tonumpy())
 
     assert len(labels) == 3
     assert labels[0] == 1
     np.testing.assert_allclose(labels[1],6.05)
     np.testing.assert_allclose(labels[-1],0.162643)
 
-    center, coords, types, radii, labels =e[-1]
+    center, coords, types, radii, labels = m[-1]
     assert labels[0] == 0
     np.testing.assert_allclose(labels[1], -10.3)    
+
+    '''Testing out the collate_fn when used with torch.utils.data.DataLoader'''
+    torch_loader = torch.utils.data.DataLoader(      
+        m, batch_size=8,collate_fn=molgrid.MolDataset.collateMolDataset)
+    iterator = iter(torch_loader)
+    next(iterator)
+    lengths, center, coords, types, radii, labels = next(iterator)
+    assert len(lengths) == 8
+    assert center.shape[0] == 8
+    assert coords.shape[0] == 8
+    assert types.shape[0] == 8
+    assert radii.shape[0] == 8
+    assert radii.shape[0] == 8
+    assert labels.shape[0] == 8
+
+    mcenter, mcoords, mtypes, mradii, mlabels = m[10]
+    np.testing.assert_allclose(center[2],mcenter) 
+    np.testing.assert_allclose(coords[2][:lengths[2]],mcoords)
+    np.testing.assert_allclose(types[2][:lengths[2]],mtypes)
+    np.testing.assert_allclose(radii[2][:lengths[2]],mradii.unsqueeze(1))
+    assert len(labels[2]) == len(mlabels)
+    assert labels[2][0] == mlabels[0]
+    assert labels[2][1] == mlabels[1]
         
 def test_duplicated_examples():
     '''This is for files with multiple ligands'''
