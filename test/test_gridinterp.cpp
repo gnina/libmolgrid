@@ -13,8 +13,8 @@ using namespace libmolgrid;
 BOOST_AUTO_TEST_CASE(forward_cpu) {
 
   MGrid4f src(1,5,5,5);
-  MGrid4f dst(1,2,2,2);
-  GridInterpolater gi(0.5,2.0, 1.0,1.0);
+  MGrid4f dst(1,3,3,3);
+  GridInterpolater gi(0.5,2.0,1.0,2.0);
   Transform t;
 
   float *ptr = src.data();
@@ -24,9 +24,9 @@ BOOST_AUTO_TEST_CASE(forward_cpu) {
 
   gi.forward(src.cpu(),t,dst.cpu());
 
-  for(unsigned i = 0; i < 2; i++) {
-      for(unsigned j = 0; j < 2; j++) {
-          for(unsigned k = 0; k < 2; k++) {
+  for(unsigned i = 0; i < 3; i++) {
+      for(unsigned j = 0; j < 3; j++) {
+          for(unsigned k = 0; k < 3; k++) {
               BOOST_CHECK_EQUAL(dst[0][i][j][k], src[0][i*2][j*2][k*2]);
           }
       }

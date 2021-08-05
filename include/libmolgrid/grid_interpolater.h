@@ -49,6 +49,13 @@ class GridInterpolater {
 
   public:
 
+    /** \brief Construct GridInterpolater
+     * @param[in] inres resolution of input grid in Angstroms
+     * @param[in] indim dimension of cubic input grid in Angstroms
+     * @param[in] outres resolution of output grid in Angstroms
+     * @param[in] outdim dimension of cubic output grid in Angstroms
+     * @param[in] pad value to use for out-of-grid points (defualt 0)
+     */
     GridInterpolater(float inres, float indim, float outres, float outdim, float pad=0) :
       in_resolution(inres), out_resolution(outres),
       in_dimension(indim), out_dimension(outdim), pad_value(pad) {

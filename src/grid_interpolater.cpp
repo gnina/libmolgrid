@@ -54,9 +54,9 @@ namespace libmolgrid {
     Dtype p110 = get_pt(in, xh, yh, zl);
     Dtype p111 = get_pt(in, xh, yh, zh);
 
-    Dtype xd = (gridpt.x-xl)/(xh-xl);
-    Dtype yd = (gridpt.y-yl)/(yh-yl);
-    Dtype zd = (gridpt.z-zl)/(zh-zl);
+    Dtype xd = xh > xl ? (gridpt.x-xl)/(xh-xl) : 0;
+    Dtype yd = yh > yl ? (gridpt.y-yl)/(yh-yl) : 0;
+    Dtype zd = zh > zl ? (gridpt.z-zl)/(zh-zl) : 0;
 
     Dtype c00 = p000*(1-xd) + p100*xd;
     Dtype c01 = p001*(1-xd) + p101*xd;
@@ -98,7 +98,7 @@ namespace libmolgrid {
                   float3 inpt = cart2grid(in_origin, in_resolution, newpt.x+center.x, newpt.y+center.y, newpt.z+center.z);
                   //interpolate for each channel
                   for(unsigned c = 0; c < K; c++) {
-                      out[c][i][j][k] = interpolate(in[c], inpt);
+                      out(c,i,j,k) = interpolate(in[c], inpt);
                   }
               }
           }
