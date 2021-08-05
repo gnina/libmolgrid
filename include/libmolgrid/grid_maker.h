@@ -58,6 +58,15 @@ class GridMaker {
         const Grid<Dtype, 4, isCUDA>& out) const;
   public:
 
+   /** \brief GridMaker contructor
+     * @param[in] res resolution of grid in Angstroms
+     * @param[in] d dimension of cubic grid side in Angstroms
+     * @param[in] bin boolean indicating if binary density should be used
+     * @param[in] rti booliean indicating the radii are type indexed
+     * @param[in] rscale scaling factor to be uniformly applied to all input radii
+     * @param[in] grm gaussian radius multiplier - cutoff point for switching from Gaussian density to quadratic.  If negative no quadratic component is included and gradient is truncated at this ratio (-1.5 recommended)
+     */
+
     GridMaker(float res = 0, float d = 0, bool bin = false, bool rti = false, float rscale=1.0, float grm = 1.0) :
       resolution(res), dimension(d), radius_scale(rscale), gaussian_radius_multiple(grm), final_radius_multiple(0),
       binary(bin), radii_type_indexed(rti) {
