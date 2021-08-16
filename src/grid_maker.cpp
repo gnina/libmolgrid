@@ -164,9 +164,11 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
   float3 grid_origin = get_grid_origin(grid_center);
   size_t natoms = coords.dimension(0);
   size_t ntypes = out.dimension(0);
+  Dtype *data = out.data();
+
   //iterate over all atoms
   for (size_t aidx = 0; aidx < natoms; ++aidx) {
-    float atype = type_index(aidx);
+    size_t atype = floor(type_index(aidx));
     if(atype >= ntypes) throw std::out_of_range("Type index "+itoa(atype)+" larger than allowed "+itoa(ntypes));
     if (atype >= 0 && atype < ntypes) {
       float3 acoords;
@@ -195,11 +197,11 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
               float val = calc_point<true>(acoords.x, acoords.y, acoords.z, radius, grid_coords);
 
               if (val != 0)
-                *(out.data() + offset) = 1.0;
+                *(data + offset) = 1.0;
             }
             else {
               float val = calc_point<false>(acoords.x, acoords.y, acoords.z, radius, grid_coords);
-              *(out.data() + offset) += val;
+              *(data + offset) += val;
             }
 
           }
