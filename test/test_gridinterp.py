@@ -28,6 +28,12 @@ def test_downsampling():
         for j in range(2):
             for k in range(2):
                 assert dst[0,i,j,k] == src[0,i*2,j*2,k*2]
+                
+    gi.forward(src.gpu(), t, dst.gpu())
+    for i in range(2):
+        for j in range(2):
+            for k in range(2):
+                assert dst[0,i,j,k] == src[0,i*2,j*2,k*2]
     
 from scipy.interpolate import RegularGridInterpolator    
 def scipy_interp(transform, ingrid, incenter, inres, indim, outcenter, outres, outdim, pad=0):
@@ -75,6 +81,13 @@ def test_upsampling():
         for j in range(2):
             for k in range(2):
                 assert src[0,i,j,k] == dst[0,i*2,j*2,k*2]    
+                
+    gi.forward(src.gpu(), t, dst.gpu())
+    
+    for i in range(2):
+        for j in range(2):
+            for k in range(2):
+                assert src[0,i,j,k] == dst[0,i*2,j*2,k*2]                    
 
 def test_translation():
     'extract smaller grid from bigger'
@@ -87,9 +100,12 @@ def test_translation():
     t.set_translation((0.5,0.5,0.5))
 
     gi = molgrid.GridInterpolater(0.5, 2.0, 0.5, 1.0)
-    gi.forward(src.cpu(), t, dst.cpu())
-    
+    gi.forward(src.cpu(), t, dst.cpu())    
     np.testing.assert_allclose(dst.tonumpy(),arr[:,:3,:3,:3],atol=1e-5)
+    
+    dst.gpu().fill_zero()
+    gi.forward(src.gpu(), t, dst.gpu())    
+    np.testing.assert_allclose(dst.tonumpy(),arr[:,:3,:3,:3],atol=1e-5)    
         
 
 
@@ -104,11 +120,16 @@ def test_rotations():
     for i in range(10): #10 random samples
         t = molgrid.Transform((0,0,0),0,True)
     
+        dst.cpu().fill_zero()
         gi = molgrid.GridInterpolater(0.5, 2.0, 0.5, 1.0)
         gi.forward(src.cpu(), t, dst.cpu())
         
         out = scipy_interp(t, src[0], (0,0,0), 0.5, 2.0, (0,0,0), 0.5, 1.0, pad=0)
         np.testing.assert_allclose(out, dst[0].tonumpy(),atol=1e-4)
+        
+        dst.cpu().fill_zero()
+        gi.forward(src.gpu(), t, dst.gpu())        
+        np.testing.assert_allclose(out, dst[0].tonumpy(),atol=1e-4)        
         
 def test_transforms():
     'test rotations with translation and different centers'
@@ -124,8 +145,41 @@ def test_transforms():
         gi.forward(src.cpu(), t, dst.cpu())
         t.set_rotation_center((0.1,0,0))
         out = scipy_interp(t, src[0], (0.1,0.0,0.0), 0.5, 2.0, (0.6,0.5,0.5), 0.5, 1.0, pad=0)
-        np.testing.assert_allclose(out[:-1,:-1,:-1], dst[0].tonumpy()[1:,1:,1:],atol=1e-4)      
+        np.testing.assert_allclose(out[:-1,:-1,:-1], dst[0].tonumpy()[1:,1:,1:],atol=1e-4)     
+        
+        dst.cpu().fill_zero()
+        gi.forward(src.gpu(), t, dst.gpu())
+        np.testing.assert_allclose(out[:-1,:-1,:-1], dst[0].tonumpy()[1:,1:,1:],atol=1e-4)     
 
 def test_mol_transforms():
     '''compare interpolated transformed grid to grid generated from transformed molecule'''
-    pass
+    fname = datadir+"/small.types"
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs")
+    e.populate(fname)
+    ex = e.next()
+    c = ex.coord_sets[1]
+    tc = c.clone()
+
+    gmaker = molgrid.GridMaker(resolution=0.25,dimension=23.5)
+    dims = gmaker.grid_dimensions(c.max_type) # this should be grid_dims or get_grid_dims
+    biggmaker = molgrid.GridMaker(0.25,41.5)
+    bigdims = biggmaker.grid_dimensions(c.max_type) 
+
+    center = c.center()
+    T = molgrid.Transform(center, 2.0, True)
+    T.forward(c,tc)
+
+
+    mgridorig = molgrid.MGrid4f(*bigdims)    
+    mgridgi = molgrid.MGrid4f(*dims)
+    mgridtrans = molgrid.MGrid4f(*dims)    
+    
+    biggmaker.forward(center, c, mgridorig.cpu())
+    gmaker.forward(center, tc, mgridtrans.gpu())
+
+    gi = molgrid.GridInterpolater(biggmaker.get_resolution(), biggmaker.get_dimension(), gmaker.get_resolution(), gmaker.get_dimension())
+    gi.forward(mgridorig.cpu(), T, mgridgi.cpu())
+    #linear interp really isn't that great - need big tolerance
+    np.testing.assert_allclose(mgridgi.tonumpy(),mgridtrans.tonumpy(),atol=.1)     
+    
+ 

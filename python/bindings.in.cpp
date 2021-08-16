@@ -868,7 +868,7 @@ MAKE_ALL_GRIDS()
                    diffdiff, atom_diffdiff, type_diffdiff); }, "@Docstring_GridMaker_backward_gradients_4@");
 
   class_<GridInterpolater>("GridInterpolater", "@Docstring_GridInterpolater@",
-      init<float, float, float, float, float>((arg("in_resolution")=0.5, arg("in_dimension")=23.5,  arg("out_resolution")=0.5, arg("out_dimension")=23.5, arg("pad_value")=0.0)))
+      init<float, float, float, float>((arg("in_resolution")=0.5, arg("in_dimension")=23.5,  arg("out_resolution")=0.5, arg("out_dimension")=23.5)))
       .def("get_in_resolution", &GridInterpolater::get_in_resolution)
       .def("set_in_resolution", &GridInterpolater::set_in_resolution)
       .def("get_out_resolution", &GridInterpolater::get_out_resolution)

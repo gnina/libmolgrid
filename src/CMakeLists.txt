@@ -16,6 +16,7 @@ set( LIBMOLGRID_SOURCES
  transform.cu
  grid_io.cpp
  grid_interpolater.cpp
+ grid_interpolater.cu
  cartesian_grid.cpp
 )
 

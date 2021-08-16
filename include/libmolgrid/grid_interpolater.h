@@ -35,17 +35,18 @@ class GridInterpolater {
     float out_dimension = 0;
     unsigned in_dim = 0; //number of points
     unsigned out_dim = 0;
-    float pad_value = 0; /// what to fill in out-of-bounds areas with
 
     // Sanity check grid dimensions and throw exceptions if they are wrong
     template <typename Dtype, bool isCUDA>
     void checkGrids(const Grid<Dtype, 4, isCUDA>& in, const Grid<Dtype, 4, isCUDA>& out) const;
 
-    template <typename Dtype, bool isCUDA>
-    Dtype get_pt(const Grid<Dtype, 3, isCUDA>& in, int x, int y, int z) const;
+    // setup and initialize texture from in
+    cudaTextureObject_t initializeTexture( const Grid<float, 3, true>& in) const;
 
-    template <typename Dtype, bool isCUDA>
-    Dtype interpolate(const Grid<Dtype, 3, isCUDA>& in, float3 gridpt) const;
+    //deallocate memory for GPU texture memory
+    void clearTexture();
+
+    mutable cudaArray_t cuArray = nullptr; //cache to avoid reallocating
 
   public:
 
@@ -54,16 +55,15 @@ class GridInterpolater {
      * @param[in] indim dimension of cubic input grid in Angstroms
      * @param[in] outres resolution of output grid in Angstroms
      * @param[in] outdim dimension of cubic output grid in Angstroms
-     * @param[in] pad value to use for out-of-grid points (defualt 0)
      */
-    GridInterpolater(float inres, float indim, float outres, float outdim, float pad=0) :
-      in_resolution(inres), out_resolution(outres),
-      in_dimension(indim), out_dimension(outdim), pad_value(pad) {
+    GridInterpolater(float inres, float indim, float outres, float outdim) :
+        in_resolution(inres), out_resolution(outres),
+        in_dimension(indim), out_dimension(outdim) {
         in_dim = std::round(in_dimension / in_resolution) + 1;
         out_dim = std::round(out_dimension / out_resolution) + 1;
     }
 
-    virtual ~GridInterpolater() {}
+    virtual ~GridInterpolater() { clearTexture(); }
 
     ///return resolution of input grid in Angstroms
     CUDA_CALLABLE_MEMBER float get_in_resolution() const { return in_resolution; }
@@ -71,7 +71,11 @@ class GridInterpolater {
     CUDA_CALLABLE_MEMBER float get_out_resolution() const { return out_resolution; }
 
     ///set input resolution in Angstroms
-    CUDA_CALLABLE_MEMBER void set_in_resolution(float res) { in_resolution = res; }
+    CUDA_CALLABLE_MEMBER void set_in_resolution(float res) {
+      in_dim = std::round(in_dimension / in_resolution) + 1;
+      in_resolution = res;
+      clearTexture();
+    }
     ///set output resolution in Angstroms
     CUDA_CALLABLE_MEMBER void set_out_resolution(float res) { out_resolution = res; }
 
@@ -81,7 +85,11 @@ class GridInterpolater {
     CUDA_CALLABLE_MEMBER float get_out_dimension() const { return out_dimension; }
 
     ///set input dimension in Angstroms
-    CUDA_CALLABLE_MEMBER void set_in_dimension(float d) { in_dimension = d;}
+    CUDA_CALLABLE_MEMBER void set_in_dimension(float d) {
+      in_dim = std::round(in_dimension / in_resolution) + 1;
+      in_dimension = d;
+      clearTexture();
+    }
     ///set output dimension in Angstroms
     CUDA_CALLABLE_MEMBER void set_out_dimension(float d) { out_dimension = d;}
 
@@ -110,7 +118,8 @@ class GridInterpolater {
      */
     template <typename Dtype>
     void forward(const Grid<Dtype, 4, true>& in, const Transform& transform, Grid<Dtype, 4, true>& out) const {
-        abort();
+      float3 center = transform.get_rotation_center();
+      forward(center, in, transform, center, out);
     }
 
     // Docstring_GridInterpolater_forward_3
@@ -165,13 +174,29 @@ class GridInterpolater {
      * @param[out] out  a GPU 4D grid
      */
     template <typename Dtype>
-    void forward(float3 in_center, const Grid<Dtype, 4, true>& in, const Transform& transform, float3 out_center, Grid<Dtype, 4, true>& out) const {
-        abort();
-    }
+    void forward(float3 in_center, const Grid<Dtype, 4, true>& in, const Transform& transform, float3 out_center, Grid<Dtype, 4, true>& out) const;
 
     //TODO: backwards
 
+    template <typename Dtype, bool isCUDA>
+    CUDA_CALLABLE_MEMBER Dtype get_pt(const Grid<Dtype, 3, isCUDA>& in, int x, int y, int z) const;
+
+    template <typename Dtype, bool isCUDA>
+    CUDA_CALLABLE_MEMBER Dtype interpolate(const Grid<Dtype, 3, isCUDA>& in, float3 gridpt) const;
 };
+
+// return grid coordinates (not rounded) for Cartesian coordinates
+inline CUDA_CALLABLE_MEMBER float3 cart2grid(float3 origin, float resolution, float x, float y, float z) {
+    float3 pt = { (x-origin.x)/resolution, (y-origin.y)/resolution, (z-origin.z)/resolution };
+    return pt;
+}
+
+// return Cartesian coordinates of provided grid position
+inline CUDA_CALLABLE_MEMBER float3 grid2cart(float3 origin, float resolution, unsigned i, unsigned j, unsigned k) {
+    float3 pt = {origin.x+i*resolution,origin.y+j*resolution,origin.z+k*resolution};
+    return pt;
+}
+
 
 } /* namespace libmolgrid */
 
