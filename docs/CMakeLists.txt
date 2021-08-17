@@ -55,7 +55,7 @@ IF(BUILD_DOCS)
 		                   COMMAND 
 		                     ${SPHINX_EXECUTABLE} -b html
 		                     # Tell Breathe where to find the Doxygen output
-		                     -Dbreathe_projects.ligmolgrid=${DOXYGEN_OUTPUT_DIR}
+		                     -Dbreathe_projects.libmolgrid=${DOXYGEN_OUTPUT_DIR}
                          ${SPHINX_CPP_SOURCE} ${SPHINX_CPP_BUILD}
 		                   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/docs/cpp
 		                   DEPENDS

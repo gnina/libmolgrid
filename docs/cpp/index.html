@@ -1019,7 +1019,8 @@
 <dl class="cpp function">
 <dt id="_CPPv4N10libmolgrid13CoordinateSet13CoordinateSetEv">
 <span id="_CPPv3N10libmolgrid13CoordinateSet13CoordinateSetEv"></span><span id="_CPPv2N10libmolgrid13CoordinateSet13CoordinateSetEv"></span><span id="libmolgrid::CoordinateSet::CoordinateSet"></span><span class="target" id="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">CoordinateSet</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid13CoordinateSet13CoordinateSetEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>source (filename) of coordinates, if available </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N10libmolgrid13CoordinateSet13CoordinateSetEPN9OpenBabel5OBMolERK9AtomTyper">
@@ -1483,7 +1484,7 @@
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">examples</span></code>: vector of examples </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">labelpos</span></code>: position of label </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[out]</span> <span class="pre">grid</span></code>: 2D grid (NxL) </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[out]</span> <span class="pre">out</span></code>: 2D grid (NxL) </p></li>
 </ul>
 </dd>
 </dl>
@@ -2884,44 +2885,44 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Grid_1a483b22b3df988a8a315fe4525097cd91"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">const</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">size_t</span> <span class="pre">*</span> <span class="pre">dimensions</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid4Grid10dimensionsEv">
+<span id="_CPPv3NK10libmolgrid4Grid10dimensionsEv"></span><span id="_CPPv2NK10libmolgrid4Grid10dimensionsEv"></span><span id="libmolgrid::Grid::dimensionsC"></span><span class="target" id="classlibmolgrid_1_1Grid_1a483b22b3df988a8a315fe4525097cd91"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <span class="pre">size_t</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">dimensions</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid4Grid10dimensionsEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>dimensions along each axis </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">size_t</span> <span class="pre">dimension</span> <span class="pre">(size_t</span> <span class="pre">i)</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid4Grid9dimensionE6size_t">
+<span id="_CPPv3NK10libmolgrid4Grid9dimensionE6size_t"></span><span id="_CPPv2NK10libmolgrid4Grid9dimensionE6size_t"></span><span id="libmolgrid::Grid::dimension__sC"></span><span class="target" id="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">dimension</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">i</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid4Grid9dimensionE6size_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>dimensions along specified axis </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Grid_1a99fba573ee49cb59c992f17f4cbc21bb"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">const</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">size_t</span> <span class="pre">*</span> <span class="pre">offsets</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid4Grid7offsetsEv">
+<span id="_CPPv3NK10libmolgrid4Grid7offsetsEv"></span><span id="_CPPv2NK10libmolgrid4Grid7offsetsEv"></span><span id="libmolgrid::Grid::offsetsC"></span><span class="target" id="classlibmolgrid_1_1Grid_1a99fba573ee49cb59c992f17f4cbc21bb"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <span class="pre">size_t</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">offsets</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid4Grid7offsetsEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>offset for each dimension, all indexing calculations use this </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Grid_1a67a4d2469cf97b1e2018d220c5992ca7"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">size_t</span> <span class="pre">offset</span> <span class="pre">(size_t</span> <span class="pre">i)</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid4Grid6offsetE6size_t">
+<span id="_CPPv3NK10libmolgrid4Grid6offsetE6size_t"></span><span id="_CPPv2NK10libmolgrid4Grid6offsetE6size_t"></span><span id="libmolgrid::Grid::offset__sC"></span><span class="target" id="classlibmolgrid_1_1Grid_1a67a4d2469cf97b1e2018d220c5992ca7"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">offset</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">i</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid4Grid6offsetE6size_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>offset for each dimension, all indexing calculations use this </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Grid_1acb2f16129f492fbb0aa93ae8b78402ec"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">size_t</span> <span class="pre">size</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid4Grid4sizeEv">
+<span id="_CPPv3NK10libmolgrid4Grid4sizeEv"></span><span id="_CPPv2NK10libmolgrid4Grid4sizeEv"></span><span id="libmolgrid::Grid::sizeC"></span><span class="target" id="classlibmolgrid_1_1Grid_1acb2f16129f492fbb0aa93ae8b78402ec"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">size</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid4Grid4sizeEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>number of elements in grid </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">Dtype</span> <span class="pre">*</span> <span class="pre">data</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid4Grid4dataEv">
+<span id="_CPPv3NK10libmolgrid4Grid4dataEv"></span><span id="_CPPv2NK10libmolgrid4Grid4dataEv"></span><span id="libmolgrid::Grid::dataC"></span><span class="target" id="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE" title="libmolgrid::Grid::Dtype"><span class="pre">Dtype</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">data</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid4Grid4dataEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>pointer to underlying data </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Grid_1a440d5fdb2fea4e01b2d7ca58720e6f9a"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">void</span> <span class="pre">set_buffer</span> <span class="pre">(Dtype</span> <span class="pre">*ptr)</span></code></dt>
+<dt id="_CPPv4N10libmolgrid4Grid10set_bufferEP5Dtype">
+<span id="_CPPv3N10libmolgrid4Grid10set_bufferEP5Dtype"></span><span id="_CPPv2N10libmolgrid4Grid10set_bufferEP5Dtype"></span><span id="libmolgrid::Grid::set_buffer__DtypeP"></span><span class="target" id="classlibmolgrid_1_1Grid_1a440d5fdb2fea4e01b2d7ca58720e6f9a"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">set_buffer</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE" title="libmolgrid::Grid::Dtype"><span class="pre">Dtype</span></a> <span class="pre">*</span><em><span class="pre">ptr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid4Grid10set_bufferEP5Dtype" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set the underlying memory buffer - use with caution! </p>
 </dd></dl>
 
@@ -2956,32 +2957,32 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Grid_1a8e2e9f0033132d21a5dc0d81f29f4da4"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">subgrid_t</span> <span class="pre">operator[]</span> <span class="pre">(size_t</span> <span class="pre">i)</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid4GridixE6size_t">
+<span id="_CPPv3NK10libmolgrid4GridixE6size_t"></span><span id="_CPPv2NK10libmolgrid4GridixE6size_t"></span><span id="libmolgrid::Grid::subscript-operator__sC"></span><span class="target" id="classlibmolgrid_1_1Grid_1a8e2e9f0033132d21a5dc0d81f29f4da4"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid4Grid9subgrid_tE" title="libmolgrid::Grid::subgrid_t"><span class="pre">subgrid_t</span></a> <code class="sig-name descname"><span class="pre">operator[]</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">i</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid4GridixE6size_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Bracket indexing. </p>
 <p>Accessing data this way will be safe (indices are checked) and convenient, but not maximally efficient (unless the compiler is really good). Use operator() for fastest (but unchecked) access or access data directly. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Grid_1af4c80e9d4bd3250caf327413bb7e71a7"></span><code class="sig-name descname"><span class="pre">template&lt;typename...</span> <span class="pre">I&gt;</span> <span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">Dtype</span> <span class="pre">&amp;</span> <span class="pre">operator()</span> <span class="pre">(I...</span> <span class="pre">indices)</span></code></dt>
+<dt id="_CPPv4IDpEN10libmolgrid4GridclER5DtypeDp1I">
+<span id="_CPPv3IDpEN10libmolgrid4GridclEDp1I"></span><span id="_CPPv2IDpEN10libmolgrid4GridclEDp1I"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <span class="pre">...</span><code class="sig-name descname"><span class="pre">I</span></code><span class="pre">&gt;</span><br /><span class="target" id="classlibmolgrid_1_1Grid_1af4c80e9d4bd3250caf327413bb7e71a7"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE" title="libmolgrid::Grid::Dtype"><span class="pre">Dtype</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator()</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4IDpEN10libmolgrid4GridclER5DtypeDp1I" title="libmolgrid::Grid::operator()::I"><span class="pre">I</span></a><span class="pre">...</span> <em><span class="pre">indices</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4IDpEN10libmolgrid4GridclER5DtypeDp1I" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initializer list indexing. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Grid_1a4c0715b6c8593be928ec306c5f943a57"></span><code class="sig-name descname"><span class="pre">template&lt;typename...</span> <span class="pre">I&gt;</span> <span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">Dtype</span> <span class="pre">operator()</span> <span class="pre">(I...</span> <span class="pre">indices)</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4IDpENK10libmolgrid4GridclE5DtypeDp1I">
+<span id="_CPPv3IDpENK10libmolgrid4GridclEDp1I"></span><span id="_CPPv2IDpENK10libmolgrid4GridclEDp1I"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <span class="pre">...</span><code class="sig-name descname"><span class="pre">I</span></code><span class="pre">&gt;</span><br /><span class="target" id="classlibmolgrid_1_1Grid_1a4c0715b6c8593be928ec306c5f943a57"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE" title="libmolgrid::Grid::Dtype"><span class="pre">Dtype</span></a> <code class="sig-name descname"><span class="pre">operator()</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4IDpENK10libmolgrid4GridclE5DtypeDp1I" title="libmolgrid::Grid::operator()::I"><span class="pre">I</span></a><span class="pre">...</span> <em><span class="pre">indices</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4IDpENK10libmolgrid4GridclE5DtypeDp1I" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Grid_1a0dff89786df422b662a2be75e7517a1e"></span><code class="sig-name descname"><span class="pre">template&lt;typename...</span> <span class="pre">I&gt;</span> <span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">Dtype</span> <span class="pre">*</span> <span class="pre">address</span> <span class="pre">(I...</span> <span class="pre">indices)</span></code></dt>
+<dt id="_CPPv4IDpEN10libmolgrid4Grid7addressEP5DtypeDp1I">
+<span id="_CPPv3IDpEN10libmolgrid4Grid7addressEDp1I"></span><span id="_CPPv2IDpEN10libmolgrid4Grid7addressEDp1I"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <span class="pre">...</span><code class="sig-name descname"><span class="pre">I</span></code><span class="pre">&gt;</span><br /><span class="target" id="classlibmolgrid_1_1Grid_1a0dff89786df422b662a2be75e7517a1e"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE" title="libmolgrid::Grid::Dtype"><span class="pre">Dtype</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">address</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4IDpEN10libmolgrid4Grid7addressEP5DtypeDp1I" title="libmolgrid::Grid::address::I"><span class="pre">I</span></a><span class="pre">...</span> <em><span class="pre">indices</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4IDpEN10libmolgrid4Grid7addressEP5DtypeDp1I" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return memory address of specified index. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Grid_1ad16f3140a0985865efe01db743da33c2"></span><code class="sig-name descname"><span class="pre">template&lt;typename...</span> <span class="pre">I&gt;</span> <span class="pre">inline</span> <span class="pre">const</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">Dtype</span> <span class="pre">*</span> <span class="pre">address</span> <span class="pre">(I...</span> <span class="pre">indices)</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4IDpENK10libmolgrid4Grid7addressEPK5DtypeDp1I">
+<span id="_CPPv3IDpENK10libmolgrid4Grid7addressEDp1I"></span><span id="_CPPv2IDpENK10libmolgrid4Grid7addressEDp1I"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <span class="pre">...</span><code class="sig-name descname"><span class="pre">I</span></code><span class="pre">&gt;</span><br /><span class="target" id="classlibmolgrid_1_1Grid_1ad16f3140a0985865efe01db743da33c2"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE" title="libmolgrid::Grid::Dtype"><span class="pre">Dtype</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">address</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4IDpENK10libmolgrid4Grid7addressEPK5DtypeDp1I" title="libmolgrid::Grid::address::I"><span class="pre">I</span></a><span class="pre">...</span> <em><span class="pre">indices</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4IDpENK10libmolgrid4Grid7addressEPK5DtypeDp1I" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -3006,7 +3007,7 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4N10libmolgrid4Grid4GridERK4GridI5DtypeXpl7NumDimsL1EE6isCUDAE6size_t">
-<span id="_CPPv3N10libmolgrid4Grid4GridERK4GridI5DtypeXpl7NumDimsL1EE6isCUDAE6size_t"></span><span id="_CPPv2N10libmolgrid4Grid4GridERK4GridI5DtypeXNumDims + 1E6isCUDAE6size_t"></span><span id="libmolgrid::Grid::Grid__Grid:Dtype.NumDims-+-1.isCUDA:CR.s"></span><span class="target" id="classlibmolgrid_1_1Grid_1a213a3ffc821285325de3b96cee1d025a"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">explicit</span></em> <span class="pre">CUDA_CALLABLE_MEMBER</span> <code class="sig-name descname"><span class="pre">Grid</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid4Grid4GridERK4GridI5DtypeXpl7NumDimsL1EE6isCUDAE6size_t" title="libmolgrid::Grid::Grid"><span class="pre">Grid</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE" title="libmolgrid::Grid::Dtype"><span class="pre">Dtype</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE" title="libmolgrid::Grid::NumDims"><span class="pre">NumDims</span></a> <span class="pre">+</span> <span class="pre">1</span><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE" title="libmolgrid::Grid::isCUDA"><span class="pre">isCUDA</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">G</span></em>, <span class="pre">size_t</span> <em><span class="pre">i</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid4Grid4GridERK4GridI5DtypeXpl7NumDimsL1EE6isCUDAE6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N10libmolgrid4Grid4GridERK4GridI5DtypeXpl7NumDimsL1EE6isCUDAE6size_t"></span><span id="_CPPv2N10libmolgrid4Grid4GridERK4GridI5DtypeXNumDims + 1E6isCUDAE6size_t"></span><span id="libmolgrid::Grid::Grid__Grid:Dtype.NumDims-+-1.isCUDA:CR.s"></span><span class="target" id="classlibmolgrid_1_1Grid_1a213a3ffc821285325de3b96cee1d025a"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">explicit</span></em> <code class="sig-name descname"><span class="pre">Grid</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid4Grid4GridERK4GridI5DtypeXpl7NumDimsL1EE6isCUDAE6size_t" title="libmolgrid::Grid::Grid"><span class="pre">Grid</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE" title="libmolgrid::Grid::Dtype"><span class="pre">Dtype</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE" title="libmolgrid::Grid::NumDims"><span class="pre">NumDims</span></a> <span class="pre">+</span> <span class="pre">1</span><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE" title="libmolgrid::Grid::isCUDA"><span class="pre">isCUDA</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">G</span></em>, <span class="pre">size_t</span> <em><span class="pre">i</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid4Grid4GridERK4GridI5DtypeXpl7NumDimsL1EE6isCUDAE6size_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -3068,67 +3069,67 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1a89ed55a7eb6d9fb6a9c119f2377b235b"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">float</span> <span class="pre">get_resolution</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid9GridMaker14get_resolutionEv">
+<span id="_CPPv3NK10libmolgrid9GridMaker14get_resolutionEv"></span><span id="_CPPv2NK10libmolgrid9GridMaker14get_resolutionEv"></span><span id="libmolgrid::GridMaker::get_resolutionC"></span><span class="target" id="classlibmolgrid_1_1GridMaker_1a89ed55a7eb6d9fb6a9c119f2377b235b"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">float</span> <code class="sig-name descname"><span class="pre">get_resolution</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid9GridMaker14get_resolutionEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return resolution in Angstroms </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1afd8e9799b74142e23778dddbda02519b"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">void</span> <span class="pre">set_resolution</span> <span class="pre">(float</span> <span class="pre">res)</span></code></dt>
+<dt id="_CPPv4N10libmolgrid9GridMaker14set_resolutionEf">
+<span id="_CPPv3N10libmolgrid9GridMaker14set_resolutionEf"></span><span id="_CPPv2N10libmolgrid9GridMaker14set_resolutionEf"></span><span id="libmolgrid::GridMaker::set_resolution__float"></span><span class="target" id="classlibmolgrid_1_1GridMaker_1afd8e9799b74142e23778dddbda02519b"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">set_resolution</span></code><span class="sig-paren">(</span><span class="pre">float</span> <em><span class="pre">res</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid9GridMaker14set_resolutionEf" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set resolution in Angstroms </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1a913c32e731985d3bf13d38da3eb8fbdc"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">float</span> <span class="pre">get_dimension</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid9GridMaker13get_dimensionEv">
+<span id="_CPPv3NK10libmolgrid9GridMaker13get_dimensionEv"></span><span id="_CPPv2NK10libmolgrid9GridMaker13get_dimensionEv"></span><span id="libmolgrid::GridMaker::get_dimensionC"></span><span class="target" id="classlibmolgrid_1_1GridMaker_1a913c32e731985d3bf13d38da3eb8fbdc"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">float</span> <code class="sig-name descname"><span class="pre">get_dimension</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid9GridMaker13get_dimensionEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get dimension in Angstroms </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1aee2b3af3532909f14ad4cb8c923849ba"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">void</span> <span class="pre">set_dimension</span> <span class="pre">(float</span> <span class="pre">d)</span></code></dt>
+<dt id="_CPPv4N10libmolgrid9GridMaker13set_dimensionEf">
+<span id="_CPPv3N10libmolgrid9GridMaker13set_dimensionEf"></span><span id="_CPPv2N10libmolgrid9GridMaker13set_dimensionEf"></span><span id="libmolgrid::GridMaker::set_dimension__float"></span><span class="target" id="classlibmolgrid_1_1GridMaker_1aee2b3af3532909f14ad4cb8c923849ba"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">set_dimension</span></code><span class="sig-paren">(</span><span class="pre">float</span> <em><span class="pre">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid9GridMaker13set_dimensionEf" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set dimension in Angstroms </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1a35c10485c3709bff6c3976aae006590e"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">unsigned</span> <span class="pre">get_first_dim</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid9GridMaker13get_first_dimEv">
+<span id="_CPPv3NK10libmolgrid9GridMaker13get_first_dimEv"></span><span id="_CPPv2NK10libmolgrid9GridMaker13get_first_dimEv"></span><span id="libmolgrid::GridMaker::get_first_dimC"></span><span class="target" id="classlibmolgrid_1_1GridMaker_1a35c10485c3709bff6c3976aae006590e"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">unsigned</span> <code class="sig-name descname"><span class="pre">get_first_dim</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid9GridMaker13get_first_dimEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1acc9dc2f277b5ceed6789a7c959c9017c"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">bool</span> <span class="pre">get_binary</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid9GridMaker10get_binaryEv">
+<span id="_CPPv3NK10libmolgrid9GridMaker10get_binaryEv"></span><span id="_CPPv2NK10libmolgrid9GridMaker10get_binaryEv"></span><span id="libmolgrid::GridMaker::get_binaryC"></span><span class="target" id="classlibmolgrid_1_1GridMaker_1acc9dc2f277b5ceed6789a7c959c9017c"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">bool</span> <code class="sig-name descname"><span class="pre">get_binary</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid9GridMaker10get_binaryEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return if density is binary </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1a5b9825bf1ac9b7ab67fd6a9c300212d8"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">void</span> <span class="pre">set_binary</span> <span class="pre">(bool</span> <span class="pre">b)</span></code></dt>
+<dt id="_CPPv4N10libmolgrid9GridMaker10set_binaryEb">
+<span id="_CPPv3N10libmolgrid9GridMaker10set_binaryEb"></span><span id="_CPPv2N10libmolgrid9GridMaker10set_binaryEb"></span><span id="libmolgrid::GridMaker::set_binary__b"></span><span class="target" id="classlibmolgrid_1_1GridMaker_1a5b9825bf1ac9b7ab67fd6a9c300212d8"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">set_binary</span></code><span class="sig-paren">(</span><span class="pre">bool</span> <em><span class="pre">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid9GridMaker10set_binaryEb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set if density is binary </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1ada33a2c215eedf1d2bdb1c74c7fb111a"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">bool</span> <span class="pre">get_radii_type_indexed</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid9GridMaker22get_radii_type_indexedEv">
+<span id="_CPPv3NK10libmolgrid9GridMaker22get_radii_type_indexedEv"></span><span id="_CPPv2NK10libmolgrid9GridMaker22get_radii_type_indexedEv"></span><span id="libmolgrid::GridMaker::get_radii_type_indexedC"></span><span class="target" id="classlibmolgrid_1_1GridMaker_1ada33a2c215eedf1d2bdb1c74c7fb111a"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">bool</span> <code class="sig-name descname"><span class="pre">get_radii_type_indexed</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid9GridMaker22get_radii_type_indexedEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return if radius array should be indexed by type id (for vector types) </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1a07a5ecd13fefad2d587a4b0276f38be5"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">void</span> <span class="pre">set_radii_type_indexed</span> <span class="pre">(bool</span> <span class="pre">b)</span></code></dt>
+<dt id="_CPPv4N10libmolgrid9GridMaker22set_radii_type_indexedEb">
+<span id="_CPPv3N10libmolgrid9GridMaker22set_radii_type_indexedEb"></span><span id="_CPPv2N10libmolgrid9GridMaker22set_radii_type_indexedEb"></span><span id="libmolgrid::GridMaker::set_radii_type_indexed__b"></span><span class="target" id="classlibmolgrid_1_1GridMaker_1a07a5ecd13fefad2d587a4b0276f38be5"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">set_radii_type_indexed</span></code><span class="sig-paren">(</span><span class="pre">bool</span> <em><span class="pre">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid9GridMaker22set_radii_type_indexedEb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set if radius array should be indexed by type id, not atom </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1ab252273ae1616c329c9185dba68fc1b1"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">float</span> <span class="pre">get_radiusmultiple</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid9GridMaker18get_radiusmultipleEv">
+<span id="_CPPv3NK10libmolgrid9GridMaker18get_radiusmultipleEv"></span><span id="_CPPv2NK10libmolgrid9GridMaker18get_radiusmultipleEv"></span><span id="libmolgrid::GridMaker::get_radiusmultipleC"></span><span class="target" id="classlibmolgrid_1_1GridMaker_1ab252273ae1616c329c9185dba68fc1b1"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">float</span> <code class="sig-name descname"><span class="pre">get_radiusmultiple</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid9GridMaker18get_radiusmultipleEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return multiplier of radius where density goes to zero </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1ab16c65f66c2e566acc578b719c383e7b"></span><code class="sig-name descname"><span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">float3</span> <span class="pre">get_grid_origin</span> <span class="pre">(const</span> <span class="pre">float3</span> <span class="pre">&amp;grid_center)</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid9GridMaker15get_grid_originERK6float3">
+<span id="_CPPv3NK10libmolgrid9GridMaker15get_grid_originERK6float3"></span><span id="_CPPv2NK10libmolgrid9GridMaker15get_grid_originERK6float3"></span><span id="libmolgrid::GridMaker::get_grid_origin__float3CRC"></span><span class="target" id="classlibmolgrid_1_1GridMaker_1ab16c65f66c2e566acc578b719c383e7b"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">float3</span> <code class="sig-name descname"><span class="pre">get_grid_origin</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">float3</span> <span class="pre">&amp;</span><em><span class="pre">grid_center</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid9GridMaker15get_grid_originERK6float3" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Use externally specified grid_center to determine where grid begins. Used for translating between cartesian coords and grids. </p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -3291,38 +3292,38 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1ae721daa109c679340ca12adfffe025b0"></span><code class="sig-name descname"><span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">uint2</span> <span class="pre">get_bounds_1d</span> <span class="pre">(const</span> <span class="pre">float</span> <span class="pre">grid_origin,</span> <span class="pre">float</span> <span class="pre">coord,</span> <span class="pre">float</span> <span class="pre">densityrad)</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid9GridMaker13get_bounds_1dEKfff">
+<span id="_CPPv3NK10libmolgrid9GridMaker13get_bounds_1dEKfff"></span><span id="_CPPv2NK10libmolgrid9GridMaker13get_bounds_1dEKfff"></span><span id="libmolgrid::GridMaker::get_bounds_1d__floatC.float.floatC"></span><span class="target" id="classlibmolgrid_1_1GridMaker_1ae721daa109c679340ca12adfffe025b0"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">uint2</span> <code class="sig-name descname"><span class="pre">get_bounds_1d</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">float</span> <em><span class="pre">grid_origin</span></em>, <span class="pre">float</span> <em><span class="pre">coord</span></em>, <span class="pre">float</span> <em><span class="pre">densityrad</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid9GridMaker13get_bounds_1dEKfff" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1a40637d5466c6816cc0a6975f40bc6302"></span><code class="sig-name descname"><span class="pre">template&lt;bool</span> <span class="pre">Binary&gt;</span> <span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">float</span> <span class="pre">calc_point</span> <span class="pre">(float</span> <span class="pre">ax,</span> <span class="pre">float</span> <span class="pre">ay,</span> <span class="pre">float</span> <span class="pre">az,</span> <span class="pre">float</span> <span class="pre">ar,</span> <span class="pre">const</span> <span class="pre">float3</span> <span class="pre">&amp;grid_coords)</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4I_bENK10libmolgrid9GridMaker10calc_pointEfffffRK6float3">
+<span id="_CPPv3I_bENK10libmolgrid9GridMaker10calc_pointEffffRK6float3"></span><span id="_CPPv2I_bENK10libmolgrid9GridMaker10calc_pointEffffRK6float3"></span><span class="pre">template&lt;</span><span class="pre">bool</span> <code class="sig-name descname"><span class="pre">Binary</span></code><span class="pre">&gt;</span><br /><span class="target" id="classlibmolgrid_1_1GridMaker_1a40637d5466c6816cc0a6975f40bc6302"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">float</span> <code class="sig-name descname"><span class="pre">calc_point</span></code><span class="sig-paren">(</span><span class="pre">float</span> <em><span class="pre">ax</span></em>, <span class="pre">float</span> <em><span class="pre">ay</span></em>, <span class="pre">float</span> <em><span class="pre">az</span></em>, <span class="pre">float</span> <em><span class="pre">ar</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">float3</span> <span class="pre">&amp;</span><em><span class="pre">grid_coords</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4I_bENK10libmolgrid9GridMaker10calc_pointEfffffRK6float3" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1a8bc3b4646b82d504a7153b3107a59a5d"></span><code class="sig-name descname"><span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">float</span> <span class="pre">density_grad_dist</span> <span class="pre">(float</span> <span class="pre">dist,</span> <span class="pre">float</span> <span class="pre">ar)</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid9GridMaker17density_grad_distEff">
+<span id="_CPPv3NK10libmolgrid9GridMaker17density_grad_distEff"></span><span id="_CPPv2NK10libmolgrid9GridMaker17density_grad_distEff"></span><span id="libmolgrid::GridMaker::density_grad_dist__float.floatC"></span><span class="target" id="classlibmolgrid_1_1GridMaker_1a8bc3b4646b82d504a7153b3107a59a5d"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">float</span> <code class="sig-name descname"><span class="pre">density_grad_dist</span></code><span class="sig-paren">(</span><span class="pre">float</span> <em><span class="pre">dist</span></em>, <span class="pre">float</span> <em><span class="pre">ar</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid9GridMaker17density_grad_distEff" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1adee1cf18ef5d11f91b77cff05e864f5f"></span><code class="sig-name descname"><span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">float</span> <span class="pre">type_grad_grad</span> <span class="pre">(float</span> <span class="pre">a,</span> <span class="pre">float</span> <span class="pre">x,</span> <span class="pre">float</span> <span class="pre">dist,</span> <span class="pre">float</span> <span class="pre">r)</span></code></dt>
+<dt id="_CPPv4N10libmolgrid9GridMaker14type_grad_gradEffff">
+<span id="_CPPv3N10libmolgrid9GridMaker14type_grad_gradEffff"></span><span id="_CPPv2N10libmolgrid9GridMaker14type_grad_gradEffff"></span><span id="libmolgrid::GridMaker::type_grad_grad__float.float.float.float"></span><span class="target" id="classlibmolgrid_1_1GridMaker_1adee1cf18ef5d11f91b77cff05e864f5f"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">float</span> <code class="sig-name descname"><span class="pre">type_grad_grad</span></code><span class="sig-paren">(</span><span class="pre">float</span> <em><span class="pre">a</span></em>, <span class="pre">float</span> <em><span class="pre">x</span></em>, <span class="pre">float</span> <em><span class="pre">dist</span></em>, <span class="pre">float</span> <em><span class="pre">r</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid9GridMaker14type_grad_gradEffff" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1a91df66765739dee62901169541cb783f"></span><code class="sig-name descname"><span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">float</span> <span class="pre">atom_density_grad_grad</span> <span class="pre">(float</span> <span class="pre">a,</span> <span class="pre">float</span> <span class="pre">x,</span> <span class="pre">float</span> <span class="pre">dist,</span> <span class="pre">float</span> <span class="pre">r)</span></code></dt>
+<dt id="_CPPv4N10libmolgrid9GridMaker22atom_density_grad_gradEffff">
+<span id="_CPPv3N10libmolgrid9GridMaker22atom_density_grad_gradEffff"></span><span id="_CPPv2N10libmolgrid9GridMaker22atom_density_grad_gradEffff"></span><span id="libmolgrid::GridMaker::atom_density_grad_grad__float.float.float.float"></span><span class="target" id="classlibmolgrid_1_1GridMaker_1a91df66765739dee62901169541cb783f"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">float</span> <code class="sig-name descname"><span class="pre">atom_density_grad_grad</span></code><span class="sig-paren">(</span><span class="pre">float</span> <em><span class="pre">a</span></em>, <span class="pre">float</span> <em><span class="pre">x</span></em>, <span class="pre">float</span> <em><span class="pre">dist</span></em>, <span class="pre">float</span> <em><span class="pre">r</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid9GridMaker22atom_density_grad_gradEffff" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1af8321ed53835f95eb2d00a7d84248076"></span><code class="sig-name descname"><span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">float</span> <span class="pre">atom_density_grad_grad_other</span> <span class="pre">(float</span> <span class="pre">a,</span> <span class="pre">float</span> <span class="pre">x,</span> <span class="pre">float</span> <span class="pre">b,</span> <span class="pre">float</span> <span class="pre">y,</span> <span class="pre">float</span> <span class="pre">dist,</span> <span class="pre">float</span> <span class="pre">r)</span></code></dt>
+<dt id="_CPPv4N10libmolgrid9GridMaker28atom_density_grad_grad_otherEffffff">
+<span id="_CPPv3N10libmolgrid9GridMaker28atom_density_grad_grad_otherEffffff"></span><span id="_CPPv2N10libmolgrid9GridMaker28atom_density_grad_grad_otherEffffff"></span><span id="libmolgrid::GridMaker::atom_density_grad_grad_other__float.float.float.float.float.float"></span><span class="target" id="classlibmolgrid_1_1GridMaker_1af8321ed53835f95eb2d00a7d84248076"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">float</span> <code class="sig-name descname"><span class="pre">atom_density_grad_grad_other</span></code><span class="sig-paren">(</span><span class="pre">float</span> <em><span class="pre">a</span></em>, <span class="pre">float</span> <em><span class="pre">x</span></em>, <span class="pre">float</span> <em><span class="pre">b</span></em>, <span class="pre">float</span> <em><span class="pre">y</span></em>, <span class="pre">float</span> <em><span class="pre">dist</span></em>, <span class="pre">float</span> <em><span class="pre">r</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid9GridMaker28atom_density_grad_grad_otherEffffff" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1GridMaker_1a891c950dd3b8e06ed6f4305d39f412aa"></span><code class="sig-name descname"><span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">void</span> <span class="pre">accumulate_atom_gradient</span> <span class="pre">(float</span> <span class="pre">ax,</span> <span class="pre">float</span> <span class="pre">ay,</span> <span class="pre">float</span> <span class="pre">az,</span> <span class="pre">float</span> <span class="pre">x,</span> <span class="pre">float</span> <span class="pre">y,</span> <span class="pre">float</span> <span class="pre">z,</span> <span class="pre">float</span> <span class="pre">radius,</span> <span class="pre">float</span> <span class="pre">gridval,</span> <span class="pre">float3</span> <span class="pre">&amp;agrad)</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid9GridMaker24accumulate_atom_gradientEffffffffR6float3">
+<span id="_CPPv3NK10libmolgrid9GridMaker24accumulate_atom_gradientEffffffffR6float3"></span><span id="_CPPv2NK10libmolgrid9GridMaker24accumulate_atom_gradientEffffffffR6float3"></span><span id="libmolgrid::GridMaker::accumulate_atom_gradient__float.float.float.float.float.float.float.float.float3RC"></span><span class="target" id="classlibmolgrid_1_1GridMaker_1a891c950dd3b8e06ed6f4305d39f412aa"></span><span class="pre">CUDA_CALLABLE_MEMBER</span> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">accumulate_atom_gradient</span></code><span class="sig-paren">(</span><span class="pre">float</span> <em><span class="pre">ax</span></em>, <span class="pre">float</span> <em><span class="pre">ay</span></em>, <span class="pre">float</span> <em><span class="pre">az</span></em>, <span class="pre">float</span> <em><span class="pre">x</span></em>, <span class="pre">float</span> <em><span class="pre">y</span></em>, <span class="pre">float</span> <em><span class="pre">z</span></em>, <span class="pre">float</span> <em><span class="pre">radius</span></em>, <span class="pre">float</span> <em><span class="pre">gridval</span></em>, <span class="pre">float3</span> <span class="pre">&amp;</span><em><span class="pre">agrad</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid9GridMaker24accumulate_atom_gradientEffffffffR6float3" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -3933,120 +3934,120 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1a9a2555599aae540b4d7c518fdb6396bc"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">Quaternion</span> <span class="pre">()</span></code></dt>
+<dt id="_CPPv4N10libmolgrid10Quaternion10QuaternionEv">
+<span id="_CPPv3N10libmolgrid10Quaternion10QuaternionEv"></span><span id="_CPPv2N10libmolgrid10Quaternion10QuaternionEv"></span><span id="libmolgrid::Quaternion::Quaternion"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1a9a2555599aae540b4d7c518fdb6396bc"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">Quaternion</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid10Quaternion10QuaternionEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1a7bbd7af7c5c4cb2b4e32687121f66dbb"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">Quaternion</span> <span class="pre">(fl</span> <span class="pre">A,</span> <span class="pre">fl</span> <span class="pre">B,</span> <span class="pre">fl</span> <span class="pre">C,</span> <span class="pre">fl</span> <span class="pre">D)</span></code></dt>
+<dt id="_CPPv4N10libmolgrid10Quaternion10QuaternionE2fl2fl2fl2fl">
+<span id="_CPPv3N10libmolgrid10Quaternion10QuaternionE2fl2fl2fl2fl"></span><span id="_CPPv2N10libmolgrid10Quaternion10QuaternionE2fl2fl2fl2fl"></span><span id="libmolgrid::Quaternion::Quaternion__fl.fl.fl.fl"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1a7bbd7af7c5c4cb2b4e32687121f66dbb"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">Quaternion</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N10libmolgrid10Quaternion2flE" title="libmolgrid::Quaternion::fl"><span class="pre">fl</span></a> <em><span class="pre">A</span></em>, <a class="reference internal" href="#_CPPv4N10libmolgrid10Quaternion2flE" title="libmolgrid::Quaternion::fl"><span class="pre">fl</span></a> <em><span class="pre">B</span></em>, <a class="reference internal" href="#_CPPv4N10libmolgrid10Quaternion2flE" title="libmolgrid::Quaternion::fl"><span class="pre">fl</span></a> <em><span class="pre">C</span></em>, <a class="reference internal" href="#_CPPv4N10libmolgrid10Quaternion2flE" title="libmolgrid::Quaternion::fl"><span class="pre">fl</span></a> <em><span class="pre">D</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid10Quaternion10QuaternionE2fl2fl2fl2fl" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Construct quaternion with real then unreal components. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1a467deb37a0efc7b604796e8a41c908c1"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">fl</span> <span class="pre">R_component_1</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid10Quaternion13R_component_1Ev">
+<span id="_CPPv3NK10libmolgrid10Quaternion13R_component_1Ev"></span><span id="_CPPv2NK10libmolgrid10Quaternion13R_component_1Ev"></span><span id="libmolgrid::Quaternion::R_component_1C"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1a467deb37a0efc7b604796e8a41c908c1"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10Quaternion2flE" title="libmolgrid::Quaternion::fl"><span class="pre">fl</span></a> <code class="sig-name descname"><span class="pre">R_component_1</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid10Quaternion13R_component_1Ev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return the real or scalar part. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1a862b788e777d6964207514ac8779aabb"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">fl</span> <span class="pre">R_component_2</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid10Quaternion13R_component_2Ev">
+<span id="_CPPv3NK10libmolgrid10Quaternion13R_component_2Ev"></span><span id="_CPPv2NK10libmolgrid10Quaternion13R_component_2Ev"></span><span id="libmolgrid::Quaternion::R_component_2C"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1a862b788e777d6964207514ac8779aabb"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10Quaternion2flE" title="libmolgrid::Quaternion::fl"><span class="pre">fl</span></a> <code class="sig-name descname"><span class="pre">R_component_2</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid10Quaternion13R_component_2Ev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return unreal[0]. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1ab08e86e9ceeda72a964f884b3dfb3829"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">fl</span> <span class="pre">R_component_3</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid10Quaternion13R_component_3Ev">
+<span id="_CPPv3NK10libmolgrid10Quaternion13R_component_3Ev"></span><span id="_CPPv2NK10libmolgrid10Quaternion13R_component_3Ev"></span><span id="libmolgrid::Quaternion::R_component_3C"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1ab08e86e9ceeda72a964f884b3dfb3829"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10Quaternion2flE" title="libmolgrid::Quaternion::fl"><span class="pre">fl</span></a> <code class="sig-name descname"><span class="pre">R_component_3</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid10Quaternion13R_component_3Ev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return unreal[1]. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1a169b2e737053c17d206c7b6a6b2fa7e2"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">fl</span> <span class="pre">R_component_4</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid10Quaternion13R_component_4Ev">
+<span id="_CPPv3NK10libmolgrid10Quaternion13R_component_4Ev"></span><span id="_CPPv2NK10libmolgrid10Quaternion13R_component_4Ev"></span><span id="libmolgrid::Quaternion::R_component_4C"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1a169b2e737053c17d206c7b6a6b2fa7e2"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10Quaternion2flE" title="libmolgrid::Quaternion::fl"><span class="pre">fl</span></a> <code class="sig-name descname"><span class="pre">R_component_4</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid10Quaternion13R_component_4Ev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return unreal[2]. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1a46b2c63f95d8107d0232793c4d45ed00"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">Quaternion</span> <span class="pre">&amp;</span> <span class="pre">operator*=</span> <span class="pre">(const</span> <span class="pre">fl</span> <span class="pre">&amp;r)</span></code></dt>
+<dt id="_CPPv4N10libmolgrid10QuaternionmLERK2fl">
+<span id="_CPPv3N10libmolgrid10QuaternionmLERK2fl"></span><span id="_CPPv2N10libmolgrid10QuaternionmLERK2fl"></span><span id="libmolgrid::Quaternion::mul-assign-operator__flCR"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1a46b2c63f95d8107d0232793c4d45ed00"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10QuaternionE" title="libmolgrid::Quaternion"><span class="pre">Quaternion</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator*=</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10Quaternion2flE" title="libmolgrid::Quaternion::fl"><span class="pre">fl</span></a> <span class="pre">&amp;</span><em><span class="pre">r</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid10QuaternionmLERK2fl" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>In-place multiplication by scalar (element-wise) </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1a8af81f03ca5aef87ad4a7c7b79ae3531"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">Quaternion</span> <span class="pre">&amp;</span> <span class="pre">operator/=</span> <span class="pre">(const</span> <span class="pre">fl</span> <span class="pre">&amp;r)</span></code></dt>
+<dt id="_CPPv4N10libmolgrid10QuaterniondVERK2fl">
+<span id="_CPPv3N10libmolgrid10QuaterniondVERK2fl"></span><span id="_CPPv2N10libmolgrid10QuaterniondVERK2fl"></span><span id="libmolgrid::Quaternion::div-assign-operator__flCR"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1a8af81f03ca5aef87ad4a7c7b79ae3531"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10QuaternionE" title="libmolgrid::Quaternion"><span class="pre">Quaternion</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator/=</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10Quaternion2flE" title="libmolgrid::Quaternion::fl"><span class="pre">fl</span></a> <span class="pre">&amp;</span><em><span class="pre">r</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid10QuaterniondVERK2fl" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>In-place division by scalar (element-wise) </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1a72d0afd408f658a49ee8e14341f9d46e"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">Quaternion</span> <span class="pre">operator/</span> <span class="pre">(const</span> <span class="pre">fl</span> <span class="pre">&amp;r)</span></code></dt>
+<dt id="_CPPv4N10libmolgrid10QuaterniondvERK2fl">
+<span id="_CPPv3N10libmolgrid10QuaterniondvERK2fl"></span><span id="_CPPv2N10libmolgrid10QuaterniondvERK2fl"></span><span id="libmolgrid::Quaternion::div-operator__flCR"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1a72d0afd408f658a49ee8e14341f9d46e"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10QuaternionE" title="libmolgrid::Quaternion"><span class="pre">Quaternion</span></a> <code class="sig-name descname"><span class="pre">operator/</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10Quaternion2flE" title="libmolgrid::Quaternion::fl"><span class="pre">fl</span></a> <span class="pre">&amp;</span><em><span class="pre">r</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid10QuaterniondvERK2fl" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Division by scalar (element-wise) </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1a343462424e357bc086ffe88bbcdbc2a0"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">Quaternion</span> <span class="pre">operator*</span> <span class="pre">(const</span> <span class="pre">Quaternion</span> <span class="pre">&amp;r)</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid10QuaternionmlERK10Quaternion">
+<span id="_CPPv3NK10libmolgrid10QuaternionmlERK10Quaternion"></span><span id="_CPPv2NK10libmolgrid10QuaternionmlERK10Quaternion"></span><span id="libmolgrid::Quaternion::mul-operator__QuaternionCRC"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1a343462424e357bc086ffe88bbcdbc2a0"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10QuaternionE" title="libmolgrid::Quaternion"><span class="pre">Quaternion</span></a> <code class="sig-name descname"><span class="pre">operator*</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10QuaternionE" title="libmolgrid::Quaternion"><span class="pre">Quaternion</span></a> <span class="pre">&amp;</span><em><span class="pre">r</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid10QuaternionmlERK10Quaternion" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="#classlibmolgrid_1_1Quaternion"><span class="std std-ref">Quaternion</span></a> multiplication. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1aac6f15d6f3fc4a9f1fd23e05ebb67306"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">Quaternion</span> <span class="pre">&amp;</span> <span class="pre">operator*=</span> <span class="pre">(const</span> <span class="pre">Quaternion</span> <span class="pre">&amp;r)</span></code></dt>
+<dt id="_CPPv4N10libmolgrid10QuaternionmLERK10Quaternion">
+<span id="_CPPv3N10libmolgrid10QuaternionmLERK10Quaternion"></span><span id="_CPPv2N10libmolgrid10QuaternionmLERK10Quaternion"></span><span id="libmolgrid::Quaternion::mul-assign-operator__QuaternionCR"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1aac6f15d6f3fc4a9f1fd23e05ebb67306"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10QuaternionE" title="libmolgrid::Quaternion"><span class="pre">Quaternion</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator*=</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10QuaternionE" title="libmolgrid::Quaternion"><span class="pre">Quaternion</span></a> <span class="pre">&amp;</span><em><span class="pre">r</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid10QuaternionmLERK10Quaternion" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="#classlibmolgrid_1_1Quaternion"><span class="std std-ref">Quaternion</span></a> in-place multiplication. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1a561a6e2f591f226f12faf8a025fa20f0"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">bool</span> <span class="pre">operator==</span> <span class="pre">(const</span> <span class="pre">Quaternion</span> <span class="pre">&amp;r)</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid10QuaternioneqERK10Quaternion">
+<span id="_CPPv3NK10libmolgrid10QuaternioneqERK10Quaternion"></span><span id="_CPPv2NK10libmolgrid10QuaternioneqERK10Quaternion"></span><span id="libmolgrid::Quaternion::eq-operator__QuaternionCRC"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1a561a6e2f591f226f12faf8a025fa20f0"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">bool</span> <code class="sig-name descname"><span class="pre">operator==</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10QuaternionE" title="libmolgrid::Quaternion"><span class="pre">Quaternion</span></a> <span class="pre">&amp;</span><em><span class="pre">r</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid10QuaternioneqERK10Quaternion" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check bit level equality </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1a62281f3ef1e7605f510b889919fa4302"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">Quaternion</span> <span class="pre">operator/</span> <span class="pre">(const</span> <span class="pre">Quaternion</span> <span class="pre">&amp;r)</span></code></dt>
+<dt id="_CPPv4N10libmolgrid10QuaterniondvERK10Quaternion">
+<span id="_CPPv3N10libmolgrid10QuaterniondvERK10Quaternion"></span><span id="_CPPv2N10libmolgrid10QuaterniondvERK10Quaternion"></span><span id="libmolgrid::Quaternion::div-operator__QuaternionCR"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1a62281f3ef1e7605f510b889919fa4302"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10QuaternionE" title="libmolgrid::Quaternion"><span class="pre">Quaternion</span></a> <code class="sig-name descname"><span class="pre">operator/</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10QuaternionE" title="libmolgrid::Quaternion"><span class="pre">Quaternion</span></a> <span class="pre">&amp;</span><em><span class="pre">r</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid10QuaterniondvERK10Quaternion" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="#classlibmolgrid_1_1Quaternion"><span class="std std-ref">Quaternion</span></a> divison. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1a4142e5f08ee438946d003c2eb5cf959f"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">Quaternion</span> <span class="pre">operator/=</span> <span class="pre">(const</span> <span class="pre">Quaternion</span> <span class="pre">&amp;r)</span></code></dt>
+<dt id="_CPPv4N10libmolgrid10QuaterniondVERK10Quaternion">
+<span id="_CPPv3N10libmolgrid10QuaterniondVERK10Quaternion"></span><span id="_CPPv2N10libmolgrid10QuaterniondVERK10Quaternion"></span><span id="libmolgrid::Quaternion::div-assign-operator__QuaternionCR"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1a4142e5f08ee438946d003c2eb5cf959f"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10QuaternionE" title="libmolgrid::Quaternion"><span class="pre">Quaternion</span></a> <code class="sig-name descname"><span class="pre">operator/=</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10QuaternionE" title="libmolgrid::Quaternion"><span class="pre">Quaternion</span></a> <span class="pre">&amp;</span><em><span class="pre">r</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10libmolgrid10QuaterniondVERK10Quaternion" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="#classlibmolgrid_1_1Quaternion"><span class="std std-ref">Quaternion</span></a> in-place divison. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1ad0b622b3561a3b6be03e9660571a4c3d"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">Quaternion</span> <span class="pre">conj</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid10Quaternion4conjEv">
+<span id="_CPPv3NK10libmolgrid10Quaternion4conjEv"></span><span id="_CPPv2NK10libmolgrid10Quaternion4conjEv"></span><span id="libmolgrid::Quaternion::conjC"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1ad0b622b3561a3b6be03e9660571a4c3d"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10QuaternionE" title="libmolgrid::Quaternion"><span class="pre">Quaternion</span></a> <code class="sig-name descname"><span class="pre">conj</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid10Quaternion4conjEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Conjugate. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1a02fc5e7cd27f6408663e21c7d13e24b9"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">float</span> <span class="pre">real</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid10Quaternion4realEv">
+<span id="_CPPv3NK10libmolgrid10Quaternion4realEv"></span><span id="_CPPv2NK10libmolgrid10Quaternion4realEv"></span><span id="libmolgrid::Quaternion::realC"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1a02fc5e7cd27f6408663e21c7d13e24b9"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">float</span> <code class="sig-name descname"><span class="pre">real</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid10Quaternion4realEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1aebb38f345c0f605a02e5f077cec9809a"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">float</span> <span class="pre">norm</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid10Quaternion4normEv">
+<span id="_CPPv3NK10libmolgrid10Quaternion4normEv"></span><span id="_CPPv2NK10libmolgrid10Quaternion4normEv"></span><span id="libmolgrid::Quaternion::normC"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1aebb38f345c0f605a02e5f077cec9809a"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">float</span> <code class="sig-name descname"><span class="pre">norm</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid10Quaternion4normEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>The Cayley norm - the square of the Euclidean norm. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1aa4e402e2cf35dd2ea523414b42878a18"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">float3</span> <span class="pre">rotate</span> <span class="pre">(fl</span> <span class="pre">x,</span> <span class="pre">fl</span> <span class="pre">y,</span> <span class="pre">fl</span> <span class="pre">z)</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid10Quaternion6rotateE2fl2fl2fl">
+<span id="_CPPv3NK10libmolgrid10Quaternion6rotateE2fl2fl2fl"></span><span id="_CPPv2NK10libmolgrid10Quaternion6rotateE2fl2fl2fl"></span><span id="libmolgrid::Quaternion::rotate__fl.fl.flC"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1aa4e402e2cf35dd2ea523414b42878a18"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">float3</span> <code class="sig-name descname"><span class="pre">rotate</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N10libmolgrid10Quaternion2flE" title="libmolgrid::Quaternion::fl"><span class="pre">fl</span></a> <em><span class="pre">x</span></em>, <a class="reference internal" href="#_CPPv4N10libmolgrid10Quaternion2flE" title="libmolgrid::Quaternion::fl"><span class="pre">fl</span></a> <em><span class="pre">y</span></em>, <a class="reference internal" href="#_CPPv4N10libmolgrid10Quaternion2flE" title="libmolgrid::Quaternion::fl"><span class="pre">fl</span></a> <em><span class="pre">z</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid10Quaternion6rotateE2fl2fl2fl" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Rotation point (x,y,z) using this quaternion. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1ad07f19ca8585a6047d7fbb6a215f08aa"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">float3</span> <span class="pre">transform</span> <span class="pre">(fl</span> <span class="pre">x,</span> <span class="pre">fl</span> <span class="pre">y,</span> <span class="pre">fl</span> <span class="pre">z,</span> <span class="pre">float3</span> <span class="pre">center,</span> <span class="pre">float3</span> <span class="pre">translate)</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid10Quaternion9transformE2fl2fl2fl6float36float3">
+<span id="_CPPv3NK10libmolgrid10Quaternion9transformE2fl2fl2fl6float36float3"></span><span id="_CPPv2NK10libmolgrid10Quaternion9transformE2fl2fl2fl6float36float3"></span><span id="libmolgrid::Quaternion::transform__fl.fl.fl.float3.float3C"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1ad07f19ca8585a6047d7fbb6a215f08aa"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <span class="pre">float3</span> <code class="sig-name descname"><span class="pre">transform</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N10libmolgrid10Quaternion2flE" title="libmolgrid::Quaternion::fl"><span class="pre">fl</span></a> <em><span class="pre">x</span></em>, <a class="reference internal" href="#_CPPv4N10libmolgrid10Quaternion2flE" title="libmolgrid::Quaternion::fl"><span class="pre">fl</span></a> <em><span class="pre">y</span></em>, <a class="reference internal" href="#_CPPv4N10libmolgrid10Quaternion2flE" title="libmolgrid::Quaternion::fl"><span class="pre">fl</span></a> <em><span class="pre">z</span></em>, <span class="pre">float3</span> <em><span class="pre">center</span></em>, <span class="pre">float3</span> <em><span class="pre">translate</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid10Quaternion9transformE2fl2fl2fl6float36float3" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Rotate around the provided center and translate. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Quaternion_1a40e59f1b2dc5d2131dc5048c2459206f"></span><code class="sig-name descname"><span class="pre">inline</span> <span class="pre">__host__</span> <span class="pre">__device__</span> <span class="pre">Quaternion</span> <span class="pre">inverse</span> <span class="pre">()</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4NK10libmolgrid10Quaternion7inverseEv">
+<span id="_CPPv3NK10libmolgrid10Quaternion7inverseEv"></span><span id="_CPPv2NK10libmolgrid10Quaternion7inverseEv"></span><span id="libmolgrid::Quaternion::inverseC"></span><span class="target" id="classlibmolgrid_1_1Quaternion_1a40e59f1b2dc5d2131dc5048c2459206f"></span><span class="pre">__host__</span> <span class="pre">__device__</span> <em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N10libmolgrid10QuaternionE" title="libmolgrid::Quaternion"><span class="pre">Quaternion</span></a> <code class="sig-name descname"><span class="pre">inverse</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK10libmolgrid10Quaternion7inverseEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return inverse. </p>
 </dd></dl>
 
@@ -4637,8 +4638,8 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Transform_1a02a7b99aacab34a6f1e7133f90b1c5cc"></span><code class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">Dtype&gt;</span> <span class="pre">__host__</span> <span class="pre">void</span> <span class="pre">forward</span> <span class="pre">(const</span> <span class="pre">Grid&lt;</span> <span class="pre">Dtype,</span> <span class="pre">2,</span> <span class="pre">true</span> <span class="pre">&gt;</span> <span class="pre">&amp;in,</span> <span class="pre">Grid&lt;</span> <span class="pre">Dtype,</span> <span class="pre">2,</span> <span class="pre">true</span> <span class="pre">&gt;</span> <span class="pre">&amp;out,</span> <span class="pre">bool</span> <span class="pre">dotranslate=true)</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4I0ENK10libmolgrid9Transform7forwardEvRK4GridI5DtypeXL2EEXL1EEER4GridI5DtypeXL2EEXL1EEEb">
+<span id="_CPPv3I0ENK10libmolgrid9Transform7forwardERK4GridI5DtypeXL2EEXL1EEER4GridI5DtypeXL2EEXL1EEEb"></span><span id="_CPPv2I0ENK10libmolgrid9Transform7forwardERK4GridI5DtypeX2EXtrueEER4GridI5DtypeX2EXtrueEEb"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Dtype</span></code><span class="pre">&gt;</span><br /><span class="target" id="classlibmolgrid_1_1Transform_1a02a7b99aacab34a6f1e7133f90b1c5cc"></span><span class="pre">__host__</span> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">forward</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE" title="libmolgrid::Grid"><span class="pre">Grid</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0ENK10libmolgrid9Transform7forwardEvRK4GridI5DtypeXL2EEXL1EEER4GridI5DtypeXL2EEXL1EEEb" title="libmolgrid::Transform::forward::Dtype"><span class="pre">Dtype</span></a><span class="pre">,</span> <span class="pre">2</span><span class="pre">,</span> <span class="pre">true</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">in</span></em>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE" title="libmolgrid::Grid"><span class="pre">Grid</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0ENK10libmolgrid9Transform7forwardEvRK4GridI5DtypeXL2EEXL1EEER4GridI5DtypeXL2EEXL1EEEb" title="libmolgrid::Transform::forward::Dtype"><span class="pre">Dtype</span></a><span class="pre">,</span> <span class="pre">2</span><span class="pre">,</span> <span class="pre">true</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">out</span></em>, <span class="pre">bool</span> <em><span class="pre">dotranslate</span></em> <span class="pre">=</span> <span class="pre">true</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4I0ENK10libmolgrid9Transform7forwardEvRK4GridI5DtypeXL2EEXL1EEER4GridI5DtypeXL2EEXL1EEEb" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -4647,8 +4648,8 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt>
-<span class="target" id="classlibmolgrid_1_1Transform_1ae727e7895d2679acb5ed248e28fca99f"></span><code class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">Dtype&gt;</span> <span class="pre">__host__</span> <span class="pre">void</span> <span class="pre">backward</span> <span class="pre">(const</span> <span class="pre">Grid&lt;</span> <span class="pre">Dtype,</span> <span class="pre">2,</span> <span class="pre">true</span> <span class="pre">&gt;</span> <span class="pre">&amp;in,</span> <span class="pre">Grid&lt;</span> <span class="pre">Dtype,</span> <span class="pre">2,</span> <span class="pre">true</span> <span class="pre">&gt;</span> <span class="pre">&amp;out,</span> <span class="pre">bool</span> <span class="pre">dotranslate=true)</span> <span class="pre">const</span></code></dt>
+<dt id="_CPPv4I0ENK10libmolgrid9Transform8backwardEvRK4GridI5DtypeXL2EEXL1EEER4GridI5DtypeXL2EEXL1EEEb">
+<span id="_CPPv3I0ENK10libmolgrid9Transform8backwardERK4GridI5DtypeXL2EEXL1EEER4GridI5DtypeXL2EEXL1EEEb"></span><span id="_CPPv2I0ENK10libmolgrid9Transform8backwardERK4GridI5DtypeX2EXtrueEER4GridI5DtypeX2EXtrueEEb"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Dtype</span></code><span class="pre">&gt;</span><br /><span class="target" id="classlibmolgrid_1_1Transform_1ae727e7895d2679acb5ed248e28fca99f"></span><span class="pre">__host__</span> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">backward</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE" title="libmolgrid::Grid"><span class="pre">Grid</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0ENK10libmolgrid9Transform8backwardEvRK4GridI5DtypeXL2EEXL1EEER4GridI5DtypeXL2EEXL1EEEb" title="libmolgrid::Transform::backward::Dtype"><span class="pre">Dtype</span></a><span class="pre">,</span> <span class="pre">2</span><span class="pre">,</span> <span class="pre">true</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">in</span></em>, <a class="reference internal" href="#_CPPv4I0_NSt6size_tE_bEN10libmolgrid4GridE" title="libmolgrid::Grid"><span class="pre">Grid</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0ENK10libmolgrid9Transform8backwardEvRK4GridI5DtypeXL2EEXL1EEER4GridI5DtypeXL2EEXL1EEEb" title="libmolgrid::Transform::backward::Dtype"><span class="pre">Dtype</span></a><span class="pre">,</span> <span class="pre">2</span><span class="pre">,</span> <span class="pre">true</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">out</span></em>, <span class="pre">bool</span> <em><span class="pre">dotranslate</span></em> <span class="pre">=</span> <span class="pre">true</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4I0ENK10libmolgrid9Transform8backwardEvRK4GridI5DtypeXL2EEXL1EEER4GridI5DtypeXL2EEXL1EEEb" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -5018,7 +5019,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2019, David Koes and Jocelyn Sunseri.
+        &#169; Copyright 2019-2021, David Koes and Jocelyn Sunseri.
 
     </p>
   </div>

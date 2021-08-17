@@ -177,6 +177,7 @@
         <argsstring>()</argsstring>
         <name>CoordinateSet</name>
         <briefdescription>
+<para>source (filename) of coordinates, if available </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>

@@ -505,11 +505,11 @@
     <member refid="classlibmolgrid_1_1GridInterpolater_1a07021960a6559f9f20de793a184e37ec" kind="variable"><name>out_dimension</name></member>
     <member refid="classlibmolgrid_1_1GridInterpolater_1a9547df9399db74b81c522505c203fdd4" kind="variable"><name>in_dim</name></member>
     <member refid="classlibmolgrid_1_1GridInterpolater_1aab5c646312537b0a24a568d860f22027" kind="variable"><name>out_dim</name></member>
-    <member refid="classlibmolgrid_1_1GridInterpolater_1aba9cfbb86bbf5b3f82d9030488496967" kind="variable"><name>pad_value</name></member>
-    <member refid="classlibmolgrid_1_1GridInterpolater_1a286b40999c19a8b59b1b46c44fc64b20" kind="function"><name>checkGrids</name></member>
-    <member refid="classlibmolgrid_1_1GridInterpolater_1a64f8f349043aa37ffa3a5ad40aabeef7" kind="function"><name>get_pt</name></member>
-    <member refid="classlibmolgrid_1_1GridInterpolater_1adc8e68ef6828c397e83f865acafe1ebe" kind="function"><name>interpolate</name></member>
-    <member refid="classlibmolgrid_1_1GridInterpolater_1a88c217c1109d1e96aac593b0b412065a" kind="function"><name>GridInterpolater</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1aff68190c6ea2608819bc6e3dbdadbe3d" kind="variable"><name>cuArray</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1a169b99d2f9026e906fca800564aa0a83" kind="function"><name>checkGrids</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1a49d6bf9a3927ef3cd5b416740b0b94a9" kind="function"><name>initializeTexture</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1a69399c8f851326511a48b1f1e93513e7" kind="function"><name>clearTexture</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1a57b3b8e4c3e77451f20e61675c6d97eb" kind="function"><name>GridInterpolater</name></member>
     <member refid="classlibmolgrid_1_1GridInterpolater_1aec1c636721028d75e98f9b57288a326f" kind="function"><name>~GridInterpolater</name></member>
     <member refid="classlibmolgrid_1_1GridInterpolater_1afa8559f73788fd07d2e52407ff526bef" kind="function"><name>get_in_resolution</name></member>
     <member refid="classlibmolgrid_1_1GridInterpolater_1af511eaea6a733f0882f7d58dc73d86ad" kind="function"><name>get_out_resolution</name></member>
@@ -525,6 +525,8 @@
     <member refid="classlibmolgrid_1_1GridInterpolater_1acad3dc75e3f27649e1de5d52c063e98d" kind="function"><name>forward</name></member>
     <member refid="classlibmolgrid_1_1GridInterpolater_1aa7f689a401310ce064f2f0903842c0ab" kind="function"><name>forward</name></member>
     <member refid="classlibmolgrid_1_1GridInterpolater_1a82e555c9410eb768286054e7bca5bd4b" kind="function"><name>forward</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1a830870c1426798fd15f7ad995b7c6fdb" kind="function"><name>get_pt</name></member>
+    <member refid="classlibmolgrid_1_1GridInterpolater_1a5a49595c46112078957ab4a6ffa0287d" kind="function"><name>interpolate</name></member>
   </compound>
   <compound refid="classlibmolgrid_1_1GridMaker" kind="class"><name>libmolgrid::GridMaker</name>
     <member refid="classlibmolgrid_1_1GridMaker_1a4333d786c60465d20826583358b2798d" kind="variable"><name>resolution</name></member>
@@ -1018,6 +1020,8 @@
     <member refid="namespacelibmolgrid_1a401744b5615cec1da80925318db02c90" kind="variable"><name>do_not_optimize_away</name></member>
     <member refid="namespacelibmolgrid_1a55802012418ef1c568cf634c5c0ce543" kind="function"><name>copyKind</name></member>
     <member refid="namespacelibmolgrid_1abaefa4db48d107196d082640795579b1" kind="function"><name>BOOST_PP_REPEAT_FROM_TO</name></member>
+    <member refid="namespacelibmolgrid_1a2dbb37176b2d9724d607ba464b5506e1" kind="function"><name>cart2grid</name></member>
+    <member refid="namespacelibmolgrid_1a9c218888670e6716f1d3dc698da244fa" kind="function"><name>grid2cart</name></member>
     <member refid="namespacelibmolgrid_1ade64fcaf6347fae87a6a41fb17a3fb31" kind="function"><name>read_dx</name></member>
     <member refid="namespacelibmolgrid_1a3317b8b6adaedad592f3d47deaae373e" kind="function"><name>read_dx</name></member>
     <member refid="namespacelibmolgrid_1a675a477dd7654f29009ae26ae706f39a" kind="function"><name>read_dx</name></member>
@@ -1040,8 +1044,6 @@
     <member refid="namespacelibmolgrid_1a7a1ba159846b1049c0b7f509d51e543f" kind="function"><name>defaultGninaLigandTyper</name></member>
     <member refid="namespacelibmolgrid_1aafd219ed0c26b6bf36bbd792bbc4360e" kind="function"><name>typ_vec_size</name></member>
     <member refid="namespacelibmolgrid_1a1fca3edcd06bb699eed3954b29644ef9" kind="function"><name>is_numeric</name></member>
-    <member refid="namespacelibmolgrid_1a31e92abaf1754accc3a58315b778c8d2" kind="function"><name>cart2grid</name></member>
-    <member refid="namespacelibmolgrid_1acad84039300779aea3f3cc3160eff236" kind="function"><name>grid2cart</name></member>
     <member refid="namespacelibmolgrid_1a10bb36f3a95760807a6c7006732bc624" kind="function"><name>read_dx_helper</name></member>
     <member refid="namespacelibmolgrid_1a0570278514d0b2fc1ccb54f3569edd48" kind="function"><name>write_dx</name></member>
     <member refid="namespacelibmolgrid_1abbd0244cbbea044203ade2034974b011" kind="function"><name>write_dx</name></member>
@@ -1119,6 +1121,8 @@
     <member refid="grid_8h_1aebe964ed887245ed1b6ae46d72674763" kind="define"><name>EXPAND_GRID_DEFINITIONS</name></member>
   </compound>
   <compound refid="grid__interpolater_8cpp" kind="file"><name>grid_interpolater.cpp</name>
+  </compound>
+  <compound refid="grid__interpolater_8cu" kind="file"><name>grid_interpolater.cu</name>
   </compound>
   <compound refid="grid__interpolater_8h" kind="file"><name>grid_interpolater.h</name>
   </compound>

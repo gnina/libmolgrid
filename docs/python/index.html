@@ -352,6 +352,13 @@ registered hooks while the latter silently ignores them.</p>
 :param data_root: prefix for data files
 :param recmolcache: precalculated molcache2 file for receptor (first molecule); if doesn’t exist, will look in data _root
 :param ligmolcache: precalculated molcache2 file for ligand; if doesn’t exist, will look in data_root</p>
+<dl class="py method">
+<dt id="molgrid.torch_bindings.MolDataset.collateMolDataset">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">collateMolDataset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.torch_bindings.MolDataset.collateMolDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>collate_fn for use in torch.utils.data.Dataloader when using the MolDataset.
+Returns lengths, centers, coords, types, radii, labels all padded to fit maximum size of batch</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py function">
@@ -573,14 +580,14 @@ a vector one-hot encoding of an index type can be created.</p>
 </dd>
 </dl>
 </div></blockquote>
-<p>make_vector_types( (CoordinateSet)arg1 [, (bool)include_dummy_type=False [, (FloatVec)type_radii=&lt;molgrid.molgrid.FloatVec object at 0x7fe9352d8570&gt;]]) -&gt; None :</p>
+<p>make_vector_types( (CoordinateSet)arg1 [, (bool)include_dummy_type=False [, (FloatVec)type_radii=&lt;molgrid.molgrid.FloatVec object at 0x7f6a55d85c80&gt;]]) -&gt; None :</p>
 <blockquote>
 <div><blockquote>
 <div><p>convert index types to vector types in-place</p>
 </div></blockquote>
 <p>/</p>
 <dl class="simple">
-<dt>C++ signature :</dt><dd><p>void make_vector_types(libmolgrid::CoordinateSet {lvalue} [,bool=False [,std::vector&lt;float, std::allocator&lt;float&gt; &gt;=&lt;molgrid.molgrid.FloatVec object at 0x7fe9352d8570&gt;]])</p>
+<dt>C++ signature :</dt><dd><p>void make_vector_types(libmolgrid::CoordinateSet {lvalue} [,bool=False [,std::vector&lt;float, std::allocator&lt;float&gt; &gt;=&lt;molgrid.molgrid.FloatVec object at 0x7f6a55d85c80&gt;]])</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -2810,10 +2817,10 @@ for maximum CUDA performance.</p>
 </dd>
 </dl>
 </div></blockquote>
-<p>__init__( (object)arg1, (list)map [, (bool)catchall=True [, (StringVec)old_names=&lt;molgrid.molgrid.StringVec object at 0x7fe9352d8450&gt;]]) -&gt; object :</p>
+<p>__init__( (object)arg1, (list)map [, (bool)catchall=True [, (StringVec)old_names=&lt;molgrid.molgrid.StringVec object at 0x7f6a55d859e0&gt;]]) -&gt; object :</p>
 <blockquote>
 <div><dl class="simple">
-<dt>C++ signature :</dt><dd><p>void* __init__(boost::python::api::object,boost::python::list [,bool=True [,std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;=&lt;molgrid.molgrid.StringVec object at 0x7fe9352d8450&gt;]])</p>
+<dt>C++ signature :</dt><dd><p>void* __init__(boost::python::api::object,boost::python::list [,bool=True [,std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;=&lt;molgrid.molgrid.StringVec object at 0x7f6a55d859e0&gt;]])</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -3165,7 +3172,7 @@ in-place.</p>
 <dt id="molgrid.read_dx">
 <code class="sig-prename descclassname"><span class="pre">molgrid.</span></code><code class="sig-name descname"><span class="pre">read_dx</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">(str)arg1</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">CartesianGrid</span> <span class="pre">:</span><a class="headerlink" href="#molgrid.read_dx" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>Read in dx formatted grid and return initialized grid <a href="#id11"><span class="problematic" id="id12">*</span></a>/</p>
+<div><p>Read in dx formatted grid and return initialized grid</p>
 </div></blockquote>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>libmolgrid::CartesianGrid&lt;libmolgrid::ManagedGrid&lt;float, 3ul&gt; &gt; read_dx(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</p>
@@ -3188,7 +3195,6 @@ in-place.</p>
 </ul>
 </dd>
 </dl>
-<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void read_dx_grids(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;,libmolgrid::Grid&lt;float, 4ul, false&gt;)</p>
 </dd>
@@ -3227,7 +3233,6 @@ in-place.</p>
 <div><p>output grid as dx formatted file
 Values are multiplied by scale, which may be necessary to adjust for limited precision in the text-based format</p>
 </div></blockquote>
-<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void write_dx(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,libmolgrid::Grid&lt;float, 3ul, false&gt;,float3,float [,float=1.0])</p>
 </dd>
@@ -3252,7 +3257,6 @@ Values are multiplied by scale, which may be necessary to adjust for limited pre
 </ul>
 </dd>
 </dl>
-<p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void write_dx_grids(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;,libmolgrid::Grid&lt;float, 4ul, false&gt;,float3,float [,float=1.0])</p>
 </dd>
