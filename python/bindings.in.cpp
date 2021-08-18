@@ -816,6 +816,18 @@ MAKE_ALL_GRIDS()
       .def("forward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, true>& coords,
               const Grid<float, 2, true>& type_vector, const Grid<float, 1, true>& radii,
               Grid<float, 4, true> g){ self.forward(grid_center, coords, type_vector, radii, g); }, "@Docstring_GridMaker_forward_9@")
+      .def("forward", +[](GridMaker& self, const Grid<float, 2, false>& centers, const Grid<float, 3, false>& coords,
+              const Grid<float, 2, false>& types, const Grid<float, 2, false>& radii,
+              Grid<float, 5, false> g){ self.forward<float, 2, false>(centers, coords, types, radii, g); }, "@Docstring_GridMaker_forward_10@")
+      .def("forward", +[](GridMaker& self, const Grid<float, 2, true>& centers, const Grid<float, 3, true>& coords,
+              const Grid<float, 2, true>& types, const Grid<float, 2, true>& radii,
+              Grid<float, 5, true> g){ self.forward<float, 2, true>(centers, coords, types, radii, g); }, "@Docstring_GridMaker_forward_10@")
+      .def("forward", +[](GridMaker& self, const Grid<float, 2, false>& centers, const Grid<float, 3, false>& coords,
+              const Grid<float, 3, false>& types, const Grid<float, 2, false>& radii,
+              Grid<float, 5, false> g){ self.forward<float, 3, false>(centers, coords, types, radii, g); }, "@Docstring_GridMaker_forward_10@")
+      .def("forward", +[](GridMaker& self, const Grid<float, 2, true>& centers, const Grid<float, 3, true>& coords,
+              const Grid<float, 3, true>& types, const Grid<float, 2, true>& radii,
+              Grid<float, 5, true> g){ self.forward<float, 3, true>(centers, coords, types, radii, g); }, "@Docstring_GridMaker_forward_10@")
       .def("backward", +[](GridMaker& self, float3 grid_center, const CoordinateSet& in, const Grid<float, 4, false>& diff,
           Grid<float, 2, false> atomic_gradients, Grid<float, 2, false> type_gradients){
           self.backward(grid_center, in, diff, atomic_gradients, type_gradients);}, "@Docstring_GridMaker_backward_1@")

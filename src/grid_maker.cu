@@ -447,21 +447,21 @@ namespace libmolgrid {
  
     
     //batched gpu float
-    template void GridMaker::forward<float,true,2>(const Grid<float, 2, true> &centers,
+    template void GridMaker::forward<float,2,true>(const Grid<float, 2, true> &centers,
         const Grid<float, 3, true> &coords,
         const Grid<float, 2, true> &types,
         const Grid<float, 2, true> &radii, Grid<float, 5, true> &out) const;
-    template void GridMaker::forward<float,true,3>(const Grid<float, 2, true> &centers,
+    template void GridMaker::forward<float,3,true>(const Grid<float, 2, true> &centers,
         const Grid<float, 3, true> &coords,
         const Grid<float, 3, true> &types,
         const Grid<float, 2, true> &radii,Grid<float, 5, true> &out) const;
 
     //batched gpu double
-    template void GridMaker::forward<double,true,2>(const Grid<float, 2, true> &centers,
+    template void GridMaker::forward<double,2,true>(const Grid<float, 2, true> &centers,
         const Grid<float, 3, true> &coords,
         const Grid<float, 2, true> &types,
         const Grid<float, 2, true> &radii, Grid<double, 5, true> &out) const;
-    template void GridMaker::forward<double,true,3>(const Grid<float, 2, true> &centers,
+    template void GridMaker::forward<double,3,true>(const Grid<float, 2, true> &centers,
         const Grid<float, 3, true> &coords,
         const Grid<float, 3, true> &types,
         const Grid<float, 2, true> &radii,Grid<double, 5, true> &out) const;

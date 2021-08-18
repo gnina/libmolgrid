@@ -300,21 +300,21 @@ template void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>
 
 //batched cpu float
 
-template void GridMaker::forward<float,false,2>(const Grid<float, 2, false> &centers,
+template void GridMaker::forward<float,2,false>(const Grid<float, 2, false> &centers,
     const Grid<float, 3, false> &coords,
     const Grid<float, 2, false> &types,
     const Grid<float, 2, false> &radii, Grid<float, 5, false> &out) const;
-template void GridMaker::forward<float,false,3>(const Grid<float, 2, false> &centers,
+template void GridMaker::forward<float,3,false>(const Grid<float, 2, false> &centers,
     const Grid<float, 3, false> &coords,
     const Grid<float, 3, false> &types,
     const Grid<float, 2, false> &radii,Grid<float, 5, false> &out) const;
 
 //batched cpu double
-template void GridMaker::forward<double,false,2>(const Grid<float, 2, false> &centers,
+template void GridMaker::forward<double,2,false>(const Grid<float, 2, false> &centers,
     const Grid<float, 3, false> &coords,
     const Grid<float, 2, false> &types,
     const Grid<float, 2, false> &radii, Grid<double, 5, false> &out) const;
-template void GridMaker::forward<double,false,3>(const Grid<float, 2, false> &centers,
+template void GridMaker::forward<double,3,false>(const Grid<float, 2, false> &centers,
     const Grid<float, 3, false> &coords,
     const Grid<float, 3, false> &types,
     const Grid<float, 2, false> &radii,Grid<double, 5, false> &out) const;

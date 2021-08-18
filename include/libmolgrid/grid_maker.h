@@ -253,7 +253,7 @@ class GridMaker {
      * @param[in] radii (BxN) or (BxT)
      * @param[out] a 5D grid
      */
-    template <typename Dtype, bool isCUDA, int N>
+    template <typename Dtype, int N,  bool isCUDA>
     void forward(const Grid<float, 2, isCUDA> &centers,
         const Grid<float, 3, isCUDA> &coords,
         const Grid<float, N, isCUDA> &types,
@@ -271,6 +271,8 @@ class GridMaker {
       if(out.dimension(0) != B)
         throw std::invalid_argument(
             "Mismatched batch sizes: " + itoa(out.dimension(0)) + " vs " + itoa(B));
+
+      static_assert(N == 2 || N == 3);
 
       float3 center = { 0, };
 
