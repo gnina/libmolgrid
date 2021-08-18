@@ -108,7 +108,7 @@ class GridMaker {
 
     /** \brief Use externally specified grid_center to determine where grid begins.
      * Used for translating between cartesian coords and grids.
-     * @param[in] grid center
+     * @param[in] grid_center - center
      * @param[out] grid bounds
      */
     CUDA_CALLABLE_MEMBER float3 get_grid_origin(const float3& grid_center) const;
