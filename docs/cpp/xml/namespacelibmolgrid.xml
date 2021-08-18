@@ -872,7 +872,7 @@
         <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8cpp" startline="107" endline="117">BalancedExampleRefProvider::addref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a354afea429c9572094ac2c5c5ed19786" compoundref="managed__grid_8h" startline="64" endline="75">ManagedGridBase&lt; Dtype, 1 &gt;::alloc_and_set_cpu</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1aad5407e977e2f417b18ed54a0cf7730c" compoundref="managed__grid_8h" startline="78" endline="91">ManagedGridBase&lt; Dtype, 1 &gt;::alloc_and_set_gpu</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1a2c462d84c2b3da4f21cd34bf090ca082" compoundref="grid__maker_8cpp" startline="415" endline="445">GridMaker::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a2c462d84c2b3da4f21cd34bf090ca082" compoundref="grid__maker_8cpp" startline="437" endline="467">GridMaker::backward</referencedby>
         <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" compoundref="exampleref__providers_8h" startline="499" endline="503">GroupedExampleRefProvider&lt; Provider &gt;::check_batch_size</referencedby>
         <referencedby refid="classlibmolgrid_1_1Grid_1a18ec2ecbbcf47264c34b0fd73242b119" compoundref="grid_8h" startline="65" endline="73">Grid&lt; Dtype, NumDims, true &gt;::check_index</referencedby>
         <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a18ec2ecbbcf47264c34b0fd73242b119" compoundref="grid_8h" startline="238" endline="246">Grid&lt; Dtype, 1, isCUDA &gt;::check_index</referencedby>

@@ -566,8 +566,9 @@
     <member refid="classlibmolgrid_1_1GridMaker_1aac980d7c511bc6f9323788892ae103f9" kind="function"><name>forward</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1ac649c0133cc073d3723d6ce5a988dd95" kind="function"><name>forward</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1aae319692941bdf08cdc099fe00d17008" kind="function"><name>forward</name></member>
-    <member refid="classlibmolgrid_1_1GridMaker_1ab9433f34c23e282b47335bc0bd0ef889" kind="function"><name>forward</name></member>
+    <member refid="classlibmolgrid_1_1GridMaker_1a8c898c16136d1e92cde44206378d693e" kind="function"><name>forward</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1ab0b1c2667f95deecad72ff0901cbabfa" kind="function"><name>forward</name></member>
+    <member refid="classlibmolgrid_1_1GridMaker_1a643d05a25c1e56833fe17dffaf178b59" kind="function"><name>forward</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1af08f43a3ae58eb252a6d1faafeb4827a" kind="function"><name>backward</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1afd195c83a9bcdcb18917c25d2f5f7051" kind="function"><name>backward</name></member>
     <member refid="classlibmolgrid_1_1GridMaker_1a0fd82f69452e435af714f1333e88dcd1" kind="function"><name>backward</name></member>

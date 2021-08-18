@@ -1,0 +1,722 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classlibmolgrid_1_1GridInterpolater" kind="class" language="C++" prot="public">
+    <compoundname>libmolgrid::GridInterpolater</compoundname>
+    <includes refid="grid__interpolater_8h" local="no">grid_interpolater.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classlibmolgrid_1_1GridInterpolater_1a445217310e7609927f1440fb3cfcb84c" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float in_resolution</definition>
+        <argsstring></argsstring>
+        <name>in_resolution</name>
+        <initializer>= 0.5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="32" column="11" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1aa7f689a401310ce064f2f0903842c0ab" compoundref="grid__interpolater_8cpp" startline="17" endline="48">GridInterpolater::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1afa8559f73788fd07d2e52407ff526bef" compoundref="grid__interpolater_8h" startline="69" endline="69">GridInterpolater::get_in_resolution</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a57b3b8e4c3e77451f20e61675c6d97eb" compoundref="grid__interpolater_8h" startline="59" endline="64">GridInterpolater::GridInterpolater</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a92d139b1f580836cfccfa9ee5ac9e9fd" compoundref="grid__interpolater_8h" startline="88" endline="92">GridInterpolater::set_in_dimension</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1ae1db6f66081fc63563e3cc9b0a82edbf" compoundref="grid__interpolater_8h" startline="74" endline="78">GridInterpolater::set_in_resolution</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1GridInterpolater_1af63129db61e0a37f852594276827a946" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float out_resolution</definition>
+        <argsstring></argsstring>
+        <name>out_resolution</name>
+        <initializer>= 0.05</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="33" column="11" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="33" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1aa7f689a401310ce064f2f0903842c0ab" compoundref="grid__interpolater_8cpp" startline="17" endline="48">GridInterpolater::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1af511eaea6a733f0882f7d58dc73d86ad" compoundref="grid__interpolater_8h" startline="71" endline="71">GridInterpolater::get_out_resolution</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a57b3b8e4c3e77451f20e61675c6d97eb" compoundref="grid__interpolater_8h" startline="59" endline="64">GridInterpolater::GridInterpolater</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a11881d9b8255ea907c8ecc444c571199" compoundref="grid__interpolater_8h" startline="80" endline="80">GridInterpolater::set_out_resolution</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1GridInterpolater_1a6e95c2286ec4a0e13025d6d22e462eab" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float in_dimension</definition>
+        <argsstring></argsstring>
+        <name>in_dimension</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="34" column="11" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="34" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1aa7f689a401310ce064f2f0903842c0ab" compoundref="grid__interpolater_8cpp" startline="17" endline="48">GridInterpolater::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1ad8ca94fd56b98339ca9fb9293a1d384d" compoundref="grid__interpolater_8h" startline="83" endline="83">GridInterpolater::get_in_dimension</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a57b3b8e4c3e77451f20e61675c6d97eb" compoundref="grid__interpolater_8h" startline="59" endline="64">GridInterpolater::GridInterpolater</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a92d139b1f580836cfccfa9ee5ac9e9fd" compoundref="grid__interpolater_8h" startline="88" endline="92">GridInterpolater::set_in_dimension</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1ae1db6f66081fc63563e3cc9b0a82edbf" compoundref="grid__interpolater_8h" startline="74" endline="78">GridInterpolater::set_in_resolution</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1GridInterpolater_1a07021960a6559f9f20de793a184e37ec" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float out_dimension</definition>
+        <argsstring></argsstring>
+        <name>out_dimension</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="35" column="11" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="35" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1aa7f689a401310ce064f2f0903842c0ab" compoundref="grid__interpolater_8cpp" startline="17" endline="48">GridInterpolater::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a5f9108cf7a16617867e1802cf8e0e1fa" compoundref="grid__interpolater_8h" startline="85" endline="85">GridInterpolater::get_out_dimension</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a57b3b8e4c3e77451f20e61675c6d97eb" compoundref="grid__interpolater_8h" startline="59" endline="64">GridInterpolater::GridInterpolater</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1abbfd3a76810ef02a76af6aac0a2173bf" compoundref="grid__interpolater_8h" startline="94" endline="94">GridInterpolater::set_out_dimension</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1GridInterpolater_1a9547df9399db74b81c522505c203fdd4" prot="protected" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned in_dim</definition>
+        <argsstring></argsstring>
+        <name>in_dim</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="36" column="14" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="36" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a169b99d2f9026e906fca800564aa0a83" compoundref="grid__interpolater_8cpp" startline="56" endline="76">GridInterpolater::checkGrids</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a57b3b8e4c3e77451f20e61675c6d97eb" compoundref="grid__interpolater_8h" startline="59" endline="64">GridInterpolater::GridInterpolater</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a92d139b1f580836cfccfa9ee5ac9e9fd" compoundref="grid__interpolater_8h" startline="88" endline="92">GridInterpolater::set_in_dimension</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1ae1db6f66081fc63563e3cc9b0a82edbf" compoundref="grid__interpolater_8h" startline="74" endline="78">GridInterpolater::set_in_resolution</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1GridInterpolater_1aab5c646312537b0a24a568d860f22027" prot="protected" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned out_dim</definition>
+        <argsstring></argsstring>
+        <name>out_dim</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="37" column="14" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a169b99d2f9026e906fca800564aa0a83" compoundref="grid__interpolater_8cpp" startline="56" endline="76">GridInterpolater::checkGrids</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1aa7f689a401310ce064f2f0903842c0ab" compoundref="grid__interpolater_8cpp" startline="17" endline="48">GridInterpolater::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a57b3b8e4c3e77451f20e61675c6d97eb" compoundref="grid__interpolater_8h" startline="59" endline="64">GridInterpolater::GridInterpolater</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1GridInterpolater_1aff68190c6ea2608819bc6e3dbdadbe3d" prot="protected" static="no" mutable="yes">
+        <type>cudaArray_t</type>
+        <definition>cudaArray_t cuArray</definition>
+        <argsstring></argsstring>
+        <name>cuArray</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="49" column="25" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1a169b99d2f9026e906fca800564aa0a83" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Dtype</type>
+          </param>
+          <param>
+            <type>bool</type>
+            <declname>isCUDA</declname>
+            <defname>isCUDA</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>template void checkGrids</definition>
+        <argsstring>(const Grid&lt; Dtype, 4, isCUDA &gt; &amp;in, const Grid&lt; Dtype, 4, isCUDA &gt; &amp;out) const</argsstring>
+        <name>checkGrids</name>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 4, isCUDA &gt; &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 4, isCUDA &gt; &amp;</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="41" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/grid_interpolater.cpp" bodystart="56" bodyend="76"/>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1aa7f689a401310ce064f2f0903842c0ab" compoundref="grid__interpolater_8cpp" startline="17" endline="48">GridInterpolater::forward</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1a49d6bf9a3927ef3cd5b416740b0b94a9" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cudaTextureObject_t</type>
+        <definition>cudaTextureObject_t initializeTexture</definition>
+        <argsstring>(const Grid&lt; float, 3, true &gt; &amp;in) const</argsstring>
+        <name>initializeTexture</name>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; float, 3, true &gt; &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="44" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1a69399c8f851326511a48b1f1e93513e7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void clearTexture</definition>
+        <argsstring>()</argsstring>
+        <name>clearTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="47" column="10"/>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a92d139b1f580836cfccfa9ee5ac9e9fd" compoundref="grid__interpolater_8h" startline="88" endline="92">GridInterpolater::set_in_dimension</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1ae1db6f66081fc63563e3cc9b0a82edbf" compoundref="grid__interpolater_8h" startline="74" endline="78">GridInterpolater::set_in_resolution</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1aec1c636721028d75e98f9b57288a326f" compoundref="grid__interpolater_8h" startline="66" endline="66">GridInterpolater::~GridInterpolater</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1a57b3b8e4c3e77451f20e61675c6d97eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GridInterpolater</definition>
+        <argsstring>(float inres, float indim, float outres, float outdim)</argsstring>
+        <name>GridInterpolater</name>
+        <param>
+          <type>float</type>
+          <declname>inres</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>indim</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>outres</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>outdim</declname>
+        </param>
+        <briefdescription>
+<para>Construct <ref refid="classlibmolgrid_1_1GridInterpolater" kindref="compound">GridInterpolater</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">inres</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>resolution of input grid in Angstroms </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">indim</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dimension of cubic input grid in Angstroms </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">outres</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>resolution of output grid in Angstroms </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">outdim</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dimension of cubic output grid in Angstroms </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="59" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="59" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1aec1c636721028d75e98f9b57288a326f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~GridInterpolater</definition>
+        <argsstring>()</argsstring>
+        <name>~GridInterpolater</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="66" column="13" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="66" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1afa8559f73788fd07d2e52407ff526bef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> float</type>
+        <definition>CUDA_CALLABLE_MEMBER float get_in_resolution</definition>
+        <argsstring>() const</argsstring>
+        <name>get_in_resolution</name>
+        <briefdescription>
+<para>return resolution of input grid in Angstroms </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="69" column="32" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="69" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1af511eaea6a733f0882f7d58dc73d86ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> float</type>
+        <definition>CUDA_CALLABLE_MEMBER float get_out_resolution</definition>
+        <argsstring>() const</argsstring>
+        <name>get_out_resolution</name>
+        <briefdescription>
+<para>return resolution of output grid in Angstroms </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="71" column="32" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="71" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1ae1db6f66081fc63563e3cc9b0a82edbf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> void</type>
+        <definition>CUDA_CALLABLE_MEMBER void set_in_resolution</definition>
+        <argsstring>(float res)</argsstring>
+        <name>set_in_resolution</name>
+        <param>
+          <type>float</type>
+          <declname>res</declname>
+        </param>
+        <briefdescription>
+<para>set input resolution in Angstroms </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="74" column="31" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="74" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1a11881d9b8255ea907c8ecc444c571199" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> void</type>
+        <definition>CUDA_CALLABLE_MEMBER void set_out_resolution</definition>
+        <argsstring>(float res)</argsstring>
+        <name>set_out_resolution</name>
+        <param>
+          <type>float</type>
+          <declname>res</declname>
+        </param>
+        <briefdescription>
+<para>set output resolution in Angstroms </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="80" column="31" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1ad8ca94fd56b98339ca9fb9293a1d384d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> float</type>
+        <definition>CUDA_CALLABLE_MEMBER float get_in_dimension</definition>
+        <argsstring>() const</argsstring>
+        <name>get_in_dimension</name>
+        <briefdescription>
+<para>get input dimension in Angstroms </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="83" column="32" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="83" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1a5f9108cf7a16617867e1802cf8e0e1fa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> float</type>
+        <definition>CUDA_CALLABLE_MEMBER float get_out_dimension</definition>
+        <argsstring>() const</argsstring>
+        <name>get_out_dimension</name>
+        <briefdescription>
+<para>get output dimension in Angstroms </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="85" column="32" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="85" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1a92d139b1f580836cfccfa9ee5ac9e9fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> void</type>
+        <definition>CUDA_CALLABLE_MEMBER void set_in_dimension</definition>
+        <argsstring>(float d)</argsstring>
+        <name>set_in_dimension</name>
+        <param>
+          <type>float</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>set input dimension in Angstroms </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="88" column="31" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="88" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1abbfd3a76810ef02a76af6aac0a2173bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> void</type>
+        <definition>CUDA_CALLABLE_MEMBER void set_out_dimension</definition>
+        <argsstring>(float d)</argsstring>
+        <name>set_out_dimension</name>
+        <param>
+          <type>float</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>set output dimension in Angstroms </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="94" column="31" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="94" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1a1a9c3def7f585a62547d0abf3f535b1b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Dtype</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void forward</definition>
+        <argsstring>(const Grid&lt; Dtype, 4, false &gt; &amp;in, const Transform &amp;transform, Grid&lt; Dtype, 4, false &gt; &amp;out) const</argsstring>
+        <name>forward</name>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 4, false &gt; &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>transform</declname>
+        </param>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 4, false &gt; &amp;</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="107" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="107" bodyend="110"/>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a1f6f6b83ea2c46f5dc13480b902feb90" compoundref="grid__interpolater_8h" startline="120" endline="123">GridInterpolater::forward</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1a1f6f6b83ea2c46f5dc13480b902feb90" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Dtype</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void forward</definition>
+        <argsstring>(const Grid&lt; Dtype, 4, true &gt; &amp;in, const Transform &amp;transform, Grid&lt; Dtype, 4, true &gt; &amp;out) const</argsstring>
+        <name>forward</name>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 4, true &gt; &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>transform</declname>
+        </param>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 4, true &gt; &amp;</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="120" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="120" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1a8c1b958bbb5f4db0246a9b686a2d8b84" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Dtype</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void forward</definition>
+        <argsstring>(const Grid&lt; Dtype, 4, false &gt; &amp;in, Grid&lt; Dtype, 4, false &gt; &amp;out, float random_translation=0, bool random_rotation=false) const</argsstring>
+        <name>forward</name>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 4, false &gt; &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 4, false &gt; &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>random_translation</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>random_rotation</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="134" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="134" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1acad3dc75e3f27649e1de5d52c063e98d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Dtype</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void forward</definition>
+        <argsstring>(const Grid&lt; Dtype, 4, true &gt; &amp;in, Grid&lt; Dtype, 4, true &gt; &amp;out, float random_translation=0, bool random_rotation=false) const</argsstring>
+        <name>forward</name>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 4, true &gt; &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 4, true &gt; &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>random_translation</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>random_rotation</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="148" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="148" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1aa7f689a401310ce064f2f0903842c0ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Dtype</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void forward</definition>
+        <argsstring>(float3 in_center, const Grid&lt; Dtype, 4, false &gt; &amp;in, const Transform &amp;transform, float3 out_center, Grid&lt; Dtype, 4, false &gt; &amp;out) const</argsstring>
+        <name>forward</name>
+        <param>
+          <type>float3</type>
+          <declname>in_center</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 4, false &gt; &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>transform</declname>
+        </param>
+        <param>
+          <type>float3</type>
+          <declname>out_center</declname>
+        </param>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 4, false &gt; &amp;</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="165" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/grid_interpolater.cpp" bodystart="17" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1a82e555c9410eb768286054e7bca5bd4b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Dtype</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void forward</definition>
+        <argsstring>(float3 in_center, const Grid&lt; Dtype, 4, true &gt; &amp;in, const Transform &amp;transform, float3 out_center, Grid&lt; Dtype, 4, true &gt; &amp;out) const</argsstring>
+        <name>forward</name>
+        <param>
+          <type>float3</type>
+          <declname>in_center</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 4, true &gt; &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>transform</declname>
+        </param>
+        <param>
+          <type>float3</type>
+          <declname>out_center</declname>
+        </param>
+        <param>
+          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 4, true &gt; &amp;</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="177" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1a830870c1426798fd15f7ad995b7c6fdb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Dtype</type>
+          </param>
+          <param>
+            <type>bool</type>
+            <declname>isCUDA</declname>
+            <defname>isCUDA</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> Dtype</type>
+        <definition>CUDA_CALLABLE_MEMBER Dtype get_pt</definition>
+        <argsstring>(const Grid&lt; Dtype, 3, isCUDA &gt; &amp;in, int x, int y, int z) const</argsstring>
+        <name>get_pt</name>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 3, isCUDA &gt; &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="182" column="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1GridInterpolater_1a5a49595c46112078957ab4a6ffa0287d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Dtype</type>
+          </param>
+          <param>
+            <type>bool</type>
+            <declname>isCUDA</declname>
+            <defname>isCUDA</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> Dtype</type>
+        <definition>CUDA_CALLABLE_MEMBER Dtype interpolate</definition>
+        <argsstring>(const Grid&lt; Dtype, 3, isCUDA &gt; &amp;in, float3 gridpt) const</argsstring>
+        <name>interpolate</name>
+        <param>
+          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 3, isCUDA &gt; &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>float3</type>
+          <declname>gridpt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="185" column="32"/>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1aa7f689a401310ce064f2f0903842c0ab" compoundref="grid__interpolater_8cpp" startline="17" endline="48">GridInterpolater::forward</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Applies a transformation (translation and/or rotation) to a source grid to get an output grid of specified resolutions and dimensions. </para>
+    </detaileddescription>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="29" column="23" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="29" bodyend="186"/>
+    <listofallmembers>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1a169b99d2f9026e906fca800564aa0a83" prot="protected" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>checkGrids</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1a69399c8f851326511a48b1f1e93513e7" prot="protected" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>clearTexture</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1aff68190c6ea2608819bc6e3dbdadbe3d" prot="protected" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>cuArray</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1a1a9c3def7f585a62547d0abf3f535b1b" prot="public" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>forward</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1a1f6f6b83ea2c46f5dc13480b902feb90" prot="public" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>forward</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1a8c1b958bbb5f4db0246a9b686a2d8b84" prot="public" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>forward</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1acad3dc75e3f27649e1de5d52c063e98d" prot="public" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>forward</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1aa7f689a401310ce064f2f0903842c0ab" prot="public" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>forward</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1a82e555c9410eb768286054e7bca5bd4b" prot="public" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>forward</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1ad8ca94fd56b98339ca9fb9293a1d384d" prot="public" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>get_in_dimension</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1afa8559f73788fd07d2e52407ff526bef" prot="public" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>get_in_resolution</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1a5f9108cf7a16617867e1802cf8e0e1fa" prot="public" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>get_out_dimension</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1af511eaea6a733f0882f7d58dc73d86ad" prot="public" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>get_out_resolution</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1a830870c1426798fd15f7ad995b7c6fdb" prot="public" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>get_pt</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1a57b3b8e4c3e77451f20e61675c6d97eb" prot="public" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>GridInterpolater</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1a9547df9399db74b81c522505c203fdd4" prot="protected" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>in_dim</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1a6e95c2286ec4a0e13025d6d22e462eab" prot="protected" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>in_dimension</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1a445217310e7609927f1440fb3cfcb84c" prot="protected" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>in_resolution</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1a49d6bf9a3927ef3cd5b416740b0b94a9" prot="protected" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>initializeTexture</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1a5a49595c46112078957ab4a6ffa0287d" prot="public" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>interpolate</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1aab5c646312537b0a24a568d860f22027" prot="protected" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>out_dim</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1a07021960a6559f9f20de793a184e37ec" prot="protected" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>out_dimension</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1af63129db61e0a37f852594276827a946" prot="protected" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>out_resolution</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1a92d139b1f580836cfccfa9ee5ac9e9fd" prot="public" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>set_in_dimension</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1ae1db6f66081fc63563e3cc9b0a82edbf" prot="public" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>set_in_resolution</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1abbfd3a76810ef02a76af6aac0a2173bf" prot="public" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>set_out_dimension</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1a11881d9b8255ea907c8ecc444c571199" prot="public" virt="non-virtual"><scope>libmolgrid::GridInterpolater</scope><name>set_out_resolution</name></member>
+      <member refid="classlibmolgrid_1_1GridInterpolater_1aec1c636721028d75e98f9b57288a326f" prot="public" virt="virtual"><scope>libmolgrid::GridInterpolater</scope><name>~GridInterpolater</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

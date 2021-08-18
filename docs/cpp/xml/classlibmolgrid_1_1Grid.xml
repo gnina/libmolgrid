@@ -266,9 +266,9 @@
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="88" column="40" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="88" bodyend="88"/>
         <referencedby refid="classlibmolgrid_1_1Transform_1acfada39f4f16531f4289971bd29ce946" compoundref="transform_8cpp" startline="86" endline="108">Transform::backward</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1a2c462d84c2b3da4f21cd34bf090ca082" compoundref="grid__maker_8cpp" startline="415" endline="445">GridMaker::backward</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1af457a155904998fbe8c13975da3e5621" compoundref="grid__maker_8cpp" startline="508" endline="650">GridMaker::backward_gradients</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1ae89253196f881023269e4b9b26cf9098" compoundref="grid__maker_8cpp" startline="663" endline="682">GridMaker::backward_relevance</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a2c462d84c2b3da4f21cd34bf090ca082" compoundref="grid__maker_8cpp" startline="437" endline="467">GridMaker::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1af457a155904998fbe8c13975da3e5621" compoundref="grid__maker_8cpp" startline="530" endline="672">GridMaker::backward_gradients</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1ae89253196f881023269e4b9b26cf9098" compoundref="grid__maker_8cpp" startline="685" endline="704">GridMaker::backward_relevance</referencedby>
         <referencedby refid="classlibmolgrid_1_1GridMaker_1abe03e795cf5097fd746c9d649de88053" compoundref="grid__maker_8cpp" startline="40" endline="54">GridMaker::check_index_args</referencedby>
         <referencedby refid="classlibmolgrid_1_1GridMaker_1a76f7b7e78b9bbc969d49cf78c2b976e4" compoundref="grid__maker_8cpp" startline="68" endline="89">GridMaker::check_vector_args</referencedby>
         <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a169b99d2f9026e906fca800564aa0a83" compoundref="grid__interpolater_8cpp" startline="56" endline="76">GridInterpolater::checkGrids</referencedby>
@@ -338,9 +338,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="96" column="40" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="96" bodyend="102"/>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1a2c462d84c2b3da4f21cd34bf090ca082" compoundref="grid__maker_8cpp" startline="415" endline="445">GridMaker::backward</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1af457a155904998fbe8c13975da3e5621" compoundref="grid__maker_8cpp" startline="508" endline="650">GridMaker::backward_gradients</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1ae89253196f881023269e4b9b26cf9098" compoundref="grid__maker_8cpp" startline="663" endline="682">GridMaker::backward_relevance</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a2c462d84c2b3da4f21cd34bf090ca082" compoundref="grid__maker_8cpp" startline="437" endline="467">GridMaker::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1af457a155904998fbe8c13975da3e5621" compoundref="grid__maker_8cpp" startline="530" endline="672">GridMaker::backward_gradients</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1ae89253196f881023269e4b9b26cf9098" compoundref="grid__maker_8cpp" startline="685" endline="704">GridMaker::backward_relevance</referencedby>
         <referencedby refid="classlibmolgrid_1_1GridMaker_1abe03e795cf5097fd746c9d649de88053" compoundref="grid__maker_8cpp" startline="40" endline="54">GridMaker::check_index_args</referencedby>
         <referencedby refid="classlibmolgrid_1_1GridMaker_1a76f7b7e78b9bbc969d49cf78c2b976e4" compoundref="grid__maker_8cpp" startline="68" endline="89">GridMaker::check_vector_args</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a32a5cdeb67c51d9b75925d93277a1ed0" compoundref="managed__grid_8h" startline="191" endline="200">ManagedGridBase&lt; Dtype, 1 &gt;::copyFrom</referencedby>
@@ -368,7 +368,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="105" column="40" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="105" bodyend="105"/>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1af457a155904998fbe8c13975da3e5621" compoundref="grid__maker_8cpp" startline="508" endline="650">GridMaker::backward_gradients</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1af457a155904998fbe8c13975da3e5621" compoundref="grid__maker_8cpp" startline="530" endline="672">GridMaker::backward_gradients</referencedby>
         <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a169b99d2f9026e906fca800564aa0a83" compoundref="grid__interpolater_8cpp" startline="56" endline="76">GridInterpolater::checkGrids</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a32a5cdeb67c51d9b75925d93277a1ed0" compoundref="managed__grid_8h" startline="191" endline="200">ManagedGridBase&lt; Dtype, 1 &gt;::copyFrom</referencedby>
         <referencedby refid="classlibmolgrid_1_1Grid_1ac5cd5f1c4591aa5a8d21e5babb971e99" compoundref="grid_8h" startline="201" endline="207">Grid&lt; Dtype, NumDims, true &gt;::copyFrom</referencedby>
@@ -685,9 +685,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="212" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="212" bodyend="215"/>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1a2c462d84c2b3da4f21cd34bf090ca082" compoundref="grid__maker_8cpp" startline="415" endline="445">GridMaker::backward</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1af457a155904998fbe8c13975da3e5621" compoundref="grid__maker_8cpp" startline="508" endline="650">GridMaker::backward_gradients</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1ae89253196f881023269e4b9b26cf9098" compoundref="grid__maker_8cpp" startline="663" endline="682">GridMaker::backward_relevance</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a2c462d84c2b3da4f21cd34bf090ca082" compoundref="grid__maker_8cpp" startline="437" endline="467">GridMaker::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1af457a155904998fbe8c13975da3e5621" compoundref="grid__maker_8cpp" startline="530" endline="672">GridMaker::backward_gradients</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1ae89253196f881023269e4b9b26cf9098" compoundref="grid__maker_8cpp" startline="685" endline="704">GridMaker::backward_relevance</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a512219066836349f65f85a0ead19ae8a" compoundref="managed__grid_8h" startline="137" endline="140">ManagedGridBase&lt; Dtype, 1 &gt;::fill_zero</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1aa9fc4f9f4863682959d5b4df0259546a" compoundref="coordinateset_8cpp" startline="351" endline="373">CoordinateSet::sum_types</referencedby>
       </memberdef>

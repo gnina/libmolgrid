@@ -1,0 +1,305 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="grid__interpolater_8cpp" kind="file" language="C++">
+    <compoundname>grid_interpolater.cpp</compoundname>
+    <includes refid="grid__interpolater_8h" local="yes">libmolgrid/grid_interpolater.h</includes>
+    <includes local="no">cmath</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">iomanip</includes>
+    <incdepgraph>
+      <node id="32">
+        <label>iomanip</label>
+      </node>
+      <node id="24">
+        <label>libmolgrid/example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>libmolgrid/grid_interpolater.h</label>
+        <link refid="grid__interpolater_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="6">
+        <label>cuda_runtime.h</label>
+      </node>
+      <node id="31">
+        <label>cmath</label>
+      </node>
+      <node id="16">
+        <label>cassert</label>
+      </node>
+      <node id="27">
+        <label>stdexcept</label>
+      </node>
+      <node id="13">
+        <label>libmolgrid/grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>openbabel/mol.h</label>
+      </node>
+      <node id="25">
+        <label>unordered_set</label>
+      </node>
+      <node id="29">
+        <label>libmolgrid/cartesian_grid.h</label>
+        <link refid="cartesian__grid_8h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>random</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+      <node id="11">
+        <label>utility</label>
+      </node>
+      <node id="4">
+        <label>array</label>
+      </node>
+      <node id="18">
+        <label>libmolgrid/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>grid_interpolater.cpp</label>
+        <link refid="grid__interpolater_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>iostream</label>
+      </node>
+      <node id="26">
+        <label>libmolgrid/transform.h</label>
+        <link refid="transform_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>cuda.h</label>
+      </node>
+      <node id="20">
+        <label>cuda_runtime_api.h</label>
+      </node>
+      <node id="15">
+        <label>boost/preprocessor/repetition.hpp</label>
+      </node>
+      <node id="9">
+        <label>libmolgrid/managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>type_traits</label>
+      </node>
+      <node id="14">
+        <label>boost/multi_array.hpp</label>
+      </node>
+      <node id="28">
+        <label>libmolgrid/quaternion.h</label>
+        <link refid="quaternion_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>libmolgrid/libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>algorithm</label>
+      </node>
+      <node id="19">
+        <label>cstring</label>
+      </node>
+      <node id="7">
+        <label>libmolgrid/coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacelibmolgrid">libmolgrid</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>grid_interpolater.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/><sp/>Created<sp/>on:<sp/>May<sp/>5,<sp/>2021</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>Author:<sp/>dkoes</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="grid__interpolater_8h" kindref="compound">libmolgrid/grid_interpolater.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iomanip&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelibmolgrid" kindref="compound">libmolgrid</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Dtype&gt;</highlight></codeline>
+<codeline lineno="17" refid="classlibmolgrid_1_1GridInterpolater_1aa7f689a401310ce064f2f0903842c0ab" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1a1a9c3def7f585a62547d0abf3f535b1b" kindref="member">GridInterpolater::forward</ref>(float3<sp/>in_center,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;Dtype, 4, false&gt;</ref>&amp;<sp/>in,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Transform" kindref="compound">Transform</ref>&amp;<sp/>transform,<sp/>float3<sp/>out_center,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;Dtype, 4, false&gt;</ref>&amp;<sp/>out)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1a169b99d2f9026e906fca800564aa0a83" kindref="member">checkGrids</ref>(in,<sp/>out);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>center<sp/>=<sp/>transform.<ref refid="classlibmolgrid_1_1Transform_1a8295f46fb38138ea671d17c1f0eb96db" kindref="member">get_rotation_center</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>in_radius<sp/>=<sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1a6e95c2286ec4a0e13025d6d22e462eab" kindref="member">in_dimension</ref>/2.0;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>out_radius<sp/>=<sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1a07021960a6559f9f20de793a184e37ec" kindref="member">out_dimension</ref>/2.0;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>in_origin<sp/>=<sp/>{in_center.x-in_radius,in_center.y-in_radius,in_center.z-in_radius};</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>out_origin<sp/>=<sp/>{out_center.x-out_radius,out_center.y-out_radius,out_center.z-out_radius};</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1Quaternion" kindref="compound">Quaternion</ref><sp/>invQ<sp/>=<sp/>transform.<ref refid="classlibmolgrid_1_1Transform_1a820d00aca5ffb38b12e30dd732895d84" kindref="member">get_quaternion</ref>().<ref refid="classlibmolgrid_1_1Quaternion_1a40e59f1b2dc5d2131dc5048c2459206f" kindref="member">inverse</ref>();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>t<sp/>=<sp/>transform.<ref refid="classlibmolgrid_1_1Transform_1a440d5c632b85f365f998eb5de1145417" kindref="member">get_translation</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>untranslate<sp/>=<sp/>{-t.x-center.x,<sp/>-t.y-center.y,<sp/>-t.z-center.z};</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>K<sp/>=<sp/>in.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(0);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//for<sp/>every<sp/>grid<sp/>point<sp/>in<sp/>out</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1aab5c646312537b0a24a568d860f22027" kindref="member">out_dim</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1aab5c646312537b0a24a568d860f22027" kindref="member">out_dim</ref>;<sp/>j++)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1aab5c646312537b0a24a568d860f22027" kindref="member">out_dim</ref>;<sp/>k++)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//compute<sp/>its<sp/>Cartesian<sp/>location</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>outpt<sp/>=<sp/><ref refid="namespacelibmolgrid_1a9c218888670e6716f1d3dc698da244fa" kindref="member">grid2cart</ref>(out_origin,<sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1af63129db61e0a37f852594276827a946" kindref="member">out_resolution</ref>,<sp/>i,<sp/>j,<sp/>k);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//apply<sp/>inverse<sp/>transformation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>newpt<sp/>=<sp/>invQ.<ref refid="classlibmolgrid_1_1Quaternion_1aa4e402e2cf35dd2ea523414b42878a18" kindref="member">rotate</ref>(outpt.x+untranslate.x,<sp/>outpt.y+untranslate.y,<sp/>outpt.z+untranslate.z);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//get<sp/>(not<sp/>rounded)<sp/>input<sp/>grid<sp/>coordinates<sp/>(not<sp/>Cartesian)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>inpt<sp/>=<sp/><ref refid="namespacelibmolgrid_1a2dbb37176b2d9724d607ba464b5506e1" kindref="member">cart2grid</ref>(in_origin,<sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1a445217310e7609927f1440fb3cfcb84c" kindref="member">in_resolution</ref>,<sp/>newpt.x+center.x,<sp/>newpt.y+center.y,<sp/>newpt.z+center.z);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//interpolate<sp/>for<sp/>each<sp/>channel</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>c<sp/>=<sp/>0;<sp/>c<sp/>&lt;<sp/>K;<sp/>c++)<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out(c,i,j,k)<sp/>=<sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1a5a49595c46112078957ab4a6ffa0287d" kindref="member">interpolate</ref>(in[c],<sp/>inpt);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1a1a9c3def7f585a62547d0abf3f535b1b" kindref="member">GridInterpolater::forward</ref>(float3<sp/>in_center,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 4, false&gt;</ref>&amp;<sp/>in,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Transform" kindref="compound">Transform</ref>&amp;<sp/>transform,<sp/>float3<sp/>out_center,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 4, false&gt;</ref>&amp;<sp/>out)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1a1a9c3def7f585a62547d0abf3f535b1b" kindref="member">GridInterpolater::forward</ref>(float3<sp/>in_center,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;double, 4, false&gt;</ref>&amp;<sp/>in,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Transform" kindref="compound">Transform</ref>&amp;<sp/>transform,<sp/>float3<sp/>out_center,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;double, 4, false&gt;</ref>&amp;<sp/>out)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Sanity<sp/>check<sp/>grid<sp/>dimensions<sp/>and<sp/>throw<sp/>exceptions<sp/>if<sp/>they<sp/>are<sp/>wrong</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Dtype,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isCUDA&gt;</highlight></codeline>
+<codeline lineno="56" refid="classlibmolgrid_1_1GridInterpolater_1a169b99d2f9026e906fca800564aa0a83" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1a169b99d2f9026e906fca800564aa0a83" kindref="member">GridInterpolater::checkGrids</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;Dtype, 4, isCUDA&gt;</ref>&amp;<sp/>in,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;Dtype, 4, isCUDA&gt;</ref>&amp;<sp/>out)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(in.<ref refid="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5" kindref="member">data</ref>()<sp/>==<sp/>out.<ref refid="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5" kindref="member">data</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Input<sp/>and<sp/>output<sp/>grid<sp/>can<sp/>not<sp/>be<sp/>the<sp/>same<sp/>in<sp/>GridInterpolator.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(in.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(0)<sp/>!=<sp/>out.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(0))<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Different<sp/>channel<sp/>dimensions<sp/>for<sp/>input<sp/>and<sp/>output<sp/><sp/>grids.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(in.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(1)<sp/>!=<sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1a9547df9399db74b81c522505c203fdd4" kindref="member">in_dim</ref><sp/>||<sp/>in.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(2)<sp/>!=<sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1a9547df9399db74b81c522505c203fdd4" kindref="member">in_dim</ref><sp/>||<sp/>in.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(3)<sp/>!=<sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1a9547df9399db74b81c522505c203fdd4" kindref="member">in_dim</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Input<sp/>grid<sp/>wrong<sp/>dimension.<sp/>Should<sp/>be<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(<ref refid="classlibmolgrid_1_1GridInterpolater_1a9547df9399db74b81c522505c203fdd4" kindref="member">in_dim</ref>)+</highlight><highlight class="stringliteral">&quot;<sp/>along<sp/>all<sp/>axes<sp/>but<sp/>is<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(in.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(1))+</highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(in.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(2))+</highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(in.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(3)));</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(out.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(1)<sp/>!=<sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1aab5c646312537b0a24a568d860f22027" kindref="member">out_dim</ref><sp/>||<sp/>out.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(2)<sp/>!=<sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1aab5c646312537b0a24a568d860f22027" kindref="member">out_dim</ref><sp/>||<sp/>out.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(3)<sp/>!=<sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1aab5c646312537b0a24a568d860f22027" kindref="member">out_dim</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Output<sp/>grid<sp/>wrong<sp/>dimension.<sp/>Should<sp/>be<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(<ref refid="classlibmolgrid_1_1GridInterpolater_1aab5c646312537b0a24a568d860f22027" kindref="member">out_dim</ref>)+</highlight><highlight class="stringliteral">&quot;<sp/>along<sp/>all<sp/>axes<sp/>but<sp/>is<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(out.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(1))+</highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(out.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(2))+</highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(out.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(3)));</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(in.<ref refid="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5" kindref="member">data</ref>()<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Input<sp/>grid<sp/>not<sp/>allocated&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(out.<ref refid="classlibmolgrid_1_1Grid_1aaa5a68e1e5befda24cb7b3e422ba9cc5" kindref="member">data</ref>()<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Output<sp/>grid<sp/>not<sp/>allocated&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1a169b99d2f9026e906fca800564aa0a83" kindref="member">GridInterpolater::checkGrids</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 4, false&gt;</ref>&amp;<sp/>in,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 4, false&gt;</ref>&amp;<sp/>out)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1a169b99d2f9026e906fca800564aa0a83" kindref="member">GridInterpolater::checkGrids</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;double, 4, false&gt;</ref>&amp;<sp/>in,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;double, 4, false&gt;</ref>&amp;<sp/>out)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GridInterpolater_1a169b99d2f9026e906fca800564aa0a83" kindref="member">GridInterpolater::checkGrids</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 4, true&gt;</ref>&amp;<sp/>in,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;float, 4, true&gt;</ref>&amp;<sp/>out)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dkoes/git/libmolgrid/src/grid_interpolater.cpp"/>
+  </compounddef>
+</doxygen>

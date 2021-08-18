@@ -211,7 +211,7 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
   }
 }
 
-template<typename Dtype, bool TypesFromRadii>
+template<typename Dtype>
 void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
     const Grid<float, 2, false>& type_vector, const Grid<float, 1, false>& radii,
     Grid<Dtype, 4, false>& out) const {
@@ -271,7 +271,6 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
 }
 
         
-        
 template void GridMaker::forward(const std::vector<Example>& in, Grid<float, 5, false>& out,
   float random_translation, bool random_rotation) const;
 template void GridMaker::forward(const std::vector<Example>& in, Grid<float, 5, true>& out,
@@ -298,7 +297,30 @@ template void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>
 template void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
         const Grid<float, 2, false>& type_vector, const Grid<float, 1, false>& radii,
         Grid<double, 4, false>& out) const;
-        
+
+//batched cpu float
+
+template void GridMaker::forward<float,false,2>(const Grid<float, 2, false> &centers,
+    const Grid<float, 3, false> &coords,
+    const Grid<float, 2, false> &types,
+    const Grid<float, 2, false> &radii, Grid<float, 5, false> &out) const;
+template void GridMaker::forward<float,false,3>(const Grid<float, 2, false> &centers,
+    const Grid<float, 3, false> &coords,
+    const Grid<float, 3, false> &types,
+    const Grid<float, 2, false> &radii,Grid<float, 5, false> &out) const;
+
+//batched cpu double
+template void GridMaker::forward<double,false,2>(const Grid<float, 2, false> &centers,
+    const Grid<float, 3, false> &coords,
+    const Grid<float, 2, false> &types,
+    const Grid<float, 2, false> &radii, Grid<double, 5, false> &out) const;
+template void GridMaker::forward<double,false,3>(const Grid<float, 2, false> &centers,
+    const Grid<float, 3, false> &coords,
+    const Grid<float, 3, false> &types,
+    const Grid<float, 2, false> &radii,Grid<double, 5, false> &out) const;
+
+
+
 //set a single atom gradient - note can't pass a slice by reference
 template <typename Dtype>
 float3 GridMaker::calc_atom_gradient_cpu(const float3& grid_origin, const Grid1f& coordr, const Grid<Dtype, 3, false>& diff, float radius) const {

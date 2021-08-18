@@ -108,7 +108,7 @@ class GridMaker {
 
     /** \brief Use externally specified grid_center to determine where grid begins.
      * Used for translating between cartesian coords and grids.
-     * @param[in] grid center
+     * @param[in] grid_center - center
      * @param[out] grid bounds
      */
     CUDA_CALLABLE_MEMBER float3 get_grid_origin(const float3& grid_center) const;
@@ -221,15 +221,13 @@ class GridMaker {
         
     // Docstring_GridMaker_forward_8
     /* \brief Generate grid tensor from CPU atomic data.  Grid must be properly sized.
-     * If TypesFromRadii, radii should be size of types and type information will be used
-     * to select the radii.
      * @param[in] center of grid
      * @param[in] coordinates (Nx3)
      * @param[in] vectors (NxT)
      * @param[in] radii (N) or (T)
      * @param[out] a 4D grid
      */
-    template <typename Dtype, bool TypesFromRadii = false>
+    template <typename Dtype>
     void forward(float3 grid_center, const Grid<float, 2, false>& coords,
         const Grid<float, 2, false>& type_vector, const Grid<float, 1, false>& radii,
         Grid<Dtype, 4, false>& out) const;
@@ -246,6 +244,50 @@ class GridMaker {
     void forward(float3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 2, true>& type_vector, const Grid<float, 1, true>& radii,
         Grid<Dtype, 4, true>& out) const;
+
+    // Docstring_GridMaker_forward_10
+    /* \brief Generate grid tensors from batched atomic data.  Grid must be properly sized.
+     * @param[in] centers of grid (Bx3)
+     * @param[in] coordinates (BxNx3)
+     * @param[in] type vectors (BxNxT) or type indices (BxN)
+     * @param[in] radii (BxN) or (BxT)
+     * @param[out] a 5D grid
+     */
+    template <typename Dtype, bool isCUDA, int N>
+    void forward(const Grid<float, 2, isCUDA> &centers,
+        const Grid<float, 3, isCUDA> &coords,
+        const Grid<float, N, isCUDA> &types,
+        const Grid<float, 2, isCUDA> &radii,Grid<Dtype, 5, isCUDA> &out) const{
+      size_t B = centers.dimension(0);
+      if(coords.dimension(0) != B)
+        throw std::invalid_argument(
+            "Mismatched batch sizes: " + itoa(coords.dimension(0)) + " vs " + itoa(B));
+      if(types.dimension(0) != B)
+        throw std::invalid_argument(
+            "Mismatched batch sizes: " + itoa(types.dimension(0)) + " vs " + itoa(B));
+      if(radii.dimension(0) != B)
+        throw std::invalid_argument(
+            "Mismatched batch sizes: " + itoa(radii.dimension(0)) + " vs " + itoa(B));
+      if(out.dimension(0) != B)
+        throw std::invalid_argument(
+            "Mismatched batch sizes: " + itoa(out.dimension(0)) + " vs " + itoa(B));
+
+      float3 center = { 0, };
+
+      for(unsigned i = 0; i < B; i++) {
+        if(isCUDA)
+          cudaMemcpy(&center, centers[i].data(), sizeof(center),cudaMemcpyDeviceToHost);
+        else
+          memcpy(&center, centers[i].data(), sizeof(center));
+
+        //convert from subgrids to full grids
+        Grid<float, 2, isCUDA> C = coords[i];
+        Grid<float, N-1, isCUDA> T = types[i];
+        Grid<float, 1, isCUDA> R = radii[i];
+        Grid<Dtype, 4, isCUDA> O = out[i];
+        forward(center, C, T, R, O);
+      }
+    }
 
 
     // Docstring_GridMaker_backward_1
