@@ -7,13 +7,13 @@
     <includes local="no">fstream</includes>
     <includes local="no">iomanip</includes>
     <incdepgraph>
-      <node id="20">
+      <node id="21">
         <label>boost/algorithm/string.hpp</label>
       </node>
-      <node id="22">
+      <node id="23">
         <label>iomanip</label>
       </node>
-      <node id="7">
+      <node id="8">
         <label>boost/lexical_cast.hpp</label>
       </node>
       <node id="1">
@@ -21,24 +21,22 @@
         <link refid="grid__io_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
       </node>
-      <node id="17">
+      <node id="18">
         <label>cuda_runtime.h</label>
       </node>
-      <node id="8">
+      <node id="9">
         <label>cassert</label>
       </node>
-      <node id="4">
+      <node id="5">
         <label>libmolgrid/grid.h</label>
         <link refid="grid_8h"/>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
@@ -49,7 +47,9 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -57,7 +57,7 @@
         <link refid="grid__io_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -65,73 +65,78 @@
         <link refid="cartesian__grid_8h"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="22">
         <label>fstream</label>
       </node>
-      <node id="16">
+      <node id="17">
         <label>random</label>
       </node>
-      <node id="19">
+      <node id="20">
         <label>utility</label>
       </node>
-      <node id="10">
+      <node id="11">
         <label>libmolgrid/common.h</label>
         <link refid="common_8h"/>
-        <childnode refid="11" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
       </node>
-      <node id="9">
+      <node id="10">
         <label>iostream</label>
       </node>
-      <node id="14">
+      <node id="15">
         <label>cuda.h</label>
       </node>
-      <node id="13">
+      <node id="14">
         <label>cuda_runtime_api.h</label>
       </node>
-      <node id="6">
+      <node id="7">
         <label>boost/preprocessor/repetition.hpp</label>
       </node>
-      <node id="18">
+      <node id="19">
         <label>libmolgrid/managed_grid.h</label>
         <link refid="managed__grid_8h"/>
-        <childnode refid="11" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="4">
+        <label>type_traits</label>
+      </node>
+      <node id="6">
         <label>boost/multi_array.hpp</label>
       </node>
-      <node id="15">
+      <node id="16">
         <label>libmolgrid/libmolgrid.h</label>
         <link refid="libmolgrid_8h"/>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
         <childnode refid="17" relation="include">
         </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
       </node>
-      <node id="12">
+      <node id="13">
         <label>cstring</label>
       </node>
-      <node id="11">
+      <node id="12">
         <label>memory</label>
       </node>
     </incdepgraph>
@@ -267,7 +272,7 @@
 <codeline lineno="125" refid="namespacelibmolgrid_1af18d9ef15de74734e469e0775ad38031" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1ade64fcaf6347fae87a6a41fb17a3fb31" kindref="member">read_dx</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>fname,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;Dtype, 3&gt;</ref>&amp;<sp/>grid)<sp/>{</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/>std::ifstream<sp/>f(fname.c_str());</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!f)<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>invalid_argument(</highlight><highlight class="stringliteral">&quot;Could<sp/>not<sp/>read<sp/>file<sp/>&quot;</highlight><highlight class="normal">+fname);</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>read_dx&lt;Dtype&gt;(f,<sp/>grid);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/>read_dx&lt;Dtype&gt;(f,<sp/>grid);</highlight></codeline>
 <codeline lineno="129"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"></highlight></codeline>
 <codeline lineno="131"><highlight class="normal"></highlight></codeline>
@@ -311,7 +316,7 @@
 <codeline lineno="170" refid="namespacelibmolgrid_1a96cc920e318698dad01618f1ceb8419f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a6a20da8af322317857655e627f1e9f5d" kindref="member">write_dx</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>fname,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;DType, 3&gt;</ref>&amp;<sp/>grid,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>float3&amp;<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>resolution,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale)<sp/>{</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"><sp/><sp/>std::ofstream<sp/>f(fname.c_str());</highlight></codeline>
 <codeline lineno="172"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!f)<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>invalid_argument(</highlight><highlight class="stringliteral">&quot;Could<sp/>not<sp/>open<sp/>file<sp/>&quot;</highlight><highlight class="normal">+fname);</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a6a20da8af322317857655e627f1e9f5d" kindref="member">write_dx</ref>(f,<sp/>grid,<sp/>center,<sp/>resolution,<sp/>scale);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><ref refid="namespacelibmolgrid_1a6a20da8af322317857655e627f1e9f5d" kindref="member">write_dx</ref>(f,<sp/>grid,<sp/>center,<sp/>resolution,<sp/>scale);</highlight></codeline>
 <codeline lineno="174"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"></highlight></codeline>
 <codeline lineno="176"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Dtype&gt;</highlight></codeline>
@@ -364,7 +369,7 @@
 <codeline lineno="225" refid="namespacelibmolgrid_1a5f98c4b4e9bc1306dc43643d0f701b23" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a2fd3cdc3e58f538b5ae29f29654a5b2c" kindref="member">write_map</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>fname,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;DType, 3&gt;</ref>&amp;<sp/>grid,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>float3&amp;<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>resolution,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale)<sp/>{</highlight></codeline>
 <codeline lineno="226"><highlight class="normal"><sp/><sp/>std::ofstream<sp/>f(fname.c_str());</highlight></codeline>
 <codeline lineno="227"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!f)<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>invalid_argument(</highlight><highlight class="stringliteral">&quot;Could<sp/>not<sp/>open<sp/>file<sp/>&quot;</highlight><highlight class="normal">+fname);</highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacelibmolgrid_1a2fd3cdc3e58f538b5ae29f29654a5b2c" kindref="member">write_map</ref>(f,<sp/>grid,<sp/>center,<sp/>resolution,<sp/>scale);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><ref refid="namespacelibmolgrid_1a2fd3cdc3e58f538b5ae29f29654a5b2c" kindref="member">write_map</ref>(f,<sp/>grid,<sp/>center,<sp/>resolution,<sp/>scale);</highlight></codeline>
 <codeline lineno="229"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="230"><highlight class="normal"></highlight></codeline>
 <codeline lineno="231"><highlight class="normal"></highlight></codeline>

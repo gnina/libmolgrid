@@ -2,25 +2,25 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="cartesian__grid_8h" kind="file" language="C++">
     <compoundname>cartesian_grid.h</compoundname>
+    <includes local="no">type_traits</includes>
     <includes refid="grid_8h" local="yes">libmolgrid/grid.h</includes>
     <includes refid="managed__grid_8h" local="yes">libmolgrid/managed_grid.h</includes>
+    <includedby refid="grid__interpolater_8h" local="yes">grid_interpolater.h</includedby>
     <includedby refid="grid__io_8h" local="yes">grid_io.h</includedby>
     <includedby refid="cartesian__grid_8cpp" local="no">cartesian_grid.cpp</includedby>
     <incdepgraph>
-      <node id="5">
+      <node id="6">
         <label>boost/lexical_cast.hpp</label>
       </node>
-      <node id="15">
+      <node id="16">
         <label>cuda_runtime.h</label>
       </node>
-      <node id="6">
+      <node id="7">
         <label>cassert</label>
       </node>
-      <node id="2">
+      <node id="3">
         <label>libmolgrid/grid.h</label>
         <link refid="grid_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
@@ -31,7 +31,9 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -39,86 +41,97 @@
         <link refid="cartesian__grid_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="14">
+      <node id="15">
         <label>random</label>
       </node>
-      <node id="17">
+      <node id="18">
         <label>utility</label>
       </node>
-      <node id="8">
+      <node id="9">
         <label>libmolgrid/common.h</label>
         <link refid="common_8h"/>
-        <childnode refid="9" relation="include">
-        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
       </node>
-      <node id="7">
+      <node id="8">
         <label>iostream</label>
       </node>
-      <node id="12">
+      <node id="13">
         <label>cuda.h</label>
       </node>
-      <node id="11">
+      <node id="12">
         <label>cuda_runtime_api.h</label>
       </node>
-      <node id="4">
+      <node id="5">
         <label>boost/preprocessor/repetition.hpp</label>
       </node>
-      <node id="16">
+      <node id="17">
         <label>libmolgrid/managed_grid.h</label>
         <link refid="managed__grid_8h"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="3">
+      <node id="2">
+        <label>type_traits</label>
+      </node>
+      <node id="4">
         <label>boost/multi_array.hpp</label>
       </node>
-      <node id="13">
+      <node id="14">
         <label>libmolgrid/libmolgrid.h</label>
         <link refid="libmolgrid_8h"/>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="15" relation="include">
         </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
       </node>
-      <node id="10">
+      <node id="11">
         <label>cstring</label>
       </node>
-      <node id="9">
+      <node id="10">
         <label>memory</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="3">
+      <node id="2">
+        <label>grid_interpolater.h</label>
+        <link refid="grid__interpolater_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
         <label>grid_io.cpp</label>
         <link refid="grid__io_8cpp"/>
       </node>
-      <node id="4">
+      <node id="6">
         <label>cartesian_grid.cpp</label>
         <link refid="cartesian__grid_8cpp"/>
       </node>
-      <node id="2">
+      <node id="4">
         <label>grid_io.h</label>
         <link refid="grid__io_8h"/>
-        <childnode refid="3" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -128,6 +141,12 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>grid_interpolater.cpp</label>
+        <link refid="grid__interpolater_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classlibmolgrid_1_1CartesianGrid" prot="public">libmolgrid::CartesianGrid</innerclass>
@@ -142,35 +161,56 @@
 <codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>CARTESIAN_GRID_H_</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CARTESIAN_GRID_H_</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="grid_8h" kindref="compound">libmolgrid/grid.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="managed__grid_8h" kindref="compound">libmolgrid/managed_grid.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelibmolgrid" kindref="compound">libmolgrid</ref><sp/>{</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Docstring_CartesianGrid</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>G&gt;</highlight></codeline>
-<codeline lineno="19" refid="classlibmolgrid_1_1CartesianGrid" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1CartesianGrid" kindref="compound">CartesianGrid</ref><sp/>{</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>G<sp/>grid_;</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>center_<sp/>=<sp/>{0,};</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>resolution_<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="25" refid="classlibmolgrid_1_1CartesianGrid_1a67baf7af9fe98f31529fd02ae673dcb9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1CartesianGrid_1a67baf7af9fe98f31529fd02ae673dcb9" kindref="member">CartesianGrid</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G&amp;<sp/>g,<sp/>float3<sp/>c,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>res):<sp/>grid_(g),<sp/>center_(c),<sp/>resolution_(res)<sp/>{}</highlight></codeline>
-<codeline lineno="26" refid="classlibmolgrid_1_1CartesianGrid_1a06b7c8c6d4403b1427e3f8f148984d6a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1CartesianGrid_1a06b7c8c6d4403b1427e3f8f148984d6a" kindref="member">~CartesianGrid</ref>()<sp/>{}</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29" refid="classlibmolgrid_1_1CartesianGrid_1a437464eaf145c5829daa0cbb90c95dee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/><ref refid="classlibmolgrid_1_1CartesianGrid_1a437464eaf145c5829daa0cbb90c95dee" kindref="member">center</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>center_;<sp/>}</highlight></codeline>
-<codeline lineno="31" refid="classlibmolgrid_1_1CartesianGrid_1a90680a3e9859cab288318701395f6443" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1CartesianGrid_1a90680a3e9859cab288318701395f6443" kindref="member">resolution</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resolution_;<sp/>}</highlight></codeline>
-<codeline lineno="33" refid="classlibmolgrid_1_1CartesianGrid_1a101b62301de9d0e1cab373ae5a1aa9f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G&amp;<sp/><ref refid="classlibmolgrid_1_1CartesianGrid_1a101b62301de9d0e1cab373ae5a1aa9f0" kindref="member">grid</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>grid_;<sp/>}</highlight></codeline>
-<codeline lineno="34" refid="classlibmolgrid_1_1CartesianGrid_1a0607e252120004f8a88368e62d618064" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G&amp;<sp/><ref refid="classlibmolgrid_1_1CartesianGrid_1a0607e252120004f8a88368e62d618064" kindref="member">grid</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>grid_;<sp/>}</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>G::type<sp/><ref refid="classlibmolgrid_1_1CartesianGrid_1a3ef1ef5f853c412b04b760ef0f88cf0c" kindref="member">interpolate</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41" refid="namespacelibmolgrid_1a3f0b7d1200a69162b68f8226c9764a95" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1CartesianGrid" kindref="compound">CartesianMGrid</ref><sp/>=<sp/><ref refid="classlibmolgrid_1_1CartesianGrid" kindref="compound">CartesianGrid&lt;ManagedGrid&lt;float, 3&gt;</ref><sp/>&gt;;</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>CARTESIAN_GRID_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;type_traits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="grid_8h" kindref="compound">libmolgrid/grid.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="managed__grid_8h" kindref="compound">libmolgrid/managed_grid.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelibmolgrid" kindref="compound">libmolgrid</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Docstring_CartesianGrid</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>G&gt;</highlight></codeline>
+<codeline lineno="21" refid="classlibmolgrid_1_1CartesianGrid" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1CartesianGrid" kindref="compound">CartesianGrid</ref><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>G<sp/>grid_;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>dimensions[3]<sp/>=<sp/>{0,};<sp/></highlight><highlight class="comment">//number<sp/>of<sp/>grid<sp/>points</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>center_<sp/>=<sp/>{0,};</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>origin_<sp/>=<sp/>{0,};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>resolution_<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="29" refid="classlibmolgrid_1_1CartesianGrid_1a67baf7af9fe98f31529fd02ae673dcb9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1CartesianGrid_1a67baf7af9fe98f31529fd02ae673dcb9" kindref="member">CartesianGrid</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G&amp;<sp/>g,<sp/>float3<sp/>c,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>res):<sp/>grid_(g),<sp/>center_(c),<sp/>resolution_(res)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dimensions[0]<sp/>=<sp/>g.dimension(G::N-3);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dimensions[1]<sp/>=<sp/>g.dimension(G::N-2);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dimensions[2]<sp/>=<sp/>g.dimension(G::N-1);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>origin_.x<sp/>=<sp/>center_.x-dimensions[0]*resolution_/2.0;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>origin_.y<sp/>=<sp/>center_.y-dimensions[1]*resolution_/2.0;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>origin_.z<sp/>=<sp/>center_.z-dimensions[2]*resolution_/2.0;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38" refid="classlibmolgrid_1_1CartesianGrid_1a06b7c8c6d4403b1427e3f8f148984d6a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1CartesianGrid_1a06b7c8c6d4403b1427e3f8f148984d6a" kindref="member">~CartesianGrid</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classlibmolgrid_1_1CartesianGrid_1a437464eaf145c5829daa0cbb90c95dee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/><ref refid="classlibmolgrid_1_1CartesianGrid_1a437464eaf145c5829daa0cbb90c95dee" kindref="member">center</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>center_;<sp/>}</highlight></codeline>
+<codeline lineno="43" refid="classlibmolgrid_1_1CartesianGrid_1a90680a3e9859cab288318701395f6443" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1CartesianGrid_1a90680a3e9859cab288318701395f6443" kindref="member">resolution</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resolution_;<sp/>}</highlight></codeline>
+<codeline lineno="45" refid="classlibmolgrid_1_1CartesianGrid_1a101b62301de9d0e1cab373ae5a1aa9f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G&amp;<sp/><ref refid="classlibmolgrid_1_1CartesianGrid_1a101b62301de9d0e1cab373ae5a1aa9f0" kindref="member">grid</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>grid_;<sp/>}</highlight></codeline>
+<codeline lineno="46" refid="classlibmolgrid_1_1CartesianGrid_1a0607e252120004f8a88368e62d618064" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G&amp;<sp/><ref refid="classlibmolgrid_1_1CartesianGrid_1a0607e252120004f8a88368e62d618064" kindref="member">grid</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>grid_;<sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classlibmolgrid_1_1CartesianGrid_1a144b75f1b21a1e9e702250d41a548f1c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/><ref refid="classlibmolgrid_1_1CartesianGrid_1a144b75f1b21a1e9e702250d41a548f1c" kindref="member">cart2grid</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>pt<sp/>=<sp/>{<sp/>(x-origin_.x)/resolution_,<sp/>(y-origin_.y)/resolution_,<sp/>(z-origin_.z)/resolution_<sp/>};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pt;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classlibmolgrid_1_1CartesianGrid_1ab7e803fb08ab8bab9b81c5bcd0639948" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/><ref refid="classlibmolgrid_1_1CartesianGrid_1ab7e803fb08ab8bab9b81c5bcd0639948" kindref="member">grid2cart</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>j,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>k)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>pt<sp/>=<sp/>{origin_.x+i*resolution_,origin_.y+j*resolution_,origin_.z+k*resolution_};</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pt;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>G::type<sp/><ref refid="classlibmolgrid_1_1CartesianGrid_1acfb03269ae382bdcc5f772a53fc3a73e" kindref="member">interpolate</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>channel,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="namespacelibmolgrid_1a3f0b7d1200a69162b68f8226c9764a95" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1CartesianGrid" kindref="compound">CartesianMGrid</ref><sp/>=<sp/><ref refid="classlibmolgrid_1_1CartesianGrid" kindref="compound">CartesianGrid&lt;ManagedGrid&lt;float, 3&gt;</ref><sp/>&gt;;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>CARTESIAN_GRID_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
     <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h"/>
   </compounddef>

@@ -32,7 +32,7 @@ struct CoordinateSet {
   MGrid2f type_vector{0,0};
   MGrid1f radii{0}; ///radii - for type_index, indexed by atom, for type vector, indexed by type
   unsigned max_type = 0;  //for indexed types, non-inclusive max
-  const char *src = nullptr; //mostly for debugging, source of coordinates
+  const char *src = nullptr; /// source (filename) of coordinates, if available
 
   CoordinateSet() {}
 

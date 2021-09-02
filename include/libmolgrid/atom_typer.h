@@ -180,7 +180,9 @@ class GninaIndexTyper: public AtomIndexTyper {
 
   public:
 
-    //Create a gnina typer.  If usec is true, use the gnina determined covalent radius.
+    /** Create a gnina typer.
+     * @param[in] usec  use the gnina determined covalent radius.
+     */
     GninaIndexTyper(bool usec = false, const info *d = default_data): use_covalent(usec), data(d) {}
     virtual ~GninaIndexTyper() {}
 

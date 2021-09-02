@@ -60,9 +60,6 @@ void write_dx_grids(const std::string& prefix, const std::vector<std::string>& n
  * @param[in] prefix filename will have form [prefix]_[typename].dx
  * @param[in] names must have same size as first dimension of grid
  * @param[in] grid input grids
- * @param[in] center
- * @param[in] resolution
- * @param[in] scale multiply each value by this factor
  */
 template <typename Dtype>
 void read_dx_grids(const std::string& prefix, const std::vector<std::string>& names, Grid<Dtype, 4>& grid);

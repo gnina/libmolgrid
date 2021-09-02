@@ -14,3 +14,8 @@ vendor/
 # Ignore editors
 .vscode
 /.pytest_cache/
+.cproject
+.idea
+.project
+.pydevproject
+.settings

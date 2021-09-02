@@ -437,6 +437,7 @@
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="145" column="35" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="145" bodyend="149"/>
         <referencedby refid="classlibmolgrid_1_1Transform_1acfada39f4f16531f4289971bd29ce946" compoundref="transform_8cpp" startline="86" endline="108">Transform::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1aa7f689a401310ce064f2f0903842c0ab" compoundref="grid__interpolater_8cpp" startline="17" endline="48">GridInterpolater::forward</referencedby>
         <referencedby refid="classlibmolgrid_1_1Quaternion_1ad07f19ca8585a6047d7fbb6a215f08aa" compoundref="quaternion_8h" startline="152" endline="159">Quaternion::transform</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Quaternion_1ad07f19ca8585a6047d7fbb6a215f08aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -488,6 +489,7 @@
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" line="163" column="36" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/quaternion.h" bodystart="163" bodyend="166"/>
         <referencedby refid="classlibmolgrid_1_1Transform_1acfada39f4f16531f4289971bd29ce946" compoundref="transform_8cpp" startline="86" endline="108">Transform::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1aa7f689a401310ce064f2f0903842c0ab" compoundref="grid__interpolater_8cpp" startline="17" endline="48">GridInterpolater::forward</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>

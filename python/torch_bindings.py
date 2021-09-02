@@ -236,7 +236,7 @@ class MolDataset(torch.utils.data.Dataset):
             centers.append(center)
             lcoords.append(coords)
             ltypes.append(types)
-            lradii.append(radii.unsqueeze(1))
+            lradii.append(radii)
             labels.append(torch.tensor(label))
 
 

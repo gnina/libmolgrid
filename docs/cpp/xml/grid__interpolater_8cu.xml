@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="grid__interpolater_8cu" kind="file" language="C++">
+    <compoundname>grid_interpolater.cu</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">/*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>grid_interpolater.cu</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/>Created<sp/>on:<sp/>Aug<sp/>6,<sp/>2021</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>Author:<sp/>dkoes</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;libmolgrid/grid_interpolater.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;cmath&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;vector&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;iomanip&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>libmolgrid<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//wrapper<sp/>that<sp/>returns<sp/>pad<sp/>if<sp/>out<sp/>of<sp/>bounds</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template<sp/>&lt;typename<sp/>Dtype,<sp/>bool<sp/>isCUDA&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>CUDA_CALLABLE_MEMBER<sp/>Dtype<sp/>GridInterpolater::get_pt(const<sp/>Grid&lt;Dtype,<sp/>3,<sp/>isCUDA&gt;&amp;<sp/>in,<sp/>int<sp/>x,<sp/>int<sp/>y,<sp/>int<sp/>z)<sp/>const<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(x<sp/>&lt;<sp/>0<sp/>||<sp/>x<sp/>&gt;=<sp/>int(in_dim)<sp/>||<sp/>y<sp/>&lt;<sp/>0<sp/>||<sp/>y<sp/>&gt;=<sp/>int(in_dim)<sp/>||<sp/>z<sp/>&lt;<sp/>0<sp/>||<sp/>z<sp/>&gt;=<sp/>int(in_dim))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>in[x][y][z];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//given<sp/>a<sp/>non-rounded<sp/>gridpoint<sp/>in<sp/>the<sp/>input<sp/>grid<sp/>linearly<sp/>interpolate<sp/>values</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template<sp/>&lt;typename<sp/>Dtype,<sp/>bool<sp/>isCUDA&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>CUDA_CALLABLE_MEMBER<sp/>Dtype<sp/>GridInterpolater::interpolate(const<sp/>Grid&lt;Dtype,<sp/>3,<sp/>isCUDA&gt;&amp;<sp/>in,<sp/>float3<sp/>gridpt)<sp/>const<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//https://en.wikipedia.org/wiki/Trilinear_interpolation</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>xl<sp/>=<sp/>floor(gridpt.x);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>xh<sp/>=<sp/>ceil(gridpt.x);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>yl<sp/>=<sp/>floor(gridpt.y);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>yh<sp/>=<sp/>ceil(gridpt.y);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>zl<sp/>=<sp/>floor(gridpt.z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>zh<sp/>=<sp/>ceil(gridpt.z);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>p000<sp/>=<sp/>get_pt(in,<sp/>xl,<sp/>yl,<sp/>zl);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>p001<sp/>=<sp/>get_pt(in,<sp/>xl,<sp/>yl,<sp/>zh);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>p010<sp/>=<sp/>get_pt(in,<sp/>xl,<sp/>yh,<sp/>zl);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>p011<sp/>=<sp/>get_pt(in,<sp/>xl,<sp/>yh,<sp/>zh);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>p100<sp/>=<sp/>get_pt(in,<sp/>xh,<sp/>yl,<sp/>zl);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>p101<sp/>=<sp/>get_pt(in,<sp/>xh,<sp/>yl,<sp/>zh);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>p110<sp/>=<sp/>get_pt(in,<sp/>xh,<sp/>yh,<sp/>zl);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>p111<sp/>=<sp/>get_pt(in,<sp/>xh,<sp/>yh,<sp/>zh);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>xd<sp/>=<sp/>xh<sp/>&gt;<sp/>xl<sp/>?<sp/>(gridpt.x-xl)/(xh-xl)<sp/>:<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>yd<sp/>=<sp/>yh<sp/>&gt;<sp/>yl<sp/>?<sp/>(gridpt.y-yl)/(yh-yl)<sp/>:<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>zd<sp/>=<sp/>zh<sp/>&gt;<sp/>zl<sp/>?<sp/>(gridpt.z-zl)/(zh-zl)<sp/>:<sp/>0;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>c00<sp/>=<sp/>p000*(1-xd)<sp/>+<sp/>p100*xd;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>c01<sp/>=<sp/>p001*(1-xd)<sp/>+<sp/>p101*xd;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>c10<sp/>=<sp/>p010*(1-xd)<sp/>+<sp/>p110*xd;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>c11<sp/>=<sp/>p011*(1-xd)<sp/>+<sp/>p111*xd;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>c0<sp/>=<sp/>c00*(1-yd)+c10*yd;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>c1<sp/>=<sp/>c01*(1-yd)+c11*yd;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>c<sp/>=<sp/>c0*(1-zd)+c1*zd;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>c;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template<sp/>float<sp/>GridInterpolater::interpolate(const<sp/>Grid&lt;float,<sp/>3,<sp/>true&gt;&amp;<sp/>in,<sp/>float3<sp/>gridpt)<sp/>const;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template<sp/>float<sp/>GridInterpolater::interpolate(const<sp/>Grid&lt;float,<sp/>3,<sp/>false&gt;&amp;<sp/>in,<sp/>float3<sp/>gridpt)<sp/>const;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template<sp/>double<sp/>GridInterpolater::interpolate(const<sp/>Grid&lt;double,<sp/>3,<sp/>false&gt;&amp;<sp/>in,<sp/>float3<sp/>gridpt)<sp/>const;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//convert<sp/>to<sp/>texture<sp/>coords</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__device__<sp/>float3<sp/>cart2tex(float3<sp/>origin,<sp/>float<sp/>resolution,<sp/>float<sp/>x,<sp/>float<sp/>y,<sp/>float<sp/>z)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//textures<sp/>interpolate<sp/>assuming<sp/>value<sp/>is<sp/>in<sp/>center<sp/>of<sp/>pixel<sp/>instead<sp/>of<sp/>at<sp/>grid<sp/>point</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>pt<sp/>=<sp/>{<sp/>0.5f+(x-origin.x)/resolution,<sp/>0.5f+(y-origin.y)/resolution,<sp/>0.5f+(z-origin.z)/resolution<sp/>};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>pt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//use<sp/>texture<sp/>memory<sp/>to<sp/>perform<sp/>interpolation</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__global__<sp/>void</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gpu_set_outgrid_texture(cudaTextureObject_t<sp/>tex,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>in_origin,<sp/>float<sp/>in_res,<sp/>unsigned<sp/>in_dim,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>out_origin,<sp/>float<sp/>out_res,<sp/>unsigned<sp/>out_dim,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Quaternion<sp/>invQ,<sp/>float3<sp/>untranslate,<sp/>float3<sp/>center,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;float,<sp/>3,<sp/>true&gt;<sp/>out)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//figure<sp/>out<sp/>coordinate<sp/>we<sp/>are<sp/>setting<sp/>for<sp/>out</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>unsigned<sp/>xi<sp/>=<sp/>threadIdx.x<sp/>+<sp/>blockIdx.x<sp/>*<sp/>blockDim.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>unsigned<sp/>yi<sp/>=<sp/>threadIdx.y<sp/>+<sp/>blockIdx.y<sp/>*<sp/>blockDim.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>unsigned<sp/>zi<sp/>=<sp/>threadIdx.z<sp/>+<sp/>blockIdx.z<sp/>*<sp/>blockDim.z;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(xi<sp/>&gt;=<sp/>out_dim<sp/>||<sp/>yi<sp/>&gt;=<sp/>out_dim<sp/>||<sp/>zi<sp/>&gt;=<sp/>out_dim)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return;//bail<sp/>if<sp/>we&apos;re<sp/>off-grid,<sp/>this<sp/>should<sp/>not<sp/>be<sp/>common</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//compute<sp/>x,y,z<sp/>coordinate<sp/>of<sp/>grid<sp/>point</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>outpt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>outpt.x<sp/>=<sp/>xi<sp/>*<sp/>out_res<sp/>+<sp/>out_origin.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>outpt.y<sp/>=<sp/>yi<sp/>*<sp/>out_res<sp/>+<sp/>out_origin.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>outpt.z<sp/>=<sp/>zi<sp/>*<sp/>out_res<sp/>+<sp/>out_origin.z;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//apply<sp/>inverse<sp/>transformation</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>newpt<sp/>=<sp/>invQ.rotate(outpt.x+untranslate.x,<sp/>outpt.y+untranslate.y,<sp/>outpt.z+untranslate.z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//get<sp/>(not<sp/>rounded)<sp/>input<sp/>grid<sp/>coordinates<sp/>(not<sp/>Cartesian)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>inpt<sp/>=<sp/>cart2tex(in_origin,<sp/>in_res,<sp/>newpt.x+center.x,<sp/>newpt.y+center.y,<sp/>newpt.z+center.z);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//lookup<sp/>in<sp/>normalized<sp/>texture</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float<sp/>val<sp/>=<sp/>tex3D&lt;float&gt;(tex,<sp/>inpt.z,<sp/>inpt.y,<sp/>inpt.x);<sp/>//why<sp/>reverse<sp/>order?</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//set</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>out(xi,yi,zi)<sp/>=<sp/>val;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//interpolate<sp/>manually</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>__global__<sp/>void</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gpu_set_outgrid(GridInterpolater<sp/>interp,<sp/>Grid&lt;float,<sp/>3,<sp/>true&gt;<sp/>in,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>in_origin,<sp/>float<sp/>in_res,<sp/>unsigned<sp/>in_dim,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float3<sp/>out_origin,<sp/>float<sp/>out_res,<sp/>unsigned<sp/>out_dim,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Quaternion<sp/>invQ,<sp/>float3<sp/>untranslate,<sp/>float3<sp/>center,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Grid&lt;float,<sp/>3,<sp/>true&gt;<sp/>out)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//figure<sp/>out<sp/>coordinate<sp/>we<sp/>are<sp/>setting<sp/>for<sp/>out</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>unsigned<sp/>xi<sp/>=<sp/>threadIdx.x<sp/>+<sp/>blockIdx.x<sp/>*<sp/>blockDim.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>unsigned<sp/>yi<sp/>=<sp/>threadIdx.y<sp/>+<sp/>blockIdx.y<sp/>*<sp/>blockDim.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>unsigned<sp/>zi<sp/>=<sp/>threadIdx.z<sp/>+<sp/>blockIdx.z<sp/>*<sp/>blockDim.z;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(xi<sp/>&gt;=<sp/>out_dim<sp/>||<sp/>yi<sp/>&gt;=<sp/>out_dim<sp/>||<sp/>zi<sp/>&gt;=<sp/>out_dim)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return;//bail<sp/>if<sp/>we&apos;re<sp/>off-grid,<sp/>this<sp/>should<sp/>not<sp/>be<sp/>common</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//compute<sp/>x,y,z<sp/>coordinate<sp/>of<sp/>grid<sp/>point</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>outpt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>outpt.x<sp/>=<sp/>xi<sp/>*<sp/>out_res<sp/>+<sp/>out_origin.x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>outpt.y<sp/>=<sp/>yi<sp/>*<sp/>out_res<sp/>+<sp/>out_origin.y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>outpt.z<sp/>=<sp/>zi<sp/>*<sp/>out_res<sp/>+<sp/>out_origin.z;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//apply<sp/>inverse<sp/>transformation</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>newpt<sp/>=<sp/>invQ.rotate(outpt.x+untranslate.x,<sp/>outpt.y+untranslate.y,<sp/>outpt.z+untranslate.z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//get<sp/>(not<sp/>rounded)<sp/>input<sp/>grid<sp/>coordinates<sp/>(not<sp/>Cartesian)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>inpt<sp/>=<sp/>cart2grid(in_origin,<sp/>in_res,<sp/>newpt.x+center.x,<sp/>newpt.y+center.y,<sp/>newpt.z+center.z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//interpolate</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>out(xi,yi,zi)<sp/>=<sp/>interp.interpolate(in,<sp/>inpt);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template<sp/>&lt;typename<sp/>Dtype&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>GridInterpolater::forward(float3<sp/>in_center,<sp/>const<sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;&amp;<sp/>in,<sp/>const<sp/>Transform&amp;<sp/>transform,<sp/>float3<sp/>out_center,<sp/>Grid&lt;Dtype,<sp/>4,<sp/>true&gt;&amp;<sp/>out)<sp/>const<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>checkGrids(in,<sp/>out);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>center<sp/>=<sp/>transform.get_rotation_center();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float<sp/>in_radius<sp/>=<sp/>in_dimension/2.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float<sp/>out_radius<sp/>=<sp/>out_dimension/2.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>in_origin<sp/>=<sp/>{in_center.x-in_radius,in_center.y-in_radius,in_center.z-in_radius};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>out_origin<sp/>=<sp/>{out_center.x-out_radius,out_center.y-out_radius,out_center.z-out_radius};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quaternion<sp/>invQ<sp/>=<sp/>transform.get_quaternion().inverse();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>t<sp/>=<sp/>transform.get_translation();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>untranslate<sp/>=<sp/>{-t.x-center.x,<sp/>-t.y-center.y,<sp/>-t.z-center.z};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>unsigned<sp/>K<sp/>=<sp/>in.dimension(0);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dim3<sp/>threads(LMG_CUDA_BLOCKDIM,<sp/>LMG_CUDA_BLOCKDIM,<sp/>LMG_CUDA_BLOCKDIM);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>unsigned<sp/>blocksperside<sp/>=<sp/>ceil(out_dim<sp/>/<sp/>float(LMG_CUDA_BLOCKDIM));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dim3<sp/>blocks(blocksperside,<sp/>blocksperside,<sp/>blocksperside);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(false)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//texture<sp/>memory<sp/>(mostly)<sp/>works,<sp/>but<sp/>is<sp/>not<sp/>faster<sp/>then<sp/>interpolating<sp/>ourself</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//and<sp/>isn&apos;t<sp/>as<sp/>close<sp/>to<sp/>the<sp/>cpu<sp/>version</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//TODO:<sp/>profile<sp/>and<sp/>optimize</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for(unsigned<sp/>c<sp/>=<sp/>0;<sp/>c<sp/>&lt;<sp/>K;<sp/>c++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cudaTextureObject_t<sp/>tex<sp/>=<sp/>initializeTexture(in[c]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpu_set_outgrid_texture&lt;&lt;&lt;blocks,<sp/>threads&gt;&gt;&gt;(tex,<sp/>in_origin,<sp/>in_resolution,<sp/>in_dim,<sp/>out_origin,<sp/>out_resolution,<sp/>out_dim,<sp/>invQ,<sp/>untranslate,<sp/>center,<sp/>out[c]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for(unsigned<sp/>c<sp/>=<sp/>0;<sp/>c<sp/>&lt;<sp/>K;<sp/>c++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpu_set_outgrid&lt;&lt;&lt;blocks,<sp/>threads&gt;&gt;&gt;(*this,<sp/>in[c],<sp/>in_origin,<sp/>in_resolution,<sp/>in_dim,<sp/>out_origin,<sp/>out_resolution,<sp/>out_dim,<sp/>invQ,<sp/>untranslate,<sp/>center,<sp/>out[c]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template<sp/>void<sp/>GridInterpolater::forward(float3<sp/>in_center,<sp/>const<sp/>Grid&lt;float,<sp/>4,<sp/>true&gt;&amp;<sp/>in,<sp/>const<sp/>Transform&amp;<sp/>transform,<sp/>float3<sp/>out_center,<sp/>Grid&lt;float,<sp/>4,<sp/>true&gt;&amp;<sp/>out)<sp/>const;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>cudaTextureObject_t<sp/>GridInterpolater::initializeTexture(const<sp/>Grid&lt;float,<sp/>3,<sp/>true&gt;&amp;<sp/>in)<sp/>const<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//create<sp/>an<sp/>appropriately<sp/>sized<sp/>texture<sp/>memory<sp/>object<sp/>for<sp/>the<sp/>input</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cudaExtent<sp/>extent<sp/>=<sp/>make_cudaExtent(in_dim,<sp/>in_dim,<sp/>in_dim);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(!cuArray)<sp/>{<sp/>//must<sp/>allocate<sp/>array</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>cudaChannelFormatDesc<sp/>channelDesc<sp/>=<sp/>cudaCreateChannelDesc&lt;float&gt;();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>LMG_CUDA_CHECK(cudaMalloc3DArray(&amp;cuArray,<sp/>&amp;channelDesc,<sp/>extent));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//copy<sp/>values<sp/>from<sp/>in<sp/>grid</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//first<sp/>convert<sp/>to<sp/>pitched<sp/>ptr</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cudaPitchedPtr<sp/>grid<sp/>=<sp/>make_cudaPitchedPtr(in.data(),<sp/>sizeof(float)*in_dim,<sp/>in_dim,<sp/>in_dim);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cudaMemcpy3DParms<sp/>parms<sp/>=<sp/>{0};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parms.dstArray<sp/>=<sp/>cuArray;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parms.srcPtr<sp/>=<sp/>grid;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parms.extent<sp/>=<sp/><sp/>extent;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parms.kind<sp/>=<sp/>cudaMemcpyDeviceToDevice;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LMG_CUDA_CHECK(cudaMemcpy3D(&amp;parms));</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Specify<sp/>texture</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>struct<sp/>cudaResourceDesc<sp/>resDesc;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>memset(&amp;resDesc,<sp/>0,<sp/>sizeof(resDesc));</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>resDesc.resType<sp/>=<sp/>cudaResourceTypeArray;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>resDesc.res.array.array<sp/>=<sp/>cuArray;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Specify<sp/>texture<sp/>object<sp/>parameters</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>struct<sp/>cudaTextureDesc<sp/>texDesc;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>memset(&amp;texDesc,<sp/>0,<sp/>sizeof(texDesc));</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>texDesc.addressMode[0]<sp/>=<sp/>cudaAddressModeBorder;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>texDesc.addressMode[1]<sp/>=<sp/>cudaAddressModeBorder;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>texDesc.addressMode[2]<sp/>=<sp/>cudaAddressModeBorder;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>texDesc.filterMode<sp/>=<sp/>cudaFilterModeLinear;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>texDesc.readMode<sp/>=<sp/>cudaReadModeElementType;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Create<sp/>texture<sp/>object</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cudaTextureObject_t<sp/>texObj<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LMG_CUDA_CHECK(cudaCreateTextureObject(&amp;texObj,<sp/>&amp;resDesc,<sp/>&amp;texDesc,<sp/>NULL));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>texObj;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>GridInterpolater::clearTexture()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//deallocate<sp/>only<sp/>if<sp/>allocated</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(cuArray)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cudaFreeArray(cuArray);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cuArray<sp/>=<sp/>nullptr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+    </programlisting>
+    <location file="/home/dkoes/git/libmolgrid/src/grid_interpolater.cu"/>
+  </compounddef>
+</doxygen>

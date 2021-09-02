@@ -20,7 +20,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="20" column="7" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="20" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="22" column="7" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1CartesianGrid_1a546c29bca4900c88a8e3274a4cc56664" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t dimensions[3]</definition>
+        <argsstring>[3]</argsstring>
+        <name>dimensions</name>
+        <initializer>= {0,}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="23" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="23" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1CartesianGrid_1a99accc8fa8fe9f2b1b71b26d2c133979" prot="private" static="no" mutable="no">
         <type>float3</type>
@@ -34,7 +48,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="21" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="21" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="24" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlibmolgrid_1_1CartesianGrid_1a622682dd155a8ca7b848248f8c8b8728" prot="private" static="no" mutable="no">
+        <type>float3</type>
+        <definition>float3 origin_</definition>
+        <argsstring></argsstring>
+        <name>origin_</name>
+        <initializer>= {0,}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="25" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1CartesianGrid_1a187648938394eeb3cd86f9a4ce13eeea" prot="private" static="no" mutable="no">
         <type>float</type>
@@ -48,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="22" column="11" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="22" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="26" column="11" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -76,7 +104,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="25" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="25" bodyend="25"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="29" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="29" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CartesianGrid_1a06b7c8c6d4403b1427e3f8f148984d6a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -89,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="26" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="26" bodyend="26"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="38" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="38" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CartesianGrid_1a437464eaf145c5829daa0cbb90c95dee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>float3</type>
@@ -103,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="29" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="29" bodyend="29"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="41" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CartesianGrid_1a90680a3e9859cab288318701395f6443" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>float</type>
@@ -117,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="31" column="11" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="31" bodyend="31"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="43" column="11" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="43" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CartesianGrid_1a101b62301de9d0e1cab373ae5a1aa9f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>G &amp;</type>
@@ -131,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="33" column="7" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="33" bodyend="33"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="45" column="7" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1CartesianGrid_1a0607e252120004f8a88368e62d618064" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const G &amp;</type>
@@ -144,13 +172,69 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="34" column="13" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="34" bodyend="34"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="46" column="13" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="46" bodyend="46"/>
       </memberdef>
-      <memberdef kind="function" id="classlibmolgrid_1_1CartesianGrid_1a3ef1ef5f853c412b04b760ef0f88cf0c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classlibmolgrid_1_1CartesianGrid_1a144b75f1b21a1e9e702250d41a548f1c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float3</type>
+        <definition>float3 cart2grid</definition>
+        <argsstring>(float x, float y, float z) const</argsstring>
+        <name>cart2grid</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>return grid coordinates (not rounded) for Cartesian coordinates </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="49" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="49" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1CartesianGrid_1ab7e803fb08ab8bab9b81c5bcd0639948" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float3</type>
+        <definition>float3 grid2cart</definition>
+        <argsstring>(unsigned i, unsigned j, unsigned k) const</argsstring>
+        <name>grid2cart</name>
+        <param>
+          <type>unsigned</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+<para>return Cartesian coordinates of provided grid position </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="55" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="55" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1CartesianGrid_1acfb03269ae382bdcc5f772a53fc3a73e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>G::type</type>
         <definition>G::type interpolate</definition>
-        <argsstring>(float x, float y, float z) const</argsstring>
+        <argsstring>(size_t channel, float x, float y, float z) const</argsstring>
         <name>interpolate</name>
+        <param>
+          <type>size_t</type>
+          <declname>channel</declname>
+        </param>
         <param>
           <type>float</type>
           <declname>x</declname>
@@ -170,7 +254,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="37" column="22"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="61" column="22"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -178,15 +262,19 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="19" column="20" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="19" bodyend="39"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="21" column="20" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="21" bodyend="63"/>
     <listofallmembers>
+      <member refid="classlibmolgrid_1_1CartesianGrid_1a144b75f1b21a1e9e702250d41a548f1c" prot="public" virt="non-virtual"><scope>libmolgrid::CartesianGrid</scope><name>cart2grid</name></member>
       <member refid="classlibmolgrid_1_1CartesianGrid_1a67baf7af9fe98f31529fd02ae673dcb9" prot="public" virt="non-virtual"><scope>libmolgrid::CartesianGrid</scope><name>CartesianGrid</name></member>
       <member refid="classlibmolgrid_1_1CartesianGrid_1a437464eaf145c5829daa0cbb90c95dee" prot="public" virt="non-virtual"><scope>libmolgrid::CartesianGrid</scope><name>center</name></member>
       <member refid="classlibmolgrid_1_1CartesianGrid_1a99accc8fa8fe9f2b1b71b26d2c133979" prot="private" virt="non-virtual"><scope>libmolgrid::CartesianGrid</scope><name>center_</name></member>
+      <member refid="classlibmolgrid_1_1CartesianGrid_1a546c29bca4900c88a8e3274a4cc56664" prot="private" virt="non-virtual"><scope>libmolgrid::CartesianGrid</scope><name>dimensions</name></member>
       <member refid="classlibmolgrid_1_1CartesianGrid_1a101b62301de9d0e1cab373ae5a1aa9f0" prot="public" virt="non-virtual"><scope>libmolgrid::CartesianGrid</scope><name>grid</name></member>
       <member refid="classlibmolgrid_1_1CartesianGrid_1a0607e252120004f8a88368e62d618064" prot="public" virt="non-virtual"><scope>libmolgrid::CartesianGrid</scope><name>grid</name></member>
+      <member refid="classlibmolgrid_1_1CartesianGrid_1ab7e803fb08ab8bab9b81c5bcd0639948" prot="public" virt="non-virtual"><scope>libmolgrid::CartesianGrid</scope><name>grid2cart</name></member>
       <member refid="classlibmolgrid_1_1CartesianGrid_1ad4d137a96ea58935d427760ad6b28742" prot="private" virt="non-virtual"><scope>libmolgrid::CartesianGrid</scope><name>grid_</name></member>
-      <member refid="classlibmolgrid_1_1CartesianGrid_1a3ef1ef5f853c412b04b760ef0f88cf0c" prot="public" virt="non-virtual"><scope>libmolgrid::CartesianGrid</scope><name>interpolate</name></member>
+      <member refid="classlibmolgrid_1_1CartesianGrid_1acfb03269ae382bdcc5f772a53fc3a73e" prot="public" virt="non-virtual"><scope>libmolgrid::CartesianGrid</scope><name>interpolate</name></member>
+      <member refid="classlibmolgrid_1_1CartesianGrid_1a622682dd155a8ca7b848248f8c8b8728" prot="private" virt="non-virtual"><scope>libmolgrid::CartesianGrid</scope><name>origin_</name></member>
       <member refid="classlibmolgrid_1_1CartesianGrid_1a90680a3e9859cab288318701395f6443" prot="public" virt="non-virtual"><scope>libmolgrid::CartesianGrid</scope><name>resolution</name></member>
       <member refid="classlibmolgrid_1_1CartesianGrid_1a187648938394eeb3cd86f9a4ce13eeea" prot="private" virt="non-virtual"><scope>libmolgrid::CartesianGrid</scope><name>resolution_</name></member>
       <member refid="classlibmolgrid_1_1CartesianGrid_1a06b7c8c6d4403b1427e3f8f148984d6a" prot="public" virt="non-virtual"><scope>libmolgrid::CartesianGrid</scope><name>~CartesianGrid</name></member>

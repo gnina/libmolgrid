@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="505" column="24" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="505" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="507" column="24" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="507" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1SubsetAtomMapper_1a13a0fc95c51121d146263a7c52618f50" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="506" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="506" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="508" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="508" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1SubsetAtomMapper_1af46a482e7cac1e3650b72be3281c229a" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="507" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="507" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="509" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="509" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1SubsetAtomMapper_1a2fd112052ac414d508d2560c3d26bf6f" prot="private" static="no" mutable="no">
         <type>unsigned</type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="508" column="14" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="508" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="510" column="14" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="510" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -87,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="513" column="5" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="477" bodyend="495"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="515" column="5" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="477" bodyend="495"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1SubsetAtomMapper_1ad0d2057e289454c58a7c519a3ec977f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -115,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="516" column="5" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="498" bodyend="521"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="518" column="5" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="498" bodyend="521"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1SubsetAtomMapper_1ad493bf80b659abb6e401d7fee5c8231a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>unsigned</type>
@@ -130,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="519" column="22" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="519" bodyend="519"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="521" column="22" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="521" bodyend="521"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1SubsetAtomMapper_1a65bf8d6eed03de1b4e3d6fdde34adabd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>int</type>
@@ -149,7 +149,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="522" column="17" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="524" bodyend="529"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="524" column="17" bodyfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" bodystart="524" bodyend="529"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1SubsetAtomMapper_1aacde71a2d28fc736c3d43da006f3a1c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -164,7 +164,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="524" column="25" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="524" bodyend="524"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="526" column="25" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="526" bodyend="526"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -196,7 +196,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="504" column="50" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="504" bodyend="526"/>
+    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="506" column="50" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" bodystart="506" bodyend="528"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1AtomIndexTypeMapper_1a5d3f8f728d969e963cc44c9d3defa807" prot="public" virt="non-virtual"><scope>libmolgrid::SubsetAtomMapper</scope><name>AtomIndexTypeMapper</name></member>
       <member refid="classlibmolgrid_1_1SubsetAtomMapper_1af46a482e7cac1e3650b72be3281c229a" prot="private" virt="non-virtual"><scope>libmolgrid::SubsetAtomMapper</scope><name>default_type</name></member>

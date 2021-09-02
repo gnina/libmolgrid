@@ -352,6 +352,13 @@ registered hooks while the latter silently ignores them.</p>
 :param data_root: prefix for data files
 :param recmolcache: precalculated molcache2 file for receptor (first molecule); if doesn’t exist, will look in data _root
 :param ligmolcache: precalculated molcache2 file for ligand; if doesn’t exist, will look in data_root</p>
+<dl class="py method">
+<dt id="molgrid.torch_bindings.MolDataset.collateMolDataset">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">collateMolDataset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#molgrid.torch_bindings.MolDataset.collateMolDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>collate_fn for use in torch.utils.data.Dataloader when using the MolDataset.
+Returns lengths, centers, coords, types, radii, labels all padded to fit maximum size of batch</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py function">
@@ -375,7 +382,7 @@ registered hooks while the latter silently ignores them.</p>
 <dt id="molgrid.AtomTyper">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">molgrid.</span></code><code class="sig-name descname"><span class="pre">AtomTyper</span></code><a class="headerlink" href="#molgrid.AtomTyper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Boost.Python.instance</span></code></p>
-<p>Base class for all atom typers <a href="#id1"><span class="problematic" id="id2">*</span></a>/</p>
+<p>Base class for all atom typers</p>
 <p>Raises an exception
 This class cannot be instantiated from Python</p>
 </dd></dl>
@@ -565,7 +572,9 @@ a vector one-hot encoding of an index type can be created.</p>
 <code class="sig-name descname"><span class="pre">make_vector_types</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">(CoordinateSet)arg1</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">(bool)include_dummy_type=False</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">(list)type_radii=[]</span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span> <span class="pre">:</span><a class="headerlink" href="#molgrid.CoordinateSet.make_vector_types" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
 <div><blockquote>
-<div><p>convert index types to vector types in-place</p>
+<div><p>convert index types to vector types in-place
+&#64;param include_dummy_type - if true will create an additional type at end (has zero radii if type radii are provided is true)
+&#64;param type_radii - if provided, convert radii array to be type indexed,</p>
 </div></blockquote>
 <p>/</p>
 <dl class="simple">
@@ -573,14 +582,16 @@ a vector one-hot encoding of an index type can be created.</p>
 </dd>
 </dl>
 </div></blockquote>
-<p>make_vector_types( (CoordinateSet)arg1 [, (bool)include_dummy_type=False [, (FloatVec)type_radii=&lt;molgrid.molgrid.FloatVec object at 0x7feee3930990&gt;]]) -&gt; None :</p>
+<p>make_vector_types( (CoordinateSet)arg1 [, (bool)include_dummy_type=False [, (FloatVec)type_radii=&lt;molgrid.molgrid.FloatVec object at 0x7fd798cf9a50&gt;]]) -&gt; None :</p>
 <blockquote>
 <div><blockquote>
-<div><p>convert index types to vector types in-place</p>
+<div><p>convert index types to vector types in-place
+&#64;param include_dummy_type - if true will create an additional type at end (has zero radii if type radii are provided is true)
+&#64;param type_radii - if provided, convert radii array to be type indexed,</p>
 </div></blockquote>
 <p>/</p>
 <dl class="simple">
-<dt>C++ signature :</dt><dd><p>void make_vector_types(libmolgrid::CoordinateSet {lvalue} [,bool=False [,std::vector&lt;float, std::allocator&lt;float&gt; &gt;=&lt;molgrid.molgrid.FloatVec object at 0x7feee3930990&gt;]])</p>
+<dt>C++ signature :</dt><dd><p>void make_vector_types(libmolgrid::CoordinateSet {lvalue} [,bool=False [,std::vector&lt;float, std::allocator&lt;float&gt; &gt;=&lt;molgrid.molgrid.FloatVec object at 0x7fd798cf9a50&gt;]])</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -684,13 +695,10 @@ an organic chem atom mapper that reduces to number of types.
 The type id is the atomic number.  Any element with atomic number
 greater than or equal to the specified max is assigned type zero.</p>
 <blockquote>
-<div><p><a href="#id3"><span class="problematic" id="id4">*</span></a>/</p>
-<blockquote>
 <div><dl class="simple">
 <dt>C++ signature :</dt><dd><p>void __init__(_object*)</p>
 </dd>
 </dl>
-</div></blockquote>
 </div></blockquote>
 <p>__init__( (object)arg1, (int)arg2) -&gt; None :</p>
 <blockquote>
@@ -947,6 +955,9 @@ This contains an ExampleRefProvider, which can be configured using a
 single settings object if so desired, and an example extractor.
 Note that cache_structs is true by default which will load the entirety
 of the dataset into memory.</p>
+<p>An example files contains a single example on each line where an example
+consists of some number of numerical labels (num_labels, will be auto-detected
+if not specified) followed by file paths to molecular data, all space separated.</p>
 </div></blockquote>
 <p>/</p>
 <blockquote>
@@ -1047,10 +1058,10 @@ of the dataset into memory.</p>
 </dd>
 </dl>
 </div></blockquote>
-<p>populate( (ExampleProvider)file_name [, (list)num_labels=-1 [, (int)has_group=False]]) -&gt; None :</p>
+<p>populate( (ExampleProvider)arg1, (list)file_names [, (int)num_labels=-1]) -&gt; None :</p>
 <blockquote>
 <div><dl class="simple">
-<dt>C++ signature :</dt><dd><p>void populate(libmolgrid::ExampleProvider {lvalue} [,boost::python::list=-1 [,int=False]])</p>
+<dt>C++ signature :</dt><dd><p>void populate(libmolgrid::ExampleProvider {lvalue},boost::python::list [,int=-1])</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -1287,7 +1298,7 @@ of the dataset into memory.</p>
 <dt class="field-even">param labelpos</dt>
 <dd class="field-even"><p>position of label</p>
 </dd>
-<dt class="field-odd">param grid</dt>
+<dt class="field-odd">param out</dt>
 <dd class="field-odd"><p>2D grid (NxL)</p>
 </dd>
 </dl>
@@ -1309,7 +1320,7 @@ of the dataset into memory.</p>
 <dt class="field-even">param labelpos</dt>
 <dd class="field-even"><p>position of label</p>
 </dd>
-<dt class="field-odd">param grid</dt>
+<dt class="field-odd">param out</dt>
 <dd class="field-odd"><p>2D grid (NxL)</p>
 </dd>
 </dl>
@@ -1391,7 +1402,7 @@ of the dataset into memory.</p>
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">molgrid.</span></code><code class="sig-name descname"><span class="pre">FileAtomMapper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">(object)arg1</span></em>, <em class="sig-param"><span class="pre">(str)arg2</span></em>, <em class="sig-param"><span class="pre">(StringVec)arg3</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span> <span class="pre">:</span><a class="headerlink" href="#molgrid.FileAtomMapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Boost.Python.instance</span></code></p>
 <blockquote>
-<div><p>Atom mappers <strong>*************</strong>/
+<div><p>Atom mappers <strong>************</strong>
 Map atom types based on provided file.</p>
 <p>Each line for the provided file specifies a single type.
 Types are specified using type names.
@@ -1536,9 +1547,9 @@ This class must be provided the type names properly indexed (should match get_ty
 <dt id="molgrid.GninaIndexTyper">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">molgrid.</span></code><code class="sig-name descname"><span class="pre">GninaIndexTyper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">(object)arg1</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span> <span class="pre">:</span><a class="headerlink" href="#molgrid.GninaIndexTyper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">molgrid.molgrid.AtomTyper</span></code></p>
-<p>Atom typers <strong>*************</strong>/
+<p>Atom typers <strong>************</strong>
 Calculate gnina types</p>
-<p>These are variants of AutoDock4 types. <a href="#id5"><span class="problematic" id="id6">*</span></a>/</p>
+<p>These are variants of AutoDock4 types.</p>
 <blockquote>
 <div><dl class="simple">
 <dt>C++ signature :</dt><dd><p>void __init__(_object*)</p>
@@ -1599,7 +1610,7 @@ Calculate gnina types</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">molgrid.molgrid.AtomTyper</span></code></p>
 <p>Decompose gnina types into elements and properties.  Result is boolean.</p>
 <p>Hydrophobic, Aromatic, Donor, Acceptor</p>
-<p>These are variants of AutoDock4 types. <a href="#id7"><span class="problematic" id="id8">*</span></a>/</p>
+<p>These are variants of AutoDock4 types.</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void __init__(_object*)</p>
 </dd>
@@ -2350,9 +2361,7 @@ The center specified in the transform will be used as the grid center.</p>
 <p>forward( (GridMaker)arg1, (float3)arg2, (Grid2f)arg3, (Grid2f)arg4, (Grid1f)arg5, (Grid4f)arg6) -&gt; None :</p>
 <blockquote>
 <div><blockquote>
-<div><p>Generate grid tensor from CPU atomic data.  Grid must be properly sized.
-If TypesFromRadii, radii should be size of types and type information will be used
-to select the radii.</p>
+<div><p>Generate grid tensor from CPU atomic data.  Grid must be properly sized.</p>
 </div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">param center</dt>
@@ -2406,6 +2415,118 @@ to select the radii.</p>
 <p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},float3,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 1ul, true&gt;,libmolgrid::Grid&lt;float, 4ul, true&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (GridMaker)arg1, (Grid2f)arg2, (Grid3f)arg3, (Grid2f)arg4, (Grid2f)arg5, (Grid5f)arg6) -&gt; None :</p>
+<blockquote>
+<div><blockquote>
+<div><p>Generate grid tensors from batched atomic data.  Grid must be properly sized.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">param centers</dt>
+<dd class="field-odd"><p>of grid (Bx3)</p>
+</dd>
+<dt class="field-even">param coordinates</dt>
+<dd class="field-even"><p>(BxNx3)</p>
+</dd>
+<dt class="field-odd">param type</dt>
+<dd class="field-odd"><p>vectors (BxNxT) or type indices (BxN)</p>
+</dd>
+<dt class="field-even">param radii</dt>
+<dd class="field-even"><p>(BxN) or (BxT)</p>
+</dd>
+<dt class="field-odd">param a</dt>
+<dd class="field-odd"><p>5D grid</p>
+</dd>
+</dl>
+<p>/</p>
+<dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 3ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 5ul, false&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (GridMaker)arg1, (Grid2fCUDA)arg2, (Grid3fCUDA)arg3, (Grid2fCUDA)arg4, (Grid2fCUDA)arg5, (Grid5fCUDA)arg6) -&gt; None :</p>
+<blockquote>
+<div><blockquote>
+<div><p>Generate grid tensors from batched atomic data.  Grid must be properly sized.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">param centers</dt>
+<dd class="field-odd"><p>of grid (Bx3)</p>
+</dd>
+<dt class="field-even">param coordinates</dt>
+<dd class="field-even"><p>(BxNx3)</p>
+</dd>
+<dt class="field-odd">param type</dt>
+<dd class="field-odd"><p>vectors (BxNxT) or type indices (BxN)</p>
+</dd>
+<dt class="field-even">param radii</dt>
+<dd class="field-even"><p>(BxN) or (BxT)</p>
+</dd>
+<dt class="field-odd">param a</dt>
+<dd class="field-odd"><p>5D grid</p>
+</dd>
+</dl>
+<p>/</p>
+<dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 3ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 5ul, true&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (GridMaker)arg1, (Grid2f)arg2, (Grid3f)arg3, (Grid3f)arg4, (Grid2f)arg5, (Grid5f)arg6) -&gt; None :</p>
+<blockquote>
+<div><blockquote>
+<div><p>Generate grid tensors from batched atomic data.  Grid must be properly sized.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">param centers</dt>
+<dd class="field-odd"><p>of grid (Bx3)</p>
+</dd>
+<dt class="field-even">param coordinates</dt>
+<dd class="field-even"><p>(BxNx3)</p>
+</dd>
+<dt class="field-odd">param type</dt>
+<dd class="field-odd"><p>vectors (BxNxT) or type indices (BxN)</p>
+</dd>
+<dt class="field-even">param radii</dt>
+<dd class="field-even"><p>(BxN) or (BxT)</p>
+</dd>
+<dt class="field-odd">param a</dt>
+<dd class="field-odd"><p>5D grid</p>
+</dd>
+</dl>
+<p>/</p>
+<dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 3ul, false&gt;,libmolgrid::Grid&lt;float, 3ul, false&gt;,libmolgrid::Grid&lt;float, 2ul, false&gt;,libmolgrid::Grid&lt;float, 5ul, false&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>forward( (GridMaker)arg1, (Grid2fCUDA)arg2, (Grid3fCUDA)arg3, (Grid3fCUDA)arg4, (Grid2fCUDA)arg5, (Grid5fCUDA)arg6) -&gt; None :</p>
+<blockquote>
+<div><blockquote>
+<div><p>Generate grid tensors from batched atomic data.  Grid must be properly sized.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">param centers</dt>
+<dd class="field-odd"><p>of grid (Bx3)</p>
+</dd>
+<dt class="field-even">param coordinates</dt>
+<dd class="field-even"><p>(BxNx3)</p>
+</dd>
+<dt class="field-odd">param type</dt>
+<dd class="field-odd"><p>vectors (BxNxT) or type indices (BxN)</p>
+</dd>
+<dt class="field-even">param radii</dt>
+<dd class="field-even"><p>(BxN) or (BxT)</p>
+</dd>
+<dt class="field-odd">param a</dt>
+<dd class="field-odd"><p>5D grid</p>
+</dd>
+</dl>
+<p>/</p>
+<dl class="simple">
+<dt>C++ signature :</dt><dd><p>void forward(libmolgrid::GridMaker {lvalue},libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 3ul, true&gt;,libmolgrid::Grid&lt;float, 3ul, true&gt;,libmolgrid::Grid&lt;float, 2ul, true&gt;,libmolgrid::Grid&lt;float, 5ul, true&gt;)</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -2528,9 +2649,8 @@ to select the radii.</p>
 <dt id="molgrid.NullIndexTyper">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">molgrid.</span></code><code class="sig-name descname"><span class="pre">NullIndexTyper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">(object)arg1</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span> <span class="pre">:</span><a class="headerlink" href="#molgrid.NullIndexTyper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">molgrid.molgrid.AtomTyper</span></code></p>
+<p>Always return an invalid type</p>
 <dl class="simple">
-<dt>Always return an invalid type</dt><dd><p><a href="#id9"><span class="problematic" id="id10">*</span></a>/</p>
-</dd>
 <dt>C++ signature :</dt><dd><p>void __init__(_object*)</p>
 </dd>
 </dl>
@@ -2807,10 +2927,10 @@ for maximum CUDA performance.</p>
 </dd>
 </dl>
 </div></blockquote>
-<p>__init__( (object)arg1, (list)map [, (bool)catchall=True [, (StringVec)old_names=&lt;molgrid.molgrid.StringVec object at 0x7feee3930870&gt;]]) -&gt; object :</p>
+<p>__init__( (object)arg1, (list)map [, (bool)catchall=True [, (StringVec)old_names=&lt;molgrid.molgrid.StringVec object at 0x7fd798cf9ac0&gt;]]) -&gt; object :</p>
 <blockquote>
 <div><dl class="simple">
-<dt>C++ signature :</dt><dd><p>void* __init__(boost::python::api::object,boost::python::list [,bool=True [,std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;=&lt;molgrid.molgrid.StringVec object at 0x7feee3930870&gt;]])</p>
+<dt>C++ signature :</dt><dd><p>void* __init__(boost::python::api::object,boost::python::list [,bool=True [,std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;=&lt;molgrid.molgrid.StringVec object at 0x7fd798cf9ac0&gt;]])</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -3162,7 +3282,7 @@ in-place.</p>
 <dt id="molgrid.read_dx">
 <code class="sig-prename descclassname"><span class="pre">molgrid.</span></code><code class="sig-name descname"><span class="pre">read_dx</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">(str)arg1</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">CartesianGrid</span> <span class="pre">:</span><a class="headerlink" href="#molgrid.read_dx" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>Read in dx formatted grid and return initialized grid <a href="#id11"><span class="problematic" id="id12">*</span></a>/</p>
+<div><p>Read in dx formatted grid and return initialized grid</p>
 </div></blockquote>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>libmolgrid::CartesianGrid&lt;libmolgrid::ManagedGrid&lt;float, 3ul&gt; &gt; read_dx(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</p>
@@ -3182,9 +3302,6 @@ in-place.</p>
 <li><p><strong>prefix</strong> – filename will have form [prefix]_[typename].dx</p></li>
 <li><p><strong>names</strong> – must have same size as first dimension of grid</p></li>
 <li><p><strong>grid</strong> – input grids</p></li>
-<li><p><strong>center</strong> – </p></li>
-<li><p><strong>resolution</strong> – </p></li>
-<li><p><strong>scale</strong> – multiply each value by this factor</p></li>
 </ul>
 </dd>
 </dl>

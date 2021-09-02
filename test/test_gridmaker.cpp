@@ -83,6 +83,32 @@ BOOST_AUTO_TEST_CASE(forward_cpu) {
       }
     }
   }
+
+  //now try a different resolution
+  dimension = 23.5;
+  resolution = 0.25;
+  grid_center = combined.center();
+  GridMaker biggmaker(resolution, dimension);
+  grid_dims = biggmaker.get_grid_dims();
+
+  MGrid4f cout(ntypes, grid_dims.x, grid_dims.y, grid_dims.z);
+  MGrid4f gout(ntypes, grid_dims.x, grid_dims.y, grid_dims.z);
+  biggmaker.forward(grid_center, combined, cout.cpu());
+  biggmaker.forward(grid_center, combined, gout.gpu());
+
+  //compare
+  gout.tocpu();
+  for (size_t ch = 0; ch < ntypes; ++ch) {
+    for (size_t i = 0; i < grid_dims.x; ++i) {
+      for (size_t j = 0; j < grid_dims.y; ++j) {
+        for (size_t k = 0; k < grid_dims.z; ++k) {
+            if(::fabs(cout(ch,i,j,k) - gout(ch,i,j,k)) > 0.001)
+              printf("%d %d,%d,%d   %f %f %f\n",int(ch),int(i),int(j),int(k),cout(ch,i,j,k),gout(ch,i,j,k),cout(ch,i,j,k) - gout(ch,i,j,k));
+          BOOST_CHECK_SMALL(cout(ch,i,j,k) - gout(ch,i,j,k), TOL);
+        }
+      }
+    }
+  }
 }
 
 //boost assert equality between to sets of coordinates

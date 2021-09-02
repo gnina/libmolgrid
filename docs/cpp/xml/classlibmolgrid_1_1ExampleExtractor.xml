@@ -177,7 +177,7 @@
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" line="83" column="20" bodyfile="/home/dkoes/git/libmolgrid/src/example_extractor.cpp" bodystart="69" bodyend="71"/>
         <referencedby refid="classlibmolgrid_1_1ExampleDataset_1a59b7170f88e4d8d17e9f4eb5e3d62712" compoundref="example__dataset_8h" startline="64" endline="64">ExampleDataset::num_types</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1a59b7170f88e4d8d17e9f4eb5e3d62712" compoundref="example__provider_8h" startline="132" endline="132">ExampleProvider::num_types</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1a59b7170f88e4d8d17e9f4eb5e3d62712" compoundref="example__provider_8h" startline="136" endline="136">ExampleProvider::num_types</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleExtractor_1a92e331dc0874eea72e24fad42efdddc6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>size_t</type>
@@ -210,7 +210,7 @@
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" line="90" column="25" bodyfile="/home/dkoes/git/libmolgrid/src/example_extractor.cpp" bodystart="77" bodyend="86"/>
         <referencedby refid="classlibmolgrid_1_1ExampleDataset_1a2babcd45f89ff67b4b4887f7ba469ae6" compoundref="example__dataset_8h" startline="66" endline="66">ExampleDataset::get_type_names</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1a2babcd45f89ff67b4b4887f7ba469ae6" compoundref="example__provider_8h" startline="134" endline="134">ExampleProvider::get_type_names</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1a2babcd45f89ff67b4b4887f7ba469ae6" compoundref="example__provider_8h" startline="138" endline="138">ExampleProvider::get_type_names</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>

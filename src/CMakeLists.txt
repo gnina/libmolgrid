@@ -15,6 +15,8 @@ set( LIBMOLGRID_SOURCES
  transform.cpp
  transform.cu
  grid_io.cpp
+ grid_interpolater.cpp
+ grid_interpolater.cu
  cartesian_grid.cpp
 )
 
@@ -32,6 +34,7 @@ set( LIBMOLGRID_HEADERS
  ../include/libmolgrid/example_provider.h
  ../include/libmolgrid/example_dataset.h
  ../include/libmolgrid/grid_maker.h
+  ../include/libmolgrid/grid_interpolater.h
  ../include/libmolgrid/coord_cache.h
  ../include/libmolgrid/common.h
  ../include/libmolgrid/grid_io.h

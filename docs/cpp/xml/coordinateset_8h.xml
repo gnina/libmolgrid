@@ -145,22 +145,24 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="13">
         <label>grid_interpolater.h</label>
         <link refid="grid__interpolater_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
       </node>
       <node id="8">
         <label>example_extractor.cpp</label>
         <link refid="example__extractor_8cpp"/>
       </node>
-      <node id="15">
+      <node id="16">
         <label>grid_maker.cpp</label>
         <link refid="grid__maker_8cpp"/>
       </node>
@@ -190,13 +192,13 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="14">
+      <node id="15">
         <label>grid_maker.h</label>
         <link refid="grid__maker_8h"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="17">
+      <node id="18">
         <label>libmolgrid.cpp</label>
         <link refid="libmolgrid_8cpp"/>
       </node>
@@ -206,7 +208,7 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="19">
         <label>transform.cpp</label>
         <link refid="transform_8cpp"/>
       </node>
@@ -214,16 +216,20 @@
         <label>exampleref_providers.cpp</label>
         <link refid="exampleref__providers_8cpp"/>
       </node>
-      <node id="16">
+      <node id="14">
+        <label>grid_interpolater.cpp</label>
+        <link refid="grid__interpolater_8cpp"/>
+      </node>
+      <node id="17">
         <label>transform.h</label>
         <link refid="transform_8h"/>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
       <node id="7">
@@ -234,7 +240,7 @@
         <label>coord_cache.cpp</label>
         <link refid="coord__cache_8cpp"/>
       </node>
-      <node id="20">
+      <node id="21">
         <label>coordinateset.cpp</label>
         <link refid="coordinateset_8cpp"/>
       </node>
@@ -242,7 +248,7 @@
         <label>example_dataset.cpp</label>
         <link refid="example__dataset_8cpp"/>
       </node>
-      <node id="19">
+      <node id="20">
         <label>example.cpp</label>
         <link refid="example_8cpp"/>
       </node>
@@ -257,9 +263,9 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -296,7 +302,7 @@
 <codeline lineno="32" refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" refkind="member"><highlight class="normal"><sp/><sp/>MGrid2f<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a94c1de66d5b2a1b72b12390f62e933d2" kindref="member">type_vector</ref>{0,0};</highlight></codeline>
 <codeline lineno="33" refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" refkind="member"><highlight class="normal"><sp/><sp/>MGrid1f<sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1aa9e99857d75e6127d4ea0d461d6b4e77" kindref="member">radii</ref>{0};<sp/></highlight></codeline>
 <codeline lineno="34" refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a9a1fde4b37ea791b44ef34157cc33584" kindref="member">max_type</ref><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//for<sp/>indexed<sp/>types,<sp/>non-inclusive<sp/>max</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35" refid="structlibmolgrid_1_1CoordinateSet_1af51e37c9331049b1e3d250a7c8bc3c26" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="structlibmolgrid_1_1CoordinateSet_1af51e37c9331049b1e3d250a7c8bc3c26" kindref="member">src</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//mostly<sp/>for<sp/>debugging,<sp/>source<sp/>of<sp/>coordinates</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="structlibmolgrid_1_1CoordinateSet_1af51e37c9331049b1e3d250a7c8bc3c26" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="structlibmolgrid_1_1CoordinateSet_1af51e37c9331049b1e3d250a7c8bc3c26" kindref="member">src</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
 <codeline lineno="37" refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structlibmolgrid_1_1CoordinateSet_1a88ee45d03f006fde3921e9bb55d1d600" kindref="member">CoordinateSet</ref>()<sp/>{}</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>

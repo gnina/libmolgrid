@@ -54,7 +54,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'libmolgrid'
-copyright = '2019, David Koes and Jocelyn Sunseri'
+copyright = '2019-2021, David Koes and Jocelyn Sunseri'
 author = 'David Koes and Jocelyn Sunseri'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -172,5 +172,5 @@ latex_elements = {
      # 'Miscellaneous'),
 # ]
 
-
-
+#understand cuda
+cpp_id_attributes = ["__global__", "__device__","__host__","CUDA_CALLABLE_MEMBER"]

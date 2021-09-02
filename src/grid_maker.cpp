@@ -24,7 +24,7 @@ void GridMaker::initialize(float res, float d, bool bin, float rscale, float grm
   } else {
     final_radius_multiple = (1+2*grm*grm)/(2*grm);
   }
-  dim = ::round(dimension / resolution) + 1;
+  dim = std::round(dimension / resolution) + 1;
   binary = bin;
 
   A = exp(-2*grm*grm)*4*grm*grm; // *d^2/r^2
@@ -164,9 +164,11 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
   float3 grid_origin = get_grid_origin(grid_center);
   size_t natoms = coords.dimension(0);
   size_t ntypes = out.dimension(0);
+  Dtype *data = out.data();
+
   //iterate over all atoms
   for (size_t aidx = 0; aidx < natoms; ++aidx) {
-    float atype = type_index(aidx);
+    size_t atype = floor(type_index(aidx));
     if(atype >= ntypes) throw std::out_of_range("Type index "+itoa(atype)+" larger than allowed "+itoa(ntypes));
     if (atype >= 0 && atype < ntypes) {
       float3 acoords;
@@ -195,11 +197,11 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
               float val = calc_point<true>(acoords.x, acoords.y, acoords.z, radius, grid_coords);
 
               if (val != 0)
-                *(out.data() + offset) = 1.0;
+                *(data + offset) = 1.0;
             }
             else {
               float val = calc_point<false>(acoords.x, acoords.y, acoords.z, radius, grid_coords);
-              *(out.data() + offset) += val;
+              *(data + offset) += val;
             }
 
           }
@@ -209,7 +211,7 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
   }
 }
 
-template<typename Dtype, bool TypesFromRadii>
+template<typename Dtype>
 void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
     const Grid<float, 2, false>& type_vector, const Grid<float, 1, false>& radii,
     Grid<Dtype, 4, false>& out) const {
@@ -269,7 +271,6 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
 }
 
         
-        
 template void GridMaker::forward(const std::vector<Example>& in, Grid<float, 5, false>& out,
   float random_translation, bool random_rotation) const;
 template void GridMaker::forward(const std::vector<Example>& in, Grid<float, 5, true>& out,
@@ -296,7 +297,30 @@ template void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>
 template void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
         const Grid<float, 2, false>& type_vector, const Grid<float, 1, false>& radii,
         Grid<double, 4, false>& out) const;
-        
+
+//batched cpu float
+
+template void GridMaker::forward<float,2,false>(const Grid<float, 2, false> &centers,
+    const Grid<float, 3, false> &coords,
+    const Grid<float, 2, false> &types,
+    const Grid<float, 2, false> &radii, Grid<float, 5, false> &out) const;
+template void GridMaker::forward<float,3,false>(const Grid<float, 2, false> &centers,
+    const Grid<float, 3, false> &coords,
+    const Grid<float, 3, false> &types,
+    const Grid<float, 2, false> &radii,Grid<float, 5, false> &out) const;
+
+//batched cpu double
+template void GridMaker::forward<double,2,false>(const Grid<float, 2, false> &centers,
+    const Grid<float, 3, false> &coords,
+    const Grid<float, 2, false> &types,
+    const Grid<float, 2, false> &radii, Grid<double, 5, false> &out) const;
+template void GridMaker::forward<double,3,false>(const Grid<float, 2, false> &centers,
+    const Grid<float, 3, false> &coords,
+    const Grid<float, 3, false> &types,
+    const Grid<float, 2, false> &radii,Grid<double, 5, false> &out) const;
+
+
+
 //set a single atom gradient - note can't pass a slice by reference
 template <typename Dtype>
 float3 GridMaker::calc_atom_gradient_cpu(const float3& grid_origin, const Grid1f& coordr, const Grid<Dtype, 3, false>& diff, float radius) const {

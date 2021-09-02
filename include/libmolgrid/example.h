@@ -1,4 +1,4 @@
-/** \file Example.h
+/** \file example.h
  *
  *  Class for storing a single example as atomic coordinates with their associated
  *  atom types and labels.  An example consists of one or more atom sets.  Each
@@ -122,7 +122,7 @@ struct Example {
      *
      * @param[in] examples  vector of examples
      * @param[in] labelpos position of label
-     * @param[out] grid 2D grid (NxL)
+     * @param[out] out 2D grid (NxL)
      */
     template <bool isCUDA>
     static void extract_label(const std::vector<Example>& examples, unsigned labelpos, Grid<float, 1, isCUDA>& out);

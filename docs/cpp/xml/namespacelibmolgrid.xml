@@ -134,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="41" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="41" bodyend="-1"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="65" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespacelibmolgrid_1a7279d61df03794f106ab563c49049052" prot="public" static="no">
         <type>::float3</type>
@@ -163,7 +163,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" line="533" column="22" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" declline="633" declcolumn="29"/>
+        <location file="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" line="533" column="22" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" declline="635" declcolumn="29"/>
       </memberdef>
       <memberdef kind="variable" id="namespacelibmolgrid_1a371ec05022b3d175a5b02d540f947ac2" prot="public" static="no" mutable="no">
         <type><ref refid="classlibmolgrid_1_1FileMappedGninaTyper" kindref="compound">FileMappedGninaTyper</ref></type>
@@ -177,7 +177,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" line="534" column="22" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" declline="651" declcolumn="29"/>
+        <location file="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" line="534" column="22" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" declline="653" declcolumn="29"/>
       </memberdef>
       <memberdef kind="variable" id="namespacelibmolgrid_1ae85ac8fbef92553b049a1d50afa4c183" prot="public" static="no" mutable="no">
         <type><ref refid="classlibmolgrid_1_1StringCache" kindref="compound">StringCache</ref></type>
@@ -279,6 +279,74 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="333" column="1" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" declline="333" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacelibmolgrid_1a2dbb37176b2d9724d607ba464b5506e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> float3</type>
+        <definition>CUDA_CALLABLE_MEMBER float3 libmolgrid::cart2grid</definition>
+        <argsstring>(float3 origin, float resolution, float x, float y, float z)</argsstring>
+        <name>cart2grid</name>
+        <param>
+          <type>float3</type>
+          <declname>origin</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>resolution</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="189" column="36" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="189" bodyend="192"/>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1aa7f689a401310ce064f2f0903842c0ab" compoundref="grid__interpolater_8cpp" startline="17" endline="48">GridInterpolater::forward</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespacelibmolgrid_1a9c218888670e6716f1d3dc698da244fa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> float3</type>
+        <definition>CUDA_CALLABLE_MEMBER float3 libmolgrid::grid2cart</definition>
+        <argsstring>(float3 origin, float resolution, unsigned i, unsigned j, unsigned k)</argsstring>
+        <name>grid2cart</name>
+        <param>
+          <type>float3</type>
+          <declname>origin</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>resolution</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="195" column="36" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="195" bodyend="198"/>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1aa7f689a401310ce064f2f0903842c0ab" compoundref="grid__interpolater_8cpp" startline="17" endline="48">GridInterpolater::forward</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1ade64fcaf6347fae87a6a41fb17a3fb31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -632,36 +700,12 @@
 <para>input grids </para>
 </parameterdescription>
 </parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">center</parametername>
-</parameternamelist>
-<parameterdescription>
-<para></para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">resolution</parametername>
-</parameternamelist>
-<parameterdescription>
-<para></para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">scale</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>multiply each value by this factor </para>
-</parameterdescription>
-</parameteritem>
 </parameterlist>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="192" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="192" bodyend="201" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="68" declcolumn="6"/>
+        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="192" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="192" bodyend="201" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="65" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a2fd3cdc3e58f538b5ae29f29654a5b2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -702,7 +746,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="205" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="205" bodyend="221" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="73" declcolumn="6"/>
+        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="205" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="205" bodyend="221" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="70" declcolumn="6"/>
         <referencedby refid="namespacelibmolgrid_1a5f98c4b4e9bc1306dc43643d0f701b23" compoundref="grid__io_8cpp" startline="225" endline="229">write_map</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a5f98c4b4e9bc1306dc43643d0f701b23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -743,7 +787,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="225" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="225" bodyend="229" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="75" declcolumn="6"/>
+        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="225" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="225" bodyend="229" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="72" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a618d0b859add1c20d24e684604c09b6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -769,7 +813,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" line="79" column="6" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" bodystart="79" bodyend="81"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" line="76" column="6" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" bodystart="76" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1afc56244e72d2209f03b10191d4c0fd99" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -828,12 +872,13 @@
         <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8cpp" startline="107" endline="117">BalancedExampleRefProvider::addref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a354afea429c9572094ac2c5c5ed19786" compoundref="managed__grid_8h" startline="64" endline="75">ManagedGridBase&lt; Dtype, 1 &gt;::alloc_and_set_cpu</referencedby>
         <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1aad5407e977e2f417b18ed54a0cf7730c" compoundref="managed__grid_8h" startline="78" endline="91">ManagedGridBase&lt; Dtype, 1 &gt;::alloc_and_set_gpu</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1a2c462d84c2b3da4f21cd34bf090ca082" compoundref="grid__maker_8cpp" startline="413" endline="443">GridMaker::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a2c462d84c2b3da4f21cd34bf090ca082" compoundref="grid__maker_8cpp" startline="437" endline="467">GridMaker::backward</referencedby>
         <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" compoundref="exampleref__providers_8h" startline="499" endline="503">GroupedExampleRefProvider&lt; Provider &gt;::check_batch_size</referencedby>
         <referencedby refid="classlibmolgrid_1_1Grid_1a18ec2ecbbcf47264c34b0fd73242b119" compoundref="grid_8h" startline="65" endline="73">Grid&lt; Dtype, NumDims, true &gt;::check_index</referencedby>
         <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a18ec2ecbbcf47264c34b0fd73242b119" compoundref="grid_8h" startline="238" endline="246">Grid&lt; Dtype, 1, isCUDA &gt;::check_index</referencedby>
         <referencedby refid="classlibmolgrid_1_1GridMaker_1abe03e795cf5097fd746c9d649de88053" compoundref="grid__maker_8cpp" startline="40" endline="54">GridMaker::check_index_args</referencedby>
         <referencedby refid="classlibmolgrid_1_1GridMaker_1a76f7b7e78b9bbc969d49cf78c2b976e4" compoundref="grid__maker_8cpp" startline="68" endline="89">GridMaker::check_vector_args</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a169b99d2f9026e906fca800564aa0a83" compoundref="grid__interpolater_8cpp" startline="56" endline="76">GridInterpolater::checkGrids</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0d12f64812a930fd456f29565d3a2a6f" compoundref="coordinateset_8cpp" startline="137" endline="158">CoordinateSet::CoordinateSet</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a5e03f82a57c74b8044e504f82ae74fa6" compoundref="coordinateset_8cpp" startline="313" endline="319">CoordinateSet::copyTo</referencedby>
         <referencedby refid="structlibmolgrid_1_1Example_1abd2622389892168945e6f8d721072e38" compoundref="example_8cpp" startline="277" endline="295">Example::extract_label</referencedby>
