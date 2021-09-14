@@ -399,6 +399,8 @@ BOOST_PYTHON_MODULE(molgrid)
       "Set if generated grids should be on GPU by default.");
   def("tofloatptr", +[](long val) { return Pointer<float>((float*)val);}, "Return integer as float *");
   def("todoubleptr", +[](long val) { return Pointer<double>((double*)val);}, "Return integer as double *");
+  def("set_gpu_device", +[](int device)->void {LMG_CUDA_CHECK(cudaSetDevice(device));}, "Set current GPU device.");
+  def("get_gpu_device", +[]()->int {int device = 0; LMG_CUDA_CHECK(cudaGetDevice(&device)); return device;}, "Get current GPU device.");
 
   //type converters
   py_pair<int, float>();

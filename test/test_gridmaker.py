@@ -102,6 +102,32 @@ def test_a_grid():
     assert 2.094017 == approx(mgridout.tonumpy().max())
     assert 2.094017 == approx(mgridgpu.tonumpy().max())
 
+def test_devices():
+    fname = datadir+"/small.types"
+    e = molgrid.ExampleProvider(data_root=datadir+"/structs")
+    e.populate(fname)
+    ex = e.next()
+
+    gmaker = molgrid.GridMaker()
+    dims = gmaker.grid_dimensions(ex.num_types()) # this should be grid_dims or get_grid_dims
+
+    try:
+        torchout = torch.zeros(dims, dtype=torch.float32, device='cuda:1')
+    except RuntimeError:
+        return # can't test multiple devices because we don't have them
+    
+    try:
+        gmaker.forward(ex, torchout)
+        assert False # should not get here
+    except ValueError:
+        pass # this should return an error
+    
+    molgrid.set_gpu_device(1)
+    assert molgrid.get_gpu_device() == 1
+    ex = e.next() 
+    gmaker.forward(ex, torchout) #should work now
+    
+    
 def test_radius_multiples():
     g1 = molgrid.GridMaker(resolution=.1,dimension=6.0)
     c = np.array([[0,0,0]],np.float32)

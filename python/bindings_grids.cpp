@@ -117,6 +117,14 @@ struct Grid_from_python {
         } else {
           return false; //don't recognize
         }
+        if(info.isGPU && hasattr(t,"device") && hasattr(t.attr("device"), "index")) {
+          int d = extract<int>(t.attr("device").attr("index"));
+          int currd = 0;
+          LMG_CUDA_CHECK(cudaGetDevice(&currd));
+          if(currd != d) {
+            throw std::invalid_argument("Attempt to use GPU tensor on different device ("+itoa(d)+") than current device ("+itoa(currd)+").  Change location of tensor or change current device.");
+          }
+        }
         if(hasattr(t,"is_contiguous")) {
           if(!t.attr("is_contiguous")()) {
             throw std::invalid_argument("Attempt to use non-contiguous tensor in molgrid.  Call clone first.");
