@@ -17,9 +17,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coordinateset.h" line="30" column="11" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coordinateset.h" bodystart="30" bodyend="-1"/>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1af08f43a3ae58eb252a6d1faafeb4827a" compoundref="grid__maker_8h" startline="306" endline="313">GridMaker::backward</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1aa84965150fcdef1913fdc8a2c9d59e39" compoundref="grid__maker_8h" startline="500" endline="511">GridMaker::backward_gradients</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1abd049b5c336260d2448ff1cba930d029" compoundref="grid__maker_8h" startline="550" endline="558">GridMaker::backward_relevance</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1af08f43a3ae58eb252a6d1faafeb4827a" compoundref="grid__maker_8h" startline="315" endline="322">GridMaker::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aa84965150fcdef1913fdc8a2c9d59e39" compoundref="grid__maker_8h" startline="509" endline="520">GridMaker::backward_gradients</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1abd049b5c336260d2448ff1cba930d029" compoundref="grid__maker_8h" startline="559" endline="567">GridMaker::backward_relevance</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a437464eaf145c5829daa0cbb90c95dee" compoundref="coordinateset_8cpp" startline="214" endline="229">CoordinateSet::center</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a19ad80288a826f7bbcbcd8d100c3587a" compoundref="coordinateset_8h" startline="119" endline="126">CoordinateSet::clone</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a4c5326fdb5f7070c0e9eff34a793ad63" compoundref="coordinateset_8cpp" startline="75" endline="94">CoordinateSet::CoordinateSet</referencedby>
@@ -27,7 +27,7 @@
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a5e03f82a57c74b8044e504f82ae74fa6" compoundref="coordinateset_8cpp" startline="313" endline="319">CoordinateSet::copyTo</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a277bc85222ba9a7d0fd47fd10d44d115" compoundref="coordinateset_8cpp" startline="231" endline="243">CoordinateSet::dump</referencedby>
         <referencedby refid="classlibmolgrid_1_1Transform_1a528689e8c1bf63b7ec5b89c2abbed0bd" compoundref="transform_8cpp" startline="45" endline="55">Transform::forward</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="123" endline="129">GridMaker::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="132" endline="138">GridMaker::forward</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0383762ea62d2afd3844dea2c4a0befb" compoundref="coordinateset_8h" startline="81" endline="81">CoordinateSet::has_indexed_types</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1ab6edf84f5519b886ea22a9c44aef3ff5" compoundref="coordinateset_8h" startline="84" endline="84">CoordinateSet::has_vector_types</referencedby>
         <referencedby refid="structlibmolgrid_1_1Example_1aadbf4bff47ee7557c49edcb73e404604" compoundref="example_8cpp" startline="71" endline="102">Example::merge_coordinates</referencedby>
@@ -51,14 +51,14 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coordinateset.h" line="31" column="11" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coordinateset.h" bodystart="31" bodyend="-1"/>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1afd195c83a9bcdcb18917c25d2f5f7051" compoundref="grid__maker_8h" startline="325" endline="332">GridMaker::backward</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1abd049b5c336260d2448ff1cba930d029" compoundref="grid__maker_8h" startline="550" endline="558">GridMaker::backward_relevance</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1afd195c83a9bcdcb18917c25d2f5f7051" compoundref="grid__maker_8h" startline="334" endline="341">GridMaker::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1abd049b5c336260d2448ff1cba930d029" compoundref="grid__maker_8h" startline="559" endline="567">GridMaker::backward_relevance</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a19ad80288a826f7bbcbcd8d100c3587a" compoundref="coordinateset_8h" startline="119" endline="126">CoordinateSet::clone</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a4c5326fdb5f7070c0e9eff34a793ad63" compoundref="coordinateset_8cpp" startline="75" endline="94">CoordinateSet::CoordinateSet</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a93fac00245289d84e768314d1e3f361b" compoundref="coordinateset_8cpp" startline="252" endline="261">CoordinateSet::copyInto</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a5e03f82a57c74b8044e504f82ae74fa6" compoundref="coordinateset_8cpp" startline="313" endline="319">CoordinateSet::copyTo</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a277bc85222ba9a7d0fd47fd10d44d115" compoundref="coordinateset_8cpp" startline="231" endline="243">CoordinateSet::dump</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="123" endline="129">GridMaker::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="132" endline="138">GridMaker::forward</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0383762ea62d2afd3844dea2c4a0befb" compoundref="coordinateset_8h" startline="81" endline="81">CoordinateSet::has_indexed_types</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0e5b397d8ab22663778fe8cf1d47f3d7" compoundref="coordinateset_8cpp" startline="187" endline="212">CoordinateSet::make_vector_types</referencedby>
         <referencedby refid="structlibmolgrid_1_1Example_1aadbf4bff47ee7557c49edcb73e404604" compoundref="example_8cpp" startline="71" endline="102">Example::merge_coordinates</referencedby>
@@ -82,13 +82,13 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coordinateset.h" line="32" column="11" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coordinateset.h" bodystart="32" bodyend="-1"/>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1af08f43a3ae58eb252a6d1faafeb4827a" compoundref="grid__maker_8h" startline="306" endline="313">GridMaker::backward</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1aa84965150fcdef1913fdc8a2c9d59e39" compoundref="grid__maker_8h" startline="500" endline="511">GridMaker::backward_gradients</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1af08f43a3ae58eb252a6d1faafeb4827a" compoundref="grid__maker_8h" startline="315" endline="322">GridMaker::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aa84965150fcdef1913fdc8a2c9d59e39" compoundref="grid__maker_8h" startline="509" endline="520">GridMaker::backward_gradients</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a19ad80288a826f7bbcbcd8d100c3587a" compoundref="coordinateset_8h" startline="119" endline="126">CoordinateSet::clone</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0d12f64812a930fd456f29565d3a2a6f" compoundref="coordinateset_8cpp" startline="137" endline="158">CoordinateSet::CoordinateSet</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a93fac00245289d84e768314d1e3f361b" compoundref="coordinateset_8cpp" startline="252" endline="261">CoordinateSet::copyInto</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a83a328bdae1d46ef085214c4e2908a3b" compoundref="coordinateset_8cpp" startline="327" endline="345">CoordinateSet::copyTo</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="123" endline="129">GridMaker::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="132" endline="138">GridMaker::forward</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1ab6edf84f5519b886ea22a9c44aef3ff5" compoundref="coordinateset_8h" startline="84" endline="84">CoordinateSet::has_vector_types</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0e5b397d8ab22663778fe8cf1d47f3d7" compoundref="coordinateset_8cpp" startline="187" endline="212">CoordinateSet::make_vector_types</referencedby>
         <referencedby refid="structlibmolgrid_1_1Example_1aa0927ed6ec846f2a8e7daeb64e39795d" compoundref="example_8cpp" startline="140" endline="198">Example::merge_coordinates</referencedby>
@@ -112,14 +112,14 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coordinateset.h" line="33" column="11" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coordinateset.h" bodystart="33" bodyend="-1"/>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1af08f43a3ae58eb252a6d1faafeb4827a" compoundref="grid__maker_8h" startline="306" endline="313">GridMaker::backward</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1aa84965150fcdef1913fdc8a2c9d59e39" compoundref="grid__maker_8h" startline="500" endline="511">GridMaker::backward_gradients</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1abd049b5c336260d2448ff1cba930d029" compoundref="grid__maker_8h" startline="550" endline="558">GridMaker::backward_relevance</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1af08f43a3ae58eb252a6d1faafeb4827a" compoundref="grid__maker_8h" startline="315" endline="322">GridMaker::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aa84965150fcdef1913fdc8a2c9d59e39" compoundref="grid__maker_8h" startline="509" endline="520">GridMaker::backward_gradients</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1abd049b5c336260d2448ff1cba930d029" compoundref="grid__maker_8h" startline="559" endline="567">GridMaker::backward_relevance</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a19ad80288a826f7bbcbcd8d100c3587a" compoundref="coordinateset_8h" startline="119" endline="126">CoordinateSet::clone</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a4c5326fdb5f7070c0e9eff34a793ad63" compoundref="coordinateset_8cpp" startline="75" endline="94">CoordinateSet::CoordinateSet</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a93fac00245289d84e768314d1e3f361b" compoundref="coordinateset_8cpp" startline="252" endline="261">CoordinateSet::copyInto</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a5e03f82a57c74b8044e504f82ae74fa6" compoundref="coordinateset_8cpp" startline="313" endline="319">CoordinateSet::copyTo</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="123" endline="129">GridMaker::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="132" endline="138">GridMaker::forward</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0e5b397d8ab22663778fe8cf1d47f3d7" compoundref="coordinateset_8cpp" startline="187" endline="212">CoordinateSet::make_vector_types</referencedby>
         <referencedby refid="structlibmolgrid_1_1Example_1aadbf4bff47ee7557c49edcb73e404604" compoundref="example_8cpp" startline="71" endline="102">Example::merge_coordinates</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1ace9805532c7567a89ac854e292a1b980" compoundref="coordinateset_8cpp" startline="263" endline="309">CoordinateSet::mergeInto</referencedby>
@@ -525,8 +525,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coordinateset.h" line="81" column="8" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coordinateset.h" bodystart="81" bodyend="81"/>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1afd195c83a9bcdcb18917c25d2f5f7051" compoundref="grid__maker_8h" startline="325" endline="332">GridMaker::backward</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1abd049b5c336260d2448ff1cba930d029" compoundref="grid__maker_8h" startline="550" endline="558">GridMaker::backward_relevance</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1afd195c83a9bcdcb18917c25d2f5f7051" compoundref="grid__maker_8h" startline="334" endline="341">GridMaker::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1abd049b5c336260d2448ff1cba930d029" compoundref="grid__maker_8h" startline="559" endline="567">GridMaker::backward_relevance</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a277bc85222ba9a7d0fd47fd10d44d115" compoundref="coordinateset_8cpp" startline="231" endline="243">CoordinateSet::dump</referencedby>
         <referencedby refid="structlibmolgrid_1_1Example_1aadbf4bff47ee7557c49edcb73e404604" compoundref="example_8cpp" startline="71" endline="102">Example::merge_coordinates</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1ace9805532c7567a89ac854e292a1b980" compoundref="coordinateset_8cpp" startline="263" endline="309">CoordinateSet::mergeInto</referencedby>
@@ -544,9 +544,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coordinateset.h" line="84" column="8" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coordinateset.h" bodystart="84" bodyend="84"/>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1af08f43a3ae58eb252a6d1faafeb4827a" compoundref="grid__maker_8h" startline="306" endline="313">GridMaker::backward</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1aa84965150fcdef1913fdc8a2c9d59e39" compoundref="grid__maker_8h" startline="500" endline="511">GridMaker::backward_gradients</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="123" endline="129">GridMaker::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1af08f43a3ae58eb252a6d1faafeb4827a" compoundref="grid__maker_8h" startline="315" endline="322">GridMaker::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aa84965150fcdef1913fdc8a2c9d59e39" compoundref="grid__maker_8h" startline="509" endline="520">GridMaker::backward_gradients</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="132" endline="138">GridMaker::forward</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1ace9805532c7567a89ac854e292a1b980" compoundref="coordinateset_8cpp" startline="263" endline="309">CoordinateSet::mergeInto</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1aa9fc4f9f4863682959d5b4df0259546a" compoundref="coordinateset_8cpp" startline="351" endline="373">CoordinateSet::sum_types</referencedby>
       </memberdef>
@@ -685,7 +685,7 @@
         </inbodydescription>
         <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/coordinateset.h" line="104" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/coordinateset.h" bodystart="104" bodyend="104"/>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0d12f64812a930fd456f29565d3a2a6f" compoundref="coordinateset_8cpp" startline="137" endline="158">CoordinateSet::CoordinateSet</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="123" endline="129">GridMaker::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aeffc1b17fc2a5f03d097fb89cbccba94" compoundref="grid__maker_8h" startline="132" endline="138">GridMaker::forward</referencedby>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1CoordinateSet_1a437464eaf145c5829daa0cbb90c95dee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>float3</type>
