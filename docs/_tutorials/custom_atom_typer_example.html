@@ -13981,7 +13981,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<div class=" highlight hl-ipython3"><pre style=" white-space: pre;"><span></span><span class="kn">import</span> <span class="nn">torch</span>
 </pre></div>
 
      </div>
@@ -13995,7 +13995,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">molgrid</span>
+<div class=" highlight hl-ipython3"><pre style=" white-space: pre;"><span></span><span class="kn">import</span> <span class="nn">molgrid</span>
 </pre></div>
 
      </div>
@@ -14009,7 +14009,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">openbabel</span> <span class="kn">import</span> <span class="n">pybel</span>
+<div class=" highlight hl-ipython3"><pre style=" white-space: pre;"><span></span><span class="kn">from</span> <span class="nn">openbabel</span> <span class="kn">import</span> <span class="n">pybel</span>
 </pre></div>
 
      </div>
@@ -14023,7 +14023,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create simple molecule</span>
+<div class=" highlight hl-ipython3"><pre style=" white-space: pre;"><span></span><span class="c1"># create simple molecule</span>
 <span class="n">m</span> <span class="o">=</span> <span class="n">pybel</span><span class="o">.</span><span class="n">readstring</span><span class="p">(</span><span class="s1">&#39;smi&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">addh</span><span class="p">()</span>
 </pre></div>
@@ -14039,7 +14039,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># atom typing based on atomic number and valence, with a constant radius of 1.5</span>
+<div class=" highlight hl-ipython3"><pre style=" white-space: pre;"><span></span><span class="c1"># atom typing based on atomic number and valence, with a constant radius of 1.5</span>
 <span class="k">def</span> <span class="nf">mytyper</span><span class="p">(</span><span class="n">atom</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">atom</span><span class="p">,</span> <span class="s1">&#39;GetValence&#39;</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">([</span><span class="n">atom</span><span class="o">.</span><span class="n">GetAtomicNum</span><span class="p">(),</span><span class="n">atom</span><span class="o">.</span><span class="n">GetValence</span><span class="p">()],</span> <span class="mf">1.5</span><span class="p">)</span>
@@ -14058,7 +14058,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create the typer; the explicit names may be omitted, in which case numerical names</span>
+<div class=" highlight hl-ipython3"><pre style=" white-space: pre;"><span></span><span class="c1"># create the typer; the explicit names may be omitted, in which case numerical names</span>
 <span class="c1"># will be automatically created</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">molgrid</span><span class="o">.</span><span class="n">PythonCallbackVectorTyper</span><span class="p">(</span><span class="n">mytyper</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;anum&quot;</span><span class="p">,</span><span class="s2">&quot;valence&quot;</span><span class="p">])</span>
 </pre></div>
@@ -14074,7 +14074,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get types for our simple molecule using our typer</span>
+<div class=" highlight hl-ipython3"><pre style=" white-space: pre;"><span></span><span class="c1"># get types for our simple molecule using our typer</span>
 <span class="n">types</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">get_atom_type_vector</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">OBAtom</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">atoms</span><span class="p">]</span>
 </pre></div>
 

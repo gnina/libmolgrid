@@ -13981,7 +13981,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">molgrid</span>
+<div class=" highlight hl-ipython3"><pre style=" white-space: pre;"><span></span><span class="kn">import</span> <span class="nn">molgrid</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 <span class="kn">import</span> <span class="nn">tensorflow.keras</span> <span class="k">as</span> <span class="nn">keras</span>
@@ -14007,7 +14007,7 @@ a.anchor-link {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>Using TensorFlow backend.
+<pre style=" white-space: pre;">Using TensorFlow backend.
 </pre>
 </div>
 </div>
@@ -14022,7 +14022,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">molgrid</span><span class="o">.</span><span class="n">set_random_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre style=" white-space: pre;"><span></span><span class="n">molgrid</span><span class="o">.</span><span class="n">set_random_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">datadir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span> <span class="o">+</span><span class="s1">&#39;/../data&#39;</span>
@@ -14040,7 +14040,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">create_model</span><span class="p">(</span><span class="n">dims</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre style=" white-space: pre;"><span></span><span class="k">def</span> <span class="nf">create_model</span><span class="p">(</span><span class="n">dims</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Creates a 3D CNN by defining and applying layers simultaneously. &quot;&quot;&quot;</span>
 
     <span class="n">input_layer</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">dims</span><span class="p">)</span>
@@ -14073,7 +14073,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">molgrid</span><span class="o">.</span><span class="n">ExampleProvider</span><span class="p">(</span><span class="n">data_root</span><span class="o">=</span><span class="n">datadir</span><span class="o">+</span><span class="s2">&quot;/structs&quot;</span><span class="p">,</span><span class="n">balanced</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre style=" white-space: pre;"><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">molgrid</span><span class="o">.</span><span class="n">ExampleProvider</span><span class="p">(</span><span class="n">data_root</span><span class="o">=</span><span class="n">datadir</span><span class="o">+</span><span class="s2">&quot;/structs&quot;</span><span class="p">,</span><span class="n">balanced</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">e</span><span class="o">.</span><span class="n">populate</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
 </pre></div>
 
@@ -14088,7 +14088,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gmaker</span> <span class="o">=</span> <span class="n">molgrid</span><span class="o">.</span><span class="n">GridMaker</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre style=" white-space: pre;"><span></span><span class="n">gmaker</span> <span class="o">=</span> <span class="n">molgrid</span><span class="o">.</span><span class="n">GridMaker</span><span class="p">()</span>
 <span class="n">dims</span> <span class="o">=</span> <span class="n">gmaker</span><span class="o">.</span><span class="n">grid_dimensions</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">num_types</span><span class="p">())</span>
 <span class="n">tensor_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,)</span><span class="o">+</span><span class="n">dims</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span>
@@ -14105,7 +14105,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">molgrid</span><span class="o">.</span><span class="n">MGrid1f</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre style=" white-space: pre;"><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">molgrid</span><span class="o">.</span><span class="n">MGrid1f</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
 <span class="n">input_tensor</span> <span class="o">=</span> <span class="n">molgrid</span><span class="o">.</span><span class="n">MGrid5f</span><span class="p">(</span><span class="o">*</span><span class="n">tensor_shape</span><span class="p">)</span>
 </pre></div>
 
@@ -14120,7 +14120,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">losses</span> <span class="o">=</span> <span class="p">[]</span>
+<div class=" highlight hl-ipython3"><pre style=" white-space: pre;"><span></span><span class="n">losses</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="c1"># train for 500 iterations</span>
 <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">):</span>
     <span class="c1"># load data</span>
@@ -14144,7 +14144,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class=" highlight hl-ipython3"><pre style=" white-space: pre;"><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 
      </div>
@@ -14158,7 +14158,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre style=" white-space: pre;"><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14180,7 +14180,7 @@ a.anchor-link {
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[&lt;matplotlib.lines.Line2D at 0x7f28f06bf9e8&gt;]</pre>
+<pre style=" white-space: pre;">[&lt;matplotlib.lines.Line2D at 0x7f28f06bf9e8&gt;]</pre>
 </div>
 
 </div>
@@ -14211,7 +14211,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre style=" white-space: pre;"><span></span> 
 </pre></div>
 
      </div>
