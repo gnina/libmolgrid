@@ -1,6 +1,7 @@
 #ifndef TEST_UTIL_H
 #define TEST_UTIL_H
 #include <random>
+#include <cfloat>
 #include "libmolgrid/grid.h"
 #include "libmolgrid/atom_typer.h"
 #include "libmolgrid/libmolgrid.h"
