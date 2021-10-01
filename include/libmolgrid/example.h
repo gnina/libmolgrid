@@ -38,7 +38,7 @@ enum IterationScheme { Continuous = 0, LargeEpoch = 1, SmallEpoch = 2};
     EXSET(bool, duplicate_first, false, "clone the first coordinate set to be paired with each of the remaining (receptor-ligand pairs)") \
     EXSET(size_t, num_copies, 1, "number of times to repeatedly produce an example") \
     EXSET(bool, make_vector_types, false, "convert index types into one-hot encoded vector types") \
-    EXSET(IterationScheme, iteration_scheme, Continuous, "how to iterate over examples; note that the last batch may get padded with example from the next epoch ") \
+    EXSET(IterationScheme, iteration_scheme, Continuous, "how to iterate over examples; note that the last batch may get padded with example from the next epoch. Options are: Continuous, LargeEpoch, SmallEpoch ") \
     EXSET(std::string, data_root, "", "prefix for data files") \
     EXSET(std::string, recmolcache, "", "precalculated molcache2 file for receptor (first molecule); if doesn't exist, will look in data _root") \
     EXSET(std::string, ligmolcache, "", "precalculated molcache2 file for ligand; if doesn't exist, will look in data_root")

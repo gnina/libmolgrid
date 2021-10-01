@@ -23,6 +23,31 @@ def test_coordset_from_mol():
     newcoord = c.coords.tonumpy()
     assert np.sum(newcoord-oldcoord) == approx(48)
     
+#create coordinate set memory leak Issue #73
+def test_coordset_from_mol():
+    import psutil,os,gc
+    import pytest
+    import molgrid
+    from openbabel import pybel  #3.0
+      
+    m = pybel.readstring('smi','c1ccccc1CO')
+    m.addh()
+    m.make3D()    
+        
+    gc.collect()
+    before = psutil.Process(os.getpid()).memory_info().rss / 1024 
+    
+    for i in range(100):        
+        m = pybel.readstring('smi','c1ccccc1CO')
+        m.addh()
+        m.make3D()    
+        c = molgrid.CoordinateSet(m)
+
+    gc.collect()
+    after = psutil.Process(os.getpid()).memory_info().rss / 1024 
+    
+    assert before == after
+
 
 #create a coordinateset from a molecule and convert to vector
 #types with a dummy atom and typed radii
