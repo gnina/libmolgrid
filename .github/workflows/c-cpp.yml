@@ -30,4 +30,4 @@ jobs:
       run: mkdir build && cd build && cmake .. && make -j8 && sudo make install
       
     - name: Make test
-      run: make test
+      run: cd build && make test
