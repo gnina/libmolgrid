@@ -14,8 +14,12 @@ env:
 jobs:
   build: 
     runs-on: self-hosted
-
+    
     steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        
     - name: Install python dependencies
       run: pip3 install numpy pytest pyquaternion
       
