@@ -27,7 +27,7 @@ jobs:
       run: sudo apt install libeigen3-dev libboost-all-dev
       
     - name: Build from src
-      run: mkdir build && cd build && cmake .. && make -j8 && sudo make install
+      run: mkdir build && cd build && cmake .. && make -j8
       
     - name: Make test
       run: cd build && make test
