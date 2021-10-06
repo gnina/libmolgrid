@@ -61,7 +61,7 @@ if(CUDA_VERSION_MAJOR LESS 11)
 #compile for all major architectures >= 35
  set(CMAKE_CUDA_ARCHITECTURES 35 50 60 70 75)
 else()
- set(CMAKE_CUDA_ARCHITECTURES 60 70 75)
+ set(CMAKE_CUDA_ARCHITECTURES 52 60 70 75)
 endif()
 
 set(CMAKE_CUDA_FLAGS_RELEASE "-O3 -g -lineinfo")
