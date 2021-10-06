@@ -1,0 +1,31 @@
+name: CMake
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+  CUDACXX: /usr/local/cuda/bin/nvcc
+
+jobs:
+  build: 
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Install python dependencies
+      run: pip3 install numpy pytest pyquaternion
+      
+    - name: Install apt dependencies
+      run: sudo apt install libeigen3-dev libboost-all-dev
+      
+    - name: Build from src
+      run: mkdir build && cd build && cmake .. && make -j8 && sudo make install
+      
+    - name: Make test
+      run: make test
