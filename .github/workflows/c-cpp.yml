@@ -23,7 +23,7 @@ jobs:
       run: pip3 install numpy pytest pyquaternion
       
     - name: Install apt dependencies
-      run: apt install libeigen3-dev libboost-all-dev
+      run: apt install libeigen3-dev -y libboost-all-dev -y
       
     - name: Build from src
       run: mkdir build && cd build && cmake .. && make -j8 && make install
