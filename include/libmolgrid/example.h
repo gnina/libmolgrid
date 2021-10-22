@@ -122,7 +122,7 @@ struct Example {
      *
      * @param[in] examples  vector of examples
      * @param[in] labelpos position of label
-     * @param[out] out 2D grid (NxL)
+     * @param[out] out 1D grid (N)
      */
     template <bool isCUDA>
     static void extract_label(const std::vector<Example>& examples, unsigned labelpos, Grid<float, 1, isCUDA>& out);

@@ -597,7 +597,7 @@
 <parametername direction="out">out</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>2D grid (NxL) </para>
+<para>1D grid (N) </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

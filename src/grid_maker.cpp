@@ -163,12 +163,12 @@ void GridMaker::forward(float3 grid_center, const Grid<float, 2, false>& coords,
 
   float3 grid_origin = get_grid_origin(grid_center);
   size_t natoms = coords.dimension(0);
-  size_t ntypes = out.dimension(0);
+  int64_t ntypes = out.dimension(0);
   Dtype *data = out.data();
 
   //iterate over all atoms
   for (size_t aidx = 0; aidx < natoms; ++aidx) {
-    size_t atype = floor(type_index(aidx));
+    int64_t atype = floor(type_index(aidx)); //can be negative to indicate untyped, ignored atom
     if(atype >= ntypes) throw std::out_of_range("Type index "+itoa(atype)+" larger than allowed "+itoa(ntypes));
     if (atype >= 0 && atype < ntypes) {
       float3 acoords;
