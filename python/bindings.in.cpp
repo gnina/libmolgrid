@@ -137,7 +137,9 @@ void* extract_pybel_atom(PyObject *obj) {
   if(obatom == nullptr)
     return nullptr;
 
-  return extract_swig_wrapped_pointer(obatom);
+  void *ret = extract_swig_wrapped_pointer(obatom);
+  Py_DECREF(obatom);
+  return ret;
 }
 
 //auto-unwrap obmol from pybel molecule
@@ -146,11 +148,13 @@ void* extract_pybel_molecule(PyObject *obj) {
   if (!PyObject_HasAttrString(obj, "OBMol"))
     return nullptr;
 
-  PyObject* obatom = PyObject_GetAttrString(obj, "OBMol");
-  if(obatom == nullptr)
+  PyObject* obmol = PyObject_GetAttrString(obj, "OBMol");
+  if(obmol == nullptr)
     return nullptr;
 
-  return extract_swig_wrapped_pointer(obatom);
+  void *ret = extract_swig_wrapped_pointer(obmol);
+  Py_DECREF(obmol);
+  return ret;
 }
 
 // convert a python list to a uniformly typed vector
@@ -674,12 +678,12 @@ MAKE_ALL_GRIDS()
       .def("copyTo", +[](const CoordinateSet& self, Grid2fCUDA c, Grid2fCUDA t, Grid1fCUDA r) {return self.copyTo(c,t,r);}, "copy into coord/type/radii grids")
       .def("sum_types", +[](const CoordinateSet& self, Grid1f sum) { self.sum_types(sum);}, "sum types across atoms")
       .def("sum_types", +[](const CoordinateSet& self, Grid1fCUDA sum) { self.sum_types(sum);}, "sum types across atoms")
-      .def_readwrite("coords", &CoordinateSet::coords)
-      .def_readwrite("type_index", &CoordinateSet::type_index)
-      .def_readwrite("type_vector", &CoordinateSet::type_vector)
-      .def_readwrite("radii", &CoordinateSet::radii)
-      .def_readwrite("max_type", &CoordinateSet::max_type)
-      .def_readonly("src", &CoordinateSet::src);
+      .def_readwrite("coords", &CoordinateSet::coords, "coordinates")
+      .def_readwrite("type_index", &CoordinateSet::type_index, "indexed types")
+      .def_readwrite("type_vector", &CoordinateSet::type_vector, "vector types")
+      .def_readwrite("radii", &CoordinateSet::radii, "atomic radii")
+      .def_readwrite("max_type", &CoordinateSet::max_type, "largest type index")
+      .def_readonly("src", &CoordinateSet::src, "file source of coordinates");
 
 
   //mostly exposing this for documentation purposes
