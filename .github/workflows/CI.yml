@@ -21,6 +21,9 @@ jobs:
       with:
         fetch-depth: 0
         
+    - name: apt update
+      run: apt update -y && apt upgrade -y
+        
     - name: Build from src
       run: mkdir build && cd build && cmake .. && make -j8 && make install
       
