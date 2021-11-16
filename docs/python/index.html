@@ -495,7 +495,7 @@ a vector one-hot encoding of an index type can be created.</p>
 </dd>
 </dl>
 </div></blockquote>
-<p>make_vector_types( (CoordinateSet)arg1 [, (bool)include_dummy_type=False [, (FloatVec)type_radii=&lt;molgrid.molgrid.FloatVec object at 0x7f1eee500350&gt;]]) -&gt; None :</p>
+<p>make_vector_types( (CoordinateSet)arg1 [, (bool)include_dummy_type=False [, (FloatVec)type_radii=&lt;molgrid.molgrid.FloatVec object at 0x7ff808209350&gt;]]) -&gt; None :</p>
 <blockquote>
 <div><blockquote>
 <div><p>convert index types to vector types in-place
@@ -504,7 +504,7 @@ a vector one-hot encoding of an index type can be created.</p>
 </div></blockquote>
 <p>/</p>
 <dl class="simple">
-<dt>C++ signature :</dt><dd><p>void make_vector_types(libmolgrid::CoordinateSet {lvalue} [,bool=False [,std::vector&lt;float, std::allocator&lt;float&gt; &gt;=&lt;molgrid.molgrid.FloatVec object at 0x7f1eee500350&gt;]])</p>
+<dt>C++ signature :</dt><dd><p>void make_vector_types(libmolgrid::CoordinateSet {lvalue} [,bool=False [,std::vector&lt;float, std::allocator&lt;float&gt; &gt;=&lt;molgrid.molgrid.FloatVec object at 0x7ff808209350&gt;]])</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -2850,10 +2850,10 @@ for maximum CUDA performance.</p>
 </dd>
 </dl>
 </div></blockquote>
-<p>__init__( (object)arg1, (list)map [, (bool)catchall=True [, (StringVec)old_names=&lt;molgrid.molgrid.StringVec object at 0x7f1eee500200&gt;]]) -&gt; object :</p>
+<p>__init__( (object)arg1, (list)map [, (bool)catchall=True [, (StringVec)old_names=&lt;molgrid.molgrid.StringVec object at 0x7ff808209200&gt;]]) -&gt; object :</p>
 <blockquote>
 <div><dl class="simple">
-<dt>C++ signature :</dt><dd><p>void* __init__(boost::python::api::object,boost::python::list [,bool=True [,std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;=&lt;molgrid.molgrid.StringVec object at 0x7f1eee500200&gt;]])</p>
+<dt>C++ signature :</dt><dd><p>void* __init__(boost::python::api::object,boost::python::list [,bool=True [,std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;=&lt;molgrid.molgrid.StringVec object at 0x7ff808209200&gt;]])</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -3192,6 +3192,16 @@ in-place.</p>
 <section id="module-molgrid">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-molgrid" title="Permalink to this headline"></a></h2>
 <dl class="py function">
+<dt class="sig sig-object py" id="molgrid.get_gpu_device">
+<span class="sig-prename descclassname"><span class="pre">molgrid.</span></span><span class="sig-name descname"><span class="pre">get_gpu_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span> <span class="pre">:</span></span></span><a class="headerlink" href="#molgrid.get_gpu_device" title="Permalink to this definition"></a></dt>
+<dd><p>Get current GPU device.</p>
+<dl class="simple">
+<dt>C++ signature :</dt><dd><p>int get_gpu_device()</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="molgrid.get_gpu_enabled">
 <span class="sig-prename descclassname"><span class="pre">molgrid.</span></span><span class="sig-name descname"><span class="pre">get_gpu_enabled</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span> <span class="pre">:</span></span></span><a class="headerlink" href="#molgrid.get_gpu_enabled" title="Permalink to this definition"></a></dt>
 <dd><p>Get if generated grids are on GPU by default.</p>
@@ -3231,6 +3241,16 @@ in-place.</p>
 <p>/</p>
 <dl class="simple">
 <dt>C++ signature :</dt><dd><p>void read_dx_grids(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;,libmolgrid::Grid&lt;float, 4ul, false&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="molgrid.set_gpu_device">
+<span class="sig-prename descclassname"><span class="pre">molgrid.</span></span><span class="sig-name descname"><span class="pre">set_gpu_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(int)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#molgrid.set_gpu_device" title="Permalink to this definition"></a></dt>
+<dd><p>Set current GPU device.</p>
+<dl class="simple">
+<dt>C++ signature :</dt><dd><p>void set_gpu_device(int)</p>
 </dd>
 </dl>
 </dd></dl>

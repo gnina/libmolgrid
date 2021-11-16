@@ -45,6 +45,7 @@ void write_dx(const std::string& fname, const Grid<DType, 3>& grid, const float3
 
 // Docstring_write_dx_grids
 /** \brief Output multiple grids using type names as a suffix.
+ *
  * @param[in] prefix filename will have form [prefix]_[typename].dx
  * @param[in] names must have same size as first dimension of grid
  * @param[in] grid input grids
@@ -57,6 +58,7 @@ void write_dx_grids(const std::string& prefix, const std::vector<std::string>& n
 
 // Docstring_read_dx_grids
 /** \brief Read multiple grids using type names as a suffix.  Grids must be correctly sized
+ *
  * @param[in] prefix filename will have form [prefix]_[typename].dx
  * @param[in] names must have same size as first dimension of grid
  * @param[in] grid input grids

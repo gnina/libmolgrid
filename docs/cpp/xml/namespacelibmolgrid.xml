@@ -648,7 +648,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="177" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="177" bodyend="189" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="56" declcolumn="6"/>
+        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="177" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="177" bodyend="189" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="57" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a480d5a45562f3cda34dbac07d1415d04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -705,7 +705,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="192" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="192" bodyend="201" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="65" declcolumn="6"/>
+        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="192" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="192" bodyend="201" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="67" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a2fd3cdc3e58f538b5ae29f29654a5b2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -746,7 +746,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="205" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="205" bodyend="221" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="70" declcolumn="6"/>
+        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="205" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="205" bodyend="221" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="72" declcolumn="6"/>
         <referencedby refid="namespacelibmolgrid_1a5f98c4b4e9bc1306dc43643d0f701b23" compoundref="grid__io_8cpp" startline="225" endline="229">write_map</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a5f98c4b4e9bc1306dc43643d0f701b23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -787,7 +787,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="225" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="225" bodyend="229" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="72" declcolumn="6"/>
+        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="225" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="225" bodyend="229" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="74" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a618d0b859add1c20d24e684604c09b6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -813,7 +813,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" line="76" column="6" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" bodystart="76" bodyend="78"/>
+        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" line="78" column="6" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" bodystart="78" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1afc56244e72d2209f03b10191d4c0fd99" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::ostream &amp;</type>

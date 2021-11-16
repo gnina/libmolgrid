@@ -175,7 +175,7 @@ Module contents
 ---------------
 
 .. automodule:: molgrid
-   :members: get_gpu_enabled, set_gpu_enabled, set_random_seed, read_dx, read_dx_grids, write_dx, write_dx_grids, write_map, tonumpy
+   :members: get_gpu_enabled, set_gpu_enabled, set_gpu_device, get_gpu_device, set_random_seed, read_dx, read_dx_grids, write_dx, write_dx_grids, write_map, tonumpy
    :undoc-members:
    :show-inheritance:
 
