@@ -385,7 +385,7 @@ public:
         tmp.back().setup();
       }
       else {
-        log(INFO) << "Empty bucket " << i;
+        log(INFO) << "Empty bucket " << i << " when stratifying by value - check your ranges and data distribution.\n";
       }
     }
     swap(examples,tmp);
