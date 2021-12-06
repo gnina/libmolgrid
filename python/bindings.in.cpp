@@ -777,6 +777,9 @@ MAKE_ALL_GRIDS()
       .def("get_type_names", &ExampleDataset::get_type_names)
       .def("__getitem__", +[](const ExampleDataset& D, int i) {
           if(i < 0) i = D.size()+i; //index from back
+          if(i < 0 || (size_t)i >= D.size()) {
+            throw std::out_of_range("Index "+itoa(i)+" invalid for ExampleDataset with size "+itoa(D.size()));
+          }
           return D[i];
           });
 
