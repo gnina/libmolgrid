@@ -31,7 +31,7 @@ If you use libmolgrid in your research, please cite:
 ```pip install molgrid```
 
 ### conda
-```conda install -c jsunseri molgrid```
+```conda install -c gnina molgrid```
 
 ### Build from Source
 
