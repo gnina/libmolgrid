@@ -58,9 +58,11 @@ else()
 	  message(SEND_ERROR "Pytest package not available: ${PYTEST_error}")
 	endif()
 
-	add_test(NAME pymolgrid COMMAND ${PYTHON_EXECUTABLE} -m pytest -m "not slow" -rsv WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
-	set_tests_properties(pymolgrid PROPERTIES ENVIRONMENT
-		"PYTHONPATH=${CMAKE_BINARY_DIR}/python:$ENV{PYTHONPATH}")
+	if (NOT "${CMAKE_BUILD_TYPE}" STREQUAL "RelWithDebInfo")
+                add_test(NAME pymolgrid COMMAND ${PYTHON_EXECUTABLE} -m pytest -m "not slow" -rsv WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+                set_tests_properties(pymolgrid PROPERTIES ENVIRONMENT
+                        "PYTHONPATH=${CMAKE_BINARY_DIR}/python:$ENV{PYTHONPATH}")
+        endif()
 
   add_test(NAME slowpymolgridtests COMMAND ${PYTHON_EXECUTABLE} -m pytest -m "slow" -rsv WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 	set_tests_properties(slowpymolgridtests PROPERTIES ENVIRONMENT
