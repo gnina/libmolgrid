@@ -1,6 +1,6 @@
 libmolgrid
 ==========
-![GitHub CI](https://github.com/gnina/libmolgrid/actions/workflows/ci.yml/badge.svg)
+![Github CI](https://github.com/gnina/libmolgrid/actions/workflows/CI.yml/badge.svg)
 [![codecov](https://codecov.io/gh/gnina/libmolgrid/branch/master/graph/badge.svg?token=gUFisf34rf)](https://codecov.io/gh/gnina/libmolgrid)
 
 libmolgrid is under active development, but should be suitable for use by early adopters.
