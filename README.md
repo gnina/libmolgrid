@@ -1,6 +1,7 @@
 libmolgrid
 ==========
 [![codecov](https://codecov.io/gh/gnina/libmolgrid/branch/master/graph/badge.svg?token=gUFisf34rf)](https://codecov.io/gh/gnina/libmolgrid)
+
 libmolgrid is under active development, but should be suitable for use by early adopters.
 
 If you use libmolgrid in your research, please cite:
