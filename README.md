@@ -1,5 +1,6 @@
 libmolgrid
 ==========
+![GitHub CI](https://github.com/dwyl/auth_plug/actions/workflows/ci.yml/badge.svg)
 [![codecov](https://codecov.io/gh/gnina/libmolgrid/branch/master/graph/badge.svg?token=gUFisf34rf)](https://codecov.io/gh/gnina/libmolgrid)
 
 libmolgrid is under active development, but should be suitable for use by early adopters.
