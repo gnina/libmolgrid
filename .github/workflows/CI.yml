@@ -29,3 +29,6 @@ jobs:
       
     - name: Run tests # repeat because until-pass test 12 sporadically fails when using code coverage
       run: cd build && ctest -T Test --repeat until-pass:10 -T Coverage
+      
+    - name: Upload code coverage
+      run: curl -Os https://uploader.codecov.io/latest/linux/codecov && chmod +x codecov && ./codecov
