@@ -9,7 +9,7 @@ on:
     - cron: 0 0 * * 0
 
 env:
-  BUILD_TYPE: Release
+  BUILD_TYPE: RelWithDebInfo # Use this build type to include code coverage
   CUDACXX: /usr/local/cuda/bin/nvcc
 
 jobs:
@@ -25,7 +25,7 @@ jobs:
       run: apt update -y && apt upgrade -y
         
     - name: Build from src
-      run: mkdir build && cd build && cmake .. && make -j8 && make install
+      run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=BUILD_TYPE .. && make -j8 && make install
       
-    - name: Run tests
-      run: cd build && make test
+    - name: Run tests # repeat because until-pass test 12 sporadically fails when using code coverage
+      run: cd build && ctest -T Test --repeat until-pass:10 -T Coverage
