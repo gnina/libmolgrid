@@ -1,5 +1,4 @@
 
-
 #Prep ourselves for compiling boost
 set(Boost_USE_STATIC_LIBS OFF) #unit_test_framework has to be shared
 find_package(Boost COMPONENTS unit_test_framework system REQUIRED)
@@ -58,9 +57,11 @@ else()
 	  message(SEND_ERROR "Pytest package not available: ${PYTEST_error}")
 	endif()
 
-	add_test(NAME pymolgrid COMMAND ${PYTHON_EXECUTABLE} -m pytest -m "not slow" -rsv WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
-	set_tests_properties(pymolgrid PROPERTIES ENVIRONMENT
-		"PYTHONPATH=${CMAKE_BINARY_DIR}/python:$ENV{PYTHONPATH}")
+#	if (NOT BUILD_COVERAGE)
+                add_test(NAME pymolgrid COMMAND ${PYTHON_EXECUTABLE} -m pytest -m "not slow" -rsv WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+                set_tests_properties(pymolgrid PROPERTIES ENVIRONMENT
+                        "PYTHONPATH=${CMAKE_BINARY_DIR}/python:$ENV{PYTHONPATH}")
+#        endif()
 
   add_test(NAME slowpymolgridtests COMMAND ${PYTHON_EXECUTABLE} -m pytest -m "slow" -rsv WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 	set_tests_properties(slowpymolgridtests PROPERTIES ENVIRONMENT

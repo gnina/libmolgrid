@@ -13,6 +13,7 @@ endif()
 
 option(BUILD_SHARED "Build shared library" ON)
 option(BUILD_STATIC "Build static library" ON)
+option(BUILD_COVERAGE "Build with code coverage" OFF)
 
 if(${BUILD_CONTAINED_PYTHON}) 
   #if make a mostly statically linked python module, use static boost
@@ -53,8 +54,11 @@ set(CMAKE_CUDA_STANDARD 14)
 if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
     set(CMAKE_CXX_FLAGS         "${CMAKE_CXX_FLAGS} -Wall -Wno-unknown-pragmas -Werror")
     set(CMAKE_CXX_FLAGS_DEBUG   "-O0 -g3")
-    set(CMAKE_CXX_FLAGS_RELEASE "-O3 -g")
-    set(CMAKE_CXX_FLAGS_PROFILE " -fprofile-arcs -ftest-coverage")
+    if (BUILD_COVERAGE)
+	set(CMAKE_CXX_FLAGS_RELEASE "-O3 -g -fprofile-arcs -ftest-coverage")
+    else()
+        set(CMAKE_CXX_FLAGS_RELEASE "-O3 -g")
+    endif()	
 endif()
 
 if(CUDA_VERSION_MAJOR LESS 11)
