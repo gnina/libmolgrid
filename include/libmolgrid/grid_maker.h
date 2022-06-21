@@ -281,7 +281,7 @@ class GridMaker {
         throw std::invalid_argument(
             "Mismatched batch sizes: " + itoa(out.dimension(0)) + " vs " + itoa(B));
 
-      static_assert(N == 2 || N == 3);
+      static_assert(N == 2 || N == 3, "Unsupported types dimension");
 
       float3 center = { 0, };
 
