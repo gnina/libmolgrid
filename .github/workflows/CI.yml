@@ -28,5 +28,5 @@ jobs:
       run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE .. && make -j8 && make install
       
     - name: Run tests 
-      run: cd build && ctest  --output-on-failure -T Test
+      run: cd build && ctest --output-on-failure
 
