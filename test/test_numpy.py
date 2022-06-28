@@ -9,7 +9,7 @@ def test_numpy():
   mg2f = molgrid.MGrid2f(2,4)
   
   a2f = np.arange(27).astype(np.float32).reshape(3,-1)
-  a3d = np.arange(27).astype(np.float).reshape(3,3,-1)
+  a3d = np.arange(27).astype(np.float64).reshape(3,3,-1)
 
   g2f = molgrid.Grid2f(a2f)
   g3d = molgrid.Grid3d(a3d)
@@ -37,7 +37,7 @@ def test_numpy_conv():
   mg2f = molgrid.MGrid2f(2,4)
   
   a2f = np.arange(27).astype(np.float32).reshape(3,-1)
-  a3d = np.arange(27).astype(np.float).reshape(3,3,-1)
+  a3d = np.arange(27).astype(np.float64).reshape(3,3,-1)
 
   a2f[0,0] = 100
   a3d[0,0,0] = 101        

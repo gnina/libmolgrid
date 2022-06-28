@@ -36,7 +36,8 @@ class CoordCache {
 
   public:
     CoordCache() {}
-    CoordCache(std::shared_ptr<AtomTyper> t, const ExampleProviderSettings& settings,
+    CoordCache(std::shared_ptr<AtomTyper> t,
+        const ExampleProviderSettings& settings = ExampleProviderSettings(),
         const std::string& mc = "");
     ~CoordCache() {}
 

@@ -8,6 +8,7 @@
 #include "libmolgrid/quaternion.h"
 #include "libmolgrid/transform.h"
 #include "libmolgrid/atom_typer.h"
+#include "libmolgrid/coord_cache.h"
 #include "libmolgrid/example_provider.h"
 #include "libmolgrid/example_dataset.h"
 #include "libmolgrid/grid_maker.h"
@@ -652,6 +653,26 @@ MAKE_ALL_GRIDS()
   scope().attr("defaultGninaReceptorTyper") = defaultGninaReceptorTyper;
 
 
+  class_<CoordCache, std::shared_ptr<CoordCache>>("CoordCache", "@Docstring_CoordCache@")
+      .def(init<std::shared_ptr<AtomTyper>>((arg("typer")=defaultGninaLigandTyper)))
+      .def(init<std::shared_ptr<AtomTyper>, const ExampleProviderSettings&,
+          const std::string&>((arg("typer")=defaultGninaLigandTyper,
+                               arg("settings"),
+                               arg("molcache")="")))
+      .def("set_coords", +[](CoordCache& self, const std::string& fname, CoordinateSet& set) {
+        const char *cstr = string_cache.get(fname);
+        self.set_coords(cstr, set);
+       })
+      .def("make_coords", +[](CoordCache& self, const std::string& fname) {
+            CoordinateSet set;
+            const char *cstr = string_cache.get(fname);
+            self.set_coords(cstr, set);
+            return set;
+       })
+      .def("num_types", &CoordCache::num_types)
+      .def("get_type_names", &CoordCache::get_type_names);
+
+
   //molecular data (example providing)
   class_<CoordinateSet>("CoordinateSet", "@Docstring_CoordinateSet@")
       .def(init<OpenBabel::OBMol*, const AtomTyper&>())
@@ -691,6 +712,11 @@ MAKE_ALL_GRIDS()
 #define EXSET(TYPE, NAME, DEFAULT, DOC) .def_readwrite(#NAME, &ExampleProviderSettings::NAME, DOC)
 
   class_<ExampleProviderSettings>("ExampleProviderSettings")
+    .def("__init__",raw_constructor(+[](tuple args, dict kwargs) {
+          ExampleProviderSettings settings;
+          set_settings_form_kwargs(kwargs, settings);
+          return std::make_shared<ExampleProviderSettings>(settings);
+      }, 0))
       MAKE_SETTINGS();
 
   enum_<IterationScheme>("IterationScheme")

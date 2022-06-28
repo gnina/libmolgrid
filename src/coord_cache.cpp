@@ -80,7 +80,6 @@ void CoordCache::set_coords(const char *fname, CoordinateSet& coord) {
     int type;
   };
 
-
   if(offsets.count(fname)) {
     size_t off = offsets[fname];
     const char *data = cache_map.data()+off;
