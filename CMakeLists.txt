@@ -4,7 +4,7 @@ project(LibMolGrid LANGUAGES C CXX CUDA)
 #version number
 set (VERSION_MAJOR 0)
 set (VERSION_MINOR 5)
-set (VERSION_PATCH 2)
+set (VERSION_PATCH 3)
 
 #set default build type
 if(NOT CMAKE_CONFIGURATION_TYPES AND NOT CMAKE_BUILD_TYPE)
