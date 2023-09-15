@@ -76,4 +76,4 @@ endforeach()
 configure_file(setup.py ${CMAKE_CURRENT_BINARY_DIR}/setup.py)
 
 #TODO: figure out reasonable install, also how to build both python2 and python3
-install(CODE "execute_process(COMMAND ${PYTHON_EXECUTABLE} -m pip install ${CMAKE_CURRENT_BINARY_DIR} --prefix ${CMAKE_INSTALL_PREFIX})")
+install(CODE "execute_process(COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/setup.py install --prefix ${CMAKE_INSTALL_PREFIX})")
