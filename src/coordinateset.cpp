@@ -274,7 +274,8 @@ void CoordinateSet::mergeInto(const CoordinateSet& rec, const CoordinateSet& lig
   if(rec.type_vector.dimension(1) != lig.type_vector.dimension(1)) {
     throw std::invalid_argument("Type vectors are incompatible sizes");
   }
-  if(rec.has_vector_types() != lig.has_vector_types() || rec.has_indexed_types() != lig.has_indexed_types()) {
+  if((rec.has_vector_types() != lig.has_vector_types()) && (rec.has_indexed_types() != lig.has_indexed_types())) {
+    //empty coordsets are true for both, so and 
     throw std::invalid_argument("Incompatible types when combining coodinate sets");
   }
   if(rec.has_indexed_types()) {
