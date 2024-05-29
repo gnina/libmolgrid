@@ -18,6 +18,7 @@ set( LIBMOLGRID_SOURCES
  grid_interpolater.cpp
  grid_interpolater.cu
  cartesian_grid.cpp
+ string_cache.cpp
 )
 
 set( LIBMOLGRID_HEADERS
@@ -39,6 +40,7 @@ set( LIBMOLGRID_HEADERS
  ../include/libmolgrid/common.h
  ../include/libmolgrid/grid_io.h
  ../include/libmolgrid/cartesian_grid.h
+ ../include/libmolgrid/string_cache.h
 )
 
 set ( LIBMOLGRID_HEADERS ${LIBMOLGRID_HEADERS}  PARENT_SCOPE)

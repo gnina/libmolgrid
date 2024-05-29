@@ -15,6 +15,7 @@
 #include <vector>
 #include <unordered_set>
 #include "libmolgrid/coordinateset.h"
+#include "libmolgrid/string_cache.h"
 
 namespace libmolgrid {
 
@@ -161,19 +162,7 @@ struct ExampleRef {
 };
 
 
-//for memory efficiency, only store a given string once and use the const char*
-class StringCache {
-  std::unordered_set<std::string> strings;
-public:
-  const char* get(const std::string& s)
-  {
-    strings.insert(s);
-    //we assume even as the set is resized that strings never get allocated
-    return strings.find(s)->c_str();
-  }
-};
 
-extern StringCache string_cache;
 
 } /* namespace libmolgrid */
 

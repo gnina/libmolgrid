@@ -88,6 +88,38 @@ class ExampleExtractor {
     ///return names of types for explicitly typed examples
     ///type names are prepended by coordinate set index
     virtual std::vector<std::string> get_type_names() const;
+
+  /** \brief Write out current contents of memory caches to provided output
+   * stream.
+   * @param[in] out output stream
+   */
+  void save_mem_caches(std::ostream &out) const;
+  
+  /** \brief Write out current contents of memory caches to provided file.
+   * @param[in] fname file name
+   */
+  void save_mem_caches(const std::string &fname) const {
+    std::ofstream out(fname.c_str());
+    if (!out)
+      throw std::invalid_argument("Could not open file " + fname);
+    save_mem_caches(out);
+  }
+
+  /** \brief Read contents of input stream into memory caches.
+   * @param[in] in input stream
+   */
+  void load_mem_caches(std::istream &in);
+  /** \brief Read contents of provided file into memory caches.
+   * @param[in] fname file name
+   */
+  void load_mem_caches(const std::string &fname) {
+    std::ifstream in(fname.c_str());
+    if (!in)
+      throw std::invalid_argument("Could not load file " + fname);
+    load_mem_caches(in);
+  }
+
+  size_t mem_caches_size() const;    
 };
 
 } /* namespace libmolgrid */

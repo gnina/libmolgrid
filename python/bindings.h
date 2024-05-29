@@ -12,6 +12,7 @@
 #include <vector>
 #include <type_traits>
 #include <utility>
+#include <boost/bind/bind.hpp>
 #include <boost/python.hpp>
 #include <boost/python/suite/indexing/vector_indexing_suite.hpp>
 #include <boost/python/make_constructor.hpp>

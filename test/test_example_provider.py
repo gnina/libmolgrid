@@ -3,6 +3,7 @@ import molgrid
 import numpy as np
 import os
 import torch
+import tempfile
 
 from pytest import approx
 from numpy import around
@@ -37,6 +38,28 @@ def test_mol_example_provider(capsys):
 
     assert (6.0000, 3.8697, -6.6990, -4.3010, -9.0000, 3.3747, 6.0000, 3.8697, -6.6990, -4.3010) == approx(tuple(l1))
 
+def test_mem_caches_example_provider(capsys):
+    fname = datadir + "/smallmol.types"
+    e = molgrid.ExampleProvider(data_root=datadir + "/structs")
+    e2 = molgrid.ExampleProvider(data_root=datadir + "/structs")
+
+    e.populate(fname)
+    e2.populate(fname)
+    assert e.mem_caches_size() == 0
+    with capsys.disabled():  # bunch openbabel garbage
+        ex = e.next()
+    assert e.mem_caches_size() == 2
+    with tempfile.NamedTemporaryFile() as tmp:
+        e.save_mem_caches(tmp.name)
+        e.load_mem_caches(tmp.name)
+        e2.load_mem_caches(tmp.name)
+    assert e.mem_caches_size() == 2
+    assert e2.mem_caches_size() == 2
+    with capsys.disabled():  # bunch openbabel garbage
+        ex = e.next()
+        ex = e2.next()
+    assert e.mem_caches_size() == 4
+    assert e2.mem_caches_size() == 2    
 
 def test_custom_typer_example_provider():
     fname = datadir + "/small.types"

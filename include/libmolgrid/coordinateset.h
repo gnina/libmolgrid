@@ -12,7 +12,10 @@
 
 #include <vector>
 #include <openbabel/mol.h>
+#include <boost/serialization/access.hpp>
+
 #include "libmolgrid/managed_grid.h"
+#include "libmolgrid/string_cache.h"
 
 namespace libmolgrid {
 
@@ -136,6 +139,29 @@ struct CoordinateSet {
 
   ///for debugging
   void dump(std::ostream& out) const;
+
+  friend class boost::serialization::access;
+  template <class Archive> void serialize(Archive &ar, const unsigned version) {
+    ar &  coords;
+    ar & type_index; 
+  ar & type_vector;
+  ar & radii;
+  ar & max_type;
+
+  if (Archive::is_saving::value)  {
+    std::string tmp;
+    if(src) {
+      tmp = src;
+    }
+    ar & tmp;
+  } else { //reading
+    std::string tmp;
+    ar & tmp;
+    if(tmp.length() > 0) {
+      src = string_cache.get(tmp);
+    }
+  }
+  }  
 };
 
 extern template size_t CoordinateSet::copyTo(Grid<float, 2, false>& c, Grid<float, 1, false>& t, Grid<float, 1, false>& r) const;

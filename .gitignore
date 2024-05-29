@@ -11,8 +11,7 @@ _site/
 .bundle/
 vendor/
 
-# Ignore editors
-.vscode
+# Ignore editors (but not vscode)
 /.pytest_cache/
 .cproject
 .idea

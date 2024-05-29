@@ -11,6 +11,8 @@ if(NOT CMAKE_CONFIGURATION_TYPES AND NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 option(BUILD_SHARED "Build shared library" ON)
 option(BUILD_STATIC "Build static library" ON)
 option(BUILD_COVERAGE "Build with code coverage" OFF)
@@ -36,7 +38,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 
 #dependencies
 find_package(CUDA REQUIRED)
-find_package(Boost REQUIRED COMPONENTS regex unit_test_framework program_options system filesystem iostreams)
+find_package(Boost REQUIRED COMPONENTS regex unit_test_framework program_options system filesystem iostreams serialization)
 find_package(OpenBabel3 REQUIRED)
 include_directories(SYSTEM ${OPENBABEL3_INCLUDE_DIR})
 find_package(ZLIB)

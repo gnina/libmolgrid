@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "isShelllCommand": true,
+  "tasks": [
+    {
+      "label": "build",
+      "options": {
+        "cwd": "${workspaceRoot}/build"
+      },
+      "type": "shell",
+      "command": "make -j24",
+      "group": "build"
+    },
+    {
+      "label": "build-debug",
+      "options": {
+        "cwd": "${workspaceRoot}/build-debug"
+      },
+      "type": "shell",
+      "command": "make -j24",
+      "group": "build"
+    }
+  ]
+}

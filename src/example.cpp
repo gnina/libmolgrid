@@ -17,8 +17,6 @@ namespace libmolgrid {
 
 using namespace std;
 
-StringCache string_cache;
-
 size_t Example::num_coordinates() const {
   unsigned N = 0;
   for(unsigned i = 0, n = sets.size(); i < n; i++) {
