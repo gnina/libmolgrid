@@ -366,7 +366,7 @@ def test_pytorch_dataset():
     ex = e.next()
     coordinates = ex.merge_coordinates()
 
-    center, coords, types, radii, labels = m[0]
+    lengths, center, coords, types, radii, labels = m[0]
 
     assert list(center.shape) == [3]
     np.testing.assert_allclose(coords, coordinates.coords.tonumpy())
@@ -378,7 +378,7 @@ def test_pytorch_dataset():
     np.testing.assert_allclose(labels[1], 6.05)
     np.testing.assert_allclose(labels[-1], 0.162643)
 
-    center, coords, types, radii, labels = m[-1]
+    lengths, center, coords, types, radii, labels = m[-1]
     assert labels[0] == 0
     np.testing.assert_allclose(labels[1], -10.3)    
 
@@ -396,7 +396,7 @@ def test_pytorch_dataset():
     assert radii.shape[0] == 8
     assert labels.shape[0] == 8
 
-    mcenter, mcoords, mtypes, mradii, mlabels = m[10]
+    mlengths, mcenter, mcoords, mtypes, mradii, mlabels = m[10]
     np.testing.assert_allclose(center[2], mcenter) 
     np.testing.assert_allclose(coords[2][:lengths[2]], mcoords)
     np.testing.assert_allclose(types[2][:lengths[2]], mtypes)
