@@ -159,7 +159,8 @@ class Coords2Grid(torch.nn.Module):
                            
 class MolDataset(torch.utils.data.Dataset):
     '''A pytorch mappable dataset for molgrid training files.'''
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args,
+                 **kwargs):
         '''Initialize mappable MolGridDataset.  
         :param input(s): File name(s) of training example files 
         :param typers: A tuple of AtomTypers to use
@@ -174,8 +175,7 @@ class MolDataset(torch.utils.data.Dataset):
         '''
 
         if 'typers' in kwargs:
-            typers = kwargs['typers']
-            del kwargs['typers']
+            typers = kwargs.pop('typers')
             self.examples = mg.ExampleDataset(*typers,**kwargs)
             self.typers = typers
         else:
@@ -184,27 +184,26 @@ class MolDataset(torch.utils.data.Dataset):
         self.types_files = list(args)
         self.examples.populate(self.types_files)
             
-        self.num_labels = self.examples.num_labels()
-
-        
     def __len__(self):
         return len(self.examples)
     
     def __getitem__(self, idx):
         ex = self.examples[idx]
-        center = torch.tensor([i for i in ex.coord_sets[-1].center()])
+        center = torch.tensor(list(ex.coord_sets[-1].center()))
         coordinates = ex.merge_coordinates()
         if coordinates.has_vector_types() and coordinates.size() > 0:
             atomtypes = torch.tensor(coordinates.type_vector.tonumpy(),dtype=torch.long).type('torch.FloatTensor')
         else:
             atomtypes = torch.tensor(coordinates.type_index.tonumpy(),dtype=torch.long).type('torch.FloatTensor')
         coords = torch.tensor(coordinates.coords.tonumpy())
+        length = len(coords)
         radii = torch.tensor(coordinates.radii.tonumpy())
-        labels = [ex.labels[lab] for lab in range(self.num_labels)]
-        return center, coords, atomtypes, radii, labels
+        labels = torch.tensor(ex.labels)
+        return length, center, coords, atomtypes, radii, labels
+
     
     def __getstate__(self):
-        settings = self.examples.settings()
+        settings = self.examples.settings() 
         keyword_dict = {sett: getattr(settings, sett) for sett in dir(settings) if not sett.startswith('__')}
         if self.typers is not None: ## This will fail if self.typers is not none, need a way to pickle AtomTypers
             raise NotImplementedError('MolDataset does not support pickling when not using the default Gnina atom typers, this uses %s'.format(str(self.typers)))
@@ -213,10 +212,8 @@ class MolDataset(torch.utils.data.Dataset):
 
     def __setstate__(self,state):
         kwargs=state[0]
-        
         if 'typers' in kwargs:
-            typers = kwargs['typers']
-            del kwargs['typers']
+            typers = kwargs.pop('typers')
             self.examples = mg.ExampleDataset(*typers, **kwargs)
             self.typers = typers
         else:
@@ -225,33 +222,19 @@ class MolDataset(torch.utils.data.Dataset):
         self.types_files = list(state[1])
         self.examples.populate(self.types_files)
 
+
         self.num_labels = self.examples.num_labels()
 
     @staticmethod
     def collateMolDataset(batch):
         '''collate_fn for use in torch.utils.data.Dataloader when using the MolDataset.
         Returns lengths, centers, coords, types, radii, labels all padded to fit maximum size of batch'''
-        lens = []
-        centers = []
-        lcoords = []
-        ltypes = []
-        lradii = []
-        labels = []
-        for center,coords,types,radii,label in batch:
-            lens.append(coords.shape[0])
-            centers.append(center)
-            lcoords.append(coords)
-            ltypes.append(types)
-            lradii.append(radii)
-            labels.append(torch.tensor(label))
+        batch_list = list(zip(*batch))
+        lengths = torch.tensor(batch_list[0])
+        centers = torch.stack(batch_list[1], dim=0)
+        coords = torch.nn.utils.rnn.pad_sequence(batch_list[2], batch_first=True)
+        types = torch.nn.utils.rnn.pad_sequence(batch_list[3], batch_first=True)
+        radii = torch.nn.utils.rnn.pad_sequence(batch_list[4], batch_first=True)
+        labels = torch.stack(batch_list[5], dim=0)
 
-
-        lengths = torch.tensor(lens)
-        lcoords = torch.nn.utils.rnn.pad_sequence(lcoords, batch_first=True)
-        ltypes = torch.nn.utils.rnn.pad_sequence(ltypes, batch_first=True)
-        lradii = torch.nn.utils.rnn.pad_sequence(lradii, batch_first=True)
-
-        centers = torch.stack(centers,dim=0)
-        labels = torch.stack(labels,dim=0)
-
-        return lengths, centers, lcoords, ltypes, lradii, labels
+        return lengths, centers, coords, types, radii, labels
