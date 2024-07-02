@@ -160,6 +160,8 @@ class Coords2Grid(torch.nn.Module):
 class MolDataset(torch.utils.data.Dataset):
     '''A pytorch mappable dataset for molgrid training files.'''
     def __init__(self, *args,
+                 random_translation: float=0.0,
+                 random_rotation: bool=False,
                  **kwargs):
         '''Initialize mappable MolGridDataset.  
         :param input(s): File name(s) of training example files 
@@ -174,6 +176,8 @@ class MolDataset(torch.utils.data.Dataset):
         :param ligmolcache: precalculated molcache2 file for ligand; if doesn't exist, will look in data_root
         '''
 
+        self._random_translation, self._random_rotation = random_translation, random_rotation
+        print(self._random_translation, self._random_rotation)
         if 'typers' in kwargs:
             typers = kwargs.pop('typers')
             self.examples = mg.ExampleDataset(*typers,**kwargs)
@@ -191,6 +195,8 @@ class MolDataset(torch.utils.data.Dataset):
         ex = self.examples[idx]
         center = torch.tensor(list(ex.coord_sets[-1].center()))
         coordinates = ex.merge_coordinates()
+        if self._random_translation > 0 or self._random_rotation:
+            mg.Transform(ex.coord_sets[-1].center(), self._random_translation, self._random_rotation).forward(coordinates, coordinates)
         if coordinates.has_vector_types() and coordinates.size() > 0:
             atomtypes = torch.tensor(coordinates.type_vector.tonumpy(),dtype=torch.long).type('torch.FloatTensor')
         else:
@@ -208,10 +214,14 @@ class MolDataset(torch.utils.data.Dataset):
         if self.typers is not None: ## This will fail if self.typers is not none, need a way to pickle AtomTypers
             raise NotImplementedError('MolDataset does not support pickling when not using the default Gnina atom typers, this uses %s'.format(str(self.typers)))
             keyword_dict['typers'] = self.typers
+        keyword_dict['random_translation'] = self._random_translation
+        keyword_dict['random_rotation'] = self._random_rotation
         return keyword_dict, self.types_files
 
     def __setstate__(self,state):
         kwargs=state[0]
+        self._random_translation = kwargs.pop('random_translation')
+        self._random_rotation = kwargs.pop('random_rotation')
         if 'typers' in kwargs:
             typers = kwargs.pop('typers')
             self.examples = mg.ExampleDataset(*typers, **kwargs)
@@ -238,3 +248,32 @@ class MolDataset(torch.utils.data.Dataset):
         labels = torch.stack(batch_list[5], dim=0)
 
         return lengths, centers, coords, types, radii, labels
+
+    # @staticmethod
+    # def collateMolDataset(batch):
+    #     '''collate_fn for use in torch.utils.data.Dataloader when using the MolDataset.
+    #     Returns lengths, centers, coords, types, radii, labels all padded to fit maximum size of batch'''
+    #     lens = []
+    #     centers = []
+    #     lcoords = []
+    #     ltypes = []
+    #     lradii = []
+    #     labels = []
+    #     for center,coords,types,radii,label in batch:
+    #         lens.append(coords.shape[0])
+    #         centers.append(center)
+    #         lcoords.append(coords)
+    #         ltypes.append(types)
+    #         lradii.append(radii)
+    #         labels.append(torch.tensor(label))
+
+
+    #     lengths = torch.tensor(lens)
+    #     lcoords = torch.nn.utils.rnn.pad_sequence(lcoords, batch_first=True)
+    #     ltypes = torch.nn.utils.rnn.pad_sequence(ltypes, batch_first=True)
+    #     lradii = torch.nn.utils.rnn.pad_sequence(lradii, batch_first=True)
+
+    #     centers = torch.stack(centers,dim=0)
+    #     labels = torch.stack(labels,dim=0)
+
+    #     return lengths, centers, lcoords, ltypes, lradii, labels
