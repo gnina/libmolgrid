@@ -366,7 +366,7 @@ def test_pytorch_dataset():
     ex = e.next()
     coordinates = ex.merge_coordinates()
 
-    center, coords, types, radii, labels = m[0]
+    lengths, center, coords, types, radii, labels = m[0]
 
     assert list(center.shape) == [3]
     np.testing.assert_allclose(coords, coordinates.coords.tonumpy())
