@@ -384,7 +384,7 @@ def test_pytorch_mapdataset():
 
     '''Testing out the collate_fn when used with torch.utils.data.DataLoader'''
     torch_loader = torch.utils.data.DataLoader(
-        m, batch_size=8, collate_fn=molgrid.MolDataset.collateMolDataset)
+        m, batch_size=8, collate_fn=molgrid.MolMapDataset.collateMolDataset)
     iterator = iter(torch_loader)
     next(iterator)
     lengths, center, coords, types, radii, labels = next(iterator)
@@ -462,7 +462,9 @@ def test_pytorch_iterdataset():
     assert radii.shape[0] == BSIZE
     assert labels.shape[0] == BSIZE
 
-    ex = e.next()
+    e.reset()
+    e.next_batch()
+    ex = e.next_batch()
     coordinates = ex[2].merge_coordinates()
     np.testing.assert_allclose(center[2], coordinates.coord_sets.center().tonumpy()) 
     np.testing.assert_allclose(coords[2,:lengths[2]], coordinates.coords.tonumpy())
