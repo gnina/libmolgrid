@@ -433,7 +433,7 @@ def test_pytorch_iterdataset():
     m_iter = iter(m)
     
     ex = e.next()
-    coordinates = ex[0].merge_coordinates()
+    coordinates = ex.merge_coordinates()
 
     lengths, centers, coords, types, radii, labels = next(m_iter)
 
