@@ -465,7 +465,7 @@ def test_pytorch_iterdataset():
     e.next_batch()
     ex = e.next_batch()
     coordinates = ex[2].merge_coordinates()
-    np.testing.assert_allclose(center[2], ex[2].coord_sets[-1].center().tonumpy()) 
+    np.testing.assert_allclose(center[2], np.array(list(ex[2].coord_sets[-1].center()))) 
     np.testing.assert_allclose(coords[2,:lengths[2]], coordinates.coords.tonumpy())
     np.testing.assert_allclose(types[2,:lengths[2]], coordinates.type_index.tonumpy())
     np.testing.assert_allclose(radii[2,:lengths[2]], coordinates.radii.tonumpy())
