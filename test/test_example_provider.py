@@ -449,6 +449,7 @@ def test_pytorch_iterdataset():
     np.testing.assert_allclose(labels[0,-1], 0.162643)
 
     # ensure it works with more than 1 worker
+    m.examples.reset()
     torch_loader = torch.utils.data.DataLoader(
         m, batch_size=None, num_workers=2)
     iterator = iter(torch_loader)
