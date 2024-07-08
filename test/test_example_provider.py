@@ -437,7 +437,7 @@ def test_pytorch_iterdataset():
 
     lengths, centers, coords, types, radii, labels = next(m_iter)
 
-    assert list(center.shape) == [3]
+    assert list(centers.shape) == [BSIZE,3]
     np.testing.assert_allclose(coords[0,:lengths[0],:], coordinates.coords.tonumpy())
     np.testing.assert_allclose(types[0,:lengths[0]], coordinates.type_index.tonumpy())
     np.testing.assert_allclose(radii[0,:lengths[0]], coordinates.radii.tonumpy())
@@ -458,7 +458,6 @@ def test_pytorch_iterdataset():
     assert center.shape[0] == BSIZE
     assert coords.shape[0] == BSIZE
     assert types.shape[0] == BSIZE
-    assert radii.shape[0] == BSIZE
     assert radii.shape[0] == BSIZE
     assert labels.shape[0] == BSIZE
 
