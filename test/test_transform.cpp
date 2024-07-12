@@ -8,8 +8,6 @@
 #define BOOST_TEST_MODULE transform_test
 #include <boost/test/unit_test.hpp>
 #include <boost/test/tools/floating_point_comparison.hpp>
-#include <thrust/reduce.h>
-#include <thrust/execution_policy.h>
 
 #include "libmolgrid/libmolgrid.h"
 #include "libmolgrid/transform.h"
