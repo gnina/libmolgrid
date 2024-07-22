@@ -329,7 +329,7 @@ class MolIterDataset(torch.utils.data.IterableDataset):
         worker_id = worker_info.id if worker_info is not None else 0
         n_workers = worker_info.num_workers if worker_info is not None else 1
 
-        world_size = get_world_size()
+        world_size = get_world_size() if torch.distributed.is_initialized() else 1
         if world_size == 1:
             return islice(self.generate(), worker_id, None, n_workers)
         process_rank = get_rank()
