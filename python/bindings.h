@@ -26,6 +26,7 @@
 #define TYPEARG(Z, N, T) BOOST_PP_COMMA_IF(N) T
 #define NTYPES(N, T) BOOST_PP_REPEAT(N, TYPEARG, T)
 
+
 extern bool python_gpu_enabled;
 bool init_numpy();
 

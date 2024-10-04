@@ -190,7 +190,7 @@ std::vector< std::vector<T> > listlist_to_vecvec(list l) {
 class PythonCallbackIndexTyper: public CallbackIndexTyper {
 
     boost::python::object callback;
-
+    using CallbackIndexTyper::get_atom_type_index;
   public:
 
     /// iniitalize callbacktyper, if names are not provided, numerical names will be generated
@@ -217,7 +217,7 @@ class PythonCallbackIndexTyper: public CallbackIndexTyper {
 class PythonCallbackVectorTyper: public CallbackVectorTyper {
 
     boost::python::object callback;
-
+    using CallbackVectorTyper::get_atom_type_vector;
   public:
 
     /// iniitalize callbacktyper, if names are not provided, numerical names will be generated
@@ -555,7 +555,7 @@ MAKE_ALL_GRIDS()
       init<object, unsigned, list>(
           (arg("func"), arg("num_types"), arg("names") = list() ) ))
       .def("num_types", &PythonCallbackIndexTyper::num_types)
-      .def("get_atom_type_index", &PythonCallbackIndexTyper::get_atom_type_index)
+      .def<std::pair<int,float> (PythonCallbackIndexTyper::*)(object a) const>("get_atom_type_index", &PythonCallbackIndexTyper::get_atom_type_index)
       .def("get_type_names",&PythonCallbackIndexTyper::get_type_names);
   implicitly_convertible<std::shared_ptr<PythonCallbackIndexTyper>, std::shared_ptr<AtomTyper> >();
 
@@ -574,7 +574,7 @@ MAKE_ALL_GRIDS()
       init<object, unsigned, list>(
           (arg("func"), arg("num_types"), arg("names") = list() ) ))
       .def("num_types", &PythonCallbackVectorTyper::num_types)
-      .def("get_atom_type_vector", &PythonCallbackVectorTyper::get_atom_type_vector)
+      .def< tuple (PythonCallbackVectorTyper::*)(object a) const >("get_atom_type_vector", &PythonCallbackVectorTyper::get_atom_type_vector)
       .def("get_type_names",&PythonCallbackVectorTyper::get_type_names);
   implicitly_convertible<std::shared_ptr<PythonCallbackVectorTyper>, std::shared_ptr<AtomTyper> >();
 
