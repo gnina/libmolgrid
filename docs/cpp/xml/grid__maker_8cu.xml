@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="grid__maker_8cu" kind="file" language="C++">
     <compoundname>grid_maker.cu</compoundname>
     <briefdescription>
@@ -1010,6 +1010,6 @@
 <codeline></codeline>
 <codeline><highlight class="normal">}<sp/>/*<sp/>namespace<sp/>libmolgrid<sp/>*/</highlight></codeline>
     </programlisting>
-    <location file="/home/dkoes/git/libmolgrid/src/grid_maker.cu"/>
+    <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_maker.cu"/>
   </compounddef>
 </doxygen>

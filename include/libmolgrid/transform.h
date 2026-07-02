@@ -26,18 +26,18 @@ namespace libmolgrid {
  */
 class Transform {
     Quaternion Q; //rotation
-    float3 center; //center of rotation
-    float3 translate; //amount to move after rotation
+    Vec3 center; //center of rotation
+    Vec3 translate; //amount to move after rotation
 
   public:
     Transform() {
-      center = make_float3(0, 0, 0);
-      translate = make_float3(0, 0, 0);
+      center = make_vec3(0, 0, 0);
+      translate = make_vec3(0, 0, 0);
     }
 
     Transform(const Quaternion& q,
-          float3 c = make_float3(0, 0, 0),
-          float3 t = make_float3(0, 0, 0))
+          Vec3 c = make_vec3(0, 0, 0),
+          Vec3 t = make_vec3(0, 0, 0))
         : Q(q), center(c), translate(t) {
     }
 
@@ -47,7 +47,7 @@ class Transform {
      * @param[in] random_translate Amount (+/-) to randomly translte
      * @param[in] random_rotate If true, apply random rotation
      */
-    Transform(float3 c, float random_translate = 0.0, bool random_rotate = false);
+    Transform(Vec3 c, float random_translate = 0.0, bool random_rotate = false);
 
     // Docstring_Transform_forward_1
     /* \brief Apply 3D transformation on CPU.   It is safe to transform
@@ -91,7 +91,7 @@ class Transform {
      * (This is for vector quantities such as gradients and normals).
      */
     template <typename Dtype>
-    __host__ void forward(const Grid<Dtype, 2, true>& in, Grid<Dtype, 2, true>& out, bool dotranslate=true) const;
+    void forward(const Grid<Dtype, 2, true>& in, Grid<Dtype, 2, true>& out, bool dotranslate=true) const;
 
     // Docstring_Transform_backward_1
     /* \brief Apply inverse of 3D transformation on CPU.
@@ -109,15 +109,15 @@ class Transform {
      * @param[in] dotranslate if false only the inverse rotation is applied
      */
     template <typename Dtype>
-    __host__ void backward(const Grid<Dtype, 2, true>& in, Grid<Dtype, 2, true>& out, bool dotranslate=true) const;
+    void backward(const Grid<Dtype, 2, true>& in, Grid<Dtype, 2, true>& out, bool dotranslate=true) const;
 
     const Quaternion& get_quaternion() const { return Q; }
-    float3 get_rotation_center() const { return center; }
-    float3 get_translation() const { return translate; }
+    Vec3 get_rotation_center() const { return center; }
+    Vec3 get_translation() const { return translate; }
 
     void set_quaternion(const Quaternion& q) { Q = q; }
-    void set_rotation_center(float3 c) { center = c; }
-    void set_translation(float3 t) { translate = t; }
+    void set_rotation_center(Vec3 c) { center = c; }
+    void set_translation(Vec3 t) { translate = t; }
 
     /// transformation does not change inputs
     bool is_identity() const {

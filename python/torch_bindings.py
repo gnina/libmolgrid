@@ -370,3 +370,4 @@ class MolIterDataset(torch.utils.data.IterableDataset):
             self.typers = None
         self.types_files = list(state[1])
         self.examples.populate(self.types_files)
+        self._num_labels = self.examples.num_labels()

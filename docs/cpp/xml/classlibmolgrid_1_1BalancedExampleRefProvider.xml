@@ -1,41 +1,44 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="classlibmolgrid_1_1BalancedExampleRefProvider" kind="class" language="C++" prot="public">
     <compoundname>libmolgrid::BalancedExampleRefProvider</compoundname>
     <basecompoundref refid="classlibmolgrid_1_1ExampleRefProvider" prot="public" virt="non-virtual">ExampleRefProvider</basecompoundref>
     <includes refid="exampleref__providers_8h" local="no">exampleref_providers.h</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a9c3c599a57ae155012056d9db86ad08d" prot="private" static="no" mutable="no">
         <type><ref refid="classlibmolgrid_1_1UniformExampleRefProvider" kindref="compound">UniformExampleRefProvider</ref></type>
         <definition>UniformExampleRefProvider actives</definition>
         <argsstring></argsstring>
         <name>actives</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::actives</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="100" column="29" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="100" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="100" column="29" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a794ba353d3e0e644569a7178f94f2673" prot="private" static="no" mutable="no">
         <type><ref refid="classlibmolgrid_1_1UniformExampleRefProvider" kindref="compound">UniformExampleRefProvider</ref></type>
         <definition>UniformExampleRefProvider decoys</definition>
         <argsstring></argsstring>
         <name>decoys</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::decoys</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="101" column="29" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="101" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="101" column="29" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a2cb51d0acda029b457eba211467c2cca" prot="private" static="no" mutable="no">
         <type>size_t</type>
         <definition>size_t current</definition>
         <argsstring></argsstring>
         <name>current</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::current</qualifiedname>
         <initializer>= 0</initializer>
         <briefdescription>
         </briefdescription>
@@ -43,13 +46,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="102" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="102" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="102" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1BalancedExampleRefProvider_1ae15d102ceae49cf5f3fd098f45df674b" prot="private" static="no" mutable="no">
         <type>unsigned</type>
         <definition>unsigned labelpos</definition>
         <argsstring></argsstring>
         <name>labelpos</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::labelpos</qualifiedname>
         <initializer>= 0</initializer>
         <briefdescription>
         </briefdescription>
@@ -57,28 +61,30 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="103" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="103" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="103" column="12" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="103" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a3404d7dfaebdfca4e2762c78acd81ecb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>BalancedExampleRefProvider</definition>
         <argsstring>()</argsstring>
         <name>BalancedExampleRefProvider</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::BalancedExampleRefProvider</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="106" column="3" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="106" bodyend="106"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="106" column="3" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="106" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1abf08cb5085ecca8f2f7d6bca860e8d08" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>BalancedExampleRefProvider</definition>
         <argsstring>(const ExampleProviderSettings &amp;settings)</argsstring>
         <name>BalancedExampleRefProvider</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::BalancedExampleRefProvider</qualifiedname>
         <param>
           <type>const <ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref> &amp;</type>
           <declname>settings</declname>
@@ -89,13 +95,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="107" column="3" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="107" bodyend="110"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="107" column="3" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="107" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void addref</definition>
         <argsstring>(const ExampleRef &amp;ex)</argsstring>
         <name>addref</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::addref</qualifiedname>
         <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a134b2325787965e2ef6260960f06adfc">addref</reimplements>
         <param>
           <type>const <ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref> &amp;</type>
@@ -107,13 +114,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="112" column="8" bodyfile="/home/dkoes/git/libmolgrid/src/exampleref_providers.cpp" bodystart="107" bodyend="117"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="112" column="8" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/exampleref_providers.cpp" bodystart="107" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>size_t</type>
         <definition>virtual size_t num_labels</definition>
         <argsstring>() const</argsstring>
         <name>num_labels</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::num_labels</qualifiedname>
         <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a4af792d6af8f9f676a2dc30f2262158b">num_labels</reimplements>
         <briefdescription>
 <para>return number of labels in <emphasis>an</emphasis> example </para>
@@ -122,13 +130,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="115" column="18" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="115" bodyend="115"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="115" column="18" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="115" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setup</definition>
         <argsstring>()</argsstring>
         <name>setup</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::setup</qualifiedname>
         <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a39fe489f6eb526d59b6b804a8343fe8c">setup</reimplements>
         <briefdescription>
         </briefdescription>
@@ -136,13 +145,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="116" column="8" bodyfile="/home/dkoes/git/libmolgrid/src/exampleref_providers.cpp" bodystart="119" bodyend="124"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="116" column="8" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/exampleref_providers.cpp" bodystart="119" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1ae630292b50e44deb19e001f322914934" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void nextref</definition>
         <argsstring>(ExampleRef &amp;ex)</argsstring>
         <name>nextref</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::nextref</qualifiedname>
         <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a7a953020850169224c78ac9bfda9e423">nextref</reimplements>
         <param>
           <type><ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref> &amp;</type>
@@ -154,13 +164,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="117" column="8" bodyfile="/home/dkoes/git/libmolgrid/src/exampleref_providers.cpp" bodystart="126" bodyend="137"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="117" column="8" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/exampleref_providers.cpp" bodystart="126" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>unsigned</type>
         <definition>unsigned size</definition>
         <argsstring>() const</argsstring>
         <name>size</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::size</qualifiedname>
         <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a962e2830e9c2869a2ee70cd5331f815f">size</reimplements>
         <briefdescription>
         </briefdescription>
@@ -168,39 +179,42 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="118" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="118" bodyend="118"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="118" column="12" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="118" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a3ed1c22bbf408a692ff4c997769639f6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>unsigned</type>
         <definition>unsigned num_actives</definition>
         <argsstring>() const</argsstring>
         <name>num_actives</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::num_actives</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="119" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="119" bodyend="119"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="119" column="12" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="119" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a12e19cfe7fd4a4d5b9d5d7d01840cfd7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>unsigned</type>
         <definition>unsigned num_decoys</definition>
         <argsstring>() const</argsstring>
         <name>num_decoys</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::num_decoys</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="120" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="120" bodyend="120"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="120" column="12" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="120" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1aba8517b4134d5ddaa29f9b5b3c7654f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void next_active</definition>
         <argsstring>(ExampleRef &amp;ex)</argsstring>
         <name>next_active</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::next_active</qualifiedname>
         <param>
           <type><ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref> &amp;</type>
           <declname>ex</declname>
@@ -211,13 +225,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="122" column="8" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="122" bodyend="122"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="122" column="8" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="122" bodyend="122"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1aaec2eeecfd8138a25cc093a24afb75f4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void next_decoy</definition>
         <argsstring>(ExampleRef &amp;ex)</argsstring>
         <name>next_decoy</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::next_decoy</qualifiedname>
         <param>
           <type><ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref> &amp;</type>
           <declname>ex</declname>
@@ -228,13 +243,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="123" column="8" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="123" bodyend="123"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="123" column="8" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="123" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a9c66646cb491b4c4620dcfe627f5451d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>size_t</type>
         <definition>virtual size_t small_epoch_size</definition>
         <argsstring>() const</argsstring>
         <name>small_epoch_size</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::small_epoch_size</qualifiedname>
         <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1ac7d5c78d78fc4ae893f25e5dfdf261cc">small_epoch_size</reimplements>
         <briefdescription>
 <para>Return number of example in small epoch. </para>
@@ -243,13 +259,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="125" column="18" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="125" bodyend="125"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="125" column="18" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="125" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1ac2a4bfd5fd0579c2377a181a7bae1395" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>size_t</type>
         <definition>virtual size_t large_epoch_size</definition>
         <argsstring>() const</argsstring>
         <name>large_epoch_size</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::large_epoch_size</qualifiedname>
         <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a8a7602870f7be094fa3955de5fba5aca">large_epoch_size</reimplements>
         <briefdescription>
 <para>Return number of example in large epoch. </para>
@@ -258,13 +275,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="126" column="18" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="126" bodyend="126"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="126" column="18" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="126" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1BalancedExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>virtual void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
+        <qualifiedname>libmolgrid::BalancedExampleRefProvider::reset</qualifiedname>
         <reimplements refid="classlibmolgrid_1_1ExampleRefProvider_1a20dcbdfbd0ec77afc802522bb7e379c1">reset</reimplements>
         <briefdescription>
 <para>Reset iterators to start. </para>
@@ -273,13 +291,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="128" column="16" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="128" bodyend="128"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="128" column="16" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="128" bodyend="128"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
         <definition>virtual bool has_group</definition>
         <argsstring>() const</argsstring>
         <name>has_group</name>
+        <qualifiedname>libmolgrid::ExampleRefProvider::has_group</qualifiedname>
         <reimplementedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028">has_group</reimplementedby>
         <briefdescription>
         </briefdescription>
@@ -287,13 +306,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="36" column="18" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="36" bodyend="36"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="36" column="18" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="36" bodyend="36"/>
+        <referencedby refid="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" compoundref="exampleref__providers_8cpp" startline="48" endline="62">ExampleRefProvider::populate</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>virtual void check_batch_size</definition>
         <argsstring>(unsigned bsize) const</argsstring>
         <name>check_batch_size</name>
+        <qualifiedname>libmolgrid::ExampleRefProvider::check_batch_size</qualifiedname>
         <reimplementedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a">check_batch_size</reimplementedby>
         <param>
           <type>unsigned</type>
@@ -306,13 +327,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="37" column="18" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="37" bodyend="37"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="37" column="18" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="37" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>int</type>
         <definition>int populate</definition>
         <argsstring>(std::istream &amp;lines, int numlabels)</argsstring>
         <name>populate</name>
+        <qualifiedname>libmolgrid::ExampleRefProvider::populate</qualifiedname>
         <param>
           <type>std::istream &amp;</type>
           <declname>lines</declname>
@@ -328,14 +350,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="41" column="17" bodyfile="/home/dkoes/git/libmolgrid/src/exampleref_providers.cpp" bodystart="48" bodyend="62"/>
-        <referencedby refid="classlibmolgrid_1_1ExampleDataset_1af034c26f3c6c9d88821e1db792e4e874" compoundref="example__dataset_8cpp" startline="45" endline="50">ExampleDataset::populate</referencedby>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="41" column="17" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/exampleref_providers.cpp" bodystart="48" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1a5edd8a3461f4aa311675b712ae2e1d20" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>size_t</type>
         <definition>virtual size_t get_small_epoch_num</definition>
         <argsstring>() const</argsstring>
         <name>get_small_epoch_num</name>
+        <qualifiedname>libmolgrid::ExampleRefProvider::get_small_epoch_num</qualifiedname>
         <reimplementedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1a5edd8a3461f4aa311675b712ae2e1d20">get_small_epoch_num</reimplementedby>
         <briefdescription>
 <para>Return current small epoch number. </para>
@@ -344,13 +366,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="44" column="20" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="44" bodyend="44"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="44" column="20" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleRefProvider_1ac881e6a758225142e37f3811184b156c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>size_t</type>
         <definition>virtual size_t get_large_epoch_num</definition>
         <argsstring>() const</argsstring>
         <name>get_large_epoch_num</name>
+        <qualifiedname>libmolgrid::ExampleRefProvider::get_large_epoch_num</qualifiedname>
         <reimplementedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1ac881e6a758225142e37f3811184b156c">get_large_epoch_num</reimplementedby>
         <briefdescription>
 <para>Return current large epoch number. </para>
@@ -359,15 +382,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="47" column="20" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="47" bodyend="47"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="47" column="20" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="47" bodyend="47"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="protected-attrib">
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classlibmolgrid_1_1ExampleRefProvider_1adc9bb9be55d353ea973698ff2e50e213" prot="protected" static="no" mutable="no">
         <type>size_t</type>
         <definition>size_t cnt</definition>
         <argsstring></argsstring>
         <name>cnt</name>
+        <qualifiedname>libmolgrid::ExampleRefProvider::cnt</qualifiedname>
         <initializer>= 1</initializer>
         <briefdescription>
         </briefdescription>
@@ -375,51 +399,53 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="25" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="25" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="25" column="12" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="25" bodyend="-1"/>
         <referencedby refid="classlibmolgrid_1_1ExampleRefProvider_1ac881e6a758225142e37f3811184b156c" compoundref="exampleref__providers_8h" startline="47" endline="47">ExampleRefProvider::get_large_epoch_num</referencedby>
         <referencedby refid="classlibmolgrid_1_1ExampleRefProvider_1a5edd8a3461f4aa311675b712ae2e1d20" compoundref="exampleref__providers_8h" startline="44" endline="44">ExampleRefProvider::get_small_epoch_num</referencedby>
-        <referencedby refid="classlibmolgrid_1_1SamplingExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="162" endline="171">SamplingExampleRefProvider&lt; Provider1, Provider2 &gt;::nextref</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="248" endline="266">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::nextref</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="395" endline="400">ValueStratifiedExampleRefProfider&lt; Provider &gt;::nextref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8cpp" startline="126" endline="137">BalancedExampleRefProvider::nextref</referencedby>
         <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="505" endline="536">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
-        <referencedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" compoundref="exampleref__providers_8h" startline="93" endline="93">UniformExampleRefProvider::reset</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="248" endline="266">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::nextref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1SamplingExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="162" endline="171">SamplingExampleRefProvider&lt; Provider1, Provider2 &gt;::nextref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8cpp" startline="77" endline="97">UniformExampleRefProvider::nextref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="395" endline="400">ValueStratifiedExampleRefProfider&lt; Provider &gt;::nextref</referencedby>
         <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" compoundref="exampleref__providers_8h" startline="128" endline="128">BalancedExampleRefProvider::reset</referencedby>
-        <referencedby refid="classlibmolgrid_1_1SamplingExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" compoundref="exampleref__providers_8h" startline="186" endline="186">SamplingExampleRefProvider&lt; Provider1, Provider2 &gt;::reset</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" compoundref="exampleref__providers_8h" startline="300" endline="308">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::reset</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a7b0e029102ad38f4b814c6523aedb53d" compoundref="exampleref__providers_8h" startline="434" endline="441">ValueStratifiedExampleRefProfider&lt; Provider &gt;::reset</referencedby>
         <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" compoundref="exampleref__providers_8h" startline="555" endline="561">GroupedExampleRefProvider&lt; Provider &gt;::reset</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" compoundref="exampleref__providers_8h" startline="300" endline="308">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::reset</referencedby>
+        <referencedby refid="classlibmolgrid_1_1SamplingExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" compoundref="exampleref__providers_8h" startline="186" endline="186">SamplingExampleRefProvider&lt; Provider1, Provider2 &gt;::reset</referencedby>
+        <referencedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" compoundref="exampleref__providers_8h" startline="93" endline="93">UniformExampleRefProvider::reset</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a7b0e029102ad38f4b814c6523aedb53d" compoundref="exampleref__providers_8h" startline="434" endline="441">ValueStratifiedExampleRefProfider&lt; Provider &gt;::reset</referencedby>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>sample uniformly from actives and decoys </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2">
-        <label>ExampleRefProvider</label>
-        <link refid="classlibmolgrid_1_1ExampleRefProvider"/>
-      </node>
       <node id="1">
         <label>BalancedExampleRefProvider</label>
         <link refid="classlibmolgrid_1_1BalancedExampleRefProvider"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="2">
+        <label>ExampleRefProvider</label>
+        <link refid="classlibmolgrid_1_1ExampleRefProvider"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2">
-        <label>ExampleRefProvider</label>
-        <link refid="classlibmolgrid_1_1ExampleRefProvider"/>
-      </node>
       <node id="1">
         <label>BalancedExampleRefProvider</label>
         <link refid="classlibmolgrid_1_1BalancedExampleRefProvider"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="2">
+        <label>ExampleRefProvider</label>
+        <link refid="classlibmolgrid_1_1ExampleRefProvider"/>
+      </node>
     </collaborationgraph>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" line="99" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="98" bodyend="129"/>
+    <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" line="98" column="1" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h" bodystart="99" bodyend="129"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a9c3c599a57ae155012056d9db86ad08d" prot="private" virt="non-virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>actives</name></member>
       <member refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" prot="public" virt="virtual"><scope>libmolgrid::BalancedExampleRefProvider</scope><name>addref</name></member>

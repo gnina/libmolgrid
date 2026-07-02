@@ -20,8 +20,8 @@ using namespace libmolgrid;
 BOOST_AUTO_TEST_CASE( random_transform)
 {
   random_engine.seed(0);
-  float3 c1 = make_float3(0,0,0);
-  float3 c2 = make_float3(0,0,1);
+  Vec3 c1 = make_vec3(0,0,0);
+  Vec3 c2 = make_vec3(0,0,1);
 
   Transform t1(c1, 4.0, true);
   Transform t2(c2, 4.0, true);
@@ -56,10 +56,10 @@ BOOST_AUTO_TEST_CASE(apply_transform)
 {
   //non-random transform
   Quaternion q(sqrt(0.5),0,0,sqrt(0.5)); //z 90
-  Transform nr(q, make_float3(0,1,1), make_float3(2,0,-3));
+  Transform nr(q, make_vec3(0,1,1), make_vec3(2,0,-3));
 
   //random
-  Transform r(make_float3(0,1,1), 10.0, true);
+  Transform r(make_vec3(0,1,1), 10.0, true);
 
   float coord_data[8][3] = { {0,0,0},
                          {1,0,0},
@@ -77,17 +77,17 @@ BOOST_AUTO_TEST_CASE(apply_transform)
 
   //does nr perform as expected?
   nr.forward(coords,coords2);
-  float3 expected = make_float3(2,1,-2);
+  Vec3 expected = make_vec3(2,1,-2);
   eqPt(coords2[6],expected); //at center
 
-  expected = make_float3(2,1,-3);
+  expected = make_vec3(2,1,-3);
   eqPt(coords2[2],expected); //on z-axis
 
-  expected = make_float3(2,2,-2);
+  expected = make_vec3(2,2,-2);
   eqPt(coords2[5],expected);
 
   //make sure input unchanged
-  expected = make_float3(0.333,.75,-9);
+  expected = make_vec3(0.333,.75,-9);
   eqPt(coords[7],expected);
 
   //does random work both ways

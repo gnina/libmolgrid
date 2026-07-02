@@ -119,8 +119,12 @@ struct Grid_from_python {
         }
         if(info.isGPU && hasattr(t,"device") && hasattr(t.attr("device"), "index")) {
           int d = extract<int>(t.attr("device").attr("index"));
+#if LIBMOLGRID_USE_CUDA
           int currd = 0;
           LMG_CUDA_CHECK(cudaGetDevice(&currd));
+#else
+          int currd = 0;
+#endif
           if(currd != d) {
             throw std::invalid_argument("Attempt to use GPU tensor on different device ("+itoa(d)+") than current device ("+itoa(currd)+").  Change location of tensor or change current device.");
           }
@@ -288,4 +292,3 @@ void define_mgrid(const char* name) {
 #define MAKE_MGRID_TN(N, TYPE, NAME) template void define_mgrid<TYPE,NTYPES(N,unsigned)>(const char *);
 
 MAKE_ALL_GRIDS();
-

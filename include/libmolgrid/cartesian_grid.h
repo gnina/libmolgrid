@@ -21,12 +21,12 @@ template <class G>
 class CartesianGrid {
     G grid_;
     size_t dimensions[3] = {0,}; //number of grid points
-    float3 center_ = {0,};
-    float3 origin_ = {0,};
+    Vec3 center_ = {0,};
+    Vec3 origin_ = {0,};
     float resolution_ = 0.0;
   public:
     /// Initialize CartesianGrid
-    CartesianGrid(const G& g, float3 c, float res): grid_(g), center_(c), resolution_(res) {
+    CartesianGrid(const G& g, Vec3 c, float res): grid_(g), center_(c), resolution_(res) {
     	dimensions[0] = g.dimension(G::N-3);
     	dimensions[1] = g.dimension(G::N-2);
     	dimensions[2] = g.dimension(G::N-1);
@@ -38,7 +38,7 @@ class CartesianGrid {
     ~CartesianGrid() {}
 
     /// return center of grid
-    float3 center() const { return center_; }
+    Vec3 center() const { return center_; }
     /// return resolution of grid
     float resolution() const { return resolution_; }
     /// return underlying grid
@@ -46,14 +46,14 @@ class CartesianGrid {
     const G& grid() const { return grid_; }
 
     /// return grid coordinates (not rounded) for Cartesian coordinates
-    float3 cart2grid(float x, float y, float z) const {
-    	float3 pt = { (x-origin_.x)/resolution_, (y-origin_.y)/resolution_, (z-origin_.z)/resolution_ };
+    Vec3 cart2grid(float x, float y, float z) const {
+    	Vec3 pt = { (x-origin_.x)/resolution_, (y-origin_.y)/resolution_, (z-origin_.z)/resolution_ };
     	return pt;
     }
 
     /// return Cartesian coordinates of provided grid position
-    float3 grid2cart(unsigned i, unsigned j, unsigned k) const {
-    	float3 pt = {origin_.x+i*resolution_,origin_.y+j*resolution_,origin_.z+k*resolution_};
+    Vec3 grid2cart(unsigned i, unsigned j, unsigned k) const {
+    	Vec3 pt = {origin_.x+i*resolution_,origin_.y+j*resolution_,origin_.z+k*resolution_};
     	return pt;
     }
 

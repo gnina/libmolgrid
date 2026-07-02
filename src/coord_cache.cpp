@@ -11,7 +11,7 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/path.hpp>
-#include <cuda_runtime.h>
+#include "libmolgrid/common.h"
 #include <openbabel/obconversion.h>
 
 namespace libmolgrid {
@@ -93,7 +93,7 @@ void CoordCache::set_coords(const char *fname, CoordinateSet &coord) {
     if (typer->is_vector_typer())
       throw invalid_argument("Vector typer used with molcache files");
 
-    vector<float3> c;
+    vector<Vec3> c;
     c.reserve(natoms);
     vector<float> r;
     r.reserve(natoms);
@@ -105,7 +105,7 @@ void CoordCache::set_coords(const char *fname, CoordinateSet &coord) {
       if (t_r.first >= 0) { // ignore neg
         t.push_back(t_r.first);
         r.push_back(t_r.second);
-        c.push_back(make_float3(atom.x, atom.y, atom.z));
+        c.push_back(make_vec3(atom.x, atom.y, atom.z));
       }
     }
 
@@ -129,7 +129,7 @@ void CoordCache::set_coords(const char *fname, CoordinateSet &coord) {
       if (!in)
         throw invalid_argument("Could not read " + fullname);
 
-      vector<float3> c;
+      vector<Vec3> c;
       vector<float> r;
       vector<int> t;
       info atom;
@@ -139,7 +139,7 @@ void CoordCache::set_coords(const char *fname, CoordinateSet &coord) {
         if (t_r.first >= 0) { // ignore neg
           t.push_back(t_r.first);
           r.push_back(t_r.second);
-          c.push_back(make_float3(atom.x, atom.y, atom.z));
+          c.push_back(make_vec3(atom.x, atom.y, atom.z));
         }
       }
 

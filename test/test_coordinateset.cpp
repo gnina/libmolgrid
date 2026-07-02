@@ -16,7 +16,7 @@ using namespace std;
 BOOST_AUTO_TEST_CASE(coordinates) {
   // hard-coded example, compared with a reference
   // read in example
-  vector<float3> coords{make_float3(1,0,-1),make_float3(1,3,-1),make_float3(1,0,-1)};
+  vector<Vec3> coords{make_vec3(1,0,-1),make_vec3(1,3,-1),make_vec3(1,0,-1)};
   vector<int> types{3,2,1};
   vector<float> radii{1.5,1.5,1.0};
   CoordinateSet c(coords,types,radii, 4);

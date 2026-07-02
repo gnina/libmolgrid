@@ -282,12 +282,12 @@ struct py_pair {
 };
 
 
-//conversion of tuple to float3
-struct PythonToFloat3Converter {
+//conversion of tuple to Vec3
+struct PythonToVec3Converter {
 
-    PythonToFloat3Converter()
+    PythonToVec3Converter()
     {
-        converter::registry::push_back(&convertible, &construct, type_id<float3>());
+        converter::registry::push_back(&convertible, &construct, type_id<Vec3>());
 
     }
     static void* convertible(PyObject* obj)
@@ -299,11 +299,11 @@ struct PythonToFloat3Converter {
     static void construct(PyObject* obj, converter::rvalue_from_python_stage1_data* data)
     {
         tuple tuple(borrowed(obj));
-        void* storage = ((converter::rvalue_from_python_storage<float3 >*) data)->storage.bytes;
+        void* storage = ((converter::rvalue_from_python_storage<Vec3 >*) data)->storage.bytes;
         float x = extract<float>(tuple[0]);
         float y = extract<float>(tuple[1]);
         float z = extract<float>(tuple[2]);
-        new (storage) float3{x,y,z};
+        new (storage) Vec3{x,y,z};
         data->convertible = storage;
     }
 };
@@ -404,14 +404,19 @@ BOOST_PYTHON_MODULE(molgrid)
       "Set if generated grids should be on GPU by default.");
   def("tofloatptr", +[](long val) { return Pointer<float>((float*)val);}, "Return integer as float *");
   def("todoubleptr", +[](long val) { return Pointer<double>((double*)val);}, "Return integer as double *");
+#if LIBMOLGRID_USE_CUDA
   def("set_gpu_device", +[](int device)->void {LMG_CUDA_CHECK(cudaSetDevice(device));}, "Set current GPU device.");
   def("get_gpu_device", +[]()->int {int device = 0; LMG_CUDA_CHECK(cudaGetDevice(&device)); return device;}, "Get current GPU device.");
+#else
+  def("set_gpu_device", +[](int device)->void { (void)device; }, "Set current GPU device (no-op on Metal builds).");
+  def("get_gpu_device", +[]()->int { return 0; }, "Get current GPU device (always 0 on Metal builds).");
+#endif
 
   //type converters
   py_pair<int, float>();
   py_pair<std::vector<float>, float>();
   py_pair<list, float>();
-  PythonToFloat3Converter();
+  PythonToVec3Converter();
 
 // Grids
 
@@ -452,27 +457,27 @@ MAKE_ALL_GRIDS()
   class_<Pointer<float> >("FloatPtr", no_init);
   class_<Pointer<double> >("DoublePtr", no_init);
 
-  class_<float3>("float3", no_init)
+  class_<Vec3>("Vec3", no_init)
       .def("__init__",
       make_constructor(
-          +[](float x, float y, float z) {return std::make_shared<float3>(make_float3(x,y,z));}))
+          +[](float x, float y, float z) {return std::make_shared<Vec3>(make_vec3(x,y,z));}))
       .def("__init__",
           make_constructor(+[](tuple t) {
           float x = extract<float>(t[0]);
           float y = extract<float>(t[1]);
           float z = extract<float>(t[2]);
-          return std::make_shared<float3>(make_float3(x,y,z));
+          return std::make_shared<Vec3>(make_vec3(x,y,z));
       }))
       .def("__getitem__",
-          +[](const float3& f, size_t i) { //enable conversion to iterable taking types like tuple
+          +[](const Vec3& f, size_t i) { //enable conversion to iterable taking types like tuple
         if(i == 0) return f.x;
         if(i == 1) return f.y;
         if(i == 2) return f.z;
-        throw std::out_of_range("float3");
+        throw std::out_of_range("Vec3");
       })
-      .def_readwrite("x", &float3::x)
-      .def_readwrite("y", &float3::y)
-      .def_readwrite("z", &float3::z);
+      .def_readwrite("x", &Vec3::x)
+      .def_readwrite("y", &Vec3::y)
+      .def_readwrite("z", &Vec3::z);
 
 // Quaternion - I lament the need for a custom quaternion class, yet here we are
   class_<Quaternion>("Quaternion", "@Docstring_Quaternion@")
@@ -496,9 +501,9 @@ MAKE_ALL_GRIDS()
 
   class_<Transform>("Transform", "@Docstring_Transform@")
       .def(init<Quaternion>())
-      .def(init<Quaternion, float3>())
-      .def(init<Quaternion, float3, float3>())
-  .def(init<float3, float, bool>((arg("center"),arg("random_translate")=0.0,arg("random_rotation")=false))) //center, translate, rotate
+      .def(init<Quaternion, Vec3>())
+      .def(init<Quaternion, Vec3, Vec3>())
+  .def(init<Vec3, float, bool>((arg("center"),arg("random_translate")=0.0,arg("random_rotation")=false))) //center, translate, rotate
   .def("get_quaternion", &Transform::get_quaternion, return_value_policy<copy_const_reference>())
   .def("get_rotation_center", &Transform::get_rotation_center)
   .def("get_translation", &Transform::get_translation)
@@ -815,8 +820,8 @@ MAKE_ALL_GRIDS()
   //grid maker
   class_<GridMaker>("GridMaker", "@Docstring_GridMaker@",
       init<float, float, bool, bool, float, float>(((arg("resolution")=0.5, arg("dimension")=23.5, arg("binary")=false, arg("radius_type_indexed")=false,arg("radius_scale")=1.0), arg("gaussian_radius_multiple")=1.0)))
-      .def("spatial_grid_dimensions", +[](GridMaker& self) { float3 dims = self.get_grid_dims(); return make_tuple(int(dims.x),int(dims.y),int(dims.z));})
-      .def("grid_dimensions", +[](GridMaker& self, int ntypes) { float3 dims = self.get_grid_dims(); return make_tuple(ntypes,int(dims.x),int(dims.y),int(dims.z));})
+      .def("spatial_grid_dimensions", +[](GridMaker& self) { Vec3 dims = self.get_grid_dims(); return make_tuple(int(dims.x),int(dims.y),int(dims.z));})
+      .def("grid_dimensions", +[](GridMaker& self, int ntypes) { Vec3 dims = self.get_grid_dims(); return make_tuple(ntypes,int(dims.x),int(dims.y),int(dims.z));})
       .def("get_resolution", &GridMaker::get_resolution)
       .def("set_resolution", &GridMaker::set_resolution)
       .def("get_dimension", &GridMaker::get_dimension)
@@ -838,20 +843,20 @@ MAKE_ALL_GRIDS()
       .def("forward", +[](GridMaker& self, const std::vector<Example>& in, Grid<float, 5, true> g, float random_translate, bool random_rotate){
             self.forward(in, g, random_translate, random_rotate); },
             (arg("examples"),arg("grid"),arg("random_translation")=0.0,arg("random_rotation")=false), "@Docstring_GridMaker_forward_5@")
-      .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, false> g){ self.forward(center, c, g); }, "@Docstring_GridMaker_forward_1@")
-      .def("forward", +[](GridMaker& self, float3 center, const CoordinateSet& c, Grid<float, 4, true> g){ self.forward(center, c, g); }, "@Docstring_GridMaker_forward_2@")
+      .def("forward", +[](GridMaker& self, Vec3 center, const CoordinateSet& c, Grid<float, 4, false> g){ self.forward(center, c, g); }, "@Docstring_GridMaker_forward_1@")
+      .def("forward", +[](GridMaker& self, Vec3 center, const CoordinateSet& c, Grid<float, 4, true> g){ self.forward(center, c, g); }, "@Docstring_GridMaker_forward_2@")
       .def("forward", +[](GridMaker& self, const Example& ex, const Transform& t, Grid<float, 4, false> g){ self.forward(ex, t, g); }, "@Docstring_GridMaker_forward_3@")
       .def("forward", +[](GridMaker& self, const Example& ex, const Transform& t, Grid<float, 4, true> g){ self.forward(ex, t, g); }, "@Docstring_GridMaker_forward_3@")
-      .def("forward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, false>& coords,
+      .def("forward", +[](GridMaker& self, Vec3 grid_center, const Grid<float, 2, false>& coords,
         const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
         Grid<float, 4, false>& out){ self.forward(grid_center, coords, type_index, radii, out);}, "@Docstring_GridMaker_forward_6@")
-      .def("forward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, true>& coords,
+      .def("forward", +[](GridMaker& self, Vec3 grid_center, const Grid<float, 2, true>& coords,
           const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
           Grid<float, 4, true>& out){ self.forward(grid_center, coords, type_index, radii, out);}, "@Docstring_GridMaker_forward_7@")
-      .def("forward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, false>& coords,
+      .def("forward", +[](GridMaker& self, Vec3 grid_center, const Grid<float, 2, false>& coords,
           const Grid<float, 2, false>& type_vector, const Grid<float, 1, false>& radii,
           Grid<float, 4, false> g){ self.forward(grid_center, coords, type_vector, radii, g); }, "@Docstring_GridMaker_forward_8@")
-      .def("forward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, true>& coords,
+      .def("forward", +[](GridMaker& self, Vec3 grid_center, const Grid<float, 2, true>& coords,
               const Grid<float, 2, true>& type_vector, const Grid<float, 1, true>& radii,
               Grid<float, 4, true> g){ self.forward(grid_center, coords, type_vector, radii, g); }, "@Docstring_GridMaker_forward_9@")
       .def("forward", +[](GridMaker& self, const Grid<float, 2, false>& centers, const Grid<float, 3, false>& coords,
@@ -866,52 +871,52 @@ MAKE_ALL_GRIDS()
       .def("forward", +[](GridMaker& self, const Grid<float, 2, true>& centers, const Grid<float, 3, true>& coords,
               const Grid<float, 3, true>& types, const Grid<float, 2, true>& radii,
               Grid<float, 5, true> g){ self.forward<float, 3, true>(centers, coords, types, radii, g); }, "@Docstring_GridMaker_forward_10@")
-      .def("backward", +[](GridMaker& self, float3 grid_center, const CoordinateSet& in, const Grid<float, 4, false>& diff,
+      .def("backward", +[](GridMaker& self, Vec3 grid_center, const CoordinateSet& in, const Grid<float, 4, false>& diff,
           Grid<float, 2, false> atomic_gradients, Grid<float, 2, false> type_gradients){
           self.backward(grid_center, in, diff, atomic_gradients, type_gradients);}, "@Docstring_GridMaker_backward_1@")
-      .def("backward", +[](GridMaker& self, float3 grid_center, const CoordinateSet& in,
+      .def("backward", +[](GridMaker& self, Vec3 grid_center, const CoordinateSet& in,
           const Grid<float, 4, false>& diff, Grid<float, 2, false> atomic_gradients) {
           self.backward(grid_center, in, diff, atomic_gradients); }, "@Docstring_GridMaker_backward_2@")
-      .def("backward", +[](GridMaker& self, float3 grid_center, const CoordinateSet& in, const Grid<float, 4, true>& diff,
+      .def("backward", +[](GridMaker& self, Vec3 grid_center, const CoordinateSet& in, const Grid<float, 4, true>& diff,
           Grid<float, 2, true> atomic_gradients, Grid<float, 2, true> type_gradients){
           self.backward(grid_center, in, diff, atomic_gradients, type_gradients);}, "@Docstring_GridMaker_backward_3@")
-      .def("backward", +[](GridMaker& self, float3 grid_center, const CoordinateSet& in,
+      .def("backward", +[](GridMaker& self, Vec3 grid_center, const CoordinateSet& in,
           const Grid<float, 4, true>& diff, Grid<float, 2, true> atomic_gradients) {
           self.backward(grid_center, in, diff, atomic_gradients); }, "@Docstring_GridMaker_backward_4@")
-       .def("backward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, false>& coords,
+       .def("backward", +[](GridMaker& self, Vec3 grid_center, const Grid<float, 2, false>& coords,
            const Grid<float, 1, false>& type_index, const Grid<float, 1, false>& radii,
            const Grid<float, 4, false>& diff, Grid<float, 2, false> atom_gradients) {
            self.backward(grid_center, coords, type_index, radii, diff, atom_gradients);}, "@Docstring_GridMaker_backward_5@")
-       .def("backward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, true>& coords,
+       .def("backward", +[](GridMaker& self, Vec3 grid_center, const Grid<float, 2, true>& coords,
            const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
            const Grid<float, 4, true>& diff, Grid<float, 2, true> atom_gradients) {
            self.backward(grid_center, coords, type_index, radii, diff, atom_gradients);}, "@Docstring_GridMaker_backward_6@")
-       .def("backward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, false>& coords,
+       .def("backward", +[](GridMaker& self, Vec3 grid_center, const Grid<float, 2, false>& coords,
            const Grid<float, 2, false>& type_vectors, const Grid<float, 1, false>& radii,
            const Grid<float, 4, false>& diff, Grid<float, 2, false> atom_gradients, Grid<float, 2, false> type_gradients) {
               self.backward(grid_center, coords, type_vectors, radii, diff, atom_gradients, type_gradients);}, "@Docstring_GridMaker_backward_7@")
-       .def("backward", +[](GridMaker& self, float3 grid_center, const Grid<float, 2, true>& coords,
+       .def("backward", +[](GridMaker& self, Vec3 grid_center, const Grid<float, 2, true>& coords,
            const Grid<float, 2, true>& type_vectors, const Grid<float, 1, true>& radii,
            const Grid<float, 4, true>& diff, Grid<float, 2, true> atom_gradients, Grid<float, 2, true> type_gradients) {
               self.backward(grid_center, coords, type_vectors, radii, diff, atom_gradients, type_gradients);}, "@Docstring_GridMaker_backward_8@")
-       .def("backward_gradients", +[](GridMaker& self, float3 grid_center,  const Grid<float, 2, false>& coords,
+       .def("backward_gradients", +[](GridMaker& self, Vec3 grid_center,  const Grid<float, 2, false>& coords,
                       const Grid<float, 2, false>& type_vectors, const Grid<float, 1, false>& radii, const Grid<float, 4, false>& diff,
                       const Grid<float, 2, false>& atom_gradients, const Grid<float, 2, false>& type_gradients,
                       Grid<float, 4, false> diffdiff, Grid<float, 2, false> atom_diffdiff, Grid<float, 2, false> type_diffdiff) {
               self.backward_gradients(grid_center, coords, type_vectors, radii, diff, atom_gradients, type_gradients,
                   diffdiff, atom_diffdiff, type_diffdiff); }, "@Docstring_GridMaker_backward_gradients_1@")
-       .def("backward_gradients", +[](GridMaker& self, float3 grid_center,  const Grid<float, 2, true>& coords,
+       .def("backward_gradients", +[](GridMaker& self, Vec3 grid_center,  const Grid<float, 2, true>& coords,
                        const Grid<float, 2, true>& type_vectors, const Grid<float, 1, true>& radii, const Grid<float, 4, true>& diff,
                        const Grid<float, 2, true>& atom_gradients, const Grid<float, 2, true>& type_gradients,
                        Grid<float, 4, true> diffdiff, Grid<float, 2, true> atom_diffdiff, Grid<float, 2, true> type_diffdiff) {
                self.backward_gradients(grid_center, coords, type_vectors, radii, diff, atom_gradients, type_gradients,
                    diffdiff, atom_diffdiff, type_diffdiff); }, "@Docstring_GridMaker_backward_gradients_2@")
-       .def("backward_gradients", +[](GridMaker& self, float3 grid_center,  const CoordinateSet& in, const Grid<float, 4, false>& diff,
+       .def("backward_gradients", +[](GridMaker& self, Vec3 grid_center,  const CoordinateSet& in, const Grid<float, 4, false>& diff,
                       const Grid<float, 2, false>& atom_gradients, const Grid<float, 2, false>& type_gradients,
                       Grid<float, 4, false> diffdiff, Grid<float, 2, false> atom_diffdiff, Grid<float, 2, false> type_diffdiff) {
               self.backward_gradients(grid_center, in, diff, atom_gradients, type_gradients,
                   diffdiff, atom_diffdiff, type_diffdiff); }, "@Docstring_GridMaker_backward_gradients_3@")
-       .def("backward_gradients", +[](GridMaker& self, float3 grid_center,  const CoordinateSet& in, const Grid<float, 4, true>& diff,
+       .def("backward_gradients", +[](GridMaker& self, Vec3 grid_center,  const CoordinateSet& in, const Grid<float, 4, true>& diff,
                        const Grid<float, 2, true>& atom_gradients, const Grid<float, 2, true>& type_gradients,
                        Grid<float, 4, true> diffdiff, Grid<float, 2, true> atom_diffdiff, Grid<float, 2, true> type_diffdiff) {
                self.backward_gradients(grid_center, in, diff, atom_gradients, type_gradients,
@@ -935,26 +940,26 @@ MAKE_ALL_GRIDS()
             self.forward(in, transform, out);}, "@Docstring_GridInterpolater_forward_3@")
       .def("forward", +[](GridInterpolater& self, const Grid<float, 4, true>& in, const Transform& transform, Grid<float, 4, true>& out){
             self.forward(in, transform, out);}, "@Docstring_GridInterpolater_forward_4@")
-      .def("forward", +[](GridInterpolater& self, float3 in_center, const Grid<float, 4, false>& in, const Transform& transform,
-                                                  float3 out_center, Grid<float, 4, false>& out){
+      .def("forward", +[](GridInterpolater& self, Vec3 in_center, const Grid<float, 4, false>& in, const Transform& transform,
+                                                  Vec3 out_center, Grid<float, 4, false>& out){
             self.forward(in_center, in, transform, out_center, out);}, "@Docstring_GridInterpolater_forward_5@")
-      .def("forward", +[](GridInterpolater& self, float3 in_center, const Grid<float, 4, true>& in, const Transform& transform,
-                                                  float3 out_center, Grid<float, 4, true>& out){
+      .def("forward", +[](GridInterpolater& self, Vec3 in_center, const Grid<float, 4, true>& in, const Transform& transform,
+                                                  Vec3 out_center, Grid<float, 4, true>& out){
             self.forward(in_center, in, transform, out_center, out);}, "@Docstring_GridInterpolater_forward_6@");
 
 
-  class_<CartesianGrid<MGrid3f> >("CartesianGrid", "@Docstring_CartesianGrid@", init<MGrid3f, float3, float>())
+  class_<CartesianGrid<MGrid3f> >("CartesianGrid", "@Docstring_CartesianGrid@", init<MGrid3f, Vec3, float>())
       .def("center",&CartesianGrid<MGrid3f>::center)
       .def("resolution", &CartesianGrid<MGrid3f>::resolution)
       .def("grid", +[](CartesianGrid<MGrid3f>& self) { return self.grid();});
 
   //grid io
   def("read_dx",static_cast<CartesianGrid<ManagedGrid<float, 3> > (*)(const std::string&)>(&read_dx<float>), "@Docstring_read_dx@");
-  def("write_dx",static_cast<void (*)(const std::string& fname, const Grid3f&, const float3&, float, float)>(&write_dx<float>),
+  def("write_dx",static_cast<void (*)(const std::string& fname, const Grid3f&, const Vec3&, float, float)>(&write_dx<float>),
       (arg("file_name"),"grid","center","resolution",arg("scale")=1.0), "@Docstring_write_dx@");
-  def("write_map",static_cast<void (*)(const std::string& fname, const Grid3f&, const float3&, float, float)>(&write_map<float>),
+  def("write_map",static_cast<void (*)(const std::string& fname, const Grid3f&, const Vec3&, float, float)>(&write_map<float>),
       (arg("file_name"),"grid","center","resolution",arg("scale")=1.0), "@Docstring_write_map@");
-  def("write_dx_grids",static_cast<void (*)(const std::string&, const std::vector<std::string>&, const Grid4f&, const float3&, float, float)>(&write_dx_grids<float>),
+  def("write_dx_grids",static_cast<void (*)(const std::string&, const std::vector<std::string>&, const Grid4f&, const Vec3&, float, float)>(&write_dx_grids<float>),
       (arg("prefix"),"type_names","grid","center","resolution",arg("scale")=1.0), "@Docstring_write_dx_grids@");
   def("read_dx_grids",+[](const std::string& prefix, const std::vector<std::string>& names, Grid4f grid) { read_dx_grids(prefix, names, grid);}, "@Docstring_read_dx_grids@");
 

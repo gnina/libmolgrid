@@ -9,7 +9,7 @@
 #include <string>
 #include <unordered_set>
 #include <boost/algorithm/string.hpp>
-#include <cuda_runtime.h>
+#include "libmolgrid/common.h"
 
 #include "libmolgrid/example.h"
 
@@ -39,7 +39,7 @@ size_t Example::num_types(bool unique_index_types) const {
 //grid version
 void Example::merge_coordinates(Grid2f& c, Grid1f& t, Grid1f& r, unsigned start, bool unique_index_types) const {
 
-  vector<float3> coords;
+  vector<Vec3> coords;
   vector<float> types;
   vector<float> radii;
 
@@ -60,13 +60,13 @@ void Example::merge_coordinates(Grid2f& c, Grid1f& t, Grid1f& r, unsigned start,
   }
 
   //copy data
-  memcpy(c.data(), &coords[0], sizeof(float3)*coords.size());
+  memcpy(c.data(), &coords[0], sizeof(Vec3)*coords.size());
   memcpy(t.data(), &types[0], sizeof(float)*types.size());
   memcpy(r.data(), &radii[0], sizeof(float)*radii.size());
 
 }
 
-void Example::merge_coordinates(std::vector<float3>& coords, std::vector<float>& types, std::vector<float>& radii, unsigned start, bool unique_index_types) const {
+void Example::merge_coordinates(std::vector<Vec3>& coords, std::vector<float>& types, std::vector<float>& radii, unsigned start, bool unique_index_types) const {
   unsigned N = num_coordinates();
 
   coords.clear();
@@ -91,7 +91,7 @@ void Example::merge_coordinates(std::vector<float3>& coords, std::vector<float>&
     //todo: memcpy this
     for(unsigned i = 0; i < n; i++) {
       auto cr = CS.coords[i];
-      coords.push_back(make_float3(cr[0],cr[1],cr[2]));
+      coords.push_back(make_vec3(cr[0],cr[1],cr[2]));
       types.push_back(CS.type_index[i]+toffset);
       radii.push_back(CS.radii[i]);
     }
@@ -102,7 +102,7 @@ void Example::merge_coordinates(std::vector<float3>& coords, std::vector<float>&
 //grid version of vector
 void Example::merge_coordinates(Grid2f& c, Grid2f& t, Grid1f& r, unsigned start, bool unique_index_types) const {
 
-  vector<float3> coords;
+  vector<Vec3> coords;
   vector< vector<float> > types;
   vector<float> radii;
 
@@ -129,13 +129,13 @@ void Example::merge_coordinates(Grid2f& c, Grid2f& t, Grid1f& r, unsigned start,
   }
 
   //copy data
-  memcpy(c.data(), &coords[0], sizeof(float3)*coords.size());
+  memcpy(c.data(), &coords[0], sizeof(Vec3)*coords.size());
   memcpy(t.data(), &types[0], sizeof(float)*types.size());
   memcpy(r.data(), &radii[0], sizeof(float)*radii.size());
 
 }
 
-void Example::merge_coordinates(std::vector<float3>& coords, std::vector<std::vector<float> >& types,
+void Example::merge_coordinates(std::vector<Vec3>& coords, std::vector<std::vector<float> >& types,
     std::vector<float>& radii, unsigned start, bool unique_index_types) const {
 
   coords.clear();
@@ -177,7 +177,7 @@ void Example::merge_coordinates(std::vector<float3>& coords, std::vector<std::ve
     //todo: memcpy this
     for(unsigned i = 0; i < n; i++) {
       auto cr = CS.coords[i];
-      coords.push_back(make_float3(cr[0],cr[1],cr[2]));
+      coords.push_back(make_vec3(cr[0],cr[1],cr[2]));
 
       types.push_back(vector<float>(maxt, 0.0));
       vector<float>& tvec = types.back();
@@ -210,7 +210,7 @@ CoordinateSet Example::merge_coordinates(unsigned start, bool unique_index_types
     return sets[start].clone();
   } else if(!has_vec) {
 
-    vector<float3> coords;
+    vector<Vec3> coords;
     vector<float> types;
     vector<float> radii;
     merge_coordinates(coords, types, radii, start, unique_index_types);
@@ -219,7 +219,7 @@ CoordinateSet Example::merge_coordinates(unsigned start, bool unique_index_types
 
   } else { //vector types
 
-    vector<float3> coords;
+    vector<Vec3> coords;
     vector<vector<float> > types;
     vector<float> radii;
     merge_coordinates(coords, types, radii, start, unique_index_types);
@@ -259,11 +259,15 @@ void Example::extract_labels(const vector<Example>& examples, Grid<float, 2, isC
   for(unsigned i = 0, n = examples.size(); i < n; i++) {
     const vector<float>& labels = examples[i].labels;
     if(labels.size() != nlabels) throw logic_error("Non-uniform number of labels: "+itoa(nlabels) +" vs "+ itoa(labels.size()));
-    if(isCUDA) {
+#if LIBMOLGRID_USE_CUDA
+    if constexpr (isCUDA) {
       LMG_CUDA_CHECK(cudaMemcpy(out[i].data(), &labels[0], sizeof(float)*nlabels, cudaMemcpyHostToDevice));
     } else {
       memcpy(out[i].data(), &labels[0], sizeof(float)*nlabels);
     }
+#else
+    memcpy(out[i].data(), &labels[0], sizeof(float)*nlabels);
+#endif
   }
 }
 
@@ -285,11 +289,15 @@ void Example::extract_label(const std::vector<Example>& examples, unsigned label
     if(labelpos >= examples[i].labels.size()) throw std::out_of_range("labelpos invalid (nonuniform labels): " +itoa(labelpos) + " >= " + itoa(examples[i].labels.size()));
     labels[i] = examples[i].labels[labelpos];
   }
-   if(isCUDA) {
-     LMG_CUDA_CHECK(cudaMemcpy(out.data(), &labels[0], sizeof(float)*N, cudaMemcpyHostToDevice));
-   } else {
-     memcpy(out.data(), &labels[0], sizeof(float)*N);
-   }
+#if LIBMOLGRID_USE_CUDA
+  if constexpr (isCUDA) {
+    LMG_CUDA_CHECK(cudaMemcpy(out.data(), &labels[0], sizeof(float)*N, cudaMemcpyHostToDevice));
+  } else {
+    memcpy(out.data(), &labels[0], sizeof(float)*N);
+  }
+#else
+  memcpy(out.data(), &labels[0], sizeof(float)*N);
+#endif
 }
 
 template void Example::extract_label(const vector<Example>&, unsigned, Grid<float, 1, false>& );

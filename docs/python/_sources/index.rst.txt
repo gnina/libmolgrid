@@ -8,7 +8,6 @@ libmolgrid Python documentation
    About <../about#://>
    Docs Home <../docs.html#://>
    Tutorials <../tutorials#://>
-   molgrid Python documentation <index>
 
 Python Docs
 ===========

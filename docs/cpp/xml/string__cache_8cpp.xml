@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="string__cache_8cpp" kind="file" language="C++">
+    <compoundname>string_cache.cpp</compoundname>
+    <includes refid="string__cache_8h" local="yes">libmolgrid/string_cache.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>libmolgrid/string_cache.h</label>
+        <link refid="string__cache_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>string_cache.cpp</label>
+        <link refid="string__cache_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>unordered_set</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacelibmolgrid">libmolgrid</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="string__cache_8h" kindref="compound">libmolgrid/string_cache.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelibmolgrid" kindref="compound">libmolgrid</ref><sp/>{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="namespacelibmolgrid_1ae85ac8fbef92553b049a1d50afa4c183" refkind="member"><highlight class="normal"><ref refid="classlibmolgrid_1_1StringCache" kindref="compound">StringCache</ref><sp/><ref refid="namespacelibmolgrid_1ae85ac8fbef92553b049a1d50afa4c183" kindref="member">string_cache</ref>;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/string_cache.cpp"/>
+  </compounddef>
+</doxygen>

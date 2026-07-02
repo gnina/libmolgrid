@@ -1,12 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="common_8h" kind="file" language="C++">
     <compoundname>common.h</compoundname>
     <includes local="no">memory</includes>
     <includes local="no">cstring</includes>
-    <includes local="no">cuda_runtime_api.h</includes>
-    <includes local="no">cuda.h</includes>
+    <includes local="no">stdexcept</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">string</includes>
+    <includes local="yes">libmolgrid/config.h</includes>
+    <includedby refid="coord__cache_8cpp" local="yes">coord_cache.cpp</includedby>
+    <includedby refid="coordinateset_8cpp" local="yes">coordinateset.cpp</includedby>
+    <includedby refid="example_8cpp" local="yes">example.cpp</includedby>
+    <includedby refid="example__extractor_8cpp" local="yes">example_extractor.cpp</includedby>
     <includedby refid="grid_8h" local="yes">grid.h</includedby>
+    <includedby refid="grid__interpolater_8h" local="yes">grid_interpolater.h</includedby>
+    <includedby refid="grid__maker_8h" local="yes">grid_maker.h</includedby>
+    <includedby refid="libmolgrid_8h" local="yes">libmolgrid.h</includedby>
+    <includedby refid="metal__context_8h" local="yes">metal_context.h</includedby>
+    <includedby refid="quaternion_8h" local="yes">quaternion.h</includedby>
     <incdepgraph>
       <node id="1">
         <label>common.h</label>
@@ -19,147 +30,39 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-      </node>
-      <node id="5">
-        <label>cuda.h</label>
-      </node>
-      <node id="4">
-        <label>cuda_runtime_api.h</label>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
       <node id="3">
         <label>cstring</label>
       </node>
+      <node id="5">
+        <label>iostream</label>
+      </node>
+      <node id="7">
+        <label>libmolgrid/config.h</label>
+      </node>
       <node id="2">
         <label>memory</label>
       </node>
+      <node id="4">
+        <label>stdexcept</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="14">
-        <label>example_extractor.h</label>
-        <link refid="example__extractor_8h"/>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-      </node>
-      <node id="21">
-        <label>example.h</label>
-        <link refid="example_8h"/>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>grid_interpolater.h</label>
-        <link refid="grid__interpolater_8h"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
       <node id="7">
-        <label>grid_io.cpp</label>
-        <link refid="grid__io_8cpp"/>
-      </node>
-      <node id="8">
-        <label>cartesian_grid.cpp</label>
-        <link refid="cartesian__grid_8cpp"/>
-      </node>
-      <node id="19">
-        <label>example_extractor.cpp</label>
-        <link refid="example__extractor_8cpp"/>
-      </node>
-      <node id="2">
-        <label>grid.h</label>
-        <link refid="grid_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
+        <label>cartesian_grid.h</label>
+        <link refid="cartesian__grid_8h"/>
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>grid_io.h</label>
-        <link refid="grid__io_8h"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="10">
-        <label>grid_maker.cpp</label>
-        <link refid="grid__maker_8cpp"/>
-      </node>
-      <node id="22">
-        <label>exampleref_providers.h</label>
-        <link refid="exampleref__providers_8h"/>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>cartesian_grid.h</label>
-        <link refid="cartesian__grid_8h"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>coord_cache.h</label>
-        <link refid="coord__cache_8h"/>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-      </node>
-      <node id="15">
-        <label>example_dataset.h</label>
-        <link refid="example__dataset_8h"/>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>grid_maker.h</label>
-        <link refid="grid__maker_8h"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="25">
-        <label>libmolgrid.cpp</label>
-        <link refid="libmolgrid_8cpp"/>
-      </node>
-      <node id="17">
-        <label>example_provider.h</label>
-        <link refid="example__provider_8h"/>
-        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -167,79 +70,245 @@
         <link refid="common_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-      </node>
-      <node id="26">
-        <label>transform.cpp</label>
-        <link refid="transform_8cpp"/>
-      </node>
-      <node id="23">
-        <label>exampleref_providers.cpp</label>
-        <link refid="exampleref__providers_8cpp"/>
-      </node>
-      <node id="5">
-        <label>grid_interpolater.cpp</label>
-        <link refid="grid__interpolater_8cpp"/>
-      </node>
-      <node id="24">
-        <label>transform.h</label>
-        <link refid="transform_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
         <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>coord_cache.h</label>
+        <link refid="coord__cache_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
         <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>example_dataset.h</label>
+        <link refid="example__dataset_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>example_extractor.h</label>
+        <link refid="example__extractor_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>example_provider.h</label>
+        <link refid="example__provider_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>exampleref_providers.h</label>
+        <link refid="exampleref__providers_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
       </node>
-      <node id="18">
-        <label>example_provider.cpp</label>
-        <link refid="example__provider_8cpp"/>
-      </node>
-      <node id="11">
-        <label>managed_grid.h</label>
-        <link refid="managed__grid_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>coord_cache.cpp</label>
-        <link refid="coord__cache_8cpp"/>
-      </node>
-      <node id="28">
-        <label>coordinateset.cpp</label>
-        <link refid="coordinateset_8cpp"/>
-      </node>
-      <node id="16">
-        <label>example_dataset.cpp</label>
-        <link refid="example__dataset_8cpp"/>
-      </node>
-      <node id="27">
-        <label>example.cpp</label>
-        <link refid="example_8cpp"/>
-      </node>
-      <node id="12">
-        <label>coordinateset.h</label>
-        <link refid="coordinateset_8h"/>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
+      <node id="6">
+        <label>grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>grid_interpolater.h</label>
+        <link refid="grid__interpolater_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>grid_io.h</label>
+        <link refid="grid__io_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>grid_maker.h</label>
+        <link refid="grid__maker_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>libmolgrid.h</label>
+        <link refid="libmolgrid_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>metal_context.h</label>
+        <link refid="metal__context_8h"/>
+      </node>
+      <node id="31">
+        <label>quaternion.h</label>
+        <link refid="quaternion_8h"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>transform.h</label>
+        <link refid="transform_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
       </node>
+      <node id="8">
+        <label>cartesian_grid.cpp</label>
+        <link refid="cartesian__grid_8cpp"/>
+      </node>
+      <node id="2">
+        <label>coord_cache.cpp</label>
+        <link refid="coord__cache_8cpp"/>
+      </node>
+      <node id="3">
+        <label>coordinateset.cpp</label>
+        <link refid="coordinateset_8cpp"/>
+      </node>
+      <node id="4">
+        <label>example.cpp</label>
+        <link refid="example_8cpp"/>
+      </node>
+      <node id="21">
+        <label>example_dataset.cpp</label>
+        <link refid="example__dataset_8cpp"/>
+      </node>
+      <node id="5">
+        <label>example_extractor.cpp</label>
+        <link refid="example__extractor_8cpp"/>
+      </node>
+      <node id="23">
+        <label>example_provider.cpp</label>
+        <link refid="example__provider_8cpp"/>
+      </node>
+      <node id="26">
+        <label>exampleref_providers.cpp</label>
+        <link refid="exampleref__providers_8cpp"/>
+      </node>
+      <node id="10">
+        <label>grid_interpolater.cpp</label>
+        <link refid="grid__interpolater_8cpp"/>
+      </node>
+      <node id="12">
+        <label>grid_io.cpp</label>
+        <link refid="grid__io_8cpp"/>
+      </node>
+      <node id="14">
+        <label>grid_maker.cpp</label>
+        <link refid="grid__maker_8cpp"/>
+      </node>
+      <node id="15">
+        <label>libmolgrid.cpp</label>
+        <link refid="libmolgrid_8cpp"/>
+      </node>
+      <node id="28">
+        <label>transform.cpp</label>
+        <link refid="transform_8cpp"/>
+      </node>
     </invincdepgraph>
-      <sectiondef kind="define">
+    <innerclass refid="structfloat2" prot="public">float2</innerclass>
+    <innerclass refid="structfloat3" prot="public">float3</innerclass>
+    <innerclass refid="structfloat4" prot="public">float4</innerclass>
+    <innerclass refid="structint2" prot="public">int2</innerclass>
+    <innerclass refid="structint3" prot="public">int3</innerclass>
+    <innerclass refid="structuint2" prot="public">uint2</innerclass>
+    <innerclass refid="structuint3" prot="public">uint3</innerclass>
+    <innerclass refid="structdouble3" prot="public">double3</innerclass>
+    <sectiondef kind="define">
       <memberdef kind="define" id="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" prot="public" static="no">
         <name>CUDA_CALLABLE_MEMBER</name>
         <briefdescription>
@@ -248,7 +317,76 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="19" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="19" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="27" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1Grid_1a59b632a08a539624adaa8d306699ac5c" compoundref="grid_8h" startline="176" endline="178">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::address</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1ac19fd8f66f0227f0b19bace30e324423" compoundref="grid_8h" startline="181" endline="183">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::address</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a40637d5466c6816cc0a6975f40bc6302">GridMaker::calc_point</referencedby>
+        <referencedby refid="namespacelibmolgrid_1acfacaae4a5dc7eec326fa4ba102ea43d" compoundref="grid__interpolater_8h" startline="150" endline="153">libmolgrid::cart2grid</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a18ec2ecbbcf47264c34b0fd73242b119" compoundref="grid_8h" startline="256" endline="264">Grid&lt; Dtype, 1, isCUDA &gt;::check_index</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1a18ec2ecbbcf47264c34b0fd73242b119" compoundref="grid_8h" startline="67" endline="75">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::check_index</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1a57e81d7017da7081c04a57a2610c3016" compoundref="quaternion_8h" startline="125" endline="127">Quaternion::conj</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a1f3452be669796729ab78152d845013f" compoundref="grid_8h" startline="284" endline="284">Grid&lt; Dtype, 1, isCUDA &gt;::data</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1a1f3452be669796729ab78152d845013f" compoundref="grid_8h" startline="107" endline="107">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::data</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aa9b61e8668a98c2e264339c38e74065b" compoundref="grid_8h" startline="278" endline="278">Grid&lt; Dtype, 1, isCUDA &gt;::dimension</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" compoundref="grid_8h" startline="90" endline="90">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::dimension</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a8593beea5ae18a49e3b23a395a98aa2c" compoundref="grid_8h" startline="276" endline="276">Grid&lt; Dtype, 1, isCUDA &gt;::dimensions</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1a8593beea5ae18a49e3b23a395a98aa2c" compoundref="grid_8h" startline="88" endline="88">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::dimensions</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1acc9dc2f277b5ceed6789a7c959c9017c" compoundref="grid__maker_8h" startline="106" endline="106">GridMaker::get_binary</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a913c32e731985d3bf13d38da3eb8fbdc" compoundref="grid__maker_8h" startline="99" endline="99">GridMaker::get_dimension</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a35c10485c3709bff6c3976aae006590e" compoundref="grid__maker_8h" startline="103" endline="103">GridMaker::get_first_dim</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1ad8ca94fd56b98339ca9fb9293a1d384d" compoundref="grid__interpolater_8h" startline="86" endline="86">GridInterpolater::get_in_dimension</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1afa8559f73788fd07d2e52407ff526bef" compoundref="grid__interpolater_8h" startline="70" endline="70">GridInterpolater::get_in_resolution</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a5f9108cf7a16617867e1802cf8e0e1fa" compoundref="grid__interpolater_8h" startline="88" endline="88">GridInterpolater::get_out_dimension</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1af511eaea6a733f0882f7d58dc73d86ad" compoundref="grid__interpolater_8h" startline="72" endline="72">GridInterpolater::get_out_resolution</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a830870c1426798fd15f7ad995b7c6fdb">GridInterpolater::get_pt</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1ada33a2c215eedf1d2bdb1c74c7fb111a" compoundref="grid__maker_8h" startline="111" endline="111">GridMaker::get_radii_type_indexed</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1ab252273ae1616c329c9185dba68fc1b1" compoundref="grid__maker_8h" startline="116" endline="116">GridMaker::get_radiusmultiple</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a89ed55a7eb6d9fb6a9c119f2377b235b" compoundref="grid__maker_8h" startline="93" endline="93">GridMaker::get_resolution</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1a8e80dadd81041247ae111d11763fc2d2" compoundref="grid_8h" startline="55" endline="65">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::getPos</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a133c18fbd775019548ec10f171ec157a" compoundref="grid_8h" startline="328" endline="329">Grid&lt; Dtype, 1, isCUDA &gt;::Grid</referencedby>
+        <referencedby refid="namespacelibmolgrid_1ae8f520071e1b955a3bdd1faae4c469e1" compoundref="grid__interpolater_8h" startline="156" endline="159">libmolgrid::grid2cart</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a5a49595c46112078957ab4a6ffa0287d">GridInterpolater::interpolate</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1a7a8db6a1c581a808283af03c68ff598c" compoundref="quaternion_8h" startline="158" endline="161">Quaternion::inverse</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1a583f916deca63208aab44e7a84e9449e" compoundref="quaternion_8h" startline="135" endline="137">Quaternion::norm</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a67a4d2469cf97b1e2018d220c5992ca7" compoundref="grid_8h" startline="286" endline="286">Grid&lt; Dtype, 1, isCUDA &gt;::offset</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1a67a4d2469cf97b1e2018d220c5992ca7" compoundref="grid_8h" startline="95" endline="95">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::offset</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1aa34bb4f76ce3a39298308bc3b185d0bf" compoundref="grid_8h" startline="93" endline="93">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::offsets</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a87b462228dda8251adb1a75487d363d4" compoundref="grid_8h" startline="306" endline="308">Grid&lt; Dtype, 1, isCUDA &gt;::operator()</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a7b8e84d93f65b9c3714f0acd8c7cd5c5" compoundref="grid_8h" startline="310" endline="312">Grid&lt; Dtype, 1, isCUDA &gt;::operator()</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1aa9fa9557af39332466dfaf066ee6d4bd" compoundref="grid_8h" startline="165" endline="167">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::operator()</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1a4c0715b6c8593be928ec306c5f943a57" compoundref="grid_8h" startline="170" endline="172">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::operator()</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1a07c79162ee2d78b45386efe78b95f2f2" compoundref="quaternion_8h" startline="79" endline="88">Quaternion::operator*</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1ac43c498bbb69f674156a9cff545be330" compoundref="quaternion_8h" startline="56" endline="62">Quaternion::operator*=</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1a7d407c73221b41d33160435621b0b8a9" compoundref="quaternion_8h" startline="91" endline="94">Quaternion::operator*=</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1abc8d30cc40d761b76b312924f290e448" compoundref="quaternion_8h" startline="74" endline="76">Quaternion::operator/</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1a1619557713eaad7664f6258802a992e5" compoundref="quaternion_8h" startline="102" endline="116">Quaternion::operator/</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1af5f54b2529fd6685533c92a2ddcfac20" compoundref="quaternion_8h" startline="65" endline="71">Quaternion::operator/=</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1a46bf0a617cfc8ca0f000b24e623e5977" compoundref="quaternion_8h" startline="119" endline="122">Quaternion::operator/=</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1afc5f0d3516e6e5a8c40d817f3066e825" compoundref="quaternion_8h" startline="97" endline="99">Quaternion::operator==</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0926c2a7709cc5a5d8292fcec6f09c4b" compoundref="grid_8h" startline="296" endline="299">Grid&lt; Dtype, 1, isCUDA &gt;::operator[]</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a4fd87ea12567337969e0d30b1c4a51ad" compoundref="grid_8h" startline="301" endline="304">Grid&lt; Dtype, 1, isCUDA &gt;::operator[]</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1a8e2e9f0033132d21a5dc0d81f29f4da4" compoundref="grid_8h" startline="156" endline="159">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::operator[]</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1afd494f5601a462ca5c09898fbbd35054" compoundref="quaternion_8h" startline="26" endline="28">Quaternion::Quaternion</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1af9c903b94a6c50abe722574318206a5f" compoundref="quaternion_8h" startline="31" endline="33">Quaternion::Quaternion</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1a61aa929dad0d6486cc26d6e9b1b9adfd" compoundref="quaternion_8h" startline="36" endline="38">Quaternion::R_component_1</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1a3a69e6543283201213fc1efe9c6da2c7" compoundref="quaternion_8h" startline="41" endline="43">Quaternion::R_component_2</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1a9a8f5f3ab85294797f17bd7685bb7acd" compoundref="quaternion_8h" startline="46" endline="48">Quaternion::R_component_3</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1a95c97610387ace925d2ff48ca0b24675" compoundref="quaternion_8h" startline="51" endline="53">Quaternion::R_component_4</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1a58936fe7ed3a24a7eaa6bc38f5c5dd52" compoundref="quaternion_8h" startline="140" endline="144">Quaternion::rotate</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1adf1f096d082feefaba2521014e2d1fb7">GridMaker::set_atoms</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a5b9825bf1ac9b7ab67fd6a9c300212d8" compoundref="grid__maker_8h" startline="108" endline="108">GridMaker::set_binary</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a440d5fdb2fea4e01b2d7ca58720e6f9a" compoundref="grid_8h" startline="289" endline="289">Grid&lt; Dtype, 1, isCUDA &gt;::set_buffer</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1a440d5fdb2fea4e01b2d7ca58720e6f9a" compoundref="grid_8h" startline="110" endline="110">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::set_buffer</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aee2b3af3532909f14ad4cb8c923849ba" compoundref="grid__maker_8h" startline="101" endline="101">GridMaker::set_dimension</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a92d139b1f580836cfccfa9ee5ac9e9fd" compoundref="grid__interpolater_8h" startline="91" endline="97">GridInterpolater::set_in_dimension</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1ae1db6f66081fc63563e3cc9b0a82edbf" compoundref="grid__interpolater_8h" startline="75" endline="81">GridInterpolater::set_in_resolution</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1abbfd3a76810ef02a76af6aac0a2173bf" compoundref="grid__interpolater_8h" startline="99" endline="99">GridInterpolater::set_out_dimension</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a11881d9b8255ea907c8ecc444c571199" compoundref="grid__interpolater_8h" startline="83" endline="83">GridInterpolater::set_out_resolution</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a07a5ecd13fefad2d587a4b0276f38be5" compoundref="grid__maker_8h" startline="113" endline="113">GridMaker::set_radii_type_indexed</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1afd8e9799b74142e23778dddbda02519b" compoundref="grid__maker_8h" startline="96" endline="96">GridMaker::set_resolution</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1acb2f16129f492fbb0aa93ae8b78402ec" compoundref="grid_8h" startline="281" endline="281">Grid&lt; Dtype, 1, isCUDA &gt;::size</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1acb2f16129f492fbb0aa93ae8b78402ec" compoundref="grid_8h" startline="98" endline="104">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::size</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1aa764222e6afe762046b62782bde6e29d" compoundref="quaternion_8h" startline="147" endline="154">Quaternion::transform</referencedby>
       </memberdef>
       <memberdef kind="define" id="common_8h_1aae0d7f428b69470abdad707078ba2acb" prot="public" static="no">
         <name>CUDA_DEVICE_MEMBER</name>
@@ -258,22 +396,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="20" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="20" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="28" column="9" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1ae98505a3494cc88a22355bb832f86a2c">GridMaker::set_atoms</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1adf1f096d082feefaba2521014e2d1fb7">GridMaker::set_atoms</referencedby>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a20904151946f0fa7480bd53aae19bd4f" prot="public" static="no">
         <name>LMG_CUDA_KERNEL_LOOP</name>
         <param><defname>i</defname></param>
         <param><defname>n</defname></param>
-        <initializer>  for (int i = blockIdx.x * blockDim.x + threadIdx.x; \
-       i &lt; (n); \
-       i += blockDim.x * gridDim.x)</initializer>
+        <initializer>for (int i = 0; i &lt; static_cast&lt;int&gt;(n); i++)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="24" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="24" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="55" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="55" bodyend="56"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a9e253719885e410b7c64b95d97b7f881" prot="public" static="no">
         <name>LMG_CUDA_NUM_THREADS</name>
@@ -284,7 +422,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="30" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="30" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="59" column="9" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a30e49f29289f693fbfe768d590132652" prot="public" static="no">
         <name>LMG_CUDA_BLOCKDIM</name>
@@ -295,7 +433,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="31" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="31" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="60" column="9" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a9f32493f7d15ce12f1924944a5ba065a" prot="public" static="no">
         <name>LOG2_WARP_SIZE</name>
@@ -306,7 +444,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="32" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="32" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="61" column="9" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a9ea0293fb7dcba88f071c44fd145819e" prot="public" static="no">
         <name>WARP_SIZE</name>
@@ -317,7 +455,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="33" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="33" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="62" column="9" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1abdf19194f44a3fb9e5c12883f40b1cef" prot="public" static="no">
         <name>LMG_GET_BLOCKS</name>
@@ -329,38 +467,273 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="36" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="36" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="64" column="9" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1a70ddc4b6982996cbaba9ec10e864b214" prot="public" static="no">
         <name>LMG_GET_THREADS</name>
         <param><defname>N</defname></param>
-        <initializer>min(N,<ref refid="common_8h_1a9e253719885e410b7c64b95d97b7f881" kindref="member">LMG_CUDA_NUM_THREADS</ref>)</initializer>
+        <initializer>((unsigned(N) &lt; <ref refid="common_8h_1a9e253719885e410b7c64b95d97b7f881" kindref="member">LMG_CUDA_NUM_THREADS</ref>) ? unsigned(N) : <ref refid="common_8h_1a9e253719885e410b7c64b95d97b7f881" kindref="member">LMG_CUDA_NUM_THREADS</ref>)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="38" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="38" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="65" column="9" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="common_8h_1aa79d03c876b7392cd06c1f77d5286b59" prot="public" static="no">
         <name>LMG_CUDA_CHECK</name>
         <param><defname>condition</defname></param>
-        <initializer>  /* Code block avoids redefinition of cudaError_t error */ \
-  do { \
-    cudaError_t error = condition; \
-    if(error != cudaSuccess) {                                          \
-        std::cerr &lt;&lt; __FILE__ &lt;&lt; &quot;:&quot; &lt;&lt; __LINE__ &lt;&lt; &quot;: &quot; &lt;&lt; cudaGetErrorString(error); throw std::runtime_error(std::string(&quot;CUDA Error: &quot;)+cudaGetErrorString(error)); } \
-  } while (0)</initializer>
+        <initializer>(condition)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" line="41" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h" bodystart="41" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="79" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="79" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a3ab3abfca1447e4fc0874c00c47aadff" compoundref="managed__grid_8h" startline="124" endline="142">ManagedGridBase&lt; Dtype, 1 &gt;::clone_ptrs</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1ad3152bc9dfc67f11fa55467ac93460f8" compoundref="grid_8h" startline="350" endline="364">Grid&lt; Dtype, 1, isCUDA &gt;::copyFrom</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1ac5cd5f1c4591aa5a8d21e5babb971e99" compoundref="grid_8h" startline="208" endline="222">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::copyFrom</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a32a5cdeb67c51d9b75925d93277a1ed0" compoundref="managed__grid_8h" startline="230" endline="250">ManagedGridBase&lt; Dtype, 1 &gt;::copyFrom</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1ac4d8dd20279b234e0d8c057f052c4a95" compoundref="managed__grid_8h" startline="252" endline="276">ManagedGridBase&lt; Dtype, 1 &gt;::copyFrom</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1ab92b52fef49a9d7440a98f567c28f168" compoundref="managed__grid_8h" startline="285" endline="331">ManagedGridBase&lt; Dtype, 1 &gt;::copyInto</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a3e983133f9cb7d0571557580480ece9b" compoundref="grid_8h" startline="333" endline="347">Grid&lt; Dtype, 1, isCUDA &gt;::copyTo</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1ac2f29eb66b0b3b19ab09ecd80e3fbb35" compoundref="grid_8h" startline="190" endline="204">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::copyTo</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1aff4a416b7db91859de81b24856be632a" compoundref="managed__grid_8h" startline="175" endline="195">ManagedGridBase&lt; Dtype, 1 &gt;::copyTo</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1acbc53c65c1c27667a659ec84dafbe01a" compoundref="managed__grid_8h" startline="197" endline="221">ManagedGridBase&lt; Dtype, 1 &gt;::copyTo</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1abd2622389892168945e6f8d721072e38" compoundref="example_8cpp" startline="279" endline="301">Example::extract_label</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1a000f4bbd3c5453860543c5ad97be617a" compoundref="example_8cpp" startline="253" endline="272">Example::extract_labels</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a512219066836349f65f85a0ead19ae8a" compoundref="grid_8h" startline="314" endline="324">Grid&lt; Dtype, 1, isCUDA &gt;::fill_zero</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1a512219066836349f65f85a0ead19ae8a" compoundref="grid_8h" startline="225" endline="235">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::fill_zero</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a643d05a25c1e56833fe17dffaf178b59" compoundref="grid__maker_8h" startline="266" endline="305">GridMaker::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a3e9eb84f9344f6ca4eac9975f8f61386" compoundref="managed__grid_8h" startline="417" endline="429">ManagedGridBase&lt; Dtype, 1 &gt;::tocpu</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a18aaaed8a845f4c8ad9c30d0693e03c1" compoundref="managed__grid_8h" startline="387" endline="415">ManagedGridBase&lt; Dtype, 1 &gt;::togpu</referencedby>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="common_8h_1afcbdb49f29f7718a4b6690e5389551fb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structfloat2" kindref="compound">float2</ref></type>
+        <definition>float2 make_float2</definition>
+        <argsstring>(float x, float y)</argsstring>
+        <name>make_float2</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="41" column="15" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="common_8h_1a30e8664f6bf2996bbb07759857d474fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structfloat3" kindref="compound">float3</ref></type>
+        <definition>float3 make_float3</definition>
+        <argsstring>(float x, float y, float z)</argsstring>
+        <name>make_float3</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="42" column="15" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="42" bodyend="42"/>
+        <referencedby refid="classlibmolgrid_1_1Transform_1acfada39f4f16531f4289971bd29ce946" compoundref="transform_8cpp" startline="86" endline="108">Transform::backward</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a437464eaf145c5829daa0cbb90c95dee" compoundref="coordinateset_8cpp" startline="214" endline="229">CoordinateSet::center</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a8c1b958bbb5f4db0246a9b686a2d8b84" compoundref="grid__interpolater_8h" startline="120" endline="123">GridInterpolater::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridInterpolater_1acad3dc75e3f27649e1de5d52c063e98d" compoundref="grid__interpolater_8h" startline="127" endline="130">GridInterpolater::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Transform_1a00ddce88bd65b5128951517a5bc7f57a" compoundref="transform_8cpp" startline="58" endline="79">Transform::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a2e292f1d60ceee6ea204080aae140b46" compoundref="grid__maker_8h" startline="88" endline="90">GridMaker::get_grid_dims</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1aadbf4bff47ee7557c49edcb73e404604" compoundref="example_8cpp" startline="69" endline="100">Example::merge_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1aa0927ed6ec846f2a8e7daeb64e39795d" compoundref="example_8cpp" startline="138" endline="196">Example::merge_coordinates</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1a58936fe7ed3a24a7eaa6bc38f5c5dd52" compoundref="quaternion_8h" startline="140" endline="144">Quaternion::rotate</referencedby>
+        <referencedby refid="classlibmolgrid_1_1CoordCache_1a662441ec29d3f52a26ef98ad723b80a3" compoundref="coord__cache_8cpp" startline="80" endline="176">CoordCache::set_coords</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Transform_1a9de68ec1c9b7809129814a3233ae4655" compoundref="transform_8h" startline="33" endline="36">Transform::Transform</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Quaternion_1aa764222e6afe762046b62782bde6e29d" compoundref="quaternion_8h" startline="147" endline="154">Quaternion::transform</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="common_8h_1ac6a8d5ade69f09f2562c8ebefb998543" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structfloat4" kindref="compound">float4</ref></type>
+        <definition>float4 make_float4</definition>
+        <argsstring>(float x, float y, float z, float w)</argsstring>
+        <name>make_float4</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>w</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="43" column="15" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="common_8h_1a24a084027771d758aa545eb276de6f62" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structint2" kindref="compound">int2</ref></type>
+        <definition>int2 make_int2</definition>
+        <argsstring>(int x, int y)</argsstring>
+        <name>make_int2</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="44" column="13" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="common_8h_1a1ecdea95ad8e10fdc157c887c65209a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structint3" kindref="compound">int3</ref></type>
+        <definition>int3 make_int3</definition>
+        <argsstring>(int x, int y, int z)</argsstring>
+        <name>make_int3</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="45" column="13" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="common_8h_1abf417bac64c6e9a8c2bdb0cc7794efc3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structuint2" kindref="compound">uint2</ref></type>
+        <definition>uint2 make_uint2</definition>
+        <argsstring>(unsigned x, unsigned y)</argsstring>
+        <name>make_uint2</name>
+        <param>
+          <type>unsigned</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="46" column="14" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="common_8h_1af6ede924b639188fb6b60b54cc276381" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structuint3" kindref="compound">uint3</ref></type>
+        <definition>uint3 make_uint3</definition>
+        <argsstring>(unsigned x, unsigned y, unsigned z)</argsstring>
+        <name>make_uint3</name>
+        <param>
+          <type>unsigned</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="47" column="14" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="common_8h_1a46fe05783f65f4a7d782a74e2f6a8e5a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structdouble3" kindref="compound">double3</ref></type>
+        <definition>double3 make_double3</definition>
+        <argsstring>(double x, double y, double z)</argsstring>
+        <name>make_double3</name>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="48" column="16" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="common_8h_1add87c391c013af78e989b154b39b6516" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string itoa</definition>
+        <argsstring>(size_t v)</argsstring>
+        <name>itoa</name>
+        <param>
+          <type>size_t</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="82" column="20" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="82" bodyend="82"/>
+      </memberdef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -369,7 +742,7 @@
 <codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>common.h</highlight></codeline>
 <codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Utility<sp/>functions<sp/>and<sp/>definitions</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Utility<sp/>functions<sp/>and<sp/>definitions.</highlight></codeline>
 <codeline lineno="5"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>COMMON_H_</highlight><highlight class="normal"></highlight></codeline>
@@ -377,50 +750,80 @@
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cuda_runtime_api.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cuda.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__CUDACC__</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CUDA_CALLABLE_MEMBER<sp/>__host__<sp/>__device__</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CUDA_DEVICE_MEMBER<sp/>__device__</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="19" refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CUDA_CALLABLE_MEMBER</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20" refid="common_8h_1aae0d7f428b69470abdad707078ba2acb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CUDA_DEVICE_MEMBER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;libmolgrid/config.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>LIBMOLGRID_USE_CUDA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cuda_runtime_api.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cuda.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//called<sp/>in<sp/>device<sp/>code<sp/>to<sp/>perform<sp/>a<sp/>parallel<sp/>operation</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24" refid="common_8h_1a20904151946f0fa7480bd53aae19bd4f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_CUDA_KERNEL_LOOP(i,<sp/>n)<sp/>\</highlight></codeline>
-<codeline lineno="25"><highlight class="preprocessor"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>blockIdx.x<sp/>*<sp/>blockDim.x<sp/>+<sp/>threadIdx.x;<sp/>\</highlight></codeline>
-<codeline lineno="26"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i<sp/>&lt;<sp/>(n);<sp/>\</highlight></codeline>
-<codeline lineno="27"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i<sp/>+=<sp/>blockDim.x<sp/>*<sp/>gridDim.x)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CUDA:<sp/>use<sp/>512<sp/>threads<sp/>per<sp/>block</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30" refid="common_8h_1a9e253719885e410b7c64b95d97b7f881" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_CUDA_NUM_THREADS<sp/>512</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31" refid="common_8h_1a30e49f29289f693fbfe768d590132652" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_CUDA_BLOCKDIM<sp/>8</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32" refid="common_8h_1a9f32493f7d15ce12f1924944a5ba065a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG2_WARP_SIZE<sp/>5U</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33" refid="common_8h_1a9ea0293fb7dcba88f071c44fd145819e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WARP_SIZE<sp/>(1U<sp/>&lt;&lt;<sp/>LOG2_WARP_SIZE)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CUDA:<sp/>number<sp/>of<sp/>blocks<sp/>for<sp/>threads.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36" refid="common_8h_1abdf19194f44a3fb9e5c12883f40b1cef" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_GET_BLOCKS(N)<sp/>((unsigned(N)<sp/>+<sp/>LMG_CUDA_NUM_THREADS<sp/>-<sp/>1)<sp/>/<sp/>LMG_CUDA_NUM_THREADS)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CUDA:<sp/>combined<sp/>with<sp/>GET_BLOCKS,<sp/>number<sp/>of<sp/>threads</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38" refid="common_8h_1a70ddc4b6982996cbaba9ec10e864b214" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_GET_THREADS(N)<sp/>min(N,LMG_CUDA_NUM_THREADS)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__CUDA_ARCH__</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41" refid="common_8h_1aa79d03c876b7392cd06c1f77d5286b59" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_CUDA_CHECK(condition)<sp/>\</highlight></codeline>
-<codeline lineno="42"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Code<sp/>block<sp/>avoids<sp/>redefinition<sp/>of<sp/>cudaError_t<sp/>error<sp/>*/</highlight><highlight class="preprocessor"><sp/>\</highlight></codeline>
-<codeline lineno="43"><highlight class="preprocessor"><sp/><sp/>do<sp/>{<sp/>\</highlight></codeline>
-<codeline lineno="44"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>cudaError_t<sp/>error<sp/>=<sp/>condition;<sp/>\</highlight></codeline>
-<codeline lineno="45"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>if(error<sp/>!=<sp/>cudaSuccess)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="46"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>__FILE__<sp/>&lt;&lt;<sp/>&quot;:&quot;<sp/>&lt;&lt;<sp/>__LINE__<sp/>&lt;&lt;<sp/>&quot;:<sp/>&quot;<sp/>&lt;&lt;<sp/>cudaGetErrorString(error);<sp/>throw<sp/>std::runtime_error(std::string(&quot;CUDA<sp/>Error:<sp/>&quot;)+cudaGetErrorString(error));<sp/>}<sp/>\</highlight></codeline>
-<codeline lineno="47"><highlight class="preprocessor"><sp/><sp/>}<sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>probably<sp/>don&apos;t<sp/>want<sp/>to<sp/>make<sp/>API<sp/>calls<sp/>on<sp/>the<sp/>device.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_CUDA_CHECK(condition)<sp/>condition</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>COMMON_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>LIBMOLGRID_USE_CUDA<sp/>&amp;&amp;<sp/>defined(__CUDACC__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CUDA_CALLABLE_MEMBER<sp/>__host__<sp/>__device__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CUDA_DEVICE_MEMBER<sp/>__device__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CUDA_CALLABLE_MEMBER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="common_8h_1aae0d7f428b69470abdad707078ba2acb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CUDA_DEVICE_MEMBER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!LIBMOLGRID_USE_CUDA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="structfloat2_1ad0da36b2558901e21e7a30f6c227a45e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfloat2" kindref="compound">float2</ref><sp/>{<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structfloat2_1ad0da36b2558901e21e7a30f6c227a45e" kindref="member">x</ref>,<sp/><ref refid="structfloat2_1aa4f0d3eebc3c443f9be81bf48561a217" kindref="member">y</ref>;<sp/>};</highlight></codeline>
+<codeline lineno="33" refid="structfloat3_1ad0da36b2558901e21e7a30f6c227a45e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfloat3" kindref="compound">float3</ref><sp/>{<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structfloat3_1ad0da36b2558901e21e7a30f6c227a45e" kindref="member">x</ref>,<sp/><ref refid="structfloat3_1aa4f0d3eebc3c443f9be81bf48561a217" kindref="member">y</ref>,<sp/><ref refid="structfloat3_1af73583b1e980b0aa03f9884812e9fd4d" kindref="member">z</ref>;<sp/>};</highlight></codeline>
+<codeline lineno="34" refid="structfloat4_1a56eca241e2896b9f57a79589e76fd24b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfloat4" kindref="compound">float4</ref><sp/>{<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structfloat4_1ad0da36b2558901e21e7a30f6c227a45e" kindref="member">x</ref>,<sp/><ref refid="structfloat4_1aa4f0d3eebc3c443f9be81bf48561a217" kindref="member">y</ref>,<sp/><ref refid="structfloat4_1af73583b1e980b0aa03f9884812e9fd4d" kindref="member">z</ref>,<sp/><ref refid="structfloat4_1a56eca241e2896b9f57a79589e76fd24b" kindref="member">w</ref>;<sp/>};</highlight></codeline>
+<codeline lineno="35" refid="structint2_1a6150e0515f7202e2fb518f7206ed97dc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structint2" kindref="compound">int2</ref><sp/>{<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structint2_1a6150e0515f7202e2fb518f7206ed97dc" kindref="member">x</ref>,<sp/><ref refid="structint2_1a0a2f84ed7838f07779ae24c5a9086d33" kindref="member">y</ref>;<sp/>};</highlight></codeline>
+<codeline lineno="36" refid="structint3_1a6150e0515f7202e2fb518f7206ed97dc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structint3" kindref="compound">int3</ref><sp/>{<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structint3_1a6150e0515f7202e2fb518f7206ed97dc" kindref="member">x</ref>,<sp/><ref refid="structint3_1a0a2f84ed7838f07779ae24c5a9086d33" kindref="member">y</ref>,<sp/><ref refid="structint3_1a14f94e529dff0b8bfba8e16fbe9755d6" kindref="member">z</ref>;<sp/>};</highlight></codeline>
+<codeline lineno="37" refid="structuint2_1a676e0da0ef83bbbdf42538e54b97506b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structuint2" kindref="compound">uint2</ref><sp/>{<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structuint2_1a676e0da0ef83bbbdf42538e54b97506b" kindref="member">x</ref>,<sp/><ref refid="structuint2_1ac30de26db5f6d1c18c63913729adca7d" kindref="member">y</ref>;<sp/>};</highlight></codeline>
+<codeline lineno="38" refid="structuint3_1a676e0da0ef83bbbdf42538e54b97506b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structuint3" kindref="compound">uint3</ref><sp/>{<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structuint3_1a676e0da0ef83bbbdf42538e54b97506b" kindref="member">x</ref>,<sp/><ref refid="structuint3_1ac30de26db5f6d1c18c63913729adca7d" kindref="member">y</ref>,<sp/><ref refid="structuint3_1a3d99b005d0fb73033dce14d4a135d01f" kindref="member">z</ref>;<sp/>};</highlight></codeline>
+<codeline lineno="39" refid="structdouble3_1af88b946fb90d5f08b5fb740c70e98c10" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structdouble3" kindref="compound">double3</ref><sp/>{<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structdouble3_1af88b946fb90d5f08b5fb740c70e98c10" kindref="member">x</ref>,<sp/><ref refid="structdouble3_1ab927965981178aa1fba979a37168db2a" kindref="member">y</ref>,<sp/><ref refid="structdouble3_1ab3e6ed577a7c669c19de1f9c1b46c872" kindref="member">z</ref>;<sp/>};</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="common_8h_1afcbdb49f29f7718a4b6690e5389551fb" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structfloat2" kindref="compound">float2</ref><sp/><ref refid="common_8h_1afcbdb49f29f7718a4b6690e5389551fb" kindref="member">make_float2</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{x,<sp/>y};<sp/>}</highlight></codeline>
+<codeline lineno="42" refid="common_8h_1a30e8664f6bf2996bbb07759857d474fd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structfloat3" kindref="compound">float3</ref><sp/><ref refid="common_8h_1a30e8664f6bf2996bbb07759857d474fd" kindref="member">make_float3</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{x,<sp/>y,<sp/>z};<sp/>}</highlight></codeline>
+<codeline lineno="43" refid="common_8h_1ac6a8d5ade69f09f2562c8ebefb998543" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structfloat4" kindref="compound">float4</ref><sp/><ref refid="common_8h_1ac6a8d5ade69f09f2562c8ebefb998543" kindref="member">make_float4</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>w)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{x,<sp/>y,<sp/>z,<sp/>w};<sp/>}</highlight></codeline>
+<codeline lineno="44" refid="common_8h_1a24a084027771d758aa545eb276de6f62" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structint2" kindref="compound">int2</ref><sp/><ref refid="common_8h_1a24a084027771d758aa545eb276de6f62" kindref="member">make_int2</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{x,<sp/>y};<sp/>}</highlight></codeline>
+<codeline lineno="45" refid="common_8h_1a1ecdea95ad8e10fdc157c887c65209a7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structint3" kindref="compound">int3</ref><sp/><ref refid="common_8h_1a1ecdea95ad8e10fdc157c887c65209a7" kindref="member">make_int3</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>z)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{x,<sp/>y,<sp/>z};<sp/>}</highlight></codeline>
+<codeline lineno="46" refid="common_8h_1abf417bac64c6e9a8c2bdb0cc7794efc3" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structuint2" kindref="compound">uint2</ref><sp/><ref refid="common_8h_1abf417bac64c6e9a8c2bdb0cc7794efc3" kindref="member">make_uint2</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>y)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{x,<sp/>y};<sp/>}</highlight></codeline>
+<codeline lineno="47" refid="common_8h_1af6ede924b639188fb6b60b54cc276381" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structuint3" kindref="compound">uint3</ref><sp/><ref refid="common_8h_1af6ede924b639188fb6b60b54cc276381" kindref="member">make_uint3</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>z)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{x,<sp/>y,<sp/>z};<sp/>}</highlight></codeline>
+<codeline lineno="48" refid="common_8h_1a46fe05783f65f4a7d782a74e2f6a8e5a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structdouble3" kindref="compound">double3</ref><sp/><ref refid="common_8h_1a46fe05783f65f4a7d782a74e2f6a8e5a" kindref="member">make_double3</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>z)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{x,<sp/>y,<sp/>z};<sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>LIBMOLGRID_USE_CUDA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_CUDA_KERNEL_LOOP(i,<sp/>n)<sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>blockIdx.x<sp/>*<sp/>blockDim.x<sp/>+<sp/>threadIdx.x;<sp/>i<sp/>&lt;<sp/>(n);<sp/>i<sp/>+=<sp/>blockDim.x<sp/>*<sp/>gridDim.x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="common_8h_1a20904151946f0fa7480bd53aae19bd4f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_CUDA_KERNEL_LOOP(i,<sp/>n)<sp/>\</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>static_cast&lt;int&gt;(n);<sp/>i++)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="common_8h_1a9e253719885e410b7c64b95d97b7f881" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_CUDA_NUM_THREADS<sp/>512</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="common_8h_1a30e49f29289f693fbfe768d590132652" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_CUDA_BLOCKDIM<sp/>8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="common_8h_1a9f32493f7d15ce12f1924944a5ba065a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG2_WARP_SIZE<sp/>5U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="common_8h_1a9ea0293fb7dcba88f071c44fd145819e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WARP_SIZE<sp/>(1U<sp/>&lt;&lt;<sp/>LOG2_WARP_SIZE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="common_8h_1abdf19194f44a3fb9e5c12883f40b1cef" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_GET_BLOCKS(N)<sp/>((unsigned(N)<sp/>+<sp/>LMG_CUDA_NUM_THREADS<sp/>-<sp/>1)<sp/>/<sp/>LMG_CUDA_NUM_THREADS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="common_8h_1a70ddc4b6982996cbaba9ec10e864b214" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_GET_THREADS(N)<sp/>((unsigned(N)<sp/>&lt;<sp/>LMG_CUDA_NUM_THREADS)<sp/>?<sp/>unsigned(N)<sp/>:<sp/>LMG_CUDA_NUM_THREADS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>LIBMOLGRID_USE_CUDA<sp/>&amp;&amp;<sp/>!defined(__CUDA_ARCH__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_CUDA_CHECK(condition)<sp/>\</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"><sp/><sp/>do<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>cudaError_t<sp/>error<sp/>=<sp/>condition;<sp/>\</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>if(error<sp/>!=<sp/>cudaSuccess)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="72"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>__FILE__<sp/>&lt;&lt;<sp/>&quot;:&quot;<sp/>&lt;&lt;<sp/>__LINE__<sp/>&lt;&lt;<sp/>&quot;:<sp/>&quot;<sp/>&lt;&lt;<sp/>cudaGetErrorString(error);<sp/>\</highlight></codeline>
+<codeline lineno="73"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>std::runtime_error(std::string(&quot;CUDA<sp/>Error:<sp/>&quot;)<sp/>+<sp/>cudaGetErrorString(error));<sp/>\</highlight></codeline>
+<codeline lineno="74"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="75"><highlight class="preprocessor"><sp/><sp/>}<sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>LIBMOLGRID_USE_CUDA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_CUDA_CHECK(condition)<sp/>condition</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="common_8h_1aa79d03c876b7392cd06c1f77d5286b59" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LMG_CUDA_CHECK(condition)<sp/>(condition)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="common_8h_1add87c391c013af78e989b154b39b6516" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="common_8h_1add87c391c013af78e989b154b39b6516" kindref="member">itoa</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>v)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::to_string(v);<sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>COMMON_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/common.h"/>
+    <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h"/>
   </compounddef>
 </doxygen>

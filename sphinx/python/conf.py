@@ -10,8 +10,11 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import sys,os,re
-sys.path.insert(0, os.path.abspath('../../build/python'))
+import os
+import sys
+
+python_build_dir = os.environ.get("LIBMOLGRID_PYTHON_BUILD", "../../build/python")
+sys.path.insert(0, os.path.abspath(python_build_dir))
 
 # -- Project information -----------------------------------------------------
 
@@ -26,6 +29,7 @@ author = 'David Koes and Jocelyn Sunseri'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.coverage', 'sphinx.ext.napoleon']
+autodoc_mock_imports = ['torch']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['templates']
@@ -48,5 +52,4 @@ html_theme = 'sphinx_rtd_theme'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['static']
-
+html_static_path = ['static'] if os.path.isdir(os.path.join(os.path.dirname(__file__), 'static')) else []

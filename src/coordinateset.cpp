@@ -4,7 +4,7 @@
  *  Created on: Mar 22, 2019
  *      Author: dkoes
  */
-#include <cuda_runtime.h>
+#include "libmolgrid/common.h"
 
 #include "libmolgrid/coordinateset.h"
 #include "libmolgrid/atom_typer.h"
@@ -21,7 +21,7 @@ CoordinateSet::CoordinateSet(OBMol *mol): CoordinateSet(mol, defaultGninaLigandT
 CoordinateSet::CoordinateSet(OBMol *mol, const AtomTyper& typer)
     : max_type(typer.num_types()) {
 
-  vector<float3> c; c.reserve(mol->NumAtoms());
+  vector<Vec3> c; c.reserve(mol->NumAtoms());
   vector<float> types;  types.reserve(mol->NumAtoms());
   vector<vector<float> > vector_types;  vector_types.reserve(mol->NumAtoms());
   vector<float> rads; rads.reserve(mol->NumAtoms());
@@ -34,7 +34,7 @@ CoordinateSet::CoordinateSet(OBMol *mol, const AtomTyper& typer)
 
       float radius = typer.get_atom_type_vector(atom, vec);
       if(radius > 0) { //don't ignore
-        c.push_back(make_float3(atom->GetX(), atom->GetY(), atom->GetZ()));
+        c.push_back(make_vec3(atom->GetX(), atom->GetY(), atom->GetZ()));
         vector_types.push_back(vec);
         rads.push_back(radius);
       }
@@ -44,7 +44,7 @@ CoordinateSet::CoordinateSet(OBMol *mol, const AtomTyper& typer)
       float r = type_rad.second;
       if(type >= (int)max_type) throw invalid_argument("Invalid type");
       if(type >= 0) { //don't ignore atom
-        c.push_back(make_float3(atom->GetX(), atom->GetY(), atom->GetZ()));
+        c.push_back(make_vec3(atom->GetX(), atom->GetY(), atom->GetZ()));
         types.push_back(type);
         rads.push_back(r);
       }
@@ -54,8 +54,8 @@ CoordinateSet::CoordinateSet(OBMol *mol, const AtomTyper& typer)
   //allocate grids and initialize
   unsigned N = c.size();
   coords = MGrid2f(N,3);
-  assert(sizeof(float3)*N == sizeof(float)*coords.size());
-  memcpy(coords.cpu().data(), &c[0], sizeof(float3)*N);
+  assert(sizeof(Vec3)*N == sizeof(float)*coords.size());
+  memcpy(coords.cpu().data(), &c[0], sizeof(Vec3)*N);
 
   radii = MGrid1f(N);
   memcpy(radii.cpu().data(), &rads[0], sizeof(float)*N);
@@ -72,7 +72,7 @@ CoordinateSet::CoordinateSet(OBMol *mol, const AtomTyper& typer)
 }
 
 //initialize with indexed types
-CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<int>& t, const std::vector<float>& r, unsigned maxt):
+CoordinateSet::CoordinateSet(const std::vector<Vec3>& c, const std::vector<int>& t, const std::vector<float>& r, unsigned maxt):
   coords(c.size(),3), type_index(c.size()), radii(c.size()), max_type(maxt) {
   unsigned N = c.size();
   if(N != t.size()) {
@@ -85,8 +85,8 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<int
   //copy data
   type_index.tocpu(); coords.tocpu(); radii.tocpu();
   memcpy(radii.cpu().data(), &r[0], sizeof(float)*N);
-  assert(sizeof(float3)*N == sizeof(float)*coords.size());
-  memcpy(coords.cpu().data(), &c[0], sizeof(float3)*N);
+  assert(sizeof(Vec3)*N == sizeof(float)*coords.size());
+  memcpy(coords.cpu().data(), &c[0], sizeof(Vec3)*N);
 
   for(unsigned i = 0; i < N; i++) {
     type_index[i] = t[i];   //convert to float
@@ -94,7 +94,7 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<int
 }
 
 //initialize with indexed types (float)
-CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<float>& t, const std::vector<float>& r, unsigned maxt):
+CoordinateSet::CoordinateSet(const std::vector<Vec3>& c, const std::vector<float>& t, const std::vector<float>& r, unsigned maxt):
   coords(c.size(),3), type_index(c.size()), radii(c.size()), max_type(maxt) {
   unsigned N = c.size();
   if(N != t.size()) {
@@ -108,8 +108,8 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<flo
   type_index.tocpu(); coords.tocpu(); radii.tocpu();
   memcpy(type_index.cpu().data(), &t[0], sizeof(float)*N);
   memcpy(radii.cpu().data(), &r[0], sizeof(float)*N);
-  assert(sizeof(float3)*N == sizeof(float)*coords.size());
-  memcpy(coords.cpu().data(), &c[0], sizeof(float3)*N);
+  assert(sizeof(Vec3)*N == sizeof(float)*coords.size());
+  memcpy(coords.cpu().data(), &c[0], sizeof(Vec3)*N);
 }
 
 ///initialize with indexed types using grids - data is copied into coordinate set
@@ -134,7 +134,7 @@ inline size_t typ_vec_size(const std::vector<std::vector<float> >& t) {
 
 
 //initialize with vector types
-CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<std::vector<float> >& t, const std::vector<float>& r):
+CoordinateSet::CoordinateSet(const std::vector<Vec3>& c, const std::vector<std::vector<float> >& t, const std::vector<float>& r):
   coords(c.size(),3), type_vector(c.size(),typ_vec_size(t)), radii(r.size()), max_type(typ_vec_size(t)) {
 
   unsigned N = c.size();
@@ -148,8 +148,8 @@ CoordinateSet::CoordinateSet(const std::vector<float3>& c, const std::vector<std
   //copy data
   type_vector.tocpu();  coords.tocpu(); radii.tocpu();
   memcpy(radii.cpu().data(), &r[0], sizeof(float)*r.size());
-  assert(sizeof(float3)*N == sizeof(float)*coords.size());
-  memcpy(coords.cpu().data(), &c[0], sizeof(float3)*N);
+  assert(sizeof(Vec3)*N == sizeof(float)*coords.size());
+  memcpy(coords.cpu().data(), &c[0], sizeof(Vec3)*N);
 
   for(unsigned i = 0; i < N; i++) {
     memcpy(type_vector[i].cpu().data(), &t[i][0], sizeof(float)*t[i].size());
@@ -211,8 +211,8 @@ void CoordinateSet::make_vector_types(bool include_dummy_type, const std::vector
   }
 }
 
-float3 CoordinateSet::center() const {
-  float3 ret = make_float3(0,0,0);
+Vec3 CoordinateSet::center() const {
+  Vec3 ret = make_vec3(0,0,0);
   unsigned N = coords.dimension(0);
   if(N == 0) return ret;
 

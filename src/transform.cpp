@@ -10,7 +10,7 @@
 
 namespace libmolgrid {
 
-Transform::Transform(float3 c, float random_translate /*= 0.0*/, bool random_rotate /*= false*/): center(c) {
+Transform::Transform(Vec3 c, float random_translate /*= 0.0*/, bool random_rotate /*= false*/): center(c) {
       std::uniform_real_distribution<double> R(-1.0,1);
       translate.x = R(random_engine)*random_translate;
       translate.y = R(random_engine)*random_translate;
@@ -65,7 +65,7 @@ void Transform::forward(const Grid<Dtype, 2, false>& in, Grid<Dtype, 2, false>& 
     y = in(i,1);
     z = in(i,2);
 
-    float3 newpt = make_float3(0,0,0);
+    Vec3 newpt = make_vec3(0,0,0);
     if(dotranslate) {
       newpt = Q.transform(x,y,z,center, translate);
     } else {
@@ -88,11 +88,11 @@ void Transform::backward(const Grid<Dtype, 2, false>& in, Grid<Dtype, 2, false>&
   unsigned N = in.dimension(0);
   Quaternion invQ = Q.inverse();
 
-  float3 untranslate;
+  Vec3 untranslate;
   if(dotranslate)
-    untranslate = make_float3(-translate.x - center.x, -translate.y - center.y, -translate.z - center.z);
+    untranslate = make_vec3(-translate.x - center.x, -translate.y - center.y, -translate.z - center.z);
   else
-    untranslate = make_float3(-center.x, -center.y, -center.z);
+    untranslate = make_vec3(-center.x, -center.y, -center.z);
 
   for(unsigned i = 0; i < N; i++) {
     Dtype x,y,z;
@@ -100,7 +100,7 @@ void Transform::backward(const Grid<Dtype, 2, false>& in, Grid<Dtype, 2, false>&
     y = in[i][1] + untranslate.y;
     z = in[i][2] + untranslate.z;
 
-    float3 newpt = invQ.rotate(x,y,z);
+    Vec3 newpt = invQ.rotate(x,y,z);
     out[i][0] = newpt.x + center.x;
     out[i][1] = newpt.y + center.y;
     out[i][2] = newpt.z + center.z;

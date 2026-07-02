@@ -1,7 +1,15 @@
+#ifndef LIBMOLGRID_CONFIG_H_
+#define LIBMOLGRID_CONFIG_H_
+
 #define VERSION_MAJOR @VERSION_MAJOR@
 #define VERSION_MINOR @VERSION_MINOR@
 #define VERSION_PATCH @VERSION_PATCH@
 
+#cmakedefine01 LIBMOLGRID_USE_CUDA
+#cmakedefine01 LIBMOLGRID_USE_METAL
+
 namespace libmolgrid {
-    const char *GIT_REVISION = "@GIT_REVISION@";
+    inline const char *GIT_REVISION = "@GIT_REVISION@";
 }
+
+#endif /* LIBMOLGRID_CONFIG_H_ */

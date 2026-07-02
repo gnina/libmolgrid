@@ -11,7 +11,6 @@ libmolgrid C++ API Documentation
    About <../about#://>
    Docs Home <../docs.html#://>
    Tutorials <../tutorials#://>
-   libmolgrid C++ documentation <index>
 
 C++ Docs
 ========

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structint2" kind="struct" language="C++" prot="public">
+    <compoundname>int2</compoundname>
+    <includes refid="common_8h" local="no">common.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structint2_1a6150e0515f7202e2fb518f7206ed97dc" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <qualifiedname>int2::x</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="35" column="15" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structint2_1a0a2f84ed7838f07779ae24c5a9086d33" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <qualifiedname>int2::y</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="35" column="17" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="35" column="1" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="35" bodyend="35"/>
+    <listofallmembers>
+      <member refid="structint2_1a6150e0515f7202e2fb518f7206ed97dc" prot="public" virt="non-virtual"><scope>int2</scope><name>x</name></member>
+      <member refid="structint2_1a0a2f84ed7838f07779ae24c5a9086d33" prot="public" virt="non-virtual"><scope>int2</scope><name>y</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

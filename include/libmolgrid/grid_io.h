@@ -39,9 +39,9 @@ void read_bin(std::istream& in, G& grid) {
  * Values are multiplied by scale, which may be necessary to adjust for limited precision in the text-based format
  */
 template <typename DType>
-void write_dx(std::ostream& out, const Grid<DType, 3>& grid, const float3& center, float resolution, float scale=1.0);
+void write_dx(std::ostream& out, const Grid<DType, 3>& grid, const Vec3& center, float resolution, float scale=1.0);
 template <typename DType>
-void write_dx(const std::string& fname, const Grid<DType, 3>& grid, const float3& center, float resolution, float scale=1.0);
+void write_dx(const std::string& fname, const Grid<DType, 3>& grid, const Vec3& center, float resolution, float scale=1.0);
 
 // Docstring_write_dx_grids
 /** \brief Output multiple grids using type names as a suffix.
@@ -54,7 +54,7 @@ void write_dx(const std::string& fname, const Grid<DType, 3>& grid, const float3
  * @param[in] scale multiply each value by this factor
  */
 template <typename Dtype>
-void write_dx_grids(const std::string& prefix, const std::vector<std::string>& names, const Grid<Dtype, 4>& grid, const float3& center, float resolution, float scale=1.0);
+void write_dx_grids(const std::string& prefix, const std::vector<std::string>& names, const Grid<Dtype, 4>& grid, const Vec3& center, float resolution, float scale=1.0);
 
 // Docstring_read_dx_grids
 /** \brief Read multiple grids using type names as a suffix.  Grids must be correctly sized
@@ -69,9 +69,9 @@ void read_dx_grids(const std::string& prefix, const std::vector<std::string>& na
 // Docstring_write_map
 /// output grid as autodock map formatted file
 template <typename DType>
-void write_map(std::ostream& out, const Grid<DType, 3>& grid, const float3& center, float resolution, float scale=1.0);
+void write_map(std::ostream& out, const Grid<DType, 3>& grid, const Vec3& center, float resolution, float scale=1.0);
 template <typename DType>
-void write_map(const std::string& fname, const Grid<DType, 3>& grid, const float3& center, float resolution, float scale=1.0);
+void write_map(const std::string& fname, const Grid<DType, 3>& grid, const Vec3& center, float resolution, float scale=1.0);
 
 //dump raw data in binary
 template <class G>

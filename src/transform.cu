@@ -11,13 +11,13 @@ namespace libmolgrid {
 //kernel for paralel transform on a single coordinate set
 //note the importance of pass by value
 template <typename Dtype, bool dotranslate>
-__global__ void transform_forward_kernel(unsigned n, Quaternion Q, float3 center, float3 translate, Grid<Dtype, 2, true> in, Grid<Dtype, 2, true> out) {
+__global__ void transform_forward_kernel(unsigned n, Quaternion Q, Vec3 center, Vec3 translate, Grid<Dtype, 2, true> in, Grid<Dtype, 2, true> out) {
   LMG_CUDA_KERNEL_LOOP(i, n) {
     Dtype x,y,z;
     x = in(i,0);
     y = in(i,1);
     z = in(i,2);
-    float3 newpt = make_float3(0,0,0);
+    Vec3 newpt = make_vec3(0,0,0);
     if(dotranslate) {
       newpt = Q.transform(x,y,z, center, translate);
     } else {
@@ -33,7 +33,7 @@ __global__ void transform_forward_kernel(unsigned n, Quaternion Q, float3 center
 
 //kernel for translating coordinates
 template <typename Dtype>
-__global__ void transform_translate_kernel(unsigned n, float3 translate, Grid<Dtype, 2, true> in, Grid<Dtype, 2, true> out) {
+__global__ void transform_translate_kernel(unsigned n, Vec3 translate, Grid<Dtype, 2, true> in, Grid<Dtype, 2, true> out) {
   LMG_CUDA_KERNEL_LOOP(i, n) {
     Dtype x,y,z;
     x = in(i,0);
@@ -47,13 +47,13 @@ __global__ void transform_translate_kernel(unsigned n, float3 translate, Grid<Dt
 
 //kernel for rotating coordinates about center
 template <typename Dtype>
-__global__ void transform_rotate_kernel(unsigned n, Quaternion Q, float3 center, Grid<Dtype, 2, true> in, Grid<Dtype, 2, true> out) {
+__global__ void transform_rotate_kernel(unsigned n, Quaternion Q, Vec3 center, Grid<Dtype, 2, true> in, Grid<Dtype, 2, true> out) {
   LMG_CUDA_KERNEL_LOOP(i, n) {
     Dtype x,y,z;
     x = in(i,0);
     y = in(i,1);
     z = in(i,2);
-    float3 newpt = Q.rotate(x-center.x,y-center.y,z-center.z);
+    Vec3 newpt = Q.rotate(x-center.x,y-center.y,z-center.z);
 
     out(i,0) = newpt.x+center.x;
     out(i,1) = newpt.y+center.y;
@@ -83,7 +83,7 @@ template <typename Dtype>
   Quaternion invQ = Q.inverse();
 
   if(dotranslate) {
-    float3 untranslate = make_float3(-translate.x,-translate.y,-translate.z);
+    Vec3 untranslate = make_vec3(-translate.x,-translate.y,-translate.z);
     transform_translate_kernel<Dtype><<<LMG_GET_BLOCKS(N), LMG_GET_THREADS(N)>>>(N, untranslate, in, out);
     transform_rotate_kernel<Dtype><<<LMG_GET_BLOCKS(N), LMG_GET_THREADS(N)>>>(N,invQ,center,out,out);
   } else {

@@ -52,7 +52,7 @@ inline bool grid_empty(Grid<Dtype, NumDims, false>& grid) {
   return true;
 }
 
-inline void write_dx_header(std::ofstream& out, unsigned n, float3 grid_origin, float resolution) {
+inline void write_dx_header(std::ofstream& out, unsigned n, Vec3 grid_origin, float resolution) {
     out.precision(5);
     out << std::fixed;
     out << "object 1 class gridpositions counts " << n << " " << n << " " << " "

@@ -1,27 +1,29 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="classlibmolgrid_1_1ExampleExtractor" kind="class" language="C++" prot="public">
     <compoundname>libmolgrid::ExampleExtractor</compoundname>
     <includes refid="example__extractor_8h" local="no">example_extractor.h</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classlibmolgrid_1_1ExampleExtractor_1a54c779513bcd7e412018cbe0bf0321ff" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="classlibmolgrid_1_1CoordCache" kindref="compound">CoordCache</ref> &gt;</type>
         <definition>std::vector&lt;CoordCache&gt; coord_caches</definition>
         <argsstring></argsstring>
         <name>coord_caches</name>
+        <qualifiedname>libmolgrid::ExampleExtractor::coord_caches</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" line="34" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" bodystart="34" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" line="34" column="17" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1ExampleExtractor_1a15f56a006f5ce29d6ae2a8d42a57aed7" prot="private" static="no" mutable="no">
         <type>bool</type>
         <definition>bool duplicate_poses</definition>
         <argsstring></argsstring>
         <name>duplicate_poses</name>
+        <qualifiedname>libmolgrid::ExampleExtractor::duplicate_poses</qualifiedname>
         <initializer>= false</initializer>
         <briefdescription>
         </briefdescription>
@@ -29,15 +31,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" line="35" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" bodystart="35" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" line="35" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" bodystart="35" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
+    </sectiondef>
+    <sectiondef kind="private-func">
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleExtractor_1a5421a698349e82ca0640e45fa6d35429" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
         <definition>size_t count_types</definition>
         <argsstring>(unsigned n) const</argsstring>
         <name>count_types</name>
+        <qualifiedname>libmolgrid::ExampleExtractor::count_types</qualifiedname>
         <param>
           <type>unsigned</type>
           <declname>n</declname>
@@ -48,15 +51,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" line="37" column="12" bodyfile="/home/dkoes/git/libmolgrid/src/example_extractor.cpp" bodystart="55" bodyend="68"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" line="37" column="12" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example_extractor.cpp" bodystart="58" bodyend="72"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleExtractor_1ab7d66331e008ab169c9db0f34d441187" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ExampleExtractor</definition>
         <argsstring>(const ExampleProviderSettings &amp;settings, std::shared_ptr&lt; AtomTyper &gt; t)</argsstring>
         <name>ExampleExtractor</name>
+        <qualifiedname>libmolgrid::ExampleExtractor::ExampleExtractor</qualifiedname>
         <param>
           <type>const <ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref> &amp;</type>
           <declname>settings</declname>
@@ -71,13 +75,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" line="40" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" bodystart="40" bodyend="42"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" line="40" column="5" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" bodystart="40" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleExtractor_1a553fedda20a9ad9f854140456750e118" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ExampleExtractor</definition>
         <argsstring>(const ExampleProviderSettings &amp;settings, std::shared_ptr&lt; AtomTyper &gt; t1, std::shared_ptr&lt; AtomTyper &gt; t2)</argsstring>
         <name>ExampleExtractor</name>
+        <qualifiedname>libmolgrid::ExampleExtractor::ExampleExtractor</qualifiedname>
         <param>
           <type>const <ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref> &amp;</type>
           <declname>settings</declname>
@@ -96,13 +101,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" line="44" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" bodystart="44" bodyend="47"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" line="44" column="5" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleExtractor_1a53ec0aa6cb7614769917a652f98302bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ExampleExtractor</definition>
         <argsstring>(const ExampleProviderSettings &amp;settings, const std::vector&lt; std::shared_ptr&lt; AtomTyper &gt; &gt; &amp;typrs, std::vector&lt; std::string &gt; molcaches=std::vector&lt; std::string &gt;())</argsstring>
         <name>ExampleExtractor</name>
+        <qualifiedname>libmolgrid::ExampleExtractor::ExampleExtractor</qualifiedname>
         <param>
           <type>const <ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref> &amp;</type>
           <declname>settings</declname>
@@ -123,26 +129,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" line="51" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" bodystart="51" bodyend="73"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" line="51" column="5" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" bodystart="51" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleExtractor_1ab6df92373d981fbc87c81346cf8af157" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~ExampleExtractor</definition>
         <argsstring>()</argsstring>
         <name>~ExampleExtractor</name>
+        <qualifiedname>libmolgrid::ExampleExtractor::~ExampleExtractor</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" line="75" column="13" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" bodystart="75" bodyend="75"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" line="75" column="13" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" bodystart="75" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void extract</definition>
         <argsstring>(const ExampleRef &amp;ref, Example &amp;ex)</argsstring>
         <name>extract</name>
+        <qualifiedname>libmolgrid::ExampleExtractor::extract</qualifiedname>
         <param>
           <type>const <ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref> &amp;</type>
           <declname>ref</declname>
@@ -158,16 +166,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" line="78" column="18" bodyfile="/home/dkoes/git/libmolgrid/src/example_extractor.cpp" bodystart="21" bodyend="52"/>
-        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1ad04cc9d97399f697fbc874ecfd8109b9" compoundref="example__provider_8cpp" startline="70" endline="74">ExampleProvider::next</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1adb4bb0435e9db0c63c1c7938385939a0" compoundref="example__provider_8cpp" startline="77" endline="90">ExampleProvider::next_batch</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ExampleDataset_1a3cfefbb6aa29709d7db0bdaebb8c7338" compoundref="example__dataset_8cpp" startline="62" endline="68">ExampleDataset::operator[]</referencedby>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" line="78" column="18" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example_extractor.cpp" bodystart="21" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleExtractor_1a59b7170f88e4d8d17e9f4eb5e3d62712" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>size_t</type>
         <definition>size_t num_types</definition>
         <argsstring>() const</argsstring>
         <name>num_types</name>
+        <qualifiedname>libmolgrid::ExampleExtractor::num_types</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -175,15 +181,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" line="83" column="20" bodyfile="/home/dkoes/git/libmolgrid/src/example_extractor.cpp" bodystart="69" bodyend="71"/>
-        <referencedby refid="classlibmolgrid_1_1ExampleDataset_1a59b7170f88e4d8d17e9f4eb5e3d62712" compoundref="example__dataset_8h" startline="64" endline="64">ExampleDataset::num_types</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1a59b7170f88e4d8d17e9f4eb5e3d62712" compoundref="example__provider_8h" startline="136" endline="136">ExampleProvider::num_types</referencedby>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" line="83" column="20" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example_extractor.cpp" bodystart="73" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleExtractor_1a92e331dc0874eea72e24fad42efdddc6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>size_t</type>
         <definition>size_t num_types</definition>
         <argsstring>(const ExampleRef &amp;ref) const</argsstring>
         <name>num_types</name>
+        <qualifiedname>libmolgrid::ExampleExtractor::num_types</qualifiedname>
         <param>
           <type>const <ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref> &amp;</type>
           <declname>ref</declname>
@@ -194,13 +199,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" line="86" column="20" bodyfile="/home/dkoes/git/libmolgrid/src/example_extractor.cpp" bodystart="73" bodyend="75"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" line="86" column="20" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example_extractor.cpp" bodystart="77" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleExtractor_1ab179299d9dc6bb3a4bfe868fd60882a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>std::vector&lt; std::string &gt; get_type_names</definition>
         <argsstring>() const</argsstring>
         <name>get_type_names</name>
+        <qualifiedname>libmolgrid::ExampleExtractor::get_type_names</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -208,18 +214,148 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" line="90" column="25" bodyfile="/home/dkoes/git/libmolgrid/src/example_extractor.cpp" bodystart="77" bodyend="86"/>
-        <referencedby refid="classlibmolgrid_1_1ExampleDataset_1a2babcd45f89ff67b4b4887f7ba469ae6" compoundref="example__dataset_8h" startline="66" endline="66">ExampleDataset::get_type_names</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1a2babcd45f89ff67b4b4887f7ba469ae6" compoundref="example__provider_8h" startline="138" endline="138">ExampleProvider::get_type_names</referencedby>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" line="90" column="25" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example_extractor.cpp" bodystart="81" bodyend="90"/>
       </memberdef>
-      </sectiondef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ExampleExtractor_1aafedfebfbd82487314d815b97036d002" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void save_mem_caches</definition>
+        <argsstring>(std::ostream &amp;out) const</argsstring>
+        <name>save_mem_caches</name>
+        <qualifiedname>libmolgrid::ExampleExtractor::save_mem_caches</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+<para>Write out current contents of memory caches to provided output stream. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>output stream </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" line="96" column="8" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example_extractor.cpp" bodystart="92" bodyend="96"/>
+        <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a6e366b026167d1b1d7e3ffd05560cb9a" compoundref="example__extractor_8h" startline="101" endline="106">ExampleExtractor::save_mem_caches</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ExampleExtractor_1a6e366b026167d1b1d7e3ffd05560cb9a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void save_mem_caches</definition>
+        <argsstring>(const std::string &amp;fname) const</argsstring>
+        <name>save_mem_caches</name>
+        <qualifiedname>libmolgrid::ExampleExtractor::save_mem_caches</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fname</declname>
+        </param>
+        <briefdescription>
+<para>Write out current contents of memory caches to provided file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">fname</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>file name </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" line="101" column="8" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" bodystart="101" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ExampleExtractor_1ad79b0093b37077f535333bd1a7cf5f52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void load_mem_caches</definition>
+        <argsstring>(std::istream &amp;in)</argsstring>
+        <name>load_mem_caches</name>
+        <qualifiedname>libmolgrid::ExampleExtractor::load_mem_caches</qualifiedname>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+<para>Read contents of input stream into memory caches. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>input stream </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" line="111" column="8" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example_extractor.cpp" bodystart="98" bodyend="102"/>
+        <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a8e87535493172af28ff7228f3682d4bd" compoundref="example__extractor_8h" startline="115" endline="120">ExampleExtractor::load_mem_caches</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ExampleExtractor_1a8e87535493172af28ff7228f3682d4bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void load_mem_caches</definition>
+        <argsstring>(const std::string &amp;fname)</argsstring>
+        <name>load_mem_caches</name>
+        <qualifiedname>libmolgrid::ExampleExtractor::load_mem_caches</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fname</declname>
+        </param>
+        <briefdescription>
+<para>Read contents of provided file into memory caches. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">fname</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>file name </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" line="115" column="8" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" bodystart="115" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1ExampleExtractor_1a219a3e7bce843157f60811febbc07771" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t mem_caches_size</definition>
+        <argsstring>() const</argsstring>
+        <name>mem_caches_size</name>
+        <qualifiedname>libmolgrid::ExampleExtractor::mem_caches_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" line="122" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example_extractor.cpp" bodystart="104" bodyend="110"/>
+      </memberdef>
+    </sectiondef>
     <briefdescription>
 <para>Converts an <ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref> to and <ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref> Loads (potentially cached) data and applies atom typers to create coordinate sets. Takes care of in-memory caching (optional) and also supports memory mapped gnina cache files (incurring slight overhead on recalculation of atom types in exchange for substantially less real mem usage). </para>
     </briefdescription>
     <detaileddescription>
 <para>Can take multiple atom typers, in which case they are applied in order, with the last being repeated. </para>
     </detaileddescription>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" line="32" column="23" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_extractor.h" bodystart="32" bodyend="91"/>
+    <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" line="32" column="1" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_extractor.h" bodystart="32" bodyend="123"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1ExampleExtractor_1a54c779513bcd7e412018cbe0bf0321ff" prot="private" virt="non-virtual"><scope>libmolgrid::ExampleExtractor</scope><name>coord_caches</name></member>
       <member refid="classlibmolgrid_1_1ExampleExtractor_1a5421a698349e82ca0640e45fa6d35429" prot="private" virt="non-virtual"><scope>libmolgrid::ExampleExtractor</scope><name>count_types</name></member>
@@ -229,8 +365,13 @@
       <member refid="classlibmolgrid_1_1ExampleExtractor_1a53ec0aa6cb7614769917a652f98302bf" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleExtractor</scope><name>ExampleExtractor</name></member>
       <member refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" prot="public" virt="virtual"><scope>libmolgrid::ExampleExtractor</scope><name>extract</name></member>
       <member refid="classlibmolgrid_1_1ExampleExtractor_1ab179299d9dc6bb3a4bfe868fd60882a6" prot="public" virt="virtual"><scope>libmolgrid::ExampleExtractor</scope><name>get_type_names</name></member>
+      <member refid="classlibmolgrid_1_1ExampleExtractor_1ad79b0093b37077f535333bd1a7cf5f52" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleExtractor</scope><name>load_mem_caches</name></member>
+      <member refid="classlibmolgrid_1_1ExampleExtractor_1a8e87535493172af28ff7228f3682d4bd" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleExtractor</scope><name>load_mem_caches</name></member>
+      <member refid="classlibmolgrid_1_1ExampleExtractor_1a219a3e7bce843157f60811febbc07771" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleExtractor</scope><name>mem_caches_size</name></member>
       <member refid="classlibmolgrid_1_1ExampleExtractor_1a59b7170f88e4d8d17e9f4eb5e3d62712" prot="public" virt="virtual"><scope>libmolgrid::ExampleExtractor</scope><name>num_types</name></member>
       <member refid="classlibmolgrid_1_1ExampleExtractor_1a92e331dc0874eea72e24fad42efdddc6" prot="public" virt="virtual"><scope>libmolgrid::ExampleExtractor</scope><name>num_types</name></member>
+      <member refid="classlibmolgrid_1_1ExampleExtractor_1aafedfebfbd82487314d815b97036d002" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleExtractor</scope><name>save_mem_caches</name></member>
+      <member refid="classlibmolgrid_1_1ExampleExtractor_1a6e366b026167d1b1d7e3ffd05560cb9a" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleExtractor</scope><name>save_mem_caches</name></member>
       <member refid="classlibmolgrid_1_1ExampleExtractor_1ab6df92373d981fbc87c81346cf8af157" prot="public" virt="virtual"><scope>libmolgrid::ExampleExtractor</scope><name>~ExampleExtractor</name></member>
     </listofallmembers>
   </compounddef>

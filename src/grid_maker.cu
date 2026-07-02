@@ -63,9 +63,9 @@ namespace libmolgrid {
     }
     
 
-    uint2 GridMaker::get_bounds_1d(const float grid_origin,
+    UVec2 GridMaker::get_bounds_1d(const float grid_origin,
         float coord, float densityrad) const {
-      uint2 bounds{0, 0};
+      UVec2 bounds{0, 0};
       float low = coord - densityrad - grid_origin;
       if (low > 0) {
         bounds.x = floor(low / resolution);
@@ -80,7 +80,7 @@ namespace libmolgrid {
 
     //return squared distance between pt and (x,y,z)
     __host__ __device__ inline
-    float sqDistance(float3 pt, float x, float y, float z) {
+    float sqDistance(Vec3 pt, float x, float y, float z) {
       float ret;
       float tmp = pt.x - x;
       ret = tmp * tmp;
@@ -94,7 +94,7 @@ namespace libmolgrid {
     //non-binary, gaussian case
     template<>
     float GridMaker::calc_point<false>(float ax, float ay, float az, float ar,
-        const float3& grid_coords) const {
+        const Vec3& grid_coords) const {
       float rsq = sqDistance(grid_coords, ax, ay, az);
       ar *= radius_scale;
       //For non-binary density we want a Gaussian where 2 std occurs at the
@@ -119,7 +119,7 @@ namespace libmolgrid {
 
     template<>
     float GridMaker::calc_point<true>(float ax, float ay, float az, float ar,
-        const float3& grid_coords) const {
+        const Vec3& grid_coords) const {
       float rsq = sqDistance(grid_coords, ax, ay, az);
       ar *= radius_scale;
       //is point within radius?
@@ -185,7 +185,7 @@ namespace libmolgrid {
         return;//bail if we're off-grid, this should not be common
 
       //compute x,y,z coordinate of grid point
-      float3 grid_coords;
+      Vec3 grid_coords;
       grid_coords.x = xi * resolution + grid_origin.x;
       grid_coords.y = yi * resolution + grid_origin.y;
       grid_coords.z = zi * resolution + grid_origin.z;
@@ -258,15 +258,15 @@ namespace libmolgrid {
     }
 
     template <typename Dtype>
-    void GridMaker::forward(float3 grid_center, const Grid<float, 2, true>& coords,
+    void GridMaker::forward(Vec3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
         Grid<Dtype, 4, true>& out) const {
-      //threads are laid out in three dimensions to match the voxel grid, 
+      //threads are laid out in three dimensions to match the voxel grid,
       //8x8x8=512 threads per block
       dim3 threads(LMG_CUDA_BLOCKDIM, LMG_CUDA_BLOCKDIM, LMG_CUDA_BLOCKDIM);
       unsigned blocksperside = ceil(dim / float(LMG_CUDA_BLOCKDIM));
       dim3 blocks(blocksperside, blocksperside, blocksperside);
-      float3 grid_origin = get_grid_origin(grid_center);
+      Vec3 grid_origin = get_grid_origin(grid_center);
 
       check_index_args(coords, type_index, radii, out);
       if(radii_type_indexed) {
@@ -281,16 +281,16 @@ namespace libmolgrid {
       if(coords.dimension(0) == 0) return; //no atoms
 
       if(binary)
-        forward_gpu<Dtype, true><<<blocks, threads>>>(*this, grid_origin, coords, type_index, radii, out);
+        forward_gpu<Dtype, true><<<blocks, threads>>>(*this, to_cuda(grid_origin), coords, type_index, radii, out);
       else
-        forward_gpu<Dtype, false><<<blocks, threads>>>(*this, grid_origin, coords, type_index, radii, out);
+        forward_gpu<Dtype, false><<<blocks, threads>>>(*this, to_cuda(grid_origin), coords, type_index, radii, out);
 
       LMG_CUDA_CHECK(cudaPeekAtLastError());
     }
 
-    template void GridMaker::forward(float3 grid_center, const Grid<float, 2, true>& coords,
+    template void GridMaker::forward(Vec3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii, Grid<float, 4, true>& out) const;
-    template void GridMaker::forward(float3 grid_center, const Grid<float, 2, true>& coords,
+    template void GridMaker::forward(Vec3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii, Grid<double, 4, true>& out) const;
 
 
@@ -307,7 +307,7 @@ namespace libmolgrid {
         return;//bail if we're off-grid, this should not be common
 
       //compute x,y,z coordinate of grid point
-      float3 grid_coords;
+      Vec3 grid_coords;
       grid_coords.x = xi * resolution + grid_origin.x;
       grid_coords.y = yi * resolution + grid_origin.y;
       grid_coords.z = zi * resolution + grid_origin.z;
@@ -400,7 +400,7 @@ namespace libmolgrid {
     }
 
     template <typename Dtype>
-    void GridMaker::forward(float3 grid_center, const Grid<float, 2, true>& coords,
+    void GridMaker::forward(Vec3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 2, true>& type_vector, const Grid<float, 1, true>& radii,
         Grid<Dtype, 4, true>& out) const {
 
@@ -409,7 +409,7 @@ namespace libmolgrid {
       dim3 threads(LMG_CUDA_BLOCKDIM, LMG_CUDA_BLOCKDIM, LMG_CUDA_BLOCKDIM);
       unsigned blocksperside = ceil(dim / float(LMG_CUDA_BLOCKDIM));
       dim3 blocks(blocksperside, blocksperside, blocksperside);
-      float3 grid_origin = get_grid_origin(grid_center);
+      Vec3 grid_origin = get_grid_origin(grid_center);
       unsigned ntypes = type_vector.dimension(1);
 
       check_vector_args(coords, type_vector, radii, out);
@@ -427,22 +427,22 @@ namespace libmolgrid {
 
       if(binary) {
         if(radii_type_indexed)
-          forward_gpu_vec<Dtype, true, true><<<blocks, threads>>>(*this, grid_origin, coords, type_vector, radii, maxr, out);
+          forward_gpu_vec<Dtype, true, true><<<blocks, threads>>>(*this, to_cuda(grid_origin), coords, type_vector, radii, maxr, out);
         else
-          forward_gpu_vec<Dtype, true, false><<<blocks, threads>>>(*this, grid_origin, coords, type_vector, radii, maxr, out);
+          forward_gpu_vec<Dtype, true, false><<<blocks, threads>>>(*this, to_cuda(grid_origin), coords, type_vector, radii, maxr, out);
       } else {
         if(radii_type_indexed)
-          forward_gpu_vec<Dtype, false, true><<<blocks, threads>>>(*this, grid_origin, coords, type_vector, radii, maxr, out);
+          forward_gpu_vec<Dtype, false, true><<<blocks, threads>>>(*this, to_cuda(grid_origin), coords, type_vector, radii, maxr, out);
         else
-          forward_gpu_vec<Dtype, false, false><<<blocks, threads>>>(*this, grid_origin, coords, type_vector, radii, maxr, out);
+          forward_gpu_vec<Dtype, false, false><<<blocks, threads>>>(*this, to_cuda(grid_origin), coords, type_vector, radii, maxr, out);
       }
 
       LMG_CUDA_CHECK(cudaPeekAtLastError());
     }
 
-    template void GridMaker::forward(float3 grid_center, const Grid<float, 2, true>& coords,
+    template void GridMaker::forward(Vec3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 2, true>& type_vector, const Grid<float, 1, true>& radii, Grid<float, 4, true>& out) const;
-    template void GridMaker::forward(float3 grid_center, const Grid<float, 2, true>& coords,
+    template void GridMaker::forward(Vec3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 2, true>& type_vector, const Grid<float, 1, true>& radii, Grid<double, 4, true>& out) const;
  
     
@@ -477,12 +477,12 @@ namespace libmolgrid {
       if(idx >= type_index.dimension(0)) return;
 
       //calculate gradient for atom at idx
-      float3 agrad{0,0,0};
+      Vec3 agrad{0,0,0};
       float3 a{coords(idx,0),coords(idx,1),coords(idx,2)}; //atom coordinate
       float radius = radii(idx);
 
       float r = radius * G.radius_scale * G.final_radius_multiple;
-      uint2 ranges[3];
+      UVec2 ranges[3];
       ranges[0] = G.get_bounds_1d(grid_origin.x, a.x, r);
       ranges[1] = G.get_bounds_1d(grid_origin.y, a.y, r);
       ranges[2] = G.get_bounds_1d(grid_origin.z, a.z, r);
@@ -520,7 +520,7 @@ namespace libmolgrid {
       unsigned whicht = blockIdx.y;
 
       //calculate gradient for atom at idx
-      float3 agrad{0,0,0};
+      Vec3 agrad{0,0,0};
       float3 a{coords(idx,0),coords(idx,1),coords(idx,2)}; //atom coordinate
       float radius = 0;
       if(RadiiFromTypes)
@@ -529,7 +529,7 @@ namespace libmolgrid {
         radius = radii(idx);
 
       float r = radius * G.radius_scale * G.final_radius_multiple;
-      uint2 ranges[3];
+      UVec2 ranges[3];
       ranges[0] = G.get_bounds_1d(grid_origin.x, a.x, r);
       ranges[1] = G.get_bounds_1d(grid_origin.y, a.y, r);
       ranges[2] = G.get_bounds_1d(grid_origin.z, a.z, r);
@@ -551,9 +551,9 @@ namespace libmolgrid {
             //type gradient is just some of density vals
             float val;
             if(G.binary)
-              val = G.calc_point<true>(a.x, a.y, a.z, radius, float3{x,y,z});
+              val = G.calc_point<true>(a.x, a.y, a.z, radius, Vec3{x,y,z});
             else
-              val = G.calc_point<false>(a.x, a.y, a.z, radius, float3{x,y,z});
+              val = G.calc_point<false>(a.x, a.y, a.z, radius, Vec3{x,y,z});
             tgrad += val * diff(i,j,k);
           }
         }
@@ -574,7 +574,7 @@ namespace libmolgrid {
 
     //gpu accelerated gradient calculation
     template <typename Dtype>
-    void GridMaker::backward(float3 grid_center, const Grid<float, 2, true>& coords,
+    void GridMaker::backward(Vec3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
         const Grid<Dtype, 4, true>& grid, Grid<Dtype, 2, true>& atom_gradients) const {
       atom_gradients.fill_zero();
@@ -587,22 +587,22 @@ namespace libmolgrid {
         throw std::invalid_argument("Type indexed radii not supported with index types.");
       }
 
-      float3 grid_origin = get_grid_origin(grid_center);
+      Vec3 grid_origin = get_grid_origin(grid_center);
 
       unsigned blocks =  LMG_GET_BLOCKS(n);
       unsigned nthreads = LMG_GET_THREADS(n);
-      set_atom_gradients<<<blocks, nthreads>>>(*this, grid_origin, coords, type_index, radii, grid, atom_gradients);
+      set_atom_gradients<<<blocks, nthreads>>>(*this, to_cuda(grid_origin), coords, type_index, radii, grid, atom_gradients);
     }
 
-    template void GridMaker::backward(float3 grid_center, const Grid<float, 2, true>& coords,
+    template void GridMaker::backward(Vec3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 1, true>& type_index,const Grid<float, 1, true>& radii,
         const Grid<float, 4, true>& grid, Grid<float, 2, true>& atom_gradients) const;
-    template void GridMaker::backward(float3 grid_center, const Grid<float, 2, true>& coords,
+    template void GridMaker::backward(Vec3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
         const Grid<double, 4, true>& grid, Grid<double, 2, true>& atom_gradients) const;
 
     template<typename Dtype>
-    void GridMaker::backward(float3 grid_center, const Grid<float, 2, true>& coords,
+    void GridMaker::backward(Vec3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 2, true>& type_vector, const Grid<float, 1, true>& radii,
         const Grid<Dtype, 4, true>& grid,
         Grid<Dtype, 2, true>& atom_gradients, Grid<Dtype, 2, true>& type_gradients) const {
@@ -627,7 +627,7 @@ namespace libmolgrid {
         if(n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
       }
 
-      float3 grid_origin = get_grid_origin(grid_center);
+      Vec3 grid_origin = get_grid_origin(grid_center);
 
 
       unsigned blocks = LMG_GET_BLOCKS(n);
@@ -636,13 +636,13 @@ namespace libmolgrid {
         throw std::invalid_argument("Really? More than 1024 types?  The GPU can't handle that.  Are you sure this is a good idea?  I'm giving up.");
       dim3 B(blocks, ntypes, 1); //in theory could support more 1024 by using z, but really..
       if(radii_type_indexed)
-        set_atom_type_gradients<Dtype,true><<<B, nthreads>>>(*this, grid_origin, coords, type_vector, ntypes, radii, grid, atom_gradients, type_gradients);
+        set_atom_type_gradients<Dtype,true><<<B, nthreads>>>(*this, to_cuda(grid_origin), coords, type_vector, ntypes, radii, grid, atom_gradients, type_gradients);
       else
-        set_atom_type_gradients<Dtype,false><<<B, nthreads>>>(*this, grid_origin, coords, type_vector, ntypes, radii, grid, atom_gradients, type_gradients);
+        set_atom_type_gradients<Dtype,false><<<B, nthreads>>>(*this, to_cuda(grid_origin), coords, type_vector, ntypes, radii, grid, atom_gradients, type_gradients);
     }
 
 
-    template void GridMaker::backward(float3 grid_center, const Grid<float, 2, true>& coords,
+    template void GridMaker::backward(Vec3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 2, true>& type_vectors, const Grid<float, 1, true>& radii,
         const Grid<float, 4, true>& grid,
         Grid<float, 2, true>& atom_gradients, Grid<float, 2, true>& type_gradients) const;
@@ -685,7 +685,7 @@ namespace libmolgrid {
 
 
       float densityr = radius * G.radius_scale * G.final_radius_multiple;
-      uint2 bounds[3];
+      UVec2 bounds[3];
       bounds[0] = G.get_bounds_1d(grid_origin.x, ax, densityr);
       bounds[1] = G.get_bounds_1d(grid_origin.y, ay, densityr);
       bounds[2] = G.get_bounds_1d(grid_origin.z, az, densityr);
@@ -722,7 +722,7 @@ namespace libmolgrid {
               }
 
               //type backwards was just the density value
-              float val = G.calc_point<false>(ax, ay, az, radius, float3{x,y,z});
+              float val = G.calc_point<false>(ax, ay, az, radius, Vec3{x,y,z});
               gval += val*tgrad;
 
               atomicAdd((diffdiff.data() + offset), (Dtype) gval);
@@ -753,7 +753,7 @@ namespace libmolgrid {
     }
 
     template <typename Dtype>
-    void GridMaker::backward_gradients(float3 grid_center,  const Grid<float, 2, true>& coords,
+    void GridMaker::backward_gradients(Vec3 grid_center,  const Grid<float, 2, true>& coords,
         const Grid<float, 2, true>& type_vector, const Grid<float, 1, true>& radii,
         const Grid<Dtype, 4, true>& diff,
         const Grid<Dtype, 2, true>& atom_gradients, const Grid<Dtype, 2, true>& type_gradients,
@@ -787,7 +787,7 @@ namespace libmolgrid {
       type_diffdiff.fill_zero(); //note this is the right answer - density is a linear function of amount of type
       diffdiff.fill_zero();
 
-      float3 grid_origin = get_grid_origin(grid_center);
+      Vec3 grid_origin = get_grid_origin(grid_center);
 
       unsigned blocks = LMG_GET_BLOCKS(n);
       unsigned nthreads = LMG_GET_THREADS(n);
@@ -795,14 +795,14 @@ namespace libmolgrid {
         throw std::invalid_argument("Really? More than 1024 types?  The GPU can't handle that.  Are you sure this is a good idea?  I'm giving up.");
       dim3 B(blocks, ntypes, 1); //in theory could support more 1024 by using z, but really..
       if(radii_type_indexed)
-        set_atom_type_grad_grad<Dtype,true><<<B, nthreads>>>(*this, grid_origin, coords, type_vector, ntypes, radii,
+        set_atom_type_grad_grad<Dtype,true><<<B, nthreads>>>(*this, to_cuda(grid_origin), coords, type_vector, ntypes, radii,
                     diff, atom_gradients, type_gradients, diffdiff, atom_diffdiff, type_diffdiff);
       else
-        set_atom_type_grad_grad<Dtype,false><<<B, nthreads>>>(*this, grid_origin, coords, type_vector, ntypes, radii,
+        set_atom_type_grad_grad<Dtype,false><<<B, nthreads>>>(*this, to_cuda(grid_origin), coords, type_vector, ntypes, radii,
                     diff, atom_gradients, type_gradients, diffdiff, atom_diffdiff, type_diffdiff);
     }
 
-    template void GridMaker::backward_gradients(float3,  const Grid<float, 2, true>&,
+    template void GridMaker::backward_gradients(Vec3,  const Grid<float, 2, true>&,
         const Grid<float, 2, true>&, const Grid<float, 1, true>&, const Grid<float, 4, true>&,
         const Grid<float, 2, true>&, const Grid<float, 2, true>&, Grid<float, 4, true>&,
         Grid<float, 2, true>&, Grid<float, 2, true>&);
@@ -896,7 +896,7 @@ namespace libmolgrid {
     }
 
     void GridMaker::accumulate_atom_gradient(float ax, float ay, float az,
-        float x, float y, float z, float ar, float gridval, float3& agrad) const {
+        float x, float y, float z, float ar, float gridval, Vec3& agrad) const {
       //sum gradient grid values overlapped by the atom times the
       //derivative of the atom density at each grid point
       float dist_x = x - ax;
@@ -932,7 +932,7 @@ namespace libmolgrid {
       float radius = radii(idx);
 
       float r = radius * G.radius_scale * G.final_radius_multiple;
-      uint2 ranges[3];
+      UVec2 ranges[3];
       ranges[0] = G.get_bounds_1d(grid_origin.x, a.x, r);
       ranges[1] = G.get_bounds_1d(grid_origin.y, a.y, r);
       ranges[2] = G.get_bounds_1d(grid_origin.z, a.z, r);
@@ -953,9 +953,9 @@ namespace libmolgrid {
             float z = grid_origin.z + k * G.resolution;
             float val = 0;
             if(G.get_binary())
-              val = G.calc_point<true>(a.x, a.y, a.z, radius, float3{x,y,z});
+              val = G.calc_point<true>(a.x, a.y, a.z, radius, Vec3{x,y,z});
             else
-              val = G.calc_point<false>(a.x, a.y, a.z, radius, float3{x,y,z});
+              val = G.calc_point<false>(a.x, a.y, a.z, radius, Vec3{x,y,z});
 
             if (val > 0) {
               float denseval = density(i,j,k);
@@ -972,7 +972,7 @@ namespace libmolgrid {
     }
 
     template <typename Dtype>
-    void GridMaker::backward_relevance(float3 grid_center,  const Grid<float, 2, true>& coords,
+    void GridMaker::backward_relevance(Vec3 grid_center,  const Grid<float, 2, true>& coords,
         const Grid<float, 1, true>& type_index, const Grid<float, 1, true>& radii,
         const Grid<Dtype, 4, true>& density, const Grid<Dtype, 4, true>& diff,
         Grid<Dtype, 1, true>& relevance) const {
@@ -984,17 +984,17 @@ namespace libmolgrid {
       if(n != radii.size()) throw std::invalid_argument("Radii dimension doesn't equal number of coordinates");
       if(coords.dimension(1) != 3) throw std::invalid_argument("Coordinates and radius wrong secondary dimension");
 
-      float3 grid_origin = get_grid_origin(grid_center);
+      Vec3 grid_origin = get_grid_origin(grid_center);
 
       unsigned blocks =  LMG_GET_BLOCKS(n);
       unsigned nthreads = LMG_GET_THREADS(n);
-      set_atom_relevance<<<blocks, nthreads>>>(*this, grid_origin, coords, type_index, radii, density, diff, relevance);
+      set_atom_relevance<<<blocks, nthreads>>>(*this, to_cuda(grid_origin), coords, type_index, radii, density, diff, relevance);
     }
 
-    template void GridMaker::backward_relevance(float3,  const Grid<float, 2, true>&,
+    template void GridMaker::backward_relevance(Vec3,  const Grid<float, 2, true>&,
         const Grid<float, 1, true>&, const Grid<float, 1, true>&, const Grid<float, 4, true>&,
         const Grid<float, 4, true>&, Grid<float, 1, true>&) const;
-    template void GridMaker::backward_relevance(float3,  const Grid<float, 2, true>&,
+    template void GridMaker::backward_relevance(Vec3,  const Grid<float, 2, true>&,
         const Grid<float, 1, true>&, const Grid<float, 1, true>&, const Grid<double, 4, true>&,
         const Grid<double, 4, true>&, Grid<double, 1, true>& ) const;
 

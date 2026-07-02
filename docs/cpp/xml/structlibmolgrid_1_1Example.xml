@@ -1,49 +1,62 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="structlibmolgrid_1_1Example" kind="struct" language="C++" prot="public">
     <compoundname>libmolgrid::Example</compoundname>
     <includes refid="example_8h" local="no">example.h</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structlibmolgrid_1_1Example_1a3034c08e7d9765b2f120d44d49d33927" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref> &gt;</type>
         <definition>std::vector&lt;CoordinateSet&gt; sets</definition>
         <argsstring></argsstring>
         <name>sets</name>
+        <qualifiedname>libmolgrid::Example::sets</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="63" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="63" bodyend="-1"/>
-        <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="52">ExampleExtractor::extract</referencedby>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="64" column="17" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" bodystart="64" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="55">ExampleExtractor::extract</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a828a9cde89c68646dbc222bfc3046c74" compoundref="grid__maker_8cpp" startline="163" endline="178">GridMaker::forward</referencedby>
         <referencedby refid="classlibmolgrid_1_1Transform_1a0a9ab0c16c128621044b64543e87806b" compoundref="transform_8cpp" startline="35" endline="43">Transform::forward</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1a828a9cde89c68646dbc222bfc3046c74" compoundref="grid__maker_8cpp" startline="126" endline="141">GridMaker::forward</referencedby>
-        <referencedby refid="structlibmolgrid_1_1Example_1a36e9b084e04133a39bd8473892702281" compoundref="example_8h" startline="139" endline="139">Example::make_vector_types</referencedby>
-        <referencedby refid="structlibmolgrid_1_1Example_1ab1e5f47c98b8b36379ea2df5e41bc40b" compoundref="example_8h" startline="131" endline="133">Example::operator==</referencedby>
-        <referencedby refid="structlibmolgrid_1_1Example_1af49e4585db4da5364523418dc95614ed" compoundref="example_8h" startline="136" endline="136">Example::tocpu</referencedby>
-        <referencedby refid="structlibmolgrid_1_1Example_1a8ccac5491a7d8ed2d90302fd8827063d" compoundref="example_8h" startline="135" endline="135">Example::togpu</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1a2e1844ea21f945bfed11383c4ca32bf0" compoundref="example_8cpp" startline="241" endline="250">Example::has_index_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1a7503b6a47c9b4b6cc834e6a0f8415e26" compoundref="example_8cpp" startline="230" endline="239">Example::has_vector_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1a36e9b084e04133a39bd8473892702281" compoundref="example_8h" startline="140" endline="140">Example::make_vector_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1aadbf4bff47ee7557c49edcb73e404604" compoundref="example_8cpp" startline="69" endline="100">Example::merge_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1aa0927ed6ec846f2a8e7daeb64e39795d" compoundref="example_8cpp" startline="138" endline="196">Example::merge_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" compoundref="example_8cpp" startline="198" endline="228">Example::merge_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1a29b5e5fcb7a177c6e0ce80c9423ff231" compoundref="example_8cpp" startline="20" endline="26">Example::num_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1a9cdf22c0ea09d46e82c22a9e8c62f7a8" compoundref="example_8cpp" startline="28" endline="37">Example::num_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1ab1e5f47c98b8b36379ea2df5e41bc40b" compoundref="example_8h" startline="132" endline="134">Example::operator==</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1ad1f4b659e53779914a303ad373b7db79" compoundref="example_8cpp" startline="363" endline="382">Example::sum_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1af49e4585db4da5364523418dc95614ed" compoundref="example_8h" startline="137" endline="137">Example::tocpu</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1a8ccac5491a7d8ed2d90302fd8827063d" compoundref="example_8h" startline="136" endline="136">Example::togpu</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structlibmolgrid_1_1Example_1a7ea04b60c00847d97627bc44a0a6b2f2" prot="public" static="no" mutable="no">
         <type>std::vector&lt; float &gt;</type>
         <definition>std::vector&lt;float&gt; labels</definition>
         <argsstring></argsstring>
         <name>labels</name>
+        <qualifiedname>libmolgrid::Example::labels</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="64" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="64" bodyend="-1"/>
-        <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="52">ExampleExtractor::extract</referencedby>
-        <referencedby refid="structlibmolgrid_1_1Example_1ab1e5f47c98b8b36379ea2df5e41bc40b" compoundref="example_8h" startline="131" endline="133">Example::operator==</referencedby>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="65" column="17" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" bodystart="65" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="55">ExampleExtractor::extract</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1abd2622389892168945e6f8d721072e38" compoundref="example_8cpp" startline="279" endline="301">Example::extract_label</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1a000f4bbd3c5453860543c5ad97be617a" compoundref="example_8cpp" startline="253" endline="272">Example::extract_labels</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1ab1e5f47c98b8b36379ea2df5e41bc40b" compoundref="example_8h" startline="132" endline="134">Example::operator==</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structlibmolgrid_1_1Example_1a0242027ec3331f3d5793c42d21b6f4e1" prot="public" static="no" mutable="no">
         <type>int</type>
         <definition>int group</definition>
         <argsstring></argsstring>
         <name>group</name>
+        <qualifiedname>libmolgrid::Example::group</qualifiedname>
         <initializer>= -1</initializer>
         <briefdescription>
         </briefdescription>
@@ -51,14 +64,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="65" column="9" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="65" bodyend="-1"/>
-        <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="52">ExampleExtractor::extract</referencedby>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="66" column="9" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" bodystart="66" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="55">ExampleExtractor::extract</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structlibmolgrid_1_1Example_1a2d552310ef0a3f6a1daa19e5c84f3168" prot="public" static="no" mutable="no">
         <type>bool</type>
         <definition>bool seqcont</definition>
         <argsstring></argsstring>
         <name>seqcont</name>
+        <qualifiedname>libmolgrid::Example::seqcont</qualifiedname>
         <initializer>= false</initializer>
         <briefdescription>
         </briefdescription>
@@ -66,16 +80,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="66" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="66" bodyend="-1"/>
-        <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="52">ExampleExtractor::extract</referencedby>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="67" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" bodystart="67" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1a16688c316082e3c32e65e8c0bb03fe9f" compoundref="example__extractor_8cpp" startline="21" endline="55">ExampleExtractor::extract</referencedby>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1a29b5e5fcb7a177c6e0ce80c9423ff231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
         <definition>size_t num_coordinates</definition>
         <argsstring>() const</argsstring>
         <name>num_coordinates</name>
+        <qualifiedname>libmolgrid::Example::num_coordinates</qualifiedname>
         <briefdescription>
 <para>for grouped inputs, true if not first member of group </para>
         </briefdescription>
@@ -84,13 +99,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="69" column="12" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="22" bodyend="28"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="70" column="12" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example.cpp" bodystart="20" bodyend="26"/>
+        <referencedby refid="structlibmolgrid_1_1Example_1aadbf4bff47ee7557c49edcb73e404604" compoundref="example_8cpp" startline="69" endline="100">Example::merge_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1aa0927ed6ec846f2a8e7daeb64e39795d" compoundref="example_8cpp" startline="138" endline="196">Example::merge_coordinates</referencedby>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1a9cdf22c0ea09d46e82c22a9e8c62f7a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
         <definition>size_t num_types</definition>
         <argsstring>(bool unique_index_types=true) const</argsstring>
         <name>num_types</name>
+        <qualifiedname>libmolgrid::Example::num_types</qualifiedname>
         <param>
           <type>bool</type>
           <declname>unique_index_types</declname>
@@ -103,7 +121,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="72" column="12" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="30" bodyend="39"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="73" column="12" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example.cpp" bodystart="28" bodyend="37"/>
+        <referencedby refid="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" compoundref="example_8cpp" startline="198" endline="228">Example::merge_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1ad1f4b659e53779914a303ad373b7db79" compoundref="example_8cpp" startline="363" endline="382">Example::sum_types</referencedby>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1ad1f4b659e53779914a303ad373b7db79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -117,6 +137,7 @@
         <definition>template void sum_types</definition>
         <argsstring>(Grid&lt; float, 1, isCUDA &gt; &amp;sum, bool unique_types=true) const</argsstring>
         <name>sum_types</name>
+        <qualifiedname>libmolgrid::Example::sum_types</qualifiedname>
         <param>
           <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; float, 1, isCUDA &gt; &amp;</type>
           <declname>sum</declname>
@@ -133,13 +154,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="76" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="357" bodyend="376"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="77" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example.cpp" bodystart="363" bodyend="382"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structlibmolgrid_1_1CoordinateSet" kindref="compound">CoordinateSet</ref></type>
         <definition>CoordinateSet merge_coordinates</definition>
         <argsstring>(unsigned start=0, bool unique_index_types=true) const</argsstring>
         <name>merge_coordinates</name>
+        <qualifiedname>libmolgrid::Example::merge_coordinates</qualifiedname>
         <param>
           <type>unsigned</type>
           <declname>start</declname>
@@ -175,14 +197,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="85" column="19" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="200" bodyend="230"/>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1aca37b69a1f1f60ca9cc298584e7c2bb7" compoundref="grid__maker_8cpp" startline="110" endline="116">GridMaker::forward</referencedby>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="86" column="19" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example.cpp" bodystart="198" bodyend="228"/>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aca37b69a1f1f60ca9cc298584e7c2bb7" compoundref="grid__maker_8cpp" startline="147" endline="153">GridMaker::forward</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1aaf8ff3176b68cb7987d5ec8c95612180" compoundref="example_8cpp" startline="40" endline="67">Example::merge_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" compoundref="example_8cpp" startline="198" endline="228">Example::merge_coordinates</referencedby>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1aaf8ff3176b68cb7987d5ec8c95612180" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void merge_coordinates</definition>
         <argsstring>(Grid2f &amp;coords, Grid1f &amp;type_index, Grid1f &amp;radii, unsigned start=0, bool unique_index_types=true) const</argsstring>
         <name>merge_coordinates</name>
+        <qualifiedname>libmolgrid::Example::merge_coordinates</qualifiedname>
         <param>
           <type>Grid2f &amp;</type>
           <declname>coords</declname>
@@ -254,15 +279,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="96" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="42" bodyend="69"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="97" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example.cpp" bodystart="40" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1aadbf4bff47ee7557c49edcb73e404604" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void merge_coordinates</definition>
         <argsstring>(std::vector&lt; float3 &gt; &amp;coords, std::vector&lt; float &gt; &amp;type_index, std::vector&lt; float &gt; &amp;radii, unsigned start=0, bool unique_index_types=true) const</argsstring>
         <name>merge_coordinates</name>
+        <qualifiedname>libmolgrid::Example::merge_coordinates</qualifiedname>
         <param>
-          <type>std::vector&lt; float3 &gt; &amp;</type>
+          <type>std::vector&lt; <ref refid="structfloat3" kindref="compound">float3</ref> &gt; &amp;</type>
           <declname>coords</declname>
         </param>
         <param>
@@ -289,13 +315,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="97" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="71" bodyend="102"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="98" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example.cpp" bodystart="69" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1ad44ab023ef81acc53befe9741066de55" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void merge_coordinates</definition>
         <argsstring>(Grid2f &amp;coords, Grid2f &amp;type_vector, Grid1f &amp;radii, unsigned start=0, bool unique_index_types=true) const</argsstring>
         <name>merge_coordinates</name>
+        <qualifiedname>libmolgrid::Example::merge_coordinates</qualifiedname>
         <param>
           <type>Grid2f &amp;</type>
           <declname>coords</declname>
@@ -367,15 +394,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="108" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="105" bodyend="138"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="109" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example.cpp" bodystart="103" bodyend="136"/>
+        <referencedby refid="structlibmolgrid_1_1Example_1ad44ab023ef81acc53befe9741066de55" compoundref="example_8cpp" startline="103" endline="136">Example::merge_coordinates</referencedby>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1aa0927ed6ec846f2a8e7daeb64e39795d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void merge_coordinates</definition>
         <argsstring>(std::vector&lt; float3 &gt; &amp;coords, std::vector&lt; std::vector&lt; float &gt; &gt; &amp;type_vector, std::vector&lt; float &gt; &amp;radii, unsigned start=0, bool unique_index_types=true) const</argsstring>
         <name>merge_coordinates</name>
+        <qualifiedname>libmolgrid::Example::merge_coordinates</qualifiedname>
         <param>
-          <type>std::vector&lt; float3 &gt; &amp;</type>
+          <type>std::vector&lt; <ref refid="structfloat3" kindref="compound">float3</ref> &gt; &amp;</type>
           <declname>coords</declname>
         </param>
         <param>
@@ -402,13 +431,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="109" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="140" bodyend="198"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="110" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example.cpp" bodystart="138" bodyend="196"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1ab1e5f47c98b8b36379ea2df5e41bc40b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool operator==</definition>
         <argsstring>(const Example &amp;rhs) const</argsstring>
         <name>operator==</name>
+        <qualifiedname>libmolgrid::Example::operator==</qualifiedname>
         <param>
           <type>const <ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref> &amp;</type>
           <declname>rhs</declname>
@@ -419,39 +449,42 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="131" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="131" bodyend="133"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="132" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" bodystart="132" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1a8ccac5491a7d8ed2d90302fd8827063d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void togpu</definition>
         <argsstring>()</argsstring>
         <name>togpu</name>
+        <qualifiedname>libmolgrid::Example::togpu</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="135" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="135" bodyend="135"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="136" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" bodystart="136" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1af49e4585db4da5364523418dc95614ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void tocpu</definition>
         <argsstring>()</argsstring>
         <name>tocpu</name>
+        <qualifiedname>libmolgrid::Example::tocpu</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="136" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="136" bodyend="136"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="137" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" bodystart="137" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1a36e9b084e04133a39bd8473892702281" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void make_vector_types</definition>
         <argsstring>()</argsstring>
         <name>make_vector_types</name>
+        <qualifiedname>libmolgrid::Example::make_vector_types</qualifiedname>
         <briefdescription>
 <para>Convert coordinate sets to vector types. </para>
         </briefdescription>
@@ -459,48 +492,54 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="139" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="139" bodyend="139"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="140" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" bodystart="140" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1a7503b6a47c9b4b6cc834e6a0f8415e26" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool has_vector_types</definition>
         <argsstring>(unsigned start=0) const</argsstring>
         <name>has_vector_types</name>
+        <qualifiedname>libmolgrid::Example::has_vector_types</qualifiedname>
         <param>
           <type>unsigned</type>
           <declname>start</declname>
           <defval>0</defval>
         </param>
         <briefdescription>
-<para>Return true if all coord_sets &gt;= start have vector types (or is empty) </para>
+<para>Return true if all coord_sets &gt;= start have vector types (or is empty). </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="142" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="232" bodyend="241"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="143" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example.cpp" bodystart="230" bodyend="239"/>
+        <referencedby refid="structlibmolgrid_1_1Example_1a7503b6a47c9b4b6cc834e6a0f8415e26" compoundref="example_8cpp" startline="230" endline="239">Example::has_vector_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1aa0927ed6ec846f2a8e7daeb64e39795d" compoundref="example_8cpp" startline="138" endline="196">Example::merge_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" compoundref="example_8cpp" startline="198" endline="228">Example::merge_coordinates</referencedby>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1a2e1844ea21f945bfed11383c4ca32bf0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool has_index_types</definition>
         <argsstring>(unsigned start=0) const</argsstring>
         <name>has_index_types</name>
+        <qualifiedname>libmolgrid::Example::has_index_types</qualifiedname>
         <param>
           <type>unsigned</type>
           <declname>start</declname>
           <defval>0</defval>
         </param>
         <briefdescription>
-<para>Return true if all coord_sets &gt;= start have index types (or is empty) </para>
+<para>Return true if all coord_sets &gt;= start have index types (or is empty). </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="145" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="243" bodyend="252"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="146" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example.cpp" bodystart="241" bodyend="250"/>
+        <referencedby refid="structlibmolgrid_1_1Example_1a4fc64e09b5e884185b4dbdc86c2ec67b" compoundref="example_8cpp" startline="198" endline="228">Example::merge_coordinates</referencedby>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-static-func">
+    </sectiondef>
+    <sectiondef kind="public-static-func">
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1a000f4bbd3c5453860543c5ad97be617a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -513,6 +552,7 @@
         <definition>template void extract_labels</definition>
         <argsstring>(const std::vector&lt; Example &gt; &amp;examples, Grid&lt; float, 2, isCUDA &gt; &amp;out)</argsstring>
         <name>extract_labels</name>
+        <qualifiedname>libmolgrid::Example::extract_labels</qualifiedname>
         <param>
           <type>const std::vector&lt; <ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref> &gt; &amp;</type>
           <declname>examples</declname>
@@ -546,7 +586,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="118" column="17" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="255" bodyend="270"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="119" column="17" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example.cpp" bodystart="253" bodyend="272"/>
       </memberdef>
       <memberdef kind="function" id="structlibmolgrid_1_1Example_1abd2622389892168945e6f8d721072e38" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -560,6 +600,7 @@
         <definition>template void extract_label</definition>
         <argsstring>(const std::vector&lt; Example &gt; &amp;examples, unsigned labelpos, Grid&lt; float, 1, isCUDA &gt; &amp;out)</argsstring>
         <name>extract_label</name>
+        <qualifiedname>libmolgrid::Example::extract_label</qualifiedname>
         <param>
           <type>const std::vector&lt; <ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref> &gt; &amp;</type>
           <declname>examples</declname>
@@ -605,19 +646,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="128" column="17" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="277" bodyend="295"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="129" column="17" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example.cpp" bodystart="279" bodyend="301"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
-<para>A single example represented by its typed coordinates and label(s) </para>
+<para>A single example represented by its typed coordinates and label(s). </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3">
-        <label>CoordinateSet</label>
-        <link refid="structlibmolgrid_1_1CoordinateSet"/>
-      </node>
       <node id="1">
         <label>Example</label>
         <link refid="structlibmolgrid_1_1Example"/>
@@ -628,17 +665,21 @@
           <edgelabel>labels</edgelabel>
         </childnode>
       </node>
+      <node id="3">
+        <label>CoordinateSet</label>
+        <link refid="structlibmolgrid_1_1CoordinateSet"/>
+      </node>
+      <node id="4">
+        <label>vector&lt; float &gt;</label>
+      </node>
       <node id="2">
         <label>vector&lt; libmolgrid::CoordinateSet &gt;</label>
         <childnode refid="3" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
-      <node id="4">
-        <label>vector&lt; float &gt;</label>
-      </node>
     </collaborationgraph>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="60" column="14" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="60" bodyend="146"/>
+    <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="61" column="1" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" bodystart="61" bodyend="147"/>
     <listofallmembers>
       <member refid="structlibmolgrid_1_1Example_1abd2622389892168945e6f8d721072e38" prot="public" virt="non-virtual"><scope>libmolgrid::Example</scope><name>extract_label</name></member>
       <member refid="structlibmolgrid_1_1Example_1a000f4bbd3c5453860543c5ad97be617a" prot="public" virt="non-virtual"><scope>libmolgrid::Example</scope><name>extract_labels</name></member>

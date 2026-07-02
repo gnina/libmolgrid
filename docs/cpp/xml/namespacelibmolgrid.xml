@@ -1,55 +1,60 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="namespacelibmolgrid" kind="namespace" language="C++">
     <compoundname>libmolgrid</compoundname>
-    <innerclass refid="classlibmolgrid_1_1AtomIndexTypeMapper" prot="public">libmolgrid::AtomIndexTypeMapper</innerclass>
-    <innerclass refid="classlibmolgrid_1_1AtomIndexTyper" prot="public">libmolgrid::AtomIndexTyper</innerclass>
     <innerclass refid="classlibmolgrid_1_1AtomTyper" prot="public">libmolgrid::AtomTyper</innerclass>
+    <innerclass refid="classlibmolgrid_1_1AtomIndexTyper" prot="public">libmolgrid::AtomIndexTyper</innerclass>
     <innerclass refid="classlibmolgrid_1_1AtomVectorTyper" prot="public">libmolgrid::AtomVectorTyper</innerclass>
-    <innerclass refid="classlibmolgrid_1_1BalancedExampleRefProvider" prot="public">libmolgrid::BalancedExampleRefProvider</innerclass>
+    <innerclass refid="classlibmolgrid_1_1AtomIndexTypeMapper" prot="public">libmolgrid::AtomIndexTypeMapper</innerclass>
+    <innerclass refid="classlibmolgrid_1_1GninaIndexTyper" prot="public">libmolgrid::GninaIndexTyper</innerclass>
+    <innerclass refid="classlibmolgrid_1_1ElementIndexTyper" prot="public">libmolgrid::ElementIndexTyper</innerclass>
+    <innerclass refid="classlibmolgrid_1_1NullIndexTyper" prot="public">libmolgrid::NullIndexTyper</innerclass>
     <innerclass refid="classlibmolgrid_1_1CallbackIndexTyper" prot="public">libmolgrid::CallbackIndexTyper</innerclass>
+    <innerclass refid="classlibmolgrid_1_1MappedAtomIndexTyper" prot="public">libmolgrid::MappedAtomIndexTyper</innerclass>
+    <innerclass refid="classlibmolgrid_1_1GninaVectorTyper" prot="public">libmolgrid::GninaVectorTyper</innerclass>
     <innerclass refid="classlibmolgrid_1_1CallbackVectorTyper" prot="public">libmolgrid::CallbackVectorTyper</innerclass>
+    <innerclass refid="classlibmolgrid_1_1FileAtomMapper" prot="public">libmolgrid::FileAtomMapper</innerclass>
+    <innerclass refid="classlibmolgrid_1_1SubsetAtomMapper" prot="public">libmolgrid::SubsetAtomMapper</innerclass>
+    <innerclass refid="classlibmolgrid_1_1SubsettedElementTyper" prot="public">libmolgrid::SubsettedElementTyper</innerclass>
+    <innerclass refid="classlibmolgrid_1_1SubsettedGninaTyper" prot="public">libmolgrid::SubsettedGninaTyper</innerclass>
+    <innerclass refid="classlibmolgrid_1_1FileMappedElementTyper" prot="public">libmolgrid::FileMappedElementTyper</innerclass>
+    <innerclass refid="classlibmolgrid_1_1FileMappedGninaTyper" prot="public">libmolgrid::FileMappedGninaTyper</innerclass>
     <innerclass refid="classlibmolgrid_1_1CartesianGrid" prot="public">libmolgrid::CartesianGrid</innerclass>
     <innerclass refid="classlibmolgrid_1_1CoordCache" prot="public">libmolgrid::CoordCache</innerclass>
     <innerclass refid="structlibmolgrid_1_1CoordinateSet" prot="public">libmolgrid::CoordinateSet</innerclass>
-    <innerclass refid="classlibmolgrid_1_1ElementIndexTyper" prot="public">libmolgrid::ElementIndexTyper</innerclass>
+    <innerclass refid="structlibmolgrid_1_1ExampleProviderSettings" prot="public">libmolgrid::ExampleProviderSettings</innerclass>
     <innerclass refid="structlibmolgrid_1_1Example" prot="public">libmolgrid::Example</innerclass>
+    <innerclass refid="structlibmolgrid_1_1ExampleRef" prot="public">libmolgrid::ExampleRef</innerclass>
     <innerclass refid="classlibmolgrid_1_1ExampleDataset" prot="public">libmolgrid::ExampleDataset</innerclass>
     <innerclass refid="classlibmolgrid_1_1ExampleExtractor" prot="public">libmolgrid::ExampleExtractor</innerclass>
     <innerclass refid="classlibmolgrid_1_1ExampleProvider" prot="public">libmolgrid::ExampleProvider</innerclass>
-    <innerclass refid="structlibmolgrid_1_1ExampleProviderSettings" prot="public">libmolgrid::ExampleProviderSettings</innerclass>
-    <innerclass refid="structlibmolgrid_1_1ExampleRef" prot="public">libmolgrid::ExampleRef</innerclass>
     <innerclass refid="classlibmolgrid_1_1ExampleRefProvider" prot="public">libmolgrid::ExampleRefProvider</innerclass>
-    <innerclass refid="classlibmolgrid_1_1FileAtomMapper" prot="public">libmolgrid::FileAtomMapper</innerclass>
-    <innerclass refid="classlibmolgrid_1_1FileMappedElementTyper" prot="public">libmolgrid::FileMappedElementTyper</innerclass>
-    <innerclass refid="classlibmolgrid_1_1FileMappedGninaTyper" prot="public">libmolgrid::FileMappedGninaTyper</innerclass>
-    <innerclass refid="classlibmolgrid_1_1GninaIndexTyper" prot="public">libmolgrid::GninaIndexTyper</innerclass>
-    <innerclass refid="classlibmolgrid_1_1GninaVectorTyper" prot="public">libmolgrid::GninaVectorTyper</innerclass>
+    <innerclass refid="classlibmolgrid_1_1UniformExampleRefProvider" prot="public">libmolgrid::UniformExampleRefProvider</innerclass>
+    <innerclass refid="classlibmolgrid_1_1BalancedExampleRefProvider" prot="public">libmolgrid::BalancedExampleRefProvider</innerclass>
+    <innerclass refid="classlibmolgrid_1_1SamplingExampleRefProvider" prot="public">libmolgrid::SamplingExampleRefProvider</innerclass>
+    <innerclass refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider" prot="public">libmolgrid::ReceptorStratifiedExampleRefProvider</innerclass>
+    <innerclass refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider" prot="public">libmolgrid::ValueStratifiedExampleRefProfider</innerclass>
+    <innerclass refid="classlibmolgrid_1_1GroupedExampleRefProvider" prot="public">libmolgrid::GroupedExampleRefProvider</innerclass>
+    <innerclass refid="classlibmolgrid_1_1ManagedGrid" prot="public">libmolgrid::ManagedGrid</innerclass>
     <innerclass refid="classlibmolgrid_1_1Grid" prot="public">libmolgrid::Grid</innerclass>
     <innerclass refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4" prot="public">libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</innerclass>
     <innerclass refid="classlibmolgrid_1_1GridInterpolater" prot="public">libmolgrid::GridInterpolater</innerclass>
     <innerclass refid="classlibmolgrid_1_1GridMaker" prot="public">libmolgrid::GridMaker</innerclass>
-    <innerclass refid="classlibmolgrid_1_1GroupedExampleRefProvider" prot="public">libmolgrid::GroupedExampleRefProvider</innerclass>
-    <innerclass refid="classlibmolgrid_1_1ManagedGrid" prot="public">libmolgrid::ManagedGrid</innerclass>
-    <innerclass refid="classlibmolgrid_1_1ManagedGrid_3_01Dtype_00_011_01_4" prot="public">libmolgrid::ManagedGrid&lt; Dtype, 1 &gt;</innerclass>
-    <innerclass refid="classlibmolgrid_1_1ManagedGridBase" prot="public">libmolgrid::ManagedGridBase</innerclass>
-    <innerclass refid="classlibmolgrid_1_1MappedAtomIndexTyper" prot="public">libmolgrid::MappedAtomIndexTyper</innerclass>
     <innerclass refid="structlibmolgrid_1_1mgrid__buffer__data" prot="public">libmolgrid::mgrid_buffer_data</innerclass>
-    <innerclass refid="classlibmolgrid_1_1NullIndexTyper" prot="public">libmolgrid::NullIndexTyper</innerclass>
+    <innerclass refid="classlibmolgrid_1_1ManagedGridBase" prot="public">libmolgrid::ManagedGridBase</innerclass>
+    <innerclass refid="classlibmolgrid_1_1ManagedGrid_3_01Dtype_00_011_01_4" prot="public">libmolgrid::ManagedGrid&lt; Dtype, 1 &gt;</innerclass>
+    <innerclass refid="structlibmolgrid_1_1GridMakerParams" prot="public">libmolgrid::GridMakerParams</innerclass>
+    <innerclass refid="structlibmolgrid_1_1QuatParams" prot="public">libmolgrid::QuatParams</innerclass>
+    <innerclass refid="structlibmolgrid_1_1GridDesc" prot="public">libmolgrid::GridDesc</innerclass>
+    <innerclass refid="classlibmolgrid_1_1MetalContext" prot="public">libmolgrid::MetalContext</innerclass>
     <innerclass refid="classlibmolgrid_1_1Quaternion" prot="public">libmolgrid::Quaternion</innerclass>
-    <innerclass refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider" prot="public">libmolgrid::ReceptorStratifiedExampleRefProvider</innerclass>
-    <innerclass refid="classlibmolgrid_1_1SamplingExampleRefProvider" prot="public">libmolgrid::SamplingExampleRefProvider</innerclass>
     <innerclass refid="classlibmolgrid_1_1StringCache" prot="public">libmolgrid::StringCache</innerclass>
-    <innerclass refid="classlibmolgrid_1_1SubsetAtomMapper" prot="public">libmolgrid::SubsetAtomMapper</innerclass>
-    <innerclass refid="classlibmolgrid_1_1SubsettedElementTyper" prot="public">libmolgrid::SubsettedElementTyper</innerclass>
-    <innerclass refid="classlibmolgrid_1_1SubsettedGninaTyper" prot="public">libmolgrid::SubsettedGninaTyper</innerclass>
     <innerclass refid="classlibmolgrid_1_1Transform" prot="public">libmolgrid::Transform</innerclass>
-    <innerclass refid="classlibmolgrid_1_1UniformExampleRefProvider" prot="public">libmolgrid::UniformExampleRefProvider</innerclass>
-    <innerclass refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider" prot="public">libmolgrid::ValueStratifiedExampleRefProfider</innerclass>
-      <sectiondef kind="enum">
+    <sectiondef kind="enum">
       <memberdef kind="enum" id="namespacelibmolgrid_1a7b0a2a4d965f9a6c2aaaec9cf37ed979" prot="public" static="no" strong="no">
         <type></type>
         <name>IterationScheme</name>
+        <qualifiedname>libmolgrid::IterationScheme</qualifiedname>
         <enumvalue id="namespacelibmolgrid_1a7b0a2a4d965f9a6c2aaaec9cf37ed979a6cb140948cbeedb9f7182dd4027e5e37" prot="public">
           <name>Continuous</name>
           <initializer>= 0</initializer>
@@ -80,11 +85,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" line="21" column="21" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" bodystart="21" bodyend="21"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" line="22" column="1" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example.h" bodystart="22" bodyend="22"/>
       </memberdef>
       <memberdef kind="enum" id="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9" prot="public" static="no" strong="no">
         <type></type>
         <name>LogLevel</name>
+        <qualifiedname>libmolgrid::LogLevel</qualifiedname>
         <enumvalue id="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806" prot="public">
           <name>INFO</name>
           <briefdescription>
@@ -119,43 +125,46 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/libmolgrid.h" line="22" column="18" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/libmolgrid.h" bodystart="22" bodyend="22"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/libmolgrid.h" line="22" column="5" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/libmolgrid.h" bodystart="22" bodyend="22"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="typedef">
+    </sectiondef>
+    <sectiondef kind="typedef">
       <memberdef kind="typedef" id="namespacelibmolgrid_1a3f0b7d1200a69162b68f8226c9764a95" prot="public" static="no">
         <type><ref refid="classlibmolgrid_1_1CartesianGrid" kindref="compound">CartesianGrid</ref>&lt; <ref refid="classlibmolgrid_1_1ManagedGrid" kindref="compound">ManagedGrid</ref>&lt; float, 3 &gt; &gt;</type>
-        <definition>using CartesianMGrid =  CartesianGrid&lt;ManagedGrid&lt;float, 3&gt; &gt;</definition>
+        <definition>using CartesianMGrid = CartesianGrid&lt;ManagedGrid&lt;float, 3&gt; &gt;</definition>
         <argsstring></argsstring>
         <name>CartesianMGrid</name>
+        <qualifiedname>libmolgrid::CartesianMGrid</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" line="65" column="1" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="65" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/cartesian_grid.h" line="65" column="1" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/cartesian_grid.h" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespacelibmolgrid_1a7279d61df03794f106ab563c49049052" prot="public" static="no">
-        <type>::float3</type>
-        <definition>using cuda_float3 =  ::float3</definition>
+        <type><ref refid="structfloat3" kindref="compound">::float3</ref></type>
+        <definition>using cuda_float3 = ::float3</definition>
         <argsstring></argsstring>
         <name>cuda_float3</name>
+        <qualifiedname>libmolgrid::cuda_float3</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/libmolgrid.h" line="21" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/libmolgrid.h" bodystart="21" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/libmolgrid.h" line="21" column="5" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/libmolgrid.h" bodystart="21" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="var">
+    </sectiondef>
+    <sectiondef kind="var">
       <memberdef kind="variable" id="namespacelibmolgrid_1aed6bc2269142acee6e4fdd214209c175" prot="public" static="no" mutable="no">
         <type><ref refid="classlibmolgrid_1_1FileMappedGninaTyper" kindref="compound">FileMappedGninaTyper</ref></type>
         <definition>FileMappedGninaTyper defaultGninaReceptorTyper(recmap)</definition>
         <argsstring></argsstring>
         <name>defaultGninaReceptorTyper</name>
+        <qualifiedname>libmolgrid::defaultGninaReceptorTyper</qualifiedname>
         <briefdescription>
 <para>default types for receptor AliphaticCarbonXSHydrophobe AliphaticCarbonXSNonHydrophobe AromaticCarbonXSHydrophobe AromaticCarbonXSNonHydrophobe Bromine Iodine Chlorine Fluorine Nitrogen NitrogenXSAcceptor NitrogenXSDonor NitrogenXSDonorAcceptor Oxygen OxygenXSAcceptor OxygenXSDonorAcceptor OxygenXSDonor Sulfur SulfurAcceptor Phosphorus Calcium Zinc GenericMetal Boron Manganese Magnesium Iron </para>
         </briefdescription>
@@ -163,13 +172,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" line="533" column="22" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" declline="635" declcolumn="29"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/atom_typer.cpp" line="533" column="22" declfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/atom_typer.h" declline="635" declcolumn="29"/>
+        <referencedby refid="classlibmolgrid_1_1ExampleDataset_1afa04504316547cab15d591ef77d05311" compoundref="example__dataset_8cpp" startline="15" endline="22">ExampleDataset::ExampleDataset</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1aa094561f95e431c276b49586faee2cc5" compoundref="example__provider_8cpp" startline="15" endline="22">ExampleProvider::ExampleProvider</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespacelibmolgrid_1a371ec05022b3d175a5b02d540f947ac2" prot="public" static="no" mutable="no">
         <type><ref refid="classlibmolgrid_1_1FileMappedGninaTyper" kindref="compound">FileMappedGninaTyper</ref></type>
         <definition>FileMappedGninaTyper defaultGninaLigandTyper(ligmap)</definition>
         <argsstring></argsstring>
         <name>defaultGninaLigandTyper</name>
+        <qualifiedname>libmolgrid::defaultGninaLigandTyper</qualifiedname>
         <briefdescription>
 <para>default types for ligand AliphaticCarbonXSHydrophobe AliphaticCarbonXSNonHydrophobe AromaticCarbonXSHydrophobe AromaticCarbonXSNonHydrophobe Bromine Iodine Chlorine Fluorine Nitrogen NitrogenXSAcceptor NitrogenXSDonor NitrogenXSDonorAcceptor Oxygen OxygenXSAcceptor OxygenXSDonorAcceptor OxygenXSDonor Sulfur SulfurAcceptor Phosphorus GenericMetal Boron Manganese Magnesium Zinc Calcium Iron </para>
         </briefdescription>
@@ -177,29 +189,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" line="534" column="22" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" declline="653" declcolumn="29"/>
-      </memberdef>
-      <memberdef kind="variable" id="namespacelibmolgrid_1ae85ac8fbef92553b049a1d50afa4c183" prot="public" static="no" mutable="no">
-        <type><ref refid="classlibmolgrid_1_1StringCache" kindref="compound">StringCache</ref></type>
-        <definition>StringCache string_cache</definition>
-        <argsstring></argsstring>
-        <name>string_cache</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/example.cpp" line="20" column="13" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="20" bodyend="-1" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example.h" declline="176" declcolumn="20"/>
-        <referencedby refid="classlibmolgrid_1_1CoordCache_1a30e53e7aa53be3caabe1e7b88f4c06f8" compoundref="coord__cache_8cpp" startline="25" endline="73">CoordCache::CoordCache</referencedby>
-        <referencedby refid="structlibmolgrid_1_1ExampleRef_1af68ef87a6eab8ca94bd25484c273a402" compoundref="example_8cpp" startline="309" endline="354">ExampleRef::ExampleRef</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="505" endline="536">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/atom_typer.cpp" line="534" column="22" declfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/atom_typer.h" declline="653" declcolumn="29"/>
+        <referencedby refid="classlibmolgrid_1_1ExampleDataset_1afa04504316547cab15d591ef77d05311" compoundref="example__dataset_8cpp" startline="15" endline="22">ExampleDataset::ExampleDataset</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ExampleProvider_1aa094561f95e431c276b49586faee2cc5" compoundref="example__provider_8cpp" startline="15" endline="22">ExampleProvider::ExampleProvider</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespacelibmolgrid_1a637541cee6c830dbabb26498f6c91249" prot="public" static="no" mutable="no">
         <type>std::default_random_engine</type>
         <definition>std::default_random_engine random_engine</definition>
         <argsstring></argsstring>
         <name>random_engine</name>
+        <qualifiedname>libmolgrid::random_engine</qualifiedname>
         <briefdescription>
 <para>random engine used in libmolgrid </para>
         </briefdescription>
@@ -207,59 +206,54 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/libmolgrid.cpp" line="11" column="32" bodyfile="/home/dkoes/git/libmolgrid/src/libmolgrid.cpp" bodystart="11" bodyend="-1" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/libmolgrid.h" declline="19" declcolumn="39"/>
-        <referencedby refid="classlibmolgrid_1_1SamplingExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="162" endline="171">SamplingExampleRefProvider&lt; Provider1, Provider2 &gt;::nextref</referencedby>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/libmolgrid.cpp" line="11" column="32" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/libmolgrid.cpp" bodystart="11" bodyend="-1" declfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/libmolgrid.h" declline="19" declcolumn="39"/>
         <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="248" endline="266">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::nextref</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8cpp" startline="17" endline="46">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::setup</referencedby>
+        <referencedby refid="classlibmolgrid_1_1SamplingExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="162" endline="171">SamplingExampleRefProvider&lt; Provider1, Provider2 &gt;::nextref</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8h" startline="235" endline="246">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::setup</referencedby>
         <referencedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8cpp" startline="70" endline="75">UniformExampleRefProvider::setup</referencedby>
         <referencedby refid="classlibmolgrid_1_1Transform_1a0efff6c41e09c88c91cb11d281e1b1ed" compoundref="transform_8cpp" startline="13" endline="33">Transform::Transform</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="namespacelibmolgrid_1ae85ac8fbef92553b049a1d50afa4c183" prot="public" static="no" mutable="no">
+        <type><ref refid="classlibmolgrid_1_1StringCache" kindref="compound">StringCache</ref></type>
+        <definition>StringCache string_cache</definition>
+        <argsstring></argsstring>
+        <name>string_cache</name>
+        <qualifiedname>libmolgrid::string_cache</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/string_cache.cpp" line="5" column="13" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/string_cache.cpp" bodystart="5" bodyend="-1" declfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/string_cache.h" declline="27" declcolumn="20"/>
+        <referencedby refid="structlibmolgrid_1_1ExampleRef_1af68ef87a6eab8ca94bd25484c273a402" compoundref="example_8cpp" startline="315" endline="360">ExampleRef::ExampleRef</referencedby>
+        <referencedby refid="classlibmolgrid_1_1CoordCache_1a3baff695bab63b469b36ef27b14946b7" compoundref="coord__cache_8cpp" startline="188" endline="196">CoordCache::load_mem_cache</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1ae630292b50e44deb19e001f322914934" compoundref="exampleref__providers_8h" startline="505" endline="536">GroupedExampleRefProvider&lt; Provider &gt;::nextref</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1adb374cca8571472fe328980b7a609352" compoundref="coordinateset_8h" startline="144" endline="164">CoordinateSet::serialize</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespacelibmolgrid_1a401744b5615cec1da80925318db02c90" prot="public" static="no" mutable="no">
         <type>unsigned</type>
         <definition>unsigned do_not_optimize_away</definition>
         <argsstring></argsstring>
         <name>do_not_optimize_away</name>
+        <qualifiedname>libmolgrid::do_not_optimize_away</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/coord_cache.cpp" line="22" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/coord_cache.cpp" bodystart="22" bodyend="-1"/>
-        <referencedby refid="classlibmolgrid_1_1CoordCache_1a30e53e7aa53be3caabe1e7b88f4c06f8" compoundref="coord__cache_8cpp" startline="25" endline="73">CoordCache::CoordCache</referencedby>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/coord_cache.cpp" line="22" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/coord_cache.cpp" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1CoordCache_1a7039b3e644caa0ca38724e48df0f6a67" compoundref="coord__cache_8cpp" startline="25" endline="77">CoordCache::CoordCache</referencedby>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="func">
-      <memberdef kind="function" id="namespacelibmolgrid_1a55802012418ef1c568cf634c5c0ce543" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>cudaMemcpyKind</type>
-        <definition>cudaMemcpyKind libmolgrid::copyKind</definition>
-        <argsstring>(bool srcCUDA, bool destCUDA)</argsstring>
-        <name>copyKind</name>
-        <param>
-          <type>bool</type>
-          <declname>srcCUDA</declname>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>destCUDA</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="22" column="23" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="22" bodyend="34"/>
-        <referencedby refid="classlibmolgrid_1_1Grid_1ac5cd5f1c4591aa5a8d21e5babb971e99" compoundref="grid_8h" startline="201" endline="207">Grid&lt; Dtype, NumDims, true &gt;::copyFrom</referencedby>
-        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1ad3152bc9dfc67f11fa55467ac93460f8" compoundref="grid_8h" startline="317" endline="323">Grid&lt; Dtype, 1, isCUDA &gt;::copyFrom</referencedby>
-        <referencedby refid="classlibmolgrid_1_1Grid_1ac2f29eb66b0b3b19ab09ecd80e3fbb35" compoundref="grid_8h" startline="188" endline="194">Grid&lt; Dtype, NumDims, true &gt;::copyTo</referencedby>
-        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a3e983133f9cb7d0571557580480ece9b" compoundref="grid_8h" startline="308" endline="314">Grid&lt; Dtype, 1, isCUDA &gt;::copyTo</referencedby>
-      </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1abaefa4db48d107196d082640795579b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacelibmolgrid_1aee0103f4ec705595541f3c108d541af7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>libmolgrid::BOOST_PP_REPEAT_FROM_TO</definition>
+        <definition>BOOST_PP_REPEAT_FROM_TO</definition>
         <argsstring>(1, LIBMOLGRID_MAX_GRID_DIM, EXPAND_GRID_DEFINITIONS, 0)</argsstring>
         <name>BOOST_PP_REPEAT_FROM_TO</name>
+        <qualifiedname>libmolgrid::BOOST_PP_REPEAT_FROM_TO</qualifiedname>
         <param>
           <type>1</type>
         </param>
@@ -278,15 +272,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="333" column="1" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" declline="333" declcolumn="1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="374" column="1" declfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" declline="374" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1a2dbb37176b2d9724d607ba464b5506e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> float3</type>
-        <definition>CUDA_CALLABLE_MEMBER float3 libmolgrid::cart2grid</definition>
+      <memberdef kind="function" id="namespacelibmolgrid_1acfacaae4a5dc7eec326fa4ba102ea43d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> <ref refid="structfloat3" kindref="compound">float3</ref></type>
+        <definition>CUDA_CALLABLE_MEMBER float3 cart2grid</definition>
         <argsstring>(float3 origin, float resolution, float x, float y, float z)</argsstring>
         <name>cart2grid</name>
+        <qualifiedname>libmolgrid::cart2grid</qualifiedname>
         <param>
-          <type>float3</type>
+          <type><ref refid="structfloat3" kindref="compound">float3</ref></type>
           <declname>origin</declname>
         </param>
         <param>
@@ -311,16 +306,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="189" column="36" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="189" bodyend="192"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_interpolater.h" line="150" column="36" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="150" bodyend="153"/>
         <referencedby refid="classlibmolgrid_1_1GridInterpolater_1aa7f689a401310ce064f2f0903842c0ab" compoundref="grid__interpolater_8cpp" startline="17" endline="48">GridInterpolater::forward</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1a9c218888670e6716f1d3dc698da244fa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> float3</type>
-        <definition>CUDA_CALLABLE_MEMBER float3 libmolgrid::grid2cart</definition>
+      <memberdef kind="function" id="namespacelibmolgrid_1ae8f520071e1b955a3bdd1faae4c469e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> <ref refid="structfloat3" kindref="compound">float3</ref></type>
+        <definition>CUDA_CALLABLE_MEMBER float3 grid2cart</definition>
         <argsstring>(float3 origin, float resolution, unsigned i, unsigned j, unsigned k)</argsstring>
         <name>grid2cart</name>
+        <qualifiedname>libmolgrid::grid2cart</qualifiedname>
         <param>
-          <type>float3</type>
+          <type><ref refid="structfloat3" kindref="compound">float3</ref></type>
           <declname>origin</declname>
         </param>
         <param>
@@ -345,7 +341,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" line="195" column="36" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="195" bodyend="198"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_interpolater.h" line="156" column="36" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_interpolater.h" bodystart="156" bodyend="159"/>
         <referencedby refid="classlibmolgrid_1_1GridInterpolater_1aa7f689a401310ce064f2f0903842c0ab" compoundref="grid__interpolater_8cpp" startline="17" endline="48">GridInterpolater::forward</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1ade64fcaf6347fae87a6a41fb17a3fb31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -358,6 +354,7 @@
         <definition>template CartesianGrid&lt; ManagedGrid&lt; double, 3 &gt; &gt; read_dx</definition>
         <argsstring>(std::istream &amp;in)</argsstring>
         <name>read_dx</name>
+        <qualifiedname>libmolgrid::read_dx</qualifiedname>
         <param>
           <type>std::istream &amp;</type>
           <declname>in</declname>
@@ -368,7 +365,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="70" column="15" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="70" bodyend="90" declfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" declline="234" declcolumn="24"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="70" column="15" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" bodystart="70" bodyend="90" declfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_io.h" declline="18" declcolumn="15"/>
+        <referencedby refid="namespacelibmolgrid_1a3317b8b6adaedad592f3d47deaae373e" compoundref="grid__io_8cpp" startline="94" endline="98">read_dx</referencedby>
+        <referencedby refid="namespacelibmolgrid_1af18d9ef15de74734e469e0775ad38031" compoundref="grid__io_8cpp" startline="125" endline="129">read_dx</referencedby>
+        <referencedby refid="namespacelibmolgrid_1a480d5a45562f3cda34dbac07d1415d04" compoundref="grid__io_8cpp" startline="192" endline="201">read_dx_grids</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a3317b8b6adaedad592f3d47deaae373e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -380,6 +380,7 @@
         <definition>template CartesianGrid&lt; ManagedGrid&lt; double, 3 &gt; &gt; read_dx</definition>
         <argsstring>(const std::string &amp;fname)</argsstring>
         <name>read_dx</name>
+        <qualifiedname>libmolgrid::read_dx</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>fname</declname>
@@ -391,7 +392,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="94" column="15" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="94" bodyend="98" declfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" declline="236" declcolumn="24"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="94" column="15" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" bodystart="94" bodyend="98" declfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_io.h" declline="20" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a675a477dd7654f29009ae26ae706f39a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -403,6 +404,7 @@
         <definition>void read_dx</definition>
         <argsstring>(std::istream &amp;in, Grid&lt; Dtype, 3 &gt; &amp;grid)</argsstring>
         <name>read_dx</name>
+        <qualifiedname>libmolgrid::read_dx</qualifiedname>
         <param>
           <type>std::istream &amp;</type>
           <declname>in</declname>
@@ -418,7 +420,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="101" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="101" bodyend="121" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="24" declcolumn="6"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="101" column="6" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" bodystart="101" bodyend="121" declfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_io.h" declline="24" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1af18d9ef15de74734e469e0775ad38031" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -430,6 +432,7 @@
         <definition>void read_dx</definition>
         <argsstring>(const std::string &amp;fname, Grid&lt; Dtype, 3 &gt; &amp;grid)</argsstring>
         <name>read_dx</name>
+        <qualifiedname>libmolgrid::read_dx</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>fname</declname>
@@ -445,18 +448,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="125" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="125" bodyend="129" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="26" declcolumn="6"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="125" column="6" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" bodystart="125" bodyend="129" declfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_io.h" declline="26" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1aa1f03ee53c2b76327813c46eea4de9da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1a49aa9e6b6d6a6f644974047063ba930d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class G</type>
           </param>
         </templateparamlist>
         <type>void</type>
-        <definition>void libmolgrid::read_bin</definition>
+        <definition>void read_bin</definition>
         <argsstring>(std::istream &amp;in, G &amp;grid)</argsstring>
         <name>read_bin</name>
+        <qualifiedname>libmolgrid::read_bin</qualifiedname>
         <param>
           <type>std::istream &amp;</type>
           <declname>in</declname>
@@ -472,7 +476,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" line="30" column="6" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" bodystart="30" bodyend="32"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_io.h" line="30" column="6" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_io.h" bodystart="30" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a6a20da8af322317857655e627f1e9f5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -484,6 +488,7 @@
         <definition>void write_dx</definition>
         <argsstring>(std::ostream &amp;out, const Grid&lt; DType, 3 &gt; &amp;grid, const float3 &amp;center, float resolution, float scale=1.0)</argsstring>
         <name>write_dx</name>
+        <qualifiedname>libmolgrid::write_dx</qualifiedname>
         <param>
           <type>std::ostream &amp;</type>
           <declname>out</declname>
@@ -493,7 +498,7 @@
           <declname>grid</declname>
         </param>
         <param>
-          <type>const float3 &amp;</type>
+          <type>const <ref refid="structfloat3" kindref="compound">float3</ref> &amp;</type>
           <declname>center</declname>
         </param>
         <param>
@@ -512,7 +517,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="134" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="134" bodyend="166" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="42" declcolumn="6"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="134" column="6" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" bodystart="134" bodyend="166" declfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_io.h" declline="42" declcolumn="6"/>
         <referencedby refid="namespacelibmolgrid_1a96cc920e318698dad01618f1ceb8419f" compoundref="grid__io_8cpp" startline="170" endline="174">write_dx</referencedby>
         <referencedby refid="namespacelibmolgrid_1a99f7f8f546917a9c1d891fb1eb3b731b" compoundref="grid__io_8cpp" startline="177" endline="189">write_dx_grids</referencedby>
       </memberdef>
@@ -526,6 +531,7 @@
         <definition>void write_dx</definition>
         <argsstring>(const std::string &amp;fname, const Grid&lt; DType, 3 &gt; &amp;grid, const float3 &amp;center, float resolution, float scale)</argsstring>
         <name>write_dx</name>
+        <qualifiedname>libmolgrid::write_dx</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>fname</declname>
@@ -535,7 +541,7 @@
           <declname>grid</declname>
         </param>
         <param>
-          <type>const float3 &amp;</type>
+          <type>const <ref refid="structfloat3" kindref="compound">float3</ref> &amp;</type>
           <declname>center</declname>
         </param>
         <param>
@@ -554,7 +560,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="170" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="170" bodyend="174" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="44" declcolumn="6"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="170" column="6" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" bodystart="170" bodyend="174" declfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_io.h" declline="44" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a99f7f8f546917a9c1d891fb1eb3b731b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -566,6 +572,7 @@
         <definition>void write_dx_grids</definition>
         <argsstring>(const std::string &amp;prefix, const std::vector&lt; std::string &gt; &amp;names, const Grid&lt; Dtype, 4 &gt; &amp;grid, const float3 &amp;center, float resolution, float scale=1.0)</argsstring>
         <name>write_dx_grids</name>
+        <qualifiedname>libmolgrid::write_dx_grids</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>prefix</declname>
@@ -579,7 +586,7 @@
           <declname>grid</declname>
         </param>
         <param>
-          <type>const float3 &amp;</type>
+          <type>const <ref refid="structfloat3" kindref="compound">float3</ref> &amp;</type>
           <declname>center</declname>
         </param>
         <param>
@@ -648,7 +655,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="177" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="177" bodyend="189" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="57" declcolumn="6"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="177" column="6" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" bodystart="177" bodyend="189" declfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_io.h" declline="57" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a480d5a45562f3cda34dbac07d1415d04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -660,6 +667,7 @@
         <definition>void read_dx_grids</definition>
         <argsstring>(const std::string &amp;prefix, const std::vector&lt; std::string &gt; &amp;names, Grid&lt; Dtype, 4 &gt; &amp;grid)</argsstring>
         <name>read_dx_grids</name>
+        <qualifiedname>libmolgrid::read_dx_grids</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>prefix</declname>
@@ -705,7 +713,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="192" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="192" bodyend="201" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="67" declcolumn="6"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="192" column="6" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" bodystart="192" bodyend="201" declfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_io.h" declline="67" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a2fd3cdc3e58f538b5ae29f29654a5b2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -717,6 +725,7 @@
         <definition>void write_map</definition>
         <argsstring>(std::ostream &amp;out, const Grid&lt; DType, 3 &gt; &amp;grid, const float3 &amp;center, float resolution, float scale=1.0)</argsstring>
         <name>write_map</name>
+        <qualifiedname>libmolgrid::write_map</qualifiedname>
         <param>
           <type>std::ostream &amp;</type>
           <declname>out</declname>
@@ -726,7 +735,7 @@
           <declname>grid</declname>
         </param>
         <param>
-          <type>const float3 &amp;</type>
+          <type>const <ref refid="structfloat3" kindref="compound">float3</ref> &amp;</type>
           <declname>center</declname>
         </param>
         <param>
@@ -746,7 +755,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="205" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="205" bodyend="221" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="72" declcolumn="6"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="205" column="6" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" bodystart="205" bodyend="221" declfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_io.h" declline="72" declcolumn="6"/>
         <referencedby refid="namespacelibmolgrid_1a5f98c4b4e9bc1306dc43643d0f701b23" compoundref="grid__io_8cpp" startline="225" endline="229">write_map</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacelibmolgrid_1a5f98c4b4e9bc1306dc43643d0f701b23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -759,6 +768,7 @@
         <definition>void write_map</definition>
         <argsstring>(const std::string &amp;fname, const Grid&lt; DType, 3 &gt; &amp;grid, const float3 &amp;center, float resolution, float scale)</argsstring>
         <name>write_map</name>
+        <qualifiedname>libmolgrid::write_map</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>fname</declname>
@@ -768,7 +778,7 @@
           <declname>grid</declname>
         </param>
         <param>
-          <type>const float3 &amp;</type>
+          <type>const <ref refid="structfloat3" kindref="compound">float3</ref> &amp;</type>
           <declname>center</declname>
         </param>
         <param>
@@ -787,18 +797,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="225" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="225" bodyend="229" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" declline="74" declcolumn="6"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="225" column="6" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" bodystart="225" bodyend="229" declfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_io.h" declline="74" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1a618d0b859add1c20d24e684604c09b6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1a122aa7de6efcda1ced336a87a71804dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class G</type>
           </param>
         </templateparamlist>
         <type>void</type>
-        <definition>void libmolgrid::write_bin</definition>
+        <definition>void write_bin</definition>
         <argsstring>(std::ostream &amp;out, const G &amp;grid)</argsstring>
         <name>write_bin</name>
+        <qualifiedname>libmolgrid::write_bin</qualifiedname>
         <param>
           <type>std::ostream &amp;</type>
           <declname>out</declname>
@@ -813,13 +824,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" line="78" column="6" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid_io.h" bodystart="78" bodyend="80"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_io.h" line="78" column="6" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid_io.h" bodystart="78" bodyend="80"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1afc56244e72d2209f03b10191d4c0fd99" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1a2720add91c3e239b4e60ab9d139fd496" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::ostream &amp;</type>
-        <definition>std::ostream&amp; libmolgrid::log</definition>
+        <definition>std::ostream &amp; log</definition>
         <argsstring>(LogLevel level=INFO)</argsstring>
         <name>log</name>
+        <qualifiedname>libmolgrid::log</qualifiedname>
         <param>
           <type><ref refid="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9" kindref="member">LogLevel</ref></type>
           <declname>level</declname>
@@ -831,16 +843,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/libmolgrid.h" line="24" column="25" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/libmolgrid.h" bodystart="24" bodyend="29"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/libmolgrid.h" line="24" column="25" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/libmolgrid.h" bodystart="24" bodyend="29"/>
         <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8h" startline="478" endline="487">GroupedExampleRefProvider&lt; Provider &gt;::addref</referencedby>
         <referencedby refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8cpp" startline="17" endline="46">ReceptorStratifiedExampleRefProvider&lt; Provider, K &gt;::setup</referencedby>
         <referencedby refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a4fc01d736fe50cf5b977f755b675f11d" compoundref="exampleref__providers_8h" startline="376" endline="393">ValueStratifiedExampleRefProfider&lt; Provider &gt;::setup</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1a57d9db38e6b5ccde0b2d5e480fdf81a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1a19d10e8a648c88fdbf16f40de0e47cfc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
-        <definition>std::string libmolgrid::ftoa</definition>
+        <definition>std::string ftoa</definition>
         <argsstring>(float v)</argsstring>
         <name>ftoa</name>
+        <qualifiedname>libmolgrid::ftoa</qualifiedname>
         <param>
           <type>float</type>
           <declname>v</declname>
@@ -851,13 +864,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/libmolgrid.h" line="31" column="24" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/libmolgrid.h" bodystart="31" bodyend="31"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/libmolgrid.h" line="31" column="24" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/libmolgrid.h" bodystart="31" bodyend="31"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1ab2434f4848577b1a5966ea316dba3a18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
-        <definition>std::string libmolgrid::itoa</definition>
+        <definition>std::string itoa</definition>
         <argsstring>(int v)</argsstring>
         <name>itoa</name>
+        <qualifiedname>libmolgrid::itoa</qualifiedname>
         <param>
           <type>int</type>
           <declname>v</declname>
@@ -868,38 +882,43 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/libmolgrid.h" line="32" column="24" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/libmolgrid.h" bodystart="32" bodyend="32"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/libmolgrid.h" line="32" column="24" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/libmolgrid.h" bodystart="32" bodyend="32"/>
         <referencedby refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" compoundref="exampleref__providers_8cpp" startline="107" endline="117">BalancedExampleRefProvider::addref</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a354afea429c9572094ac2c5c5ed19786" compoundref="managed__grid_8h" startline="64" endline="75">ManagedGridBase&lt; Dtype, 1 &gt;::alloc_and_set_cpu</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1aad5407e977e2f417b18ed54a0cf7730c" compoundref="managed__grid_8h" startline="78" endline="91">ManagedGridBase&lt; Dtype, 1 &gt;::alloc_and_set_gpu</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1a2c462d84c2b3da4f21cd34bf090ca082" compoundref="grid__maker_8cpp" startline="437" endline="467">GridMaker::backward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ManagedGridBase_1a354afea429c9572094ac2c5c5ed19786" compoundref="managed__grid_8h" startline="64" endline="90">ManagedGridBase&lt; Dtype, 1 &gt;::alloc_and_set_cpu</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a2c462d84c2b3da4f21cd34bf090ca082" compoundref="grid__maker_8cpp" startline="474" endline="504">GridMaker::backward</referencedby>
         <referencedby refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" compoundref="exampleref__providers_8h" startline="499" endline="503">GroupedExampleRefProvider&lt; Provider &gt;::check_batch_size</referencedby>
-        <referencedby refid="classlibmolgrid_1_1Grid_1a18ec2ecbbcf47264c34b0fd73242b119" compoundref="grid_8h" startline="65" endline="73">Grid&lt; Dtype, NumDims, true &gt;::check_index</referencedby>
-        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a18ec2ecbbcf47264c34b0fd73242b119" compoundref="grid_8h" startline="238" endline="246">Grid&lt; Dtype, 1, isCUDA &gt;::check_index</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1abe03e795cf5097fd746c9d649de88053" compoundref="grid__maker_8cpp" startline="40" endline="54">GridMaker::check_index_args</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1a76f7b7e78b9bbc969d49cf78c2b976e4" compoundref="grid__maker_8cpp" startline="68" endline="89">GridMaker::check_vector_args</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a18ec2ecbbcf47264c34b0fd73242b119" compoundref="grid_8h" startline="256" endline="264">Grid&lt; Dtype, 1, isCUDA &gt;::check_index</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_1a18ec2ecbbcf47264c34b0fd73242b119" compoundref="grid_8h" startline="67" endline="75">Grid&lt; Dtype, NumDims-1, isCUDA &gt;::check_index</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1abe03e795cf5097fd746c9d649de88053" compoundref="grid__maker_8cpp" startline="77" endline="91">GridMaker::check_index_args</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a76f7b7e78b9bbc969d49cf78c2b976e4" compoundref="grid__maker_8cpp" startline="105" endline="126">GridMaker::check_vector_args</referencedby>
         <referencedby refid="classlibmolgrid_1_1GridInterpolater_1a169b99d2f9026e906fca800564aa0a83" compoundref="grid__interpolater_8cpp" startline="56" endline="76">GridInterpolater::checkGrids</referencedby>
-        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0d12f64812a930fd456f29565d3a2a6f" compoundref="coordinateset_8cpp" startline="137" endline="158">CoordinateSet::CoordinateSet</referencedby>
-        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a5e03f82a57c74b8044e504f82ae74fa6" compoundref="coordinateset_8cpp" startline="313" endline="319">CoordinateSet::copyTo</referencedby>
-        <referencedby refid="structlibmolgrid_1_1Example_1abd2622389892168945e6f8d721072e38" compoundref="example_8cpp" startline="277" endline="295">Example::extract_label</referencedby>
-        <referencedby refid="structlibmolgrid_1_1Example_1a000f4bbd3c5453860543c5ad97be617a" compoundref="example_8cpp" startline="255" endline="270">Example::extract_labels</referencedby>
-        <referencedby refid="classlibmolgrid_1_1GridMaker_1aca37b69a1f1f60ca9cc298584e7c2bb7" compoundref="grid__maker_8cpp" startline="110" endline="116">GridMaker::forward</referencedby>
-        <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1ab179299d9dc6bb3a4bfe868fd60882a6" compoundref="example__extractor_8cpp" startline="77" endline="86">ExampleExtractor::get_type_names</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a5e03f82a57c74b8044e504f82ae74fa6" compoundref="coordinateset_8cpp" startline="314" endline="320">CoordinateSet::copyTo</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a83a328bdae1d46ef085214c4e2908a3b" compoundref="coordinateset_8cpp" startline="328" endline="346">CoordinateSet::copyTo</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1abd2622389892168945e6f8d721072e38" compoundref="example_8cpp" startline="279" endline="301">Example::extract_label</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1a000f4bbd3c5453860543c5ad97be617a" compoundref="example_8cpp" startline="253" endline="272">Example::extract_labels</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1aca37b69a1f1f60ca9cc298584e7c2bb7" compoundref="grid__maker_8cpp" startline="147" endline="153">GridMaker::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a643d05a25c1e56833fe17dffaf178b59" compoundref="grid__maker_8h" startline="266" endline="305">GridMaker::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1ac649c0133cc073d3723d6ce5a988dd95" compoundref="grid__maker_8cpp" startline="191" endline="249">GridMaker::forward</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ExampleExtractor_1ab179299d9dc6bb3a4bfe868fd60882a6" compoundref="example__extractor_8cpp" startline="81" endline="90">ExampleExtractor::get_type_names</referencedby>
         <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0e5b397d8ab22663778fe8cf1d47f3d7" compoundref="coordinateset_8cpp" startline="187" endline="212">CoordinateSet::make_vector_types</referencedby>
-        <referencedby refid="structlibmolgrid_1_1Example_1aaf8ff3176b68cb7987d5ec8c95612180" compoundref="example_8cpp" startline="42" endline="69">Example::merge_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1aaf8ff3176b68cb7987d5ec8c95612180" compoundref="example_8cpp" startline="40" endline="67">Example::merge_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1ad44ab023ef81acc53befe9741066de55" compoundref="example_8cpp" startline="103" endline="136">Example::merge_coordinates</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1aa0927ed6ec846f2a8e7daeb64e39795d" compoundref="example_8cpp" startline="138" endline="196">Example::merge_coordinates</referencedby>
         <referencedby refid="classlibmolgrid_1_1UniformExampleRefProvider_1a8100f1f3e6e934f1400566e80d971f8d" compoundref="exampleref__providers_8cpp" startline="99" endline="105">UniformExampleRefProvider::operator[]</referencedby>
         <referencedby refid="namespacelibmolgrid_1ade64fcaf6347fae87a6a41fb17a3fb31" compoundref="grid__io_8cpp" startline="70" endline="90">read_dx</referencedby>
+        <referencedby refid="namespacelibmolgrid_1a675a477dd7654f29009ae26ae706f39a" compoundref="grid__io_8cpp" startline="101" endline="121">read_dx</referencedby>
         <referencedby refid="namespacelibmolgrid_1a480d5a45562f3cda34dbac07d1415d04" compoundref="grid__io_8cpp" startline="192" endline="201">read_dx_grids</referencedby>
-        <referencedby refid="namespacelibmolgrid_1a10bb36f3a95760807a6c7006732bc624" compoundref="grid__io_8cpp" startline="21" endline="67">read_dx_helper</referencedby>
-        <referencedby refid="structlibmolgrid_1_1Example_1ad1f4b659e53779914a303ad373b7db79" compoundref="example_8cpp" startline="357" endline="376">Example::sum_types</referencedby>
-        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1aa9fc4f9f4863682959d5b4df0259546a" compoundref="coordinateset_8cpp" startline="351" endline="373">CoordinateSet::sum_types</referencedby>
+        <referencedby refid="namespacelibmolgrid_1a11a5279a23d503013bef4fbb06a24175" compoundref="grid__io_8cpp" startline="21" endline="67">read_dx_helper</referencedby>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1aa9fc4f9f4863682959d5b4df0259546a" compoundref="coordinateset_8cpp" startline="352" endline="374">CoordinateSet::sum_types</referencedby>
+        <referencedby refid="structlibmolgrid_1_1Example_1ad1f4b659e53779914a303ad373b7db79" compoundref="example_8cpp" startline="363" endline="382">Example::sum_types</referencedby>
         <referencedby refid="namespacelibmolgrid_1a99f7f8f546917a9c1d891fb1eb3b731b" compoundref="grid__io_8cpp" startline="177" endline="189">write_dx_grids</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1a855892866706919732e65faef857b36c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1a7c59c34e84b65360fe59e2d68debdfee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>libmolgrid::BOOST_PP_REPEAT_FROM_TO</definition>
+        <definition>BOOST_PP_REPEAT_FROM_TO</definition>
         <argsstring>(1, LIBMOLGRID_MAX_GRID_DIM, EXPAND_MGRID_DEFINITIONS, 0)</argsstring>
         <name>BOOST_PP_REPEAT_FROM_TO</name>
+        <qualifiedname>libmolgrid::BOOST_PP_REPEAT_FROM_TO</qualifiedname>
         <param>
           <type>1</type>
         </param>
@@ -918,11 +937,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" line="452" column="1" declfile="/home/dkoes/git/libmolgrid/include/libmolgrid/managed_grid.h" declline="452" declcolumn="1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/managed_grid.h" line="589" column="3" declfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/managed_grid.h" declline="589" declcolumn="3"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1abc1c852c354f940bb6726454a18083e2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1aff4655df2b84d9e5b88b5adf4b6ffcdf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>stringstream</type>
-        <definition>static stringstream libmolgrid::recmap</definition>
+        <definition>static stringstream recmap</definition>
         <argsstring>(R&quot;(AliphaticCarbonXSHydrophobe 
 AliphaticCarbonXSNonHydrophobe 
 AromaticCarbonXSHydrophobe 
@@ -939,6 +958,7 @@ Zinc
 GenericMetal Boron Manganese Magnesium Iron
 )&quot;)</argsstring>
         <name>recmap</name>
+        <qualifiedname>libmolgrid::recmap</qualifiedname>
         <param>
           <type>R&quot;(AliphaticCarbonXSHydrophobe AliphaticCarbonXSNonHydrophobe AromaticCarbonXSHydrophobe AromaticCarbonXSNonHydrophobeBromine Iodine Chlorine FluorineNitrogen NitrogenXSAcceptor NitrogenXSDonor NitrogenXSDonorAcceptorOxygen OxygenXSAcceptor OxygenXSDonorAcceptor OxygenXSDonorSulfur SulfurAcceptorPhosphorus CalciumZincGenericMetal Boron Manganese Magnesium Iron)&quot;</type>
         </param>
@@ -948,11 +968,12 @@ GenericMetal Boron Manganese Magnesium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" line="531" column="21" declfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" declline="531" declcolumn="21"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/atom_typer.cpp" line="531" column="21" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/atom_typer.cpp" declline="531" declcolumn="21"/>
+        <referencedby refid="namespacelibmolgrid_1a1a136d9c99791a14bd2779e6dce9bb6a">defaultGninaLigandTyper</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1ab32fe62f692f6c16ba65f9586408e444" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1a8ba25dc257868ac32850cf9152867f3b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>stringstream</type>
-        <definition>static stringstream libmolgrid::ligmap</definition>
+        <definition>static stringstream ligmap</definition>
         <argsstring>(R&quot;(AliphaticCarbonXSHydrophobe 
 AliphaticCarbonXSNonHydrophobe 
 AromaticCarbonXSHydrophobe 
@@ -969,6 +990,7 @@ Phosphorus
 GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
 )&quot;)</argsstring>
         <name>ligmap</name>
+        <qualifiedname>libmolgrid::ligmap</qualifiedname>
         <param>
           <type>R&quot;(AliphaticCarbonXSHydrophobe AliphaticCarbonXSNonHydrophobe AromaticCarbonXSHydrophobe AromaticCarbonXSNonHydrophobeBromine IodineChlorineFluorineNitrogen NitrogenXSAcceptor NitrogenXSDonor NitrogenXSDonorAcceptorOxygen OxygenXSAcceptor OxygenXSDonorAcceptor OxygenXSDonorSulfur SulfurAcceptorPhosphorusGenericMetal Boron Manganese Magnesium Zinc Calcium Iron)&quot;</type>
         </param>
@@ -978,15 +1000,17 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" line="532" column="21" declfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" declline="532" declcolumn="21"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/atom_typer.cpp" line="532" column="21" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/atom_typer.cpp" declline="532" declcolumn="21"/>
+        <referencedby refid="namespacelibmolgrid_1a1a136d9c99791a14bd2779e6dce9bb6a">defaultGninaLigandTyper</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1afc66c747c8f9d86bf02a5c3fdc3bb02d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1a3806f5ca85851e06d45c8ab0c3ee4e68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classlibmolgrid_1_1FileMappedGninaTyper" kindref="compound">FileMappedGninaTyper</ref></type>
-        <definition>FileMappedGninaTyper libmolgrid::defaultGninaReceptorTyper</definition>
+        <definition>FileMappedGninaTyper defaultGninaReceptorTyper</definition>
         <argsstring>(recmap)</argsstring>
         <name>defaultGninaReceptorTyper</name>
+        <qualifiedname>libmolgrid::defaultGninaReceptorTyper</qualifiedname>
         <param>
-          <type><ref refid="namespacelibmolgrid_1abc1c852c354f940bb6726454a18083e2" kindref="member">recmap</ref></type>
+          <type><ref refid="namespacelibmolgrid_1aff4655df2b84d9e5b88b5adf4b6ffcdf" kindref="member">recmap</ref></type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -994,15 +1018,16 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" line="533" column="22" declfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" declline="533" declcolumn="22"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/atom_typer.cpp" line="533" column="22" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/atom_typer.cpp" declline="533" declcolumn="22"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1a7a1ba159846b1049c0b7f509d51e543f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1a1a136d9c99791a14bd2779e6dce9bb6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classlibmolgrid_1_1FileMappedGninaTyper" kindref="compound">FileMappedGninaTyper</ref></type>
-        <definition>FileMappedGninaTyper libmolgrid::defaultGninaLigandTyper</definition>
+        <definition>FileMappedGninaTyper defaultGninaLigandTyper</definition>
         <argsstring>(ligmap)</argsstring>
         <name>defaultGninaLigandTyper</name>
+        <qualifiedname>libmolgrid::defaultGninaLigandTyper</qualifiedname>
         <param>
-          <type><ref refid="namespacelibmolgrid_1ab32fe62f692f6c16ba65f9586408e444" kindref="member">ligmap</ref></type>
+          <type><ref refid="namespacelibmolgrid_1a8ba25dc257868ac32850cf9152867f3b" kindref="member">ligmap</ref></type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -1010,13 +1035,14 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" line="534" column="22" declfile="/home/dkoes/git/libmolgrid/src/atom_typer.cpp" declline="534" declcolumn="22"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/atom_typer.cpp" line="534" column="22" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/atom_typer.cpp" declline="534" declcolumn="22"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1aafd219ed0c26b6bf36bbd792bbc4360e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1a1ede5637ddd13366bade238fd65b79b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
-        <definition>size_t libmolgrid::typ_vec_size</definition>
+        <definition>size_t typ_vec_size</definition>
         <argsstring>(const std::vector&lt; std::vector&lt; float &gt; &gt; &amp;t)</argsstring>
         <name>typ_vec_size</name>
+        <qualifiedname>libmolgrid::typ_vec_size</qualifiedname>
         <param>
           <type>const std::vector&lt; std::vector&lt; float &gt; &gt; &amp;</type>
           <declname>t</declname>
@@ -1027,13 +1053,15 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/coordinateset.cpp" line="130" column="15" bodyfile="/home/dkoes/git/libmolgrid/src/coordinateset.cpp" bodystart="130" bodyend="133"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/coordinateset.cpp" line="130" column="15" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/coordinateset.cpp" bodystart="130" bodyend="133"/>
+        <referencedby refid="structlibmolgrid_1_1CoordinateSet_1a0d12f64812a930fd456f29565d3a2a6f" compoundref="coordinateset_8cpp" startline="137" endline="158">CoordinateSet::CoordinateSet</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1a1fca3edcd06bb699eed3954b29644ef9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1ada5b6facc7bce234e15cc120b18d6a21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
-        <definition>bool libmolgrid::is_numeric</definition>
+        <definition>bool is_numeric</definition>
         <argsstring>(const string &amp;number)</argsstring>
         <name>is_numeric</name>
+        <qualifiedname>libmolgrid::is_numeric</qualifiedname>
         <param>
           <type>const string &amp;</type>
           <declname>number</declname>
@@ -1044,20 +1072,21 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/example.cpp" line="301" column="6" bodyfile="/home/dkoes/git/libmolgrid/src/example.cpp" bodystart="301" bodyend="307"/>
-        <referencedby refid="structlibmolgrid_1_1ExampleRef_1af68ef87a6eab8ca94bd25484c273a402" compoundref="example_8cpp" startline="309" endline="354">ExampleRef::ExampleRef</referencedby>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/example.cpp" line="307" column="6" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example.cpp" bodystart="307" bodyend="313"/>
+        <referencedby refid="structlibmolgrid_1_1ExampleRef_1af68ef87a6eab8ca94bd25484c273a402" compoundref="example_8cpp" startline="315" endline="360">ExampleRef::ExampleRef</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1a10bb36f3a95760807a6c7006732bc624" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1a11a5279a23d503013bef4fbb06a24175" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned</type>
-        <definition>unsigned libmolgrid::read_dx_helper</definition>
+        <definition>unsigned read_dx_helper</definition>
         <argsstring>(std::istream &amp;in, float3 &amp;center, float &amp;res)</argsstring>
         <name>read_dx_helper</name>
+        <qualifiedname>libmolgrid::read_dx_helper</qualifiedname>
         <param>
           <type>std::istream &amp;</type>
           <declname>in</declname>
         </param>
         <param>
-          <type>float3 &amp;</type>
+          <type><ref refid="structfloat3" kindref="compound">float3</ref> &amp;</type>
           <declname>center</declname>
         </param>
         <param>
@@ -1070,14 +1099,52 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="21" column="10" bodyfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" bodystart="21" bodyend="67"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="21" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" bodystart="21" bodyend="67"/>
         <referencedby refid="namespacelibmolgrid_1ade64fcaf6347fae87a6a41fb17a3fb31" compoundref="grid__io_8cpp" startline="70" endline="90">read_dx</referencedby>
+        <referencedby refid="namespacelibmolgrid_1a675a477dd7654f29009ae26ae706f39a" compoundref="grid__io_8cpp" startline="101" endline="121">read_dx</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1a0570278514d0b2fc1ccb54f3569edd48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1a68174e079f403c5f2fcb5d42d9f1f24e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>template <ref refid="classlibmolgrid_1_1CartesianGrid" kindref="compound">CartesianGrid</ref>&lt; <ref refid="classlibmolgrid_1_1ManagedGrid" kindref="compound">ManagedGrid</ref>&lt; float, 3 &gt; &gt;</type>
+        <definition>template CartesianGrid&lt; ManagedGrid&lt; float, 3 &gt; &gt; read_dx</definition>
+        <argsstring>(std::istream &amp;in)</argsstring>
+        <name>read_dx</name>
+        <qualifiedname>libmolgrid::read_dx</qualifiedname>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="233" column="24" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" declline="233" declcolumn="24"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacelibmolgrid_1aab230bdbf2374c278d8bf873d6d93b36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>template <ref refid="classlibmolgrid_1_1CartesianGrid" kindref="compound">CartesianGrid</ref>&lt; <ref refid="classlibmolgrid_1_1ManagedGrid" kindref="compound">ManagedGrid</ref>&lt; float, 3 &gt; &gt;</type>
+        <definition>template CartesianGrid&lt; ManagedGrid&lt; float, 3 &gt; &gt; read_dx</definition>
+        <argsstring>(const std::string &amp;fname)</argsstring>
+        <name>read_dx</name>
+        <qualifiedname>libmolgrid::read_dx</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="235" column="24" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" declline="235" declcolumn="24"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacelibmolgrid_1aa173a12245873ec1c5b7fd772321602f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
-        <definition>template void libmolgrid::write_dx</definition>
+        <definition>template void write_dx</definition>
         <argsstring>(std::ostream &amp;, const Grid&lt; float, 3 &gt; &amp;, const float3 &amp;, float, float)</argsstring>
         <name>write_dx</name>
+        <qualifiedname>libmolgrid::write_dx</qualifiedname>
         <param>
           <type>std::ostream &amp;</type>
         </param>
@@ -1085,7 +1152,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
           <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; float, 3 &gt; &amp;</type>
         </param>
         <param>
-          <type>const float3 &amp;</type>
+          <type>const <ref refid="structfloat3" kindref="compound">float3</ref> &amp;</type>
         </param>
         <param>
           <type>float</type>
@@ -1099,13 +1166,14 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="238" column="15" declfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" declline="238" declcolumn="15"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="238" column="15" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" declline="238" declcolumn="15"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1abbd0244cbbea044203ade2034974b011" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1a4c27d0773f858b7eb6dd4155c170e1de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
-        <definition>template void libmolgrid::write_dx</definition>
+        <definition>template void write_dx</definition>
         <argsstring>(const std::string &amp;, const Grid&lt; float, 3 &gt; &amp;, const float3 &amp;, float, float)</argsstring>
         <name>write_dx</name>
+        <qualifiedname>libmolgrid::write_dx</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
         </param>
@@ -1113,7 +1181,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
           <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; float, 3 &gt; &amp;</type>
         </param>
         <param>
-          <type>const float3 &amp;</type>
+          <type>const <ref refid="structfloat3" kindref="compound">float3</ref> &amp;</type>
         </param>
         <param>
           <type>float</type>
@@ -1127,13 +1195,14 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="239" column="15" declfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" declline="239" declcolumn="15"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="239" column="15" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" declline="239" declcolumn="15"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1aceb848c3f5615d70a7cb17c7bfd6dd77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1a10ffd01ad319cd266612063f54f9ff0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
-        <definition>template void libmolgrid::write_dx</definition>
+        <definition>template void write_dx</definition>
         <argsstring>(std::ostream &amp;, const Grid&lt; double, 3 &gt; &amp;, const float3 &amp;, float, float)</argsstring>
         <name>write_dx</name>
+        <qualifiedname>libmolgrid::write_dx</qualifiedname>
         <param>
           <type>std::ostream &amp;</type>
         </param>
@@ -1141,7 +1210,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
           <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; double, 3 &gt; &amp;</type>
         </param>
         <param>
-          <type>const float3 &amp;</type>
+          <type>const <ref refid="structfloat3" kindref="compound">float3</ref> &amp;</type>
         </param>
         <param>
           <type>float</type>
@@ -1155,13 +1224,14 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="240" column="15" declfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" declline="240" declcolumn="15"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="240" column="15" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" declline="240" declcolumn="15"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1ac9623512babe477516e2797bcd791c8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1abe980e3c39b9ecb278e927f511573c7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
-        <definition>template void libmolgrid::write_dx</definition>
+        <definition>template void write_dx</definition>
         <argsstring>(const std::string &amp;, const Grid&lt; double, 3 &gt; &amp;, const float3 &amp;, float, float)</argsstring>
         <name>write_dx</name>
+        <qualifiedname>libmolgrid::write_dx</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
         </param>
@@ -1169,7 +1239,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
           <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; double, 3 &gt; &amp;</type>
         </param>
         <param>
-          <type>const float3 &amp;</type>
+          <type>const <ref refid="structfloat3" kindref="compound">float3</ref> &amp;</type>
         </param>
         <param>
           <type>float</type>
@@ -1183,13 +1253,14 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="241" column="15" declfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" declline="241" declcolumn="15"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="241" column="15" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" declline="241" declcolumn="15"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1a5fd139cbcfd28827dd6366c7a7f3b642" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1aca010258edc4f5724705fdaf8b75470b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
-        <definition>template void libmolgrid::write_dx_grids</definition>
+        <definition>template void write_dx_grids</definition>
         <argsstring>(const std::string &amp;, const std::vector&lt; std::string &gt; &amp;, const Grid&lt; float, 4 &gt; &amp;, const float3 &amp;, float, float)</argsstring>
         <name>write_dx_grids</name>
+        <qualifiedname>libmolgrid::write_dx_grids</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
         </param>
@@ -1200,7 +1271,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
           <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; float, 4 &gt; &amp;</type>
         </param>
         <param>
-          <type>const float3 &amp;</type>
+          <type>const <ref refid="structfloat3" kindref="compound">float3</ref> &amp;</type>
         </param>
         <param>
           <type>float</type>
@@ -1214,13 +1285,14 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="243" column="15" declfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" declline="243" declcolumn="15"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="243" column="15" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" declline="243" declcolumn="15"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1af343400ee12fb297dba99a7129e11c42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1a1251d77f5747438cb0efcac2206fbd00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
-        <definition>template void libmolgrid::write_dx_grids</definition>
+        <definition>template void write_dx_grids</definition>
         <argsstring>(const std::string &amp;, const std::vector&lt; std::string &gt; &amp;, const Grid&lt; double, 4 &gt; &amp;, const float3 &amp;, float, float)</argsstring>
         <name>write_dx_grids</name>
+        <qualifiedname>libmolgrid::write_dx_grids</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
         </param>
@@ -1231,7 +1303,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
           <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; double, 4 &gt; &amp;</type>
         </param>
         <param>
-          <type>const float3 &amp;</type>
+          <type>const <ref refid="structfloat3" kindref="compound">float3</ref> &amp;</type>
         </param>
         <param>
           <type>float</type>
@@ -1245,13 +1317,14 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="244" column="15" declfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" declline="244" declcolumn="15"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="244" column="15" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" declline="244" declcolumn="15"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1a9f042ca3643e3d8a18a31052e7be9a5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1a15e2acb8554afd62b3896b4f7a26d8f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
-        <definition>template void libmolgrid::read_dx_grids</definition>
+        <definition>template void read_dx_grids</definition>
         <argsstring>(const std::string &amp;, const std::vector&lt; std::string &gt; &amp;, Grid&lt; float, 4 &gt; &amp;)</argsstring>
         <name>read_dx_grids</name>
+        <qualifiedname>libmolgrid::read_dx_grids</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
         </param>
@@ -1267,13 +1340,14 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="246" column="15" declfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" declline="246" declcolumn="15"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="246" column="15" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" declline="246" declcolumn="15"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1aa8a5b39177f30a2ff53ece868bc1a2e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1a173dc636254c2444a42601f348d2065c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
-        <definition>template void libmolgrid::read_dx_grids</definition>
+        <definition>template void read_dx_grids</definition>
         <argsstring>(const std::string &amp;, const std::vector&lt; std::string &gt; &amp;, Grid&lt; double, 4 &gt; &amp;)</argsstring>
         <name>read_dx_grids</name>
+        <qualifiedname>libmolgrid::read_dx_grids</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
         </param>
@@ -1289,13 +1363,14 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="247" column="15" declfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" declline="247" declcolumn="15"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="247" column="15" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" declline="247" declcolumn="15"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1a9a0999d5007feb4dfd8af58babc4e66b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1acae94cad89cafd80a57791f782c21b53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
-        <definition>template void libmolgrid::write_map</definition>
+        <definition>template void write_map</definition>
         <argsstring>(std::ostream &amp;, const Grid&lt; float, 3 &gt; &amp;, const float3 &amp;, float, float)</argsstring>
         <name>write_map</name>
+        <qualifiedname>libmolgrid::write_map</qualifiedname>
         <param>
           <type>std::ostream &amp;</type>
         </param>
@@ -1303,7 +1378,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
           <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; float, 3 &gt; &amp;</type>
         </param>
         <param>
-          <type>const float3 &amp;</type>
+          <type>const <ref refid="structfloat3" kindref="compound">float3</ref> &amp;</type>
         </param>
         <param>
           <type>float</type>
@@ -1317,13 +1392,14 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="249" column="15" declfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" declline="249" declcolumn="15"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="249" column="15" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" declline="249" declcolumn="15"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1afc651b900496b9e339d6c12a20ff914c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1aff97d71d9c79c7f136a2c1331d7dd326" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
-        <definition>template void libmolgrid::write_map</definition>
+        <definition>template void write_map</definition>
         <argsstring>(const std::string &amp;, const Grid&lt; float, 3 &gt; &amp;, const float3 &amp;, float, float)</argsstring>
         <name>write_map</name>
+        <qualifiedname>libmolgrid::write_map</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
         </param>
@@ -1331,7 +1407,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
           <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; float, 3 &gt; &amp;</type>
         </param>
         <param>
-          <type>const float3 &amp;</type>
+          <type>const <ref refid="structfloat3" kindref="compound">float3</ref> &amp;</type>
         </param>
         <param>
           <type>float</type>
@@ -1345,13 +1421,14 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="250" column="15" declfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" declline="250" declcolumn="15"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="250" column="15" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" declline="250" declcolumn="15"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1a2f29c0cc60633364587eab74fae75b38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1a60ebd53fb6cc6141a25293a10d7ca4d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
-        <definition>template void libmolgrid::write_map</definition>
+        <definition>template void write_map</definition>
         <argsstring>(std::ostream &amp;, const Grid&lt; double, 3 &gt; &amp;, const float3 &amp;, float, float)</argsstring>
         <name>write_map</name>
+        <qualifiedname>libmolgrid::write_map</qualifiedname>
         <param>
           <type>std::ostream &amp;</type>
         </param>
@@ -1359,7 +1436,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
           <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; double, 3 &gt; &amp;</type>
         </param>
         <param>
-          <type>const float3 &amp;</type>
+          <type>const <ref refid="structfloat3" kindref="compound">float3</ref> &amp;</type>
         </param>
         <param>
           <type>float</type>
@@ -1373,13 +1450,14 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="251" column="15" declfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" declline="251" declcolumn="15"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="251" column="15" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" declline="251" declcolumn="15"/>
       </memberdef>
-      <memberdef kind="function" id="namespacelibmolgrid_1a7ef0b82d16e8509a0aa72df3d3facc1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacelibmolgrid_1ac5e359ddb466dcefe5d836a6b5f11793" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template void</type>
-        <definition>template void libmolgrid::write_map</definition>
+        <definition>template void write_map</definition>
         <argsstring>(const std::string &amp;, const Grid&lt; double, 3 &gt; &amp;, const float3 &amp;, float, float)</argsstring>
         <name>write_map</name>
+        <qualifiedname>libmolgrid::write_map</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
         </param>
@@ -1387,7 +1465,7 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
           <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; double, 3 &gt; &amp;</type>
         </param>
         <param>
-          <type>const float3 &amp;</type>
+          <type>const <ref refid="structfloat3" kindref="compound">float3</ref> &amp;</type>
         </param>
         <param>
           <type>float</type>
@@ -1401,14 +1479,45 @@ GenericMetal Boron Manganese Magnesium Zinc Calcium Iron
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/src/grid_io.cpp" line="252" column="15" declfile="/home/dkoes/git/libmolgrid/src/grid_io.cpp" declline="252" declcolumn="15"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" line="252" column="15" declfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_io.cpp" declline="252" declcolumn="15"/>
       </memberdef>
-      </sectiondef>
+      <memberdef kind="function" id="namespacelibmolgrid_1a0809454f9f673fc9cc0faca07b7d7c75" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float sqDistance</definition>
+        <argsstring>(float3 pt, float x, float y, float z)</argsstring>
+        <name>sqDistance</name>
+        <qualifiedname>libmolgrid::sqDistance</qualifiedname>
+        <param>
+          <type><ref refid="structfloat3" kindref="compound">float3</ref></type>
+          <declname>pt</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_maker.cpp" line="17" column="21" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/grid_maker.cpp" bodystart="17" bodyend="23"/>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1a00c3f616adff78ce81e0a778d3b2ccba" compoundref="grid__maker_8cpp" startline="27" endline="40">GridMaker::calc_point</referencedby>
+      </memberdef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
 <para><ref refid="quaternion_8h" kindref="compound">quaternion.h</ref> </para>
     </detaileddescription>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/atom_typer.h" line="20" column="20"/>
+    <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/atom_typer.h" line="20" column="1"/>
   </compounddef>
 </doxygen>

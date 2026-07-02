@@ -18,7 +18,7 @@ using namespace std;
 using namespace boost;
 
 //parse dx header
-unsigned read_dx_helper(std::istream& in, float3& center, float& res) {
+unsigned read_dx_helper(std::istream& in, Vec3& center, float& res) {
   string line;
   vector<string> tokens;
 
@@ -69,7 +69,7 @@ unsigned read_dx_helper(std::istream& in, float3& center, float& res) {
 template <typename DType>
 CartesianGrid<ManagedGrid<DType, 3> > read_dx(std::istream& in) {
 
-  float3 center;
+  Vec3 center;
   float res;
   unsigned n = read_dx_helper(in, center, res);
   //data begins
@@ -99,7 +99,7 @@ CartesianGrid<ManagedGrid<DType, 3> > read_dx(const std::string& fname) {
 
 template <typename Dtype>
 void read_dx(std::istream& in, Grid<Dtype, 3>& grid) {
-  float3 center;
+  Vec3 center;
   float res;
   unsigned n = read_dx_helper(in, center, res);
   if(n != grid.dimension(0)) throw invalid_argument("Grid incorrect size in read_dx: "+itoa(n) +" != " +itoa(grid.dimension(0)));
@@ -131,7 +131,7 @@ void read_dx(const std::string& fname, Grid<Dtype, 3>& grid) {
 
 
 template <typename DType>
-void write_dx(std::ostream& out, const Grid<DType, 3>& grid, const float3& center, float resolution, float scale) {
+void write_dx(std::ostream& out, const Grid<DType, 3>& grid, const Vec3& center, float resolution, float scale) {
   unsigned n = grid.dimension(0);
   out.precision(5);
   setprecision(5);
@@ -167,7 +167,7 @@ void write_dx(std::ostream& out, const Grid<DType, 3>& grid, const float3& cente
 
 ///output dx to file name
 template <typename DType>
-void write_dx(const std::string& fname, const Grid<DType, 3>& grid, const float3& center, float resolution, float scale) {
+void write_dx(const std::string& fname, const Grid<DType, 3>& grid, const Vec3& center, float resolution, float scale) {
   std::ofstream f(fname.c_str());
   if(!f) throw invalid_argument("Could not open file "+fname);
   write_dx(f, grid, center, resolution, scale);
@@ -175,7 +175,7 @@ void write_dx(const std::string& fname, const Grid<DType, 3>& grid, const float3
 
 template <typename Dtype>
 void write_dx_grids(const std::string& prefix, const std::vector<std::string>& names, const Grid<Dtype, 4>& grid,
-    const float3& center, float resolution, float scale) {
+    const Vec3& center, float resolution, float scale) {
   if(names.size() != grid.dimension(0))
     throw std::invalid_argument("Number of names and number of grids doesn't match in write_dx_grids: "+itoa(names.size())+ " != "+itoa(grid.dimension(0)));
 
@@ -202,7 +202,7 @@ void read_dx_grids(const std::string& prefix, const std::vector<std::string>& na
 
 ///output autodock4 to stream
 template <typename DType>
-void write_map(std::ostream& out, const Grid<DType, 3>& grid, const float3& center, float resolution, float scale) {
+void write_map(std::ostream& out, const Grid<DType, 3>& grid, const Vec3& center, float resolution, float scale) {
   unsigned max = grid.dimension(0);
   out.precision(5);
   out << "GRID_PARAMETER_FILE\nGRID_DATA_FILE\nMACROMOLECULE\n";
@@ -222,7 +222,7 @@ void write_map(std::ostream& out, const Grid<DType, 3>& grid, const float3& cent
 
 ///output autodock4 to filename
 template <typename DType>
-void write_map(const std::string& fname, const Grid<DType, 3>& grid, const float3& center, float resolution, float scale) {
+void write_map(const std::string& fname, const Grid<DType, 3>& grid, const Vec3& center, float resolution, float scale) {
   std::ofstream f(fname.c_str());
   if(!f) throw invalid_argument("Could not open file "+fname);
   write_map(f, grid, center, resolution, scale);
@@ -235,21 +235,21 @@ template CartesianGrid<ManagedGrid<double, 3> > read_dx(std::istream& in);
 template CartesianGrid<ManagedGrid<float, 3> > read_dx(const std::string& fname);
 template CartesianGrid<ManagedGrid<double, 3> > read_dx(const std::string& fname);
 
-template void write_dx(std::ostream&, const Grid<float, 3>&, const float3&, float, float);
-template void write_dx(const std::string&, const Grid<float, 3>&, const float3&, float, float);
-template void write_dx(std::ostream&, const Grid<double, 3>&, const float3&, float, float);
-template void write_dx(const std::string&, const Grid<double, 3>&, const float3&, float, float);
+template void write_dx(std::ostream&, const Grid<float, 3>&, const Vec3&, float, float);
+template void write_dx(const std::string&, const Grid<float, 3>&, const Vec3&, float, float);
+template void write_dx(std::ostream&, const Grid<double, 3>&, const Vec3&, float, float);
+template void write_dx(const std::string&, const Grid<double, 3>&, const Vec3&, float, float);
 
-template void write_dx_grids(const std::string&, const std::vector<std::string>&, const Grid<float, 4>&, const float3&, float, float);
-template void write_dx_grids(const std::string&, const std::vector<std::string>&, const Grid<double, 4>&, const float3&, float, float);
+template void write_dx_grids(const std::string&, const std::vector<std::string>&, const Grid<float, 4>&, const Vec3&, float, float);
+template void write_dx_grids(const std::string&, const std::vector<std::string>&, const Grid<double, 4>&, const Vec3&, float, float);
 
 template void read_dx_grids(const std::string&, const std::vector<std::string>&, Grid<float, 4>&);
 template void read_dx_grids(const std::string&, const std::vector<std::string>&, Grid<double, 4>&);
 
-template void write_map(std::ostream&, const Grid<float, 3>&, const float3&, float, float);
-template void write_map(const std::string&, const Grid<float, 3>&, const float3&, float, float);
-template void write_map(std::ostream&, const Grid<double, 3>&, const float3&, float, float);
-template void write_map(const std::string&, const Grid<double, 3>&, const float3&, float, float);
+template void write_map(std::ostream&, const Grid<float, 3>&, const Vec3&, float, float);
+template void write_map(const std::string&, const Grid<float, 3>&, const Vec3&, float, float);
+template void write_map(std::ostream&, const Grid<double, 3>&, const Vec3&, float, float);
+template void write_map(const std::string&, const Grid<double, 3>&, const Vec3&, float, float);
 
 
 }

@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structuint3" kind="struct" language="C++" prot="public">
+    <compoundname>uint3</compoundname>
+    <includes refid="common_8h" local="no">common.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structuint3_1a676e0da0ef83bbbdf42538e54b97506b" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <qualifiedname>uint3::x</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="38" column="25" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structuint3_1ac30de26db5f6d1c18c63913729adca7d" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <qualifiedname>uint3::y</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="38" column="27" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structuint3_1a3d99b005d0fb73033dce14d4a135d01f" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int z</definition>
+        <argsstring></argsstring>
+        <name>z</name>
+        <qualifiedname>uint3::z</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="38" column="29" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="38" column="1" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="38" bodyend="38"/>
+    <listofallmembers>
+      <member refid="structuint3_1a676e0da0ef83bbbdf42538e54b97506b" prot="public" virt="non-virtual"><scope>uint3</scope><name>x</name></member>
+      <member refid="structuint3_1ac30de26db5f6d1c18c63913729adca7d" prot="public" virt="non-virtual"><scope>uint3</scope><name>y</name></member>
+      <member refid="structuint3_1a3d99b005d0fb73033dce14d4a135d01f" prot="public" virt="non-virtual"><scope>uint3</scope><name>z</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

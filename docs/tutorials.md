@@ -9,6 +9,12 @@ We demonstrate usage with PyTorch and Keras with the Tensorflow backend,
 and show how to implement and train a few types of models. For examples of
 usage with Caffe, we recommend you look at the <a href="https://github.com/gnina/scripts">gnina scripts</a> and <a href="https://github.com/gnina/models">gnina models</a> repositories. 
 
+## Backend note
+
+Most PyTorch tutorial notebooks follow the upstream CUDA examples and use
+`cuda` device strings directly. On Apple Silicon Metal builds, replace those
+device selections with `mps` where appropriate.
+
 # Input files
 
 The "types" files expected as input to ExampleProvider are text files where each 

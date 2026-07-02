@@ -60,11 +60,11 @@ BOOST_AUTO_TEST_CASE( quaternion_operatons )
   BOOST_CHECK_EQUAL(qtmp.real(), q1.real()); //some floating poitn error in the rest
 
   //rotating
-  float3 pt = make_float3(5,0,0);
-  float3 center = make_float3(0,1,0);
-  float3 translate = make_float3(-1,2,.5);
+  Vec3 pt = make_vec3(5,0,0);
+  Vec3 center = make_vec3(0,1,0);
+  Vec3 translate = make_vec3(-1,2,.5);
 
-  float3 newpt = q1.rotate(pt.x,pt.y,pt.z);
+  Vec3 newpt = q1.rotate(pt.x,pt.y,pt.z);
 
   boostQ bpt(0,pt.x,pt.y,pt.z);
   bpt = bq1*bpt*(boost::math::conj(bq1)/boost::math::norm(bq1));
@@ -74,11 +74,11 @@ BOOST_AUTO_TEST_CASE( quaternion_operatons )
   BOOST_CHECK_EQUAL(newpt.z, bpt.R_component_4());
 
 
-  float3 newpt2 = q1.transform(3,2,1, center, translate);
+  Vec3 newpt2 = q1.transform(3,2,1, center, translate);
 
   bpt = boostQ(0,3-center.x,2-center.y,1-center.z);
   bpt = bq1*bpt*(boost::math::conj(bq1)/boost::math::norm(bq1));
-  float3 bpt2 = make_float3(bpt.R_component_2()+center.x+translate.x,
+  Vec3 bpt2 = make_vec3(bpt.R_component_2()+center.x+translate.x,
       bpt.R_component_3()+center.y+translate.y,
       bpt.R_component_4()+center.z+translate.z);
 

@@ -36,21 +36,21 @@ inline void neqQ(Quaternion a, Quaternion b)
 }
 
 
-inline void eqPt(float3 a, float3 b)
+inline void eqPt(Vec3 a, Vec3 b)
 {
   BOOST_CHECK_EQUAL(a.x,b.x);
   BOOST_CHECK_EQUAL(a.y,b.y);
   BOOST_CHECK_EQUAL(a.z,b.z);
 }
 
-inline void neqPt(float3 a, float3 b)
+inline void neqPt(Vec3 a, Vec3 b)
 {
   BOOST_CHECK_NE(a.x,b.x);
   BOOST_CHECK_NE(a.y,b.y);
   BOOST_CHECK_NE(a.z,b.z);
 }
 
-inline void eqPt(const Grid1f& a, float3 b)
+inline void eqPt(const Grid1f& a, Vec3 b)
 {
 //  std::cout << "[" << a(0)<<","<<a(1)<<","<<a(2)<<"]  (" << b.x<<","<<b.y<<","<<b.z<<")\n";
   BOOST_CHECK_SMALL(a[0]-b.x,TOL);

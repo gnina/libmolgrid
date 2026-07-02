@@ -1,129 +1,71 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="transform_8cpp" kind="file" language="C++">
     <compoundname>transform.cpp</compoundname>
     <includes refid="transform_8h" local="yes">libmolgrid/transform.h</includes>
     <incdepgraph>
-      <node id="19">
-        <label>libmolgrid/example.h</label>
-        <link refid="example_8h"/>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>boost/lexical_cast.hpp</label>
-      </node>
       <node id="8">
-        <label>cuda_runtime.h</label>
-      </node>
-      <node id="13">
-        <label>cassert</label>
-      </node>
-      <node id="4">
-        <label>stdexcept</label>
-      </node>
-      <node id="10">
-        <label>libmolgrid/grid.h</label>
-        <link refid="grid_8h"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="23">
-        <label>openbabel/mol.h</label>
-      </node>
-      <node id="21">
-        <label>unordered_set</label>
-      </node>
-      <node id="3">
-        <label>random</label>
-      </node>
-      <node id="20">
-        <label>vector</label>
-      </node>
-      <node id="25">
-        <label>utility</label>
-      </node>
-      <node id="14">
         <label>libmolgrid/common.h</label>
         <link refid="common_8h"/>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>transform.cpp</label>
-        <link refid="transform_8cpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>iostream</label>
-      </node>
-      <node id="2">
-        <label>libmolgrid/transform.h</label>
-        <link refid="transform_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>libmolgrid/coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
         <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="18">
-        <label>cuda.h</label>
+        <label>libmolgrid/example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
       </node>
-      <node id="17">
-        <label>cuda_runtime_api.h</label>
-      </node>
-      <node id="12">
-        <label>boost/preprocessor/repetition.hpp</label>
-      </node>
-      <node id="24">
-        <label>libmolgrid/managed_grid.h</label>
-        <link refid="managed__grid_8h"/>
+      <node id="14">
+        <label>libmolgrid/grid.h</label>
+        <link refid="grid_8h"/>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-      </node>
-      <node id="11">
-        <label>boost/multi_array.hpp</label>
-      </node>
-      <node id="9">
-        <label>libmolgrid/quaternion.h</label>
-        <link refid="quaternion_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
         <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -138,21 +80,116 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="16">
-        <label>cstring</label>
+      <node id="24">
+        <label>libmolgrid/managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
       </node>
-      <node id="22">
-        <label>libmolgrid/coordinateset.h</label>
-        <link refid="coordinateset_8h"/>
+      <node id="13">
+        <label>libmolgrid/quaternion.h</label>
+        <link refid="quaternion_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>libmolgrid/string_cache.h</label>
+        <link refid="string__cache_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+      </node>
+      <node id="2">
+        <label>libmolgrid/transform.h</label>
+        <link refid="transform_8h"/>
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
+      <node id="1">
+        <label>transform.cpp</label>
+        <link refid="transform_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
       <node id="15">
+        <label>boost/multi_array.hpp</label>
+      </node>
+      <node id="16">
+        <label>boost/preprocessor/repetition.hpp</label>
+      </node>
+      <node id="23">
+        <label>boost/serialization/access.hpp</label>
+      </node>
+      <node id="28">
+        <label>boost/serialization/array.hpp</label>
+      </node>
+      <node id="27">
+        <label>boost/serialization/split_member.hpp</label>
+      </node>
+      <node id="17">
+        <label>cassert</label>
+      </node>
+      <node id="25">
+        <label>cstdlib</label>
+      </node>
+      <node id="10">
+        <label>cstring</label>
+      </node>
+      <node id="6">
+        <label>iostream</label>
+      </node>
+      <node id="12">
+        <label>libmolgrid/config.h</label>
+      </node>
+      <node id="9">
         <label>memory</label>
+      </node>
+      <node id="22">
+        <label>openbabel/mol.h</label>
+      </node>
+      <node id="3">
+        <label>random</label>
+      </node>
+      <node id="4">
+        <label>stdexcept</label>
+      </node>
+      <node id="11">
+        <label>string</label>
+      </node>
+      <node id="20">
+        <label>unordered_set</label>
+      </node>
+      <node id="26">
+        <label>utility</label>
+      </node>
+      <node id="19">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <innernamespace refid="namespacelibmolgrid">libmolgrid</innernamespace>
@@ -173,7 +210,7 @@
 <codeline lineno="10"><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelibmolgrid" kindref="compound">libmolgrid</ref><sp/>{</highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
-<codeline lineno="13" refid="classlibmolgrid_1_1Transform_1a0efff6c41e09c88c91cb11d281e1b1ed" refkind="member"><highlight class="normal"><ref refid="classlibmolgrid_1_1Transform_1a9de68ec1c9b7809129814a3233ae4655" kindref="member">Transform::Transform</ref>(float3<sp/>c,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>random_translate<sp/></highlight><highlight class="comment">/*=<sp/>0.0*/</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>random_rotate<sp/></highlight><highlight class="comment">/*=<sp/>false*/</highlight><highlight class="normal">):<sp/>center(c)<sp/>{</highlight></codeline>
+<codeline lineno="13" refid="classlibmolgrid_1_1Transform_1a0efff6c41e09c88c91cb11d281e1b1ed" refkind="member"><highlight class="normal"><ref refid="classlibmolgrid_1_1Transform_1a9de68ec1c9b7809129814a3233ae4655" kindref="member">Transform::Transform</ref>(<ref refid="structfloat3" kindref="compound">float3</ref><sp/>c,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>random_translate<sp/></highlight><highlight class="comment">/*=<sp/>0.0*/</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>random_rotate<sp/></highlight><highlight class="comment">/*=<sp/>false*/</highlight><highlight class="normal">):<sp/>center(c)<sp/>{</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::uniform_real_distribution&lt;double&gt;<sp/>R(-1.0,1);</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>translate.x<sp/>=<sp/>R(<ref refid="namespacelibmolgrid_1a637541cee6c830dbabb26498f6c91249" kindref="member">random_engine</ref>)*random_translate;</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>translate.y<sp/>=<sp/>R(<ref refid="namespacelibmolgrid_1a637541cee6c830dbabb26498f6c91249" kindref="member">random_engine</ref>)*random_translate;</highlight></codeline>
@@ -228,16 +265,16 @@
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>=<sp/>in(i,1);</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>z<sp/>=<sp/>in(i,2);</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>newpt<sp/>=<sp/>make_float3(0,0,0);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structfloat3" kindref="compound">float3</ref><sp/>newpt<sp/>=<sp/><ref refid="common_8h_1a30e8664f6bf2996bbb07759857d474fd" kindref="member">make_float3</ref>(0,0,0);</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(dotranslate)<sp/>{</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>newpt<sp/>=<sp/>Q.<ref refid="classlibmolgrid_1_1Quaternion_1ad07f19ca8585a6047d7fbb6a215f08aa" kindref="member">transform</ref>(x,y,z,center,<sp/>translate);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>newpt<sp/>=<sp/>Q.transform(x,y,z,center,<sp/>translate);</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>newpt<sp/>=<sp/>Q.<ref refid="classlibmolgrid_1_1Quaternion_1ad07f19ca8585a6047d7fbb6a215f08aa" kindref="member">transform</ref>(x,y,z,center,<sp/>newpt);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>newpt<sp/>=<sp/>Q.transform(x,y,z,center,<sp/>newpt);</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][0]<sp/>=<sp/>newpt.x;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][1]<sp/>=<sp/>newpt.y;</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][2]<sp/>=<sp/>newpt.z;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][0]<sp/>=<sp/>newpt.<ref refid="structfloat3_1ad0da36b2558901e21e7a30f6c227a45e" kindref="member">x</ref>;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][1]<sp/>=<sp/>newpt.<ref refid="structfloat3_1aa4f0d3eebc3c443f9be81bf48561a217" kindref="member">y</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][2]<sp/>=<sp/>newpt.<ref refid="structfloat3_1af73583b1e980b0aa03f9884812e9fd4d" kindref="member">z</ref>;</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="79"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
@@ -249,24 +286,24 @@
 <codeline lineno="86" refid="classlibmolgrid_1_1Transform_1acfada39f4f16531f4289971bd29ce946" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Transform_1acfada39f4f16531f4289971bd29ce946" kindref="member">Transform::backward</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;Dtype, 2, false&gt;</ref>&amp;<sp/>in,<sp/><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid&lt;Dtype, 2, false&gt;</ref>&amp;<sp/>out,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>dotranslate<sp/></highlight><highlight class="comment">/*=true*/</highlight><highlight class="normal">)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/>checkGrids(in,out);</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>in.<ref refid="classlibmolgrid_1_1Grid_1aa9b61e8668a98c2e264339c38e74065b" kindref="member">dimension</ref>(0);</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1Quaternion" kindref="compound">Quaternion</ref><sp/>invQ<sp/>=<sp/>Q.<ref refid="classlibmolgrid_1_1Quaternion_1a40e59f1b2dc5d2131dc5048c2459206f" kindref="member">inverse</ref>();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1Quaternion" kindref="compound">Quaternion</ref><sp/>invQ<sp/>=<sp/>Q.<ref refid="classlibmolgrid_1_1Quaternion_1a7a8db6a1c581a808283af03c68ff598c" kindref="member">inverse</ref>();</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/>float3<sp/>untranslate;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><ref refid="structfloat3" kindref="compound">float3</ref><sp/>untranslate;</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(dotranslate)</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>untranslate<sp/>=<sp/>make_float3(-translate.x<sp/>-<sp/>center.x,<sp/>-translate.y<sp/>-<sp/>center.y,<sp/>-translate.z<sp/>-<sp/>center.z);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>untranslate<sp/>=<sp/><ref refid="common_8h_1a30e8664f6bf2996bbb07759857d474fd" kindref="member">make_float3</ref>(-translate.x<sp/>-<sp/>center.x,<sp/>-translate.y<sp/>-<sp/>center.y,<sp/>-translate.z<sp/>-<sp/>center.z);</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>untranslate<sp/>=<sp/>make_float3(-center.x,<sp/>-center.y,<sp/>-center.z);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>untranslate<sp/>=<sp/><ref refid="common_8h_1a30e8664f6bf2996bbb07759857d474fd" kindref="member">make_float3</ref>(-center.x,<sp/>-center.y,<sp/>-center.z);</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"></highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>N;<sp/>i++)<sp/>{</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>Dtype<sp/>x,y,z;</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>=<sp/>in[i][0]<sp/>+<sp/>untranslate.x;</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>=<sp/>in[i][1]<sp/>+<sp/>untranslate.y;</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>z<sp/>=<sp/>in[i][2]<sp/>+<sp/>untranslate.z;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>=<sp/>in[i][0]<sp/>+<sp/>untranslate.<ref refid="structfloat3_1ad0da36b2558901e21e7a30f6c227a45e" kindref="member">x</ref>;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>=<sp/>in[i][1]<sp/>+<sp/>untranslate.<ref refid="structfloat3_1aa4f0d3eebc3c443f9be81bf48561a217" kindref="member">y</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>z<sp/>=<sp/>in[i][2]<sp/>+<sp/>untranslate.<ref refid="structfloat3_1af73583b1e980b0aa03f9884812e9fd4d" kindref="member">z</ref>;</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>float3<sp/>newpt<sp/>=<sp/>invQ.<ref refid="classlibmolgrid_1_1Quaternion_1aa4e402e2cf35dd2ea523414b42878a18" kindref="member">rotate</ref>(x,y,z);</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][0]<sp/>=<sp/>newpt.x<sp/>+<sp/>center.x;</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][1]<sp/>=<sp/>newpt.y<sp/>+<sp/>center.y;</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][2]<sp/>=<sp/>newpt.z<sp/>+<sp/>center.z;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structfloat3" kindref="compound">float3</ref><sp/>newpt<sp/>=<sp/>invQ.<ref refid="classlibmolgrid_1_1Quaternion_1a58936fe7ed3a24a7eaa6bc38f5c5dd52" kindref="member">rotate</ref>(x,y,z);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][0]<sp/>=<sp/>newpt.<ref refid="structfloat3_1ad0da36b2558901e21e7a30f6c227a45e" kindref="member">x</ref><sp/>+<sp/>center.x;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][1]<sp/>=<sp/>newpt.<ref refid="structfloat3_1aa4f0d3eebc3c443f9be81bf48561a217" kindref="member">y</ref><sp/>+<sp/>center.y;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>out[i][2]<sp/>=<sp/>newpt.<ref refid="structfloat3_1af73583b1e980b0aa03f9884812e9fd4d" kindref="member">z</ref><sp/>+<sp/>center.z;</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="108"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"></highlight></codeline>
@@ -276,6 +313,6 @@
 <codeline lineno="113"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/dkoes/git/libmolgrid/src/transform.cpp"/>
+    <location file="/Users/florian/Documents/Science-IA/libmolgrid/src/transform.cpp"/>
   </compounddef>
 </doxygen>

@@ -1,55 +1,59 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="classlibmolgrid_1_1ExampleDataset" kind="class" language="C++" prot="public">
     <compoundname>libmolgrid::ExampleDataset</compoundname>
     <includes refid="example__dataset_8h" local="no">example_dataset.h</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classlibmolgrid_1_1ExampleDataset_1ac052d871fcac9e679855543cc0fd72fd" prot="private" static="no" mutable="no">
         <type><ref refid="classlibmolgrid_1_1UniformExampleRefProvider" kindref="compound">UniformExampleRefProvider</ref></type>
         <definition>UniformExampleRefProvider provider</definition>
         <argsstring></argsstring>
         <name>provider</name>
+        <qualifiedname>libmolgrid::ExampleDataset::provider</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" line="27" column="31" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="27" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" line="27" column="31" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1ExampleDataset_1a2fb8829b2e7a2a7ddd15f77963afe1af" prot="private" static="no" mutable="yes">
         <type><ref refid="classlibmolgrid_1_1ExampleExtractor" kindref="compound">ExampleExtractor</ref></type>
         <definition>ExampleExtractor extractor</definition>
         <argsstring></argsstring>
         <name>extractor</name>
+        <qualifiedname>libmolgrid::ExampleDataset::extractor</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" line="28" column="30" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="28" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" line="28" column="30" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1ExampleDataset_1a3720a86fa37818f1974f5b1854beef4f" prot="private" static="no" mutable="no">
         <type><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref></type>
         <definition>ExampleProviderSettings init_settings</definition>
         <argsstring></argsstring>
         <name>init_settings</name>
+        <qualifiedname>libmolgrid::ExampleDataset::init_settings</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" line="29" column="29" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="29" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" line="29" column="29" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="29" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleDataset_1afa04504316547cab15d591ef77d05311" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ExampleDataset</definition>
         <argsstring>(const ExampleProviderSettings &amp;settings=ExampleProviderSettings())</argsstring>
         <name>ExampleDataset</name>
+        <qualifiedname>libmolgrid::ExampleDataset::ExampleDataset</qualifiedname>
         <param>
           <type>const <ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref> &amp;</type>
           <declname>settings</declname>
@@ -62,13 +66,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" line="35" column="5" bodyfile="/home/dkoes/git/libmolgrid/src/example_dataset.cpp" bodystart="15" bodyend="22"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" line="35" column="5" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example_dataset.cpp" bodystart="15" bodyend="22"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleDataset_1a665d391f6484d8613be1f50fc1a82b0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ExampleDataset</definition>
         <argsstring>(const ExampleProviderSettings &amp;settings, std::shared_ptr&lt; AtomTyper &gt; t)</argsstring>
         <name>ExampleDataset</name>
+        <qualifiedname>libmolgrid::ExampleDataset::ExampleDataset</qualifiedname>
         <param>
           <type>const <ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref> &amp;</type>
           <declname>settings</declname>
@@ -85,13 +90,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" line="38" column="5" bodyfile="/home/dkoes/git/libmolgrid/src/example_dataset.cpp" bodystart="25" bodyend="29"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" line="38" column="5" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example_dataset.cpp" bodystart="25" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleDataset_1ae54328bb30fea9334dcd6630f5197184" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ExampleDataset</definition>
         <argsstring>(const ExampleProviderSettings &amp;settings, std::shared_ptr&lt; AtomTyper &gt; t1, std::shared_ptr&lt; AtomTyper &gt; t2)</argsstring>
         <name>ExampleDataset</name>
+        <qualifiedname>libmolgrid::ExampleDataset::ExampleDataset</qualifiedname>
         <param>
           <type>const <ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref> &amp;</type>
           <declname>settings</declname>
@@ -111,13 +117,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" line="41" column="5" bodyfile="/home/dkoes/git/libmolgrid/src/example_dataset.cpp" bodystart="31" bodyend="35"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" line="41" column="5" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example_dataset.cpp" bodystart="31" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleDataset_1adce540f282d1ca6938ffe7c70c53ff4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ExampleDataset</definition>
         <argsstring>(const ExampleProviderSettings &amp;settings, const std::vector&lt; std::shared_ptr&lt; AtomTyper &gt; &gt; &amp;typrs, const std::vector&lt; std::string &gt; &amp;molcaches=std::vector&lt; std::string &gt;())</argsstring>
         <name>ExampleDataset</name>
+        <qualifiedname>libmolgrid::ExampleDataset::ExampleDataset</qualifiedname>
         <param>
           <type>const <ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref> &amp;</type>
           <declname>settings</declname>
@@ -138,26 +145,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" line="44" column="5" bodyfile="/home/dkoes/git/libmolgrid/src/example_dataset.cpp" bodystart="37" bodyend="42"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" line="44" column="5" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example_dataset.cpp" bodystart="37" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleDataset_1ad38c22bd6d165cf0d195069279a30da9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~ExampleDataset</definition>
         <argsstring>()</argsstring>
         <name>~ExampleDataset</name>
+        <qualifiedname>libmolgrid::ExampleDataset::~ExampleDataset</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" line="47" column="13" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="47" bodyend="47"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" line="47" column="13" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleDataset_1af034c26f3c6c9d88821e1db792e4e874" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void populate</definition>
         <argsstring>(const std::string &amp;fname, int num_labels=-1)</argsstring>
         <name>populate</name>
+        <qualifiedname>libmolgrid::ExampleDataset::populate</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>fname</declname>
@@ -174,13 +183,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" line="50" column="18" bodyfile="/home/dkoes/git/libmolgrid/src/example_dataset.cpp" bodystart="45" bodyend="50"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" line="50" column="18" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example_dataset.cpp" bodystart="45" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleDataset_1af9aa38f73a7aa43fa0ba78d05d9c20fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void populate</definition>
         <argsstring>(const std::vector&lt; std::string &gt; &amp;fnames, int num_labels=-1)</argsstring>
         <name>populate</name>
+        <qualifiedname>libmolgrid::ExampleDataset::populate</qualifiedname>
         <param>
           <type>const std::vector&lt; std::string &gt; &amp;</type>
           <declname>fnames</declname>
@@ -197,13 +207,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" line="52" column="18" bodyfile="/home/dkoes/git/libmolgrid/src/example_dataset.cpp" bodystart="53" bodyend="60"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" line="52" column="18" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example_dataset.cpp" bodystart="53" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleDataset_1a3cfefbb6aa29709d7db0bdaebb8c7338" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structlibmolgrid_1_1Example" kindref="compound">Example</ref></type>
         <definition>Example operator[]</definition>
         <argsstring>(size_t idx) const</argsstring>
         <name>operator[]</name>
+        <qualifiedname>libmolgrid::ExampleDataset::operator[]</qualifiedname>
         <param>
           <type>size_t</type>
           <declname>idx</declname>
@@ -215,13 +226,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" line="55" column="13" bodyfile="/home/dkoes/git/libmolgrid/src/example_dataset.cpp" bodystart="62" bodyend="68"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" line="55" column="13" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/src/example_dataset.cpp" bodystart="62" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleDataset_1ad61784c785dd62f4d4e1d1fec3cf2f6e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>size_t</type>
         <definition>virtual size_t num_labels</definition>
         <argsstring>() const</argsstring>
         <name>num_labels</name>
+        <qualifiedname>libmolgrid::ExampleDataset::num_labels</qualifiedname>
         <briefdescription>
 <para>return number of labels for each example (computed from first example only) </para>
         </briefdescription>
@@ -229,14 +241,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" line="58" column="20" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="58" bodyend="58"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" line="58" column="20" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="58" bodyend="58"/>
         <referencedby refid="classlibmolgrid_1_1ExampleDataset_1af034c26f3c6c9d88821e1db792e4e874" compoundref="example__dataset_8cpp" startline="45" endline="50">ExampleDataset::populate</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ExampleDataset_1af9aa38f73a7aa43fa0ba78d05d9c20fe" compoundref="example__dataset_8cpp" startline="53" endline="60">ExampleDataset::populate</referencedby>
       </memberdef>
-      <memberdef kind="function" id="classlibmolgrid_1_1ExampleDataset_1a82e186f5abfa7cb53a59487bda88a785" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classlibmolgrid_1_1ExampleDataset_1a5b38285db666f935f2e01dbc05c628ae" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref> &amp;</type>
-        <definition>const ExampleProviderSettings&amp; settings</definition>
+        <definition>const ExampleProviderSettings &amp; settings</definition>
         <argsstring>() const</argsstring>
         <name>settings</name>
+        <qualifiedname>libmolgrid::ExampleDataset::settings</qualifiedname>
         <briefdescription>
 <para>return settings created with </para>
         </briefdescription>
@@ -244,13 +258,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" line="61" column="35" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="61" bodyend="61"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" line="61" column="35" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="61" bodyend="61"/>
+        <referencedby refid="classlibmolgrid_1_1ExampleDataset_1adce540f282d1ca6938ffe7c70c53ff4f" compoundref="example__dataset_8cpp" startline="37" endline="42">ExampleDataset::ExampleDataset</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ExampleDataset_1a665d391f6484d8613be1f50fc1a82b0d" compoundref="example__dataset_8cpp" startline="25" endline="29">ExampleDataset::ExampleDataset</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ExampleDataset_1ae54328bb30fea9334dcd6630f5197184" compoundref="example__dataset_8cpp" startline="31" endline="35">ExampleDataset::ExampleDataset</referencedby>
+        <referencedby refid="classlibmolgrid_1_1ExampleDataset_1afa04504316547cab15d591ef77d05311" compoundref="example__dataset_8cpp" startline="15" endline="22">ExampleDataset::ExampleDataset</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleDataset_1a59b7170f88e4d8d17e9f4eb5e3d62712" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
         <definition>size_t num_types</definition>
         <argsstring>() const</argsstring>
         <name>num_types</name>
+        <qualifiedname>libmolgrid::ExampleDataset::num_types</qualifiedname>
         <briefdescription>
 <para>number of types </para>
         </briefdescription>
@@ -258,13 +277,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" line="64" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="64" bodyend="64"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" line="64" column="12" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="64" bodyend="64"/>
       </memberdef>
-      <memberdef kind="function" id="classlibmolgrid_1_1ExampleDataset_1a2babcd45f89ff67b4b4887f7ba469ae6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classlibmolgrid_1_1ExampleDataset_1ab179299d9dc6bb3a4bfe868fd60882a6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt;std::string&gt; get_type_names</definition>
+        <definition>std::vector&lt; std::string &gt; get_type_names</definition>
         <argsstring>() const</argsstring>
         <name>get_type_names</name>
+        <qualifiedname>libmolgrid::ExampleDataset::get_type_names</qualifiedname>
         <briefdescription>
 <para>names of types (requires explicit typing) </para>
         </briefdescription>
@@ -272,13 +292,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" line="66" column="17" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="66" bodyend="66"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" line="66" column="17" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1ExampleDataset_1a259cb5a711406a8c3e5d937eb9350cca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
         <definition>size_t size</definition>
         <argsstring>() const</argsstring>
         <name>size</name>
+        <qualifiedname>libmolgrid::ExampleDataset::size</qualifiedname>
         <briefdescription>
 <para>return number of examples </para>
         </briefdescription>
@@ -286,22 +307,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" line="68" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="68" bodyend="68"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" line="68" column="12" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="68" bodyend="68"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Given a file of examples, provide a &quot;mappable&quot; interface. Although this is configured with <ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref>, settings that configure iteration over the dataset are ignored. It is up to the user to access the data as they see fit. Note that cache_structs is true by default which will load the entirety of the dataset into memory. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" line="26" column="21" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="26" bodyend="69"/>
+    <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" line="26" column="1" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/example_dataset.h" bodystart="26" bodyend="69"/>
     <listofallmembers>
       <member refid="classlibmolgrid_1_1ExampleDataset_1afa04504316547cab15d591ef77d05311" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleDataset</scope><name>ExampleDataset</name></member>
       <member refid="classlibmolgrid_1_1ExampleDataset_1a665d391f6484d8613be1f50fc1a82b0d" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleDataset</scope><name>ExampleDataset</name></member>
       <member refid="classlibmolgrid_1_1ExampleDataset_1ae54328bb30fea9334dcd6630f5197184" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleDataset</scope><name>ExampleDataset</name></member>
       <member refid="classlibmolgrid_1_1ExampleDataset_1adce540f282d1ca6938ffe7c70c53ff4f" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleDataset</scope><name>ExampleDataset</name></member>
       <member refid="classlibmolgrid_1_1ExampleDataset_1a2fb8829b2e7a2a7ddd15f77963afe1af" prot="private" virt="non-virtual"><scope>libmolgrid::ExampleDataset</scope><name>extractor</name></member>
-      <member refid="classlibmolgrid_1_1ExampleDataset_1a2babcd45f89ff67b4b4887f7ba469ae6" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleDataset</scope><name>get_type_names</name></member>
+      <member refid="classlibmolgrid_1_1ExampleDataset_1ab179299d9dc6bb3a4bfe868fd60882a6" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleDataset</scope><name>get_type_names</name></member>
       <member refid="classlibmolgrid_1_1ExampleDataset_1a3720a86fa37818f1974f5b1854beef4f" prot="private" virt="non-virtual"><scope>libmolgrid::ExampleDataset</scope><name>init_settings</name></member>
       <member refid="classlibmolgrid_1_1ExampleDataset_1ad61784c785dd62f4d4e1d1fec3cf2f6e" prot="public" virt="virtual"><scope>libmolgrid::ExampleDataset</scope><name>num_labels</name></member>
       <member refid="classlibmolgrid_1_1ExampleDataset_1a59b7170f88e4d8d17e9f4eb5e3d62712" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleDataset</scope><name>num_types</name></member>
@@ -309,7 +330,7 @@
       <member refid="classlibmolgrid_1_1ExampleDataset_1af034c26f3c6c9d88821e1db792e4e874" prot="public" virt="virtual"><scope>libmolgrid::ExampleDataset</scope><name>populate</name></member>
       <member refid="classlibmolgrid_1_1ExampleDataset_1af9aa38f73a7aa43fa0ba78d05d9c20fe" prot="public" virt="virtual"><scope>libmolgrid::ExampleDataset</scope><name>populate</name></member>
       <member refid="classlibmolgrid_1_1ExampleDataset_1ac052d871fcac9e679855543cc0fd72fd" prot="private" virt="non-virtual"><scope>libmolgrid::ExampleDataset</scope><name>provider</name></member>
-      <member refid="classlibmolgrid_1_1ExampleDataset_1a82e186f5abfa7cb53a59487bda88a785" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleDataset</scope><name>settings</name></member>
+      <member refid="classlibmolgrid_1_1ExampleDataset_1a5b38285db666f935f2e01dbc05c628ae" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleDataset</scope><name>settings</name></member>
       <member refid="classlibmolgrid_1_1ExampleDataset_1a259cb5a711406a8c3e5d937eb9350cca" prot="public" virt="non-virtual"><scope>libmolgrid::ExampleDataset</scope><name>size</name></member>
       <member refid="classlibmolgrid_1_1ExampleDataset_1ad38c22bd6d165cf0d195069279a30da9" prot="public" virt="virtual"><scope>libmolgrid::ExampleDataset</scope><name>~ExampleDataset</name></member>
     </listofallmembers>

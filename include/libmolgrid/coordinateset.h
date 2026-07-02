@@ -44,15 +44,15 @@ struct CoordinateSet {
   CoordinateSet(OpenBabel::OBMol *mol); //use defaultGninaLigandTypes
 
   ///initialize with indexed types
-  CoordinateSet(const std::vector<float3>& c, const std::vector<int>& t, const std::vector<float>& r, unsigned maxt);
-  CoordinateSet(const std::vector<float3>& c, const std::vector<float>& t, const std::vector<float>& r, unsigned maxt);
+  CoordinateSet(const std::vector<Vec3>& c, const std::vector<int>& t, const std::vector<float>& r, unsigned maxt);
+  CoordinateSet(const std::vector<Vec3>& c, const std::vector<float>& t, const std::vector<float>& r, unsigned maxt);
 
   ///initialize with indexed types using grids - data is copied into coordinate set
   CoordinateSet(const Grid2f& coords, const Grid1f& t, const Grid1f& radii, unsigned maxt);
   CoordinateSet(const Grid2fCUDA& coords, const Grid1fCUDA& t, const Grid1fCUDA& radii, unsigned maxt);
 
   ///initialize with vector types
-  CoordinateSet(const std::vector<float3>& c, const std::vector<std::vector<float> >& t, const std::vector<float>& r);
+  CoordinateSet(const std::vector<Vec3>& c, const std::vector<std::vector<float> >& t, const std::vector<float>& r);
 
   ///initialize with vector types using grids - data is copied into coordinate set
   CoordinateSet(const Grid2f& cr, const Grid2f& t, const Grid1f& r);
@@ -107,7 +107,7 @@ struct CoordinateSet {
   unsigned size() const { return coords.dimension(0); }
 
   ///return mean of coordinates
-  float3 center() const;
+  Vec3 center() const;
 
   void togpu(bool copy=true) { coords.togpu(copy); type_index.togpu(copy); type_vector.togpu(copy); radii.togpu(copy);}
   void tocpu(bool copy=true) { coords.tocpu(copy); type_index.tocpu(copy); type_vector.tocpu(copy); radii.tocpu(copy);}

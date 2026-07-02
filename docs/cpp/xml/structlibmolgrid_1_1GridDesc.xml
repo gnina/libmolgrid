@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structlibmolgrid_1_1GridDesc" kind="struct" language="C++" prot="public">
+    <compoundname>libmolgrid::GridDesc</compoundname>
+    <includes refid="metal__context_8h" local="no">metal_context.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structlibmolgrid_1_1GridDesc_1a7feefe7e22efd624e1da84c82e6f87a5" prot="public" static="no" mutable="no">
+        <type>unsigned long long</type>
+        <definition>unsigned long long ptr</definition>
+        <argsstring></argsstring>
+        <name>ptr</name>
+        <qualifiedname>libmolgrid::GridDesc::ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/metal_context.h" line="43" column="24" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/metal_context.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1GridDesc_1a3363690fae3830a143379aa6c835a20c" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned dim[5]</definition>
+        <argsstring>[5]</argsstring>
+        <name>dim</name>
+        <qualifiedname>libmolgrid::GridDesc::dim</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/metal_context.h" line="44" column="14" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/metal_context.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1GridDesc_1a0e30e5b31f45abcf7be8a77dd750795c" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned off[5]</definition>
+        <argsstring>[5]</argsstring>
+        <name>off</name>
+        <qualifiedname>libmolgrid::GridDesc::off</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/metal_context.h" line="45" column="14" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/metal_context.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlibmolgrid_1_1GridDesc_1a5d8c6aebb8eed92404c66479c85740b6" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned ndim</definition>
+        <argsstring></argsstring>
+        <name>ndim</name>
+        <qualifiedname>libmolgrid::GridDesc::ndim</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/metal_context.h" line="46" column="14" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/metal_context.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/metal_context.h" line="42" column="1" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/metal_context.h" bodystart="42" bodyend="47"/>
+    <listofallmembers>
+      <member refid="structlibmolgrid_1_1GridDesc_1a3363690fae3830a143379aa6c835a20c" prot="public" virt="non-virtual"><scope>libmolgrid::GridDesc</scope><name>dim</name></member>
+      <member refid="structlibmolgrid_1_1GridDesc_1a5d8c6aebb8eed92404c66479c85740b6" prot="public" virt="non-virtual"><scope>libmolgrid::GridDesc</scope><name>ndim</name></member>
+      <member refid="structlibmolgrid_1_1GridDesc_1a0e30e5b31f45abcf7be8a77dd750795c" prot="public" virt="non-virtual"><scope>libmolgrid::GridDesc</scope><name>off</name></member>
+      <member refid="structlibmolgrid_1_1GridDesc_1a7feefe7e22efd624e1da84c82e6f87a5" prot="public" virt="non-virtual"><scope>libmolgrid::GridDesc</scope><name>ptr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

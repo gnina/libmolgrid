@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="exampleref__providers_8h" kind="file" language="C++">
     <compoundname>exampleref_providers.h</compoundname>
     <includes local="no">iostream</includes>
@@ -15,48 +15,47 @@
     <includedby refid="example__provider_8h" local="yes">example_provider.h</includedby>
     <includedby refid="exampleref__providers_8cpp" local="yes">exampleref_providers.cpp</includedby>
     <incdepgraph>
-      <node id="11">
-        <label>libmolgrid/example.h</label>
-        <link refid="example_8h"/>
-        <childnode refid="3" relation="include">
+      <node id="10">
+        <label>libmolgrid/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-      </node>
-      <node id="7">
-        <label>boost/lexical_cast.hpp</label>
-      </node>
-      <node id="10">
-        <label>cuda_runtime.h</label>
-      </node>
-      <node id="21">
-        <label>cassert</label>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
       </node>
       <node id="18">
-        <label>libmolgrid/grid.h</label>
-        <link refid="grid_8h"/>
+        <label>libmolgrid/coordinateset.h</label>
+        <link refid="coordinateset_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
-      <node id="14">
-        <label>openbabel/mol.h</label>
-      </node>
-      <node id="12">
-        <label>unordered_set</label>
+      <node id="16">
+        <label>libmolgrid/example.h</label>
+        <link refid="example_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>exampleref_providers.h</label>
@@ -75,62 +74,30 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>random</label>
-      </node>
-      <node id="3">
-        <label>vector</label>
-      </node>
-      <node id="17">
-        <label>utility</label>
-      </node>
-      <node id="22">
-        <label>libmolgrid/common.h</label>
-        <link refid="common_8h"/>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+      </node>
+      <node id="26">
+        <label>libmolgrid/grid.h</label>
+        <link refid="grid_8h"/>
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>iostream</label>
-      </node>
-      <node id="6">
-        <label>unordered_map</label>
-      </node>
-      <node id="25">
-        <label>cuda.h</label>
-      </node>
-      <node id="24">
-        <label>cuda_runtime_api.h</label>
-      </node>
-      <node id="20">
-        <label>boost/preprocessor/repetition.hpp</label>
-      </node>
-      <node id="15">
-        <label>libmolgrid/managed_grid.h</label>
-        <link refid="managed__grid_8h"/>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-      </node>
-      <node id="5">
-        <label>type_traits</label>
-      </node>
-      <node id="19">
-        <label>boost/multi_array.hpp</label>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
       </node>
       <node id="8">
         <label>libmolgrid/libmolgrid.h</label>
@@ -144,27 +111,106 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
+      <node id="21">
+        <label>libmolgrid/managed_grid.h</label>
+        <link refid="managed__grid_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>libmolgrid/string_cache.h</label>
+        <link refid="string__cache_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
       <node id="4">
         <label>algorithm</label>
       </node>
-      <node id="23">
+      <node id="7">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="27">
+        <label>boost/multi_array.hpp</label>
+      </node>
+      <node id="28">
+        <label>boost/preprocessor/repetition.hpp</label>
+      </node>
+      <node id="20">
+        <label>boost/serialization/access.hpp</label>
+      </node>
+      <node id="25">
+        <label>boost/serialization/array.hpp</label>
+      </node>
+      <node id="24">
+        <label>boost/serialization/split_member.hpp</label>
+      </node>
+      <node id="29">
+        <label>cassert</label>
+      </node>
+      <node id="22">
+        <label>cstdlib</label>
+      </node>
+      <node id="12">
         <label>cstring</label>
       </node>
-      <node id="13">
-        <label>libmolgrid/coordinateset.h</label>
-        <link refid="coordinateset_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
+      <node id="2">
+        <label>iostream</label>
       </node>
-      <node id="16">
+      <node id="15">
+        <label>libmolgrid/config.h</label>
+      </node>
+      <node id="11">
         <label>memory</label>
+      </node>
+      <node id="19">
+        <label>openbabel/mol.h</label>
+      </node>
+      <node id="9">
+        <label>random</label>
+      </node>
+      <node id="13">
+        <label>stdexcept</label>
+      </node>
+      <node id="14">
+        <label>string</label>
+      </node>
+      <node id="5">
+        <label>type_traits</label>
+      </node>
+      <node id="6">
+        <label>unordered_map</label>
+      </node>
+      <node id="17">
+        <label>unordered_set</label>
+      </node>
+      <node id="23">
+        <label>utility</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="2">
+        <label>example_dataset.h</label>
+        <link refid="example__dataset_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
       <node id="4">
         <label>example_extractor.h</label>
         <link refid="example__extractor_8h"/>
@@ -172,12 +218,14 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="7">
-        <label>example_extractor.cpp</label>
-        <link refid="example__extractor_8cpp"/>
+      <node id="6">
+        <label>example_provider.h</label>
+        <link refid="example__provider_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>exampleref_providers.h</label>
@@ -186,34 +234,26 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="2">
-        <label>example_dataset.h</label>
-        <link refid="example__dataset_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
+      <node id="3">
+        <label>example_dataset.cpp</label>
+        <link refid="example__dataset_8cpp"/>
       </node>
       <node id="5">
-        <label>example_provider.h</label>
-        <link refid="example__provider_8h"/>
-        <childnode refid="6" relation="include">
-        </childnode>
+        <label>example_extractor.cpp</label>
+        <link refid="example__extractor_8cpp"/>
+      </node>
+      <node id="7">
+        <label>example_provider.cpp</label>
+        <link refid="example__provider_8cpp"/>
       </node>
       <node id="8">
         <label>exampleref_providers.cpp</label>
         <link refid="exampleref__providers_8cpp"/>
-      </node>
-      <node id="6">
-        <label>example_provider.cpp</label>
-        <link refid="example__provider_8cpp"/>
-      </node>
-      <node id="3">
-        <label>example_dataset.cpp</label>
-        <link refid="example__dataset_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classlibmolgrid_1_1ExampleRefProvider" prot="public">libmolgrid::ExampleRefProvider</innerclass>
@@ -229,8 +269,9 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"></codeline>
-<codeline lineno="8"><highlight class="preprocessor">#ifndef<sp/>EXAMPLE_PROVIDERS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>EXAMPLE_PROVIDERS_H_</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXAMPLE_PROVIDERS_H_</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -244,37 +285,37 @@
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelibmolgrid" kindref="compound">libmolgrid</ref><sp/>{</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23" refid="classlibmolgrid_1_1ExampleRefProvider" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1ExampleRefProvider" kindref="compound">ExampleRefProvider</ref><sp/>{</highlight></codeline>
+<codeline lineno="23" refid="classlibmolgrid_1_1ExampleRefProvider" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" kindref="member">ExampleRefProvider</ref><sp/>{</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="25" refid="classlibmolgrid_1_1ExampleRefProvider_1adc9bb9be55d353ea973698ff2e50e213" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1adc9bb9be55d353ea973698ff2e50e213" kindref="member">cnt</ref><sp/>=<sp/>1;<sp/></highlight><highlight class="comment">//<sp/>for<sp/>epoch<sp/>calculations,<sp/>want<sp/>epoch<sp/>of<sp/>_next_<sp/>example</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="28" refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" kindref="member">ExampleRefProvider</ref>()<sp/>{}</highlight></codeline>
 <codeline lineno="29" refid="classlibmolgrid_1_1ExampleRefProvider_1ae32c6ad6aeaeba0d2d2ab74a48a553b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1ae32c6ad6aeaeba0d2d2ab74a48a553b5" kindref="member">ExampleRefProvider</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref>&amp;<sp/>settings)<sp/>{}</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a134b2325787965e2ef6260960f06adfc" kindref="member">addref</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref>&amp;<sp/>ex)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a39fe489f6eb526d59b6b804a8343fe8c" kindref="member">setup</ref>()<sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//essentially<sp/>shuffle<sp/>if<sp/>necessary</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a7a953020850169224c78ac9bfda9e423" kindref="member">nextref</ref>(<ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref>&amp;<sp/>ex)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a962e2830e9c2869a2ee70cd5331f815f" kindref="member">size</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="30" refid="classlibmolgrid_1_1ExampleRefProvider_1a134b2325787965e2ef6260960f06adfc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a134b2325787965e2ef6260960f06adfc" kindref="member">addref</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref>&amp;<sp/>ex)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="31" refid="classlibmolgrid_1_1ExampleRefProvider_1a39fe489f6eb526d59b6b804a8343fe8c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a39fe489f6eb526d59b6b804a8343fe8c" kindref="member">setup</ref>()<sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//essentially<sp/>shuffle<sp/>if<sp/>necessary</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classlibmolgrid_1_1ExampleRefProvider_1a7a953020850169224c78ac9bfda9e423" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a7a953020850169224c78ac9bfda9e423" kindref="member">nextref</ref>(<ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref>&amp;<sp/>ex)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="33" refid="classlibmolgrid_1_1ExampleRefProvider_1a962e2830e9c2869a2ee70cd5331f815f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a962e2830e9c2869a2ee70cd5331f815f" kindref="member">size</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="34" refid="classlibmolgrid_1_1ExampleRefProvider_1a6dab7933abd006833437122f78468007" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a6dab7933abd006833437122f78468007" kindref="member">~ExampleRefProvider</ref>()<sp/>{}</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36" refid="classlibmolgrid_1_1ExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1aee411e008a9cb6d21a7f465c608b7028" kindref="member">has_group</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/>}<sp/></highlight></codeline>
 <codeline lineno="37" refid="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" kindref="member">check_batch_size</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>bsize)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{}<sp/></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a4af792d6af8f9f676a2dc30f2262158b" kindref="member">num_labels</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;<sp/><sp/></highlight></codeline>
+<codeline lineno="39" refid="classlibmolgrid_1_1ExampleRefProvider_1a4af792d6af8f9f676a2dc30f2262158b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a4af792d6af8f9f676a2dc30f2262158b" kindref="member">num_labels</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;<sp/><sp/></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a9c9f40c52d51bd365750f062aff89a95" kindref="member">populate</ref>(std::istream&amp;<sp/>lines,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>numlabels);</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="44" refid="classlibmolgrid_1_1ExampleRefProvider_1a5edd8a3461f4aa311675b712ae2e1d20" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a5edd8a3461f4aa311675b712ae2e1d20" kindref="member">get_small_epoch_num</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1adc9bb9be55d353ea973698ff2e50e213" kindref="member">cnt</ref>/<ref refid="classlibmolgrid_1_1ExampleRefProvider_1ac7d5c78d78fc4ae893f25e5dfdf261cc" kindref="member">small_epoch_size</ref>();<sp/>}</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
 <codeline lineno="47" refid="classlibmolgrid_1_1ExampleRefProvider_1ac881e6a758225142e37f3811184b156c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1ac881e6a758225142e37f3811184b156c" kindref="member">get_large_epoch_num</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1adc9bb9be55d353ea973698ff2e50e213" kindref="member">cnt</ref>/<ref refid="classlibmolgrid_1_1ExampleRefProvider_1a8a7602870f7be094fa3955de5fba5aca" kindref="member">large_epoch_size</ref>();<sp/>}</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1ac7d5c78d78fc4ae893f25e5dfdf261cc" kindref="member">small_epoch_size</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="50" refid="classlibmolgrid_1_1ExampleRefProvider_1ac7d5c78d78fc4ae893f25e5dfdf261cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1ac7d5c78d78fc4ae893f25e5dfdf261cc" kindref="member">small_epoch_size</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a8a7602870f7be094fa3955de5fba5aca" kindref="member">large_epoch_size</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="53" refid="classlibmolgrid_1_1ExampleRefProvider_1a8a7602870f7be094fa3955de5fba5aca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a8a7602870f7be094fa3955de5fba5aca" kindref="member">large_epoch_size</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a20dcbdfbd0ec77afc802522bb7e379c1" kindref="member">reset</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="56" refid="classlibmolgrid_1_1ExampleRefProvider_1a20dcbdfbd0ec77afc802522bb7e379c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a20dcbdfbd0ec77afc802522bb7e379c1" kindref="member">reset</ref>()<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="57"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="61" refid="classlibmolgrid_1_1UniformExampleRefProvider" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1UniformExampleRefProvider" kindref="compound">UniformExampleRefProvider</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider" kindref="compound">ExampleRefProvider</ref></highlight></codeline>
+<codeline lineno="61" refid="classlibmolgrid_1_1UniformExampleRefProvider" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1a659da4b8d412bb412c8cf3a17bf1a8a6" kindref="member">UniformExampleRefProvider</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" kindref="member">ExampleRefProvider</ref></highlight></codeline>
 <codeline lineno="62"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/>std::vector&lt;ExampleRef&gt;<sp/>all;</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>current<sp/>=<sp/>0;</highlight></codeline>
@@ -287,7 +328,7 @@
 <codeline lineno="71"><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="73" refid="classlibmolgrid_1_1UniformExampleRefProvider_1a659da4b8d412bb412c8cf3a17bf1a8a6" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1a659da4b8d412bb412c8cf3a17bf1a8a6" kindref="member">UniformExampleRefProvider</ref>()<sp/>{}</highlight></codeline>
-<codeline lineno="74" refid="classlibmolgrid_1_1UniformExampleRefProvider_1a9005e0db83b8ea9c7fd04206bb3a7f9a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1a9005e0db83b8ea9c7fd04206bb3a7f9a" kindref="member">UniformExampleRefProvider</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref>&amp;<sp/>settings):<sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider" kindref="compound">ExampleRefProvider</ref>(settings),</highlight></codeline>
+<codeline lineno="74" refid="classlibmolgrid_1_1UniformExampleRefProvider_1a9005e0db83b8ea9c7fd04206bb3a7f9a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1a9005e0db83b8ea9c7fd04206bb3a7f9a" kindref="member">UniformExampleRefProvider</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref>&amp;<sp/>settings):<sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" kindref="member">ExampleRefProvider</ref>(settings),</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>current(0),<sp/>current_copy(0),<sp/>randomize(settings.shuffle),<sp/>ncopies(settings.num_copies)<sp/>{</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
@@ -309,7 +350,7 @@
 <codeline lineno="94"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
 <codeline lineno="96"><highlight class="normal"></highlight></codeline>
-<codeline lineno="98" refid="classlibmolgrid_1_1BalancedExampleRefProvider" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider" kindref="compound">BalancedExampleRefProvider</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider" kindref="compound">ExampleRefProvider</ref></highlight></codeline>
+<codeline lineno="98" refid="classlibmolgrid_1_1BalancedExampleRefProvider" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a3404d7dfaebdfca4e2762c78acd81ecb" kindref="member">BalancedExampleRefProvider</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" kindref="member">ExampleRefProvider</ref></highlight></codeline>
 <codeline lineno="99"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1UniformExampleRefProvider" kindref="compound">UniformExampleRefProvider</ref><sp/>actives;</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1UniformExampleRefProvider" kindref="compound">UniformExampleRefProvider</ref><sp/>decoys;</highlight></codeline>
@@ -319,31 +360,31 @@
 <codeline lineno="105"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="106" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a3404d7dfaebdfca4e2762c78acd81ecb" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a3404d7dfaebdfca4e2762c78acd81ecb" kindref="member">BalancedExampleRefProvider</ref>()<sp/>{}</highlight></codeline>
 <codeline lineno="107" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1abf08cb5085ecca8f2f7d6bca860e8d08" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1abf08cb5085ecca8f2f7d6bca860e8d08" kindref="member">BalancedExampleRefProvider</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref>&amp;<sp/>settings):</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider" kindref="compound">ExampleRefProvider</ref>(settings),<sp/>actives(settings),<sp/>decoys(settings),</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" kindref="member">ExampleRefProvider</ref>(settings),<sp/>actives(settings),<sp/>decoys(settings),</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>current(0),<sp/>labelpos(settings.labelpos)<sp/>{</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"></highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" kindref="member">addref</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref>&amp;<sp/>ex);</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" kindref="member">num_labels</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>actives.<ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" kindref="member">num_labels</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="115" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ad61784c785dd62f4d4e1d1fec3cf2f6e" kindref="member">num_labels</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>actives.num_labels();<sp/>}</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" kindref="member">setup</ref>();</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ae630292b50e44deb19e001f322914934" kindref="member">nextref</ref>(<ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref>&amp;<sp/>ex);</highlight></codeline>
-<codeline lineno="118" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>actives.<ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>()+decoys.<ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>();<sp/>}</highlight></codeline>
-<codeline lineno="119" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a3ed1c22bbf408a692ff4c997769639f6" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a3ed1c22bbf408a692ff4c997769639f6" kindref="member">num_actives</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>actives.<ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>();<sp/>}</highlight></codeline>
-<codeline lineno="120" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a12e19cfe7fd4a4d5b9d5d7d01840cfd7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a12e19cfe7fd4a4d5b9d5d7d01840cfd7" kindref="member">num_decoys</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>decoys.<ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="118" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>actives.size()+decoys.size();<sp/>}</highlight></codeline>
+<codeline lineno="119" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a3ed1c22bbf408a692ff4c997769639f6" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a3ed1c22bbf408a692ff4c997769639f6" kindref="member">num_actives</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>actives.size();<sp/>}</highlight></codeline>
+<codeline lineno="120" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a12e19cfe7fd4a4d5b9d5d7d01840cfd7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a12e19cfe7fd4a4d5b9d5d7d01840cfd7" kindref="member">num_decoys</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>decoys.size();<sp/>}</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1aba8517b4134d5ddaa29f9b5b3c7654f3" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1aba8517b4134d5ddaa29f9b5b3c7654f3" kindref="member">next_active</ref>(<ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref>&amp;<sp/>ex)<sp/>{<sp/><sp/>actives.<ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1ae630292b50e44deb19e001f322914934" kindref="member">nextref</ref>(ex);<sp/>}</highlight></codeline>
-<codeline lineno="123" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1aaec2eeecfd8138a25cc093a24afb75f4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1aaec2eeecfd8138a25cc093a24afb75f4" kindref="member">next_decoy</ref>(<ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref>&amp;<sp/>ex)<sp/>{<sp/>decoys.<ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1ae630292b50e44deb19e001f322914934" kindref="member">nextref</ref>(ex);<sp/>}</highlight></codeline>
+<codeline lineno="122" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1aba8517b4134d5ddaa29f9b5b3c7654f3" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1aba8517b4134d5ddaa29f9b5b3c7654f3" kindref="member">next_active</ref>(<ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref>&amp;<sp/>ex)<sp/>{<sp/><sp/>actives.nextref(ex);<sp/>}</highlight></codeline>
+<codeline lineno="123" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1aaec2eeecfd8138a25cc093a24afb75f4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1aaec2eeecfd8138a25cc093a24afb75f4" kindref="member">next_decoy</ref>(<ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref>&amp;<sp/>ex)<sp/>{<sp/>decoys.nextref(ex);<sp/>}</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
-<codeline lineno="125" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a9c66646cb491b4c4620dcfe627f5451d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a9c66646cb491b4c4620dcfe627f5451d" kindref="member">small_epoch_size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2*std::min(actives.<ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>(),decoys.<ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>());<sp/>}</highlight></codeline>
-<codeline lineno="126" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ac2a4bfd5fd0579c2377a181a7bae1395" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ac2a4bfd5fd0579c2377a181a7bae1395" kindref="member">large_epoch_size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2*std::max(actives.<ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>(),decoys.<ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>());<sp/>}</highlight></codeline>
+<codeline lineno="125" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a9c66646cb491b4c4620dcfe627f5451d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a9c66646cb491b4c4620dcfe627f5451d" kindref="member">small_epoch_size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2*std::min(actives.size(),decoys.size());<sp/>}</highlight></codeline>
+<codeline lineno="126" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ac2a4bfd5fd0579c2377a181a7bae1395" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1ac2a4bfd5fd0579c2377a181a7bae1395" kindref="member">large_epoch_size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2*std::max(actives.size(),decoys.size());<sp/>}</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" kindref="member">reset</ref>()<sp/>{<sp/>actives.<ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" kindref="member">reset</ref>();<sp/>decoys.<ref refid="classlibmolgrid_1_1UniformExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" kindref="member">reset</ref>();<sp/>current<sp/>=<sp/>0;<sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1adc9bb9be55d353ea973698ff2e50e213" kindref="member">cnt</ref><sp/>=<sp/>0;<sp/>}</highlight></codeline>
+<codeline lineno="128" refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1BalancedExampleRefProvider_1a7b0e029102ad38f4b814c6523aedb53d" kindref="member">reset</ref>()<sp/>{<sp/>actives.reset();<sp/>decoys.reset();<sp/>current<sp/>=<sp/>0;<sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1adc9bb9be55d353ea973698ff2e50e213" kindref="member">cnt</ref><sp/>=<sp/>0;<sp/>}</highlight></codeline>
 <codeline lineno="129"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"></highlight></codeline>
 <codeline lineno="131"><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Prov</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">er1,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Prov</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">er2&gt;</highlight></codeline>
-<codeline lineno="134" refid="classlibmolgrid_1_1SamplingExampleRefProvider" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1SamplingExampleRefProvider" kindref="compound">SamplingExampleRefProvider</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider" kindref="compound">ExampleRefProvider</ref></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Prov</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">er1,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Prov</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">er2&gt;</highlight></codeline>
+<codeline lineno="134" refid="classlibmolgrid_1_1SamplingExampleRefProvider" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1SamplingExampleRefProvider_1af1c7606e9224207259160331d6873775" kindref="member">SamplingExampleRefProvider</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" kindref="member">ExampleRefProvider</ref></highlight></codeline>
 <codeline lineno="135"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="136"><highlight class="normal"><sp/><sp/>Provider1<sp/>p1;</highlight></codeline>
 <codeline lineno="137"><highlight class="normal"><sp/><sp/>Provider2<sp/>p2;</highlight></codeline>
@@ -353,7 +394,7 @@
 <codeline lineno="141"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="142" refid="classlibmolgrid_1_1SamplingExampleRefProvider_1af1c7606e9224207259160331d6873775" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1SamplingExampleRefProvider_1af1c7606e9224207259160331d6873775" kindref="member">SamplingExampleRefProvider</ref>()<sp/>{}</highlight></codeline>
 <codeline lineno="143" refid="classlibmolgrid_1_1SamplingExampleRefProvider_1adb841b0ff27a95b871944779c5201234" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1SamplingExampleRefProvider_1adb841b0ff27a95b871944779c5201234" kindref="member">SamplingExampleRefProvider</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref>&amp;<sp/>settings,<sp/>Provider1<sp/>P1,<sp/>Provider2<sp/>P2,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>srate):</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider" kindref="compound">ExampleRefProvider</ref>(settings),<sp/>p1(P1),<sp/>p2(P2),<sp/>sample_rate(srate)<sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" kindref="member">ExampleRefProvider</ref>(settings),<sp/>p1(P1),<sp/>p2(P2),<sp/>sample_rate(srate)<sp/>{</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight></codeline>
 <codeline lineno="147" refid="classlibmolgrid_1_1SamplingExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1SamplingExampleRefProvider_1a8b9d408cf4383f3569d23636d5f3e62a" kindref="member">addref</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleRef" kindref="compound">ExampleRef</ref>&amp;<sp/>ex)</highlight></codeline>
@@ -398,8 +439,8 @@
 <codeline lineno="187"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="188"><highlight class="normal"></highlight></codeline>
 <codeline lineno="189"><highlight class="normal"></highlight></codeline>
-<codeline lineno="193"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Prov</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">er,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>K=1&gt;</highlight></codeline>
-<codeline lineno="194" refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider" kindref="compound">ReceptorStratifiedExampleRefProvider</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider" kindref="compound">ExampleRefProvider</ref></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Prov</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">er,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>K=1&gt;</highlight></codeline>
+<codeline lineno="194" refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ae875a460534563fb41848f9f323effb1" kindref="member">ReceptorStratifiedExampleRefProvider</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" kindref="member">ExampleRefProvider</ref></highlight></codeline>
 <codeline lineno="195"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"><sp/><sp/>std::vector&lt;Provider&gt;<sp/>examples;</highlight></codeline>
 <codeline lineno="197"><highlight class="normal"><sp/><sp/>std::unordered_map&lt;const<sp/>char*,<sp/>unsigned&gt;<sp/>recmap;<sp/></highlight><highlight class="comment">//map<sp/>to<sp/>receptor<sp/>indices</highlight><highlight class="normal"></highlight></codeline>
@@ -412,7 +453,7 @@
 <codeline lineno="204"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="205" refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ae875a460534563fb41848f9f323effb1" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ae875a460534563fb41848f9f323effb1" kindref="member">ReceptorStratifiedExampleRefProvider</ref>():<sp/>currenti(0),<sp/>currentk(0),<sp/>randomize(false)<sp/>{}</highlight></codeline>
 <codeline lineno="206" refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ae20e38545b2792e3ba3c2d1d0c175b3b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1ae20e38545b2792e3ba3c2d1d0c175b3b" kindref="member">ReceptorStratifiedExampleRefProvider</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref>&amp;<sp/>settings):</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider" kindref="compound">ExampleRefProvider</ref>(settings),<sp/>param(settings),<sp/>currenti(0),<sp/>currentk(0),<sp/>randomize(settings.shuffle)</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" kindref="member">ExampleRefProvider</ref>(settings),<sp/>param(settings),<sp/>currenti(0),<sp/>currentk(0),<sp/>randomize(settings.shuffle)</highlight></codeline>
 <codeline lineno="208"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="209"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="210"><highlight class="normal"></highlight></codeline>
@@ -517,11 +558,11 @@
 <codeline lineno="309"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="310"><highlight class="normal"></highlight></codeline>
 <codeline lineno="311"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;&gt;</highlight></codeline>
-<codeline lineno="312"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" kindref="member">ReceptorStratifiedExampleRefProvider&lt;BalancedExampleRefProvider, 2&gt;::setup</ref>();</highlight></codeline>
+<codeline lineno="312" refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ReceptorStratifiedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" kindref="member">ReceptorStratifiedExampleRefProvider&lt;BalancedExampleRefProvider, 2&gt;::setup</ref>();</highlight></codeline>
 <codeline lineno="313"><highlight class="normal"></highlight></codeline>
 <codeline lineno="314"><highlight class="normal"></highlight></codeline>
-<codeline lineno="318"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Prov</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">er&gt;</highlight></codeline>
-<codeline lineno="319" refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider" kindref="compound">ValueStratifiedExampleRefProfider</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider" kindref="compound">ExampleRefProvider</ref></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Prov</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">er&gt;</highlight></codeline>
+<codeline lineno="319" refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ad074c52ca9025bfe5cd13fb4403759da" kindref="member">ValueStratifiedExampleRefProfider</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" kindref="member">ExampleRefProvider</ref></highlight></codeline>
 <codeline lineno="320"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="321"><highlight class="normal"><sp/><sp/>std::vector&lt;Provider&gt;<sp/>examples;</highlight></codeline>
 <codeline lineno="322"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>currenti<sp/>=<sp/>0;</highlight><highlight class="comment">//position<sp/>in<sp/>array</highlight><highlight class="normal"></highlight></codeline>
@@ -543,7 +584,7 @@
 <codeline lineno="338"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="339" refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ad074c52ca9025bfe5cd13fb4403759da" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1ad074c52ca9025bfe5cd13fb4403759da" kindref="member">ValueStratifiedExampleRefProfider</ref>()<sp/>{}</highlight></codeline>
 <codeline lineno="340" refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a7283e7554f9b6a2b1269ba97c75d6558" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1ValueStratifiedExampleRefProfider_1a7283e7554f9b6a2b1269ba97c75d6558" kindref="member">ValueStratifiedExampleRefProfider</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref>&amp;<sp/>parm):</highlight></codeline>
-<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider" kindref="compound">ExampleRefProvider</ref>(parm),<sp/>currenti(0)</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" kindref="member">ExampleRefProvider</ref>(parm),<sp/>currenti(0)</highlight></codeline>
 <codeline lineno="342"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/>max<sp/>=<sp/>parm.stratify_max;</highlight></codeline>
 <codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/>min<sp/>=<sp/>parm.stratify_min;</highlight></codeline>
@@ -590,7 +631,7 @@
 <codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tmp.back().setup();</highlight></codeline>
 <codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacelibmolgrid_1afc56244e72d2209f03b10191d4c0fd99" kindref="member">log</ref>(<ref refid="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806" kindref="member">INFO</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Empty<sp/>bucket<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>when<sp/>stratifying<sp/>by<sp/>value<sp/>-<sp/>check<sp/>your<sp/>ranges<sp/>and<sp/>data<sp/>distribution.\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacelibmolgrid_1a2720add91c3e239b4e60ab9d139fd496" kindref="member">log</ref>(<ref refid="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806" kindref="member">INFO</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Empty<sp/>bucket<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>when<sp/>stratifying<sp/>by<sp/>value<sp/>-<sp/>check<sp/>your<sp/>ranges<sp/>and<sp/>data<sp/>distribution.\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/>swap(examples,tmp);</highlight></codeline>
@@ -646,8 +687,8 @@
 <codeline lineno="441"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="442"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="443"><highlight class="normal"></highlight></codeline>
-<codeline lineno="455"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Prov</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">er&gt;</highlight></codeline>
-<codeline lineno="456" refid="classlibmolgrid_1_1GroupedExampleRefProvider" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1GroupedExampleRefProvider" kindref="compound">GroupedExampleRefProvider</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider" kindref="compound">ExampleRefProvider</ref><sp/>{</highlight></codeline>
+<codeline lineno="455"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Prov</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">er&gt;</highlight></codeline>
+<codeline lineno="456" refid="classlibmolgrid_1_1GroupedExampleRefProvider" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a56cd3297ec696baae4730a2a2ee5cd8c" kindref="member">GroupedExampleRefProvider</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" kindref="member">ExampleRefProvider</ref><sp/>{</highlight></codeline>
 <codeline lineno="457"><highlight class="normal"></highlight></codeline>
 <codeline lineno="458"><highlight class="normal"><sp/><sp/>Provider<sp/>examples;</highlight></codeline>
 <codeline lineno="459"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>batch_size<sp/>=<sp/>1;</highlight></codeline>
@@ -662,7 +703,7 @@
 <codeline lineno="468"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="469" refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a56cd3297ec696baae4730a2a2ee5cd8c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a56cd3297ec696baae4730a2a2ee5cd8c" kindref="member">GroupedExampleRefProvider</ref>()<sp/>{<sp/><sp/><sp/><sp/><sp/>current_groups.assign(batch_size,maxgroupsize);<sp/>}</highlight></codeline>
 <codeline lineno="470" refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a6a108224510b1ac78f1e9ddbcee1c94b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a6a108224510b1ac78f1e9ddbcee1c94b" kindref="member">GroupedExampleRefProvider</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structlibmolgrid_1_1ExampleProviderSettings" kindref="compound">ExampleProviderSettings</ref>&amp;<sp/>parm):</highlight></codeline>
-<codeline lineno="471"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider" kindref="compound">ExampleRefProvider</ref>(parm),<sp/>examples(parm),</highlight></codeline>
+<codeline lineno="471"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classlibmolgrid_1_1ExampleRefProvider_1a120fc1bfc416a2c04b887d6ce870ffa9" kindref="member">ExampleRefProvider</ref>(parm),<sp/>examples(parm),</highlight></codeline>
 <codeline lineno="472"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>batch_size(parm.group_batch_size),</highlight></codeline>
 <codeline lineno="473"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>maxgroupsize(parm.max_group_size)<sp/>{</highlight></codeline>
 <codeline lineno="474"><highlight class="normal"><sp/><sp/><sp/><sp/>current_groups.assign(batch_size,maxgroupsize);</highlight></codeline>
@@ -677,7 +718,7 @@
 <codeline lineno="483"><highlight class="normal"></highlight></codeline>
 <codeline lineno="484"><highlight class="normal"><sp/><sp/><sp/><sp/>frame_groups[group].push_back(ex);</highlight></codeline>
 <codeline lineno="485"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(frame_groups[group].<ref refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a126a73e6d140f9e2a7b795c20fa42f70" kindref="member">size</ref>()<sp/>&gt;<sp/>maxgroupsize)</highlight></codeline>
-<codeline lineno="486"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacelibmolgrid_1afc56244e72d2209f03b10191d4c0fd99" kindref="member">log</ref>(<ref refid="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81" kindref="member">WARNING</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Frame<sp/>group<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>group<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>has<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>frame_groups[group].size()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>frames,<sp/>which<sp/>is<sp/>more<sp/>than<sp/>max<sp/>group<sp/>size<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;maxgroupsize<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="486"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacelibmolgrid_1a2720add91c3e239b4e60ab9d139fd496" kindref="member">log</ref>(<ref refid="namespacelibmolgrid_1aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81" kindref="member">WARNING</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Frame<sp/>group<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>group<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>has<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>frame_groups[group].size()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>frames,<sp/>which<sp/>is<sp/>more<sp/>than<sp/>max<sp/>group<sp/>size<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;maxgroupsize<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="487"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="488"><highlight class="normal"></highlight></codeline>
 <codeline lineno="489" refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a4fc01d736fe50cf5b977f755b675f11d" kindref="member">setup</ref>()<sp/>{</highlight></codeline>
@@ -692,7 +733,7 @@
 <codeline lineno="498"><highlight class="normal"></highlight></codeline>
 <codeline lineno="499" refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlibmolgrid_1_1GroupedExampleRefProvider_1a0f9ab6a4312a9937752f660a907b928a" kindref="member">check_batch_size</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>bsize)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="500"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(bsize<sp/>!=<sp/>batch_size)<sp/>{</highlight></codeline>
-<codeline lineno="501"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Requested<sp/>batch<sp/>size<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(bsize)+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>does<sp/>not<sp/>match<sp/>configured<sp/>group<sp/>batch<sp/>size<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1abc436df6cd0df6fa9524cd420e13a637" kindref="member">itoa</ref>(batch_size));</highlight></codeline>
+<codeline lineno="501"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Requested<sp/>batch<sp/>size<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1ab2434f4848577b1a5966ea316dba3a18" kindref="member">itoa</ref>(bsize)+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>does<sp/>not<sp/>match<sp/>configured<sp/>group<sp/>batch<sp/>size<sp/>&quot;</highlight><highlight class="normal">+<ref refid="namespacelibmolgrid_1ab2434f4848577b1a5966ea316dba3a18" kindref="member">itoa</ref>(batch_size));</highlight></codeline>
 <codeline lineno="502"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="503"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="504"><highlight class="normal"></highlight></codeline>
@@ -719,7 +760,7 @@
 <codeline lineno="525"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="526"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ex<sp/>=<sp/>timeseries.back();</highlight></codeline>
 <codeline lineno="527"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>n<sp/>=<sp/>ex.<ref refid="structlibmolgrid_1_1ExampleRef_1ac821c82ea49c90f2e78434913bfbfa69" kindref="member">files</ref>.size();<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)</highlight></codeline>
-<codeline lineno="528"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ex.<ref refid="structlibmolgrid_1_1ExampleRef_1ac821c82ea49c90f2e78434913bfbfa69" kindref="member">files</ref>[i]<sp/>=<sp/><ref refid="namespacelibmolgrid_1ae85ac8fbef92553b049a1d50afa4c183" kindref="member">string_cache</ref>.<ref refid="classlibmolgrid_1_1StringCache_1ae455591e43349bd3ef26f574a6ea2ecd" kindref="member">get</ref>(</highlight><highlight class="stringliteral">&quot;none&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="528"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ex.<ref refid="structlibmolgrid_1_1ExampleRef_1ac821c82ea49c90f2e78434913bfbfa69" kindref="member">files</ref>[i]<sp/>=<sp/><ref refid="namespacelibmolgrid_1ae85ac8fbef92553b049a1d50afa4c183" kindref="member">string_cache</ref>.get(</highlight><highlight class="stringliteral">&quot;none&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="529"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>n<sp/>=<sp/>ex.<ref refid="structlibmolgrid_1_1ExampleRef_1a7ea04b60c00847d97627bc44a0a6b2f2" kindref="member">labels</ref>.size();<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)</highlight></codeline>
 <codeline lineno="530"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ex.<ref refid="structlibmolgrid_1_1ExampleRef_1a7ea04b60c00847d97627bc44a0a6b2f2" kindref="member">labels</ref>[i]<sp/>=<sp/>NAN;</highlight></codeline>
 <codeline lineno="531"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -759,6 +800,6 @@
 <codeline lineno="565"><highlight class="normal"></highlight></codeline>
 <codeline lineno="566"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>EXAMPLE_PROVIDERS_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/exampleref_providers.h"/>
+    <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/exampleref_providers.h"/>
   </compounddef>
 </doxygen>

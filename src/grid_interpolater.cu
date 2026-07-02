@@ -23,7 +23,7 @@ namespace libmolgrid {
 
   //given a non-rounded gridpoint in the input grid linearly interpolate values
   template <typename Dtype, bool isCUDA>
-  CUDA_CALLABLE_MEMBER Dtype GridInterpolater::interpolate(const Grid<Dtype, 3, isCUDA>& in, float3 gridpt) const {
+  CUDA_CALLABLE_MEMBER Dtype GridInterpolater::interpolate(const Grid<Dtype, 3, isCUDA>& in, Vec3 gridpt) const {
     //https://en.wikipedia.org/wiki/Trilinear_interpolation
     int xl = floor(gridpt.x);
     int xh = ceil(gridpt.x);
@@ -57,23 +57,23 @@ namespace libmolgrid {
     return c;
   }
 
-  template float GridInterpolater::interpolate(const Grid<float, 3, true>& in, float3 gridpt) const;
-  template float GridInterpolater::interpolate(const Grid<float, 3, false>& in, float3 gridpt) const;
-  template double GridInterpolater::interpolate(const Grid<double, 3, false>& in, float3 gridpt) const;
+  template float GridInterpolater::interpolate(const Grid<float, 3, true>& in, Vec3 gridpt) const;
+  template float GridInterpolater::interpolate(const Grid<float, 3, false>& in, Vec3 gridpt) const;
+  template double GridInterpolater::interpolate(const Grid<double, 3, false>& in, Vec3 gridpt) const;
 
   //convert to texture coords
-  __device__ float3 cart2tex(float3 origin, float resolution, float x, float y, float z) {
+  __device__ Vec3 cart2tex(Vec3 origin, float resolution, float x, float y, float z) {
     //textures interpolate assuming value is in center of pixel instead of at grid point
-      float3 pt = { 0.5f+(x-origin.x)/resolution, 0.5f+(y-origin.y)/resolution, 0.5f+(z-origin.z)/resolution };
+      Vec3 pt = { 0.5f+(x-origin.x)/resolution, 0.5f+(y-origin.y)/resolution, 0.5f+(z-origin.z)/resolution };
       return pt;
   }
 
   //use texture memory to perform interpolation
   __global__ void
   gpu_set_outgrid_texture(cudaTextureObject_t tex,
-              float3 in_origin, float in_res, unsigned in_dim,
-              float3 out_origin, float out_res, unsigned out_dim,
-              Quaternion invQ, float3 untranslate, float3 center,
+              Vec3 in_origin, float in_res, unsigned in_dim,
+              Vec3 out_origin, float out_res, unsigned out_dim,
+              Quaternion invQ, Vec3 untranslate, Vec3 center,
               Grid<float, 3, true> out) {
     //figure out coordinate we are setting for out
     unsigned xi = threadIdx.x + blockIdx.x * blockDim.x;
@@ -84,16 +84,16 @@ namespace libmolgrid {
       return;//bail if we're off-grid, this should not be common
 
     //compute x,y,z coordinate of grid point
-    float3 outpt;
+    Vec3 outpt;
     outpt.x = xi * out_res + out_origin.x;
     outpt.y = yi * out_res + out_origin.y;
     outpt.z = zi * out_res + out_origin.z;
 
     //apply inverse transformation
-    float3 newpt = invQ.rotate(outpt.x+untranslate.x, outpt.y+untranslate.y, outpt.z+untranslate.z);
+    Vec3 newpt = invQ.rotate(outpt.x+untranslate.x, outpt.y+untranslate.y, outpt.z+untranslate.z);
     //get (not rounded) input grid coordinates (not Cartesian)
 
-    float3 inpt = cart2tex(in_origin, in_res, newpt.x+center.x, newpt.y+center.y, newpt.z+center.z);
+    Vec3 inpt = cart2tex(in_origin, in_res, newpt.x+center.x, newpt.y+center.y, newpt.z+center.z);
 
     //lookup in normalized texture
     float val = tex3D<float>(tex, inpt.z, inpt.y, inpt.x); //why reverse order?
@@ -105,9 +105,9 @@ namespace libmolgrid {
   //interpolate manually
   __global__ void
   gpu_set_outgrid(GridInterpolater interp, Grid<float, 3, true> in,
-              float3 in_origin, float in_res, unsigned in_dim,
-              float3 out_origin, float out_res, unsigned out_dim,
-              Quaternion invQ, float3 untranslate, float3 center,
+              Vec3 in_origin, float in_res, unsigned in_dim,
+              Vec3 out_origin, float out_res, unsigned out_dim,
+              Quaternion invQ, Vec3 untranslate, Vec3 center,
               Grid<float, 3, true> out) {
     //figure out coordinate we are setting for out
     unsigned xi = threadIdx.x + blockIdx.x * blockDim.x;
@@ -118,32 +118,32 @@ namespace libmolgrid {
       return;//bail if we're off-grid, this should not be common
 
     //compute x,y,z coordinate of grid point
-    float3 outpt;
+    Vec3 outpt;
     outpt.x = xi * out_res + out_origin.x;
     outpt.y = yi * out_res + out_origin.y;
     outpt.z = zi * out_res + out_origin.z;
 
     //apply inverse transformation
-    float3 newpt = invQ.rotate(outpt.x+untranslate.x, outpt.y+untranslate.y, outpt.z+untranslate.z);
+    Vec3 newpt = invQ.rotate(outpt.x+untranslate.x, outpt.y+untranslate.y, outpt.z+untranslate.z);
     //get (not rounded) input grid coordinates (not Cartesian)
-    float3 inpt = cart2grid(in_origin, in_res, newpt.x+center.x, newpt.y+center.y, newpt.z+center.z);
+    Vec3 inpt = cart2grid(in_origin, in_res, newpt.x+center.x, newpt.y+center.y, newpt.z+center.z);
     //interpolate
      out(xi,yi,zi) = interp.interpolate(in, inpt);
   }
 
   template <typename Dtype>
-  void GridInterpolater::forward(float3 in_center, const Grid<Dtype, 4, true>& in, const Transform& transform, float3 out_center, Grid<Dtype, 4, true>& out) const {
+  void GridInterpolater::forward(Vec3 in_center, const Grid<Dtype, 4, true>& in, const Transform& transform, Vec3 out_center, Grid<Dtype, 4, true>& out) const {
 
     checkGrids(in, out);
-    float3 center = transform.get_rotation_center();
+    Vec3 center = transform.get_rotation_center();
     float in_radius = in_dimension/2.0;
     float out_radius = out_dimension/2.0;
-    float3 in_origin = {in_center.x-in_radius,in_center.y-in_radius,in_center.z-in_radius};
-    float3 out_origin = {out_center.x-out_radius,out_center.y-out_radius,out_center.z-out_radius};
+    Vec3 in_origin = {in_center.x-in_radius,in_center.y-in_radius,in_center.z-in_radius};
+    Vec3 out_origin = {out_center.x-out_radius,out_center.y-out_radius,out_center.z-out_radius};
 
     Quaternion invQ = transform.get_quaternion().inverse();
-    float3 t = transform.get_translation();
-    float3 untranslate = {-t.x-center.x, -t.y-center.y, -t.z-center.z};
+    Vec3 t = transform.get_translation();
+    Vec3 untranslate = {-t.x-center.x, -t.y-center.y, -t.z-center.z};
     unsigned K = in.dimension(0);
 
     dim3 threads(LMG_CUDA_BLOCKDIM, LMG_CUDA_BLOCKDIM, LMG_CUDA_BLOCKDIM);
@@ -166,7 +166,7 @@ namespace libmolgrid {
   }
 
 
-  template void GridInterpolater::forward(float3 in_center, const Grid<float, 4, true>& in, const Transform& transform, float3 out_center, Grid<float, 4, true>& out) const;
+  template void GridInterpolater::forward(Vec3 in_center, const Grid<float, 4, true>& in, const Transform& transform, Vec3 out_center, Grid<float, 4, true>& out) const;
 
 
   cudaTextureObject_t GridInterpolater::initializeTexture(const Grid<float, 3, true>& in) const {

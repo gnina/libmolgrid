@@ -10,11 +10,45 @@ IF(BUILD_DOCS)
     ELSE(DOT)
         SET(HAVE_DOT NO)
     ENDIF(DOT)
-    find_package(Sphinx)
-		if(NOT SPHINX_EXECUTABLE)
-			message(WARNING "Sphinx not found; docs will not be built")
+    if(NOT PYTHON_EXECUTABLE)
+      find_package(PythonInterp QUIET)
+    endif()
+
+    set(LIBMOLGRID_SPHINX_COMMAND)
+    if(PYTHON_EXECUTABLE)
+      execute_process(
+        COMMAND ${PYTHON_EXECUTABLE} -c "import sphinx.cmd.build"
+        RESULT_VARIABLE LIBMOLGRID_PYTHON_SPHINX_RESULT
+        OUTPUT_QUIET
+        ERROR_QUIET)
+      execute_process(
+        COMMAND ${PYTHON_EXECUTABLE} -c "import nbconvert"
+        RESULT_VARIABLE LIBMOLGRID_PYTHON_NBCONVERT_RESULT
+        OUTPUT_QUIET
+        ERROR_QUIET)
+      if(LIBMOLGRID_PYTHON_SPHINX_RESULT EQUAL 0)
+        set(LIBMOLGRID_SPHINX_COMMAND ${PYTHON_EXECUTABLE} -m sphinx)
+      endif()
+    endif()
+
+    if(NOT LIBMOLGRID_SPHINX_COMMAND)
+      find_package(Sphinx QUIET)
+      if(SPHINX_EXECUTABLE)
+        execute_process(
+          COMMAND ${SPHINX_EXECUTABLE} --version
+          RESULT_VARIABLE LIBMOLGRID_SPHINX_EXEC_RESULT
+          OUTPUT_QUIET
+          ERROR_QUIET)
+        if(LIBMOLGRID_SPHINX_EXEC_RESULT EQUAL 0)
+          set(LIBMOLGRID_SPHINX_COMMAND ${SPHINX_EXECUTABLE})
+        endif()
+      endif()
+    endif()
+
+		if(NOT LIBMOLGRID_SPHINX_COMMAND)
+			message(WARNING "Sphinx not found or not runnable; docs will not be built")
     	return()
-		endif(NOT SPHINX_EXECUTABLE)
+		endif(NOT LIBMOLGRID_SPHINX_COMMAND)
 
 		# Find all the public headers
 		file(GLOB_RECURSE LIBMOLGRID_PUBLIC_HEADERS ${PROJECT_SOURCE_DIR}/include/libmolgrid/*.h)
@@ -24,7 +58,7 @@ IF(BUILD_DOCS)
     file(MAKE_DIRECTORY ${DOXYGEN_OUTPUT_DIR})
     set(DOXYGEN_INDEX_FILE ${DOXYGEN_OUTPUT_DIR}/index.xml)
 		set(DOXYFILE_IN ${PROJECT_SOURCE_DIR}/docs/Doxyfile.in)
-		set(DOXYFILE_OUT ${PROJECT_SOURCE_DIR}/Doxyfile)
+		set(DOXYFILE_OUT ${CMAKE_BINARY_DIR}/Doxyfile)
 		 
     # process Doxyfile.in and substitute paths to generate a final Doxyfile
 		configure_file(${DOXYFILE_IN} ${DOXYFILE_OUT})
@@ -53,7 +87,7 @@ IF(BUILD_DOCS)
 		# - The Sphinx config has been updated
     add_custom_command(OUTPUT ${SPHINX_CPP_INDEX_FILE}
 		                   COMMAND 
-		                     ${SPHINX_EXECUTABLE} -b html
+		                     ${LIBMOLGRID_SPHINX_COMMAND} -b html
 		                     # Tell Breathe where to find the Doxygen output
 		                     -Dbreathe_projects.libmolgrid=${DOXYGEN_OUTPUT_DIR}
                          ${SPHINX_CPP_SOURCE} ${SPHINX_CPP_BUILD}
@@ -67,8 +101,9 @@ IF(BUILD_DOCS)
     add_custom_target(Sphinx_Cpp ALL DEPENDS ${SPHINX_CPP_INDEX_FILE})
 
     add_custom_command(OUTPUT ${SPHINX_PYTHON_INDEX_FILE}
-		                   COMMAND 
-		                     ${SPHINX_EXECUTABLE} -b html
+		                   COMMAND
+                           ${CMAKE_COMMAND} -E env LIBMOLGRID_PYTHON_BUILD=${CMAKE_BINARY_DIR}/python
+		                     ${LIBMOLGRID_SPHINX_COMMAND} -b html
                          ${SPHINX_PYTHON_SOURCE} ${SPHINX_PYTHON_BUILD}
 		                   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/docs/python
 		                   DEPENDS
@@ -85,18 +120,20 @@ IF(BUILD_DOCS)
 
     # generate jekyll-compatible html from notebooks for the tutorials page
     file(GLOB NOTEBOOKS ${PROJECT_SOURCE_DIR}/docs/_tutorials/*.ipynb)
-    foreach(file ${NOTEBOOKS})
-      get_filename_component(BASE ${file} NAME_WE)
-      set(OUTNAME ${PROJECT_SOURCE_DIR}/docs/_tutorials/${BASE}.html)
-      set(TMPFILE ${PROJECT_SOURCE_DIR}/docs/_tutorials/tmp)
-      string(REPLACE "_" " " TITLE ${BASE})
-      execute_process(COMMAND bash "-c" "echo ${TITLE} | sed 's/.*/\\L&/; s/[a-z]*/\\u&/'" OUTPUT_VARIABLE TITLE)
-      execute_process(COMMAND bash "-c" "echo '---\ntitle: ${TITLE}layout: tutorials\nhomepage: false\nhide: true\n---\n' > ${OUTNAME}")
-      execute_process(COMMAND bash "-c" "jupyter nbconvert --to html --stdout ${file} >> ${OUTNAME}")
-      execute_process(COMMAND bash "-c" "sed -i 's/<div class=\"container\" id=\"notebook-container\">/<div class=\"bs-docs-container row\">\\n<div class=col-md-9\" role=\"main\">/g' ${OUTNAME}")
-      execute_process(COMMAND bash "-c" "sed -i 's/<\\/body>/\\n<\\/div>\\n<\\/body>/' ${OUTNAME}")
-      execute_process(COMMAND bash "-c" "sed -i 's/\\(.*img src.*\\)<br>/\\1/g' ${OUTNAME}")
-      execute_process(COMMAND bash "-c" "sed -i 's/<pre>/<pre style=\" white-space: pre;\">/g' ${OUTNAME}")
-      file(REMOVE ${TMPFILE})
-    endforeach()
+    if(PYTHON_EXECUTABLE AND LIBMOLGRID_PYTHON_NBCONVERT_RESULT EQUAL 0)
+      foreach(file ${NOTEBOOKS})
+        get_filename_component(BASE ${file} NAME_WE)
+        set(OUTNAME ${PROJECT_SOURCE_DIR}/docs/_tutorials/${BASE}.html)
+        add_custom_command(
+          OUTPUT ${OUTNAME}
+          COMMAND ${PYTHON_EXECUTABLE} ${PROJECT_SOURCE_DIR}/docs/render_notebook.py ${file} ${OUTNAME}
+          DEPENDS ${file} ${PROJECT_SOURCE_DIR}/docs/render_notebook.py
+          COMMENT "Generating tutorial ${BASE}.html"
+          VERBATIM)
+        list(APPEND LIBMOLGRID_TUTORIAL_HTMLS ${OUTNAME})
+      endforeach()
+      add_custom_target(Tutorials ALL DEPENDS ${LIBMOLGRID_TUTORIAL_HTMLS})
+    else()
+      message(WARNING "nbconvert not found in ${PYTHON_EXECUTABLE}; tutorial HTML will not be regenerated")
+    endif()
 ENDIF(BUILD_DOCS)

@@ -2,12 +2,19 @@ from .molgrid import *
 import sys, inspect
 import numpy as np
 
+# Vec3 used to be named float3 (it borrowed CUDA's vector_types.h name even
+# in non-CUDA builds); keep the old name available for existing user code.
+float3 = Vec3
+
 if sys.version_info >= (3, 8):
     from importlib import metadata
 else:
     import importlib_metadata as metadata
-    
-__version__ = metadata.version('molgrid')
+
+try:
+    __version__ = metadata.version('molgrid')
+except metadata.PackageNotFoundError:
+    __version__ = '0+unknown'
 
 def tonumpy(g):
     '''Return a numpy array copy of grid g'''

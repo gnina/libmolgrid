@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structuint2" kind="struct" language="C++" prot="public">
+    <compoundname>uint2</compoundname>
+    <includes refid="common_8h" local="no">common.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structuint2_1a676e0da0ef83bbbdf42538e54b97506b" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <qualifiedname>uint2::x</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="37" column="25" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1af34459063dd2de96d0e68071a9d04334" compoundref="grid__maker_8cpp" startline="755" endline="763">GridMaker::get_bounds_1d</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structuint2_1ac30de26db5f6d1c18c63913729adca7d" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <qualifiedname>uint2::y</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="37" column="27" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1GridMaker_1af34459063dd2de96d0e68071a9d04334" compoundref="grid__maker_8cpp" startline="755" endline="763">GridMaker::get_bounds_1d</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="37" column="1" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="37" bodyend="37"/>
+    <listofallmembers>
+      <member refid="structuint2_1a676e0da0ef83bbbdf42538e54b97506b" prot="public" virt="non-virtual"><scope>uint2</scope><name>x</name></member>
+      <member refid="structuint2_1ac30de26db5f6d1c18c63913729adca7d" prot="public" virt="non-virtual"><scope>uint2</scope><name>y</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

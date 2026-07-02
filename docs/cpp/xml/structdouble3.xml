@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structdouble3" kind="struct" language="C++" prot="public">
+    <compoundname>double3</compoundname>
+    <includes refid="common_8h" local="no">common.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structdouble3_1af88b946fb90d5f08b5fb740c70e98c10" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <qualifiedname>double3::x</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="39" column="21" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdouble3_1ab927965981178aa1fba979a37168db2a" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <qualifiedname>double3::y</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="39" column="23" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdouble3_1ab3e6ed577a7c669c19de1f9c1b46c872" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double z</definition>
+        <argsstring></argsstring>
+        <name>z</name>
+        <qualifiedname>double3::z</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="39" column="25" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" line="39" column="1" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/common.h" bodystart="39" bodyend="39"/>
+    <listofallmembers>
+      <member refid="structdouble3_1af88b946fb90d5f08b5fb740c70e98c10" prot="public" virt="non-virtual"><scope>double3</scope><name>x</name></member>
+      <member refid="structdouble3_1ab927965981178aa1fba979a37168db2a" prot="public" virt="non-virtual"><scope>double3</scope><name>y</name></member>
+      <member refid="structdouble3_1ab3e6ed577a7c669c19de1f9c1b46c872" prot="public" virt="non-virtual"><scope>double3</scope><name>z</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

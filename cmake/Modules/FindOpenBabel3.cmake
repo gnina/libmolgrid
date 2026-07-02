@@ -36,6 +36,8 @@ else()
         /usr/local/openbabel/include
         /usr/local/openbabel3/include/openbabel3
         /usr/local/openbabel3/include
+        /opt/homebrew/include/openbabel3
+        /opt/homebrew/include
         ~/include/openbabel3
         ~/include
       )
@@ -57,6 +59,7 @@ else()
       $ENV{OPENBABEL_BASE}/lib
       /usr/lib
       /usr/local/lib
+      /opt/homebrew/lib
       ~/lib
       $ENV{LD_LIBRARY_PATH}
     )
@@ -72,4 +75,3 @@ message("Setting openbabel found ${OPENBABEL3_FOUND}")
 
   mark_as_advanced(OPENBABEL3_INCLUDE_DIR OPENBABEL3_LIBRARIES)
 endif()
-

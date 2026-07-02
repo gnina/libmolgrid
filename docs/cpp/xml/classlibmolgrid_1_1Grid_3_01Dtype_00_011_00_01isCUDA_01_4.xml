@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4" kind="class" language="C++" prot="public">
     <compoundname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</compoundname>
     <includes refid="grid_8h" local="no">grid.h</includes>
@@ -13,107 +13,146 @@
         <defname>isCUDA</defname>
       </param>
     </templateparamlist>
-      <sectiondef kind="public-type">
+    <sectiondef kind="public-type">
       <memberdef kind="typedef" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a2d7497e2eb6dbb6b75ca3a4df279392b" prot="public" static="no">
         <type>Dtype</type>
-        <definition>using type =  Dtype</definition>
+        <definition>using type = Dtype</definition>
         <argsstring></argsstring>
         <name>type</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::type</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="248" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="248" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="266" column="5" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="266" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aee2fd0a001c66664abf20c3b1bbf9eee" prot="public" static="no">
         <type>Dtype</type>
-        <definition>using subgrid_t =  Dtype</definition>
+        <definition>using subgrid_t = Dtype</definition>
         <argsstring></argsstring>
         <name>subgrid_t</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::subgrid_t</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="249" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="249" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="267" column="5" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="267" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1adc980d1b902f6a14af98e1ec10e2c96c" prot="public" static="no">
         <type><ref refid="classlibmolgrid_1_1ManagedGrid" kindref="compound">ManagedGrid</ref>&lt; Dtype, 1 &gt;</type>
-        <definition>using managed_t =  ManagedGrid&lt;Dtype,1&gt;</definition>
+        <definition>using managed_t = ManagedGrid&lt;Dtype,1&gt;</definition>
         <argsstring></argsstring>
         <name>managed_t</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::managed_t</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="250" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="250" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="268" column="5" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="268" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a32ca1fb679900a650a8f7ab6a128117a" prot="public" static="no">
-        <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 1, false &gt;</type>
-        <definition>using cpu_grid_t =  Grid&lt;Dtype,1,false&gt;</definition>
+        <type><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0a335d0339fe70071fcdf4cd5b1c7b5f" kindref="member">Grid</ref>&lt; Dtype, 1, false &gt;</type>
+        <definition>using cpu_grid_t = Grid&lt;Dtype,1,false&gt;</definition>
         <argsstring></argsstring>
         <name>cpu_grid_t</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::cpu_grid_t</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="251" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="251" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="269" column="5" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="269" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a2177fcb80495c85151de7dad3d566744" prot="public" static="no">
-        <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 1, true &gt;</type>
-        <definition>using gpu_grid_t =  Grid&lt;Dtype,1,true&gt;</definition>
+        <type><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0a335d0339fe70071fcdf4cd5b1c7b5f" kindref="member">Grid</ref>&lt; Dtype, 1, true &gt;</type>
+        <definition>using gpu_grid_t = Grid&lt;Dtype,1,true&gt;</definition>
         <argsstring></argsstring>
         <name>gpu_grid_t</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::gpu_grid_t</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="252" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="252" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="270" column="5" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="270" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="protected-attrib">
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a268477dcc97a377d747ac8d87c9e4832" prot="protected" static="no" mutable="no">
         <type>Dtype *</type>
         <definition>Dtype* buffer</definition>
         <argsstring></argsstring>
         <name>buffer</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::buffer</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="235" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="235" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="253" column="12" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="253" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a1f3452be669796729ab78152d845013f" compoundref="grid_8h" startline="284" endline="284">Grid&lt; Dtype, 1, isCUDA &gt;::data</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0a335d0339fe70071fcdf4cd5b1c7b5f" compoundref="grid_8h" startline="291" endline="291">Grid&lt; Dtype, 1, isCUDA &gt;::Grid</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a133c18fbd775019548ec10f171ec157a" compoundref="grid_8h" startline="328" endline="329">Grid&lt; Dtype, 1, isCUDA &gt;::Grid</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aef69ac40c00f38f7d637f1af03f8d63a" compoundref="grid_8h" startline="293" endline="294">Grid&lt; Dtype, 1, isCUDA &gt;::Grid</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a87b462228dda8251adb1a75487d363d4" compoundref="grid_8h" startline="306" endline="308">Grid&lt; Dtype, 1, isCUDA &gt;::operator()</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a7b8e84d93f65b9c3714f0acd8c7cd5c5" compoundref="grid_8h" startline="310" endline="312">Grid&lt; Dtype, 1, isCUDA &gt;::operator()</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0926c2a7709cc5a5d8292fcec6f09c4b" compoundref="grid_8h" startline="296" endline="299">Grid&lt; Dtype, 1, isCUDA &gt;::operator[]</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a4fd87ea12567337969e0d30b1c4a51ad" compoundref="grid_8h" startline="301" endline="304">Grid&lt; Dtype, 1, isCUDA &gt;::operator[]</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a440d5fdb2fea4e01b2d7ca58720e6f9a" compoundref="grid_8h" startline="289" endline="289">Grid&lt; Dtype, 1, isCUDA &gt;::set_buffer</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a7af99c1e30f9f637316dab96f03c4b3d" prot="protected" static="no" mutable="no">
         <type>size_t</type>
         <definition>size_t dims[1]</definition>
         <argsstring>[1]</argsstring>
         <name>dims</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::dims</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="236" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="236" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="254" column="12" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="254" bodyend="-1"/>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aa9b61e8668a98c2e264339c38e74065b" compoundref="grid_8h" startline="278" endline="278">Grid&lt; Dtype, 1, isCUDA &gt;::dimension</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a8593beea5ae18a49e3b23a395a98aa2c" compoundref="grid_8h" startline="276" endline="276">Grid&lt; Dtype, 1, isCUDA &gt;::dimensions</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0a335d0339fe70071fcdf4cd5b1c7b5f" compoundref="grid_8h" startline="291" endline="291">Grid&lt; Dtype, 1, isCUDA &gt;::Grid</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a133c18fbd775019548ec10f171ec157a" compoundref="grid_8h" startline="328" endline="329">Grid&lt; Dtype, 1, isCUDA &gt;::Grid</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aef69ac40c00f38f7d637f1af03f8d63a" compoundref="grid_8h" startline="293" endline="294">Grid&lt; Dtype, 1, isCUDA &gt;::Grid</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0926c2a7709cc5a5d8292fcec6f09c4b" compoundref="grid_8h" startline="296" endline="299">Grid&lt; Dtype, 1, isCUDA &gt;::operator[]</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a4fd87ea12567337969e0d30b1c4a51ad" compoundref="grid_8h" startline="301" endline="304">Grid&lt; Dtype, 1, isCUDA &gt;::operator[]</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1acb2f16129f492fbb0aa93ae8b78402ec" compoundref="grid_8h" startline="281" endline="281">Grid&lt; Dtype, 1, isCUDA &gt;::size</referencedby>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classlibmolgrid_1_1Grid_1a8cc20beaeb20694fea94498420db09c0" prot="protected" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t offs[NumDims]</definition>
+        <argsstring>[NumDims]</argsstring>
+        <name>offs</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::offs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="52" column="12" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1ad8331653910a5a034f8238e6a8fbb9b1" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr size_t</type>
-        <definition>constexpr size_t N</definition>
+        <type>size_t</type>
+        <definition>size_t N</definition>
         <argsstring></argsstring>
         <name>N</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::N</qualifiedname>
         <initializer>= 1</initializer>
         <briefdescription>
         </briefdescription>
@@ -121,13 +160,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="254" column="29" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="254" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="272" column="29" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="272" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aa01454be2537d7eed47f8c16c82b0a23" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr bool</type>
-        <definition>constexpr bool GPU</definition>
+        <type>bool</type>
+        <definition>bool GPU</definition>
         <argsstring></argsstring>
         <name>GPU</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::GPU</qualifiedname>
         <initializer>= isCUDA</initializer>
         <briefdescription>
         </briefdescription>
@@ -135,15 +175,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="255" column="27" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="255" bodyend="-1"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="273" column="27" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="273" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="protected-func">
+    </sectiondef>
+    <sectiondef kind="protected-func">
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a18ec2ecbbcf47264c34b0fd73242b119" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> void</type>
         <definition>CUDA_CALLABLE_MEMBER void check_index</definition>
         <argsstring>(size_t i, size_t dim) const</argsstring>
         <name>check_index</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::check_index</qualifiedname>
         <param>
           <type>size_t</type>
           <declname>i</declname>
@@ -159,15 +200,34 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="238" column="31" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="238" bodyend="246"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="256" column="31" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="256" bodyend="264"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
-      <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a483b22b3df988a8a315fe4525097cd91" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> size_t *</type>
-        <definition>const CUDA_CALLABLE_MEMBER size_t* dimensions</definition>
+      <memberdef kind="function" id="classlibmolgrid_1_1Grid_1a8e80dadd81041247ae111d11763fc2d2" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> size_t</type>
+        <definition>CUDA_CALLABLE_MEMBER size_t getPos</definition>
+        <argsstring>(I... indices) const</argsstring>
+        <name>getPos</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::getPos</qualifiedname>
+        <param>
+          <type>I...</type>
+          <declname>indices</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="55" column="40" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="55" bodyend="65"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a8593beea5ae18a49e3b23a395a98aa2c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> const size_t *</type>
+        <definition>CUDA_CALLABLE_MEMBER const size_t * dimensions</definition>
         <argsstring>() const</argsstring>
         <name>dimensions</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::dimensions</qualifiedname>
         <briefdescription>
 <para>dimensions along each axis </para>
         </briefdescription>
@@ -175,13 +235,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="258" column="47" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="258" bodyend="258"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="276" column="47" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="276" bodyend="276"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aa9b61e8668a98c2e264339c38e74065b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> size_t</type>
         <definition>CUDA_CALLABLE_MEMBER size_t dimension</definition>
         <argsstring>(size_t i) const</argsstring>
         <name>dimension</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::dimension</qualifiedname>
         <param>
           <type>size_t</type>
           <declname>i</declname>
@@ -193,13 +254,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="260" column="40" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="260" bodyend="260"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="278" column="40" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="278" bodyend="278"/>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a133c18fbd775019548ec10f171ec157a" compoundref="grid_8h" startline="328" endline="329">Grid&lt; Dtype, 1, isCUDA &gt;::Grid</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1acb2f16129f492fbb0aa93ae8b78402ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> size_t</type>
         <definition>CUDA_CALLABLE_MEMBER size_t size</definition>
         <argsstring>() const</argsstring>
         <name>size</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::size</qualifiedname>
         <briefdescription>
 <para>number of elements in grid </para>
         </briefdescription>
@@ -207,13 +270,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="263" column="40" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="263" bodyend="263"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="281" column="40" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="281" bodyend="281"/>
       </memberdef>
-      <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aaa5a68e1e5befda24cb7b3e422ba9cc5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a1f3452be669796729ab78152d845013f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> Dtype *</type>
-        <definition>CUDA_CALLABLE_MEMBER Dtype* data</definition>
+        <definition>CUDA_CALLABLE_MEMBER Dtype * data</definition>
         <argsstring>() const</argsstring>
         <name>data</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::data</qualifiedname>
         <briefdescription>
 <para>pointer to underlying data </para>
         </briefdescription>
@@ -221,13 +285,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="266" column="40" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="266" bodyend="266"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="284" column="40" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="284" bodyend="284"/>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a3e983133f9cb7d0571557580480ece9b" compoundref="grid_8h" startline="333" endline="347">Grid&lt; Dtype, 1, isCUDA &gt;::copyTo</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a133c18fbd775019548ec10f171ec157a" compoundref="grid_8h" startline="328" endline="329">Grid&lt; Dtype, 1, isCUDA &gt;::Grid</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a67a4d2469cf97b1e2018d220c5992ca7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> size_t</type>
         <definition>CUDA_CALLABLE_MEMBER size_t offset</definition>
         <argsstring>(size_t i) const</argsstring>
         <name>offset</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::offset</qualifiedname>
         <param>
           <type>size_t</type>
           <declname>i</declname>
@@ -238,13 +305,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="268" column="40" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="268" bodyend="268"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="286" column="40" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="286" bodyend="286"/>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a133c18fbd775019548ec10f171ec157a" compoundref="grid_8h" startline="328" endline="329">Grid&lt; Dtype, 1, isCUDA &gt;::Grid</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a440d5fdb2fea4e01b2d7ca58720e6f9a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> void</type>
         <definition>CUDA_CALLABLE_MEMBER void set_buffer</definition>
         <argsstring>(Dtype *ptr)</argsstring>
         <name>set_buffer</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::set_buffer</qualifiedname>
         <param>
           <type>Dtype *</type>
           <declname>ptr</declname>
@@ -256,26 +325,31 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="271" column="38" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="271" bodyend="271"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="289" column="38" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="289" bodyend="289"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0a335d0339fe70071fcdf4cd5b1c7b5f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Grid</definition>
         <argsstring>()</argsstring>
         <name>Grid</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::Grid</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="273" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="273" bodyend="273"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="291" column="5" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="291" bodyend="291"/>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1ad3152bc9dfc67f11fa55467ac93460f8" compoundref="grid_8h" startline="350" endline="364">Grid&lt; Dtype, 1, isCUDA &gt;::copyFrom</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a3e983133f9cb7d0571557580480ece9b" compoundref="grid_8h" startline="333" endline="347">Grid&lt; Dtype, 1, isCUDA &gt;::copyTo</referencedby>
+        <referencedby refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a133c18fbd775019548ec10f171ec157a" compoundref="grid_8h" startline="328" endline="329">Grid&lt; Dtype, 1, isCUDA &gt;::Grid</referencedby>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aef69ac40c00f38f7d637f1af03f8d63a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Grid</definition>
         <argsstring>(Dtype *const d, size_t sz)</argsstring>
         <name>Grid</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::Grid</qualifiedname>
         <param>
           <type>Dtype *const</type>
           <declname>d</declname>
@@ -290,13 +364,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="275" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="275" bodyend="276"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="293" column="5" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="293" bodyend="294"/>
       </memberdef>
-      <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a267a07557e1dd6b7a0ed10e276afd2f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0926c2a7709cc5a5d8292fcec6f09c4b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> Dtype &amp;</type>
-        <definition>CUDA_CALLABLE_MEMBER Dtype&amp; operator[]</definition>
+        <definition>CUDA_CALLABLE_MEMBER Dtype &amp; operator[]</definition>
         <argsstring>(size_t i)</argsstring>
         <name>operator[]</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::operator[]</qualifiedname>
         <param>
           <type>size_t</type>
           <declname>i</declname>
@@ -307,13 +382,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="278" column="39" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="278" bodyend="281"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="296" column="39" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="296" bodyend="299"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a4fd87ea12567337969e0d30b1c4a51ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> Dtype</type>
         <definition>CUDA_CALLABLE_MEMBER Dtype operator[]</definition>
         <argsstring>(size_t i) const</argsstring>
         <name>operator[]</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::operator[]</qualifiedname>
         <param>
           <type>size_t</type>
           <declname>i</declname>
@@ -324,13 +400,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="283" column="39" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="283" bodyend="286"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="301" column="39" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="301" bodyend="304"/>
       </memberdef>
-      <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a8ad9fc847771943373c0ece05f3761a6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a87b462228dda8251adb1a75487d363d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> Dtype &amp;</type>
-        <definition>CUDA_CALLABLE_MEMBER Dtype&amp; operator()</definition>
+        <definition>CUDA_CALLABLE_MEMBER Dtype &amp; operator()</definition>
         <argsstring>(size_t a)</argsstring>
         <name>operator()</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::operator()</qualifiedname>
         <param>
           <type>size_t</type>
           <declname>a</declname>
@@ -341,13 +418,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="288" column="39" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="288" bodyend="290"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="306" column="39" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="306" bodyend="308"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a7b8e84d93f65b9c3714f0acd8c7cd5c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> Dtype</type>
         <definition>CUDA_CALLABLE_MEMBER Dtype operator()</definition>
         <argsstring>(size_t a) const</argsstring>
         <name>operator()</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::operator()</qualifiedname>
         <param>
           <type>size_t</type>
           <declname>a</declname>
@@ -358,28 +436,30 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="292" column="39" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="292" bodyend="294"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="310" column="39" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="310" bodyend="312"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a512219066836349f65f85a0ead19ae8a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void fill_zero</definition>
         <argsstring>()</argsstring>
         <name>fill_zero</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::fill_zero</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="296" column="10" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="296" bodyend="299"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="314" column="10" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="314" bodyend="324"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a133c18fbd775019548ec10f171ec157a" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref></type>
         <definition>CUDA_CALLABLE_MEMBER Grid</definition>
         <argsstring>(const Grid&lt; Dtype, 2, isCUDA &gt; &amp;G, size_t i)</argsstring>
         <name>Grid</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::Grid</qualifiedname>
         <param>
-          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 2, isCUDA &gt; &amp;</type>
+          <type>const Grid&lt; Dtype, 2, isCUDA &gt; &amp;</type>
           <declname>G</declname>
         </param>
         <param>
@@ -392,7 +472,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="302" column="5" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="303" bodyend="304"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="327" column="5" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="328" bodyend="329"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a3e983133f9cb7d0571557580480ece9b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -406,8 +486,9 @@
         <definition>size_t copyTo</definition>
         <argsstring>(Grid&lt; Dtype, 1, destCUDA &gt; &amp;dest) const</argsstring>
         <name>copyTo</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::copyTo</qualifiedname>
         <param>
-          <type><ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 1, destCUDA &gt; &amp;</type>
+          <type><ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0a335d0339fe70071fcdf4cd5b1c7b5f" kindref="member">Grid</ref>&lt; Dtype, 1, destCUDA &gt; &amp;</type>
           <declname>dest</declname>
         </param>
         <briefdescription>
@@ -416,7 +497,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="308" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="308" bodyend="314"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="333" column="12" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="333" bodyend="347"/>
       </memberdef>
       <memberdef kind="function" id="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1ad3152bc9dfc67f11fa55467ac93460f8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -430,8 +511,9 @@
         <definition>size_t copyFrom</definition>
         <argsstring>(const Grid&lt; Dtype, 1, srcCUDA &gt; &amp;src)</argsstring>
         <name>copyFrom</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::copyFrom</qualifiedname>
         <param>
-          <type>const <ref refid="classlibmolgrid_1_1Grid" kindref="compound">Grid</ref>&lt; Dtype, 1, srcCUDA &gt; &amp;</type>
+          <type>const <ref refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0a335d0339fe70071fcdf4cd5b1c7b5f" kindref="member">Grid</ref>&lt; Dtype, 1, srcCUDA &gt; &amp;</type>
           <declname>src</declname>
         </param>
         <briefdescription>
@@ -440,25 +522,75 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="317" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="317" bodyend="323"/>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="350" column="12" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="350" bodyend="364"/>
       </memberdef>
-      </sectiondef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Grid_1aa34bb4f76ce3a39298308bc3b185d0bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> const size_t *</type>
+        <definition>CUDA_CALLABLE_MEMBER const size_t * offsets</definition>
+        <argsstring>() const</argsstring>
+        <name>offsets</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::offsets</qualifiedname>
+        <briefdescription>
+<para>offset for each dimension, all indexing calculations use this </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="93" column="47" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="93" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Grid_1a87382f290ed3feb1f2aecdc76e08f555" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>~Grid</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Grid</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::~Grid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="148" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classlibmolgrid_1_1Grid_1a59b632a08a539624adaa8d306699ac5c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1abaa3393ea5f1f52b7fdfde2beec133b7" kindref="member">CUDA_CALLABLE_MEMBER</ref> Dtype *</type>
+        <definition>CUDA_CALLABLE_MEMBER Dtype * address</definition>
+        <argsstring>(I... indices)</argsstring>
+        <name>address</name>
+        <qualifiedname>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;::address</qualifiedname>
+        <param>
+          <type>I...</type>
+          <declname>indices</declname>
+        </param>
+        <briefdescription>
+<para>Return memory address of specified index. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="176" column="39" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="176" bodyend="178"/>
+      </memberdef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" line="233" column="12" bodyfile="/home/dkoes/git/libmolgrid/include/libmolgrid/grid.h" bodystart="233" bodyend="325"/>
+    <location file="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" line="251" column="1" bodyfile="/Users/florian/Documents/Science-IA/libmolgrid/include/libmolgrid/grid.h" bodystart="251" bodyend="366"/>
     <listofallmembers>
+      <member refid="classlibmolgrid_1_1Grid_1a59b632a08a539624adaa8d306699ac5c" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>address</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a268477dcc97a377d747ac8d87c9e4832" prot="protected" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>buffer</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a18ec2ecbbcf47264c34b0fd73242b119" prot="protected" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>check_index</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1ad3152bc9dfc67f11fa55467ac93460f8" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>copyFrom</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a3e983133f9cb7d0571557580480ece9b" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>copyTo</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a32ca1fb679900a650a8f7ab6a128117a" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>cpu_grid_t</name></member>
-      <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aaa5a68e1e5befda24cb7b3e422ba9cc5" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>data</name></member>
+      <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a1f3452be669796729ab78152d845013f" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>data</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aa9b61e8668a98c2e264339c38e74065b" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>dimension</name></member>
-      <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a483b22b3df988a8a315fe4525097cd91" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>dimensions</name></member>
+      <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a8593beea5ae18a49e3b23a395a98aa2c" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>dimensions</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a7af99c1e30f9f637316dab96f03c4b3d" prot="protected" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>dims</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a512219066836349f65f85a0ead19ae8a" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>fill_zero</name></member>
+      <member refid="classlibmolgrid_1_1Grid_1a8e80dadd81041247ae111d11763fc2d2" prot="protected" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>getPos</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aa01454be2537d7eed47f8c16c82b0a23" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>GPU</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a2177fcb80495c85151de7dad3d566744" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>gpu_grid_t</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0a335d0339fe70071fcdf4cd5b1c7b5f" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>Grid</name></member>
@@ -466,15 +598,18 @@
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a133c18fbd775019548ec10f171ec157a" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>Grid</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1adc980d1b902f6a14af98e1ec10e2c96c" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>managed_t</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1ad8331653910a5a034f8238e6a8fbb9b1" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>N</name></member>
+      <member refid="classlibmolgrid_1_1Grid_1a8cc20beaeb20694fea94498420db09c0" prot="protected" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>offs</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a67a4d2469cf97b1e2018d220c5992ca7" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>offset</name></member>
-      <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a8ad9fc847771943373c0ece05f3761a6" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>operator()</name></member>
+      <member refid="classlibmolgrid_1_1Grid_1aa34bb4f76ce3a39298308bc3b185d0bf" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>offsets</name></member>
+      <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a87b462228dda8251adb1a75487d363d4" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>operator()</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a7b8e84d93f65b9c3714f0acd8c7cd5c5" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>operator()</name></member>
-      <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a267a07557e1dd6b7a0ed10e276afd2f0" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>operator[]</name></member>
+      <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a0926c2a7709cc5a5d8292fcec6f09c4b" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>operator[]</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a4fd87ea12567337969e0d30b1c4a51ad" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>operator[]</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a440d5fdb2fea4e01b2d7ca58720e6f9a" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>set_buffer</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1acb2f16129f492fbb0aa93ae8b78402ec" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>size</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1aee2fd0a001c66664abf20c3b1bbf9eee" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>subgrid_t</name></member>
       <member refid="classlibmolgrid_1_1Grid_3_01Dtype_00_011_00_01isCUDA_01_4_1a2d7497e2eb6dbb6b75ca3a4df279392b" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>type</name></member>
+      <member refid="classlibmolgrid_1_1Grid_1a87382f290ed3feb1f2aecdc76e08f555" prot="public" virt="non-virtual"><scope>libmolgrid::Grid&lt; Dtype, 1, isCUDA &gt;</scope><name>~Grid</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

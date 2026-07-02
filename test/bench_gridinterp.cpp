@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
 
   // set up gridmaker and run forward
   GridMaker biggmaker(0.25,41.5);
-  float3 grid_dims = biggmaker.get_grid_dims();
+  Vec3 grid_dims = biggmaker.get_grid_dims();
   MGrid4f out(ex.num_types(), grid_dims.x, grid_dims.y, grid_dims.z);
   biggmaker.forward(ex, out.gpu());
 

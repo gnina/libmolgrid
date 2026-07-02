@@ -31,11 +31,11 @@ BOOST_AUTO_TEST_CASE(forward_cpu) {
   float dimension = 23.5;
   float resolution = 0.5;
   double half = dimension / 2.0;
-  float3 grid_center = make_float3(-16.56986 + half, 0.63044 + half,
+  Vec3 grid_center = make_vec3(-16.56986 + half, 0.63044 + half,
       -17.51435 + half);
-  // float3 grid_origin = make_float3(-16.56986, 0.63044, -17.51435);
+  // Vec3 grid_origin = make_vec3(-16.56986, 0.63044, -17.51435);
   GridMaker gmaker(resolution, dimension);
-  float3 grid_dims = gmaker.get_grid_dims();
+  Vec3 grid_dims = gmaker.get_grid_dims();
   MGrid4f out(ntypes, grid_dims.x, grid_dims.y, grid_dims.z);
   Grid4f cpu_grid = out.cpu();
   gmaker.forward(grid_center, combined, cpu_grid);
@@ -137,14 +137,15 @@ BOOST_AUTO_TEST_CASE(forward_gpu) {
   float dimension = 23.5;
   float resolution = 0.5;
   double half = dimension / 2.0;
-  float3 grid_center = make_float3(-16.56986 + half, 0.63044 + half, -17.51435 + half);
+  Vec3 grid_center = make_vec3(-16.56986 + half, 0.63044 + half, -17.51435 + half);
   // float grid_origin[3] = {-16.56986, 0.63044, -17.51435};
   GridMaker gmaker(resolution, dimension);
-  float3 grid_dims = gmaker.get_grid_dims();
+  Vec3 grid_dims = gmaker.get_grid_dims();
   MGrid4f out(ntypes, grid_dims.x, grid_dims.y, grid_dims.z);
   Grid4fCUDA gpu_grid = out.gpu();
-  size_t gsize = grid_dims.x * grid_dims.y * grid_dims.z * ntypes;
-  LMG_CUDA_CHECK(cudaMemset(gpu_grid.data(), 0, gsize * sizeof(float)));
+  // GridMaker::forward() cudaMemsets the output grid itself before writing
+  // to it, so no need to (and, since gpu_grid.data() is device memory, no
+  // safe way to) pre-zero it with a host-side memset() here.
   gmaker.forward(grid_center, coordgpu, gpu_grid);
   out.tocpu();
 
@@ -237,7 +238,7 @@ BOOST_AUTO_TEST_CASE(backward) {
   using namespace std;
   GridMaker g(0.1, 6.0);
 
-  vector<float3> c { make_float3(0, 0, 0) };
+  vector<Vec3> c { make_vec3(0, 0, 0) };
   vector<int> t { 0 };
   vector<float> r { 2.0 };
 
@@ -249,19 +250,19 @@ BOOST_AUTO_TEST_CASE(backward) {
   MGrid2f cpuatoms(1, 3);
   MGrid2f gpuatoms(1, 3);
 
-  g.backward(float3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu());
+  g.backward(Vec3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu());
 
   for (unsigned i = 0; i < 3; i++) {
     BOOST_CHECK_SMALL(cpuatoms(0, i), TOL);
   }
 
-  g.backward(float3 { 0, 0, 0 }, coords, diff.gpu(), gpuatoms.gpu());
+  g.backward(Vec3 { 0, 0, 0 }, coords, diff.gpu(), gpuatoms.gpu());
   same_coords(cpuatoms,gpuatoms);
 
   //move coordinate
   coords.coords(0, 0) = 1.0;
 
-  g.backward(float3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu());
+  g.backward(Vec3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu());
 
   float gval = cpuatoms(0, 0);
   BOOST_CHECK_LT(gval, -TOL);
@@ -269,12 +270,12 @@ BOOST_AUTO_TEST_CASE(backward) {
     BOOST_CHECK_SMALL(cpuatoms(0, i), TOL);
   }
 
-  g.backward(float3 { 0, 0, 0 }, coords, diff.gpu(), gpuatoms.gpu());
+  g.backward(Vec3 { 0, 0, 0 }, coords, diff.gpu(), gpuatoms.gpu());
   same_coords(cpuatoms,gpuatoms);
 
   //move to other side
   coords.coords(0, 0) = -1.0;
-  g.backward(float3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu());
+  g.backward(Vec3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu());
 
   BOOST_CHECK_GT(cpuatoms(0,0),TOL);
   BOOST_CHECK_SMALL(gval + cpuatoms(0, 0), TOL); //should be symmetric
@@ -282,16 +283,16 @@ BOOST_AUTO_TEST_CASE(backward) {
     BOOST_CHECK_SMALL(cpuatoms(0, i), TOL);
   }
 
-  g.backward(float3 { 0, 0, 0 }, coords, diff.gpu(), gpuatoms.gpu());
+  g.backward(Vec3 { 0, 0, 0 }, coords, diff.gpu(), gpuatoms.gpu());
   same_coords(cpuatoms,gpuatoms);
 
 
   //does transform backwards work?
-  Transform T(float3{0,0,0}, 0, true);
+  Transform T(Vec3{0,0,0}, 0, true);
   T.forward(coords, coords);
 
-  g.backward(float3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu());
-  g.backward(float3 { 0, 0, 0 }, coords, diff.gpu(), gpuatoms.gpu());
+  g.backward(Vec3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu());
+  g.backward(Vec3 { 0, 0, 0 }, coords, diff.gpu(), gpuatoms.gpu());
   same_coords(cpuatoms,gpuatoms);
 
   //with random rotation, all three coordinates should have gradient
@@ -314,7 +315,7 @@ BOOST_AUTO_TEST_CASE(backward_relevance) {
   using namespace std;
   GridMaker g(0.1, 6.0);
 
-  vector<float3> c { make_float3(0, 0, 0) };
+  vector<Vec3> c { make_vec3(0, 0, 0) };
   vector<int> t { 0 };
   vector<float> r { 2.0 };
 
@@ -329,8 +330,8 @@ BOOST_AUTO_TEST_CASE(backward_relevance) {
   MGrid1f cpurel(1);
   MGrid1f gpurel(1);
 
-  g.backward_relevance(float3 { 0, 0, 0 }, coords, density.cpu(), diff.cpu(), cpurel.cpu());
-  g.backward_relevance(float3 { 0, 0, 0 }, coords, density.gpu(), diff.gpu(), gpurel.gpu());
+  g.backward_relevance(Vec3 { 0, 0, 0 }, coords, density.cpu(), diff.cpu(), cpurel.cpu());
+  g.backward_relevance(Vec3 { 0, 0, 0 }, coords, density.gpu(), diff.gpu(), gpurel.gpu());
 
   BOOST_CHECK_SMALL(cpurel(0)-gpurel(0), TOL);
   BOOST_CHECK_GT(cpurel(0), 1.0);
@@ -369,7 +370,7 @@ BOOST_AUTO_TEST_CASE(backward_gradients) {
   using namespace std;
   GridMaker g(0.1, 6.0);
 
-  vector<float3> c { make_float3(0, 0, 0) };
+  vector<Vec3> c { make_vec3(0, 0, 0) };
   vector<vector<float> > t { vector<float>{0,1.0} };
   vector<float> r { 2.0 };
 
@@ -381,20 +382,20 @@ BOOST_AUTO_TEST_CASE(backward_gradients) {
 
   MGrid2f cpuatoms(1, 3);
   MGrid2f cputypes(1, 2);
-  g.backward(float3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu(), cputypes.cpu());
+  g.backward(Vec3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu(), cputypes.cpu());
 
   MGrid4f diffdiff(2, dim,dim,dim);
   MGrid2f add(1,3);
   MGrid2f tdd(1,2);
 
-  g.backward_gradients(float3{0,0,0}, coords, diff.cpu(), cpuatoms.cpu(), cputypes.cpu(), diffdiff.cpu(), add.cpu(), tdd.cpu());
+  g.backward_gradients(Vec3{0,0,0}, coords, diff.cpu(), cpuatoms.cpu(), cputypes.cpu(), diffdiff.cpu(), add.cpu(), tdd.cpu());
 
   MGrid4f gpu_diffdiff(2, dim,dim,dim);
   MGrid2f gpu_add(1,3);
   MGrid2f gpu_tdd(1,2);
 
   std::cerr << "DIFF "<< diff(1,30,30,30) << "\n";
-  g.backward_gradients(float3{0,0,0}, coords, diff.gpu(), cpuatoms.gpu(), cputypes.gpu(), gpu_diffdiff.gpu(), gpu_add.gpu(), gpu_tdd.gpu());
+  g.backward_gradients(Vec3{0,0,0}, coords, diff.gpu(), cpuatoms.gpu(), cputypes.gpu(), gpu_diffdiff.gpu(), gpu_add.gpu(), gpu_tdd.gpu());
 
   same_grids(gpu_diffdiff,diffdiff);
   same_coords(add,gpu_add);
@@ -409,7 +410,7 @@ BOOST_AUTO_TEST_CASE(backward_vec) {
   using namespace std;
   GridMaker g(0.1, 6.0);
 
-  vector<float3> c { make_float3(0, 0, 0) };
+  vector<Vec3> c { make_vec3(0, 0, 0) };
   vector<vector<float> > t { vector<float>{0,1.0} };
   vector<float> r { 2.0 };
 
@@ -420,7 +421,7 @@ BOOST_AUTO_TEST_CASE(backward_vec) {
 
   MGrid2f cpuatoms(1, 3);
   MGrid2f cputypes(1, 2);
-  g.backward(float3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu(), cputypes.cpu());
+  g.backward(Vec3 { 0, 0, 0 }, coords, diff.cpu(), cpuatoms.cpu(), cputypes.cpu());
 
   BOOST_CHECK_GT(cputypes[0][0],0);
   BOOST_CHECK_EQUAL(cputypes[0][1],0);
@@ -430,7 +431,7 @@ BOOST_AUTO_TEST_CASE(forward_vec) {
   using namespace std;
   GridMaker g(0.1, 6.0);
 
-  vector<float3> c { make_float3(0, 0, 0) };
+  vector<Vec3> c { make_vec3(0, 0, 0) };
   vector<vector<float> > t { vector<float>{0.5,0.5} };
   vector<float> r { 2.0 };
 
@@ -439,8 +440,10 @@ BOOST_AUTO_TEST_CASE(forward_vec) {
   MGrid4f out(2, dim, dim, dim);
   MGrid4f out2(2, dim, dim, dim);
 
-  g.forward(float3{0,0,0}, coords, out.cpu());
-  g.forward(float3{0,0,0}, coords, out2.gpu());
+  g.forward(Vec3{0,0,0}, coords, out.cpu());
+  g.forward(Vec3{0,0,0}, coords, out2.gpu());
+  out2.tocpu(); //on CUDA, gpu() and cpu() are backed by separate buffers;
+                //data() doesn't sync, so pull the GPU results back first.
 
   unsigned sz = out.size();
   float *g1 = out.data();
@@ -459,11 +462,11 @@ BOOST_AUTO_TEST_CASE(forward_vec_types) {
   GridMaker ga(0.5, 6.0);
   GridMaker gt(0.5, 6.0, false, true);
 
-  vector<float3> ct { make_float3(0, 0, 0) };
+  vector<Vec3> ct { make_vec3(0, 0, 0) };
   vector<vector<float> > tt { vector<float>{1.0,1.0,1.0} };
   vector<float> rt { 3.0, 2.0, 1.0 };
 
-  vector<float3> ca { make_float3(0, 0, 0), make_float3(0,0,0), make_float3(0,0,0) };
+  vector<Vec3> ca { make_vec3(0, 0, 0), make_vec3(0,0,0), make_vec3(0,0,0) };
   vector<float> ra { 3.0, 2.0, 1.0 };
   vector<vector<float> > ta { vector<float>{1.0,0.0,0.0}, vector<float>{0.0,1.0,0.0}, vector<float>{0.0,0.0,1.0} };
 
@@ -474,8 +477,8 @@ BOOST_AUTO_TEST_CASE(forward_vec_types) {
   MGrid4f outa(3, dim, dim, dim);
   MGrid4f outt(3, dim, dim, dim);
 
-  ga.forward(float3{0,0,0}, coordsa, outa.cpu());
-  gt.forward(float3{0,0,0}, coordst, outt.cpu());
+  ga.forward(Vec3{0,0,0}, coordsa, outa.cpu());
+  gt.forward(Vec3{0,0,0}, coordst, outt.cpu());
 
   BOOST_CHECK_EQUAL(gt.get_radii_type_indexed(),true);
   BOOST_CHECK_EQUAL(ga.get_radii_type_indexed(),false);
@@ -491,8 +494,9 @@ BOOST_AUTO_TEST_CASE(forward_vec_types) {
 
   //check gpu code
   outt.fill_zero();
-  gt.forward(float3{0,0,0}, coordst, outt.gpu());
-  Gt = outt.data(); //bring back to cpu
+  gt.forward(Vec3{0,0,0}, coordst, outt.gpu());
+  outt.tocpu(); //bring back to cpu; data() alone does not sync
+  Gt = outt.data();
   for(unsigned i = 0; i < sz; i++) {
     BOOST_CHECK_SMALL(Ga[i] - Gt[i], TOL);
   }
@@ -502,7 +506,7 @@ BOOST_AUTO_TEST_CASE(forward_vec_types) {
   //check that types go in right channel
   vector<float> ra2 { 2.0, 2.0, 2.0 };
   CoordinateSet coords(ca,ta, ra2);
-  gt.forward(float3{0,0,0}, coords, outt.cpu());
+  gt.forward(Vec3{0,0,0}, coords, outt.cpu());
   for(unsigned i = 0; i < dim; i++)
     for(unsigned j = 0; j < dim; j++)
       for(unsigned k = 0; k < dim; k++) {
